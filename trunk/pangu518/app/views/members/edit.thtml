@@ -1,0 +1,236 @@
+<h2>Edit Member</h2>
+<form action="<?php echo $html->url('/members/edit/'.$html->tagValue('Member/uid')); ?>" method="post">
+<div class="optional"> 
+	<?php echo $form->labelTag('Member/username', 'Username');?>
+ 	<?php echo $html->input('Member/username', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Member/username', 'Please enter the Username.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Member/password', 'Password');?>
+ 	<?php echo $html->input('Member/password', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Member/password', 'Please enter the Password.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Member/secques', 'Secques');?>
+ 	<?php echo $html->input('Member/secques', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Member/secques', 'Please enter the Secques.');?>
+</div>
+<div class="optional"> 
+	<?php echo $html->checkbox('Member/gender', null, array());?>
+	<?php echo $form->labelTag('Member/gender', 'Gender');?>
+ 	<?php echo $html->tagErrorMsg('Member/gender', 'Please check the Gender.');?>
+</div>
+<div class="optional"> 
+	<?php echo $html->checkbox('Member/adminid', null, array());?>
+	<?php echo $form->labelTag('Member/adminid', 'Adminid');?>
+ 	<?php echo $html->tagErrorMsg('Member/adminid', 'Please check the Adminid.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Member/groupid', 'Groupid');?>
+ 	<?php echo $html->input('Member/groupid', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Member/groupid', 'Please enter the Groupid.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Member/groupexpiry', 'Groupexpiry');?>
+ 	<?php echo $html->input('Member/groupexpiry', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Member/groupexpiry', 'Please enter the Groupexpiry.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Member/extgroupids', 'Extgroupids');?>
+ 	<?php echo $html->input('Member/extgroupids', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Member/extgroupids', 'Please enter the Extgroupids.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Member/regip', 'Regip');?>
+ 	<?php echo $html->input('Member/regip', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Member/regip', 'Please enter the Regip.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Member/regdate', 'Regdate');?>
+ 	<?php echo $html->input('Member/regdate', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Member/regdate', 'Please enter the Regdate.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Member/lastip', 'Lastip');?>
+ 	<?php echo $html->input('Member/lastip', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Member/lastip', 'Please enter the Lastip.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Member/lastvisit', 'Lastvisit');?>
+ 	<?php echo $html->input('Member/lastvisit', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Member/lastvisit', 'Please enter the Lastvisit.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Member/lastactivity', 'Lastactivity');?>
+ 	<?php echo $html->input('Member/lastactivity', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Member/lastactivity', 'Please enter the Lastactivity.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Member/lastpost', 'Lastpost');?>
+ 	<?php echo $html->input('Member/lastpost', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Member/lastpost', 'Please enter the Lastpost.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Member/posts', 'Posts');?>
+ 	<?php echo $html->input('Member/posts', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Member/posts', 'Please enter the Posts.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Member/digestposts', 'Digestposts');?>
+ 	<?php echo $html->input('Member/digestposts', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Member/digestposts', 'Please enter the Digestposts.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Member/oltime', 'Oltime');?>
+ 	<?php echo $html->input('Member/oltime', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Member/oltime', 'Please enter the Oltime.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Member/pageviews', 'Pageviews');?>
+ 	<?php echo $html->input('Member/pageviews', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Member/pageviews', 'Please enter the Pageviews.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Member/credits', 'Credits');?>
+ 	<?php echo $html->input('Member/credits', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Member/credits', 'Please enter the Credits.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Member/extcredits1', 'Extcredits1');?>
+ 	<?php echo $html->input('Member/extcredits1', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Member/extcredits1', 'Please enter the Extcredits1.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Member/extcredits2', 'Extcredits2');?>
+ 	<?php echo $html->input('Member/extcredits2', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Member/extcredits2', 'Please enter the Extcredits2.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Member/extcredits3', 'Extcredits3');?>
+ 	<?php echo $html->input('Member/extcredits3', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Member/extcredits3', 'Please enter the Extcredits3.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Member/extcredits4', 'Extcredits4');?>
+ 	<?php echo $html->input('Member/extcredits4', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Member/extcredits4', 'Please enter the Extcredits4.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Member/extcredits5', 'Extcredits5');?>
+ 	<?php echo $html->input('Member/extcredits5', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Member/extcredits5', 'Please enter the Extcredits5.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Member/extcredits6', 'Extcredits6');?>
+ 	<?php echo $html->input('Member/extcredits6', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Member/extcredits6', 'Please enter the Extcredits6.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Member/extcredits7', 'Extcredits7');?>
+ 	<?php echo $html->input('Member/extcredits7', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Member/extcredits7', 'Please enter the Extcredits7.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Member/extcredits8', 'Extcredits8');?>
+ 	<?php echo $html->input('Member/extcredits8', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Member/extcredits8', 'Please enter the Extcredits8.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Member/email', 'Email');?>
+ 	<?php echo $html->input('Member/email', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Member/email', 'Please enter the Email.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Member/bday', 'Bday');?>
+ 	<?php echo $html->dateTimeOptionTag('Member/bday', 'MDY' , 'NONE', $html->tagValue('Member/bday'), array());?>
+	<?php echo $html->tagErrorMsg('Member/bday', 'Please select the Bday.');?>
+</div>
+<div class="optional"> 
+	<?php echo $html->checkbox('Member/sigstatus', null, array());?>
+	<?php echo $form->labelTag('Member/sigstatus', 'Sigstatus');?>
+ 	<?php echo $html->tagErrorMsg('Member/sigstatus', 'Please check the Sigstatus.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Member/tpp', 'Tpp');?>
+ 	<?php echo $html->input('Member/tpp', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Member/tpp', 'Please enter the Tpp.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Member/ppp', 'Ppp');?>
+ 	<?php echo $html->input('Member/ppp', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Member/ppp', 'Please enter the Ppp.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Member/styleid', 'Styleid');?>
+ 	<?php echo $html->input('Member/styleid', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Member/styleid', 'Please enter the Styleid.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Member/dateformat', 'Dateformat');?>
+ 	<?php echo $html->input('Member/dateformat', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Member/dateformat', 'Please enter the Dateformat.');?>
+</div>
+<div class="optional"> 
+	<?php echo $html->checkbox('Member/timeformat', null, array());?>
+	<?php echo $form->labelTag('Member/timeformat', 'Timeformat');?>
+ 	<?php echo $html->tagErrorMsg('Member/timeformat', 'Please check the Timeformat.');?>
+</div>
+<div class="optional"> 
+	<?php echo $html->checkbox('Member/pmsound', null, array());?>
+	<?php echo $form->labelTag('Member/pmsound', 'Pmsound');?>
+ 	<?php echo $html->tagErrorMsg('Member/pmsound', 'Please check the Pmsound.');?>
+</div>
+<div class="optional"> 
+	<?php echo $html->checkbox('Member/showemail', null, array());?>
+	<?php echo $form->labelTag('Member/showemail', 'Showemail');?>
+ 	<?php echo $html->tagErrorMsg('Member/showemail', 'Please check the Showemail.');?>
+</div>
+<div class="optional"> 
+	<?php echo $html->checkbox('Member/newsletter', null, array());?>
+	<?php echo $form->labelTag('Member/newsletter', 'Newsletter');?>
+ 	<?php echo $html->tagErrorMsg('Member/newsletter', 'Please check the Newsletter.');?>
+</div>
+<div class="optional"> 
+	<?php echo $html->checkbox('Member/invisible', null, array());?>
+	<?php echo $form->labelTag('Member/invisible', 'Invisible');?>
+ 	<?php echo $html->tagErrorMsg('Member/invisible', 'Please check the Invisible.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Member/timeoffset', 'Timeoffset');?>
+ 	<?php echo $html->input('Member/timeoffset', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Member/timeoffset', 'Please enter the Timeoffset.');?>
+</div>
+<div class="optional"> 
+	<?php echo $html->checkbox('Member/newpm', null, array());?>
+	<?php echo $form->labelTag('Member/newpm', 'Newpm');?>
+ 	<?php echo $html->tagErrorMsg('Member/newpm', 'Please check the Newpm.');?>
+</div>
+<div class="optional"> 
+	<?php echo $html->checkbox('Member/accessmasks', null, array());?>
+	<?php echo $form->labelTag('Member/accessmasks', 'Accessmasks');?>
+ 	<?php echo $html->tagErrorMsg('Member/accessmasks', 'Please check the Accessmasks.');?>
+</div>
+<div class="optional"> 
+	<?php echo $html->checkbox('Member/editormode', null, array());?>
+	<?php echo $form->labelTag('Member/editormode', 'Editormode');?>
+ 	<?php echo $html->tagErrorMsg('Member/editormode', 'Please check the Editormode.');?>
+</div>
+<div class="optional"> 
+	<?php echo $html->checkbox('Member/customshow', null, array());?>
+	<?php echo $form->labelTag('Member/customshow', 'Customshow');?>
+ 	<?php echo $html->tagErrorMsg('Member/customshow', 'Please check the Customshow.');?>
+</div>
+<div class="optional"> 
+	<?php echo $html->checkbox('Member/xspacestatus', null, array());?>
+	<?php echo $form->labelTag('Member/xspacestatus', 'Xspacestatus');?>
+ 	<?php echo $html->tagErrorMsg('Member/xspacestatus', 'Please check the Xspacestatus.');?>
+</div>
+<?php echo $html->hidden('Member/uid')?>
+<div class="submit">
+	<?php echo $html->submit('Save');?>
+</div>
+</form>
+<ul class="actions">
+<li><?php echo $html->link('Delete','/members/delete/' . $html->tagValue('Member/uid'), null, 'Are you sure you want to delete: id ' . $html->tagValue('Member/uid'));?>
+<li><?php echo $html->link('List Members', '/members/index')?></li>
+</ul>
