@@ -1,0 +1,105 @@
+<div class="member">
+<h2>View Member</h2>
+
+<dl>
+	<dt>Uid</dt>
+	<dd>&nbsp;<?php echo $member['Member']['uid']?></dd>
+	<dt>Username</dt>
+	<dd>&nbsp;<?php echo $member['Member']['username']?></dd>
+	<dt>Password</dt>
+	<dd>&nbsp;<?php echo $member['Member']['password']?></dd>
+	<dt>Secques</dt>
+	<dd>&nbsp;<?php echo $member['Member']['secques']?></dd>
+	<dt>Gender</dt>
+	<dd>&nbsp;<?php echo $member['Member']['gender']?></dd>
+	<dt>Adminid</dt>
+	<dd>&nbsp;<?php echo $member['Member']['adminid']?></dd>
+	<dt>Groupid</dt>
+	<dd>&nbsp;<?php echo $member['Member']['groupid']?></dd>
+	<dt>Groupexpiry</dt>
+	<dd>&nbsp;<?php echo $member['Member']['groupexpiry']?></dd>
+	<dt>Extgroupids</dt>
+	<dd>&nbsp;<?php echo $member['Member']['extgroupids']?></dd>
+	<dt>Regip</dt>
+	<dd>&nbsp;<?php echo $member['Member']['regip']?></dd>
+	<dt>Regdate</dt>
+	<dd>&nbsp;<?php echo $member['Member']['regdate']?></dd>
+	<dt>Lastip</dt>
+	<dd>&nbsp;<?php echo $member['Member']['lastip']?></dd>
+	<dt>Lastvisit</dt>
+	<dd>&nbsp;<?php echo $member['Member']['lastvisit']?></dd>
+	<dt>Lastactivity</dt>
+	<dd>&nbsp;<?php echo $member['Member']['lastactivity']?></dd>
+	<dt>Lastpost</dt>
+	<dd>&nbsp;<?php echo $member['Member']['lastpost']?></dd>
+	<dt>Posts</dt>
+	<dd>&nbsp;<?php echo $member['Member']['posts']?></dd>
+	<dt>Digestposts</dt>
+	<dd>&nbsp;<?php echo $member['Member']['digestposts']?></dd>
+	<dt>Oltime</dt>
+	<dd>&nbsp;<?php echo $member['Member']['oltime']?></dd>
+	<dt>Pageviews</dt>
+	<dd>&nbsp;<?php echo $member['Member']['pageviews']?></dd>
+	<dt>Credits</dt>
+	<dd>&nbsp;<?php echo $member['Member']['credits']?></dd>
+	<dt>Extcredits1</dt>
+	<dd>&nbsp;<?php echo $member['Member']['extcredits1']?></dd>
+	<dt>Extcredits2</dt>
+	<dd>&nbsp;<?php echo $member['Member']['extcredits2']?></dd>
+	<dt>Extcredits3</dt>
+	<dd>&nbsp;<?php echo $member['Member']['extcredits3']?></dd>
+	<dt>Extcredits4</dt>
+	<dd>&nbsp;<?php echo $member['Member']['extcredits4']?></dd>
+	<dt>Extcredits5</dt>
+	<dd>&nbsp;<?php echo $member['Member']['extcredits5']?></dd>
+	<dt>Extcredits6</dt>
+	<dd>&nbsp;<?php echo $member['Member']['extcredits6']?></dd>
+	<dt>Extcredits7</dt>
+	<dd>&nbsp;<?php echo $member['Member']['extcredits7']?></dd>
+	<dt>Extcredits8</dt>
+	<dd>&nbsp;<?php echo $member['Member']['extcredits8']?></dd>
+	<dt>Email</dt>
+	<dd>&nbsp;<?php echo $member['Member']['email']?></dd>
+	<dt>Bday</dt>
+	<dd>&nbsp;<?php echo $member['Member']['bday']?></dd>
+	<dt>Sigstatus</dt>
+	<dd>&nbsp;<?php echo $member['Member']['sigstatus']?></dd>
+	<dt>Tpp</dt>
+	<dd>&nbsp;<?php echo $member['Member']['tpp']?></dd>
+	<dt>Ppp</dt>
+	<dd>&nbsp;<?php echo $member['Member']['ppp']?></dd>
+	<dt>Styleid</dt>
+	<dd>&nbsp;<?php echo $member['Member']['styleid']?></dd>
+	<dt>Dateformat</dt>
+	<dd>&nbsp;<?php echo $member['Member']['dateformat']?></dd>
+	<dt>Timeformat</dt>
+	<dd>&nbsp;<?php echo $member['Member']['timeformat']?></dd>
+	<dt>Pmsound</dt>
+	<dd>&nbsp;<?php echo $member['Member']['pmsound']?></dd>
+	<dt>Showemail</dt>
+	<dd>&nbsp;<?php echo $member['Member']['showemail']?></dd>
+	<dt>Newsletter</dt>
+	<dd>&nbsp;<?php echo $member['Member']['newsletter']?></dd>
+	<dt>Invisible</dt>
+	<dd>&nbsp;<?php echo $member['Member']['invisible']?></dd>
+	<dt>Timeoffset</dt>
+	<dd>&nbsp;<?php echo $member['Member']['timeoffset']?></dd>
+	<dt>Newpm</dt>
+	<dd>&nbsp;<?php echo $member['Member']['newpm']?></dd>
+	<dt>Accessmasks</dt>
+	<dd>&nbsp;<?php echo $member['Member']['accessmasks']?></dd>
+	<dt>Editormode</dt>
+	<dd>&nbsp;<?php echo $member['Member']['editormode']?></dd>
+	<dt>Customshow</dt>
+	<dd>&nbsp;<?php echo $member['Member']['customshow']?></dd>
+	<dt>Xspacestatus</dt>
+	<dd>&nbsp;<?php echo $member['Member']['xspacestatus']?></dd>
+</dl>
+<ul class="actions">
+	<li><?php echo $html->link('Edit Member',   '/members/edit/' . $member['Member']['uid']) ?> </li>
+	<li><?php echo $html->link('Delete Member', '/members/delete/' . $member['Member']['uid'], null, 'Are you sure you want to delete: id ' . $member['Member']['uid'] . '?') ?> </li>
+	<li><?php echo $html->link('List Members',   '/members/index') ?> </li>
+	<li><?php echo $html->link('New Member',	'/members/add') ?> </li>
+</ul>
+
+</div>
