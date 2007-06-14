@@ -61,7 +61,8 @@ class DATABASE_CONFIG
 								'login' => 'root',
 								'password' => '',
 								'database' => 'pangu',
-								'prefix' => '');
+								'prefix' => '',
+								'encoding' => 'utf8');
 
 	var $test = array('driver' => 'mysql',
 							'connect' => 'mysql_connect',
@@ -69,6 +70,7 @@ class DATABASE_CONFIG
 							'login' => 'root',
 							'password' => '',
 							'database' => 'pangu-test',
-							'prefix' => '');
+							'prefix' => '',
+							'encoding' => 'utf8');
 }
 ?>
