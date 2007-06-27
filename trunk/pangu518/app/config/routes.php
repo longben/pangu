@@ -33,14 +33,19 @@
  * its action called 'display', and we pass a param to select the view file
  * to use (in this case, /app/views/pages/home.thtml)...
  */
+    $Route->connect('/admin', array('controller' => 'members', 'action' => 'login'));
 	$Route->connect('/', array('controller' => 'pages', 'action' => 'display', 'home'));
+	$Route->connect('/admin_index', array('controller' => 'pages', 'action' => 'display', 'admin_index'));
 /**
  * ...and connect the rest of 'Pages' controller's urls.
  */
 	$Route->connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
+	
 /**
  * Then we connect url '/test' to our test controller. This is helpfull in
  * developement.
  */
 	$Route->connect('/tests', array('controller' => 'tests', 'action' => 'index'));
+	
+	//$Route->connect('/admin', array('controller' => 'users', 'action' => 'login'));
 ?>

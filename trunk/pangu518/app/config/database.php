@@ -60,7 +60,7 @@ class DATABASE_CONFIG
 								'host' => 'localhost',
 								'login' => 'root',
 								'password' => '',
-								'database' => 'pangu',
+								'database' => 'pangu518',
 								'prefix' => '',
 								'encoding' => 'utf8');
 
