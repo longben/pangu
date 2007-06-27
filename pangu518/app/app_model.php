@@ -38,6 +38,11 @@
  * @package		cake
  * @subpackage	cake.app
  */
+
+//请根据开发或者生产实际环境修改include_path路径
+ini_set('include_path', 'D:/workspace4php/pangu518/app/vendors/Pear/' . PATH_SEPARATOR . ini_get('include_path'));
+
 class AppModel extends Model{
+	
 }
 ?>

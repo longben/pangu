@@ -114,7 +114,7 @@
  * name you set CAKE_ADMIN to.
  * For example: admin_index, admin_edit
  */
-//	define('CAKE_ADMIN', 'admin');
+define('CAKE_ADMIN', 'admin_ws');
 /**
  *  The define below is used to turn cake built webservices
  *  on or off. Default setting is off.
