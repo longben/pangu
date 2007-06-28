@@ -1,0 +1,30 @@
+<script  src="../js/dtree.js"></script>
+<p>当前用户：程小飞  [退出] 
+<br/><a href="javascript: d.openAll();">展开</a> | <a href="javascript: d.closeAll();">收缩</a>
+</p>
+<div class="dtree">
+	<script type="text/javascript">
+		<!--
+
+		d = new dTree('d');
+		d.config.target = "right";
+
+		d.add(0,-1,'运营软件');
+		d.add(1,0,'会员管理');
+		d.add(2,0,'会员消费单位管理');
+		d.add(3,0,'工作站管理');
+		d.add(4,0,'公司总部管理');
+		d.add(5,0,'摇奖网络直播');
+		d.add(6,0,'代金券认证系统');
+		d.add(7,0,'自编号参与抽奖');
+		d.add(1001,1,'会员维护','/members');
+		d.add(9,0,'基础代码管理','','','','','/treeimg/imgfolder.gif');
+		d.add(10,9,'行政区划维护','/regions');
+		d.add(11,0,'系统消息','example01.html','','','/treeimg/trash.gif');
+
+		document.write(d);
+
+		//-->
+	</script>
+
+</div>
