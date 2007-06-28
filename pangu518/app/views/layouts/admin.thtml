@@ -1,0 +1,56 @@
+<?php
+
+/**
+ * CupCake CMS <http://www.cupcakecms.com/>
+ * Copyright (c)	2007, Jason A. Banico
+ *
+ * Licensed under The MIT License
+ * Redistributions of files must retain the above copyright notice.
+ *
+ * @filesource
+ * @copyright		Copyright (c) 2007, Jason A. Banico
+ * @link			http://www.sourceforge.net/projects/cupcakecms
+ * @package			cupcakecms
+ * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
+ */
+
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>CupCake CMS</title>
+<LINK HREF="<?php echo $html->url('/admin_css/styles.css'); ?>" TYPE="text/css" REL="stylesheet">
+<style type="text/css">* html { overflow-x: hidden; }</style>
+</head>
+
+<body>
+<div id="adminhead">
+<h1><?php echo SITE_TITLE; ?> <span>(<a href="<?php echo $html->url('/'); ?>">View your site &raquo;</a>)</span></h1>
+</div>
+<?php if ($this->controller->Session->check('User')) { ?>
+<div id="user_info"><p>
+Greetings, <strong><?php echo $this->controller->Session->read('User.username'); ?></strong>. [<a href="<?php echo $html->url('/admin/users/logout'); ?>" title="Log out of this account">Sign Out</a>] 
+</p></div>
+
+<ul id="mainmenu">
+<?php echo $this->renderElement('adminmenu'); ?>
+</ul>
+
+<ul id="submenu">
+<?php echo $this->renderElement('submenu'); ?>
+</ul>
+
+<?php } ?>
+
+<div class="wrap">
+<?php echo $content_for_layout; ?>
+</div>
+</div>
+
+<div id="footer">
+<p class="docs"><a href="http://www.cupcakecms.com"><?php echo $html->image('admin_img/cupcakecmslogo.png')?></a><br />
+<a href="http://www.cakephp.org"><?php echo $html->image('admin_img/cake.power.png')?></a>
+</div>
+</body>
+</html>
