@@ -1,0 +1,55 @@
+<?php 
+if(isset($javascript)){
+    echo $javascript->link('prototype');
+    echo $javascript->link('scriptaculous.js');
+}
+?> 
+<style>
+.errors{
+    color:#F00;
+}
+</style> 
+<div>注册新用户：</div>
+<?php echo $ajax->form($params = array('action'=>'/members/validator'),$type = 'post',$options = array('url'=>'Member/validator','update'=>'updater')); ?>
+<div class="optional">
+   <?php echo $form->labelTag('Member/username', '用户名：');?>
+   <?php echo $html->input('Member/username', array('size' => '60'));?>
+   <?php echo $html->tagErrorMsg('Member/username', 'Please enter the Username.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Member/password', '口令：');?>
+	<?php echo $html->password('Member/password', array('size' => '68'),false);?>
+	<?php echo $html->tagErrorMsg('Member/password', 'Please enter the Password.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Member/confirm', '校验口令：');?>
+	<?php echo $html->password('Member/confirm', array('size' => '68'),false);?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Member/credits', 'Credits');?>
+ 	<?php echo $html->input('Member/credits', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Member/credits', 'Please enter the Credits.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Member/email', '电子邮箱:');?>
+ 	<?php echo $html->input('Member/email', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Member/email', 'Please enter the Email.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Member/bday', '出身日期：');?>
+ 	<?php echo $html->dateTimeOptionTag('Member/bday', 'YMD' , 'NONE', $html->tagValue('Member/bday'), array());?>
+	<?php echo $html->tagErrorMsg('Member/bday', 'Please select the Bday.');?>
+</div>
+<div class="optional"> 
+	<?php echo $html->checkbox('Member/showemail', null, array());?>
+	<?php echo $form->labelTag('Member/showemail', 'Showemail');?>
+ 	<?php echo $html->tagErrorMsg('Member/showemail', 'Please check the Showemail.');?>
+</div>
+<div class="submit">
+	<?php echo $html->submit('注册新会员');?>
+</div>
+<div id="updater"></div>
+</form>
+<ul class="actions">
+<li><?php echo $html->link('注册会员列表', '/members/index')?></li>
+</ul>

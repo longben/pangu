@@ -1,0 +1,6 @@
+<? if($valid){//This echos the result of the validation.
+    echo "Valid";
+} else {
+    echo "not valid";
+} ?>
+<pre><? print_r($data);//I put this in a <pre> tag in case I need to debug and set the $this->AjaxValid->return to be "array" in the validator action so I can debug it easily. Take off the pre tag if you want the html result.?></pre>

@@ -1,0 +1,55 @@
+<?php
+
+/**
+ * Pangu518 <http://www.bitbee.com/>
+ * Copyright (c)	2007, Bitbee Studio
+ *
+ * Licensed under The MIT License
+ * Redistributions of files must retain the above copyright notice.
+ *
+ * @filesource
+ * @copyright		Copyright (c) 2007, Bitbee Stuido
+ * @link			http://code.google.com/p/pangu
+ * @package			pangu
+ * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
+ */
+
+?>
+<div id="adminhead">
+<h1>四川盘古消费资本有限责任公司</h1>
+</div>
+
+<div class="wrap">
+   <?php if ($error) { ?>
+     <p><div class="error">用户名或者口令错误！</div></p>
+   <?php } ?>
+	<form action="<?php echo $html->url('/members/login'); ?>" method="post">
+	
+	<center>
+	
+	<h3>欢迎使用盘古消费运营软件 version 1.0</h3>
+	<table border=0>
+	<tr>
+	  <td>
+	    <label for="username">用户名：</label>
+	  </td><td>
+	    <?php echo $html->input('Member/username', array('size' => 20));?>
+	  </td>
+	</tr>
+	
+	<tr>
+	  <td>
+	    <label for="password">密  码：</label>
+	  </td><td>
+	    <?php echo $html->password('Member/password', array('size' =>20)); ?>
+	  </td>
+	</tr>
+	</table>
+	
+	  <div>
+	    <?php echo $html->submit('登录'); ?>
+	  </div>
+	
+	</center>
+	</form>
+</div>
