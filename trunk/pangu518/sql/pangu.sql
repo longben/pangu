@@ -35,9 +35,9 @@ create table coupons(
   coupon_no        varchar(15)   not null                comment '代金券编码。no.0000000001－no.1000000000，10亿一组',
   coupon_pwd       varchar(10)                           comment '代金券密码',
   money            int(3)        not null default 2      comment '金额',
-  coupon_group     char(3)                               comment '代金券组团 0组团 a组团',
+  coupon_group     char(3)                               comment '代金券组团 0组团 A组团',
   rate_of_discount decimal(2,1)                          comment '折价率',
-  status           int(2)        not null                comment '状态',
+  status           int(3)        not null                comment '状态',
   primary key (id)
 ) engine=MyISAM default charset=utf8 comment='代金券';
 
@@ -78,7 +78,7 @@ create table member_coupons(
   coupon_id        int(11)       not null                comment '代金券编码',
   gain_date        timestamp                             comment '获得代金券时间',
   transfer_date    timestamp                             comment '代金券转出时间。即参与抽奖返回公司时间',
-  status           int(2)        not null                comment '代金券状态',
+  status           int(3)        not null                comment '代金券状态',
   primary key (id),
   key coupon_id (coupon_id)
 ) engine=MyISAM default charset=utf8 comment='会员代金券';
@@ -126,8 +126,8 @@ create table workstation_attorn_logs(
   assignee         int(11)       not null                comment '受托人',
   assignee_bargain varchar(30)                           comment '受托人工作站合同编号',
   attorn_money     decimal(6,2)  not null default 0      comment '转让费',
-  remark           varchar(800)  not null                comment '备注',
   modified         timestamp     not null                comment '转让日期',
+  remark           varchar(800)  not null                comment '备注',
   primary key (id)
 ) engine=MyISAM default charset=utf8 comment='工作站转让记录';
 
@@ -145,23 +145,23 @@ create table merchants(
   accounts         varchar(20)                           comment '银行帐号',
   salesman         int(8)        not null                comment '会员消费单位签署人',
   complaint_time   int(2)        not null default 0      comment '投诉次数(merchant_complaint_logs有一条有效记录者+1)',
-  created          timestamp                             comment '创建时间',
   return_ratio     decimal(6,2)  not null default 0      comment '返劵比例返给会员',
+  created          timestamp                             comment '创建时间',
   status           int(1)        not null                comment '有效标志 0:无效 1:有效 9:待审核',
   primary key (id)
 ) engine=MyISAM default charset=utf8 comment='会员消费单位';
 
 
 /* 会员消费单位代金券 */
-create table workstation_coupons(
+create table merchant_coupons(
   id               int(11)       not null auto_increment comment '主键',
   merchant_id      int(11)       not null                comment '会员消费单位',
   coupon_id        int(11)       not null                comment '代金券',
   workstation_id   int(11)       not null                comment '销售代金券给消费单位的工作站',
-  gain_date        date          not null                comment '获得代金券时间',
-  transfer_date    date                                  comment '代金券退还公司时间',
-  consume_date     date                                  comment '会员消费时间',
-  status           int(2)        not null default 1      comment '状态',
+  gain_date        timestamp                             comment '获得代金券时间',
+  transfer_date    timestamp                             comment '代金券退还公司时间',
+  consume_date     timestamp                             comment '会员消费时间',
+  status           int(3)        not null default 1      comment '状态',
   primary key (id),
   key coupon_id (coupon_id)
 ) engine=MyISAM default charset=utf8 comment='会员消费单位代金券';
@@ -172,14 +172,14 @@ create table merchant_complaint_logs(
   id               int(11)       not null auto_increment comment '主键',
   merchant_id      int(11)       not null                comment '会员消费单位',
   member_id        int(8)        not null                comment '会员',
-  complaint_date   date          not null                comment '会员投诉会员消费单位时间',
+  complaint_date   timestamp                             comment '会员投诉会员消费单位时间',
   complaint_reason varchar(500)                          comment '投诉原因',
   judge            int(8)                                comment '公司内部投诉审核人',
-  auditing_date    date                                  comment '审核时间',
+  auditing_date    timestamp                             comment '审核时间',
   auditing_opinion varchar(200)                          comment '审核处理意见',
   status           int(1)        not null default 0      comment '状态 0：无效 1：有效 2：投诉',
   primary key (id)
-) engine=myiasm default charset=utf8 comment='会员消费单位被投诉记录表';
+) engine=MyISAM default charset=utf8 comment='会员消费单位被投诉记录表';
 
 
 /* 彩票表 */
@@ -208,6 +208,7 @@ create table lottery_bettings(
   betting_time     int(5)        not null default 1      comment '投注份数',
   betting_type     int(1)        not null                comment '投注类型：1:个人投注 2:会员消费单位投注',
   merchant_id      int(11)                               comment '会员消费单位',
+  created          timestamp                             comment '投票时间',
   flag             int(1)        not null default 1      comment '状态',
   primary key (id)  
 ) engine=MyISAM default charset=utf8 comment='彩票投注表';
