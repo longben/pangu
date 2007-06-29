@@ -7,6 +7,8 @@
 /*  字段flag用于且仅用于最多表示两种状态。如：0：无效 1： 有效
 /*  大于两种状态用status字段。如：0:无效 1:有效 2:拟转让 9:待审核
 /*  在使用0和1表示状态的时候，如无特殊说明0始终表示无效，1始终表示有效。
+/*  个税应缴纳数额＝应缴纳所得款（月工资－起征点）×适用税率
+/*  所以代金券状态，请参考“代金券状态说明”
 /*********************************************************************************************
 
 
@@ -17,23 +19,16 @@ create table regions(
   maximum          int(6)        not null default 0      comment '工作站记录数。用于省代号+00001的计算',
   flag             int(1)        not null                comment '有效标志',
   primary key (id)
-) engine=myisam default charset=utf8 comment='行政区划';
+) engine=MyISAM default charset=utf8 comment='行政区划';
 
 
-/* 会员扩展信息 */
-create table member_infos(
-  id               int(8)        not null                comment '主键，值同members主键值',
-  member_no        varchar(25)   not null                comment '省编号+身份证号码成为会员编号',
-  telephone        varchar(30)                           comment '联系电话',
-  mobile           varchar(11)                           comment '移动电话',
-  office_phone     varchar(30)                           comment '办公电话',
-  home_phone       varchar(30)                           comment '家庭电话',
-  bank_accounts    varchar(30)                           comment '开户银行',
-  accounts         varchar(20)                           comment '银行帐号',
-  primary key (id)
-) engine=myisam default charset=utf8 comment='会员扩展信息';
-
-
+/*********************************************************************************************
+/*  代金券状态说明
+/*  计算方法：转出方主体×100 + 接收方主体×10 + 动作
+/*  主体：0:无效 1:公司 2:会员 3:工作站 4:会员消费单位
+/*  动作：0:无效 1:销售 2:参与抽奖 3:其它
+/*  例如：状态: 131表示代金券由公司销售给工作站 341表示代金券由工作站销售给会员消费单位
+/*********************************************************************************************
 /* 代金券  */
 create table coupons(
   id               int(11)       not null auto_increment comment '主键',
@@ -42,28 +37,71 @@ create table coupons(
   money            int(3)        not null default 2      comment '金额',
   coupon_group     char(3)                               comment '代金券组团 0组团 a组团',
   rate_of_discount decimal(2,1)                          comment '折价率',
-  status           int(1)        not null                comment '状态 0:无效 1:有效(工作站) 2:有效(会员消费单位) 3:有效(会员) 9:有效(盘古)',
+  status           int(2)        not null                comment '状态',
   primary key (id)
-) engine=myisam default charset=utf8 comment='代金券';
+) engine=MyISAM default charset=utf8 comment='代金券';
+
+
+/* 会员等级 */
+create table member_grades(
+  id               int(2)        not null                comment '主键',
+  grade_name       varchar(20)   not null                comment '会员等级名称',
+  member_per       decimal(2,2)  not null default 0      comment '会员消费提成',
+  ws_per           decimal(2,2)  not null default 0      comment '会员消费单位购券提成',
+  primary key (id)
+) engine=MyISAM default charset=utf8 comment='会员等级';
+
+
+/* 会员扩展信息 */
+create table member_infos(
+  id               int(8)        not null                comment '主键，值同members主键值',
+  member_no        varchar(25)   not null                comment '省编号+身份证号码成为会员编号',
+  referees         int(8)                                comment '推荐人',
+  member_grades_id int(2)        not null default 1      comment '会员等级，默认为普通会员',
+  region_id        int(11)                               comment '会员所属地区',
+  telephone        varchar(30)                           comment '联系电话',
+  mobile           varchar(11)                           comment '移动电话',
+  office_phone     varchar(30)                           comment '办公电话',
+  home_phone       varchar(30)                           comment '家庭电话',
+  bank_accounts    varchar(30)                           comment '开户银行',
+  accounts         varchar(20)                           comment '银行帐号',
+  created          timestamp                             comment '会员创建日期',
+  flag             int(1)        not null default 1      comment '会员状态',
+  primary key (id)
+) engine=MyISAM default charset=utf8 comment='会员扩展信息';
+
+
+/* 会员代金券 */
+create table member_coupons(
+  id               int(11)       not null auto_increment comment '主键',
+  member_id        int(8)        not null                comment '会员编码',
+  coupon_id        int(11)       not null                comment '代金券编码',
+  gain_date        timestamp                             comment '获得代金券时间',
+  transfer_date    timestamp                             comment '代金券转出时间。即参与抽奖返回公司时间',
+  status           int(2)        not null                comment '代金券状态',
+  primary key (id),
+  key coupon_id (coupon_id)
+) engine=MyISAM default charset=utf8 comment='会员代金券';
 
 
 /* 工作站 */
 create table workstations(
   id               int(11)       not null auto_increment comment '主键',
-  ws_no            varchar(11)   not null default '0'    comment '工作站编码',
+  ws_no            varchar(11)   not null default '0'    comment '工作站编码:省代号+00001',
   ws_name          varchar(50)   not null                comment '工作站名称',
   member_id        int(8)        not null                comment '工作站所有人',
+  referees         int(8)                                comment '工作站推荐者',
   bargain_no       varchar(30)                           comment '合同编号',
   address          varchar(100)                          comment '工作站地址',
   telphone         varchar(20)                           comment '工作站联系电话',
   principal        varchar(20)                           comment '工作站负责人',
   introduction     varchar(2000)                         comment '工作站简介',
-  referees         int(8)                                comment '工作站推荐者',
   region_id        int(11)                               comment '工作站所属地区',
-  create_date      date                                  comment '工作站创建日期',
+  created          timestamp                             comment '创建时间',
+  income           decimal(2,2)  not null default 0.08   comment '工作站收益',
   status           int(1)        not null                comment '状态：0:无效 1:有效 2:拟转让 9:待审核',
   primary key (id)
-) engine=myisam default charset=utf8 comment='工作站';
+) engine=MyISAM default charset=utf8 comment='工作站';
 
 
 /* 工作站代金券 */
@@ -73,10 +111,10 @@ create table workstation_coupons(
   coupon_id        int(11)       not null                comment '代金券编码',
   gain_date        date          not null                comment '获得代金券时间',
   transfer_date    date                                  comment '代金券转出时间。即转给会员消费单位时间',
-  flag             int(1)        not null default 1      comment '0: 无效 1：有效 (获得后为1，转出后为0)',
+  status           int(2)        not null default 1      comment '状态',
   primary key (id),
   key coupon_id (coupon_id)
-) engine=myisam default charset=utf8 comment='工作站代金券';
+) engine=MyISAM default charset=utf8 comment='工作站代金券';
 
 
 /* 工作站转让记录 */
@@ -87,16 +125,17 @@ create table workstation_attorn_logs(
   endorsor_bargain varchar(30)                           comment '转让人工作站合同编号',
   assignee         int(11)       not null                comment '受托人',
   assignee_bargain varchar(30)                           comment '受托人工作站合同编号',
-  attorn_date      date          not null                comment '转让日期',
   attorn_money     decimal(6,2)  not null default 0      comment '转让费',
   remark           varchar(800)  not null                comment '备注',
+  modified         timestamp     not null                comment '转让日期',
   primary key (id)
-) engine=myisam default charset=utf8 comment='工作站转让记录';
+) engine=MyISAM default charset=utf8 comment='工作站转让记录';
 
 
 /* 会员消费单位 */
 create table merchants(
   id               int(11)       not null auto_increment comment '主键',
+  member_id        int(8)                                comment '会员消费单位签署人',
   merchant_name    varchar(50)   not null                comment '消费单位名称',
   owner            varchar(10)                           comment '店主',
   telephone        varchar(30)                           comment '联系电话',
@@ -104,11 +143,13 @@ create table merchants(
   office_phone     varchar(30)                           comment '办公电话',
   bank_accounts    varchar(30)                           comment '开户银行',
   accounts         varchar(20)                           comment '银行帐号',
-  member_id        int(8)        not null                comment '会员消费单位签署人',
+  salesman         int(8)        not null                comment '会员消费单位签署人',
   complaint_time   int(2)        not null default 0      comment '投诉次数(merchant_complaint_logs有一条有效记录者+1)',
-  status           int(1)        not null                comment '有效标志 0:无效 1:有效 9:待审核'
+  created          timestamp                             comment '创建时间',
+  return_ratio     decimal(6,2)  not null default 0      comment '返劵比例返给会员',
+  status           int(1)        not null                comment '有效标志 0:无效 1:有效 9:待审核',
   primary key (id)
-) engine=myiasm default charset=utf8 comment='会员消费单位';
+) engine=MyISAM default charset=utf8 comment='会员消费单位';
 
 
 /* 会员消费单位代金券 */
@@ -120,10 +161,10 @@ create table workstation_coupons(
   gain_date        date          not null                comment '获得代金券时间',
   transfer_date    date                                  comment '代金券退还公司时间',
   consume_date     date                                  comment '会员消费时间',
-  status           int(1)        not null default 1      comment '0:无效(退还后) 1:有效(获得后) 2:会员消费',
+  status           int(2)        not null default 1      comment '状态',
   primary key (id),
   key coupon_id (coupon_id)
-) engine=myisam default charset=utf8 comment='会员消费单位代金券';
+) engine=MyISAM default charset=utf8 comment='会员消费单位代金券';
 
 
 /* 会员消费单位被投诉记录表 */
@@ -139,3 +180,34 @@ create table merchant_complaint_logs(
   status           int(1)        not null default 0      comment '状态 0：无效 1：有效 2：投诉',
   primary key (id)
 ) engine=myiasm default charset=utf8 comment='会员消费单位被投诉记录表';
+
+
+/* 彩票表 */
+create table lotteries(
+  id               int(5)        not null auto_increment comment '主键',
+  lottery_year     int(4)        not null                comment '开奖年份',
+  lottery_times    int(3)        not null default 0      comment '开奖次数',
+  start_time       timestamp                             comment '彩票期数的开始时间',
+  finish_time      timestamp                             comment '彩票期数的结束时间',
+  open_time        timestamp                             comment '开奖时间',
+  win_number       varchar(5)                            comment '中奖号码',
+  win_count        int(5)                                comment '中奖总数',
+  created          timestamp                             comment '创建时间',
+  modified         timestamp                             COMMENT '修改时间',
+  createdby        int(8)                                comment '创建者',
+  flag             int(1)        not null default 1      comment '状态',
+  primary key (id)
+) engine=MyISAM default charset=utf8 comment='彩票表';
+
+
+/* 彩票投注表 */
+create table lottery_bettings(
+  id               int(11)       not null auto_increment comment '主键',
+  lottery_id       int(5)        not null                comment '彩票期数',
+  betting_number   varchar(5)    not null                comment '彩票投注号码',
+  betting_time     int(5)        not null default 1      comment '投注份数',
+  betting_type     int(1)        not null                comment '投注类型：1:个人投注 2:会员消费单位投注',
+  merchant_id      int(11)                               comment '会员消费单位',
+  flag             int(1)        not null default 1      comment '状态',
+  primary key (id)  
+) engine=MyISAM default charset=utf8 comment='彩票投注表';
