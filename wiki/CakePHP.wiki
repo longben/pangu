@@ -1,3 +1,9 @@
 <?php 
 echo $html->dateTimeOptionTag('Member/bday', 'YMD' ,'NONE', mktime(date("G")+1, 0, 0, date("m"), date("d")+1, date("Y")), array());
 ?>
+
+创建ACL表
+php acl.php initdb
+
+定义组
+php acl.php create aro 0 0 Members //定义Members组
