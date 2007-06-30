@@ -4,6 +4,10 @@
 
 body {
 	border: none;
+	margin-left: 5px;
+	margin-top: 5px;
+	margin-right: 5px;
+	margin-bottom: 5px;
 }
 
 a {
@@ -302,3 +306,10 @@ textarea, input, select {
 	color: #656565;
 	background-color: #ddd;
 }
+
+fieldset {
+    padding:10px;
+    margin:10px;
+    color:#333; 
+    border:#06c dashed 1px;
+} 
