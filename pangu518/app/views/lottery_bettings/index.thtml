@@ -1,0 +1,34 @@
+<fieldset align=center>
+<legend style="border:0px;background-color:white;">
+代金券摇奖投票情况列表
+</legend>
+<table cellpadding="0" cellspacing="0">
+<tr>
+	<th>Id</th>
+	<th>Lottery</th>
+	<th>Betting Number</th>
+	<th>Betting Time</th>
+	<th>Betting Type</th>
+	<th>Merchant</th>
+	<th>Actions</th>
+</tr>
+<?php foreach ($lotteryBettings as $lotteryBetting): ?>
+<tr>
+	<td><?php echo $lotteryBetting['LotteryBetting']['id']; ?></td>
+	<td>&nbsp;<?php echo $html->link($lotteryBetting['Lottery']['lottery_year'].$lotteryBetting['Lottery']['lottery_times'], '/lotteries/view/' .$lotteryBetting['Lottery']['id'])?></td>
+	<td><?php echo $lotteryBetting['LotteryBetting']['betting_number']; ?></td>
+	<td><?php echo $lotteryBetting['LotteryBetting']['betting_time']; ?></td>
+	<td><?php echo $lotteryBetting['LotteryBetting']['betting_type']; ?></td>
+	<td>&nbsp;<?php echo $lotteryBetting['Merchant']['merchant_name']?></td>
+	<td class="actions">
+		<?php echo $html->link('View','/lottery_bettings/view/' . $lotteryBetting['LotteryBetting']['id'])?>
+		<?php echo $html->link('Edit','/lottery_bettings/edit/' . $lotteryBetting['LotteryBetting']['id'])?>
+		<?php echo $html->link('Delete','/lottery_bettings/delete/' . $lotteryBetting['LotteryBetting']['id'], null, 'Are you sure you want to delete id ' . $lotteryBetting['LotteryBetting']['id'])?>
+	</td>
+</tr>
+<?php endforeach; ?>
+</table>
+</fieldset>
+<ul class="actions">
+	<li><?php echo $html->link('New Lottery Betting', '/lottery_bettings/add'); ?></li>
+</ul>
