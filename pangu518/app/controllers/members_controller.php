@@ -42,7 +42,7 @@ class MembersController extends AppController {
 				$this->Session->setFlash('添加成功！');
 				$this->redirect('/members/index');
 			} else {
-				$this->Session->setFlash('Please correct errors below.');
+				$this->Session->setFlash('添加用户出错！');
 			}
 		}
 	}
@@ -107,6 +107,12 @@ class MembersController extends AppController {
       	}
       }
    }
+   
+  function logout(){
+    $this->layout="admin";
+    $this->Session->delete('User');
+    $this->redirect('/admin/');
+  }
    
 }
 ?>
