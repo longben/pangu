@@ -1,6 +1,6 @@
 <?php if ($this->controller->Session->check('User')) { ?>
 <script  src="../js/dtree.js"></script>
-<p>当前用户：<?php echo $this->controller->Session->read('User.username'); ?>  [<a href="<?php echo $html->url('/members/logout'); ?>" target="_top">退出</a>] 
+当前用户：<?php echo $this->controller->Session->read('User.username'); ?>  [<a href="<?php echo $html->url('/members/logout'); ?>" target="_top">退出</a>] 
 <?php }else{?>
 <script language="Javascript">
    alert("无效登录！");
@@ -8,8 +8,8 @@
 </script>
 <?php }?>
 <br/><a href="javascript: d.openAll();">展开</a> | <a href="javascript: d.closeAll();">收缩</a>
-</p>
-<div class="dtree">
+<br/>
+<div id="dtree">
 	<script type="text/javascript">
 		<!--
 
@@ -32,14 +32,16 @@
 		d.add(1002,1,'会员扩展信息维护','/member_infos');
 		
 		d.add(2001,2,'会员消费单位维护','/merchants');
+		d.add(2002,2,'会员消费单位审核','/merchants/auditing');
 		
 		d.add(3001,3,'工作站列表','/workstations');
 		d.add(3002,3,'新增工作站','/workstations/add');
 
 		d.add(5001,5,'摇奖期数管理','/lotteries');
 		d.add(5002,5,'彩票投注','/lottery_bettings');
+		d.add(5003,5,'摇号','/pages/swings_the_number');
 		
-		d.add(6001,6,'代金券批量导入');
+		d.add(6001,6,'代金券维护','/coupons');
 		
 		d.add(8001,8,'角色维护');
 				
