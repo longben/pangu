@@ -1,5 +1,12 @@
+<?php if ($this->controller->Session->check('User')) { ?>
 <script  src="../js/dtree.js"></script>
-<p>当前用户：程小飞  [退出] 
+<p>当前用户：<?php echo $this->controller->Session->read('User.username'); ?>  [退出] 
+<?php }else{?>
+<script language="Javascript">
+   alert("无效登录！");
+   top.location.replace("/admin");
+</script>
+<?php }?>
 <br/><a href="javascript: d.openAll();">展开</a> | <a href="javascript: d.closeAll();">收缩</a>
 </p>
 <div class="dtree">
@@ -14,13 +21,30 @@
 		d.add(2,0,'会员消费单位管理');
 		d.add(3,0,'工作站管理');
 		d.add(4,0,'公司总部管理');
-		d.add(5,0,'摇奖网络直播');
+		d.add(5,0,'分红管理');
 		d.add(6,0,'代金券认证系统');
-		d.add(7,0,'自编号参与抽奖');
-		d.add(1001,1,'会员维护','/members');
+		
+		d.add(8,0,'权限管理','','','','','/treeimg/imgfolder.gif');
 		d.add(9,0,'基础代码管理','','','','','/treeimg/imgfolder.gif');
-		d.add(10,9,'行政区划维护','/regions');
 		d.add(11,0,'系统消息','example01.html','','','/treeimg/trash.gif');
+
+		d.add(1001,1,'会员维护','/members');
+		d.add(1002,1,'会员扩展信息维护','/member_infos');
+		
+		d.add(2001,2,'会员消费单位维护','/merchants');
+		
+		d.add(3001,3,'工作站列表','/workstations');
+		d.add(3002,3,'新增工作站','/workstations/add');
+
+		d.add(5001,5,'摇奖期数管理','/lotteries');
+		d.add(5002,5,'彩票投注','/lottery_bettings');
+		
+		d.add(6001,6,'代金券批量导入');
+		
+		d.add(8001,8,'角色维护');
+				
+		d.add(9001,9,'行政区划维护','/regions');
+		d.add(9002,9,'会员等级维护','/member_grades');
 
 		document.write(d);
 
