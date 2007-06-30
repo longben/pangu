@@ -1,0 +1,29 @@
+<div class="lotteryBetting">
+<h2>View Lottery Betting</h2>
+
+<dl>
+	<dt>Id</dt>
+	<dd>&nbsp;<?php echo $lotteryBetting['LotteryBetting']['id']?></dd>
+	<dt>Lottery</dt>
+	<dd>&nbsp;<?php echo $html->link($lotteryBetting['Lottery']['id'], '/lotteries/view/' .$lotteryBetting['Lottery']['id'])?></dd>
+	<dt>Betting Number</dt>
+	<dd>&nbsp;<?php echo $lotteryBetting['LotteryBetting']['betting_number']?></dd>
+	<dt>Betting Time</dt>
+	<dd>&nbsp;<?php echo $lotteryBetting['LotteryBetting']['betting_time']?></dd>
+	<dt>Betting Type</dt>
+	<dd>&nbsp;<?php echo $lotteryBetting['LotteryBetting']['betting_type']?></dd>
+	<dt>Merchant</dt>
+	<dd>&nbsp;<?php echo $html->link($lotteryBetting['Merchant']['id'], '/merchants/view/' .$lotteryBetting['Merchant']['id'])?></dd>
+</dl>
+<ul class="actions">
+	<li><?php echo $html->link('Edit Lottery Betting',   '/lottery_bettings/edit/' . $lotteryBetting['LotteryBetting']['id']) ?> </li>
+	<li><?php echo $html->link('Delete Lottery Betting', '/lottery_bettings/delete/' . $lotteryBetting['LotteryBetting']['id'], null, 'Are you sure you want to delete: id ' . $lotteryBetting['LotteryBetting']['id'] . '?') ?> </li>
+	<li><?php echo $html->link('List Lottery Bettings',   '/lottery_bettings/index') ?> </li>
+	<li><?php echo $html->link('New Lottery Betting',	'/lottery_bettings/add') ?> </li>
+	<li><?php echo $html->link('List Lottery', '/lotteries/index/')?> </li>
+	<li><?php echo $html->link('New Lotteries', '/lotteries/add/')?> </li>
+	<li><?php echo $html->link('List Merchant', '/merchants/index/')?> </li>
+	<li><?php echo $html->link('New Merchants', '/merchants/add/')?> </li>
+</ul>
+
+</div>

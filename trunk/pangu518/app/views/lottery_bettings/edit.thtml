@@ -1,0 +1,45 @@
+<style type="text/css">
+<!--
+label {
+	width: 80px;
+	float:left;
+}
+-->
+</style>
+<fieldset align=center>
+<legend style="border:0px;background-color:white;">
+编辑代金券摇奖
+</legend>
+<form action="<?php echo $html->url('/lottery_bettings/edit/'.$html->tagValue('LotteryBetting/id')); ?>" method="post">
+<div class="optional"> 
+	<?php echo $form->labelTag('LotteryBetting/lottery_id', 'Lottery');?>
+ 	<?php echo $html->selectTag('LotteryBetting/lottery_id', $lotteries, $html->tagValue('LotteryBetting/lottery_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('LotteryBetting/lottery_id', 'Please select the Lottery.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('LotteryBetting/betting_number', 'Betting Number');?>
+ 	<?php echo $html->input('LotteryBetting/betting_number', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('LotteryBetting/betting_number', 'Please enter the Betting Number.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('LotteryBetting/betting_time', 'Betting Time');?>
+ 	<?php echo $html->input('LotteryBetting/betting_time', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('LotteryBetting/betting_time', 'Please enter the Betting Time.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('LotteryBetting/betting_type', 'Betting Type');?>
+ 	<?php echo $html->input('LotteryBetting/betting_type', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('LotteryBetting/betting_type', 'Please enter the Betting Type.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('LotteryBetting/merchant_id', 'Merchant');?>
+ 	<?php echo $html->selectTag('LotteryBetting/merchant_id', $merchants, $html->tagValue('LotteryBetting/merchant_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('LotteryBetting/merchant_id', 'Please select the Merchant.') ?>
+</div>
+<?php echo $html->hidden('LotteryBetting/id')?>
+<div class="submit">
+	<?php echo $html->submit('Save');?>
+</div>
+</form>
+</fieldset>
+<ul class="actions">
