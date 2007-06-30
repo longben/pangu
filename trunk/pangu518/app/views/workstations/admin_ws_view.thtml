@@ -1,0 +1,39 @@
+<div class="workstation">
+<h2>View Workstation</h2>
+
+<dl>
+	<dt>Id</dt>
+	<dd>&nbsp;<?php echo $workstation['Workstation']['id']?></dd>
+	<dt>Ws No</dt>
+	<dd>&nbsp;<?php echo $workstation['Workstation']['ws_no']?></dd>
+	<dt>Ws Name</dt>
+	<dd>&nbsp;<?php echo $workstation['Workstation']['ws_name']?></dd>
+	<dt>Member Id</dt>
+	<dd>&nbsp;<?php echo $workstation['Workstation']['member_id']?></dd>
+	<dt>Bargain No</dt>
+	<dd>&nbsp;<?php echo $workstation['Workstation']['bargain_no']?></dd>
+	<dt>Address</dt>
+	<dd>&nbsp;<?php echo $workstation['Workstation']['address']?></dd>
+	<dt>Telphone</dt>
+	<dd>&nbsp;<?php echo $workstation['Workstation']['telphone']?></dd>
+	<dt>Principal</dt>
+	<dd>&nbsp;<?php echo $workstation['Workstation']['principal']?></dd>
+	<dt>Introduction</dt>
+	<dd>&nbsp;<?php echo $workstation['Workstation']['introduction']?></dd>
+	<dt>Referees</dt>
+	<dd>&nbsp;<?php echo $workstation['Workstation']['referees']?></dd>
+	<dt>Region Id</dt>
+	<dd>&nbsp;<?php echo $workstation['Workstation']['region_id']?></dd>
+	<dt>Create Date</dt>
+	<dd>&nbsp;<?php echo $workstation['Workstation']['create_date']?></dd>
+	<dt>Status</dt>
+	<dd>&nbsp;<?php echo $workstation['Workstation']['status']?></dd>
+</dl>
+<ul class="actions">
+	<li><?php echo $html->link('Edit Workstation',   '/admin_ws/workstations/edit/' . $workstation['Workstation']['id']) ?> </li>
+	<li><?php echo $html->link('Delete Workstation', '/admin_ws/workstations/delete/' . $workstation['Workstation']['id'], null, 'Are you sure you want to delete: id ' . $workstation['Workstation']['id'] . '?') ?> </li>
+	<li><?php echo $html->link('List Workstations',   '/admin_ws/workstations/index') ?> </li>
+	<li><?php echo $html->link('New Workstation',	'/admin_ws/workstations/add') ?> </li>
+</ul>
+
+</div>

@@ -1,0 +1,37 @@
+<fieldset align=center>
+<legend style="border:0px;background-color:white;">
+行政区划维护
+</legend> 
+<table cellpadding="0" cellspacing="0" width="90%" align="center">
+  <tr>
+   <td>
+	<form action="<?php echo $html->url('/regions/index'); ?>" method="post">
+	  <?php echo $html->input('Region/keyword', array('size' => '60'));?>
+	  <?php echo $html->submit('查询');?>
+	</form>   
+   </td>
+  </tr>
+</table>
+<table cellpadding="0" cellspacing="0" width="90%" align="center">
+<tr>
+	<th>行政区划编号</th>
+	<th>行政区划名称</th>
+	<th>有效标志</th>
+	<th>操作</th>
+</tr>
+<?php foreach ($regions as $region): ?>
+<tr>
+	<td><?php echo $region['Region']['id']; ?></td>
+	<td><?php echo $region['Region']['region_name']; ?></td>
+	<td><?php echo $region['Region']['flag']==1?'有效':'失效'; ?></td>
+	<td><?php echo $html->link('编辑','/regions/edit/' . $region['Region']['id'])?></td>
+</tr>
+<?php endforeach; ?>
+</table>
+<p><div align="center"><?php echo $this->renderElement('pagination'); // 分页导航页 ?></div></p>
+<?php
+//if ($pageLinks['all']) {
+//   echo '<div id="pager" class="pager" align="center">' . $pageLinks['all'] . '</div>';
+//} 
+?>
+</fieldset>

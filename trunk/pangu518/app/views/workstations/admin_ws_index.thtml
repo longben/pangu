@@ -1,0 +1,48 @@
+<div class="workstations">
+<h2>List Workstations</h2>
+
+<table cellpadding="0" cellspacing="0">
+<tr>
+	<th>Id</th>
+	<th>Ws No</th>
+	<th>Ws Name</th>
+	<th>Member Id</th>
+	<th>Bargain No</th>
+	<th>Address</th>
+	<th>Telphone</th>
+	<th>Principal</th>
+	<th>Introduction</th>
+	<th>Referees</th>
+	<th>Region Id</th>
+	<th>Create Date</th>
+	<th>Status</th>
+	<th>Actions</th>
+</tr>
+<?php foreach ($workstations as $workstation): ?>
+<tr>
+	<td><?php echo $workstation['Workstation']['id']; ?></td>
+	<td><?php echo $workstation['Workstation']['ws_no']; ?></td>
+	<td><?php echo $workstation['Workstation']['ws_name']; ?></td>
+	<td><?php echo $workstation['Workstation']['member_id']; ?></td>
+	<td><?php echo $workstation['Workstation']['bargain_no']; ?></td>
+	<td><?php echo $workstation['Workstation']['address']; ?></td>
+	<td><?php echo $workstation['Workstation']['telphone']; ?></td>
+	<td><?php echo $workstation['Workstation']['principal']; ?></td>
+	<td><?php echo $workstation['Workstation']['introduction']; ?></td>
+	<td><?php echo $workstation['Workstation']['referees']; ?></td>
+	<td><?php echo $workstation['Workstation']['region_id']; ?></td>
+	<td><?php echo $workstation['Workstation']['create_date']; ?></td>
+	<td><?php echo $workstation['Workstation']['status']; ?></td>
+	<td class="actions">
+		<?php echo $html->link('View','/admin_ws/workstations/view/' . $workstation['Workstation']['id'])?>
+		<?php echo $html->link('Edit','/admin_ws/workstations/edit/' . $workstation['Workstation']['id'])?>
+		<?php echo $html->link('Delete','/admin_ws/workstations/delete/' . $workstation['Workstation']['id'], null, 'Are you sure you want to delete id ' . $workstation['Workstation']['id'])?>
+	</td>
+</tr>
+<?php endforeach; ?>
+</table>
+
+<ul class="actions">
+	<li><?php echo $html->link('New Workstation', '/admin_ws/workstations/add'); ?></li>
+</ul>
+</div>

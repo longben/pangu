@@ -1,0 +1,24 @@
+<h2>New Member Grade</h2>
+<form action="<?php echo $html->url('/member_grades/add'); ?>" method="post">
+<div class="optional"> 
+	<?php echo $form->labelTag('MemberGrade/grade_name', 'Grade Name');?>
+ 	<?php echo $html->input('MemberGrade/grade_name', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('MemberGrade/grade_name', 'Please enter the Grade Name.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('MemberGrade/member_per', 'Member Per');?>
+ 	<?php echo $html->input('MemberGrade/member_per', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('MemberGrade/member_per', 'Please enter the Member Per.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('MemberGrade/ws_per', 'Ws Per');?>
+ 	<?php echo $html->input('MemberGrade/ws_per', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('MemberGrade/ws_per', 'Please enter the Ws Per.');?>
+</div>
+<div class="submit">
+	<?php echo $html->submit('Add');?>
+</div>
+</form>
+<ul class="actions">
+<li><?php echo $html->link('List Member Grades', '/member_grades/index')?></li>
+</ul>
