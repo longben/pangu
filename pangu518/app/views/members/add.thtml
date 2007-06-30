@@ -4,7 +4,18 @@ if(isset($javascript)){
     echo $javascript->link('scriptaculous.js');
 }
 ?> 
-<div>注册新用户</div>
+<style type="text/css">
+<!--
+label {
+	width: 70px;
+	float:left;
+}
+-->
+</style>
+<fieldset align=center>
+<legend style="border:0px;background-color:white;">
+注册新用户
+</legend> 
 <form action="<?php echo $html->url('/members/add'); ?>" method="post">
 <div class="optional">
    <?php echo $form->labelTag('Member/username', '用户名：');?>
@@ -31,16 +42,11 @@ if(isset($javascript)){
  	<?php echo $html->dateTimeOptionTag('Member/bday', 'YMD' , 'NONE', $html->tagValue('Member/bday'), array());?>
 	<?php echo $html->tagErrorMsg('Member/bday', 'Please select the Bday.');?>
 </div>
-<div class="optional"> 
-	<?php echo $html->checkbox('Member/showemail', null, array());?>
-	<?php echo $form->labelTag('Member/showemail', 'Showemail');?>
- 	<?php echo $html->tagErrorMsg('Member/showemail', 'Please check the Showemail.');?>
-</div>
-
 <div class="submit">
 	<?php echo $html->submit('注册');?>
 </div>
 </form>
+</fieldset>
 <ul class="actions">
 <li><?php echo $html->link('用户列表', '/members/index')?></li>
 </ul>
