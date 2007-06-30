@@ -1,0 +1,41 @@
+<fieldset align=center>
+<legend>摇号器</legend>
+<script   language="JavaScript">    
+  function   init1(){
+  	document.forms[0].elements["u1"].value=parseInt(Math.random()*10);
+  	timer1=setTimeout("init1()",10);
+  }
+
+  function   init2(){
+  	document.forms[0].elements["u2"].value=parseInt(Math.random()*10);
+  	timer2=setTimeout("init2()",10);
+  }
+
+  function   init3(){
+  	document.forms[0].elements["u3"].value=parseInt(Math.random()*10);
+  	timer3=setTimeout("init3()",10);
+  }
+</script>
+  <div  align="center">
+  <form>
+    <p>
+    <label>会员一摇号：</label>
+    <input id="u1" name="u1" type=text size=4>
+    <input id="i1" name="i1" type=button  value="开始摇号"  OnClick="init1()">    
+    <input type=button value="停止摇号"  OnClick="clearTimeout(timer1)">
+	</p>
+	<p>
+    <label>会员二摇号：</label>
+    <input id="u2" name="u2" type=text size=4>
+    <input id="i2" type=button value="开始摇号" OnClick="init2()">    
+    <input type=button value="停止摇号" OnClick="clearTimeout(timer2)"> 
+	</p>
+	<p>
+    <label>会员消费单位摇号：</label>
+    <input id="u3" name="u3" type=text size=4>
+    <input id="i3" type=button value="开始摇号" OnClick="init3()">    
+    <input type=button value="停止摇号" OnClick="clearTimeout(timer3)"> 
+	</p>
+  </form> 
+  </div>
+</fieldset>

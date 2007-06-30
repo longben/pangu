@@ -15,6 +15,18 @@ class Member extends AppModel {
 		'email' => 'Enter a valid email',
 		'password' => 'Your password must be at least 6 characters'
 	);
+	
+	var $hasOne = array(
+			'MemberInfo' =>
+				array('className' => 'MemberInfo',
+						'foreignKey' => 'id',
+						'conditions' => '',
+						'fields' => '',
+						'order' => '',
+						'dependent' => ''
+				),
+
+	);	
 
 }
 ?>

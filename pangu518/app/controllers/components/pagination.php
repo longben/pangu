@@ -64,7 +64,7 @@ class PaginationComponent extends Object
  * @var integer
  * @access public
  */
-	var $show = 10;
+	var $show = 15;
 /**
  * Specify DEFAULT sort column.
  *

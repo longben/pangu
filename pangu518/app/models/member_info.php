@@ -3,6 +3,7 @@ class MemberInfo extends AppModel {
 
 	var $name = 'MemberInfo';
 
+	//The Associations below have been created with all possible keys, those that are not needed can be removed
 	var $belongsTo = array(
 			'MemberGrade' =>
 				array('className' => 'MemberGrade',
@@ -20,6 +21,18 @@ class MemberInfo extends AppModel {
 						'fields' => '',
 						'order' => '',
 						'counterCache' => ''
+				),
+
+	);
+
+	var $hasOne = array(
+			'Member' =>
+				array('className' => 'Member',
+						'foreignKey' => 'uid',
+						'conditions' => '',
+						'fields' => '',
+						'order' => '',
+						'dependent' => ''
 				),
 
 	);

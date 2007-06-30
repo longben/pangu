@@ -20,9 +20,7 @@
 </div>
 
 <div class="wrap">
-   <?php if ($error) { ?>
-     <p><div class="error">用户名或者口令错误！</div></p>
-   <?php } ?>
+
 	<form action="<?php echo $html->url('/members/login'); ?>" method="post">
 	
 	<center>
@@ -49,7 +47,9 @@
 	  <div>
 	    <?php echo $html->submit('登录'); ?>
 	  </div>
-	
+   <?php if ($error) { ?>
+     <p><div class="error">用户名或者口令错误！</div></p>
+   <?php } ?>	
 	</center>
 	</form>
 </div>

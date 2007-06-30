@@ -1,8 +1,9 @@
 <fieldset align=center>
-<legend style="border:0px;background-color:white;">
-行政区划维护
-</legend> 
+<legend>行政区划维护</legend> 
 <table cellpadding="0" cellspacing="0" width="90%" align="center">
+ <tr>
+   <td height="20"></td>
+ </tr>
   <tr>
    <td>
 	<form action="<?php echo $html->url('/regions/index'); ?>" method="post">

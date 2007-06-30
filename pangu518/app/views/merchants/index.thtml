@@ -1,0 +1,50 @@
+<div class="merchants">
+<h2>List Merchants</h2>
+
+<table cellpadding="0" cellspacing="0">
+<tr>
+	<th>Id</th>
+	<th>Member</th>
+	<th>Merchant Name</th>
+	<th>Owner</th>
+	<th>Telephone</th>
+	<th>Mobile</th>
+	<th>Office Phone</th>
+	<th>Bank Accounts</th>
+	<th>Accounts</th>
+	<th>Salesman</th>
+	<th>Complaint Time</th>
+	<th>Return Ratio</th>
+	<th>Created</th>
+	<th>Status</th>
+	<th>Actions</th>
+</tr>
+<?php foreach ($merchants as $merchant): ?>
+<tr>
+	<td><?php echo $merchant['Merchant']['id']; ?></td>
+	<td>&nbsp;<?php echo $html->link($merchant['Member']['uid'], '/members/view/' .$merchant['Member']['uid'])?></td>
+	<td><?php echo $merchant['Merchant']['merchant_name']; ?></td>
+	<td><?php echo $merchant['Merchant']['owner']; ?></td>
+	<td><?php echo $merchant['Merchant']['telephone']; ?></td>
+	<td><?php echo $merchant['Merchant']['mobile']; ?></td>
+	<td><?php echo $merchant['Merchant']['office_phone']; ?></td>
+	<td><?php echo $merchant['Merchant']['bank_accounts']; ?></td>
+	<td><?php echo $merchant['Merchant']['accounts']; ?></td>
+	<td><?php echo $merchant['Merchant']['salesman']; ?></td>
+	<td><?php echo $merchant['Merchant']['complaint_time']; ?></td>
+	<td><?php echo $merchant['Merchant']['return_ratio']; ?></td>
+	<td><?php echo $merchant['Merchant']['created']; ?></td>
+	<td><?php echo $merchant['Merchant']['status']; ?></td>
+	<td class="actions">
+		<?php echo $html->link('View','/merchants/view/' . $merchant['Merchant']['id'])?>
+		<?php echo $html->link('Edit','/merchants/edit/' . $merchant['Merchant']['id'])?>
+		<?php echo $html->link('Delete','/merchants/delete/' . $merchant['Merchant']['id'], null, 'Are you sure you want to delete id ' . $merchant['Merchant']['id'])?>
+	</td>
+</tr>
+<?php endforeach; ?>
+</table>
+
+<ul class="actions">
+	<li><?php echo $html->link('New Merchant', '/merchants/add'); ?></li>
+</ul>
+</div>

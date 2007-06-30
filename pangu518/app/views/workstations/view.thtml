@@ -8,8 +8,10 @@
 	<dd>&nbsp;<?php echo $workstation['Workstation']['ws_no']?></dd>
 	<dt>Ws Name</dt>
 	<dd>&nbsp;<?php echo $workstation['Workstation']['ws_name']?></dd>
-	<dt>Member Id</dt>
-	<dd>&nbsp;<?php echo $workstation['Workstation']['member_id']?></dd>
+	<dt>Member</dt>
+	<dd>&nbsp;<?php echo $html->link($workstation['Member']['uid'], '/members/view/' .$workstation['Member']['uid'])?></dd>
+	<dt>Referees</dt>
+	<dd>&nbsp;<?php echo $workstation['Workstation']['referees']?></dd>
 	<dt>Bargain No</dt>
 	<dd>&nbsp;<?php echo $workstation['Workstation']['bargain_no']?></dd>
 	<dt>Address</dt>
@@ -20,12 +22,12 @@
 	<dd>&nbsp;<?php echo $workstation['Workstation']['principal']?></dd>
 	<dt>Introduction</dt>
 	<dd>&nbsp;<?php echo $workstation['Workstation']['introduction']?></dd>
-	<dt>Referees</dt>
-	<dd>&nbsp;<?php echo $workstation['Workstation']['referees']?></dd>
-	<dt>Region Id</dt>
-	<dd>&nbsp;<?php echo $workstation['Workstation']['region_id']?></dd>
-	<dt>Create Date</dt>
-	<dd>&nbsp;<?php echo $workstation['Workstation']['create_date']?></dd>
+	<dt>Region</dt>
+	<dd>&nbsp;<?php echo $html->link($workstation['Region']['id'], '/regions/view/' .$workstation['Region']['id'])?></dd>
+	<dt>Created</dt>
+	<dd>&nbsp;<?php echo $workstation['Workstation']['created']?></dd>
+	<dt>Income</dt>
+	<dd>&nbsp;<?php echo $workstation['Workstation']['income']?></dd>
 	<dt>Status</dt>
 	<dd>&nbsp;<?php echo $workstation['Workstation']['status']?></dd>
 </dl>
@@ -34,6 +36,97 @@
 	<li><?php echo $html->link('Delete Workstation', '/workstations/delete/' . $workstation['Workstation']['id'], null, 'Are you sure you want to delete: id ' . $workstation['Workstation']['id'] . '?') ?> </li>
 	<li><?php echo $html->link('List Workstations',   '/workstations/index') ?> </li>
 	<li><?php echo $html->link('New Workstation',	'/workstations/add') ?> </li>
+	<li><?php echo $html->link('List Member', '/members/index/')?> </li>
+	<li><?php echo $html->link('New Members', '/members/add/')?> </li>
+	<li><?php echo $html->link('List Region', '/regions/index/')?> </li>
+	<li><?php echo $html->link('New Regions', '/regions/add/')?> </li>
 </ul>
 
+</div>
+<div class="related">
+<h3>Related Merchant Coupons</h3>
+<?php if(!empty($workstation['MerchantCoupon'])):?>
+<table cellpadding="0" cellspacing="0">
+<tr>
+<?php foreach($workstation['MerchantCoupon']['0'] as $column => $value): ?>
+<th><?php echo $column?></th>
+<?php endforeach; ?>
+<th>Actions</th>
+</tr>
+<?php foreach($workstation['MerchantCoupon'] as $merchantCoupon):?>
+<tr>
+	<?php foreach($merchantCoupon as $column => $value):?>
+		<td><?php echo $value;?></td>
+	<?php endforeach;?>
+	<td class="actions">
+		<?php echo $html->link('View', '/merchant_coupons/view/' . $merchantCoupon['id']);?>
+		<?php echo $html->link('Edit', '/merchant_coupons/edit/' . $merchantCoupon['id']);?>
+		<?php echo $html->link('Delete', '/merchant_coupons/delete/' . $merchantCoupon['id'], null, 'Are you sure you want to delete: id ' . $merchantCoupon['id'] . '?');?>
+	</td>
+</tr>
+<?php endforeach; ?>
+</table>
+<?php endif; ?>
+
+<ul class="actions">
+	<li><?php echo $html->link('New Merchant Coupon', '/merchant_coupons/add/');?> </li>
+</ul>
+</div>
+<div class="related">
+<h3>Related Workstation Attorn Logs</h3>
+<?php if(!empty($workstation['WorkstationAttornLog'])):?>
+<table cellpadding="0" cellspacing="0">
+<tr>
+<?php foreach($workstation['WorkstationAttornLog']['0'] as $column => $value): ?>
+<th><?php echo $column?></th>
+<?php endforeach; ?>
+<th>Actions</th>
+</tr>
+<?php foreach($workstation['WorkstationAttornLog'] as $workstationAttornLog):?>
+<tr>
+	<?php foreach($workstationAttornLog as $column => $value):?>
+		<td><?php echo $value;?></td>
+	<?php endforeach;?>
+	<td class="actions">
+		<?php echo $html->link('View', '/workstation_attorn_logs/view/' . $workstationAttornLog['id']);?>
+		<?php echo $html->link('Edit', '/workstation_attorn_logs/edit/' . $workstationAttornLog['id']);?>
+		<?php echo $html->link('Delete', '/workstation_attorn_logs/delete/' . $workstationAttornLog['id'], null, 'Are you sure you want to delete: id ' . $workstationAttornLog['id'] . '?');?>
+	</td>
+</tr>
+<?php endforeach; ?>
+</table>
+<?php endif; ?>
+
+<ul class="actions">
+	<li><?php echo $html->link('New Workstation Attorn Log', '/workstation_attorn_logs/add/');?> </li>
+</ul>
+</div>
+<div class="related">
+<h3>Related Workstation Coupons</h3>
+<?php if(!empty($workstation['WorkstationCoupon'])):?>
+<table cellpadding="0" cellspacing="0">
+<tr>
+<?php foreach($workstation['WorkstationCoupon']['0'] as $column => $value): ?>
+<th><?php echo $column?></th>
+<?php endforeach; ?>
+<th>Actions</th>
+</tr>
+<?php foreach($workstation['WorkstationCoupon'] as $workstationCoupon):?>
+<tr>
+	<?php foreach($workstationCoupon as $column => $value):?>
+		<td><?php echo $value;?></td>
+	<?php endforeach;?>
+	<td class="actions">
+		<?php echo $html->link('View', '/workstation_coupons/view/' . $workstationCoupon['id']);?>
+		<?php echo $html->link('Edit', '/workstation_coupons/edit/' . $workstationCoupon['id']);?>
+		<?php echo $html->link('Delete', '/workstation_coupons/delete/' . $workstationCoupon['id'], null, 'Are you sure you want to delete: id ' . $workstationCoupon['id'] . '?');?>
+	</td>
+</tr>
+<?php endforeach; ?>
+</table>
+<?php endif; ?>
+
+<ul class="actions">
+	<li><?php echo $html->link('New Workstation Coupon', '/workstation_coupons/add/');?> </li>
+</ul>
 </div>

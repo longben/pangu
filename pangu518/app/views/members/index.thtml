@@ -1,12 +1,14 @@
-<div class="members"> 注册会员列表
-<table cellpadding="0" cellspacing="0">
+<fieldset align=center>
+<legend>
+会员列表
+</legend> 
+<table cellpadding="0" cellspacing="0" width="98%">
 <tr>
 	<th>编号</th>
 	<th>登录名</th>
 	<th>注册日期</th>
 	<th>电子邮件</th>
 	<th>出生日期</th>
-	<th>Invisible</th>
 	<th>操作</th>
 </tr>
 <?php foreach ($members as $member): ?>
@@ -16,7 +18,6 @@
 	<td><?php echo $member['Member']['regdate']; ?></td>
 	<td><?php echo $member['Member']['email']; ?></td>
 	<td><?php echo $member['Member']['bday']; ?></td>
-	<td><?php echo $member['Member']['invisible']; ?></td>
 	<td class="actions">
 		<?php echo $html->link('查看','/members/view/' . $member['Member']['uid'])?>
 		<?php echo $html->link('编辑','/members/edit/' . $member['Member']['uid'])?>
@@ -29,4 +30,4 @@
 	<li><?php echo $html->link('添加新会员', '/members/add'); ?></li>
 	<li><?php echo $html->link('新会员注册', '/members/register'); ?></li>
 </ul>
-</div>
+</fieldset>
