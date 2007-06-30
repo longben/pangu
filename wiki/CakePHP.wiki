@@ -1,0 +1,3 @@
+<?php 
+echo $html->dateTimeOptionTag('Member/bday', 'YMD' ,'NONE', mktime(date("G")+1, 0, 0, date("m"), date("d")+1, date("Y")), array());
+?>
