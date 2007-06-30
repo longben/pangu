@@ -1,0 +1,46 @@
+<div class="lotteries">
+<h2>List Lotteries</h2>
+
+<table cellpadding="0" cellspacing="0">
+<tr>
+	<th>Id</th>
+	<th>Lottery Year</th>
+	<th>Lottery Times</th>
+	<th>Start Time</th>
+	<th>Finish Time</th>
+	<th>Open Time</th>
+	<th>Win Number</th>
+	<th>Win Count</th>
+	<th>Created</th>
+	<th>Modified</th>
+	<th>Createdby</th>
+	<th>Flag</th>
+	<th>Actions</th>
+</tr>
+<?php foreach ($lotteries as $lottery): ?>
+<tr>
+	<td><?php echo $lottery['Lottery']['id']; ?></td>
+	<td><?php echo $lottery['Lottery']['lottery_year']; ?></td>
+	<td><?php echo $lottery['Lottery']['lottery_times']; ?></td>
+	<td><?php echo $lottery['Lottery']['start_time']; ?></td>
+	<td><?php echo $lottery['Lottery']['finish_time']; ?></td>
+	<td><?php echo $lottery['Lottery']['open_time']; ?></td>
+	<td><?php echo $lottery['Lottery']['win_number']; ?></td>
+	<td><?php echo $lottery['Lottery']['win_count']; ?></td>
+	<td><?php echo $lottery['Lottery']['created']; ?></td>
+	<td><?php echo $lottery['Lottery']['modified']; ?></td>
+	<td><?php echo $lottery['Lottery']['createdby']; ?></td>
+	<td><?php echo $lottery['Lottery']['flag']; ?></td>
+	<td class="actions">
+		<?php echo $html->link('View','/lotteries/view/' . $lottery['Lottery']['id'])?>
+		<?php echo $html->link('Edit','/lotteries/edit/' . $lottery['Lottery']['id'])?>
+		<?php echo $html->link('Delete','/lotteries/delete/' . $lottery['Lottery']['id'], null, 'Are you sure you want to delete id ' . $lottery['Lottery']['id'])?>
+	</td>
+</tr>
+<?php endforeach; ?>
+</table>
+
+<ul class="actions">
+	<li><?php echo $html->link('New Lottery', '/lotteries/add'); ?></li>
+</ul>
+</div>

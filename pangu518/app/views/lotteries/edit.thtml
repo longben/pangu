@@ -1,0 +1,41 @@
+<h2>Edit Lottery</h2>
+<form action="<?php echo $html->url('/lotteries/edit/'.$html->tagValue('Lottery/id')); ?>" method="post">
+<div class="optional"> 
+	<?php echo $form->labelTag('Lottery/lottery_year', 'Lottery Year');?>
+ 	<?php echo $html->input('Lottery/lottery_year', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Lottery/lottery_year', 'Please enter the Lottery Year.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Lottery/lottery_times', 'Lottery Times');?>
+ 	<?php echo $html->input('Lottery/lottery_times', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Lottery/lottery_times', 'Please enter the Lottery Times.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Lottery/win_number', 'Win Number');?>
+ 	<?php echo $html->input('Lottery/win_number', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Lottery/win_number', 'Please enter the Win Number.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Lottery/win_count', 'Win Count');?>
+ 	<?php echo $html->input('Lottery/win_count', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Lottery/win_count', 'Please enter the Win Count.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Lottery/createdby', 'Createdby');?>
+ 	<?php echo $html->input('Lottery/createdby', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Lottery/createdby', 'Please enter the Createdby.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Lottery/flag', 'Flag');?>
+ 	<?php echo $html->input('Lottery/flag', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Lottery/flag', 'Please enter the Flag.');?>
+</div>
+<?php echo $html->hidden('Lottery/id')?>
+<div class="submit">
+	<?php echo $html->submit('Save');?>
+</div>
+</form>
+<ul class="actions">
+<li><?php echo $html->link('Delete','/lotteries/delete/' . $html->tagValue('Lottery/id'), null, 'Are you sure you want to delete: id ' . $html->tagValue('Lottery/id'));?>
+<li><?php echo $html->link('List Lotteries', '/lotteries/index')?></li>
+</ul>

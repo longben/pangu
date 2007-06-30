@@ -1,0 +1,37 @@
+<div class="lottery">
+<h2>View Lottery</h2>
+
+<dl>
+	<dt>Id</dt>
+	<dd>&nbsp;<?php echo $lottery['Lottery']['id']?></dd>
+	<dt>Lottery Year</dt>
+	<dd>&nbsp;<?php echo $lottery['Lottery']['lottery_year']?></dd>
+	<dt>Lottery Times</dt>
+	<dd>&nbsp;<?php echo $lottery['Lottery']['lottery_times']?></dd>
+	<dt>Start Time</dt>
+	<dd>&nbsp;<?php echo $lottery['Lottery']['start_time']?></dd>
+	<dt>Finish Time</dt>
+	<dd>&nbsp;<?php echo $lottery['Lottery']['finish_time']?></dd>
+	<dt>Open Time</dt>
+	<dd>&nbsp;<?php echo $lottery['Lottery']['open_time']?></dd>
+	<dt>Win Number</dt>
+	<dd>&nbsp;<?php echo $lottery['Lottery']['win_number']?></dd>
+	<dt>Win Count</dt>
+	<dd>&nbsp;<?php echo $lottery['Lottery']['win_count']?></dd>
+	<dt>Created</dt>
+	<dd>&nbsp;<?php echo $lottery['Lottery']['created']?></dd>
+	<dt>Modified</dt>
+	<dd>&nbsp;<?php echo $lottery['Lottery']['modified']?></dd>
+	<dt>Createdby</dt>
+	<dd>&nbsp;<?php echo $lottery['Lottery']['createdby']?></dd>
+	<dt>Flag</dt>
+	<dd>&nbsp;<?php echo $lottery['Lottery']['flag']?></dd>
+</dl>
+<ul class="actions">
+	<li><?php echo $html->link('Edit Lottery',   '/lotteries/edit/' . $lottery['Lottery']['id']) ?> </li>
+	<li><?php echo $html->link('Delete Lottery', '/lotteries/delete/' . $lottery['Lottery']['id'], null, 'Are you sure you want to delete: id ' . $lottery['Lottery']['id'] . '?') ?> </li>
+	<li><?php echo $html->link('List Lotteries',   '/lotteries/index') ?> </li>
+	<li><?php echo $html->link('New Lottery',	'/lotteries/add') ?> </li>
+</ul>
+
+</div>
