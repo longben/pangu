@@ -1,0 +1,73 @@
+<h2>Edit Merchant</h2>
+<form action="<?php echo $html->url('/merchants/edit/'.$html->tagValue('Merchant/id')); ?>" method="post">
+<div class="optional"> 
+	<?php echo $form->labelTag('Merchant/member_id', 'Member');?>
+ 	<?php echo $html->selectTag('Merchant/member_id', $members, $html->tagValue('Merchant/member_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('Merchant/member_id', 'Please select the Member.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Merchant/merchant_name', 'Merchant Name');?>
+ 	<?php echo $html->input('Merchant/merchant_name', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Merchant/merchant_name', 'Please enter the Merchant Name.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Merchant/owner', 'Owner');?>
+ 	<?php echo $html->input('Merchant/owner', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Merchant/owner', 'Please enter the Owner.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Merchant/telephone', 'Telephone');?>
+ 	<?php echo $html->input('Merchant/telephone', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Merchant/telephone', 'Please enter the Telephone.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Merchant/mobile', 'Mobile');?>
+ 	<?php echo $html->input('Merchant/mobile', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Merchant/mobile', 'Please enter the Mobile.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Merchant/office_phone', 'Office Phone');?>
+ 	<?php echo $html->input('Merchant/office_phone', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Merchant/office_phone', 'Please enter the Office Phone.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Merchant/bank_accounts', 'Bank Accounts');?>
+ 	<?php echo $html->input('Merchant/bank_accounts', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Merchant/bank_accounts', 'Please enter the Bank Accounts.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Merchant/accounts', 'Accounts');?>
+ 	<?php echo $html->input('Merchant/accounts', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Merchant/accounts', 'Please enter the Accounts.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Merchant/salesman', 'Salesman');?>
+ 	<?php echo $html->input('Merchant/salesman', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Merchant/salesman', 'Please enter the Salesman.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Merchant/complaint_time', 'Complaint Time');?>
+ 	<?php echo $html->input('Merchant/complaint_time', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Merchant/complaint_time', 'Please enter the Complaint Time.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Merchant/return_ratio', 'Return Ratio');?>
+ 	<?php echo $html->input('Merchant/return_ratio', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Merchant/return_ratio', 'Please enter the Return Ratio.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Merchant/status', 'Status');?>
+ 	<?php echo $html->input('Merchant/status', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Merchant/status', 'Please enter the Status.');?>
+</div>
+<?php echo $html->hidden('Merchant/id')?>
+<div class="submit">
+	<?php echo $html->submit('Save');?>
+</div>
+</form>
+<ul class="actions">
+<li><?php echo $html->link('Delete','/merchants/delete/' . $html->tagValue('Merchant/id'), null, 'Are you sure you want to delete: id ' . $html->tagValue('Merchant/id'));?>
+<li><?php echo $html->link('List Merchants', '/merchants/index')?></li>
+<li><?php echo $html->link('View Members', '/members/index/');?></li>
+<li><?php echo $html->link('Add Members', '/members/add/');?></li>
+</ul>

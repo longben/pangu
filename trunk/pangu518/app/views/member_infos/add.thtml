@@ -7,7 +7,7 @@ label {
 -->
 </style>
 <fieldset align=center>
-<legend style="border:0px;background-color:white;">
+<legend>
 添加会员信息
 </legend> 
 <form action="<?php echo $html->url('/member_infos/add'); ?>" method="post">

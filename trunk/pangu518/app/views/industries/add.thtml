@@ -1,0 +1,21 @@
+<fieldset align=center>
+<legend>添加行业信息列表</legend> 
+<form action="<?php echo $html->url('/industries/add'); ?>" method="post">
+<div class="required"> 
+	<?php echo $form->labelTag('Industry/industry_name', '行业名称：');?>
+ 	<?php echo $html->input('Industry/industry_name', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Industry/industry_name', 'Please enter the Industry Name.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Industry/introduction', '行业简介：');?>
+ 	<?php echo $html->input('Industry/introduction', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Industry/introduction', 'Please enter the Introduction.');?>
+</div>
+<div class="submit">
+	<?php echo $html->submit('确定');?>
+</div>
+</form>
+<ul class="actions">
+<li><?php echo $html->link('行业信息列表', '/industries/index')?></li>
+</ul>
+</fieldset>

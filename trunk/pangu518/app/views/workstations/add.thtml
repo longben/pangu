@@ -1,64 +1,44 @@
-<style type="text/css">
-<!--
-label {
-	width: 100px;
-	float:left;
-}
--->
-</style>
-<table id=companyinfotab cellspacing=0 cellpadding=0 width="98%" align="center" border=0>
-  <tbody>
-    <tr>
-      <td><table cellspacing=0 cellpadding=0 width="100%" border=0>
-          <tbody>
-            <tr>
-              <td width=29 background=/img/manager/index_30.gif 
-                height=21>&nbsp;</td>
-              <td valign=center 
-                  background=/img/manager/index_31.gif><strong>新增工作站</strong> </td>
-              <td background=/img/manager/index_31.gif>&nbsp;</td>
-              <td width=10 background=/img/manager/index_34.gif>&nbsp;</td>
-            </tr>
-          </tbody>
-        </table>
-        <table cellspacing=0 cellpadding=0 width="100%" border=0>
-          <tbody>
-            <tr>
-              <td width=10 background=/img/manager/index_36.gif>&nbsp;</td>
-              <td valign=top align=left bgcolor=#ffffff><form action="<?php echo $html->url('/workstations/add'); ?>" method="post">
-                  <div class="optional"> <?php echo $form->labelTag('Workstation/ws_no', 'Ws No');?> <?php echo $html->input('Workstation/ws_no', array('size' => '60'));?> <?php echo $html->tagErrorMsg('Workstation/ws_no', 'Please enter the Ws No.');?> </div>
-                  <div class="optional"> <?php echo $form->labelTag('Workstation/ws_name', '工作站名称：');?> <?php echo $html->input('Workstation/ws_name', array('size' => '60'));?> <?php echo $html->tagErrorMsg('Workstation/ws_name', 'Please enter the Ws Name.');?> </div>
-                  <div class="optional"> <?php echo $form->labelTag('Workstation/member_id', 'Member Id');?> <?php echo $html->input('Workstation/member_id', array('size' => '60'));?> <?php echo $html->tagErrorMsg('Workstation/member_id', 'Please enter the Member Id.');?> </div>
-                  <div class="optional"> <?php echo $form->labelTag('Workstation/bargain_no', 'Bargain No');?> <?php echo $html->input('Workstation/bargain_no', array('size' => '60'));?> <?php echo $html->tagErrorMsg('Workstation/bargain_no', 'Please enter the Bargain No.');?> </div>
-                  <div class="optional"> <?php echo $form->labelTag('Workstation/address', '工作站地址：');?> <?php echo $html->input('Workstation/address', array('size' => '60'));?> <?php echo $html->tagErrorMsg('Workstation/address', 'Please enter the Address.');?> </div>
-                  <div class="optional"> <?php echo $form->labelTag('Workstation/telphone', '联系电话：');?> <?php echo $html->input('Workstation/telphone', array('size' => '60'));?> <?php echo $html->tagErrorMsg('Workstation/telphone', 'Please enter the Telphone.');?> </div>
-                  <div class="optional"> <?php echo $form->labelTag('Workstation/principal', 'Principal');?> <?php echo $html->input('Workstation/principal', array('size' => '60'));?> <?php echo $html->tagErrorMsg('Workstation/principal', 'Please enter the Principal.');?> </div>
-                  <div class="optional"> <?php echo $form->labelTag('Workstation/introduction', '工作站简介:');?> <?php echo $html->textarea('Workstation/introduction', array('cols' => '60', 'rows' => '5'));?> <?php echo $html->tagErrorMsg('Workstation/introduction', 'Please enter the Introduction.');?> </div>
-                  <div class="optional"> <?php echo $form->labelTag('Workstation/referees', 'Referees');?> <?php echo $html->input('Workstation/referees', array('size' => '60'));?> <?php echo $html->tagErrorMsg('Workstation/referees', 'Please enter the Referees.');?> </div>
-                  <div class="optional"> <?php echo $form->labelTag('Workstation/region_id', 'Region Id');?> <?php echo $html->input('Workstation/region_id', array('size' => '60'));?> <?php echo $html->tagErrorMsg('Workstation/region_id', 'Please enter the Region Id.');?> </div>
-                  <div class="optional"> <?php echo $form->labelTag('Workstation/create_date', 'Create Date');?> <?php echo $html->dateTimeOptionTag('Workstation/create_date', 'MDY' , 'NONE', $html->tagValue('Workstation/create_date'), array());?> <?php echo $html->tagErrorMsg('Workstation/create_date', 'Please select the Create Date.');?> </div>
-                  <div class="optional"> <?php echo $form->labelTag('Workstation/status', 'Status');?> <?php echo $html->input('Workstation/status', array('size' => '60'));?> <?php echo $html->tagErrorMsg('Workstation/status', 'Please enter the Status.');?> </div>
-                  <div class="submit"> <?php echo $html->submit('Add');?> </div>
-                </form>
-                <ul class="actions">
-                  <li><?php echo $html->link('List Workstations', '/workstations/index')?></li>
-                </ul></td>
-              <td width=10 
-              background=/img/manager/index_38.gif>&nbsp;</td>
-            </tr>
-          </tbody>
-        </table>
-        <table cellspacing=0 cellpadding=0 width="100%" border=0>
-          <tbody>
-            <tr>
-              <td width=10 background=/img/manager/index_46.gif 
-                height=19>&nbsp;</td>
-              <td background=/img/manager/index_47.gif height=15>&nbsp;</td>
-              <td width=10 
-              background=/img/manager/index_49.gif>&nbsp;</td>
-            </tr>
-          </tbody>
-        </table></td>
-    </tr>
-  </tbody>
-</table>
+<fieldset align=center>
+<legend>添加工作站</legend> 
+<form action="<?php echo $html->url('/workstations/add'); ?>" method="post">
+<?php echo $html->hiddenTag('Workstation/member_id',$this->controller->Session->read('User.uid'))?>
+<div class="optional"> 
+	<?php echo $form->labelTag('Workstation/region_id', '所属地区：');?>
+ 	<?php echo $html->selectTag('Workstation/region_id', $regions, $html->tagValue('Workstation/region_id'), array(), array(), false);?>
+	<?php echo $html->tagErrorMsg('Workstation/region_id', 'Please select the Region.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Workstation/ws_name', '工作站名称：');?>
+ 	<?php echo $html->input('Workstation/ws_name', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Workstation/ws_name', '必须输入工作站名称！');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Workstation/principal', '工作站负责人：');?>
+ 	<?php echo $html->input('Workstation/principal', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Workstation/principal', 'Please enter the Principal.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Workstation/bargain_no', '合同编号：');?>
+ 	<?php echo $html->input('Workstation/bargain_no', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Workstation/bargain_no', 'Please enter the Bargain No.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Workstation/address', '地址：');?>
+ 	<?php echo $html->input('Workstation/address', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Workstation/address', 'Please enter the Address.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Workstation/telphone', '联系电话：');?>
+ 	<?php echo $html->input('Workstation/telphone', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Workstation/telphone', 'Please enter the Telphone.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Workstation/introduction', '工作站简介：');?>
+ 	<?php echo $html->textarea('Workstation/introduction', array('cols' => '60', 'rows' => '5'));?>
+	<?php echo $html->tagErrorMsg('Workstation/introduction', 'Please enter the Introduction.');?>
+</div>
+<div class="submit">
+	<?php echo $html->submit('保存');?>
+</div>
+</form>
+</fieldset>

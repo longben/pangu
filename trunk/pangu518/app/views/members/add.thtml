@@ -4,16 +4,8 @@ if(isset($javascript)){
     echo $javascript->link('scriptaculous.js');
 }
 ?> 
-<style type="text/css">
-<!--
-label {
-	width: 70px;
-	float:left;
-}
--->
-</style>
 <fieldset align=center>
-<legend style="border:0px;background-color:white;">
+<legend>
 注册新用户
 </legend> 
 <form action="<?php echo $html->url('/members/add'); ?>" method="post">
@@ -28,9 +20,9 @@ label {
 	<?php echo $html->tagErrorMsg('Member/password', '请输入用户口令。');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Member/credits', 'Credits');?>
+	<?php echo $form->labelTag('Member/credits', '校验口令：');?>
  	<?php echo $html->input('Member/credits', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Member/credits', 'Please enter the Credits.');?>
+	<?php echo $html->tagErrorMsg('Member/credits', '两次口令录入不一致！');?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Member/email', '电子邮件：');?>
@@ -39,7 +31,7 @@ label {
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Member/bday', '出生日期：');?>
- 	<?php echo $html->dateTimeOptionTag('Member/bday', 'YMD' , 'NONE', $html->tagValue('Member/bday'), array());?>
+ 	<?php echo $html->dateTimeOptionTag('Member/bday', 'YMD' ,'NONE', mktime(date("G")+1, 0, 0, date("m"), date("d")+1, date("Y")), array());?>
 	<?php echo $html->tagErrorMsg('Member/bday', 'Please select the Bday.');?>
 </div>
 <div class="submit">

@@ -1,0 +1,26 @@
+<h2>Edit Industry</h2>
+<form action="<?php echo $html->url('/industries/edit/'.$html->tagValue('Industry/id')); ?>" method="post">
+<div class="required"> 
+	<?php echo $form->labelTag('Industry/industry_name', 'Industry Name');?>
+ 	<?php echo $html->input('Industry/industry_name', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Industry/industry_name', 'Please enter the Industry Name.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Industry/introduction', 'Introduction');?>
+ 	<?php echo $html->input('Industry/introduction', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Industry/introduction', 'Please enter the Introduction.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Industry/flag', 'Flag');?>
+ 	<?php echo $html->input('Industry/flag', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Industry/flag', 'Please enter the Flag.');?>
+</div>
+<?php echo $html->hidden('Industry/id')?>
+<div class="submit">
+	<?php echo $html->submit('Save');?>
+</div>
+</form>
+<ul class="actions">
+<li><?php echo $html->link('Delete','/industries/delete/' . $html->tagValue('Industry/id'), null, 'Are you sure you want to delete: id ' . $html->tagValue('Industry/id'));?>
+<li><?php echo $html->link('List Industries', '/industries/index')?></li>
+</ul>

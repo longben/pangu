@@ -1,7 +1,6 @@
-<fieldset align=center>
-<legend style="border:0px;background-color:white;">
-会员等级维护
-</legend> 
+<fieldset>
+<legend>会员等级维护</legend> 
+
 <table cellpadding="0" cellspacing="0" width="90%" align="center">
 <tr>
 	<th>编号</th>

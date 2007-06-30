@@ -16,7 +16,7 @@
 		d = new dTree('d');
 		d.config.target = "right";
 
-		d.add(0,-1,'运营软件');
+		d.add(0,-1,'盘古消费运营软件');
 		d.add(1,0,'会员管理');
 		d.add(2,0,'会员消费单位管理');
 		d.add(3,0,'工作站管理');
@@ -35,7 +35,8 @@
 		d.add(2002,2,'会员消费单位审核','/merchants/auditing');
 		
 		d.add(3001,3,'工作站列表','/workstations');
-		d.add(3002,3,'新增工作站','/workstations/add');
+		d.add(3002,3,'工作站审核','/workstations/audit');
+		d.add(3003,3,'新增工作站','/workstations/add');
 
 		d.add(5001,5,'摇奖期数管理','/lotteries');
 		d.add(5002,5,'彩票投注','/lottery_bettings');
@@ -47,6 +48,7 @@
 				
 		d.add(9001,9,'行政区划维护','/regions');
 		d.add(9002,9,'会员等级维护','/member_grades');
+		d.add(9003,9,'行业维护','/industries');
 
 		document.write(d);
 

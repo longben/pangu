@@ -11,9 +11,14 @@
 	<?php echo $html->tagErrorMsg('Workstation/ws_name', 'Please enter the Ws Name.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Workstation/member_id', 'Member Id');?>
- 	<?php echo $html->input('Workstation/member_id', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Workstation/member_id', 'Please enter the Member Id.');?>
+	<?php echo $form->labelTag('Workstation/member_id', 'Member');?>
+ 	<?php echo $html->selectTag('Workstation/member_id', $members, $html->tagValue('Workstation/member_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('Workstation/member_id', 'Please select the Member.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Workstation/referees', 'Referees');?>
+ 	<?php echo $html->input('Workstation/referees', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Workstation/referees', 'Please enter the Referees.');?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Workstation/bargain_no', 'Bargain No');?>
@@ -41,19 +46,14 @@
 	<?php echo $html->tagErrorMsg('Workstation/introduction', 'Please enter the Introduction.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Workstation/referees', 'Referees');?>
- 	<?php echo $html->input('Workstation/referees', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Workstation/referees', 'Please enter the Referees.');?>
+	<?php echo $form->labelTag('Workstation/region_id', 'Region');?>
+ 	<?php echo $html->selectTag('Workstation/region_id', $regions, $html->tagValue('Workstation/region_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('Workstation/region_id', 'Please select the Region.') ?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Workstation/region_id', 'Region Id');?>
- 	<?php echo $html->input('Workstation/region_id', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Workstation/region_id', 'Please enter the Region Id.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Workstation/create_date', 'Create Date');?>
- 	<?php echo $html->dateTimeOptionTag('Workstation/create_date', 'MDY' , 'NONE', $html->tagValue('Workstation/create_date'), array());?>
-	<?php echo $html->tagErrorMsg('Workstation/create_date', 'Please select the Create Date.');?>
+	<?php echo $form->labelTag('Workstation/income', 'Income');?>
+ 	<?php echo $html->input('Workstation/income', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Workstation/income', 'Please enter the Income.');?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Workstation/status', 'Status');?>
@@ -68,4 +68,8 @@
 <ul class="actions">
 <li><?php echo $html->link('Delete','/workstations/delete/' . $html->tagValue('Workstation/id'), null, 'Are you sure you want to delete: id ' . $html->tagValue('Workstation/id'));?>
 <li><?php echo $html->link('List Workstations', '/workstations/index')?></li>
+<li><?php echo $html->link('View Members', '/members/index/');?></li>
+<li><?php echo $html->link('Add Members', '/members/add/');?></li>
+<li><?php echo $html->link('View Regions', '/regions/index/');?></li>
+<li><?php echo $html->link('Add Regions', '/regions/add/');?></li>
 </ul>
