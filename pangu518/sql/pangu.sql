@@ -44,7 +44,7 @@ create table coupons(
 
 /* 会员等级 */
 create table member_grades(
-  id               int(2)        not null                comment '主键',
+  id               int(2)        not null auto_increment comment '主键',
   grade_name       varchar(20)   not null                comment '会员等级名称',
   member_per       decimal(2,2)  not null default 0      comment '会员消费提成',
   ws_per           decimal(2,2)  not null default 0      comment '会员消费单位购券提成',
@@ -87,6 +87,7 @@ create table member_coupons(
 ) engine=MyISAM default charset=utf8 comment='会员代金券';
 
 
+
 /* 工作站 */
 create table workstations(
   id               int(11)       not null auto_increment comment '主键',
@@ -102,7 +103,7 @@ create table workstations(
   region_id        int(11)                               comment '工作站所属地区',
   created          timestamp                             comment '创建时间',
   income           decimal(2,2)  not null default 0.08   comment '工作站收益',
-  status           int(1)        not null                comment '状态：0:无效 1:有效 2:拟转让 9:待审核',
+  status           int(1)        not null default 9      comment '状态：0:无效 1:有效 2:拟转让 9:待审核',
   primary key (id)
 ) engine=MyISAM default charset=utf8 comment='工作站';
 
@@ -135,6 +136,16 @@ create table workstation_attorn_logs(
 ) engine=MyISAM default charset=utf8 comment='工作站转让记录';
 
 
+/* 行业 */
+create table industries(
+  id               int(11)       not null auto_increment comment '主键',
+  industry_name    varchar(30)   not null                comment '行业名称',
+  introduction     varchar(500)                          comment '行业描述',
+  flag             int(1)        not null default 1      comment '状态',
+  primary key (id)
+) engine=MyISAM default charset=utf8 comment='行业';
+
+
 /* 会员消费单位 */
 create table merchants(
   id               int(11)       not null auto_increment comment '主键',
@@ -149,6 +160,8 @@ create table merchants(
   salesman         int(8)        not null                comment '会员消费单位签署人',
   complaint_time   int(2)        not null default 0      comment '投诉次数(merchant_complaint_logs有一条有效记录者+1)',
   return_ratio     decimal(6,2)  not null default 0      comment '返劵比例返给会员',
+  industry_id      int(11)       NOT NULL                COMMENT '所属行业',
+  region_id        int(11)                               comment '所属地区',
   created          timestamp                             comment '创建时间',
   status           int(1)        not null                comment '有效标志 0:无效 1:有效 9:待审核',
   primary key (id)

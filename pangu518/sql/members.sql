@@ -49,3 +49,6 @@
   unique key username (username),
   key email (email)
 ) engine=myisam default charset=utf8;
+
+
+INSERT INTO `members` VALUES ('1', 'admin', 'e10adc3949ba59abbe56e057f20f883e', '', '0', '0', '0', '0', '', '', '0', '', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', 'longben@163.com', '1978-05-04', '0', '0', '0', '0', '', '0', '0', '1', '0', '0', '', '0', '0', '0', '0', '0');
