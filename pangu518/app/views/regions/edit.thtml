@@ -1,0 +1,21 @@
+<h2>Edit Region</h2>
+<form action="<?php echo $html->url('/regions/edit/'.$html->tagValue('Region/id')); ?>" method="post">
+<div class="optional"> 
+	<?php echo $form->labelTag('Region/region_name', 'Region Name');?>
+ 	<?php echo $html->input('Region/region_name', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Region/region_name', 'Please enter the Region Name.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Region/flag', 'Flag');?>
+ 	<?php echo $html->input('Region/flag', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Region/flag', 'Please enter the Flag.');?>
+</div>
+<?php echo $html->hidden('Region/id')?>
+<div class="submit">
+	<?php echo $html->submit('Save');?>
+</div>
+</form>
+<ul class="actions">
+<li><?php echo $html->link('Delete','/regions/delete/' . $html->tagValue('Region/id'), null, 'Are you sure you want to delete: id ' . $html->tagValue('Region/id'));?>
+<li><?php echo $html->link('List Regions', '/regions/index')?></li>
+</ul>

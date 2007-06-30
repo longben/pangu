@@ -1,0 +1,73 @@
+<style type="text/css">
+<!--
+label {
+	width: 70px;
+	float:left;
+}
+-->
+</style>
+<fieldset align=center>
+<legend style="border:0px;background-color:white;">
+修改会员扩展信息
+</legend> 
+<form action="<?php echo $html->url('/member_infos/edit'); ?>" method="post">
+<?php echo $html->hiddenTag('MemberInfo/id',$this->controller->Session->read('User.uid'))?>
+<div class="optional"> 
+	<?php echo $form->labelTag('MemberInfo/member_no', '会员编号：');?>
+ 	<?php echo $html->input('MemberInfo/member_no', array('size' => '40'));?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('MemberInfo/member_name', '真实姓名：');?>
+ 	<?php echo $html->input('MemberInfo/member_name', array('size' => '40'));?>
+	<?php echo $html->tagErrorMsg('MemberInfo/member_name', 'Please enter the Member_Name.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('MemberInfo/sex', '性别：');?>
+ 	<?php echo $html->radio('MemberInfo/sex',array('1'=>'男','0'=>'女'))?>
+	<?php echo $html->tagErrorMsg('MemberInfo/sex', 'Please enter the cert_number.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('MemberInfo/cert_number', '身份证号：');?>
+ 	<?php echo $html->input('MemberInfo/cert_number', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('MemberInfo/cert_number', 'Please enter the cert_number.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('MemberInfo/region_id', '所属地区：');?>
+ 	<?php echo $html->selectTag('MemberInfo/region_id', $regions, $html->tagValue('MemberInfo/region_id'), array(), array(), false);?>
+	<?php echo $html->tagErrorMsg('MemberInfo/region_id', 'Please select the Region.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('MemberInfo/telephone', '常用电话：');?>
+ 	<?php echo $html->input('MemberInfo/telephone', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('MemberInfo/telephone', 'Please enter the Telephone.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('MemberInfo/mobile', '手机号码：');?>
+ 	<?php echo $html->input('MemberInfo/mobile', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('MemberInfo/mobile', 'Please enter the Mobile.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('MemberInfo/office_phone', '办公电话：');?>
+ 	<?php echo $html->input('MemberInfo/office_phone', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('MemberInfo/office_phone', 'Please enter the Office Phone.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('MemberInfo/home_phone', '家庭电话：');?>
+ 	<?php echo $html->input('MemberInfo/home_phone', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('MemberInfo/home_phone', 'Please enter the Home Phone.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('MemberInfo/bank_accounts', '开户银行：');?>
+ 	<?php echo $html->input('MemberInfo/bank_accounts', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('MemberInfo/bank_accounts', 'Please enter the Bank Accounts.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('MemberInfo/accounts', '银行帐号：');?>
+ 	<?php echo $html->input('MemberInfo/accounts', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('MemberInfo/accounts', 'Please enter the Accounts.');?>
+</div>
+<div class="submit">
+	<?php echo $html->submit('保存');?>
+</div>
+</form>
+</fieldset>

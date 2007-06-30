@@ -1,0 +1,21 @@
+<div class="memberGrade">
+<h2>View Member Grade</h2>
+
+<dl>
+	<dt>Id</dt>
+	<dd>&nbsp;<?php echo $memberGrade['MemberGrade']['id']?></dd>
+	<dt>Grade Name</dt>
+	<dd>&nbsp;<?php echo $memberGrade['MemberGrade']['grade_name']?></dd>
+	<dt>Member Per</dt>
+	<dd>&nbsp;<?php echo $memberGrade['MemberGrade']['member_per']?></dd>
+	<dt>Ws Per</dt>
+	<dd>&nbsp;<?php echo $memberGrade['MemberGrade']['ws_per']?></dd>
+</dl>
+<ul class="actions">
+	<li><?php echo $html->link('Edit Member Grade',   '/member_grades/edit/' . $memberGrade['MemberGrade']['id']) ?> </li>
+	<li><?php echo $html->link('Delete Member Grade', '/member_grades/delete/' . $memberGrade['MemberGrade']['id'], null, 'Are you sure you want to delete: id ' . $memberGrade['MemberGrade']['id'] . '?') ?> </li>
+	<li><?php echo $html->link('List Member Grades',   '/member_grades/index') ?> </li>
+	<li><?php echo $html->link('New Member Grade',	'/member_grades/add') ?> </li>
+</ul>
+
+</div>

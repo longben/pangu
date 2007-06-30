@@ -37,13 +37,19 @@ class MembersController extends AppController {
 		if(empty($this->data)) {
 			$this->render();
 		} else {
-			$this->cleanUpFields();
-			if($this->Member->save($this->data)) {
-				$this->Session->setFlash('添加成功！');
-				$this->redirect('/members/index');
-			} else {
-				$this->Session->setFlash('添加用户出错！');
-			}
+        	if($this->Member->findByUsername($this->data['Member']['username'])){
+        		$this->Member->invalidate('username');
+        		$this->set('username_error', 'User already exists.');
+        	}else{
+        		$this->cleanUpFields();
+        		$this->data['Member']['password'] = md5($this->data['Member']['password']);
+        		if($this->Member->save($this->data)) {
+				  $this->Session->setFlash('添加成功！');
+				  $this->redirect('/members/index');
+			    } else {
+				  $this->Session->setFlash('添加用户出错！');
+			    }        		
+        	}
 		}
 	}
 	

@@ -1,0 +1,43 @@
+<div class="memberInfo">
+<h2>View Member Info</h2>
+
+<dl>
+	<dt>Id</dt>
+	<dd>&nbsp;<?php echo $memberInfo['MemberInfo']['id']?></dd>
+	<dt>Member No</dt>
+	<dd>&nbsp;<?php echo $memberInfo['MemberInfo']['member_no']?></dd>
+	<dt>Referees</dt>
+	<dd>&nbsp;<?php echo $memberInfo['MemberInfo']['referees']?></dd>
+	<dt>Member Grades</dt>
+	<dd>&nbsp;<?php echo $html->link($memberInfo['MemberGrade']['id'], '/member_grades/view/' .$memberInfo['MemberGrade']['id'])?></dd>
+	<dt>Region</dt>
+	<dd>&nbsp;<?php echo $html->link($memberInfo['Region']['id'], '/regions/view/' .$memberInfo['Region']['id'])?></dd>
+	<dt>Telephone</dt>
+	<dd>&nbsp;<?php echo $memberInfo['MemberInfo']['telephone']?></dd>
+	<dt>Mobile</dt>
+	<dd>&nbsp;<?php echo $memberInfo['MemberInfo']['mobile']?></dd>
+	<dt>Office Phone</dt>
+	<dd>&nbsp;<?php echo $memberInfo['MemberInfo']['office_phone']?></dd>
+	<dt>Home Phone</dt>
+	<dd>&nbsp;<?php echo $memberInfo['MemberInfo']['home_phone']?></dd>
+	<dt>Bank Accounts</dt>
+	<dd>&nbsp;<?php echo $memberInfo['MemberInfo']['bank_accounts']?></dd>
+	<dt>Accounts</dt>
+	<dd>&nbsp;<?php echo $memberInfo['MemberInfo']['accounts']?></dd>
+	<dt>Created</dt>
+	<dd>&nbsp;<?php echo $memberInfo['MemberInfo']['created']?></dd>
+	<dt>Flag</dt>
+	<dd>&nbsp;<?php echo $memberInfo['MemberInfo']['flag']?></dd>
+</dl>
+<ul class="actions">
+	<li><?php echo $html->link('Edit Member Info',   '/member_infos/edit/' . $memberInfo['MemberInfo']['id']) ?> </li>
+	<li><?php echo $html->link('Delete Member Info', '/member_infos/delete/' . $memberInfo['MemberInfo']['id'], null, 'Are you sure you want to delete: id ' . $memberInfo['MemberInfo']['id'] . '?') ?> </li>
+	<li><?php echo $html->link('List Member Infos',   '/member_infos/index') ?> </li>
+	<li><?php echo $html->link('New Member Info',	'/member_infos/add') ?> </li>
+	<li><?php echo $html->link('List Member Grade', '/member_grades/index/')?> </li>
+	<li><?php echo $html->link('New Member Grades', '/member_grades/add/')?> </li>
+	<li><?php echo $html->link('List Region', '/regions/index/')?> </li>
+	<li><?php echo $html->link('New Regions', '/regions/add/')?> </li>
+</ul>
+
+</div>

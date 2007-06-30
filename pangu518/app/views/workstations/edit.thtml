@@ -1,0 +1,71 @@
+<h2>Edit Workstation</h2>
+<form action="<?php echo $html->url('/workstations/edit/'.$html->tagValue('Workstation/id')); ?>" method="post">
+<div class="optional"> 
+	<?php echo $form->labelTag('Workstation/ws_no', 'Ws No');?>
+ 	<?php echo $html->input('Workstation/ws_no', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Workstation/ws_no', 'Please enter the Ws No.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Workstation/ws_name', 'Ws Name');?>
+ 	<?php echo $html->input('Workstation/ws_name', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Workstation/ws_name', 'Please enter the Ws Name.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Workstation/member_id', 'Member Id');?>
+ 	<?php echo $html->input('Workstation/member_id', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Workstation/member_id', 'Please enter the Member Id.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Workstation/bargain_no', 'Bargain No');?>
+ 	<?php echo $html->input('Workstation/bargain_no', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Workstation/bargain_no', 'Please enter the Bargain No.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Workstation/address', 'Address');?>
+ 	<?php echo $html->input('Workstation/address', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Workstation/address', 'Please enter the Address.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Workstation/telphone', 'Telphone');?>
+ 	<?php echo $html->input('Workstation/telphone', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Workstation/telphone', 'Please enter the Telphone.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Workstation/principal', 'Principal');?>
+ 	<?php echo $html->input('Workstation/principal', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Workstation/principal', 'Please enter the Principal.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Workstation/introduction', 'Introduction');?>
+ 	<?php echo $html->input('Workstation/introduction', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Workstation/introduction', 'Please enter the Introduction.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Workstation/referees', 'Referees');?>
+ 	<?php echo $html->input('Workstation/referees', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Workstation/referees', 'Please enter the Referees.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Workstation/region_id', 'Region Id');?>
+ 	<?php echo $html->input('Workstation/region_id', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Workstation/region_id', 'Please enter the Region Id.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Workstation/create_date', 'Create Date');?>
+ 	<?php echo $html->dateTimeOptionTag('Workstation/create_date', 'MDY' , 'NONE', $html->tagValue('Workstation/create_date'), array());?>
+	<?php echo $html->tagErrorMsg('Workstation/create_date', 'Please select the Create Date.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Workstation/status', 'Status');?>
+ 	<?php echo $html->input('Workstation/status', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Workstation/status', 'Please enter the Status.');?>
+</div>
+<?php echo $html->hidden('Workstation/id')?>
+<div class="submit">
+	<?php echo $html->submit('Save');?>
+</div>
+</form>
+<ul class="actions">
+<li><?php echo $html->link('Delete','/workstations/delete/' . $html->tagValue('Workstation/id'), null, 'Are you sure you want to delete: id ' . $html->tagValue('Workstation/id'));?>
+<li><?php echo $html->link('List Workstations', '/workstations/index')?></li>
+</ul>
