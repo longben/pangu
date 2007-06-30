@@ -55,7 +55,10 @@ create table member_grades(
 /* 会员扩展信息 */
 create table member_infos(
   id               int(8)        not null                comment '主键，值同members主键值',
+  member_name      varchar(20)   not null                comment '真实姓名',
+  sex              int(1)        not null                comment '性别: 1:男 0:女',
   member_no        varchar(25)   not null                comment '省编号+身份证号码成为会员编号',
+  cert_number      varchar(18)   not null                comment '身份证号码',
   referees         int(8)                                comment '推荐人',
   member_grades_id int(2)        not null default 1      comment '会员等级，默认为普通会员',
   region_id        int(11)                               comment '会员所属地区',
@@ -135,7 +138,7 @@ create table workstation_attorn_logs(
 /* 会员消费单位 */
 create table merchants(
   id               int(11)       not null auto_increment comment '主键',
-  member_id        int(8)                                comment '会员消费单位签署人',
+  member_id        int(8)                                comment '会员消费拥有人',
   merchant_name    varchar(50)   not null                comment '消费单位名称',
   owner            varchar(10)                           comment '店主',
   telephone        varchar(30)                           comment '联系电话',
@@ -206,7 +209,7 @@ create table lottery_bettings(
   lottery_id       int(5)        not null                comment '彩票期数',
   betting_number   varchar(5)    not null                comment '彩票投注号码',
   betting_time     int(5)        not null default 1      comment '投注份数',
-  betting_type     int(1)        not null                comment '投注类型：1:个人投注 2:会员消费单位投注',
+  betting_type     int(1)        not null default 1      comment '投注类型：1:个人投注 2:会员消费单位投注',
   merchant_id      int(11)                               comment '会员消费单位',
   created          timestamp                             comment '投票时间',
   flag             int(1)        not null default 1      comment '状态',
