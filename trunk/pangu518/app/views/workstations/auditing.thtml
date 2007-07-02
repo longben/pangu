@@ -1,0 +1,64 @@
+<fieldset>
+<legend>工作站审核</legend> 
+<form action="<?php echo $html->url('/workstations/edit/'.$html->tagValue('Workstation/id')); ?>" method="post">
+<div class="optional"> 
+	<?php echo $form->labelTag('Workstation/ws_name', '工作站名称：');?>
+ 	<?php echo $html->input('Workstation/ws_name', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Workstation/ws_name', 'Please enter the Ws Name.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Workstation/member_id', '工作站所有人：');?>
+ 	<?php echo $html->selectTag('Workstation/member_id', $members, $html->tagValue('Workstation/member_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('Workstation/member_id', 'Please select the Member.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Workstation/referees', '推荐人：');?>
+ 	<?php echo $html->input('Workstation/Referee/id');?>
+	<?php echo $html->tagErrorMsg('Workstation/referees', 'Please enter the Referees.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Workstation/bargain_no', '合同编号：');?>
+ 	<?php echo $html->input('Workstation/bargain_no', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Workstation/bargain_no', 'Please enter the Bargain No.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Workstation/address', '工作站地址：');?>
+ 	<?php echo $html->input('Workstation/address', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Workstation/address', 'Please enter the Address.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Workstation/telphone', '联系电话：');?>
+ 	<?php echo $html->input('Workstation/telphone', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Workstation/telphone', 'Please enter the Telphone.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Workstation/principal', '工作站负责人：');?>
+ 	<?php echo $html->input('Workstation/principal', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Workstation/principal', 'Please enter the Principal.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Workstation/introduction', '工作站简介：');?>
+ 	<?php echo $html->input('Workstation/introduction', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Workstation/introduction', 'Please enter the Introduction.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Workstation/region_id', '所属地区：');?>
+ 	<?php echo $html->selectTag('Workstation/region_id', $regions, $html->tagValue('Workstation/region_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('Workstation/region_id', 'Please select the Region.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Workstation/income', '工作站返券率：');?>
+ 	<?php echo $html->input('Workstation/income', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Workstation/income', 'Please enter the Income.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Workstation/status', '状态：');?>
+ 	<?php echo $html->input('Workstation/status', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Workstation/status', 'Please enter the Status.');?>
+</div>
+<?php echo $html->hidden('Workstation/id')?>
+<div class="submit">
+	<?php echo $html->submit('Save');?>
+</div>
+</form>
+</fieldset>

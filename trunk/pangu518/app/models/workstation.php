@@ -2,11 +2,8 @@
 class Workstation extends AppModel {
 
 	var $name = 'Workstation';
-	
-	var $validate = array(
-		'ws_name' => VALID_NOT_EMPTY
-	);
 
+	//The Associations below have been created with all possible keys, those that are not needed can be removed
 	var $belongsTo = array(
 			'Member' =>
 				array('className' => 'Member',
@@ -16,7 +13,7 @@ class Workstation extends AppModel {
 						'order' => '',
 						'counterCache' => ''
 				),
-
+				
 			'MemberInfo' =>
 				array('className' => 'MemberInfo',
 						'foreignKey' => 'member_id',
@@ -25,6 +22,15 @@ class Workstation extends AppModel {
 						'order' => '',
 						'counterCache' => ''
 				),				
+				
+			'Referee' =>
+				array('className' => 'MemberInfo',
+						'foreignKey' => 'referees',
+						'conditions' => '',
+						'fields' => '',
+						'order' => '',
+						'counterCache' => ''
+				),						
 
 			'Region' =>
 				array('className' => 'Region',
