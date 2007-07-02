@@ -2,8 +2,8 @@
 class MembersController extends AppController {
 
 	var $name = 'Members';
-	var $components = array('AjaxValid');//Make sure you include this, it makes the magic work.
-	var $helpers = array('Html', 'Javascript', 'Ajax','Form');
+	var $components = array('Acl','AjaxValid');//Make sure you include this, it makes the magic work.
+	var $helpers = array('Html', 'Javascript', 'Ajax', 'Form', 'Time');
 	
     function validator(){
         $this->layout = '';
@@ -22,14 +22,19 @@ class MembersController extends AppController {
 
 	function index() {
 		$this->Member->recursive = 0;
-		$this->set('members', $this->Member->findAll());
+		$this->set('members', $this->Member->findAll('uid <> 1'));
 	}
 
 	function view($id = null) {
+		if ($this->Acl->check($this->Session->read('User.uid'), $this->Session->read('User.username'), 'read')){
+			$this->Session->setFlash('无权参看！');
+			$this->redirect('/members/index');
+		}
 		if(!$id) {
 			$this->Session->setFlash('Invalid id for Member.');
 			$this->redirect('/members/index');
 		}
+		echo $this->Session->read('User.username');
 		$this->set('member', $this->Member->read(null, $id));
 	}
 
@@ -39,11 +44,20 @@ class MembersController extends AppController {
 		} else {
         	if($this->Member->findByUsername($this->data['Member']['username'])){
         		$this->Member->invalidate('username');
-        		$this->set('username_error', 'User already exists.');
+        		$this->set('username_error', '用户名已经存在！');
         	}else{
         		$this->cleanUpFields();
         		$this->data['Member']['password'] = md5($this->data['Member']['password']);
+        		$member_alias = $this->data['Member']['username'];
         		if($this->Member->save($this->data)) {
+        		  $aro = new Aro();
+        		  $aro->create($this->Member->uid, 'Members',$this->data['Member']['username']);//把新增用户添加到"Members"组中
+        		  
+        		  $aco = new Aco();
+        		  $aco->create($member_id, 3, $member_alias);
+        		  $this->Acl->allow('Admins', $member_alias,'*');
+        		  $this->Acl->allow($this->Session->read('User.uid'), $member_alias, '*');
+        		  
 				  $this->Session->setFlash('添加成功！');
 				  $this->redirect('/members/index');
 			    } else {
@@ -94,6 +108,25 @@ class MembersController extends AppController {
 			$this->Session->setFlash('The Member deleted: id '.$id.'');
 			$this->redirect('/members/index');
 		}
+	}
+	
+	function install(){
+		$aro = new Aro();
+		
+		//创建组
+		$aro->create(0, null, 'Admins');
+		$aro->create(0, null, 'Finances');
+		$aro->create(0, null, 'Members');
+		$aro->create(0, null, 'Workstations');
+		$aro->create(0, null, 'Merchants');
+		
+		//创建ARO（admin）
+		$aro->create( 1, null, 'admin');
+		
+		//把admin授权到Admins组
+		$aro->setParent('Admins', 'admin');
+		
+		$this->Session->setFlash('系统授权成功！');
 	}
 	
    function login() {

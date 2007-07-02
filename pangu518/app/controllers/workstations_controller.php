@@ -3,6 +3,7 @@ class WorkstationsController extends AppController {
 
 	var $name = 'Workstations';
 	var $helpers = array('Html', 'Form' , 'Ajax', 'JavaScript');
+	var $components = array('Acl');
 
 	function index() {
 		$this->Workstation->recursive = 0;
@@ -11,9 +12,32 @@ class WorkstationsController extends AppController {
 	
 	function audit() {
 		$this->Workstation->recursive = 0;
-		$this->set('workstations', $this->Workstation->findAll());
+		$this->set('workstations', $this->Workstation->findAll('status = 9'));
 	}
+	
 
+	function auditing($id = null) {
+		if(empty($this->data)) {
+			if(!$id) {
+				$this->Session->setFlash('Invalid id for Workstation');
+				$this->redirect('/workstations/index');
+			}
+			$this->data = $this->Workstation->read(null, $id);
+			$this->set('members', $this->Workstation->Member->generateList());
+			$this->set('regions', $this->Workstation->Region->generateList());
+		} else {
+			$this->cleanUpFields();
+			if($this->Workstation->save($this->data)) {
+				$this->Session->setFlash('The Workstation has been saved');
+				$this->redirect('/workstations/index');
+			} else {
+				$this->Session->setFlash('Please correct errors below.');
+				$this->set('members', $this->Workstation->Member->generateList());
+				$this->set('regions', $this->Workstation->Region->generateList());
+			}
+		}
+	}	
+	
 	function view($id = null) {
 		if(!$id) {
 			$this->Session->setFlash('Invalid id for Workstation.');
@@ -36,6 +60,9 @@ class WorkstationsController extends AppController {
 		} else {
 			$this->cleanUpFields();
 			if($this->Workstation->save($this->data)) {
+				$aco = new Aco();
+				$workstation_id = $this->Workstation->getLastInsertID(); //得到刚保存到数据库中的主键值
+				$aco->create($workstation_id, $workstation_id,$workstation_id.'-'.$this->data['Workstation']['ws_name']);
 				$this->Session->setFlash('The Workstation has been saved');
 				$this->redirect('/workstations/index');
 			} else {

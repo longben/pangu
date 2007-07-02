@@ -21,7 +21,7 @@ class WorkstationCoupon extends AppModel {
 						'fields' => '',
 						'order' => '',
 						'counterCache' => ''
-				),
+				),		
 
 	);
 

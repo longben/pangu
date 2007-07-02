@@ -44,7 +44,8 @@
 		
 		d.add(6001,6,'代金券维护','/coupons');
 		
-		d.add(8001,8,'角色维护');
+		d.add(8001,8,'系统初始化','/members/install');
+		d.add(8002,8,'角色维护');
 				
 		d.add(9001,9,'行政区划维护','/regions');
 		d.add(9002,9,'会员等级维护','/member_grades');
