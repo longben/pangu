@@ -2,6 +2,77 @@
 class CouponsController extends AppController {
 
 	var $name = 'Coupons';
-	var $scaffold;
+	var $helpers = array('Html', 'Form' );
+
+	function index() {
+		$this->Coupon->recursive = 0;
+		$this->set('coupons', $this->Coupon->findAll());
+	}
+
+	function view($id = null) {
+		if(!$id) {
+			$this->Session->setFlash('Invalid id for Coupon.');
+			$this->redirect('/coupons/index');
+		}
+		$this->set('coupon', $this->Coupon->read(null, $id));
+	}
+
+	function add() {
+		if(empty($this->data)) {
+			$this->render();
+		} else {
+			$start = $this->data['Coupon']['start'];
+			$end = $this->data['Coupon']['end'];
+			$custom_num = $this->data['Coupon']['custom_num'];
+			$coupon_group = $this->data['Coupon']['coupon_group'];
+			
+			for($i=$start;$i<=$end;$i++){
+				$this->cleanUpFields();
+				srand((double)microtime()*1000000);//时间的因素，以执行时的百万分之一秒当乱数种子
+				$randval = rand(10000,99999);
+				$this->data['Coupon']['coupon_group'] = $coupon_group;
+				$this->data['Coupon']['custom_num'] = $custom_num;
+				$pwd = $custom_num  ^ $randval; //用户输入6位数字和6位随机数异或产生密码
+				$pwd = substr($pwd, 0, 6); //只保留6位数，注意在密码校验的时候同样也只取6位数
+				$this->data['Coupon']['coupon_no'] = $coupon_group .sprintf('%09s', $i);
+				$this->data['Coupon']['coupon_pwd'] = sprintf('%06s', $pwd);
+				$this->data['Coupon']['random_num'] = $randval;
+				
+				$this->Coupon->save($this->data);
+				$this->Coupon->create(); //在循环
+				
+			}
+		}
+	}
+
+	function edit($id = null) {
+		if(empty($this->data)) {
+			if(!$id) {
+				$this->Session->setFlash('Invalid id for Coupon');
+				$this->redirect('/coupons/index');
+			}
+			$this->data = $this->Coupon->read(null, $id);
+		} else {
+			$this->cleanUpFields();
+			if($this->Coupon->save($this->data)) {
+				$this->Session->setFlash('The Coupon has been saved');
+				$this->redirect('/coupons/index');
+			} else {
+				$this->Session->setFlash('Please correct errors below.');
+			}
+		}
+	}
+
+	function delete($id = null) {
+		if(!$id) {
+			$this->Session->setFlash('Invalid id for Coupon');
+			$this->redirect('/coupons/index');
+		}
+		if($this->Coupon->del($id)) {
+			$this->Session->setFlash('The Coupon deleted: id '.$id.'');
+			$this->redirect('/coupons/index');
+		}
+	}
+
 }
 ?>

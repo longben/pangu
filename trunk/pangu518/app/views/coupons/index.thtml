@@ -1,0 +1,29 @@
+<fieldset>
+<legend>代金券维护</legend>
+<table cellpadding="0" cellspacing="0" width="100%">
+<tr>
+	<th>代金券编号</th>
+	<th>密码</th>
+	<th>代金券生成日期</th>
+	<th>状态</th>
+	<th>操作</th>
+</tr>
+<?php foreach ($coupons as $coupon): ?>
+<tr>
+	<td><?php echo $coupon['Coupon']['coupon_no']; ?></td>
+	<td><?php echo $coupon['Coupon']['coupon_pwd']; ?></td>
+	<td><?php echo $coupon['Coupon']['created']; ?></td>
+	<td><?php echo $coupon['Coupon']['status']; ?></td>
+	<td class="actions">
+		<?php echo $html->link('View','/coupons/view/' . $coupon['Coupon']['id'])?>
+		<?php echo $html->link('Edit','/coupons/edit/' . $coupon['Coupon']['id'])?>
+		<?php echo $html->link('Delete','/coupons/delete/' . $coupon['Coupon']['id'], null, 'Are you sure you want to delete id ' . $coupon['Coupon']['id'])?>
+	</td>
+</tr>
+<?php endforeach; ?>
+</table>
+
+<ul class="actions">
+	<li><?php echo $html->link('批量生成代金券', '/coupons/add'); ?></li>
+</ul>
+</fieldset>

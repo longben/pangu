@@ -1,0 +1,51 @@
+<h2>Edit Coupon</h2>
+<form action="<?php echo $html->url('/coupons/edit/'.$html->tagValue('Coupon/id')); ?>" method="post">
+<div class="optional"> 
+	<?php echo $form->labelTag('Coupon/coupon_no', 'Coupon No');?>
+ 	<?php echo $html->input('Coupon/coupon_no', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Coupon/coupon_no', 'Please enter the Coupon No.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Coupon/coupon_pwd', 'Coupon Pwd');?>
+ 	<?php echo $html->input('Coupon/coupon_pwd', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Coupon/coupon_pwd', 'Please enter the Coupon Pwd.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Coupon/custom_num', 'Custom Num');?>
+ 	<?php echo $html->input('Coupon/custom_num', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Coupon/custom_num', 'Please enter the Custom Num.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Coupon/random_num', 'Random Num');?>
+ 	<?php echo $html->input('Coupon/random_num', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Coupon/random_num', 'Please enter the Random Num.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Coupon/money', 'Money');?>
+ 	<?php echo $html->input('Coupon/money', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Coupon/money', 'Please enter the Money.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Coupon/coupon_group', 'Coupon Group');?>
+ 	<?php echo $html->input('Coupon/coupon_group', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Coupon/coupon_group', 'Please enter the Coupon Group.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Coupon/rate_of_discount', 'Rate Of Discount');?>
+ 	<?php echo $html->input('Coupon/rate_of_discount', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Coupon/rate_of_discount', 'Please enter the Rate Of Discount.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Coupon/status', 'Status');?>
+ 	<?php echo $html->input('Coupon/status', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Coupon/status', 'Please enter the Status.');?>
+</div>
+<?php echo $html->hidden('Coupon/id')?>
+<div class="submit">
+	<?php echo $html->submit('Save');?>
+</div>
+</form>
+<ul class="actions">
+<li><?php echo $html->link('Delete','/coupons/delete/' . $html->tagValue('Coupon/id'), null, 'Are you sure you want to delete: id ' . $html->tagValue('Coupon/id'));?>
+<li><?php echo $html->link('List Coupons', '/coupons/index')?></li>
+</ul>

@@ -1,0 +1,118 @@
+<div class="coupon">
+<h2>View Coupon</h2>
+
+<dl>
+	<dt>Id</dt>
+	<dd>&nbsp;<?php echo $coupon['Coupon']['id']?></dd>
+	<dt>Coupon No</dt>
+	<dd>&nbsp;<?php echo $coupon['Coupon']['coupon_no']?></dd>
+	<dt>Coupon Pwd</dt>
+	<dd>&nbsp;<?php echo $coupon['Coupon']['coupon_pwd']?></dd>
+	<dt>Custom Num</dt>
+	<dd>&nbsp;<?php echo $coupon['Coupon']['custom_num']?></dd>
+	<dt>Random Num</dt>
+	<dd>&nbsp;<?php echo $coupon['Coupon']['random_num']?></dd>
+	<dt>Money</dt>
+	<dd>&nbsp;<?php echo $coupon['Coupon']['money']?></dd>
+	<dt>Coupon Group</dt>
+	<dd>&nbsp;<?php echo $coupon['Coupon']['coupon_group']?></dd>
+	<dt>Rate Of Discount</dt>
+	<dd>&nbsp;<?php echo $coupon['Coupon']['rate_of_discount']?></dd>
+	<dt>Status</dt>
+	<dd>&nbsp;<?php echo $coupon['Coupon']['status']?></dd>
+</dl>
+<ul class="actions">
+	<li><?php echo $html->link('Edit Coupon',   '/coupons/edit/' . $coupon['Coupon']['id']) ?> </li>
+	<li><?php echo $html->link('Delete Coupon', '/coupons/delete/' . $coupon['Coupon']['id'], null, 'Are you sure you want to delete: id ' . $coupon['Coupon']['id'] . '?') ?> </li>
+	<li><?php echo $html->link('List Coupons',   '/coupons/index') ?> </li>
+	<li><?php echo $html->link('New Coupon',	'/coupons/add') ?> </li>
+</ul>
+
+</div>
+<div class="related">
+<h3>Related Member Coupons</h3>
+<?php if(!empty($coupon['MemberCoupon'])):?>
+<table cellpadding="0" cellspacing="0">
+<tr>
+<?php foreach($coupon['MemberCoupon']['0'] as $column => $value): ?>
+<th><?php echo $column?></th>
+<?php endforeach; ?>
+<th>Actions</th>
+</tr>
+<?php foreach($coupon['MemberCoupon'] as $memberCoupon):?>
+<tr>
+	<?php foreach($memberCoupon as $column => $value):?>
+		<td><?php echo $value;?></td>
+	<?php endforeach;?>
+	<td class="actions">
+		<?php echo $html->link('View', '/member_coupons/view/' . $memberCoupon['id']);?>
+		<?php echo $html->link('Edit', '/member_coupons/edit/' . $memberCoupon['id']);?>
+		<?php echo $html->link('Delete', '/member_coupons/delete/' . $memberCoupon['id'], null, 'Are you sure you want to delete: id ' . $memberCoupon['id'] . '?');?>
+	</td>
+</tr>
+<?php endforeach; ?>
+</table>
+<?php endif; ?>
+
+<ul class="actions">
+	<li><?php echo $html->link('New Member Coupon', '/member_coupons/add/');?> </li>
+</ul>
+</div>
+<div class="related">
+<h3>Related Merchant Coupons</h3>
+<?php if(!empty($coupon['MerchantCoupon'])):?>
+<table cellpadding="0" cellspacing="0">
+<tr>
+<?php foreach($coupon['MerchantCoupon']['0'] as $column => $value): ?>
+<th><?php echo $column?></th>
+<?php endforeach; ?>
+<th>Actions</th>
+</tr>
+<?php foreach($coupon['MerchantCoupon'] as $merchantCoupon):?>
+<tr>
+	<?php foreach($merchantCoupon as $column => $value):?>
+		<td><?php echo $value;?></td>
+	<?php endforeach;?>
+	<td class="actions">
+		<?php echo $html->link('View', '/merchant_coupons/view/' . $merchantCoupon['id']);?>
+		<?php echo $html->link('Edit', '/merchant_coupons/edit/' . $merchantCoupon['id']);?>
+		<?php echo $html->link('Delete', '/merchant_coupons/delete/' . $merchantCoupon['id'], null, 'Are you sure you want to delete: id ' . $merchantCoupon['id'] . '?');?>
+	</td>
+</tr>
+<?php endforeach; ?>
+</table>
+<?php endif; ?>
+
+<ul class="actions">
+	<li><?php echo $html->link('New Merchant Coupon', '/merchant_coupons/add/');?> </li>
+</ul>
+</div>
+<div class="related">
+<h3>Related Workstation Coupons</h3>
+<?php if(!empty($coupon['WorkstationCoupon'])):?>
+<table cellpadding="0" cellspacing="0">
+<tr>
+<?php foreach($coupon['WorkstationCoupon']['0'] as $column => $value): ?>
+<th><?php echo $column?></th>
+<?php endforeach; ?>
+<th>Actions</th>
+</tr>
+<?php foreach($coupon['WorkstationCoupon'] as $workstationCoupon):?>
+<tr>
+	<?php foreach($workstationCoupon as $column => $value):?>
+		<td><?php echo $value;?></td>
+	<?php endforeach;?>
+	<td class="actions">
+		<?php echo $html->link('View', '/workstation_coupons/view/' . $workstationCoupon['id']);?>
+		<?php echo $html->link('Edit', '/workstation_coupons/edit/' . $workstationCoupon['id']);?>
+		<?php echo $html->link('Delete', '/workstation_coupons/delete/' . $workstationCoupon['id'], null, 'Are you sure you want to delete: id ' . $workstationCoupon['id'] . '?');?>
+	</td>
+</tr>
+<?php endforeach; ?>
+</table>
+<?php endif; ?>
+
+<ul class="actions">
+	<li><?php echo $html->link('New Workstation Coupon', '/workstation_coupons/add/');?> </li>
+</ul>
+</div>
