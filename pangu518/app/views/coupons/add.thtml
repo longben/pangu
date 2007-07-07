@@ -1,0 +1,27 @@
+<fieldset>
+<legend>添加代金券</legend> 
+<form action="<?php echo $html->url('/coupons/add'); ?>" method="post">
+<div class="optional"> 
+	<?php echo $form->labelTag('Coupon/coupon_group', '代金券组团编号：');?>
+ 	<?php echo $html->input('Coupon/coupon_group', array('size' => '26'));?>
+	<?php echo $html->tagErrorMsg('Coupon/coupon_group', 'Please enter the Coupon Group.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Coupon/custom_num', '代金券起止号码：');?>
+ 	从<?php echo $html->input('Coupon/start', array('size' => '9'));?>
+ 	到<?php echo $html->input('Coupon/end', array('size' => '9'));?> 	
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Coupon/custom_num', '6位数字：');?>
+ 	<?php echo $html->input('Coupon/custom_num', array('size' => '26'));?>
+	<?php echo $html->tagErrorMsg('Coupon/custom_num', 'Please enter the Custom Num.');?>
+</div>
+<div class="submit">
+	<?php echo $html->submit('批量生成代金券');?> 
+</div>
+注：生成时间稍长，请等待……
+</form>
+<ul class="actions">
+<li><?php echo $html->link('代金券维护', '/coupons/index')?></li>
+</ul>
+</fieldset>
