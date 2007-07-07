@@ -34,10 +34,14 @@ create table coupons(
   id               int(11)       not null auto_increment comment '主键',
   coupon_no        varchar(15)   not null                comment '代金券编码。no.0000000001－no.1000000000，10亿一组',
   coupon_pwd       varchar(10)                           comment '代金券密码',
+  custom_num       varchar(10)                           comment '用户随机数',
+  random_num       varchar(10)                           comment '随机数',
   money            int(3)        not null default 2      comment '金额',
   coupon_group     char(3)                               comment '代金券组团 0组团 A组团',
   rate_of_discount decimal(2,1)                          comment '折价率',
-  status           int(3)        not null                comment '状态',
+  created          timestamp                             comment '创建时间',
+  modified         timestamp                             COMMENT '修改时间',
+  status           int(3)        not null default 0      comment '状态',
   primary key (id)
 ) engine=MyISAM default charset=utf8 comment='代金券';
 
@@ -209,7 +213,7 @@ create table lotteries(
   win_number       varchar(5)                            comment '中奖号码',
   win_count        int(5)                                comment '中奖总数',
   created          timestamp                             comment '创建时间',
-  modified         timestamp                             COMMENT '修改时间',
+  modified         timestamp                             comment '修改时间',
   createdby        int(8)                                comment '创建者',
   flag             int(1)        not null default 1      comment '状态',
   primary key (id)
