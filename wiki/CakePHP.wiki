@@ -17,3 +17,20 @@ php acl.php create aro 1 0 admin
 php acl.php setParent aro admin Members
 
 $this->Workstation->getLastInsertID(); //得到刚才保存到数据库的主键值
+
+
+/coupons/audit/1/ABC audit后面跟两个参数
+
+取值方式:
+   function audit($p1 = null,$p2 = null){
+    	echo $p1; //打印值 1
+        echo $p2; //打印值 ABC
+    }
+
+
+	function getGroupByStatus(){
+		$sql = "select distinct Coupon.coupon_group,Coupon.custom_num,Coupon.status
+		  from coupons as Coupon 
+		    where Coupon.status = 0 order by Coupon.coupon_group,Coupon.created";
+		return $this->query($sql);
+	}
