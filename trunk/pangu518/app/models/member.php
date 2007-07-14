@@ -11,7 +11,7 @@ class Member extends AppModel {
 	);
 
 	var $jsFeedback = array(
-		'username' => 'Enter a first name',
+		'username' => '用户',
 		'email' => 'Enter a valid email',
 		'password' => 'Your password must be at least 6 characters'
 	);
