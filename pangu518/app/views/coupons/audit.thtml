@@ -1,0 +1,6 @@
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+	alert("代金券财务审核成功！");
+	location.href = "/coupons/index";
+//-->
+</SCRIPT>

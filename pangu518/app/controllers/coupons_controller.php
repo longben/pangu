@@ -6,8 +6,29 @@ class CouponsController extends AppController {
 
 	function index() {
 		$this->Coupon->recursive = 0;
-		$this->set('coupons', $this->Coupon->findAll());
+		//$this->set('coupons', $this->Coupon->findAll());
+		$this->set('coupons', $this->Coupon->getGroupByStatus());
+		//$this->set('coupons', $this->Coupon->field('coupon_group','status = 0'));
+
+		//field($name, $conditions, $order)
+
+
 	}
+//findAll ($conditions, $fields, $order, $limit, $page, $recursive)
+
+
+    function audit($coupon_group = null,$custom_num = null){
+    	if(!$coupon_group && $coupon_group!=0){
+			$this->Session->setFlash('请选择代金券审核组团！');
+			$this->redirect('/coupons/index');    		
+    	}
+    	
+    	$this->cleanUpFields();
+    	if($this->Coupon->updateStatusByGroup($coupon_group,$custom_num)){
+    		$this->Session->setFlash('代金券审核成功！');
+    		$this->redirect('/coupons/index');
+    	}
+    }
 
 	function view($id = null) {
 		if(!$id) {
@@ -39,9 +60,10 @@ class CouponsController extends AppController {
 				$this->data['Coupon']['random_num'] = $randval;
 				
 				$this->Coupon->save($this->data);
-				$this->Coupon->create(); //在循环
-				
+				$this->Coupon->create(); //再循环
 			}
+			$this->Session->setFlash('该批次代金券初始化成功！');
+			$this->redirect('/coupons/index');
 		}
 	}
 
