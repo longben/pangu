@@ -3,10 +3,11 @@ class Merchant extends AppModel {
 
 	var $name = 'Merchant';
 
+	//The Associations below have been created with all possible keys, those that are not needed can be removed
 	var $belongsTo = array(
-			'Member' =>
-				array('className' => 'Member',
-						'foreignKey' => 'member_id',
+			'User' =>
+				array('className' => 'User',
+						'foreignKey' => 'user_id',
 						'conditions' => '',
 						'fields' => '',
 						'order' => '',
@@ -33,19 +34,14 @@ class Merchant extends AppModel {
 
 	);
 
-	var $hasMany = array(
+	var $hasOne = array(
 			'LotteryBetting' =>
 				array('className' => 'LotteryBetting',
 						'foreignKey' => 'merchant_id',
 						'conditions' => '',
 						'fields' => '',
 						'order' => '',
-						'limit' => '',
-						'offset' => '',
-						'dependent' => '',
-						'exclusive' => '',
-						'finderQuery' => '',
-						'counterQuery' => ''
+						'dependent' => ''
 				),
 
 			'MerchantComplaintLog' =>
@@ -54,12 +50,7 @@ class Merchant extends AppModel {
 						'conditions' => '',
 						'fields' => '',
 						'order' => '',
-						'limit' => '',
-						'offset' => '',
-						'dependent' => '',
-						'exclusive' => '',
-						'finderQuery' => '',
-						'counterQuery' => ''
+						'dependent' => ''
 				),
 
 			'MerchantCoupon' =>
@@ -68,12 +59,7 @@ class Merchant extends AppModel {
 						'conditions' => '',
 						'fields' => '',
 						'order' => '',
-						'limit' => '',
-						'offset' => '',
-						'dependent' => '',
-						'exclusive' => '',
-						'finderQuery' => '',
-						'counterQuery' => ''
+						'dependent' => ''
 				),
 
 	);
