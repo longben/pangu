@@ -57,12 +57,14 @@ create table member_grades(
 
 
 /* 会员扩展信息 */
-create table member_infos(
+create table users(
   id               int(8)        not null                comment '主键，值同members主键值',
-  member_name      varchar(20)   not null                comment '真实姓名',
-  sex              int(1)        not null                comment '性别: 1:男 0:女',
-  member_no        varchar(25)   not null                comment '省编号+身份证号码成为会员编号',
-  cert_number      varchar(18)   not null                comment '身份证号码',
+  login_name       varchar(15)   not null  default ''    comment '用户登录名',
+  password         varchar(32)   not null  default ''    comment '用户口令',  
+  user_name        varchar(20)   not null                comment '真实姓名',
+  sex              int(1)        not null  default 1     comment '性别: 1:男 0:女',
+  member_no        varchar(25)   not null  default ''    comment '省编号+身份证号码成为会员编号',
+  cert_number      varchar(18)   not null  default ''    comment '身份证号码',
   referees         int(8)                                comment '推荐人',
   member_grades_id int(2)        not null default 1      comment '会员等级，默认为普通会员',
   region_id        int(11)                               comment '会员所属地区',
@@ -70,6 +72,7 @@ create table member_infos(
   mobile           varchar(11)                           comment '移动电话',
   office_phone     varchar(30)                           comment '办公电话',
   home_phone       varchar(30)                           comment '家庭电话',
+  email            varchar(30)                           comment '电子邮件',
   bank_accounts    varchar(30)                           comment '开户银行',
   accounts         varchar(20)                           comment '银行帐号',
   created          timestamp                             comment '会员创建日期',
@@ -79,12 +82,12 @@ create table member_infos(
 
 
 /* 会员代金券 */
-create table member_coupons(
+create table user_coupons(
   id               int(11)       not null auto_increment comment '主键',
-  member_id        int(8)        not null                comment '会员编码',
+  user_id          int(8)        not null                comment '会员编码',
   coupon_id        int(11)       not null                comment '代金券编码',
-  gain_date        timestamp                             comment '获得代金券时间',
-  transfer_date    timestamp                             comment '代金券转出时间。即参与抽奖返回公司时间',
+  created          timestamp                             comment '获得代金券时间',
+  modified         timestamp                             comment '代金券转出时间。即参与抽奖返回公司时间',
   status           int(3)        not null                comment '代金券状态',
   primary key (id),
   key coupon_id (coupon_id)
@@ -97,7 +100,7 @@ create table workstations(
   id               int(11)       not null auto_increment comment '主键',
   ws_no            varchar(11)   not null default '0'    comment '工作站编码:省代号+00001',
   ws_name          varchar(50)   not null                comment '工作站名称',
-  member_id        int(8)        not null                comment '工作站所有人',
+  user_id          int(8)        not null                comment '工作站所有人',
   referees         int(8)                                comment '工作站推荐者',
   bargain_no       varchar(30)                           comment '合同编号',
   address          varchar(100)                          comment '工作站地址',
@@ -117,9 +120,9 @@ create table workstation_coupons(
   id               int(11)       not null auto_increment comment '主键',
   workstation_id   int(11)       not null                comment '工作站编码',
   coupon_id        int(11)       not null                comment '代金券编码',
-  gain_date        date          not null                comment '获得代金券时间',
-  transfer_date    date                                  comment '代金券转出时间。即转给会员消费单位时间',
-  status           int(2)        not null default 1      comment '状态',
+  created          timestamp                             comment '获得代金券时间',
+  modified         timestamp                             comment '代金券转出时间。即转给会员消费单位时间',
+  status           int(3)        not null default 1      comment '状态',
   primary key (id),
   key coupon_id (coupon_id)
 ) engine=MyISAM default charset=utf8 comment='工作站代金券';
@@ -153,7 +156,7 @@ create table industries(
 /* 会员消费单位 */
 create table merchants(
   id               int(11)       not null auto_increment comment '主键',
-  member_id        int(8)                                comment '会员消费拥有人',
+  user_id          int(8)                                comment '会员消费拥有人',
   merchant_name    varchar(50)   not null                comment '消费单位名称',
   owner            varchar(10)                           comment '店主',
   telephone        varchar(30)                           comment '联系电话',
@@ -161,13 +164,14 @@ create table merchants(
   office_phone     varchar(30)                           comment '办公电话',
   bank_accounts    varchar(30)                           comment '开户银行',
   accounts         varchar(20)                           comment '银行帐号',
-  salesman         int(8)        not null                comment '会员消费单位签署人',
+  referees         int(8)        not null                comment '会员消费单位签署人',
+  bargain_no       varchar(30)                           comment '合同编号',
   complaint_time   int(2)        not null default 0      comment '投诉次数(merchant_complaint_logs有一条有效记录者+1)',
   return_ratio     decimal(6,2)  not null default 0      comment '返劵比例返给会员',
   industry_id      int(11)       NOT NULL                COMMENT '所属行业',
   region_id        int(11)                               comment '所属地区',
   created          timestamp                             comment '创建时间',
-  status           int(1)        not null                comment '有效标志 0:无效 1:有效 9:待审核',
+  status           int(1)        not null default 9      comment '有效标志 0:无效 1:有效 9:待审核',
   primary key (id)
 ) engine=MyISAM default charset=utf8 comment='会员消费单位';
 
@@ -178,9 +182,9 @@ create table merchant_coupons(
   merchant_id      int(11)       not null                comment '会员消费单位',
   coupon_id        int(11)       not null                comment '代金券',
   workstation_id   int(11)       not null                comment '销售代金券给消费单位的工作站',
-  gain_date        timestamp                             comment '获得代金券时间',
-  transfer_date    timestamp                             comment '代金券退还公司时间',
-  consume_date     timestamp                             comment '会员消费时间',
+  created          timestamp                             comment '获得代金券时间',
+  modified         timestamp                             comment '会员消费时间',
+  untread_date     timestamp                             comment '代金券退还公司时间',
   status           int(3)        not null default 1      comment '状态',
   primary key (id),
   key coupon_id (coupon_id)
@@ -191,8 +195,8 @@ create table merchant_coupons(
 create table merchant_complaint_logs(
   id               int(11)       not null auto_increment comment '主键',
   merchant_id      int(11)       not null                comment '会员消费单位',
-  member_id        int(8)        not null                comment '会员',
-  complaint_date   timestamp                             comment '会员投诉会员消费单位时间',
+  user_id          int(8)        not null                comment '会员',
+  created          timestamp                             comment '会员投诉会员消费单位时间',
   complaint_reason varchar(500)                          comment '投诉原因',
   judge            int(8)                                comment '公司内部投诉审核人',
   auditing_date    timestamp                             comment '审核时间',
@@ -227,6 +231,7 @@ create table lottery_bettings(
   betting_number   varchar(5)    not null                comment '彩票投注号码',
   betting_time     int(5)        not null default 1      comment '投注份数',
   betting_type     int(1)        not null default 1      comment '投注类型：1:个人投注 2:会员消费单位投注',
+  user_id          int(8)                                comment '个人会员',
   merchant_id      int(11)                               comment '会员消费单位',
   created          timestamp                             comment '投票时间',
   flag             int(1)        not null default 1      comment '状态',
