@@ -11,9 +11,9 @@
 	<?php echo $html->tagErrorMsg('Workstation/ws_name', 'Please enter the Ws Name.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Workstation/member_id', 'Member');?>
- 	<?php echo $html->selectTag('Workstation/member_id', $members, $html->tagValue('Workstation/member_id'), array(), array(), true);?>
-	<?php echo $html->tagErrorMsg('Workstation/member_id', 'Please select the Member.') ?>
+	<?php echo $form->labelTag('Workstation/user_id', 'Member');?>
+ 	<?php echo $html->selectTag('Workstation/user_id', $users, $html->tagValue('Workstation/user_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('Workstation/user_id', 'Please select the Member.') ?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Workstation/referees', 'Referees');?>

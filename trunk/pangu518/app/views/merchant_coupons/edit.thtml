@@ -1,0 +1,37 @@
+<h2>Edit Merchant Coupon</h2>
+<form action="<?php echo $html->url('/merchant_coupons/edit/'.$html->tagValue('MerchantCoupon/id')); ?>" method="post">
+<div class="optional"> 
+	<?php echo $form->labelTag('MerchantCoupon/merchant_id', 'Merchant');?>
+ 	<?php echo $html->selectTag('MerchantCoupon/merchant_id', $merchants, $html->tagValue('MerchantCoupon/merchant_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('MerchantCoupon/merchant_id', 'Please select the Merchant.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('MerchantCoupon/coupon_id', 'Coupon');?>
+ 	<?php echo $html->selectTag('MerchantCoupon/coupon_id', $coupons, $html->tagValue('MerchantCoupon/coupon_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('MerchantCoupon/coupon_id', 'Please select the Coupon.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('MerchantCoupon/workstation_id', 'Workstation');?>
+ 	<?php echo $html->selectTag('MerchantCoupon/workstation_id', $workstations, $html->tagValue('MerchantCoupon/workstation_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('MerchantCoupon/workstation_id', 'Please select the Workstation.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('MerchantCoupon/status', 'Status');?>
+ 	<?php echo $html->input('MerchantCoupon/status', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('MerchantCoupon/status', 'Please enter the Status.');?>
+</div>
+<?php echo $html->hidden('MerchantCoupon/id')?>
+<div class="submit">
+	<?php echo $html->submit('Save');?>
+</div>
+</form>
+<ul class="actions">
+<li><?php echo $html->link('Delete','/merchant_coupons/delete/' . $html->tagValue('MerchantCoupon/id'), null, 'Are you sure you want to delete: id ' . $html->tagValue('MerchantCoupon/id'));?>
+<li><?php echo $html->link('List Merchant Coupons', '/merchant_coupons/index')?></li>
+<li><?php echo $html->link('View Merchants', '/merchants/index/');?></li>
+<li><?php echo $html->link('Add Merchants', '/merchants/add/');?></li>
+<li><?php echo $html->link('View Coupons', '/coupons/index/');?></li>
+<li><?php echo $html->link('Add Coupons', '/coupons/add/');?></li>
+<li><?php echo $html->link('View Workstations', '/workstations/index/');?></li>
+<li><?php echo $html->link('Add Workstations', '/workstations/add/');?></li>
+</ul>

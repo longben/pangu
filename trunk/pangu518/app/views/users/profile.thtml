@@ -1,0 +1,92 @@
+<fieldset align=center>
+<legend>编辑会员资料</legend> 
+<form action="<?php echo $html->url('/users/edit/'.$html->tagValue('User/id')); ?>" method="post">
+<div class="optional"> 
+	<?php echo $form->labelTag('User/login_name', '登录名：');?>
+ 	<?php echo $html->input('User/login_name', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('User/login_name', 'Please enter the Login Name.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('User/password', 'Password');?>
+ 	<?php echo $html->input('User/password', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('User/password', 'Please enter the Password.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('User/user_name', '真实姓名：');?>
+ 	<?php echo $html->input('User/user_name', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('User/user_name', 'Please enter the User Name.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('User/sex', '性别：');?>
+ 	<?php echo $html->input('User/sex', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('User/sex', 'Please enter the Sex.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('User/member_no', '会员编号');?>
+ 	<?php echo $html->input('User/member_no', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('User/member_no', 'Please enter the Member No.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('User/cert_number', '身份证号码：');?>
+ 	<?php echo $html->input('User/cert_number', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('User/cert_number', 'Please enter the Cert Number.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('User/referees', '推荐人：');?>
+ 	<?php echo $html->input('User/referees', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('User/referees', 'Please enter the Referees.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('User/member_grades_id', '会员等级：');?>
+ 	<?php echo $html->selectTag('User/member_grades_id', $memberGrades, $html->tagValue('User/member_grades_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('User/member_grades_id', 'Please select the Member Grades.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('User/region_id', '所属地区：');?>
+ 	<?php echo $html->selectTag('User/region_id', $regions, $html->tagValue('User/region_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('User/region_id', 'Please select the Region.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('User/telephone', '常用电话：');?>
+ 	<?php echo $html->input('User/telephone', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('User/telephone', 'Please enter the Telephone.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('User/mobile', '移动电话：');?>
+ 	<?php echo $html->input('User/mobile', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('User/mobile', 'Please enter the Mobile.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('User/office_phone', '办公电话：');?>
+ 	<?php echo $html->input('User/office_phone', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('User/office_phone', 'Please enter the Office Phone.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('User/home_phone', '家庭电话：');?>
+ 	<?php echo $html->input('User/home_phone', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('User/home_phone', 'Please enter the Home Phone.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('User/bank_accounts', '开户银行：');?>
+ 	<?php echo $html->input('User/bank_accounts', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('User/bank_accounts', 'Please enter the Bank Accounts.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('User/accounts', '银行帐号：');?>
+ 	<?php echo $html->input('User/accounts', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('User/accounts', 'Please enter the Accounts.');?>
+</div>
+<?php echo $html->hidden('User/id')?>
+<div class="submit">
+	<?php echo $html->submit('Save');?>
+</div>
+</form>
+<ul class="actions">
+<li><?php echo $html->link('Delete','/users/delete/' . $html->tagValue('User/id'), null, 'Are you sure you want to delete: id ' . $html->tagValue('User/id'));?>
+<li><?php echo $html->link('List Users', '/users/index')?></li>
+<li><?php echo $html->link('View Member Grades', '/member_grades/index/');?></li>
+<li><?php echo $html->link('Add Member Grades', '/member_grades/add/');?></li>
+<li><?php echo $html->link('View Regions', '/regions/index/');?></li>
+<li><?php echo $html->link('Add Regions', '/regions/add/');?></li>
+</ul>
+</fieldset>

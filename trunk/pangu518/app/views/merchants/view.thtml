@@ -4,8 +4,8 @@
 <dl>
 	<dt>Id</dt>
 	<dd>&nbsp;<?php echo $merchant['Merchant']['id']?></dd>
-	<dt>Member</dt>
-	<dd>&nbsp;<?php echo $html->link($merchant['Member']['uid'], '/members/view/' .$merchant['Member']['uid'])?></dd>
+	<dt>User</dt>
+	<dd>&nbsp;<?php echo $html->link($merchant['User']['id'], '/users/view/' .$merchant['User']['id'])?></dd>
 	<dt>Merchant Name</dt>
 	<dd>&nbsp;<?php echo $merchant['Merchant']['merchant_name']?></dd>
 	<dt>Owner</dt>
@@ -26,6 +26,10 @@
 	<dd>&nbsp;<?php echo $merchant['Merchant']['complaint_time']?></dd>
 	<dt>Return Ratio</dt>
 	<dd>&nbsp;<?php echo $merchant['Merchant']['return_ratio']?></dd>
+	<dt>Industry</dt>
+	<dd>&nbsp;<?php echo $html->link($merchant['Industry']['id'], '/industries/view/' .$merchant['Industry']['id'])?></dd>
+	<dt>Region</dt>
+	<dd>&nbsp;<?php echo $html->link($merchant['Region']['id'], '/regions/view/' .$merchant['Region']['id'])?></dd>
 	<dt>Created</dt>
 	<dd>&nbsp;<?php echo $merchant['Merchant']['created']?></dd>
 	<dt>Status</dt>
@@ -36,37 +40,57 @@
 	<li><?php echo $html->link('Delete Merchant', '/merchants/delete/' . $merchant['Merchant']['id'], null, 'Are you sure you want to delete: id ' . $merchant['Merchant']['id'] . '?') ?> </li>
 	<li><?php echo $html->link('List Merchants',   '/merchants/index') ?> </li>
 	<li><?php echo $html->link('New Merchant',	'/merchants/add') ?> </li>
-	<li><?php echo $html->link('List Member', '/members/index/')?> </li>
-	<li><?php echo $html->link('New Members', '/members/add/')?> </li>
+	<li><?php echo $html->link('List User', '/users/index/')?> </li>
+	<li><?php echo $html->link('New Users', '/users/add/')?> </li>
+	<li><?php echo $html->link('List Industry', '/industries/index/')?> </li>
+	<li><?php echo $html->link('New Industries', '/industries/add/')?> </li>
+	<li><?php echo $html->link('List Region', '/regions/index/')?> </li>
+	<li><?php echo $html->link('New Regions', '/regions/add/')?> </li>
 </ul>
 
 </div>
 <div class="related">
 <h3>Related Lottery Bettings</h3>
-<?php if(!empty($merchant['LotteryBetting'])):?>
-<table cellpadding="0" cellspacing="0">
-<tr>
-<?php foreach($merchant['LotteryBetting']['0'] as $column => $value): ?>
-<th><?php echo $column?></th>
-<?php endforeach; ?>
-<th>Actions</th>
-</tr>
-<?php foreach($merchant['LotteryBetting'] as $lotteryBetting):?>
-<tr>
-	<?php foreach($lotteryBetting as $column => $value):?>
-		<td><?php echo $value;?></td>
-	<?php endforeach;?>
-	<td class="actions">
-		<?php echo $html->link('View', '/lottery_bettings/view/' . $lotteryBetting['id']);?>
-		<?php echo $html->link('Edit', '/lottery_bettings/edit/' . $lotteryBetting['id']);?>
-		<?php echo $html->link('Delete', '/lottery_bettings/delete/' . $lotteryBetting['id'], null, 'Are you sure you want to delete: id ' . $lotteryBetting['id'] . '?');?>
-	</td>
-</tr>
-<?php endforeach; ?>
-</table>
+<?php if(!empty($merchant['LotteryBetting'])): ?>
+<dl>
+	<?php foreach($merchant['LotteryBetting'] as $field => $value): ?>
+		<dt><?php echo $field ?></dt>
+		<dd>&nbsp;<?php echo $value ?></dd>
+	<?php endforeach; ?>
+</dl>
 <?php endif; ?>
-
 <ul class="actions">
+	<li><?php echo $html->link('Edit Lottery Betting', '/lottery_bettings/edit/' . $merchant['LotteryBetting']['id']);?></li>
 	<li><?php echo $html->link('New Lottery Betting', '/lottery_bettings/add/');?> </li>
+</ul>
+</div>
+<div class="related">
+<h3>Related Merchant Complaint Logs</h3>
+<?php if(!empty($merchant['MerchantComplaintLog'])): ?>
+<dl>
+	<?php foreach($merchant['MerchantComplaintLog'] as $field => $value): ?>
+		<dt><?php echo $field ?></dt>
+		<dd>&nbsp;<?php echo $value ?></dd>
+	<?php endforeach; ?>
+</dl>
+<?php endif; ?>
+<ul class="actions">
+	<li><?php echo $html->link('Edit Merchant Complaint Log', '/merchant_complaint_logs/edit/' . $merchant['MerchantComplaintLog']['id']);?></li>
+	<li><?php echo $html->link('New Merchant Complaint Log', '/merchant_complaint_logs/add/');?> </li>
+</ul>
+</div>
+<div class="related">
+<h3>Related Merchant Coupons</h3>
+<?php if(!empty($merchant['MerchantCoupon'])): ?>
+<dl>
+	<?php foreach($merchant['MerchantCoupon'] as $field => $value): ?>
+		<dt><?php echo $field ?></dt>
+		<dd>&nbsp;<?php echo $value ?></dd>
+	<?php endforeach; ?>
+</dl>
+<?php endif; ?>
+<ul class="actions">
+	<li><?php echo $html->link('Edit Merchant Coupon', '/merchant_coupons/edit/' . $merchant['MerchantCoupon']['id']);?></li>
+	<li><?php echo $html->link('New Merchant Coupon', '/merchant_coupons/add/');?> </li>
 </ul>
 </div>

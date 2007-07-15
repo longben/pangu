@@ -4,7 +4,7 @@
 <table cellpadding="0" cellspacing="0">
 <tr>
 	<th>Id</th>
-	<th>Member</th>
+	<th>User</th>
 	<th>Merchant Name</th>
 	<th>Owner</th>
 	<th>Telephone</th>
@@ -15,6 +15,8 @@
 	<th>Salesman</th>
 	<th>Complaint Time</th>
 	<th>Return Ratio</th>
+	<th>Industry</th>
+	<th>Region</th>
 	<th>Created</th>
 	<th>Status</th>
 	<th>Actions</th>
@@ -22,7 +24,7 @@
 <?php foreach ($merchants as $merchant): ?>
 <tr>
 	<td><?php echo $merchant['Merchant']['id']; ?></td>
-	<td>&nbsp;<?php echo $html->link($merchant['Member']['uid'], '/members/view/' .$merchant['Member']['uid'])?></td>
+	<td>&nbsp;<?php echo $html->link($merchant['User']['id'], '/users/view/' .$merchant['User']['id'])?></td>
 	<td><?php echo $merchant['Merchant']['merchant_name']; ?></td>
 	<td><?php echo $merchant['Merchant']['owner']; ?></td>
 	<td><?php echo $merchant['Merchant']['telephone']; ?></td>
@@ -33,6 +35,8 @@
 	<td><?php echo $merchant['Merchant']['salesman']; ?></td>
 	<td><?php echo $merchant['Merchant']['complaint_time']; ?></td>
 	<td><?php echo $merchant['Merchant']['return_ratio']; ?></td>
+	<td>&nbsp;<?php echo $html->link($merchant['Industry']['id'], '/industries/view/' .$merchant['Industry']['id'])?></td>
+	<td>&nbsp;<?php echo $html->link($merchant['Region']['id'], '/regions/view/' .$merchant['Region']['id'])?></td>
 	<td><?php echo $merchant['Merchant']['created']; ?></td>
 	<td><?php echo $merchant['Merchant']['status']; ?></td>
 	<td class="actions">

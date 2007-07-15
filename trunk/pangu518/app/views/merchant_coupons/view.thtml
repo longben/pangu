@@ -1,0 +1,35 @@
+<div class="merchantCoupon">
+<h2>View Merchant Coupon</h2>
+
+<dl>
+	<dt>Id</dt>
+	<dd>&nbsp;<?php echo $merchantCoupon['MerchantCoupon']['id']?></dd>
+	<dt>Merchant</dt>
+	<dd>&nbsp;<?php echo $html->link($merchantCoupon['Merchant']['id'], '/merchants/view/' .$merchantCoupon['Merchant']['id'])?></dd>
+	<dt>Coupon</dt>
+	<dd>&nbsp;<?php echo $html->link($merchantCoupon['Coupon']['id'], '/coupons/view/' .$merchantCoupon['Coupon']['id'])?></dd>
+	<dt>Workstation</dt>
+	<dd>&nbsp;<?php echo $html->link($merchantCoupon['Workstation']['id'], '/workstations/view/' .$merchantCoupon['Workstation']['id'])?></dd>
+	<dt>Created</dt>
+	<dd>&nbsp;<?php echo $merchantCoupon['MerchantCoupon']['created']?></dd>
+	<dt>Modified</dt>
+	<dd>&nbsp;<?php echo $merchantCoupon['MerchantCoupon']['modified']?></dd>
+	<dt>Untread Date</dt>
+	<dd>&nbsp;<?php echo $merchantCoupon['MerchantCoupon']['untread_date']?></dd>
+	<dt>Status</dt>
+	<dd>&nbsp;<?php echo $merchantCoupon['MerchantCoupon']['status']?></dd>
+</dl>
+<ul class="actions">
+	<li><?php echo $html->link('Edit Merchant Coupon',   '/merchant_coupons/edit/' . $merchantCoupon['MerchantCoupon']['id']) ?> </li>
+	<li><?php echo $html->link('Delete Merchant Coupon', '/merchant_coupons/delete/' . $merchantCoupon['MerchantCoupon']['id'], null, 'Are you sure you want to delete: id ' . $merchantCoupon['MerchantCoupon']['id'] . '?') ?> </li>
+	<li><?php echo $html->link('List Merchant Coupons',   '/merchant_coupons/index') ?> </li>
+	<li><?php echo $html->link('New Merchant Coupon',	'/merchant_coupons/add') ?> </li>
+	<li><?php echo $html->link('List Merchant', '/merchants/index/')?> </li>
+	<li><?php echo $html->link('New Merchants', '/merchants/add/')?> </li>
+	<li><?php echo $html->link('List Coupon', '/coupons/index/')?> </li>
+	<li><?php echo $html->link('New Coupons', '/coupons/add/')?> </li>
+	<li><?php echo $html->link('List Workstation', '/workstations/index/')?> </li>
+	<li><?php echo $html->link('New Workstations', '/workstations/add/')?> </li>
+</ul>
+
+</div>

@@ -10,7 +10,7 @@ if(isset($javascript)){
 </legend> 
 <form action="<?php echo $html->url('/members/add'); ?>" method="post">
 <div class="optional">
-   <?php echo $form->labelTag('Member/username', '用户名：');?>
+   <?php echo $form->labelTag('Member/username', '登录名：');?>
    <?php echo $html->input('Member/username', array('size' => '60'));?>
    <?php echo $html->tagErrorMsg('Member/username', '请输入用户名。');?>
 </div>
@@ -20,9 +20,9 @@ if(isset($javascript)){
 	<?php echo $html->tagErrorMsg('Member/password', '请输入用户口令。');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Member/credits', '校验口令：');?>
- 	<?php echo $html->input('Member/credits', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Member/credits', '两次口令录入不一致！');?>
+	<?php echo $form->labelTag('Member/confirm', '校验口令：');?>
+ 	<?php echo $html->input('Member/confirm', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Member/confirm', '两次口令录入不一致！');?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Member/email', '电子邮件：');?>

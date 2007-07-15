@@ -103,3 +103,18 @@
 </ul>
 
 </div>
+<div class="related">
+<h3>Related Users</h3>
+<?php if(!empty($member['User'])): ?>
+<dl>
+	<?php foreach($member['User'] as $field => $value): ?>
+		<dt><?php echo $field ?></dt>
+		<dd>&nbsp;<?php echo $value ?></dd>
+	<?php endforeach; ?>
+</dl>
+<?php endif; ?>
+<ul class="actions">
+	<li><?php echo $html->link('Edit User', '/users/edit/' . $member['User']['id']);?></li>
+	<li><?php echo $html->link('New User', '/users/add/');?> </li>
+</ul>
+</div>

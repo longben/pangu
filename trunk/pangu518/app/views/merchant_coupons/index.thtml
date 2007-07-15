@@ -1,0 +1,8 @@
+<fieldset align=center>
+<legend>可用金额及代金券管理</legend> 
+
+
+<ul class="actions">
+	<li><?php echo $html->link('New Merchant Coupon', '/merchant_coupons/add'); ?></li>
+</ul>
+</fieldset>

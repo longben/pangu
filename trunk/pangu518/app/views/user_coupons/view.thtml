@@ -1,0 +1,29 @@
+<div class="userCoupon">
+<h2>View User Coupon</h2>
+
+<dl>
+	<dt>Id</dt>
+	<dd>&nbsp;<?php echo $userCoupon['UserCoupon']['id']?></dd>
+	<dt>User</dt>
+	<dd>&nbsp;<?php echo $html->link($userCoupon['User']['id'], '/users/view/' .$userCoupon['User']['id'])?></dd>
+	<dt>Coupon</dt>
+	<dd>&nbsp;<?php echo $html->link($userCoupon['Coupon']['id'], '/coupons/view/' .$userCoupon['Coupon']['id'])?></dd>
+	<dt>Created</dt>
+	<dd>&nbsp;<?php echo $userCoupon['UserCoupon']['created']?></dd>
+	<dt>Modified</dt>
+	<dd>&nbsp;<?php echo $userCoupon['UserCoupon']['modified']?></dd>
+	<dt>Status</dt>
+	<dd>&nbsp;<?php echo $userCoupon['UserCoupon']['status']?></dd>
+</dl>
+<ul class="actions">
+	<li><?php echo $html->link('Edit User Coupon',   '/user_coupons/edit/' . $userCoupon['UserCoupon']['id']) ?> </li>
+	<li><?php echo $html->link('Delete User Coupon', '/user_coupons/delete/' . $userCoupon['UserCoupon']['id'], null, 'Are you sure you want to delete: id ' . $userCoupon['UserCoupon']['id'] . '?') ?> </li>
+	<li><?php echo $html->link('List User Coupons',   '/user_coupons/index') ?> </li>
+	<li><?php echo $html->link('New User Coupon',	'/user_coupons/add') ?> </li>
+	<li><?php echo $html->link('List User', '/users/index/')?> </li>
+	<li><?php echo $html->link('New Users', '/users/add/')?> </li>
+	<li><?php echo $html->link('List Coupon', '/coupons/index/')?> </li>
+	<li><?php echo $html->link('New Coupons', '/coupons/add/')?> </li>
+</ul>
+
+</div>

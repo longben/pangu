@@ -1,0 +1,23 @@
+<fieldset align=center>
+<legend>代金券录入</legend> 
+<form action="<?php echo $html->url('/user_coupons/input'); ?>" method="post">
+   <?php echo $html->hiddenTag('UserCoupon/user_id',$this->controller->Session->read('User.uid'));?>
+<div class="optional"> 
+	<?php echo $form->labelTag('Coupon/coupon_no', '代金券编号：');?>
+	<?php echo $html->input('Coupon/coupon_no', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Coupon/coupon_no', '代金券编号不能为空！') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Coupon/coupon_pwd', '代金券密码：');?>
+	<?php echo $html->input('Coupon/coupon_pwd', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Coupon/coupon_pwd', '代金券密码不能为空！') ?>
+</div>
+<div class="submit">
+	<?php echo $html->submit('添加');?>
+</div>
+</form>
+<ul>
+ <li>可用代金券总数：<?=$available_capital?>张</li>
+ <li>已消费代金券总数：<?=$expenditure?>张</li>
+</ul>
+</fieldset>

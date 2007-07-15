@@ -17,41 +17,52 @@
 		d.config.target = "right";
 
 		d.add(0,-1,'盘古消费运营软件');
-		d.add(1,0,'会员管理');
-		d.add(2,0,'会员消费单位管理');
-		d.add(3,0,'工作站管理');
+
+
+		d.add(1,0,'会员专区');
+		d.add(2,0,'会员消费单位专区');
+		d.add(3,0,'工作站专区');
 		d.add(4,0,'公司总部管理');
 		d.add(5,0,'分红管理');
 		d.add(6,0,'代金券认证系统');		
 		d.add(8,0,'权限管理','','','','','/treeimg/imgfolder.gif');
 		d.add(9,0,'基础代码管理','','','','','/treeimg/imgfolder.gif');
-		d.add(11,0,'系统消息','example01.html','','','/treeimg/trash.gif');
+		d.add(11,0,'系统消息');
 
-		d.add(1001,1,'会员资料维护','/members');
-		d.add(1002,1,'会员扩展信息维护','/member_infos');
+		d.add(41,4,'会员管理');
+		d.add(42,4,'会员消费单位管理');
+		d.add(43,4,'工作站管理');
+
+		d.add(4101,41,'会员资料维护','/members');
+		d.add(4102,41,'会员扩展信息维护','/users');
+
+		d.add(4201,42,'新增消费单位','/merchants/add');
+		d.add(4202,42,'消费单位列表','/merchants/index');
+		d.add(4203,42,'消费单位审核','/merchants/auditing');		
+		d.add(4204,42,'违规消费单位管理','/merchants/auditing');
+
+		d.add(4301,43,'新增工作站','/workstations/add');		//公司权限才可操作
+		d.add(4302,43,'工作站列表','/workstations');			//公司权限才可看到【包括查询】
+		d.add(4303,43,'工作站审核','/workstations/audit');		//公司权限才可操作【包括开通工作站权限及工作站转让审核】
+
+
+		d.add(1001,1,'编辑个人资料','/members/profile');
+		d.add(1002,1,'代金券录入','/user_coupons/input');
 		d.add(1003,1,'会员参与分红','');
-		d.add(1004,1,'会员个人业绩查看','/members');
-		d.add(1005,1,'会员历史分红查看','/member_history');
-		d.add(1006,1,'会员网络查看','/member_history');			//这个是指的下线数量的查看【参照“软件程序”---会员佣金制度】
-		d.add(1007,1,'投诉消费单位','');
+		d.add(1004,1,'投诉消费单位','');
 		
-		d.add(2001,2,'消费单位资料维护','/merchants');			//消费单位权限
-		d.add(2002,2,'消费单位可用金额及代金券管理','/merchants');	//消费单位权限
-		d.add(2003,2,'消费单位代金券销售报表管理','/merchants');	//消费单位权限
-		d.add(2004,2,'消费单位参与分红','/merchants');			//消费单位权限
-		d.add(2005,2,'消费单位分红历史查询','/merchants');		//消费单位权限
-		d.add(2006,2,'新增消费单位','/merchants/add');
-		d.add(2007,2,'消费单位列表','/merchants');
-		d.add(2008,2,'消费单位审核','/merchants/auditing');		
-		d.add(2009,2,'违规消费单位管理','/merchants/auditing');		//公司权限，包括中止、查看等
+		
+		d.add(2001,2,'消费单位资料维护','/merchants/profile');		//消费单位权限
+		d.add(2002,2,'可用金额及代金券管理','/merchant_coupons');	//消费单位权限
+		d.add(2003,2,'代金券销售报表管理','/merchants');	//消费单位权限
+		d.add(2004,2,'消费单位参与分红','/merchants');		//消费单位权限
+		d.add(2005,2,'消费单位分红历史查询','/merchants');	//消费单位权限
+
 		
 		d.add(3001,3,'工作站资料维护','/workstations');			//工作站权限
-		d.add(3002,3,'工作站可用金额及代金券管理','/workstations');	//工作站权限
+		d.add(3002,3,'可用金额及代金券管理','/workstations');	//工作站权限
 		d.add(3003,3,'工作站收益报表','/workstations/report');		//工作站权限【包括历史查询】
 		d.add(3004,3,'工作站转让申请','/workstations/translate');	//工作站权限提出申请
-		d.add(3005,3,'新增工作站','/workstations/add');			//公司权限才可操作
-		d.add(3006,3,'工作站列表','/workstations');			//公司权限才可看到【包括查询】
-		d.add(3007,3,'工作站审核','/workstations/audit');		//公司权限才可操作【包括开通工作站权限及工作站转让审核】
 
 		d.add(4001,4,'公司总部资料维护','/');
 		d.add(4002,4,'参与分红单数查询','/');
@@ -62,10 +73,9 @@
 		d.add(5001,5,'分红期数管理','/lotteries');			//【这个要求有一个参与分红的有效时间】
 		d.add(5002,5,'分红号码录入','/pages/swings_the_number');	//这个只是需要录入，摇奖功能网站不需要，由现场抓阄出结果录入
 		d.add(5003,5,'分红数据计算','/lotteries');			//查询已录入分红号码的期数，然后利用php的robot程序来执行分红的计算
-		//d.add(5002,5,'彩票投注','/lottery_bettings');			//由于会员和消费单位参与分红规则方面不同，故分开放到消费单位和会员下面
 		
-		d.add(6001,6,'代金券生成','/coupons');
-		d.add(6002,6,'代金券审核','/coupons');				//不同级别进行不同的审核
+		d.add(6001,6,'代金券生成','/coupons/add');
+		d.add(6002,6,'代金券审核','/coupons/index'); //不同级别进行不同的审核
 		
 		d.add(8001,8,'系统初始化','/members/install');
 		d.add(8002,8,'角色维护');

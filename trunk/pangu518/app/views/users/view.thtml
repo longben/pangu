@@ -1,0 +1,47 @@
+<fieldset align=center>
+<legend>
+会员资料
+</legend> 
+<dl>
+	<dt>会员编号：</dt>
+	<dd>&nbsp;<?php echo $user['User']['member_no']?></dd>
+	<dt>登录名：</dt>
+	<dd>&nbsp;<?php echo $user['User']['login_name']?></dd>
+	<dt>真实姓名：</dt>
+	<dd>&nbsp;<?php echo $user['User']['user_name']?></dd>
+	<dt>性别：</dt>
+	<dd>&nbsp;<?php echo $user['User']['sex']?></dd>
+	<dt>身份证号码：</dt>
+	<dd>&nbsp;<?php echo $user['User']['cert_number']?></dd>
+	<dt>推荐人：</dt>
+	<dd>&nbsp;<?php echo $user['User']['referees']?></dd>
+	<dt>会员等级：</dt>
+	<dd>&nbsp;<?php echo $html->link($user['MemberGrade']['id'], '/member_grades/view/' .$user['MemberGrade']['id'])?></dd>
+	<dt>所属地区：</dt>
+	<dd>&nbsp;<?php echo $html->link($user['Region']['id'], '/regions/view/' .$user['Region']['id'])?></dd>
+	<dt>联系电话：</dt>
+	<dd>&nbsp;<?php echo $user['User']['telephone']?></dd>
+	<dt>移动电话：</dt>
+	<dd>&nbsp;<?php echo $user['User']['mobile']?></dd>
+	<dt>办公电话：</dt>
+	<dd>&nbsp;<?php echo $user['User']['office_phone']?></dd>
+	<dt>家庭电话：</dt>
+	<dd>&nbsp;<?php echo $user['User']['home_phone']?></dd>
+	<dt>开户银行：</dt>
+	<dd>&nbsp;<?php echo $user['User']['bank_accounts']?></dd>
+	<dt>银行帐号：</dt>
+	<dd>&nbsp;<?php echo $user['User']['accounts']?></dd>
+	<dt>注册时间：</dt>
+	<dd>&nbsp;<?php echo $user['User']['created']?></dd>
+	<dt>状态：</dt>
+	<dd>&nbsp;<?php echo $user['User']['flag']?></dd>
+</dl>
+<ul class="actions">
+	<li><?php echo $html->link('编辑', '/users/edit/' . $user['User']['id']) ?> </li>
+	<li><?php echo $html->link('个人业绩','/users/performance/' . $user['User']['id'])?></li>
+	<li><?php echo $html->link('历史分红','/users/bonus/' . $user['User']['id'])?></li>
+	<li><?php echo $html->link('会员网络','/users/network/' . $user['User']['id'])?></li>
+	<li><?php echo $html->link('用户列表', '/users/index') ?> </li>
+</ul>
+
+</fieldset>
