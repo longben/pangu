@@ -23,17 +23,30 @@ class WorkstationsController extends AppController {
 				$this->redirect('/workstations/index');
 			}
 			$this->data = $this->Workstation->read(null, $id);
-			$this->set('members', $this->Workstation->Member->generateList());
+			$this->set('users', $this->Workstation->User->generateList());
 			$this->set('regions', $this->Workstation->Region->generateList());
 		} else {
-			$this->cleanUpFields();
-			if($this->Workstation->save($this->data)) {
-				$this->Session->setFlash('The Workstation has been saved');
+			$status = $this->Workstation->findStatusById($id);
+			if($status == 9){
+				$this->cleanUpFields();
+				if($this->Workstation->auditing($this->data['Workstation']['id'],2,$this->data['Workstation']['money'])){
+					$this->data['Workstation']['status'] = '1'; //审核通过
+					if($this->Workstation->save($this->data)) {
+						$this->Session->setFlash('工作站审核成功！');
+						$this->redirect('/workstations/index');
+					}else{
+						$this->Session->setFlash('Please correct errors below.');
+						$this->set('users', $this->Workstation->User->generateList());
+						$this->set('regions', $this->Workstation->Region->generateList());
+					}
+				}else{
+					$this->Session->setFlash('审核尚未成功，库存代金券数量过少！');
+					$this->set('users', $this->Workstation->User->generateList());
+					$this->set('regions', $this->Workstation->Region->generateList());
+				}
+			}else{
+				$this->Session->setFlash('该工作站已经审核！');
 				$this->redirect('/workstations/index');
-			} else {
-				$this->Session->setFlash('Please correct errors below.');
-				$this->set('members', $this->Workstation->Member->generateList());
-				$this->set('regions', $this->Workstation->Region->generateList());
 			}
 		}
 	}	
@@ -80,16 +93,16 @@ class WorkstationsController extends AppController {
 				$this->redirect('/workstations/index');
 			}
 			$this->data = $this->Workstation->read(null, $id);
-			$this->set('members', $this->Workstation->Member->generateList());
+			$this->set('users', $this->Workstation->User->generateList());
 			$this->set('regions', $this->Workstation->Region->generateList());
 		} else {
 			$this->cleanUpFields();
 			if($this->Workstation->save($this->data)) {
-				$this->Session->setFlash('The Workstation has been saved');
+				$this->Session->setFlash('工作站资料修改成功！');
 				$this->redirect('/workstations/index');
 			} else {
 				$this->Session->setFlash('Please correct errors below.');
-				$this->set('members', $this->Workstation->Member->generateList());
+				$this->set('users', $this->Workstation->User->generateList());
 				$this->set('regions', $this->Workstation->Region->generateList());
 			}
 		}

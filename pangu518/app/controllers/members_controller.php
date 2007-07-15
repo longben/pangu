@@ -12,7 +12,7 @@ class MembersController extends AppController {
         $this->AjaxValid->setForm($this->data,'Member/index','redirect');
         $this->AjaxValid->required(array('Member/username','Member/password','Member/email'));
         $this->AjaxValid->unique(array('Member/email'));
-        $this->AjaxValid->confirm('Member/password', array('Member/confirm'), 'Your passwords do not match');
+        $this->AjaxValid->confirm('Member/password', array('Member/confirm'), '两次输入口令不匹配.');
         $this->set('data',$this->AjaxValid->validate());
         $this->set('valid',$this->AjaxValid->valid);
         if($this->AjaxValid->valid){
@@ -27,7 +27,7 @@ class MembersController extends AppController {
 
 	function view($id = null) {
 		if ($this->Acl->check($this->Session->read('User.uid'), $this->Session->read('User.username'), 'read')){
-			$this->Session->setFlash('无权参看！');
+			$this->Session->setFlash('无权查看！');
 			$this->redirect('/members/index');
 		}
 		if(!$id) {
@@ -57,7 +57,7 @@ class MembersController extends AppController {
         		  $aco->create($member_id, 3, $member_alias);
         		  $this->Acl->allow('Admins', $member_alias,'*');
         		  $this->Acl->allow($this->Session->read('User.uid'), $member_alias, '*');
-        		  
+       		   		          		  
 				  $this->Session->setFlash('添加成功！');
 				  $this->redirect('/members/index');
 			    } else {
@@ -80,6 +80,35 @@ class MembersController extends AppController {
 			}
 		}
 	}
+	
+	function profile() {
+		$id = $this->Session->read('User.uid');
+		$this->set('regions', $this->Member->User->Region->generateList(
+			             $conditions = "id like '__0000'",
+			             $order = 'id',
+			             $limit = null,
+			             $keyPath = '{n}.Region.id',
+			             $valuePath = '{n}.Region.region_name')
+		);
+		if(empty($this->data)) {
+			if(!$id) {
+				$this->Session->setFlash('Invalid id for Member');
+			}
+			$this->data = $this->Member->read(null, $id);
+		} else {
+			$this->cleanUpFields();
+			if($this->Member->save($this->data)) {
+				$this->data['User']['id'] = $id;
+				if($this->Member->User->save($this->data)){
+					$this->Session->setFlash('会员信息修改成功！');
+				}else{
+					$this->Session->setFlash('会员信息保存出错！');
+				}
+			} else {
+				$this->Session->setFlash('会员信息保存出错！');
+			}
+		}
+	}	
 
 	function edit($id = null) {
 		if(empty($this->data)) {
