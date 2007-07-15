@@ -17,8 +17,8 @@ class Member extends AppModel {
 	);
 	
 	var $hasOne = array(
-			'MemberInfo' =>
-				array('className' => 'MemberInfo',
+			'User' =>
+				array('className' => 'User',
 						'foreignKey' => 'id',
 						'conditions' => '',
 						'fields' => '',
@@ -26,7 +26,19 @@ class Member extends AppModel {
 						'dependent' => ''
 				),
 
-	);	
+	);
+
+	function afterSave(){
+		if ($user_id = $this->getLastInsertID()){
+			$this->User->create();
+			$data['User']['id'] = $user_id;
+			$data['User']['login_name'] = $this->data['Member']['username'];
+			$data['User']['password'] = $this->data['Member']['password'];
+			$data['User']['user_name'] = $this->data['Member']['username'];
+			$data['User']['email'] = $this->data['Member']['email'];
+			$this->User->save($data);
+		}
+	}
 
 }
 ?>
