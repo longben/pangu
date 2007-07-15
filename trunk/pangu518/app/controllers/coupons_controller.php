@@ -46,6 +46,7 @@ class CouponsController extends AppController {
 			$end = $this->data['Coupon']['end'];
 			$custom_num = $this->data['Coupon']['custom_num'];
 			$coupon_group = $this->data['Coupon']['coupon_group'];
+			set_time_limit(16000);
 			
 			for($i=$start;$i<=$end;$i++){
 				$this->cleanUpFields();
@@ -53,10 +54,8 @@ class CouponsController extends AppController {
 				$randval = rand(10000,99999);
 				$this->data['Coupon']['coupon_group'] = $coupon_group;
 				$this->data['Coupon']['custom_num'] = $custom_num;
-				$pwd = $custom_num  ^ $randval; //用户输入6位数字和6位随机数异或产生密码
-				$pwd = substr($pwd, 0, 6); //只保留6位数，注意在密码校验的时候同样也只取6位数
 				$this->data['Coupon']['coupon_no'] = $coupon_group .sprintf('%09s', $i);
-				$this->data['Coupon']['coupon_pwd'] = sprintf('%06s', $pwd);
+				$this->data['Coupon']['coupon_pwd'] = $this->Coupon->getPassword($custom_num,$randval);
 				$this->data['Coupon']['random_num'] = $randval;
 				
 				$this->Coupon->save($this->data);

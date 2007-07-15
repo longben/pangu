@@ -79,7 +79,8 @@ class AjaxValidComponent extends Object{
 				}
 			} else {
 				if(!preg_match($this->controller->{$field_ar[0]}->validate[$field_ar[1]],$this->form[$field_ar[0]][$field_ar[1]])){
-					$this->errors[$field]['required'][$field_ar[1]] = Inflector::humanize(str_replace("_id","",$field_ar[1]))." is required.";
+					$this->errors[$field]['required'][$field_ar[1]] = //Inflector::humanize(str_replace("_id","",$field_ar[1]))." is required.";
+					Inflector::humanize(str_replace("_id","",$field_ar[1]))." 不能为空.";
 					$this->valid = false;
 				}
 			}
@@ -194,7 +195,7 @@ class AjaxValidComponent extends Object{
 			case 'javascript':
 				if(!$this->valid){
 					$this->javascript = '<script type="text/javascript">alert("';
-					$this->javascript .= 'Please fix the following Errors:\\n';
+					$this->javascript .= '请检查以下错误:\\n';
 					foreach ($this->errors as $err_val):
 					foreach ($err_val as $error1):
 					if(is_array($error1)){
