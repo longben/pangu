@@ -1,9 +1,9 @@
 <h2>New Merchant</h2>
 <form action="<?php echo $html->url('/merchants/add'); ?>" method="post">
 <div class="optional"> 
-	<?php echo $form->labelTag('Merchant/member_id', 'Member');?>
- 	<?php echo $html->selectTag('Merchant/member_id', $members, $html->tagValue('Merchant/member_id'), array(), array(), true);?>
-	<?php echo $html->tagErrorMsg('Merchant/member_id', 'Please select the Member.') ?>
+	<?php echo $form->labelTag('Merchant/user_id', 'User');?>
+ 	<?php echo $html->selectTag('Merchant/user_id', $users, $html->tagValue('Merchant/user_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('Merchant/user_id', 'Please select the User.') ?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Merchant/merchant_name', 'Merchant Name');?>
@@ -56,6 +56,16 @@
 	<?php echo $html->tagErrorMsg('Merchant/return_ratio', 'Please enter the Return Ratio.');?>
 </div>
 <div class="optional"> 
+	<?php echo $form->labelTag('Merchant/industry_id', 'Industry');?>
+ 	<?php echo $html->selectTag('Merchant/industry_id', $industries, $html->tagValue('Merchant/industry_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('Merchant/industry_id', 'Please select the Industry.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Merchant/region_id', 'Region');?>
+ 	<?php echo $html->selectTag('Merchant/region_id', $regions, $html->tagValue('Merchant/region_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('Merchant/region_id', 'Please select the Region.') ?>
+</div>
+<div class="optional"> 
 	<?php echo $form->labelTag('Merchant/status', 'Status');?>
  	<?php echo $html->input('Merchant/status', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('Merchant/status', 'Please enter the Status.');?>
@@ -66,6 +76,10 @@
 </form>
 <ul class="actions">
 <li><?php echo $html->link('List Merchants', '/merchants/index')?></li>
-<li><?php echo $html->link('View Members', '/members/index/');?></li>
-<li><?php echo $html->link('Add Members', '/members/add/');?></li>
+<li><?php echo $html->link('View Users', '/users/index/');?></li>
+<li><?php echo $html->link('Add Users', '/users/add/');?></li>
+<li><?php echo $html->link('View Industries', '/industries/index/');?></li>
+<li><?php echo $html->link('Add Industries', '/industries/add/');?></li>
+<li><?php echo $html->link('View Regions', '/regions/index/');?></li>
+<li><?php echo $html->link('Add Regions', '/regions/add/');?></li>
 </ul>

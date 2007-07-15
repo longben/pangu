@@ -1,0 +1,69 @@
+<fieldset align=center>
+<legend>修改个人资料</legend>
+<form action="<?php echo $html->url('/members/profile/'.$html->tagValue('Member/uid')); ?>" method="post">
+<div class="required"> 
+	<?php echo $form->labelTag('Member/username', '登录名：');?>
+ 	<?php echo $html->input('Member/username', array('size' => '60','readOnly' => 'true'));?>
+	<?php echo $html->tagErrorMsg('Member/username', 'Please enter the Username.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('User/user_name', '真实姓名：');?>
+ 	<?php echo $html->input('User/user_name', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Member/password', 'Please enter the Password.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('User/cert_number', '身份证号码：');?>
+ 	<?php echo $html->input('User/cert_number', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('User/cert_number', 'Please enter the Cert Number.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Member/bday', '出生日期：');?>
+ 	<?php echo $html->dateTimeOptionTag('Member/bday', 'YMD' , 'NONE', $html->tagValue('Member/bday'), array());?>
+	<?php echo $html->tagErrorMsg('Member/bday', 'Please select the Bday.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Member/email', '电子邮箱：');?>
+ 	<?php echo $html->input('Member/email', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Member/email', 'Please enter the Email.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('User/region_id', '所属地区：');?>
+ 	<?php echo $html->selectTag('User/region_id', $regions, $html->tagValue('User/region_id'), array(), array(), false);?>
+	<?php echo $html->tagErrorMsg('User/region_id', 'Please select the Region.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('User/telephone', '常用电话：');?>
+ 	<?php echo $html->input('User/telephone', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('User/telephone', 'Please enter the Telephone.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('User/mobile', '移动电话：');?>
+ 	<?php echo $html->input('User/mobile', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('User/mobile', 'Please enter the Mobile.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('User/office_phone', '办公电话：');?>
+ 	<?php echo $html->input('User/office_phone', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('User/office_phone', 'Please enter the Office Phone.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('User/home_phone', '家庭电话：');?>
+ 	<?php echo $html->input('User/home_phone', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('User/home_phone', 'Please enter the Home Phone.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('User/bank_accounts', '开户银行：');?>
+ 	<?php echo $html->input('User/bank_accounts', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('User/bank_accounts', 'Please enter the Bank Accounts.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('User/accounts', '银行帐号：');?>
+ 	<?php echo $html->input('User/accounts', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('User/accounts', 'Please enter the Accounts.');?>
+</div>
+<?php echo $html->hidden('Member/uid')?>
+<div class="submit">
+	<?php echo $html->submit('保存更新');?>
+</div>
+</form>
+</fieldset>

@@ -1,0 +1,93 @@
+<h2>New User</h2>
+<form action="<?php echo $html->url('/users/add'); ?>" method="post">
+<div class="optional"> 
+	<?php echo $form->labelTag('User/login_name', 'Login Name');?>
+ 	<?php echo $html->input('User/login_name', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('User/login_name', 'Please enter the Login Name.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('User/password', 'Password');?>
+ 	<?php echo $html->input('User/password', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('User/password', 'Please enter the Password.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('User/user_name', 'User Name');?>
+ 	<?php echo $html->input('User/user_name', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('User/user_name', 'Please enter the User Name.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('User/sex', 'Sex');?>
+ 	<?php echo $html->input('User/sex', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('User/sex', 'Please enter the Sex.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('User/member_no', 'Member No');?>
+ 	<?php echo $html->input('User/member_no', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('User/member_no', 'Please enter the Member No.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('User/cert_number', 'Cert Number');?>
+ 	<?php echo $html->input('User/cert_number', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('User/cert_number', 'Please enter the Cert Number.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('User/referees', 'Referees');?>
+ 	<?php echo $html->input('User/referees', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('User/referees', 'Please enter the Referees.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('User/member_grades_id', 'Member Grades');?>
+ 	<?php echo $html->selectTag('User/member_grades_id', $memberGrades, $html->tagValue('User/member_grades_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('User/member_grades_id', 'Please select the Member Grades.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('User/region_id', 'Region');?>
+ 	<?php echo $html->selectTag('User/region_id', $regions, $html->tagValue('User/region_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('User/region_id', 'Please select the Region.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('User/telephone', 'Telephone');?>
+ 	<?php echo $html->input('User/telephone', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('User/telephone', 'Please enter the Telephone.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('User/mobile', 'Mobile');?>
+ 	<?php echo $html->input('User/mobile', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('User/mobile', 'Please enter the Mobile.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('User/office_phone', 'Office Phone');?>
+ 	<?php echo $html->input('User/office_phone', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('User/office_phone', 'Please enter the Office Phone.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('User/home_phone', 'Home Phone');?>
+ 	<?php echo $html->input('User/home_phone', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('User/home_phone', 'Please enter the Home Phone.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('User/bank_accounts', 'Bank Accounts');?>
+ 	<?php echo $html->input('User/bank_accounts', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('User/bank_accounts', 'Please enter the Bank Accounts.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('User/accounts', 'Accounts');?>
+ 	<?php echo $html->input('User/accounts', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('User/accounts', 'Please enter the Accounts.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('User/flag', 'Flag');?>
+ 	<?php echo $html->input('User/flag', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('User/flag', 'Please enter the Flag.');?>
+</div>
+<div class="submit">
+	<?php echo $html->submit('Add');?>
+</div>
+</form>
+<ul class="actions">
+<li><?php echo $html->link('List Users', '/users/index')?></li>
+<li><?php echo $html->link('View Member Grades', '/member_grades/index/');?></li>
+<li><?php echo $html->link('Add Member Grades', '/member_grades/add/');?></li>
+<li><?php echo $html->link('View Regions', '/regions/index/');?></li>
+<li><?php echo $html->link('Add Regions', '/regions/add/');?></li>
+</ul>

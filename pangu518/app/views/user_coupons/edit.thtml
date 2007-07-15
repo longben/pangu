@@ -1,0 +1,30 @@
+<h2>Edit User Coupon</h2>
+<form action="<?php echo $html->url('/user_coupons/edit/'.$html->tagValue('UserCoupon/id')); ?>" method="post">
+<div class="optional"> 
+	<?php echo $form->labelTag('UserCoupon/user_id', 'User');?>
+ 	<?php echo $html->selectTag('UserCoupon/user_id', $users, $html->tagValue('UserCoupon/user_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('UserCoupon/user_id', 'Please select the User.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('UserCoupon/coupon_id', 'Coupon');?>
+ 	<?php echo $html->selectTag('UserCoupon/coupon_id', $coupons, $html->tagValue('UserCoupon/coupon_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('UserCoupon/coupon_id', 'Please select the Coupon.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('UserCoupon/status', 'Status');?>
+ 	<?php echo $html->input('UserCoupon/status', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('UserCoupon/status', 'Please enter the Status.');?>
+</div>
+<?php echo $html->hidden('UserCoupon/id')?>
+<div class="submit">
+	<?php echo $html->submit('Save');?>
+</div>
+</form>
+<ul class="actions">
+<li><?php echo $html->link('Delete','/user_coupons/delete/' . $html->tagValue('UserCoupon/id'), null, 'Are you sure you want to delete: id ' . $html->tagValue('UserCoupon/id'));?>
+<li><?php echo $html->link('List User Coupons', '/user_coupons/index')?></li>
+<li><?php echo $html->link('View Users', '/users/index/');?></li>
+<li><?php echo $html->link('Add Users', '/users/add/');?></li>
+<li><?php echo $html->link('View Coupons', '/coupons/index/');?></li>
+<li><?php echo $html->link('Add Coupons', '/coupons/add/');?></li>
+</ul>

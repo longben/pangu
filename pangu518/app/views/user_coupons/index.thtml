@@ -1,0 +1,34 @@
+<div class="userCoupons">
+<h2>List User Coupons</h2>
+
+<table cellpadding="0" cellspacing="0">
+<tr>
+	<th>Id</th>
+	<th>User</th>
+	<th>Coupon</th>
+	<th>Created</th>
+	<th>Modified</th>
+	<th>Status</th>
+	<th>Actions</th>
+</tr>
+<?php foreach ($userCoupons as $userCoupon): ?>
+<tr>
+	<td><?php echo $userCoupon['UserCoupon']['id']; ?></td>
+	<td>&nbsp;<?php echo $html->link($userCoupon['User']['id'], '/users/view/' .$userCoupon['User']['id'])?></td>
+	<td>&nbsp;<?php echo $html->link($userCoupon['Coupon']['id'], '/coupons/view/' .$userCoupon['Coupon']['id'])?></td>
+	<td><?php echo $userCoupon['UserCoupon']['created']; ?></td>
+	<td><?php echo $userCoupon['UserCoupon']['modified']; ?></td>
+	<td><?php echo $userCoupon['UserCoupon']['status']; ?></td>
+	<td class="actions">
+		<?php echo $html->link('View','/user_coupons/view/' . $userCoupon['UserCoupon']['id'])?>
+		<?php echo $html->link('Edit','/user_coupons/edit/' . $userCoupon['UserCoupon']['id'])?>
+		<?php echo $html->link('Delete','/user_coupons/delete/' . $userCoupon['UserCoupon']['id'], null, 'Are you sure you want to delete id ' . $userCoupon['UserCoupon']['id'])?>
+	</td>
+</tr>
+<?php endforeach; ?>
+</table>
+
+<ul class="actions">
+	<li><?php echo $html->link('New User Coupon', '/user_coupons/add'); ?></li>
+</ul>
+</div>
