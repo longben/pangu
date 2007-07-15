@@ -111,7 +111,7 @@ a:hover
 
 body,td
 {
-	font:13px "Lucida Grande", "Lucida Sans Unicode", Tahoma, Verdana;
+	font:13px  "宋体", Tahoma, Verdana;
 }
 
 h2
@@ -355,6 +355,18 @@ fieldset legend
 	padding:3px 20px;
 }
 
+fieldset td{
+	border-right: 1px solid #ddd;
+	padding:4px 4px;
+	vertical-align:top;
+	text-align: center;
+}
+
+fieldset tr{
+	background-color:expression((this.sectionRowIndex%2==0)?"#F4F8FF":"#E6EFF7");
+}
+
+
 fieldset label
 {
 	float:left;
@@ -369,6 +381,11 @@ fieldset div
 	clear:left;
 	margin-bottom:2px;
 }
+
+dl{padding-left:14px;} 
+dt{float:left;font-weight:bold;padding:12px 0 4px;} 
+dd{ text-align:left;height:auto;padding:8px 0;}
+
 
 #user_info a,#adminhead a
 {
