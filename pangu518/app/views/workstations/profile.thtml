@@ -1,0 +1,44 @@
+<fieldset align=center>
+<legend>工作站资料维护</legend> 
+<form action="<?php echo $html->url('/workstations/profile/'); ?>" method="post">
+<div class="optional"> 
+	<?php echo $form->labelTag('Workstation/ws_no', '工作站编号：');?>
+ 	<?php echo $html->input('Workstation/ws_no', array('size' => '60','readOnly' => 'true'));?>
+	<?php echo $html->tagErrorMsg('Workstation/ws_no', 'Please enter the Ws No.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Workstation/ws_name', '工作站名称：');?>
+ 	<?php echo $html->input('Workstation/ws_name', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Workstation/ws_name', 'Please enter the Ws Name.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Workstation/address', '地址：');?>
+ 	<?php echo $html->input('Workstation/address', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Workstation/address', 'Please enter the Address.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Workstation/telphone', '常用电话：');?>
+ 	<?php echo $html->input('Workstation/telphone', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Workstation/telphone', 'Please enter the Telphone.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Workstation/principal', '工作站负责人：');?>
+ 	<?php echo $html->input('Workstation/principal', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Workstation/principal', 'Please enter the Principal.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Workstation/introduction', '工作站简介：');?>
+ 	<?php echo $html->textArea('Workstation/introduction', array('cols'=>'60', 'rows'=>'5'));?>
+	<?php echo $html->tagErrorMsg('Workstation/introduction', 'Please enter the Introduction.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Workstation/region_id', '所属地区：');?>
+ 	<?php echo $html->selectTag('Workstation/region_id', $regions, $html->tagValue('Workstation/region_id'), array(), array(), false);?>
+	<?php echo $html->tagErrorMsg('Workstation/region_id', 'Please enter the Region Id.');?>
+</div>
+<?php echo $html->hidden('Workstation/id')?>
+<div class="submit">
+	<?php echo $html->submit('保存');?>
+</div>
+</form>
+</fieldset>

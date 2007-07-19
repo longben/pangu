@@ -20,7 +20,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>CupCake CMS</title>
-<LINK HREF="<?php echo $html->url('/admin_css/styles.css'); ?>" TYPE="text/css" REL="stylesheet">
+<link href="<?php echo $html->url('/admin_css/styles.css'); ?>" type="text/css" rel="stylesheet">
+
 <style type="text/css">* html { overflow-x: hidden; }</style>
 </head>
 

@@ -1,0 +1,8 @@
+<fieldset align=center>
+<legend>可用金额及代金券管理</legend> 
+<ul class="actions">
+    <li>可用代金券总数：<?php echo $total?>份，共计<?php echo $total*2?>元。</li>
+    <li>已反馈给会员的代金券总数：<?php echo $total2?>份，共计<?php echo $total2*2?>元。</li> 
+    <li><?php echo $html->link('销售代金券给会员消费单位','/merchants/trade')?></li>
+</ul>
+</fieldset>

@@ -5,32 +5,38 @@ class RegionsController extends AppController {
 	var $helpers = array('Html', 'Form' , 'Ajax', 'Javascript','Pagination');
 	var $components = array ('Pagination','Pager'); // Added
 
+
 	function index($page=1) {
         
-		//分页方式二
-		/*
-        $params = array( 
-            'perPage'     => 10, 
-            'totalItems'  => $this->Region->findCount(), 
-            'currentPage' => $page, 
-        ); 
-        $this->Pager->init($params);
-        */
-		
-		//$this->Region->recursive = 0;
-		//Pagination 分页方式一
-		if($this->data['Region']['keyword']){
-			$conditions = " id like '" . $this->data['Region']['keyword']. "%'";
+		$key = $this->data['Region']['keyword'];
+		if($key){
+			$criteria = array(
+				  'Region.id' => 'LIKE %'. $key .'%',
+				);
 		}else{
-			$conditions = null;
+			$criteria = null;
 		}
+
+        echo key($this->Pagination->privateParams);
 		
-		list($order,$limit,$page) = $this->Pagination->init($conditions); // Added
-		$data = $this->Region->findAll($conditions, NULL, $order, $limit, $page); // Extra parameters added
+		$this->Pagination->resultsPerPage = array(100,200,500);
+		$this->Pagination->show = 10;
+		$this->Pagination->style = "ajax";
+		$this->Session->write('search_term', $this->data['Region']['keyword']);
+
+		$this->Pagination->privateParams  = Array('t1' => 'wwww','t2' => 'demo');
+
+		$settings = array (
+			'show' => 15,
+			'privateParams' => array('test' => 'www'),
+		); 
+		
+		list($order,$limit,$page) = $this->Pagination->init($criteria,null,$settings); // Added
+
+		//list($order,$limit,$page) = $this->Pagination->init(null,array('dd'=>'Foo'),null);
+		$data = $this->Region->findAll($criteria, NULL, $order, $limit, $page); // Extra parameters added
 		
 		
-		//$data = $this->Region->findAll($conditions, null, 'id', $this->Pager->params['perPage'], $this->Pager->params['currentPage']);
-		//$this->set('regions', $this->Region->findAll());
 		$this->set('regions', $data);
 	}
 

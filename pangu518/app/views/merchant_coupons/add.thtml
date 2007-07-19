@@ -1,35 +1,25 @@
-<h2>New Merchant Coupon</h2>
+<fieldset align=center>
+<legend>购买代金券</legend> 
 <form action="<?php echo $html->url('/merchant_coupons/add'); ?>" method="post">
-<div class="optional"> 
+<div class="optional">
+    <?php ?>
 	<?php echo $form->labelTag('MerchantCoupon/merchant_id', 'Merchant');?>
  	<?php echo $html->selectTag('MerchantCoupon/merchant_id', $merchants, $html->tagValue('MerchantCoupon/merchant_id'), array(), array(), true);?>
 	<?php echo $html->tagErrorMsg('MerchantCoupon/merchant_id', 'Please select the Merchant.') ?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('MerchantCoupon/coupon_id', 'Coupon');?>
- 	<?php echo $html->selectTag('MerchantCoupon/coupon_id', $coupons, $html->tagValue('MerchantCoupon/coupon_id'), array(), array(), true);?>
-	<?php echo $html->tagErrorMsg('MerchantCoupon/coupon_id', 'Please select the Coupon.') ?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('MerchantCoupon/workstation_id', 'Workstation');?>
+	<?php echo $form->labelTag('MerchantCoupon/workstation_id', '指定工作站购买：');?>
+ 	<?php echo $html->selectTag('MerchantCoupon/workstation_id', $workstations, $html->tagValue('MerchantCoupon/workstation_id'), array(), array(), true);?>
  	<?php echo $html->selectTag('MerchantCoupon/workstation_id', $workstations, $html->tagValue('MerchantCoupon/workstation_id'), array(), array(), true);?>
 	<?php echo $html->tagErrorMsg('MerchantCoupon/workstation_id', 'Please select the Workstation.') ?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('MerchantCoupon/status', 'Status');?>
- 	<?php echo $html->input('MerchantCoupon/status', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('MerchantCoupon/status', 'Please enter the Status.');?>
+	<?php echo $form->labelTag('MerchantCoupon/sum', '购买代金券份额：');?>
+ 	<?php echo $html->input('MerchantCoupon/sum', array('size' => '30'));?>份
+	<?php echo $html->tagErrorMsg('MerchantCoupon/sum', 'Please enter the Status.');?>
 </div>
 <div class="submit">
 	<?php echo $html->submit('Add');?>
 </div>
 </form>
-<ul class="actions">
-<li><?php echo $html->link('List Merchant Coupons', '/merchant_coupons/index')?></li>
-<li><?php echo $html->link('View Merchants', '/merchants/index/');?></li>
-<li><?php echo $html->link('Add Merchants', '/merchants/add/');?></li>
-<li><?php echo $html->link('View Coupons', '/coupons/index/');?></li>
-<li><?php echo $html->link('Add Coupons', '/coupons/add/');?></li>
-<li><?php echo $html->link('View Workstations', '/workstations/index/');?></li>
-<li><?php echo $html->link('Add Workstations', '/workstations/add/');?></li>
-</ul>
+</fieldset>

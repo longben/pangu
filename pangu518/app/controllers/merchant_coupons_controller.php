@@ -12,7 +12,21 @@ class MerchantCouponsController extends AppController {
 			$this->redirect('/merchants/profile');
 		}
 		$this->MerchantCoupon->recursive = 0;
-		$this->set('merchantCoupons', $this->MerchantCoupon->findCount());
+		
+		//统计查询条件
+		//可用代金券
+		$criteria = array(
+		  'Merchant.user_id' => $this->Session->read('User.uid'),
+		  'MerchantCoupon.status' => 341
+		);
+		$this->set('total', $this->MerchantCoupon->findCount($criteria));
+		
+		//参与分红抽奖
+		$criteria = array(
+		  'Merchant.user_id' => $this->Session->read('User.uid'),
+		  'MerchantCoupon.status' => 421
+		);
+		$this->set('total2', $this->MerchantCoupon->findCount($criteria));		
 	}
 
 	function view($id = null) {
@@ -22,11 +36,15 @@ class MerchantCouponsController extends AppController {
 		}
 		$this->set('merchantCoupon', $this->MerchantCoupon->read(null, $id));
 	}
+	
 
-	function add() {
+	function add($workstation_id=null,$merchant_id=null,$sum=null) {
+		
+	}
+
+	function add2() {
 		if(empty($this->data)) {
 			$this->set('merchants', $this->MerchantCoupon->Merchant->generateList());
-			$this->set('coupons', $this->MerchantCoupon->Coupon->generateList());
 			$this->set('workstations', $this->MerchantCoupon->Workstation->generateList());
 			$this->render();
 		} else {
