@@ -1,8 +1,7 @@
 <fieldset align=center>
 <legend>可用金额及代金券管理</legend> 
-
-
 <ul class="actions">
-	<li><?php echo $html->link('New Merchant Coupon', '/merchant_coupons/add'); ?></li>
+    <li>可用代金券总数：<?php echo $total?>份，共计<?php echo $total*2?>元。</li>
+    <li>已反馈给会员的代金券总数：<?php echo $total2?>份，共计<?php echo $total2*2?>元。</li>    
 </ul>
 </fieldset>

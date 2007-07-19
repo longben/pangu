@@ -8,7 +8,23 @@ class MerchantsController extends AppController {
 		$this->Merchant->recursive = 0;
 		$this->set('merchants', $this->Merchant->findAll());
 	}
-
+	
+	function trade() {
+		$this->Merchant->recursive = 0;
+		$this->set('merchants', $this->Merchant->findAll());
+	}
+	
+	function buy() {
+		$this->Merchant->recursive = 0;
+		if($this->Merchant->buy($this->Session->read('ws_id'),$this->data['Merchant']['id'],$this->data['Merchant']['number'])){
+			$this->Session->setFlash('代金券销售成功！');
+			$this->redirect('/workstation_coupons/index');
+		}else{
+			$this->Session->setFlash('代金券销售失败！');
+			$this->redirect('/merchants/trade');
+		}
+	}	
+	
 	function view($id = null) {
 		if(!$id) {
 			$this->Session->setFlash('Invalid id for Merchant.');

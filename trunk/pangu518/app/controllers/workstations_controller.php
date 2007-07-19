@@ -15,6 +15,14 @@ class WorkstationsController extends AppController {
 		$this->set('workstations', $this->Workstation->findAll('status = 9'));
 	}
 	
+   function trade($merchant_id=null,$merchant_name=null,$user_name=null,$owner=null,$telephone=null) {
+   	  $this->Workstation->recursive = 0;
+   	  $this->set('merchant_id',$merchant_id);
+   	  $this->set('merchant_name',$merchant_name);
+   	  $this->set('user_name',$user_name);
+   	  $this->set('owner',$owner);
+   	  $this->set('telephone',$telephone);
+   }	
 
 	function auditing($id = null) {
 		if(empty($this->data)) {
@@ -61,7 +69,6 @@ class WorkstationsController extends AppController {
 
 	function add() {
 		if(empty($this->data)) {
-			//$this->set('members', $this->Workstation->Member->generateList());
 			$this->set('regions', $this->Workstation->Region->generateList(
 			             $conditions = "id like '__0000'",
 			             $order = 'id',
@@ -116,6 +123,41 @@ class WorkstationsController extends AppController {
 		if($this->Workstation->del($id)) {
 			$this->Session->setFlash('The Workstation deleted: id '.$id.'');
 			$this->redirect('/workstations/index');
+		}
+	}
+	
+	function profile() {
+		$user_id = $this->Session->read('User.uid');
+		$this->set('user_id',$user_id);
+		if(empty($this->data)) {
+			if(!$user_id) {
+				$this->Session->setFlash('无效的工作站！');
+				$this->redirect('/workstations/profile');
+			}
+			$this->data = $this->Workstation->findByUserId($user_id);
+			$this->set('regions', $this->Workstation->Region->generateList(
+				$conditions = "id like '__0000'",
+				$order = 'id',
+				$limit = null,
+				$keyPath = '{n}.Region.id',
+				$valuePath = '{n}.Region.region_name')
+			);
+		} else {
+			$this->cleanUpFields();
+			$this->data['Workstation']['user_id'] = $user_id;
+			if($this->Workstation->save($this->data)) {
+				$this->Session->setFlash('工作站资料保存成功！');
+				$this->redirect('/workstations/profile');
+			} else {
+				$this->Session->setFlash('Please correct errors below.');
+				$this->set('regions', $this->Workstation->Region->generateList(
+					$conditions = "id like '__0000'",
+					$order = 'id',
+					$limit = null,
+					$keyPath = '{n}.Region.id',
+					$valuePath = '{n}.Region.region_name')
+				);
+			}
 		}
 	}
 

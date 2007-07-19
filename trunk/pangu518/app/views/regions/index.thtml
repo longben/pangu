@@ -1,3 +1,4 @@
+<div id="content">
 <fieldset align=center>
 <legend>行政区划维护</legend> 
 <table cellpadding="0" cellspacing="0" width="90%" align="center">
@@ -6,13 +7,14 @@
  </tr>
   <tr>
    <td>
-	<form action="<?php echo $html->url('/regions/index'); ?>" method="post">
+	<form action="<?php echo $html->url('/regions/index/'); ?>" method="post">
 	  <?php echo $html->input('Region/keyword', array('size' => '60'));?>
 	  <?php echo $html->submit('查询');?>
 	</form>   
    </td>
   </tr>
 </table>
+
 <table cellpadding="0" cellspacing="0" width="90%" align="center">
 <tr>
 	<th>行政区划编号</th>
@@ -30,9 +32,11 @@
 <?php endforeach; ?>
 </table>
 <p><div align="center"><?php echo $this->renderElement('pagination'); // 分页导航页 ?></div></p>
+
 <?php
 //if ($pageLinks['all']) {
 //   echo '<div id="pager" class="pager" align="center">' . $pageLinks['all'] . '</div>';
 //} 
 ?>
 </fieldset>
+</div>

@@ -5,6 +5,11 @@
 <?php echo $html->charset('UTF-8');?>
 <link rel="icon" href="<?php echo $this->webroot . 'favicon.ico';?>" type="image/x-icon" />
 <link rel="shortcut icon" href="<?php echo $this->webroot . 'favicon.ico';?>" type="image/x-icon" />
+<?php 
+if(isset($javascript)):
+    echo $javascript->link('prototype.js');
+endif;          
+?> 
 <?php echo $html->css('pangu.generic');?>
 </head>
 <body>
@@ -33,5 +38,6 @@
 		</div>
 		-->
 	</div>
+<?php echo $cakeDebug?>
 </body>
 </html>

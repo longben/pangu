@@ -382,6 +382,10 @@ fieldset div
 	margin-bottom:2px;
 }
 
+.formText {float:left;margin:1px;padding:4px;};
+
+#money {float:left;margin:1px;padding:4px;font-size:14px;font-weight:bold;color:red;font-family:Tahoma};
+
 dl{padding-left:14px;} 
 dt{float:left;font-weight:bold;padding:12px 0 4px;} 
 dd{ text-align:left;height:auto;padding:8px 0;}
