@@ -1,5 +1,5 @@
 <?php
-/* SVN FILE: $Id: scaffold.php 4409 2007-02-02 13:20:59Z phpnut $ */
+/* SVN FILE: $Id: scaffold.php 5317 2007-06-20 08:28:35Z phpnut $ */
 /**
  * Scaffold.
  *
@@ -21,9 +21,9 @@
  * @package			cake
  * @subpackage		cake.cake.libs.controller
  * @since			Cake v 0.10.0.1076
- * @version			$Revision: 4409 $
+ * @version			$Revision: 5317 $
  * @modifiedby		$LastChangedBy: phpnut $
- * @lastmodified	$Date: 2007-02-02 07:20:59 -0600 (Fri, 02 Feb 2007) $
+ * @lastmodified	$Date: 2007-06-20 03:28:35 -0500 (Wed, 20 Jun 2007) $
  * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 /**
@@ -101,7 +101,7 @@ class Scaffold extends Object{
 	function __scaffoldView($params) {
 		if ($this->controllerClass->_beforeScaffold('view')) {
 
-			if(isset($params['pass'][0])){
+			if (isset($params['pass'][0])) {
 				$this->controllerClass->{$this->modelKey}->id = $params['pass'][0];
 
 			} elseif (isset($this->controllerClass->Session) && $this->controllerClass->Session->valid != false) {
@@ -181,7 +181,7 @@ class Scaffold extends Object{
 		if ($this->controllerClass->_beforeScaffold($type)) {
 			if ($type == 'edit') {
 
-				if(isset($params['pass'][0])){
+				if (isset($params['pass'][0])) {
 					$this->controllerClass->{$this->modelKey}->id = $params['pass'][0];
 
 				} elseif (isset($this->controllerClass->Session) && $this->controllerClass->Session->valid != false) {
@@ -344,14 +344,14 @@ class Scaffold extends Object{
  * @return array rebuilds the association arrays to pass back to Controller::generateFieldNames()
  */
 	function __rebuild($params) {
-		foreach($params as $model => $field) {
+		foreach ($params as $model => $field) {
 			if (!empty($field) && is_array($field)) {
 				$match = array_keys($field);
 
 				if ($model == $match[0]) {
 					$count = 0;
 
-					foreach($field[$model] as $value) {
+					foreach ($field[$model] as $value) {
 						$params[$model][$count][$this->controllerClass->{$this->modelKey}->{$model}->primaryKey] = $value;
 						$count++;
 					}
@@ -379,7 +379,7 @@ class Scaffold extends Object{
 		if (!in_array('Form', $this->controllerClass->helpers)) {
 			$this->controllerClass->helpers[] = 'Form';
 		}
-		if($this->controllerClass->constructClasses()){
+		if ($this->controllerClass->constructClasses()) {
 			$db =& ConnectionManager::getDataSource($this->controllerClass->{$this->modelKey}->useDbConfig);
 
 			if (isset($db)) {

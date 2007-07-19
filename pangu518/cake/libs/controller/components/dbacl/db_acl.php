@@ -1,5 +1,5 @@
 <?php
-/* SVN FILE: $Id: db_acl.php 4409 2007-02-02 13:20:59Z phpnut $ */
+/* SVN FILE: $Id: db_acl.php 5317 2007-06-20 08:28:35Z phpnut $ */
 /**
  * This is core configuration file.
  *
@@ -21,9 +21,9 @@
  * @package			cake
  * @subpackage		cake.cake.libs.controller.componenets.dbacl
  * @since			CakePHP(tm) v 0.2.9
- * @version			$Revision: 4409 $
+ * @version			$Revision: 5317 $
  * @modifiedby		$LastChangedBy: phpnut $
- * @lastmodified	$Date: 2007-02-02 07:20:59 -0600 (Fri, 02 Feb 2007) $
+ * @lastmodified	$Date: 2007-06-20 03:28:35 -0500 (Wed, 20 Jun 2007) $
  * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 if (!defined('ACL_DATABASE')) {
@@ -81,21 +81,21 @@ class DB_ACL extends AclBase {
 			return false;
 		}
 
-		foreach($tmpAcoPath as $a) {
+		foreach ($tmpAcoPath as $a) {
 			$acoPath[] = $a['Aco']['id'];
 		}
 
-		for($i = count($aroPath) - 1; $i >= 0; $i--) {
+		for ($i = count($aroPath) - 1; $i >= 0; $i--) {
 			$perms = $Perms->findAll(array('ArosAco.aro_id' => $aroPath[$i]['Aro']['id'],
 														'ArosAco.aco_id' => $acoPath), null,
 														'Aco.lft desc');
 			if ($perms == null || count($perms) == 0) {
 				continue;
 			} else {
-				foreach($perms as $perm) {
+				foreach ($perms as $perm) {
 					if ($action == '*') {
 						// ARO must be cleared for ALL ACO actions
-						foreach($permKeys as $key) {
+						foreach ($permKeys as $key) {
 							if (isset($perm['ArosAco'])) {
 								if ($perm['ArosAco'][$key] != 1) {
 										return false;
@@ -149,7 +149,7 @@ class DB_ACL extends AclBase {
 		if ($action == "*") {
 			$permKeys = $this->_getAcoKeys($Perms->loadInfo());
 
-			foreach($permKeys as $key) {
+			foreach ($permKeys as $key) {
 				$save[$key] = $value;
 			}
 		} else {
@@ -299,7 +299,7 @@ class DB_ACL extends AclBase {
 		$newKeys = array();
 		$keys = $keys->value;
 
-		foreach($keys as $key) {
+		foreach ($keys as $key) {
 			if ($key['name'] != 'id' && $key['name'] != 'aro_id' && $key['name'] != 'aco_id') {
 				$newKeys[] = $key['name'];
 			}

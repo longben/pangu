@@ -1,5 +1,5 @@
 <?php
-/* SVN FILE: $Id: bootstrap.php 4924 2007-04-29 09:33:41Z phpnut $ */
+/* SVN FILE: $Id: bootstrap.php 5317 2007-06-20 08:28:35Z phpnut $ */
 /**
  * Basic Cake functionality.
  *
@@ -21,9 +21,9 @@
  * @package			cake
  * @subpackage		cake.cake
  * @since			CakePHP(tm) v 0.2.9
- * @version			$Revision: 4924 $
+ * @version			$Revision: 5317 $
  * @modifiedby		$LastChangedBy: phpnut $
- * @lastmodified	$Date: 2007-04-29 04:33:41 -0500 (Sun, 29 Apr 2007) $
+ * @lastmodified	$Date: 2007-06-20 03:28:35 -0500 (Wed, 20 Jun 2007) $
  * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 /**
@@ -94,7 +94,7 @@
 			$v = null;
 			$view = new View($v);
 			$view->renderCache($filename, $TIME_START);
-		} elseif(file_exists(CACHE . 'views' . DS . convertSlash($uri) . '_index.php')) {
+		} elseif (file_exists(CACHE . 'views' . DS . convertSlash($uri) . '_index.php')) {
 			uses(DS . 'controller' . DS . 'component', DS . 'view' . DS . 'view');
 			$v = null;
 			$view = new View($v);

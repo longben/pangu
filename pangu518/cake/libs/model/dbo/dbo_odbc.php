@@ -1,5 +1,5 @@
 <?php
-/* SVN FILE: $Id: dbo_odbc.php 4717 2007-03-31 17:26:16Z phpnut $ */
+/* SVN FILE: $Id: dbo_odbc.php 5317 2007-06-20 08:28:35Z phpnut $ */
 
 /**
  * ODBC for DBO
@@ -22,9 +22,9 @@
  * @package			cake
  * @subpackage		cake.cake.libs.model.dbo
  * @since			CakePHP(tm) v 0.10.5.1790
- * @version			$Revision: 4717 $
+ * @version			$Revision: 5317 $
  * @modifiedby		$LastChangedBy: phpnut $
- * @lastmodified	$Date: 2007-03-31 11:26:16 -0600 (Sat, 31 Mar 2007) $
+ * @lastmodified	$Date: 2007-06-20 03:28:35 -0500 (Wed, 20 Jun 2007) $
  * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 
@@ -154,7 +154,7 @@ class DboOdbc extends DboSource{
 			array_push($tables, odbc_result($result, "TABLE_NAME"));
 		}
 
-		foreach( $tables as $t ) {
+		foreach ( $tables as $t ) {
 			echo "$t\n";
 		}
 
@@ -180,11 +180,11 @@ class DboOdbc extends DboSource{
 
 		$count=odbc_num_fields($result);
 
-		for($i = 1; $i <= $count; $i++) {
+		for ($i = 1; $i <= $count; $i++) {
 				$cols[$i - 1] = odbc_field_name($result, $i);
 		}
 
-		foreach($cols as $column) {
+		foreach ($cols as $column) {
 				$type
 				= odbc_field_type(
 					odbc_exec($this->connection, "SELECT " . $column . " FROM " . $this->fullTableName($model)),
@@ -367,7 +367,7 @@ class DboOdbc extends DboSource{
  * @return int
  */
 	function lastInsertId($source = null) {
-		$result=$this->fetchAll('SELECT @@IDENTITY');
+		$result=$this->fetchRow('SELECT @@IDENTITY');
 		return $result[0];
 	}
 
@@ -402,7 +402,7 @@ class DboOdbc extends DboSource{
 		$index        =0;
 		$j            =0;
 
-		while($j < $num_fields) {
+		while ($j < $num_fields) {
 				$column = odbc_fetch_array($results, $j);
 
 				if (!empty($column->table)) {
@@ -430,7 +430,7 @@ class DboOdbc extends DboSource{
 				$resultRow=array();
 				$i=0;
 
-				foreach($row as $index => $field) {
+				foreach ($row as $index => $field) {
 					list($table, $column)      = $this->map[$index];
 					$resultRow[$table][$column]=$row[$index];
 					$i++;

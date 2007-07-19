@@ -1,5 +1,5 @@
 <?php
-/* SVN FILE: $Id: javascript.php 5117 2007-05-18 16:46:55Z phpnut $ */
+/* SVN FILE: $Id: javascript.php 5421 2007-07-09 04:58:57Z phpnut $ */
 /**
  * Javascript Helper class file.
  *
@@ -19,9 +19,9 @@
  * @package			cake
  * @subpackage		cake.cake.libs.view.helpers
  * @since			CakePHP(tm) v 0.10.0.1076
- * @version			$Revision: 5117 $
+ * @version			$Revision: 5421 $
  * @modifiedby		$LastChangedBy: phpnut $
- * @lastmodified	$Date: 2007-05-18 11:46:55 -0500 (Fri, 18 May 2007) $
+ * @lastmodified	$Date: 2007-07-08 23:58:57 -0500 (Sun, 08 Jul 2007) $
  * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 /**
@@ -74,8 +74,8 @@ class JavascriptHelper extends Helper{
  * @access public
  */
 	function linkOut($url) {
-		if (strpos($url, '.js') === false) {
-			$url .= ".js";
+		if (strpos($url, '.js') === false && strpos($url, '?') === false) {
+			$url .= '.js';
 		}
 		return sprintf($this->tags['javascriptlink'], $url);
 	}
@@ -128,7 +128,7 @@ class JavascriptHelper extends Helper{
 		}
 
 		if ($object == 'window' || strpos($object, '$(') !== false || strpos($object, '"') !== false || strpos($object, '\'') !== false) {
-			$b = "Event.observe($object, '$event', function(event){ $observer }, $useCapture);";
+			$b = "Event.observe($object, '$event', function(event) { $observer }, $useCapture);";
 		} else {
 			$chars = array('#', ' ', ', ', '.', ':');
 			$found = false;
@@ -141,7 +141,7 @@ class JavascriptHelper extends Helper{
 			if ($found) {
 				$this->_rules[$object] = $event;
 			} else {
-				$b = "Event.observe(\$('$object'), '$event', function(event){ $observer }, $useCapture);";
+				$b = "Event.observe(\$('$object'), '$event', function(event) { $observer }, $useCapture);";
 			}
 		}
 
@@ -225,7 +225,7 @@ class JavascriptHelper extends Helper{
 			$files = scandir(JS);
 			$javascript = '';
 
-			foreach($files as $file) {
+			foreach ($files as $file) {
 				if (substr($file, -3) == '.js') {
 					$javascript .= file_get_contents(JS . "{$file}") . "\n\n";
 				}
@@ -262,27 +262,21 @@ class JavascriptHelper extends Helper{
 		}
 
 		$numeric = true;
-
 		if (!empty($keys)) {
-			foreach($keys as $key) {
-				if (!is_numeric($key)) {
-					$numeric = false;
-					break;
-				}
-			}
+			$numeric = (array_values($keys) === array_keys(array_values($keys)));
 		}
 
-		foreach($data as $key => $val) {
+		foreach ($data as $key => $val) {
 			if (is_array($val) || is_object($val)) {
 				$val = $this->object($val, false, '', '', $stringKeys, $quoteKeys, $q);
 			} else {
 				if ((!count($stringKeys) && !is_numeric($val) && !is_bool($val)) || ($quoteKeys && in_array($key, $stringKeys, true)) || (!$quoteKeys && !in_array($key, $stringKeys, true))) {
 					$val = $q . $this->escapeString($val) . $q;
 				}
-				if (trim($val) == '') {
+				if ($val === null) {
 					$val = 'null';
 				}
-				if (is_bool($val)){
+				if (is_bool($val)) {
 					$val = ife($val, 'true', 'false');
 				}
 			}

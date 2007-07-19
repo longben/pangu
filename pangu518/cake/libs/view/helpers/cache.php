@@ -1,5 +1,5 @@
 <?php
-/* SVN FILE: $Id: cache.php 4757 2007-04-04 08:24:30Z phpnut $ */
+/* SVN FILE: $Id: cache.php 5421 2007-07-09 04:58:57Z phpnut $ */
 /**
  * Short description for file.
  *
@@ -21,9 +21,9 @@
  * @package			cake
  * @subpackage		cake.cake.libs.view.helpers
  * @since			CakePHP(tm) v 1.0.0.2277
- * @version			$Revision: 4757 $
+ * @version			$Revision: 5421 $
  * @modifiedby		$LastChangedBy: phpnut $
- * @lastmodified	$Date: 2007-04-04 03:24:30 -0500 (Wed, 04 Apr 2007) $
+ * @lastmodified	$Date: 2007-07-08 23:58:57 -0500 (Sun, 08 Jul 2007) $
  * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 /**
@@ -82,7 +82,7 @@ class CacheHelper extends Helper{
 			$index = null;
 			$count = 0;
 
-			foreach($keys as $key => $value) {
+			foreach ($keys as $key => $value) {
 				if (strpos($check, $value) === 0) {
 					$index = $found[$count];
 					break;
@@ -143,7 +143,7 @@ class CacheHelper extends Helper{
 		if (!empty($result['0'])) {
 			$count = 0;
 
-			foreach($result['0'] as $result) {
+			foreach ($result['0'] as $result) {
 				if (isset($oresult['0'][$count])) {
 					$this->__replace[] = $result;
 					$this->__match[] = $oresult['0'][$count];
@@ -163,7 +163,7 @@ class CacheHelper extends Helper{
 		$count = 0;
 		if (!empty($this->__match)) {
 
-			foreach($this->__match as $found) {
+			foreach ($this->__match as $found) {
 				$original = $cache;
 				$length = strlen($found);
 				$position = 0;
@@ -171,7 +171,7 @@ class CacheHelper extends Helper{
 					for ($i = 1; $i <= 1; $i++) {
 						$position = strpos($cache, $found, $position);
 
-						if($position !== false) {
+						if ($position !== false) {
 							$cache = substr($original, 0, $position);
 							$cache .= $this->__replace[$count];
 							$cache .= substr($original, $position + $length);
@@ -203,13 +203,13 @@ class CacheHelper extends Helper{
 		}
 
 		$cache = convertSlash($this->here);
-		if(empty($cache)){
+		if (empty($cache)) {
 			return;
 		}
 
 		$cache = $cache . '.php';
 		$file = '<!--cachetime:' . $cacheTime . '--><?php';
-		if(empty($this->plugin)) {
+		if (empty($this->plugin)) {
 			$file .= '
 			loadController(\'' . $this->view->name. '\');
 			loadModels();
@@ -242,23 +242,25 @@ class CacheHelper extends Helper{
 					$this->plugin = \'' . $this->view->plugin . '\';
 					$loadedHelpers = array();
 					$loadedHelpers = $this->_loadHelpers($loadedHelpers, $this->helpers);
-					foreach(array_keys($loadedHelpers) as $helper)
+					foreach (array_keys($loadedHelpers) as $helper)
 					{
 						$replace = strtolower(substr($helper, 0, 1));
 						$camelBackedHelper = preg_replace(\'/\\w/\', $replace, $helper, 1);
 						${$camelBackedHelper} =& $loadedHelpers[$helper];
 
-						if(isset(${$camelBackedHelper}->helpers) && is_array(${$camelBackedHelper}->helpers))
+						if (isset(${$camelBackedHelper}->helpers) && is_array(${$camelBackedHelper}->helpers))
 						{
-							foreach(${$camelBackedHelper}->helpers as $subHelper)
+							foreach (${$camelBackedHelper}->helpers as $subHelper)
 							{
 								${$camelBackedHelper}->{$subHelper} =& $loadedHelpers[$subHelper];
 							}
 						}
 						$this->loaded[$camelBackedHelper] = (${$camelBackedHelper});
 					}
-					?>' . $content;
-		return cache('views' . DS . $cache, $file, $timestamp);
+					?>';
+        $content = preg_replace("/(<\\?xml)/", "<?php echo '$1';?>",$content);
+        $file .= $content;
+        return cache('views' . DS . $cache, $file, $timestamp);
 	}
 }
 ?>

@@ -1,5 +1,5 @@
 <?php
-/* SVN FILE: $Id: number.php 5117 2007-05-18 16:46:55Z phpnut $ */
+/* SVN FILE: $Id: number.php 5317 2007-06-20 08:28:35Z phpnut $ */
 /**
  * Number Helper.
  *
@@ -21,9 +21,9 @@
  * @package			cake
  * @subpackage		cake.cake.libs.view.helpers
  * @since			CakePHP(tm) v 0.10.0.1076
- * @version			$Revision: 5117 $
+ * @version			$Revision: 5317 $
  * @modifiedby		$LastChangedBy: phpnut $
- * @lastmodified	$Date: 2007-05-18 11:46:55 -0500 (Fri, 18 May 2007) $
+ * @lastmodified	$Date: 2007-06-20 03:28:35 -0500 (Wed, 20 Jun 2007) $
  * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 /**
@@ -34,7 +34,7 @@
  * @package 	cake
  * @subpackage	cake.cake.libs.view.helpers
  */
-class NumberHelper extends Helper{
+class NumberHelper extends Helper {
 /**
  * Formats a number with a level of precision.
  *
@@ -43,9 +43,9 @@ class NumberHelper extends Helper{
  * @return float Enter description here...
  * @access public
  */
-	 function precision($number, $precision = 3) {
-		  return sprintf("%01.{$precision}f", $number);
-	 }
+	function precision($number, $precision = 3) {
+		return sprintf("%01.{$precision}f", $number);
+	}
 
 /**
  * Returns a formatted-for-humans file size.
@@ -54,24 +54,24 @@ class NumberHelper extends Helper{
  * @return string Human readable size
  * @access public
  */
-	 function toReadableSize($size) {
-		  switch($size)
-				{
-				case 1: return '1 Byte';
-
-				case $size < 1024: return $size . ' Bytes';
-
-				case $size < 1024 * 1024: return NumberHelper::precision($size / 1024, 0) . ' KB';
-
-				case $size < 1024 * 1024 * 1024: return NumberHelper::precision($size / 1024 / 1024, 2) . ' MB';
-
-				case $size < 1024 * 1024 * 1024 * 1024:
-					return NumberHelper::precision($size / 1024 / 1024 / 1024, 2) . ' GB';
-
-				case $size < 1024 * 1024 * 1024 * 1024 * 1024:
-					return NumberHelper::precision($size / 1024 / 1024 / 1024 / 1024, 2) . ' TB';
-				}
-	 }
+	function toReadableSize($size) {
+		switch($size) {
+			case 0:
+				return '0 Bytes';
+			case 1: 
+				return '1 Byte';
+			case $size < 1024: 
+				return $size . ' Bytes';
+			case $size < 1024 * 1024: 
+				return NumberHelper::precision($size / 1024, 0) . ' KB';
+			case $size < 1024 * 1024 * 1024: 
+				return NumberHelper::precision($size / 1024 / 1024, 2) . ' MB';
+			case $size < 1024 * 1024 * 1024 * 1024:
+				return NumberHelper::precision($size / 1024 / 1024 / 1024, 2) . ' GB';
+			case $size < 1024 * 1024 * 1024 * 1024 * 1024:
+				return NumberHelper::precision($size / 1024 / 1024 / 1024 / 1024, 2) . ' TB';
+		}
+	}
 
 /**
  * Formats a number into a percentage string.
@@ -81,8 +81,8 @@ class NumberHelper extends Helper{
  * @return string Percentage string
  * @access public
  */
-	 function toPercentage($number, $precision = 2) {
-		  return NumberHelper::precision($number, $precision) . '%';
-	 }
+	function toPercentage($number, $precision = 2) {
+		return NumberHelper::precision($number, $precision) . '%';
+	}
 }
 ?>

@@ -1,5 +1,5 @@
 <?php
-/* SVN FILE: $Id: component.php 4691 2007-03-27 04:22:51Z phpnut $ */
+/* SVN FILE: $Id: component.php 5317 2007-06-20 08:28:35Z phpnut $ */
 /**
  *
  * PHP versions 4 and 5
@@ -18,9 +18,9 @@
  * @package			cake
  * @subpackage		cake.cake.libs.controller
  * @since			CakePHP(tm) v TBD
- * @version			$Revision: 4691 $
+ * @version			$Revision: 5317 $
  * @modifiedby		$LastChangedBy: phpnut $
- * @lastmodified	$Date: 2007-03-26 22:22:51 -0600 (Mon, 26 Mar 2007) $
+ * @lastmodified	$Date: 2007-06-20 03:28:35 -0500 (Wed, 20 Jun 2007) $
  * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 /**
@@ -58,11 +58,11 @@ class Component extends Object {
 			$this->__controller->components = array_merge($this->__controller->components, array('Session'));
 			$loaded = $this->__loadComponents($loaded, $this->__controller->components);
 
-			foreach(array_keys($loaded)as $component) {
+			foreach (array_keys($loaded)as $component) {
 				$tempComponent =& $loaded[$component];
 
 				if (isset($tempComponent->components) && is_array($tempComponent->components)) {
-					foreach($tempComponent->components as $subComponent) {
+					foreach ($tempComponent->components as $subComponent) {
 						$this->__controller->{$component}->{$subComponent} =& $loaded[$subComponent];
 					}
 				}
@@ -79,10 +79,10 @@ class Component extends Object {
  * @access private
  */
 	function &__loadComponents(&$loaded, $components) {
-		foreach($components as $component) {
+		foreach ($components as $component) {
 			$parts = preg_split('/\/|\./', $component);
 
-			if(count($parts) === 1) {
+			if (count($parts) === 1) {
 				$plugin = $this->__controller->plugin;
 			} else {
 				$plugin = Inflector::underscore($parts['0']);

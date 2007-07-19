@@ -1,5 +1,5 @@
 <?php
-/* SVN FILE: $Id: folder.php 4409 2007-02-02 13:20:59Z phpnut $ */
+/* SVN FILE: $Id: folder.php 5317 2007-06-20 08:28:35Z phpnut $ */
 /**
  * Convenience class for handling directories.
  *
@@ -19,9 +19,9 @@
  * @package			cake
  * @subpackage		cake.cake.libs
  * @since			CakePHP(tm) v 0.2.9
- * @version			$Revision: 4409 $
+ * @version			$Revision: 5317 $
  * @modifiedby		$LastChangedBy: phpnut $
- * @lastmodified	$Date: 2007-02-02 07:20:59 -0600 (Fri, 02 Feb 2007) $
+ * @lastmodified	$Date: 2007-06-20 03:28:35 -0500 (Wed, 20 Jun 2007) $
  * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 /**
@@ -101,7 +101,7 @@ class Folder extends Object{
 		$dirs = $files = array();
 		$dir = opendir($this->path);
 		if ($dir) {
-			while(false !== ($n = readdir($dir))) {
+			while (false !== ($n = readdir($dir))) {
 				if ((!preg_match('#^\.+$#', $n) && $noDotFiles == false) || ($noDotFiles == true && !preg_match('#^\.(.*)$#', $n))) {
 					if (is_dir($this->addPathElement($this->path, $n))) {
 						$dirs[] = $n;
@@ -116,7 +116,7 @@ class Folder extends Object{
 				sort ($files);
 			}
 			closedir ($dir);
-		} 
+		}
 		return array($dirs,$files);
 	}
 /**
@@ -135,7 +135,7 @@ class Folder extends Object{
 		list($dirs, $files) = $data;
 		$found =  array();
 
-		foreach($files as $file) {
+		foreach ($files as $file) {
 			if (preg_match("/^{$regexp_pattern}$/i", $file)) {
 				$found[] = $file;
 			}
@@ -163,15 +163,15 @@ class Folder extends Object{
  */
 	function _findRecursive($pattern) {
 		list($dirs, $files) = $this->ls();
-		
+
 		$found = array();
-		foreach($files as $file) {
+		foreach ($files as $file) {
 			if (preg_match("/^{$pattern}$/i", $file)) {
 				$found[] = $this->addPathElement($this->path, $file);
 			}
 		}
 		$start = $this->path;
-		foreach($dirs as $dir) {
+		foreach ($dirs as $dir) {
 			$this->cd($this->addPathElement($start, $dir));
 			$found = array_merge($found, $this->findRecursive($pattern));
 		}
@@ -301,13 +301,13 @@ function slashTerm($path) {
 		$directory = $this->slashTerm($this->path);
 		$stack = array($directory);
 		$count = count($stack);
-		for($i = 0, $j = $count; $i < $j; ++$i) {
+		for ($i = 0, $j = $count; $i < $j; ++$i) {
 			if (is_file($stack[$i])) {
 				$size += filesize($stack[$i]);
 			} elseif (is_dir($stack[$i])) {
 				$dir = dir($stack[$i]);
 
-				while(false !== ($entry = $dir->read())) {
+				while (false !== ($entry = $dir->read())) {
 					if ($entry == '.' || $entry == '..') {
 						continue;
 					}

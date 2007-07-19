@@ -1,5 +1,5 @@
 <?php
-/* SVN FILE: $Id: connection_manager.php 4852 2007-04-12 08:49:49Z phpnut $ */
+/* SVN FILE: $Id: connection_manager.php 5317 2007-06-20 08:28:35Z phpnut $ */
 
 /**
  * Short description for file.
@@ -22,9 +22,9 @@
  * @package			cake
  * @subpackage		cake.cake.libs.model
  * @since			CakePHP(tm) v 0.10.x.1402
- * @version			$Revision: 4852 $
+ * @version			$Revision: 5317 $
  * @modifiedby		$LastChangedBy: phpnut $
- * @lastmodified	$Date: 2007-04-12 03:49:49 -0500 (Thu, 12 Apr 2007) $
+ * @lastmodified	$Date: 2007-06-20 03:28:35 -0500 (Wed, 20 Jun 2007) $
  * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 
@@ -155,9 +155,9 @@ class ConnectionManager extends Object {
 			return false;
 		}
 
-		if(file_exists(MODELS . DS . $conn['filename'] . '.php')) {
+		if (file_exists(MODELS . DS . $conn['filename'] . '.php')) {
 			require (MODELS . DS . $conn['filename'] . '.php');
-		} else if (fileExistsInPath(LIBS . 'model' . DS . $conn['filename'] . '.php')) {
+		} elseif (fileExistsInPath(LIBS . 'model' . DS . $conn['filename'] . '.php')) {
 			require (LIBS . 'model' . DS . $conn['filename'] . '.php');
 		} else {
 			trigger_error(sprintf(__('Unable to load DataSource file %s.php', true), $conn['filename']), E_USER_ERROR);
@@ -179,7 +179,7 @@ class ConnectionManager extends Object {
 		$connections = get_object_vars($_this->config);
 
 		if ($connections != null) {
-			foreach($connections as $name => $config) {
+			foreach ($connections as $name => $config) {
 				$_this->_connectionsEnum[$name] = $_this->__getDriver($config);
 			}
 			return $_this->_connectionsEnum;

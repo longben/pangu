@@ -1,5 +1,5 @@
 <?php
-/* SVN FILE: $Id: form.php 4409 2007-02-02 13:20:59Z phpnut $ */
+/* SVN FILE: $Id: form.php 5317 2007-06-20 08:28:35Z phpnut $ */
 /**
  * Automatic generation of HTML FORMs from given data.
  *
@@ -21,9 +21,9 @@
  * @package			cake
  * @subpackage		cake.cake.libs.view.helpers
  * @since			CakePHP(tm) v 0.10.0.1076
- * @version			$Revision: 4409 $
+ * @version			$Revision: 5317 $
  * @modifiedby		$LastChangedBy: phpnut $
- * @lastmodified	$Date: 2007-02-02 07:20:59 -0600 (Fri, 02 Feb 2007) $
+ * @lastmodified	$Date: 2007-06-20 03:28:35 -0500 (Wed, 20 Jun 2007) $
  * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 /**
@@ -373,7 +373,7 @@ class FormHelper extends Helper{
 	function generateFields($fields, $readOnly = false) {
 		$strFormFields = '';
 
-		foreach($fields as $field) {
+		foreach ($fields as $field) {
 			if (isset($field['type'])) {
 
 				if (!isset($field['required'])) {
@@ -451,7 +451,7 @@ class FormHelper extends Helper{
 						$strFormFields = $strFormFields . $strFieldSet;
 					break;
 					case "hidden":
-						if(!isset($field['value'])){
+						if (!isset($field['value'])) {
 							$field['value'] = null;
 						}
 						$strFormFields = $strFormFields . $this->Html->hidden($field['tagName'], $field['value']);

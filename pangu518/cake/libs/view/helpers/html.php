@@ -1,5 +1,5 @@
 <?php
-/* SVN FILE: $Id: html.php 5117 2007-05-18 16:46:55Z phpnut $ */
+/* SVN FILE: $Id: html.php 5317 2007-06-20 08:28:35Z phpnut $ */
 /**
  * Html Helper class file.
  *
@@ -19,9 +19,9 @@
  * @package			cake
  * @subpackage		cake.cake.libs.view.helpers
  * @since			CakePHP(tm) v 0.9.1
- * @version			$Revision: 5117 $
+ * @version			$Revision: 5317 $
  * @modifiedby		$LastChangedBy: phpnut $
- * @lastmodified	$Date: 2007-05-18 11:46:55 -0500 (Fri, 18 May 2007) $
+ * @lastmodified	$Date: 2007-06-20 03:28:35 -0500 (Wed, 20 Jun 2007) $
  * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 /**
@@ -133,7 +133,7 @@ class HtmlHelper extends Helper {
 
 		if (empty($url)) {
 			return $this->here;
-		} elseif($url{0} == '/') {
+		} elseif ($url{0} == '/') {
 			$output = $base . $url;
 		} else {
 			$output = $base . '/' . Inflector::underscore($this->params['controller']) . '/' . $url;
@@ -348,7 +348,7 @@ class HtmlHelper extends Helper {
 				$out[] = $this->link($startText, '/');
 			}
 
-			foreach($this->_crumbs as $crumb) {
+			foreach ($this->_crumbs as $crumb) {
 				$out[] = $this->link($crumb[0], $crumb[1]);
 			}
 			return $this->output(join($separator, $out), $return);
@@ -468,12 +468,12 @@ class HtmlHelper extends Helper {
 			$select[] = sprintf($this->tags['selectempty'], $this->parseHtmlOptions($optionAttr));
 		}
 
-		foreach($optionElements as $name => $title) {
+		foreach ($optionElements as $name => $title) {
 			$optionsHere = $optionAttr;
 
 			if (($selected != null) && ($selected == $name)) {
 				$optionsHere['selected'] = 'selected';
-			} else if(is_array($selected) && in_array($name, $selected)) {
+			} elseif (is_array($selected) && in_array($name, $selected)) {
 				$optionsHere['selected'] = 'selected';
 			}
 
@@ -500,10 +500,10 @@ class HtmlHelper extends Helper {
 		$value = isset($htmlAttributes['value']) ? $htmlAttributes['value'] : $this->tagValue($fieldName);
 		$out = array();
 
-		foreach($options as $optValue => $optTitle) {
+		foreach ($options as $optValue => $optTitle) {
 			$optionsHere = array('value' => $optValue);
-			if ($value !== false && $optValue == $value) { 
-				$optionsHere['checked'] = 'checked'; 
+			if ($value !== false && $optValue == $value) {
+				$optionsHere['checked'] = 'checked';
 			}
 			$parsedOptions = $this->parseHtmlOptions(array_merge($htmlAttributes, $optionsHere), null, '', ' ');
 			$individualTagName = "{$this->field}_{$optValue}";
@@ -565,7 +565,7 @@ class HtmlHelper extends Helper {
 		$minYear = $currentYear < $minYear ? $currentYear : $minYear;
 		$maxYear = $currentYear > $maxYear ? $currentYear : $maxYear;
 
-		for($yearCounter = $minYear; $yearCounter < $maxYear; $yearCounter++) {
+		for ($yearCounter = $minYear; $yearCounter < $maxYear; $yearCounter++) {
 			$years[$yearCounter] = $yearCounter;
 		}
 
@@ -644,7 +644,7 @@ class HtmlHelper extends Helper {
 		}
 		$minValue = empty($selected) ? ($showEmpty ? NULL : date('i')) : $selected;
 
-		for($minCount = 0; $minCount < 60; $minCount++) {
+		for ($minCount = 0; $minCount < 60; $minCount++) {
 			$mins[sprintf('%02d', $minCount)] = sprintf('%02d', $minCount);
 		}
 		$option = $this->selectTag($tagName . "_min", $mins, $minValue, $selectAttr, $optionAttr, $showEmpty);
@@ -702,7 +702,7 @@ class HtmlHelper extends Helper {
 
 			$meridian = 'am';
 			$pos = strpos($selected, '-');
-			if($pos !== false){
+			if ($pos !== false) {
 				$date = explode('-', $selected);
 				$days = explode(' ', $date[2]);
 				$day = $days[0];
@@ -719,7 +719,7 @@ class HtmlHelper extends Helper {
 				if (($check > 115959) && $timeFormat == '12') {
 					$time[0] = $time[0] - 12;
 					$meridian = 'pm';
-				} elseif($time[0] > 12) {
+				} elseif ($time[0] > 12) {
 					$meridian = 'pm';
 				}
 
@@ -805,7 +805,7 @@ class HtmlHelper extends Helper {
  */
 	function tableHeaders($names, $trOptions = null, $thOptions = null, $return = false) {
 		$out = array();
-		foreach($names as $arg) {
+		foreach ($names as $arg) {
 			$out[] = sprintf($this->tags['tableheader'], $this->parseHtmlOptions($thOptions), $arg);
 		}
 
@@ -828,11 +828,11 @@ class HtmlHelper extends Helper {
 		}
 		static $count = 0;
 
-		foreach($data as $line) {
+		foreach ($data as $line) {
 			$count++;
 			$cellsOut = array();
 
-			foreach($line as $cell) {
+			foreach ($line as $cell) {
 				$cellsOut[] = sprintf($this->tags['tablecell'], null, $cell);
 			}
 			$options = $this->parseHtmlOptions($count % 2 ? $oddTrOptions : $evenTrOptions);
@@ -853,7 +853,7 @@ class HtmlHelper extends Helper {
  */
 	function guiListTree($data, $htmlAttributes = array(), $bodyKey = 'body', $childrenKey = 'children', $return = false) {
 		$out="<ul" . $this->_parseAttributes($htmlAttributes) . ">\n";
-		foreach($data as $item) {
+		foreach ($data as $item) {
 				$out .= "<li>{$item[$bodyKey]}\n";
 				if (isset($item[$childrenKey]) && is_array($item[$childrenKey]) && count($item[$childrenKey])) {
 					$out .= $this->guiListTree($item[$childrenKey], $htmlAttributes, $bodyKey, $childrenKey);
@@ -874,7 +874,7 @@ class HtmlHelper extends Helper {
 		$this->setFormTag($fieldName);
 		if (isset($this->params['data'][$this->model][$this->field])) {
 			return ife($escape, h($this->params['data'][$this->model][$this->field]), $this->params['data'][$this->model][$this->field]);
-		} elseif(isset($this->data[$this->model][$this->field])) {
+		} elseif (isset($this->data[$this->model][$this->field])) {
 			return ife($escape, h($this->data[$this->model][$this->field]), $this->data[$this->model][$this->field]);
 		}
 		return false;
@@ -914,7 +914,7 @@ class HtmlHelper extends Helper {
 		}
 
 		$errors = array();
-		foreach($objects as $object) {
+		foreach ($objects as $object) {
 			$errors = array_merge($errors, $object->invalidFields($object->data));
 		}
 		return $this->validationErrors = (count($errors) ? $errors : false);
@@ -992,7 +992,7 @@ class HtmlHelper extends Helper {
 			$values = array_intersect_key(array_values($options), $keys);
 			$escape = $options['escape'];
 			$attributes = array();
-			foreach($keys as $index => $key) {
+			foreach ($keys as $index => $key) {
 				$attributes[] = $this->__formatAttribute($key, $values[$index], $escape);
 			}
 			$out = implode(' ', $attributes);
@@ -1110,7 +1110,7 @@ class HtmlHelper extends Helper {
 		if (is_array($options)) {
 				$out=array();
 
-				foreach($options as $k => $v) {
+				foreach ($options as $k => $v) {
 					if (!in_array($k, $exclude)) {
 						$out[] = "{$k}=\"{$v}\"";
 					}
@@ -1179,7 +1179,7 @@ class HtmlHelper extends Helper {
  * @see FormHelper::create()
  */
 	function formTag($target = null, $type = 'post', $htmlAttributes = array()) {
-		$htmlAttributes['action']=$this->UrlFor($target);
+		$htmlAttributes['action']=$this->urlFor ($target);
 		$htmlAttributes['method']=$type == 'get' ? 'get' : 'post';
 		$type == 'file' ? $htmlAttributes['enctype'] = 'multipart/form-data' : null;
 
@@ -1215,7 +1215,7 @@ class HtmlHelper extends Helper {
 		else {
 				$email_encoded=null;
 
-				for($ii = 0; $ii < strlen($email); $ii++) {
+				for ($ii = 0; $ii < strlen($email); $ii++) {
 					if (preg_match('!\w!', $email[$ii])) {
 						$email_encoded .= '%' . bin2hex($email[$ii]);
 					} else {
@@ -1225,7 +1225,7 @@ class HtmlHelper extends Helper {
 
 				$title_encoded=null;
 
-				for($ii = 0; $ii < strlen($title); $ii++) {
+				for ($ii = 0; $ii < strlen($title); $ii++) {
 					$title_encoded .= preg_match('/^[A-Za-z0-9]$/', $title[$ii])
 						? '&#x' . bin2hex($title[$ii]) . ';' : $title[$ii];
 				}

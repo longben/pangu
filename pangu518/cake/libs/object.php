@@ -1,5 +1,5 @@
 <?php
-/* SVN FILE: $Id: object.php 4409 2007-02-02 13:20:59Z phpnut $ */
+/* SVN FILE: $Id: object.php 5317 2007-06-20 08:28:35Z phpnut $ */
 /**
  * Object class, allowing __construct and __destruct in PHP4.
  *
@@ -22,9 +22,9 @@
  * @package			cake
  * @subpackage		cake.cake.libs
  * @since			CakePHP(tm) v 0.2.9
- * @version			$Revision: 4409 $
+ * @version			$Revision: 5317 $
  * @modifiedby		$LastChangedBy: phpnut $
- * @lastmodified	$Date: 2007-02-02 07:20:59 -0600 (Fri, 02 Feb 2007) $
+ * @lastmodified	$Date: 2007-06-20 03:28:35 -0500 (Wed, 20 Jun 2007) $
  * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 /**
@@ -92,10 +92,10 @@ class Object{
 	function requestAction($url, $extra = array()) {
 		if (!empty($url)) {
 			$dispatcher =& new Dispatcher();
-			if(isset($this->plugin)){
+			if (isset($this->plugin)) {
 				$extra['plugin'] = $this->plugin;
 			}
-			if (in_array('return', $extra)) {
+			if (in_array('return', $extra, true)) {
 				$extra['return'] = 0;
 				$extra['bare'] = 1;
 				$extra['requested'] = 1;
@@ -237,12 +237,12 @@ class Object{
 		switch($type) {
 			case 'registry':
 				$vars = unserialize(${$name});
-				foreach($vars['0'] as $key => $value) {
+				foreach ($vars['0'] as $key => $value) {
 					loadModel(Inflector::classify($key));
 				}
 				unset($vars);
 				$vars = unserialize(${$name});
-				foreach($vars['0'] as $key => $value) {
+				foreach ($vars['0'] as $key => $value) {
 					ClassRegistry::addObject($key, $value);
 					unset ($value);
 				}

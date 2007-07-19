@@ -1,5 +1,5 @@
 <?php
-/* SVN FILE: $Id: controller.php 5117 2007-05-18 16:46:55Z phpnut $ */
+/* SVN FILE: $Id: controller.php 5317 2007-06-20 08:28:35Z phpnut $ */
 /**
  * Base controller class.
  *
@@ -19,9 +19,9 @@
  * @package			cake
  * @subpackage		cake.cake.libs.controller
  * @since			CakePHP(tm) v 0.2.9
- * @version			$Revision: 5117 $
+ * @version			$Revision: 5317 $
  * @modifiedby		$LastChangedBy: phpnut $
- * @lastmodified	$Date: 2007-05-18 11:46:55 -0500 (Fri, 18 May 2007) $
+ * @lastmodified	$Date: 2007-06-20 03:28:35 -0500 (Wed, 20 Jun 2007) $
  * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 /**
@@ -257,7 +257,7 @@ class Controller extends Object{
 				$merge[] = 'uses';
 			}
 
-			foreach($merge as $var) {
+			foreach ($merge as $var) {
 				if (isset($appVars[$var]) && !empty($appVars[$var]) && is_array($this->{$var})) {
 					$this->{$var} = array_merge($this->{$var}, array_diff($appVars[$var], $this->{$var}));
 				}
@@ -266,7 +266,7 @@ class Controller extends Object{
 		parent::__construct();
 	}
 
-	function _initComponents(){
+	function _initComponents() {
 		$component = new Component();
 		$component->init($this);
 	}
@@ -279,7 +279,7 @@ class Controller extends Object{
  * @access public
  */
 	function constructClasses() {
-		if($this->uses === null || ($this->uses === array())){
+		if ($this->uses === null || ($this->uses === array())) {
 			return false;
 		}
 		if (empty($this->passedArgs) || !isset($this->passedArgs['0'])) {
@@ -290,11 +290,11 @@ class Controller extends Object{
 		$cached = false;
 		$object = null;
 
-		if ($this->persistModel === true){
+		if ($this->persistModel === true) {
 			uses('neat_array');
 		}
-		if($this->uses === false) {
-			if(!class_exists($this->modelClass)){
+		if ($this->uses === false) {
+			if (!class_exists($this->modelClass)) {
 				loadModel($this->modelClass);
 			}
 		}
@@ -328,13 +328,13 @@ class Controller extends Object{
 			$uses = is_array($this->uses) ? $this->uses : array($this->uses);
 			$this->modelClass = $uses[0];
 
-			foreach($uses as $modelClass) {
+			foreach ($uses as $modelClass) {
 				$id = false;
 				$cached = false;
 				$object = null;
 				$modelKey = Inflector::underscore($modelClass);
 
-				if(!class_exists($modelClass)){
+				if (!class_exists($modelClass)) {
 					loadModel($modelClass);
 				}
 
@@ -510,7 +510,7 @@ class Controller extends Object{
 		}
 
 		$errors = array();
-		foreach($objects as $object) {
+		foreach ($objects as $object) {
 			$errors = array_merge($errors, $this->{$object->name}->invalidFields($object->data));
 		}
 		return $this->validationErrors = (count($errors) ? $errors : false);
@@ -536,7 +536,7 @@ class Controller extends Object{
 
 		if (!empty($this->modelNames)) {
 			$models = array();
-			foreach($this->modelNames as $currentModel) {
+			foreach ($this->modelNames as $currentModel) {
 				if (isset($this->$currentModel) && is_a($this->$currentModel, 'Model')) {
 					$models[] = Inflector::underscore($currentModel);
 				}
@@ -545,10 +545,10 @@ class Controller extends Object{
 				}
 			}
 			$models = array_diff(ClassRegistry::keys(), $models);
-			foreach($models as $currentModel) {
+			foreach ($models as $currentModel) {
 				if (ClassRegistry::isKeySet($currentModel)) {
 					$currentObject =& ClassRegistry::getObject($currentModel);
-					if(is_a($currentObject, 'Model') && !empty($currentObject->validationErrors)) {
+					if (is_a($currentObject, 'Model') && !empty($currentObject->validationErrors)) {
 						$this->__viewClass->validationErrors[Inflector::camelize($currentModel)] =& $currentObject->validationErrors;
 					}
 				}
@@ -571,7 +571,7 @@ class Controller extends Object{
 		if ($ref != null && (defined(FULL_BASE_URL) || FULL_BASE_URL)) {
 			if (strpos($ref, $base) === 0) {
 				return substr($ref, strlen($base) - 1);
-			} elseif(!$local) {
+			} elseif (!$local) {
 				return $ref;
 			}
 		}
@@ -589,7 +589,7 @@ class Controller extends Object{
  * @access protected
  */
 	function _setArray($data) {
-		foreach($data as $name => $value) {
+		foreach ($data as $name => $value) {
 			if ($name == 'title') {
 				$this->_setTitle($value);
 			} else {
@@ -644,7 +644,7 @@ class Controller extends Object{
 
 		if (file_exists(VIEWS . 'layouts' . DS . 'flash.thtml')) {
 			$flash = VIEWS . 'layouts' . DS . 'flash.thtml';
-		} elseif($flash = fileExistsInPath(LIBS . 'view' . DS . 'templates' . DS . "layouts" . DS . 'flash.thtml')) {
+		} elseif ($flash = fileExistsInPath(LIBS . 'view' . DS . 'templates' . DS . "layouts" . DS . 'flash.thtml')) {
 		}
 		$this->render(null, false, $flash);
 	}
@@ -663,9 +663,9 @@ class Controller extends Object{
 		$table = $this->{$model}->table;
 		$objRegistryModel =& ClassRegistry::getObject($modelKey);
 
-		foreach($objRegistryModel->_tableInfo->value as $tabl) {
+		foreach ($objRegistryModel->_tableInfo->value as $tabl) {
 			if ($objRegistryModel->isForeignKey($tabl['name'])) {
-				if(false !== strpos($tabl['name'], "_id")) {
+				if (false !== strpos($tabl['name'], "_id")) {
 					$niceName = substr($tabl['name'], 0, strpos($tabl['name'], "_id" ));
 				} else {
 					$niceName = $niceName = $tabl['name'];
@@ -678,11 +678,11 @@ class Controller extends Object{
 				$fieldNames[$tabl['name']]['controller'] = Inflector::pluralize($this->{$model}->tableToModel[$fkNames[0]]);
 				$fieldNames[$tabl['name']]['foreignKey'] = true;
 
-			} else if('created' != $tabl['name'] && 'updated' != $tabl['name']) {
+			} elseif ('created' != $tabl['name'] && 'updated' != $tabl['name']) {
 				$fieldNames[$tabl['name']]['prompt'] = Inflector::humanize($tabl['name']);
-			} else if('created' == $tabl['name']) {
+			} elseif ('created' == $tabl['name']) {
 				$fieldNames[$tabl['name']]['prompt'] = 'Created';
-			} else if('updated' == $tabl['name']) {
+			} elseif ('updated' == $tabl['name']) {
 				$fieldNames[$tabl['name']]['prompt'] = 'Modified';
 			}
 			$fieldNames[$tabl['name']]['tagName'] = $model . '/' . $tabl['name'];
@@ -720,8 +720,8 @@ class Controller extends Object{
 								$otherModel->recursive = 0;
 								$rec = $otherModel->findAll();
 
-								foreach($rec as $pass) {
-									foreach($pass as $key => $value) {
+								foreach ($rec as $pass) {
+									foreach ($pass as $key => $value) {
 										if ($key == $this->{$model}->tableToModel[$fieldNames[$tabl['name']]['table']] && isset($value[$otherModel->primaryKey]) && isset($value[$otherDisplayField])) {
 												$fieldNames[$tabl['name']]['options'][$value[$otherModel->primaryKey]] = $value[$otherDisplayField];
 										}
@@ -741,7 +741,7 @@ class Controller extends Object{
 				case "float":
 					if (strcmp($tabl['name'], $this->$model->primaryKey) == 0) {
 						$fieldNames[$tabl['name']]['type'] = 'hidden';
-					} else if(isset($fieldNames[$tabl['name']]['foreignKey'])) {
+					} elseif (isset($fieldNames[$tabl['name']]['foreignKey'])) {
 						$fieldNames[$tabl['name']]['type'] = 'select';
 						$fieldNames[$tabl['name']]['options'] = array();
 						$otherModel =& ClassRegistry::getObject(Inflector::underscore($fieldNames[$tabl['name']]['modelKey']));
@@ -752,8 +752,8 @@ class Controller extends Object{
 								$otherModel->recursive = 0;
 								$rec = $otherModel->findAll();
 
-								foreach($rec as $pass) {
-									foreach($pass as $key => $value) {
+								foreach ($rec as $pass) {
+									foreach ($pass as $key => $value) {
 										if ($key == $this->{$model}->tableToModel[$fieldNames[$tabl['name']]['table']] && isset($value[$otherModel->primaryKey]) && isset($value[$otherDisplayField])) {
 											$fieldNames[$tabl['name']]['options'][$value[$otherModel->primaryKey]] = $value[$otherDisplayField];
 										}
@@ -771,7 +771,7 @@ class Controller extends Object{
 					$fieldNames[$tabl['name']]['options'] = array();
 					$enumValues = split(',', $fieldLength);
 
-					foreach($enumValues as $enum) {
+					foreach ($enumValues as $enum) {
 						$enum = trim($enum, "'");
 						$fieldNames[$tabl['name']]['options'][$enum] = $enum;
 					}
@@ -798,7 +798,7 @@ class Controller extends Object{
 			}
 		}
 
-		foreach($objRegistryModel->hasAndBelongsToMany as $relation => $relData) {
+		foreach ($objRegistryModel->hasAndBelongsToMany as $relation => $relData) {
 			$modelName = $relData['className'];
 			$manyAssociation = $relation;
 			$modelKeyM = Inflector::underscore($modelName);
@@ -813,8 +813,8 @@ class Controller extends Object{
 				$modelObject->recursive = 0;
 				$rec = $modelObject->findAll();
 
-				foreach($rec as $pass) {
-					foreach($pass as $key => $value) {
+				foreach ($rec as $pass) {
+					foreach ($pass as $key => $value) {
 						if ($key == $modelName && isset($value[$modelObject->primaryKey]) && isset($value[$otherDisplayField])) {
 							$fieldNames[$relation]['options'][$value[$modelObject->primaryKey]] = $value[$otherDisplayField];
 						}
@@ -822,7 +822,7 @@ class Controller extends Object{
 				}
 
 				if (isset($data[$manyAssociation])) {
-					foreach($data[$manyAssociation] as $key => $row) {
+					foreach ($data[$manyAssociation] as $key => $row) {
 						$fieldNames[$relation]['selected'][$row[$modelObject->primaryKey]] = $row[$modelObject->primaryKey];
 					}
 				}
@@ -843,8 +843,8 @@ class Controller extends Object{
 		}
 		$conditions = array();
 
-		foreach($data as $model => $fields) {
-			foreach($fields as $field => $value) {
+		foreach ($data as $model => $fields) {
+			foreach ($fields as $field => $value) {
 				$conditions[$model . '.' . $field] = $value;
 			}
 		}
@@ -861,7 +861,7 @@ class Controller extends Object{
 			$modelName = $this->modelClass;
 		}
 
-		foreach($this->{$modelName}->_tableInfo->value as $field) {
+		foreach ($this->{$modelName}->_tableInfo->value as $field) {
 			if ('date' == $field['type'] && isset($this->params['data'][$modelName][$field['name'] . '_year'])) {
 				$newDate = $this->params['data'][$modelName][$field['name'] . '_year'] . '-';
 				$newDate .= $this->params['data'][$modelName][$field['name'] . '_month'] . '-';
@@ -875,7 +875,7 @@ class Controller extends Object{
 				$this->params['data'][$modelName][$field['name']] = $newDate;
 				$this->data[$modelName][$field['name']] = $newDate;
 
-			} elseif('datetime' == $field['type'] && isset($this->params['data'][$modelName][$field['name'] . '_year'])) {
+			} elseif ('datetime' == $field['type'] && isset($this->params['data'][$modelName][$field['name'] . '_year'])) {
 				$hour = $this->params['data'][$modelName][$field['name'] . '_hour'];
 
 				if ($hour != 12 && (isset($this->params['data'][$modelName][$field['name'] . '_meridian']) && 'pm' == $this->params['data'][$modelName][$field['name'] . '_meridian'])) {
@@ -895,11 +895,14 @@ class Controller extends Object{
 				$this->params['data'][$modelName][$field['name']] = $newDate;
 				$this->data[$modelName][$field['name']] = $newDate;
 
-			} elseif('time' == $field['type'] && isset($this->params['data'][$modelName][$field['name'] . '_hour'])) {
+			} elseif ('time' == $field['type'] && isset($this->params['data'][$modelName][$field['name'] . '_hour'])) {
 				$hour = $this->params['data'][$modelName][$field['name'] . '_hour'];
 
 				if ($hour != 12 && (isset($this->params['data'][$modelName][$field['name'] . '_meridian']) && 'pm' == $this->params['data'][$modelName][$field['name'] . '_meridian'])) {
 					$hour = $hour + 12;
+				}
+				if ($hour == 12 && (isset($this->params['data'][$modelName][$field['name'] . '_meridian']) && 'am' == $this->params['data'][$modelName][$field['name'] . '_meridian'])) {
+				     $hour = '00';
 				}
 
 				$newDate = $hour . ':' . $this->params['data'][$modelName][$field['name'] . '_min'] . ':00';
@@ -984,8 +987,8 @@ class Controller extends Object{
  */
 	function _selectedArray($data, $key = 'id') {
 		$array = array();
-		if(!empty($data)) {
-			foreach($data as $var) {
+		if (!empty($data)) {
+			foreach ($data as $var) {
 				$array[$var[$key]] = $var[$key];
 			}
 		}

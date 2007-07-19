@@ -1,5 +1,5 @@
 <?php
-/* SVN FILE: $Id: error.php 4852 2007-04-12 08:49:49Z phpnut $ */
+/* SVN FILE: $Id: error.php 5317 2007-06-20 08:28:35Z phpnut $ */
 /**
  * Short description for file.
  *
@@ -21,9 +21,9 @@
  * @package			cake
  * @subpackage		cake.cake.libs
  * @since			CakePHP(tm) v 0.10.5.1732
- * @version			$Revision: 4852 $
+ * @version			$Revision: 5317 $
  * @modifiedby		$LastChangedBy: phpnut $
- * @lastmodified	$Date: 2007-04-12 03:49:49 -0500 (Thu, 12 Apr 2007) $
+ * @lastmodified	$Date: 2007-06-20 03:28:35 -0500 (Wed, 20 Jun 2007) $
  * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 uses('sanitize');
@@ -49,12 +49,12 @@ class ErrorHandler extends Object {
 		parent::__construct();
 		static $__previousError = null;
 		$allow = array('.', '/', '_', ' ', '-', '~');
-	    if(substr(PHP_OS,0,3) == "WIN") {
+	    if (substr(PHP_OS,0,3) == "WIN") {
             $allow = array_merge($allow, array('\\', ':') );
         }
 		$clean = new Sanitize();
 		$messages = $clean->paranoid($messages, $allow);
-		if(!class_exists('Dispatcher')){
+		if (!class_exists('Dispatcher')) {
 			require CAKE . 'dispatcher.php';
 		}
 		$this->__dispatch =& new Dispatcher();
@@ -67,7 +67,7 @@ class ErrorHandler extends Object {
 			}
 
 			$this->controller =& new AppController();
-			if(!empty($this->controller->uses)) {
+			if (!empty($this->controller->uses)) {
 				$this->controller->constructClasses();
 			}
 			$this->controller->_initComponents();

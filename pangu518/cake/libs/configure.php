@@ -1,5 +1,5 @@
 <?php
-/* SVN FILE: $Id: configure.php 4603 2007-03-09 22:34:33Z phpnut $ */
+/* SVN FILE: $Id: configure.php 5317 2007-06-20 08:28:35Z phpnut $ */
 /**
  * Short description for file.
  *
@@ -21,9 +21,9 @@
  * @package			cake
  * @subpackage		cake.cake.libs
  * @since			CakePHP(tm) v 1.0.0.2363
- * @version			$Revision: 4603 $
+ * @version			$Revision: 5317 $
  * @modifiedby		$LastChangedBy: phpnut $
- * @lastmodified	$Date: 2007-03-09 16:34:33 -0600 (Fri, 09 Mar 2007) $
+ * @lastmodified	$Date: 2007-06-20 03:28:35 -0500 (Wed, 20 Jun 2007) $
  * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 /**
@@ -104,22 +104,22 @@ class Configure extends Object {
  * @return void
  * @access public
  */
-	function write($config, $value = null){
+	function write($config, $value = null) {
 		$_this =& Configure::getInstance();
 
-		if(!is_array($config) && $value !== null) {
+		if (!is_array($config) && $value !== null) {
 			$name = $_this->__configVarNames($config);
 
-			if(count($name) > 1){
+			if (count($name) > 1) {
 				$_this->{$name[0]}[$name[1]] = $value;
 			} else {
 				$_this->{$name[0]} = $value;
 			}
 		} else {
 
-			foreach($config as $names => $value){
+			foreach ($config as $names => $value) {
 				$name = $_this->__configVarNames($names);
-				if(count($name) > 1){
+				if (count($name) > 1) {
 					$_this->{$name[0]}[$name[1]] = $value;
 				} else {
 					$_this->{$name[0]} = $value;
@@ -150,23 +150,23 @@ class Configure extends Object {
  * @return string value of Configure::$var
  * @access public
  */
-	function read($var = 'debug'){
+	function read($var = 'debug') {
 		$_this =& Configure::getInstance();
-		if($var === 'debug') {
-			if(!isset($_this->debug)){
+		if ($var === 'debug') {
+			if (!isset($_this->debug)) {
 				$_this->debug = DEBUG;
 			}
 			return $_this->debug;
 		}
 
 		$name = $_this->__configVarNames($var);
-		if(count($name) > 1){
-			if(isset($_this->{$name[0]}[$name[1]])) {
+		if (count($name) > 1) {
+			if (isset($_this->{$name[0]}[$name[1]])) {
 				return $_this->{$name[0]}[$name[1]];
 			}
 			return null;
 		} else {
-			if(isset($_this->{$name[0]})) {
+			if (isset($_this->{$name[0]})) {
 				return $_this->{$name[0]};
 			}
 			return null;
@@ -183,11 +183,11 @@ class Configure extends Object {
  * @return void
  * @access public
  */
-	function delete($var = null){
+	function delete($var = null) {
 		$_this =& Configure::getInstance();
 
 		$name = $_this->__configVarNames($var);
-		if(count($name) > 1){
+		if (count($name) > 1) {
 			unset($_this->{$name[0]}[$name[1]]);
 		} else {
 			unset($_this->{$name[0]});
@@ -208,12 +208,12 @@ class Configure extends Object {
 	function load($fileName) {
 		$_this =& Configure::getInstance();
 
-		if(!file_exists(CONFIGS . $fileName . '.php')) {
+		if (!file_exists(CONFIGS . $fileName . '.php')) {
 			trigger_error("Configure::load() - $fileName.php not found", E_USER_WARNING);
 			return false;
 		}
 		include(CONFIGS . $fileName . '.php');
-		if(!isset($config)){
+		if (!isset($config)) {
 			trigger_error("Configure::load() - no variable \$config found in $fileName.php", E_USER_WARNING);
 			return false;
 		}
@@ -230,7 +230,7 @@ class Configure extends Object {
  */
 	function version() {
 		$_this =& Configure::getInstance();
-		if(!isset($_this->Cake['version'])){
+		if (!isset($_this->Cake['version'])) {
 			require(CORE_PATH . 'cake' . DS . 'config' . DS . 'config.php');
 			$_this->write($config);
 		}
@@ -263,7 +263,7 @@ class Configure extends Object {
 		$_this =& Configure::getInstance();
 		$_this->modelPaths[] = MODELS;
 		if (isset($modelPaths)) {
-			foreach($modelPaths as $value) {
+			foreach ($modelPaths as $value) {
 				$_this->modelPaths[] = $value;
 			}
 		}
@@ -278,7 +278,7 @@ class Configure extends Object {
 		$_this =& Configure::getInstance();
 		$_this->viewPaths[] = VIEWS;
 		if (isset($viewPaths)) {
-			foreach($viewPaths as $value) {
+			foreach ($viewPaths as $value) {
 				$_this->viewPaths[] = $value;
 			}
 		}
@@ -293,7 +293,7 @@ class Configure extends Object {
 		$_this =& Configure::getInstance();
 		$_this->controllerPaths[] = CONTROLLERS;
 		if (isset($controllerPaths)) {
-			foreach($controllerPaths as $value) {
+			foreach ($controllerPaths as $value) {
 				$_this->controllerPaths[] = $value;
 			}
 		}
@@ -308,7 +308,7 @@ class Configure extends Object {
 		$_this =& Configure::getInstance();
 		$_this->helperPaths[] = HELPERS;
 		if (isset($helperPaths)) {
-			foreach($helperPaths as $value) {
+			foreach ($helperPaths as $value) {
 				$_this->helperPaths[] = $value;
 			}
 		}
@@ -323,7 +323,7 @@ class Configure extends Object {
 		$_this =& Configure::getInstance();
 		$_this->componentPaths[] = COMPONENTS;
 		if (isset($componentPaths)) {
-			foreach($componentPaths as $value) {
+			foreach ($componentPaths as $value) {
 				$_this->componentPaths[] = $value;
 			}
 		}

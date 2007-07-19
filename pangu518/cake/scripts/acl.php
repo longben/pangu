@@ -1,6 +1,6 @@
 #!/usr/bin/php -q
 <?php
-/* SVN FILE: $Id: acl.php 5117 2007-05-18 16:46:55Z phpnut $ */
+/* SVN FILE: $Id: acl.php 5317 2007-06-20 08:28:35Z phpnut $ */
 /**
  * Short description for file.
  *
@@ -22,9 +22,9 @@
  * @package			cake
  * @subpackage		cake.cake.scripts
  * @since			CakePHP(tm) v 0.10.0.1232
- * @version			$Revision: 5117 $
+ * @version			$Revision: 5317 $
  * @modifiedby		$LastChangedBy: phpnut $
- * @lastmodified	$Date: 2007-05-18 11:46:55 -0500 (Fri, 18 May 2007) $
+ * @lastmodified	$Date: 2007-06-20 03:28:35 -0500 (Wed, 20 Jun 2007) $
  * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 /**
@@ -79,7 +79,7 @@
 	define('CAKE_CORE_INCLUDE_PATH', ROOT);
 	define('DATASOURCE', $dataSource);
 
-	if(function_exists('ini_set')) {
+	if (function_exists('ini_set')) {
 		ini_set('include_path',ini_get('include_path').
 			PATH_SEPARATOR.CAKE_CORE_INCLUDE_PATH.DS.
 			PATH_SEPARATOR.CORE_PATH.DS.
@@ -104,7 +104,7 @@
 			'controller'.DS.'components'.DS.'dbacl'.DS.'models'.DS.'aro');
 	//Get and format args: first arg is the name of the script.
 	$serverArgs = $argv;
-	if(!empty($unset)) {
+	if (!empty($unset)) {
 		$serverArgs = array_values(array_diff($argv, $unset));
 	}
 
@@ -174,7 +174,7 @@ class AclCLI {
 		$this->stdout = fopen('php://stdout', 'w');
 		$this->stderr = fopen('php://stderr', 'w');
 
-		if (ACL_CLASSNAME != 'DB_ACL'){
+		if (ACL_CLASSNAME != 'DB_ACL') {
 			$out = "--------------------------------------------------\n";
 			$out .= "Error: Your current Cake configuration is set to \n";
 			$out .= "an ACL implementation other than DB. Please change \n";
@@ -187,8 +187,8 @@ class AclCLI {
 			exit();
 		}
 
-		if(!in_array($command, array('help'))) {
-			if(!file_exists(CONFIGS.'database.php')) {
+		if (!in_array($command, array('help'))) {
+			if (!file_exists(CONFIGS.'database.php')) {
 				$this->stdout('');
 				$this->stdout('Your database configuration was not found.');
 				$this->stdout('Take a moment to create one:');
@@ -196,7 +196,7 @@ class AclCLI {
 			}
 			require_once (CONFIGS.'database.php');
 
-			if(!in_array($command, array('initdb'))) {
+			if (!in_array($command, array('initdb'))) {
 				$this->dataSource = DATASOURCE;
 				$this->Acl = new AclComponent();
 				$this->args = $args;
@@ -253,7 +253,7 @@ class AclCLI {
 		extract($this->__dataVars());
 
 		$parent = (is_numeric($this->args[2])) ? intval($this->args[2]) : $this->args[2];
-		if(!$this->Acl->{$class}->create(intval($this->args[1]), $parent, $this->args[3])){
+		if (!$this->Acl->{$class}->create(intval($this->args[1]), $parent, $this->args[3])) {
 			$this->displayError("Parent Node Not Found", "There was an error creating the ".$class.", probably couldn't find the parent node.\n If you wish to create a new root node, specify the <parent_id> as '0'.");
 		}
 		$this->stdout("New $class '".$this->args[3]."' created.\n\n");
@@ -266,7 +266,7 @@ class AclCLI {
 		$this->checkArgNumber(2, 'delete');
 		$this->checkNodeType();
 		extract($this->__dataVars());
-		if(!$this->Acl->{$class}->delete($this->args[1])) {
+		if (!$this->Acl->{$class}->delete($this->args[1])) {
 			$this->displayError("Node Not Deleted", "There was an error deleting the ".$class.". Check that the node exists.\n");
 		}
 		$this->stdout("{$class} deleted.\n\n");
@@ -280,7 +280,7 @@ class AclCLI {
 		$this->checkArgNumber(3, 'setParent');
 		$this->checkNodeType();
 		extract($this->__dataVars());
-		if (!$this->Acl->{$class}->setParent($this->args[2], $this->args[1])){
+		if (!$this->Acl->{$class}->setParent($this->args[2], $this->args[1])) {
 			$this->stdout("Error in setting new parent. Please make sure the parent node exists, and is not a descendant of the node specified.\n");
 		} else {
 			$this->stdout("Node parent set to ".$this->args[2]."\n\n");
@@ -311,14 +311,14 @@ class AclCLI {
 		$this->checkArgNumber(3, 'grant');
 		//add existence checks for nodes involved
 		$aro = $this->args[0];
-		if(is_numeric($aro)) {
+		if (is_numeric($aro)) {
 			$aro = intval($aro);
 		}
 		$aco = $this->args[1];
-		if(is_numeric($aco)) {
+		if (is_numeric($aco)) {
 			$aco = intval($aco);
 		}
-		if($this->Acl->allow($aro, $aco, $this->args[2])) {
+		if ($this->Acl->allow($aro, $aco, $this->args[2])) {
 			$this->stdout("Permission granted.\n");
 		} else {
 			$this->stdout("Permission could not be granted.\n");
@@ -334,14 +334,14 @@ class AclCLI {
 		$aro = (is_numeric($this->args[0])) ? intval($this->args[0]) : $this->args[0];
 		$aco = (is_numeric($this->args[1])) ? intval($this->args[1]) : $this->args[1];
 		$aro = $this->args[0];
-		if(is_numeric($aro)) {
+		if (is_numeric($aro)) {
 			$aro = intval($aro);
 		}
 		$aco = $this->args[1];
-		if(is_numeric($aco)) {
+		if (is_numeric($aco)) {
 			$aco = intval($aco);
 		}
-		if($this->Acl->deny($aro, $aco, $this->args[2])) {
+		if ($this->Acl->deny($aro, $aco, $this->args[2])) {
 			$this->stdout("Permission denied.\n");
 		} else {
 			$this->stdout("Permission could not be denied.\n");
@@ -354,14 +354,14 @@ class AclCLI {
 	function inherit() {
 		$this->checkArgNumber(3, 'inherit');
 		$aro = $this->args[0];
-		if(is_numeric($aro)) {
+		if (is_numeric($aro)) {
 			$aro = intval($aro);
 		}
 		$aco = $this->args[1];
-		if(is_numeric($aco)) {
+		if (is_numeric($aco)) {
 			$aco = intval($aco);
 		}
-		if($this->Acl->inherit($aro, $aco, $this->args[2])) {
+		if ($this->Acl->inherit($aro, $aco, $this->args[2])) {
 			$this->stdout("Permission inherited.\n");
 		} else {
 			$this->stdout("Permission could not be inherited.\n");
@@ -389,10 +389,10 @@ class AclCLI {
 		$this->stdout($class . " tree:\n");
 		$this->stdout("------------------------------------------------\n");
 
-		for($i = 0; $i < count($nodes); $i++){
-			if (count($right) > 0){
-				while ($right[count($right)-1] < $nodes[$i][$class]['rght']){
-					if ($right[count($right)-1]){
+		for ($i = 0; $i < count($nodes); $i++) {
+			if (count($right) > 0) {
+				while ($right[count($right)-1] < $nodes[$i][$class]['rght']) {
+					if ($right[count($right)-1]) {
 						array_pop($right);
 					} else {
 						break;
@@ -685,7 +685,7 @@ class AclCLI {
 			$password = $this->getInput('What is the database password?');
 			if ($password == '') {
 				$blank = $this->getInput('The password you supplied was empty. Use an empty password?', array('y', 'n'), 'n');
-				if($blank == 'y')
+				if ($blank == 'y')
 				{
 					$blankPassword = true;
 				}
@@ -706,7 +706,7 @@ class AclCLI {
 		while ($prefix == '') {
 			$prefix = $this->getInput('Enter a table prefix?', null, 'n');
 		}
-		if(low($prefix) == 'n') {
+		if (low($prefix) == 'n') {
 			$prefix = '';
 		}
 
@@ -770,7 +770,7 @@ class AclCLI {
 			$print_options = '(' . implode('/', $options) . ')';
 		}
 
-		if($default == null) {
+		if ($default == null) {
 			$this->stdout('');
 			$this->stdout($prompt . " $print_options \n" . '> ', false);
 		} else {
@@ -779,7 +779,7 @@ class AclCLI {
 		}
 		$result = trim(fgets($this->stdin));
 
-		if($default != null && empty($result)) {
+		if ($default != null && empty($result)) {
 			return $default;
 		} else {
 			return $result;

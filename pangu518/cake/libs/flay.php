@@ -1,5 +1,5 @@
 <?php
-/* SVN FILE: $Id: flay.php 4409 2007-02-02 13:20:59Z phpnut $ */
+/* SVN FILE: $Id: flay.php 5317 2007-06-20 08:28:35Z phpnut $ */
 /**
  * Text-to-HTML parser.
  *
@@ -21,9 +21,9 @@
  * @package			cake
  * @subpackage		cake.cake.libs
  * @since			CakePHP(tm) v 0.2.9
- * @version			$Revision: 4409 $
+ * @version			$Revision: 5317 $
  * @modifiedby		$LastChangedBy: phpnut $
- * @lastmodified	$Date: 2007-02-02 07:20:59 -0600 (Fri, 02 Feb 2007) $
+ * @lastmodified	$Date: 2007-06-20 03:28:35 -0500 (Wed, 20 Jun 2007) $
  * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 /**
@@ -95,14 +95,14 @@ class Flay extends Object{
 		$text=preg_replace('#[\n]{1}#', "%LINEBREAK%", $text);
 		$out ='';
 
-		foreach(split('%PARAGRAPH%', $text)as $line) {
+		foreach (split('%PARAGRAPH%', $text)as $line) {
 			if ($line) {
 				if (!$bare) {
 					$links = array();
 					$regs = null;
 
 					if (preg_match_all('#\[([^\[]{4,})\]#', $line, $regs)) {
-						foreach($regs[1] as $reg) {
+						foreach ($regs[1] as $reg) {
 							$links[] = $reg;
 							$line = str_replace("[{$reg}]", '%LINK' . (count($links) - 1) . '%', $line);
 						}
@@ -121,7 +121,7 @@ class Flay extends Object{
 				// guess e-mails
 				$emails = null;
 				if (preg_match_all("#([_A-Za-z0-9+-+]+(?:\.[_A-Za-z0-9+-]+)*@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)*)#", $line, $emails)) {
-					foreach($emails[1] as $email) {
+					foreach ($emails[1] as $email) {
 						$line = str_replace($email, "<a href=\"mailto:{$email}\">{$email}</a>", $line);
 					}
 				}
@@ -129,19 +129,19 @@ class Flay extends Object{
 				if (!$bare) {
 					$urls = null;
 					if (preg_match_all("#((?:http|https|ftp|nntp)://[^ ]+)#", $line, $urls)) {
-						foreach($urls[1] as $url) {
+						foreach ($urls[1] as $url) {
 							$line = str_replace($url, "<a href=\"{$url}\">{$url}</a>", $line);
 						}
 					}
 
 					if (preg_match_all("#(www\.[^\n\%\ ]+[^\n\%\,\.\ ])#", $line, $urls)) {
-						foreach($urls[1] as $url) {
+						foreach ($urls[1] as $url) {
 							$line = str_replace($url, "<a href=\"http://{$url}\">{$url}</a>", $line);
 						}
 					}
 
 					if (count($links)) {
-						for($ii = 0; $ii < count($links); $ii++) {
+						for ($ii = 0; $ii < count($links); $ii++) {
 							if (preg_match("#^(http|https|ftp|nntp)://#", $links[$ii])) {
 								$prefix = null;
 							} else {
@@ -202,9 +202,9 @@ class Flay extends Object{
 		$string = strip_tags($string);
 		$snips = array();
 		$rest = $string;
-		foreach($words as $word) {
+		foreach ($words as $word) {
 			if (preg_match_all("/[\s,]+.{0,40}{$word}.{0,40}[\s,]+/i", $rest, $r)) {
-				foreach($r as $result) {
+				foreach ($r as $result) {
 					$rest = str_replace($result, '', $rest);
 				}
 				$snips = array_merge($snips, $r[0]);
@@ -228,7 +228,7 @@ class Flay extends Object{
 	function colorMark($words, $string) {
 		$colors=array('yl', 'gr', 'rd', 'bl', 'fu', 'cy');
 		$nextColorIndex = 0;
-		foreach($words as $word) {
+		foreach ($words as $word) {
 			$string = preg_replace("/({$word})/i", '<em class="' . $colors[$nextColorIndex % count($colors)] . "\">\\1</em>", $string);
 			$nextColorIndex++;
 		}

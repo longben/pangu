@@ -1,5 +1,5 @@
 <?php
-/* SVN FILE: $Id: dbo_pear.php 4717 2007-03-31 17:26:16Z phpnut $ */
+/* SVN FILE: $Id: dbo_pear.php 5317 2007-06-20 08:28:35Z phpnut $ */
 
 /**
  * {@link http://pear.php.net/package/DB PEAR::DB} layer for DBO.
@@ -22,9 +22,9 @@
  * @package			cake
  * @subpackage		cake.cake.libs.model.dbo
  * @since			CakePHP(tm) v 0.2.9
- * @version			$Revision: 4717 $
+ * @version			$Revision: 5317 $
  * @modifiedby		$LastChangedBy: phpnut $
- * @lastmodified	$Date: 2007-03-31 11:26:16 -0600 (Sat, 31 Mar 2007) $
+ * @lastmodified	$Date: 2007-06-20 03:28:35 -0500 (Wed, 20 Jun 2007) $
  * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 
@@ -122,14 +122,14 @@ class DboPear extends DboSource{
 
 				$result=$this->all($sql);
 
-				foreach($result as $item) {
+				foreach ($result as $item) {
 					 $tables[] = $item['name'];
 				}
-		  } elseif('mysql' == $driver) {
+		  } elseif ('mysql' == $driver) {
 				$result=array();
 				$result=mysql_list_tables($this->config['database']);
 
-				while($item = mysql_fetch_array($result)) {
+				while ($item = mysql_fetch_array($result)) {
 					 $tables[] = $item[0];
 				}
 		  } else {
@@ -154,7 +154,7 @@ class DboPear extends DboSource{
 		  $data  =$this->_pear->tableInfo($tableName);
 		  $fields=false;
 
-		  foreach($data as $item) {
+		  foreach ($data as $item) {
 				$fields[] = array('name' => $item['name'],
 							'type' => $item['type']);
 		  }

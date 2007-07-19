@@ -1,5 +1,5 @@
 <?php
-/* SVN FILE: $Id: text.php 4409 2007-02-02 13:20:59Z phpnut $ */
+/* SVN FILE: $Id: text.php 5317 2007-06-20 08:28:35Z phpnut $ */
 /**
  * Text Helper
  *
@@ -21,9 +21,9 @@
  * @package			cake
  * @subpackage		cake.cake.libs.view.helpers
  * @since			CakePHP(tm) v 0.10.0.1076
- * @version			$Revision: 4409 $
+ * @version			$Revision: 5317 $
  * @modifiedby		$LastChangedBy: phpnut $
- * @lastmodified	$Date: 2007-02-02 07:20:59 -0600 (Fri, 02 Feb 2007) $
+ * @lastmodified	$Date: 2007-06-20 03:28:35 -0500 (Wed, 20 Jun 2007) $
  * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 /**
@@ -62,7 +62,7 @@ class TextHelper extends Helper{
 				$replace=array();
 				$with=array();
 
-				foreach($phrase as $key => $value) {
+				foreach ($phrase as $key => $value) {
 					 if (empty($key)) {
 						  $key  =$value;
 						  $value=$highlighter;
@@ -99,7 +99,7 @@ class TextHelper extends Helper{
 	 function autoLinkUrls($text, $htmlOptions = array()) {
 		  $options='array(';
 
-		  foreach($htmlOptions as $option => $value) {
+		  foreach ($htmlOptions as $option => $value) {
 				$options .= "'$option' => '$value', ";
 		  }
 
@@ -125,7 +125,7 @@ class TextHelper extends Helper{
 	 function autoLinkEmails($text, $htmlOptions = array()) {
 		  $options='array(';
 
-		  foreach($htmlOptions as $option => $value) {
+		  foreach ($htmlOptions as $option => $value) {
 				$options .= "'$option' => '$value', ";
 		  }
 

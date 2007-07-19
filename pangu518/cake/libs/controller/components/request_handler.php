@@ -1,5 +1,5 @@
 <?php
-/* SVN FILE: $Id: request_handler.php 4409 2007-02-02 13:20:59Z phpnut $ */
+/* SVN FILE: $Id: request_handler.php 5317 2007-06-20 08:28:35Z phpnut $ */
 /**
  * Request object for handling alternative HTTP requests
  *
@@ -21,9 +21,9 @@
  * @package			cake
  * @subpackage		cake.cake.libs.controller.components
  * @since			CakePHP(tm) v 0.10.4.1076
- * @version			$Revision: 4409 $
+ * @version			$Revision: 5317 $
  * @modifiedby		$LastChangedBy: phpnut $
- * @lastmodified	$Date: 2007-02-02 07:20:59 -0600 (Fri, 02 Feb 2007) $
+ * @lastmodified	$Date: 2007-06-20 03:28:35 -0500 (Wed, 20 Jun 2007) $
  * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 if (!defined('REQUEST_MOBILE_UA')) {
@@ -98,7 +98,7 @@ class RequestHandlerComponent extends Object{
 	function __construct() {
 		$this->__acceptTypes = explode(',', env('HTTP_ACCEPT'));
 
-		foreach($this->__acceptTypes as $i => $type) {
+		foreach ($this->__acceptTypes as $i => $type) {
 			if (strpos($type, ';')) {
 				$type = explode(';', $type);
 				$this->__acceptTypes[$i] = $type[0];
@@ -343,7 +343,7 @@ class RequestHandlerComponent extends Object{
 		$params = params(func_get_args());
 		$str = $params[0];
 
-		for($i = 1; $i < count($params); $i++) {
+		for ($i = 1; $i < count($params); $i++) {
 			$str = preg_replace('/<' . $params[$i] . '[^>]*>/i', '', $str);
 			$str = preg_replace('/<\/' . $params[$i] . '[^>]*>/i', '', $str);
 		}
@@ -364,14 +364,14 @@ class RequestHandlerComponent extends Object{
 	function accepts($type = null) {
 		if ($type == null) {
 			return $this->__acceptTypes;
-		} else if(is_array($type)) {
-			foreach($type as $t) {
+		} elseif (is_array($type)) {
+			foreach ($type as $t) {
 				if ($this->accepts($t) == true) {
 					return true;
 				}
 			}
 			return false;
-		} else if(is_string($type)) {
+		} elseif (is_string($type)) {
 			// If client only accepts */*, then assume default HTML browser
 			if ($type == 'html' && $this->__acceptTypes === array('*/*')) {
 				return true;
@@ -384,7 +384,7 @@ class RequestHandlerComponent extends Object{
 			$content = $this->__requestContent[$type];
 
 			if (is_array($content)) {
-				foreach($content as $c) {
+				foreach ($content as $c) {
 					if (in_array($c, $this->__acceptTypes)) {
 						return true;
 					}
