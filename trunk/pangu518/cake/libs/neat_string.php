@@ -1,5 +1,5 @@
 <?php
-/* SVN FILE: $Id: neat_string.php 4409 2007-02-02 13:20:59Z phpnut $ */
+/* SVN FILE: $Id: neat_string.php 5317 2007-06-20 08:28:35Z phpnut $ */
 /**
  * String handling methods.
  *
@@ -21,9 +21,9 @@
  * @package			cake
  * @subpackage		cake.cake.libs
  * @since			CakePHP(tm) v 0.2.9
- * @version			$Revision: 4409 $
+ * @version			$Revision: 5317 $
  * @modifiedby		$LastChangedBy: phpnut $
- * @lastmodified	$Date: 2007-02-02 07:20:59 -0600 (Fri, 02 Feb 2007) $
+ * @lastmodified	$Date: 2007-06-20 03:28:35 -0500 (Wed, 20 Jun 2007) $
  * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 /**
@@ -79,7 +79,7 @@ class NeatString{
 		$chars = preg_split('//', $available_chars, -1, PREG_SPLIT_NO_EMPTY);
 		$char_count = count($chars);
 		$out = '';
-		for($ii = 0; $ii < $length; $ii++) {
+		for ($ii = 0; $ii < $length; $ii++) {
 			$out .= $chars[rand(1, $char_count)-1];
 		}
 		return $out;

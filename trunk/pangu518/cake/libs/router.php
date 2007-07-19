@@ -1,5 +1,5 @@
 <?php
-/* SVN FILE: $Id: router.php 5144 2007-05-21 04:46:30Z phpnut $ */
+/* SVN FILE: $Id: router.php 5317 2007-06-20 08:28:35Z phpnut $ */
 /**
  * Parses the request URL into controller, action, and parameters.
  *
@@ -19,9 +19,9 @@
  * @package			cake
  * @subpackage		cake.cake.libs
  * @since			CakePHP(tm) v 0.2.9
- * @version			$Revision: 5144 $
+ * @version			$Revision: 5317 $
  * @modifiedby		$LastChangedBy: phpnut $
- * @lastmodified	$Date: 2007-05-20 23:46:30 -0500 (Sun, 20 May 2007) $
+ * @lastmodified	$Date: 2007-06-20 03:28:35 -0500 (Wed, 20 Jun 2007) $
  * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 /**
@@ -90,7 +90,7 @@ class Router extends Object {
 		} else {
 			$elements = array();
 
-			foreach(explode('/', $route)as $element) {
+			foreach (explode('/', $route)as $element) {
 				if (trim($element))
 				$elements[] = $element;
 			}
@@ -99,12 +99,12 @@ class Router extends Object {
 				return false;
 			}
 
-			foreach($elements as $element) {
+			foreach ($elements as $element) {
 
 				if (preg_match('/^:(.+)$/', $element, $r)) {
 					$parsed[]='(?:\/([^\/]+))?';
 					$names[] =$r[1];
-				} elseif(preg_match('/^\*$/', $element, $r)) {
+				} elseif (preg_match('/^\*$/', $element, $r)) {
 					$parsed[] = '(?:\/(.*))?';
 				} else {
 					$parsed[] = '/' . $element;
@@ -156,20 +156,20 @@ class Router extends Object {
 			$url = substr($url, 0, strpos($url, '?'));
 		}
 
-		foreach($this->routes as $route) {
+		foreach ($this->routes as $route) {
 			list($route, $regexp, $names, $defaults) = $route;
 
 			if (preg_match($regexp, $url, $r)) {
 				// remove the first element, which is the url
 				array_shift ($r);
 				// hack, pre-fill the default route names
-				foreach($names as $name) {
+				foreach ($names as $name) {
 					$out[$name] = null;
 				}
 				$ii=0;
 
 				if (is_array($defaults)) {
-					foreach($defaults as $name => $value) {
+					foreach ($defaults as $name => $value) {
 						if (preg_match('#[a-zA-Z_\-]#i', $name)) {
 							$out[$name] =  $this->stripEscape($value);
 						} else {
@@ -178,7 +178,7 @@ class Router extends Object {
 					}
 				}
 
-				foreach($r as $found) {
+				foreach ($r as $found) {
 					// if $found is a named url element (i.e. ':action')
 					if (isset($names[$ii])) {
 						$out[$names[$ii]] = $found;
@@ -186,7 +186,7 @@ class Router extends Object {
 						// unnamed elements go in as 'pass'
 						$found = explode('/', $found);
 						$pass = array();
-						foreach($found as $key => $value) {
+						foreach ($found as $key => $value) {
 							if ($value == "0") {
 								$pass[$key] =  $this->stripEscape($value);
 							} elseif ($value) {
@@ -203,16 +203,20 @@ class Router extends Object {
 		return $out;
 	}
 	function stripEscape($param) {
-		if(is_string($param) || empty($param)) {
-			$return = preg_replace('/^ *-!/', '', $param);
+		if (!is_array($param) || empty($param)) {
+			if (is_bool($param)) {
+				return $param;
+			}
+
+			$return = preg_replace('/^[\\t ]*(?:-!)+/', '', $param);
 			return $return;
 		}
-		foreach($param as $key => $value) {
-			if(is_string($value)) {
-				$return[$key] = preg_replace('/^ *-!/', '', $value);
+		foreach ($param as $key => $value) {
+			if (is_string($value)) {
+				$return[$key] = preg_replace('/^[\\t ]*(?:-!)+/', '', $value);
 			} else {
 				foreach ($value as $array => $string) {
-					$return[$key][$array] = preg_replace('/^ *-!/', '', $string);
+					$return[$key][$array] = $this->stripEscape($string);
 				}
 			}
 		}

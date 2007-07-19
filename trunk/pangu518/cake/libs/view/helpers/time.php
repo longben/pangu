@@ -1,5 +1,5 @@
 <?php
-/* SVN FILE: $Id: time.php 4409 2007-02-02 13:20:59Z phpnut $ */
+/* SVN FILE: $Id: time.php 5317 2007-06-20 08:28:35Z phpnut $ */
 /**
  * Time Helper class file.
  *
@@ -19,9 +19,9 @@
  * @package			cake
  * @subpackage		cake.cake.libs.view.helpers
  * @since			CakePHP(tm) v 0.10.0.1076
- * @version			$Revision: 4409 $
+ * @version			$Revision: 5317 $
  * @modifiedby		$LastChangedBy: phpnut $
- * @lastmodified	$Date: 2007-02-02 07:20:59 -0600 (Fri, 02 Feb 2007) $
+ * @lastmodified	$Date: 2007-06-20 03:28:35 -0500 (Wed, 20 Jun 2007) $
  * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 /**
@@ -96,7 +96,7 @@ class TimeHelper extends Helper {
 
 		if ($this->isToday($date)) {
 			$ret = "Today, " . date("H:i", $date);
-		} elseif($this->wasYesterday($date)) {
+		} elseif ($this->wasYesterday($date)) {
 			$ret = "Yesterday, " . date("H:i", $date);
 		} else {
 			$ret = date("M jS{$y}, H:i", $date);
@@ -282,15 +282,15 @@ class TimeHelper extends Helper {
 				// weeks and days
 				$relative_date .= ($relative_date ? ', ' : '') . $weeks . ' week' . ($weeks > 1 ? 's' : '');
 				$relative_date .= $days > 0 ? ($relative_date ? ', ' : '') . $days . ' day' . ($days > 1 ? 's' : '') : '';
-			} elseif($days > 0) {
+			} elseif ($days > 0) {
 				// days and hours
 				$relative_date .= ($relative_date ? ', ' : '') . $days . ' day' . ($days > 1 ? 's' : '');
 				$relative_date .= $hours > 0 ? ($relative_date ? ', ' : '') . $hours . ' hour' . ($hours > 1 ? 's' : '') : '';
-			} elseif($hours > 0) {
+			} elseif ($hours > 0) {
 				// hours and minutes
 				$relative_date .= ($relative_date ? ', ' : '') . $hours . ' hour' . ($hours > 1 ? 's' : '');
 				$relative_date .= $minutes > 0 ? ($relative_date ? ', ' : '') . $minutes . ' minute' . ($minutes > 1 ? 's' : '') : '';
-			} elseif($minutes > 0) {
+			} elseif ($minutes > 0) {
 				// minutes only
 				$relative_date .= ($relative_date ? ', ' : '') . $minutes . ' minute' . ($minutes > 1 ? 's' : '');
 			} else {

@@ -1,5 +1,5 @@
 <?php
-/* SVN FILE: $Id: basics.php 4786 2007-04-05 17:57:00Z phpnut $ */
+/* SVN FILE: $Id: basics.php 5421 2007-07-09 04:58:57Z phpnut $ */
 /**
  * Basic Cake functionality.
  *
@@ -21,9 +21,9 @@
  * @package			cake
  * @subpackage		cake.cake
  * @since			CakePHP(tm) v 0.2.9
- * @version			$Revision: 4786 $
+ * @version			$Revision: 5421 $
  * @modifiedby		$LastChangedBy: phpnut $
- * @lastmodified	$Date: 2007-04-05 12:57:00 -0500 (Thu, 05 Apr 2007) $
+ * @lastmodified	$Date: 2007-07-08 23:58:57 -0500 (Sun, 08 Jul 2007) $
  * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 /**
@@ -98,8 +98,8 @@
 	if (!function_exists('array_intersect_key')) {
 		function array_intersect_key($arr1, $arr2) {
 			$res = array();
-			foreach($arr1 as $key=>$value) {
-				if(array_key_exists($key, $arr2)) {
+			foreach ($arr1 as $key=>$value) {
+				if (array_key_exists($key, $arr2)) {
 					$res[$key] = $arr1[$key];
 				}
 			}
@@ -110,7 +110,7 @@
  * Loads all models.
  */
 	function loadModels() {
-		if(!class_exists('Model')){
+		if (!class_exists('Model')) {
 			require LIBS . 'model' . DS . 'model.php';
 		}
 		$path = Configure::getInstance();
@@ -125,8 +125,8 @@
 			}
 		}
 
-		foreach($path->modelPaths as $path) {
-			foreach(listClasses($path)as $model_fn) {
+		foreach ($path->modelPaths as $path) {
+			foreach (listClasses($path)as $model_fn) {
 				list($name) = explode('.', $model_fn);
 				$className = Inflector::camelize($name);
 
@@ -147,7 +147,7 @@
  * @return
  */
 	function loadPluginModels($plugin) {
-		if(!class_exists('AppModel')){
+		if (!class_exists('AppModel')) {
 			loadModel();
 		}
 		$pluginAppModel = Inflector::camelize($plugin . '_app_model');
@@ -165,7 +165,7 @@
 
 		$pluginModelDir = APP . 'plugins' . DS . $plugin . DS . 'models' . DS;
 
-		foreach(listClasses($pluginModelDir)as $modelFileName) {
+		foreach (listClasses($pluginModelDir)as $modelFileName) {
 			list($name) = explode('.', $modelFileName);
 			$className = Inflector::camelize($name);
 
@@ -187,7 +187,7 @@
 			$paths = Configure::getInstance();
 			$file = Inflector::underscore($viewClass) . '.php';
 
-			foreach($paths->viewPaths as $path) {
+			foreach ($paths->viewPaths as $path) {
 				if (file_exists($path . $file)) {
 					return require($path . $file);
 				}
@@ -207,7 +207,7 @@
  * Loads a model by CamelCase name.
  */
 	function loadModel($name = null) {
-		if(!class_exists('Model')){
+		if (!class_exists('Model')) {
 			require LIBS . 'model' . DS . 'model.php';
 		}
 		if (!class_exists('AppModel')) {
@@ -226,7 +226,7 @@
 			$name = Inflector::underscore($name);
 			$paths = Configure::getInstance();
 
-			foreach($paths->modelPaths as $path) {
+			foreach ($paths->modelPaths as $path) {
 				if (file_exists($path . $name . '.php')) {
 					require($path . $name . '.php');
 					if (phpversion() < 5 && function_exists("overload")) {
@@ -254,8 +254,8 @@
 		}
 		$loadedControllers = array();
 
-		foreach($paths->controllerPaths as $path) {
-			foreach(listClasses($path) as $controller) {
+		foreach ($paths->controllerPaths as $path) {
+			foreach (listClasses($path) as $controller) {
 				list($name) = explode('.', $controller);
 				$className = Inflector::camelize($name);
 				if (loadController($name)) {
@@ -288,7 +288,7 @@
 		if (!class_exists($name . 'Controller')) {
 			$name = Inflector::underscore($name);
 
-			foreach($paths->controllerPaths as $path) {
+			foreach ($paths->controllerPaths as $path) {
 				if (file_exists($path . $name . '_controller.php')) {
 					require($path . $name . '_controller.php');
 					return true;
@@ -342,7 +342,7 @@
 				require($file);
 				return true;
 			}  elseif (!class_exists(Inflector::camelize($plugin . '_controller'))) {
-				if(file_exists(APP . 'plugins' . DS . $plugin . DS . 'controllers' . DS . $plugin . '_controller.php')) {
+				if (file_exists(APP . 'plugins' . DS . $plugin . DS . 'controllers' . DS . $plugin . '_controller.php')) {
 					require(APP . 'plugins' . DS . $plugin . DS . 'controllers' . DS . $plugin . '_controller.php');
 					return true;
 				} else {
@@ -368,7 +368,7 @@
 		if (!class_exists($name . 'Helper')) {
 			$name=Inflector::underscore($name);
 
-			foreach($paths->helperPaths as $path) {
+			foreach ($paths->helperPaths as $path) {
 				if (file_exists($path . $name . '.php')) {
 					require($path . $name . '.php');
 					return true;
@@ -424,7 +424,7 @@
 		if (!class_exists($name . 'Component')) {
 			$name=Inflector::underscore($name);
 
-			foreach($paths->componentPaths as $path) {
+			foreach ($paths->componentPaths as $path) {
 				if (file_exists($path . $name . '.php')) {
 					require($path . $name . '.php');
 					return true;
@@ -473,7 +473,7 @@
 	function listClasses($path) {
 		$dir = opendir($path);
 		$classes=array();
-		while(false !== ($file = readdir($dir))) {
+		while (false !== ($file = readdir($dir))) {
 			if ((substr($file, -3, 3) == 'php') && substr($file, 0, 1) != '.') {
 				$classes[] = $file;
 			}
@@ -488,7 +488,7 @@
  */
 	function config() {
 		$args = func_get_args();
-		foreach($args as $arg) {
+		foreach ($args as $arg) {
 			if (('database' == $arg) && file_exists(CONFIGS . $arg . '.php')) {
 				include_once(CONFIGS . $arg . '.php');
 			} elseif (file_exists(CONFIGS . $arg . '.php')) {
@@ -517,7 +517,7 @@
  */
 	function uses() {
 		$args = func_get_args();
-		foreach($args as $arg) {
+		foreach ($args as $arg) {
 			require_once(LIBS . strtolower($arg) . '.php');
 		}
 	}
@@ -529,7 +529,7 @@
  */
 	function vendor($name) {
 		$args = func_get_args();
-		foreach($args as $arg) {
+		foreach ($args as $arg) {
 			if (file_exists(APP . 'vendors' . DS . $arg . '.php')) {
 				require_once(APP . 'vendors' . DS . $arg . '.php');
 			} else {
@@ -584,7 +584,7 @@
 				return null;
 			}
 
-			foreach($array as $key => $val) {
+			foreach ($array as $key => $val) {
 				$sa[$key] = $val[$sortby];
 			}
 
@@ -594,7 +594,7 @@
 				arsort($sa, $type);
 			}
 
-			foreach($sa as $key => $val) {
+			foreach ($sa as $key => $val) {
 				$out[] = $array[$key];
 			}
 			return $out;
@@ -623,7 +623,7 @@
 			}
 
 			$output=array();
-			for($i = 0; $i < $c1; $i++) {
+			for ($i = 0; $i < $c1; $i++) {
 				$output[$a1[$i]] = $a2[$i];
 			}
 			return $output;
@@ -677,7 +677,7 @@
  */
 	function aa() {
 		$args = func_get_args();
-		for($l = 0, $c = count($args); $l < $c; $l++) {
+		for ($l = 0, $c = count($args); $l < $c; $l++) {
 			if ($l + 1 < count($args)) {
 				$a[$args[$l]] = $args[$l + 1];
 			} else {
@@ -763,7 +763,7 @@
  */
 	function am() {
 		$r = array();
-		foreach(func_get_args()as $a) {
+		foreach (func_get_args()as $a) {
 			if (!is_array($a)) {
 				$a = array($a);
 			}
@@ -780,7 +780,7 @@
 	function setUri() {
 		if (env('HTTP_X_REWRITE_URL')) {
 			$uri = env('HTTP_X_REWRITE_URL');
-		} elseif(env('REQUEST_URI')) {
+		} elseif (env('REQUEST_URI')) {
 			$uri = env('REQUEST_URI');
 		} else {
 			if (env('argv')) {
@@ -822,6 +822,10 @@
 			return getenv($key);
 		}
 
+		if ($key == 'SCRIPT_FILENAME' && defined('SERVER_IIS') && SERVER_IIS === true){
+			return str_replace('\\\\', '\\', env('PATH_TRANSLATED') );
+		}
+
 		if ($key == 'DOCUMENT_ROOT') {
 			$offset = 0;
 			if (!strpos(env('SCRIPT_NAME'), '.php')) {
@@ -856,7 +860,7 @@
 			} else {
 				$data = '';
 
-				while(!feof($res)) {
+				while (!feof($res)) {
 					$data .= fread($res, 8192);
 				}
 			}
@@ -879,7 +883,7 @@
 			$res = @fopen($fileName, 'w+b');
 			if ($res) {
 				$write = @fwrite($res, $data);
-				if($write === false) {
+				if ($write === false) {
 					return false;
 				} else {
 					return $write;
@@ -913,7 +917,7 @@
 
 		$timediff = $expires - $now;
 		$filetime = false;
-		if(file_exists($filename)) {
+		if (file_exists($filename)) {
 			$filetime = @filemtime($filename);
 		}
 
@@ -951,14 +955,14 @@
 			if (is_file($cache . $ext)) {
 				@unlink($cache . $ext);
 				return true;
-			} else if(is_dir($cache)) {
+			} elseif (is_dir($cache)) {
 				$files = glob("$cache*");
 
 				if ($files === false) {
 					return false;
 				}
 
-				foreach($files as $file) {
+				foreach ($files as $file) {
 					if (is_file($file)) {
 						@unlink($file);
 					}
@@ -971,7 +975,7 @@
 				if ($files === false) {
 					return false;
 				}
-				foreach($files as $file) {
+				foreach ($files as $file) {
 					if (is_file($file)) {
 						@unlink($file);
 					}
@@ -979,16 +983,16 @@
 				return true;
 			}
 		} elseif (is_array($params)) {
-			foreach($params as $key => $file) {
+			foreach ($params as $key => $file) {
 				$file = preg_replace('/\/\//', '/', $file);
 				$cache = CACHE . $type . DS . '*' . $file . '*' . $ext;
 				$files[] = glob($cache);
 			}
 
 			if (!empty($files)) {
-				foreach($files as $key => $delete) {
+				foreach ($files as $key => $delete) {
 					if (is_array($delete)) {
-						foreach($delete as $file) {
+						foreach ($delete as $file) {
 							if (is_file($file)) {
 								@unlink($file);
 							}
@@ -1067,7 +1071,7 @@
  */
 	function fileExistsInPath($file) {
 		$paths = explode(PATH_SEPARATOR, ini_get('include_path'));
-		foreach($paths as $path) {
+		foreach ($paths as $path) {
 			$fullPath = $path . DIRECTORY_SEPARATOR . $file;
 
 			if (file_exists($fullPath)) {
@@ -1104,7 +1108,7 @@
 		}
 		$dir = opendir($path);
 
-		while($file = readdir($dir)) {
+		while ($file = readdir($dir)) {
 			if ($file != '.' && $file != '..') {
 				$fullpath = $path . '/' . $file;
 
@@ -1134,7 +1138,7 @@
  * @param string $plugin
  * @return base url with plugin name removed if present
  */
-	function strip_plugin($base, $plugin){
+	function strip_plugin($base, $plugin) {
 		if ($plugin != null) {
 			$base = preg_replace('/' . $plugin . '/', '', $base);
 			$base = str_replace('//', '', $base);

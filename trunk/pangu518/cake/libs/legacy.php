@@ -1,5 +1,5 @@
 <?php
-/* SVN FILE: $Id: legacy.php 4691 2007-03-27 04:22:51Z phpnut $ */
+/* SVN FILE: $Id: legacy.php 5317 2007-06-20 08:28:35Z phpnut $ */
 /**
  * Backwards compatibility functions.
  *
@@ -22,9 +22,9 @@
  * @package			cake
  * @subpackage		cake.cake.libs
  * @since			CakePHP(tm) v 0.2.9
- * @version			$Revision: 4691 $
+ * @version			$Revision: 5317 $
  * @modifiedby		$LastChangedBy: phpnut $
- * @lastmodified	$Date: 2007-03-26 22:22:51 -0600 (Mon, 26 Mar 2007) $
+ * @lastmodified	$Date: 2007-06-20 03:28:35 -0500 (Wed, 20 Jun 2007) $
  * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 	if (version_compare(phpversion(), '5.0') < 0) {
@@ -59,7 +59,7 @@
 			} else {
 				$data='';
 
-				while(!feof($fh)) {
+				while (!feof($fh)) {
 					$data .= fread($fh, 8192);
 				}
 			}

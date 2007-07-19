@@ -1,6 +1,6 @@
 #!/usr/bin/php -q
 <?php
-/* SVN FILE: $Id: bake.php 5117 2007-05-18 16:46:55Z phpnut $ */
+/* SVN FILE: $Id: bake.php 5317 2007-06-20 08:28:35Z phpnut $ */
 /**
  * Command-line code generation utility to automate programmer chores.
  *
@@ -24,9 +24,9 @@
  * @package			cake
  * @subpackage		cake.cake.scripts.bake
  * @since			CakePHP(tm) v 0.10.0.1232
- * @version			$Revision: 5117 $
+ * @version			$Revision: 5317 $
  * @modifiedby		$LastChangedBy: phpnut $
- * @lastmodified	$Date: 2007-05-18 11:46:55 -0500 (Fri, 18 May 2007) $
+ * @lastmodified	$Date: 2007-06-20 03:28:35 -0500 (Wed, 20 Jun 2007) $
  * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 	define ('DS', DIRECTORY_SEPARATOR);
@@ -70,17 +70,17 @@
 		}
 	}
 
-	if(!$app && isset($argv[1])) {
+	if (!$app && isset($argv[1])) {
 		$app = $argv[1];
-	} elseif(!$app) {
+	} elseif (!$app) {
 		$app = 'app';
 	}
-	if(!is_dir($app)) {
+	if (!is_dir($app)) {
 		$project = true;
 		$projectPath = $app;
 
 	}
-	if($project) {
+	if ($project) {
 		$app = $projectPath;
 	}
 
@@ -89,7 +89,7 @@
 	$shortPath = str_replace(DS.DS, DS, $shortPath);
 
 	$pathArray = explode(DS, $shortPath);
-	if(end($pathArray) != '') {
+	if (end($pathArray) != '') {
 		$appDir = array_pop($pathArray);
 	} else {
 		array_pop($pathArray);
@@ -98,7 +98,7 @@
 	$rootDir = implode(DS, $pathArray);
 	$rootDir = str_replace(DS.DS, DS, $rootDir);
 
-	if(!$rootDir) {
+	if (!$rootDir) {
 		$rootDir = $root;
 		$projectPath = $root.DS.$appDir;
 	}
@@ -107,13 +107,13 @@
 	define ('APP_DIR', $appDir);
 	define ('DEBUG', 1);
 
-	if(!empty($core)){
+	if (!empty($core)) {
 		define('CAKE_CORE_INCLUDE_PATH', dirname($core));
-	}else{
+	} else {
 		define('CAKE_CORE_INCLUDE_PATH', $root);
 	}
 
-	if(function_exists('ini_set')) {
+	if (function_exists('ini_set')) {
 		ini_set('include_path',ini_get('include_path').
 													PATH_SEPARATOR.CAKE_CORE_INCLUDE_PATH.DS.
 													PATH_SEPARATOR.ROOT.DS.APP_DIR.DS);
@@ -131,12 +131,12 @@
 	uses('object', 'session', 'security', 'configure', 'inflector', 'model'.DS.'connection_manager');
 
 	$pattyCake = new Bake();
-	if($help === true)
+	if ($help === true)
 	{
 		$pattyCake->help();
 		exit();
 	}
-	if($project === true)
+	if ($project === true)
 	{
 		$pattyCake->project($projectPath);
 		exit();
@@ -214,7 +214,7 @@ class Bake {
 		$this->stdout('Path: '. ROOT.DS.APP_DIR);
 		$this->hr();
 
-		if(!file_exists(CONFIGS.'database.php')) {
+		if (!file_exists(CONFIGS.'database.php')) {
 			$this->stdout('');
 			$this->stdout('Your database configuration was not found. Take a moment to create one:');
 			$this->doDbConfig();
@@ -311,7 +311,7 @@ class Bake {
 			$password = $this->getInput('What is the database password?');
 			if ($password == '') {
 				$blank = $this->getInput('The password you supplied was empty. Use an empty password?', array('y', 'n'), 'n');
-				if($blank == 'y')
+				if ($blank == 'y')
 				{
 					$blankPassword = true;
 				}
@@ -332,7 +332,7 @@ class Bake {
 		while ($prefix == '') {
 			$prefix = $this->getInput('Enter a table prefix?', null, 'n');
 		}
-		if(low($prefix) == 'n') {
+		if (low($prefix) == 'n') {
 			$prefix = '';
 		}
 
@@ -402,7 +402,7 @@ class Bake {
 
 		$useTable = Inflector::tableize($currentModelName);
 		$fullTableName = $db->fullTableName($useTable, false);
-		if(array_search($useTable, $this->__tables) === false) {
+		if (array_search($useTable, $this->__tables) === false) {
 			$this->stdout("\nGiven your model named '$currentModelName', Cake would expect a database table named '" . $fullTableName . "'.");
 			$tableIsGood = $this->getInput('do you want to use this table?', array('y','n'), 'y');
 		}
@@ -411,7 +411,7 @@ class Bake {
 			$useTable = $this->getInput('What is the name of the table (enter "null" to use NO table)?');
 		}
 		$tableIsGood = false;
-		while($tableIsGood == false && low($useTable) != 'null') {
+		while ($tableIsGood == false && low($useTable) != 'null') {
 			if (is_array($this->__tables) && !in_array($useTable, $this->__tables)) {
 				$fullTableName = $db->fullTableName($useTable, false);
 				$this->stdout($fullTableName . ' does not exist.');
@@ -423,18 +423,18 @@ class Bake {
 		}
 		$wannaDoValidation = $this->getInput('Would you like to supply validation criteria for the fields in your model?', array('y','n'), 'y');
 
-		if(in_array($useTable, $this->__tables)) {
+		if (in_array($useTable, $this->__tables)) {
 			loadModel();
 			$tempModel = new Model(false, $useTable);
 			$modelFields = $db->describe($tempModel);
-			if(isset($modelFields[0]['name']) && $modelFields[0]['name'] != 'id') {
+			if (isset($modelFields[0]['name']) && $modelFields[0]['name'] != 'id') {
 				$primaryKey = $this->getInput('What is the primaryKey?', null, $modelFields[0]['name']);
 			}
 		}
 		$validate = array();
 
 		if (array_search($useTable, $this->__tables) !== false && (low($wannaDoValidation) == 'y' || low($wannaDoValidation) == 'yes')) {
-			foreach($modelFields as $field) {
+			foreach ($modelFields as $field) {
 				$this->stdout('');
 				$prompt = 'Name: ' . $field['name'] . "\n";
 				$prompt .= 'Type: ' . $field['type'] . "\n";
@@ -448,7 +448,7 @@ class Bake {
 				$prompt .= "5- Do not do any validation on this field.\n\n";
 				$prompt .= "... or enter in a valid regex validation string.\n\n";
 
-				if($field['null'] == 1 || $field['name'] == $primaryKey || $field['name'] == 'created' || $field['name'] == 'modified') {
+				if ($field['null'] == 1 || $field['name'] == $primaryKey || $field['name'] == 'created' || $field['name'] == 'modified') {
 					$validation = $this->getInput($prompt, null, '5');
 				} else {
 					$validation = $this->getInput($prompt, null, '1');
@@ -478,14 +478,14 @@ class Bake {
 
 		$wannaDoAssoc = $this->getInput('Would you like to define model associations (hasMany, hasOne, belongsTo, etc.)?', array('y','n'), 'y');
 
-		if((low($wannaDoAssoc) == 'y' || low($wannaDoAssoc) == 'yes')) {
+		if ((low($wannaDoAssoc) == 'y' || low($wannaDoAssoc) == 'yes')) {
 			$this->stdout('One moment while I try to detect any associations...');
 			$possibleKeys = array();
 			//Look for belongsTo
 			$i = 0;
-			foreach($modelFields as $field) {
+			foreach ($modelFields as $field) {
 				$offset = strpos($field['name'], '_id');
-				if($field['name'] != $primaryKey && $offset !== false) {
+				if ($field['name'] != $primaryKey && $offset !== false) {
 					$tmpModelName = $this->__modelNameFromKey($field['name']);
 					$associations['belongsTo'][$i]['alias'] = $tmpModelName;
 					$associations['belongsTo'][$i]['className'] = $tmpModelName;
@@ -496,14 +496,14 @@ class Bake {
 			//Look for hasOne and hasMany and hasAndBelongsToMany
 			$i = 0;
 			$j = 0;
-			foreach($this->__tables as $otherTable) {
+			foreach ($this->__tables as $otherTable) {
 				$tempOtherModel = & new Model(false, $otherTable);
 				$modelFieldsTemp = $db->describe($tempOtherModel);
-				foreach($modelFieldsTemp as $field) {
-					if($field['type'] == 'integer' || $field['type'] == 'string') {
+				foreach ($modelFieldsTemp as $field) {
+					if ($field['type'] == 'integer' || $field['type'] == 'string') {
 						$possibleKeys[$otherTable][] = $field['name'];
 					}
-					if($field['name'] != $primaryKey && $field['name'] == $this->__modelKey($currentModelName)) {
+					if ($field['name'] != $primaryKey && $field['name'] == $this->__modelKey($currentModelName)) {
 						$tmpModelName = $this->__modelName($otherTable);
 						$associations['hasOne'][$j]['alias'] = $tmpModelName;
 						$associations['hasOne'][$j]['className'] = $tmpModelName;
@@ -516,7 +516,7 @@ class Bake {
 					}
 				}
 				$offset = strpos($otherTable, $useTable . '_');
-				if($offset !== false) {
+				if ($offset !== false) {
 					$offset = strlen($useTable . '_');
 					$tmpModelName = $this->__modelName(substr($otherTable, $offset));
 					$associations['hasAndBelongsToMany'][$i]['alias'] = $tmpModelName;
@@ -540,20 +540,20 @@ class Bake {
 			$this->stdout('Done.');
 			$this->hr();
 			//if none found...
-			if(empty($associations)) {
+			if (empty($associations)) {
 				$this->stdout('None found.');
 			} else {
 				$this->stdout('Please confirm the following associations:');
 				$this->hr();
-				if(!empty($associations['belongsTo'])) {
+				if (!empty($associations['belongsTo'])) {
 					$count = count($associations['belongsTo']);
-					for($i = 0; $i < $count; $i++) {
-						if($currentModelName == $associations['belongsTo'][$i]['alias']) {
+					for ($i = 0; $i < $count; $i++) {
+						if ($currentModelName == $associations['belongsTo'][$i]['alias']) {
 							$response = $this->getInput("{$currentModelName} belongsTo {$associations['belongsTo'][$i]['alias']}\nThis looks like a self join. Do you want to specify an alternate association alias?", array('y','n'), 'y');
-							if('y' == low($response) || 'yes' == low($response)) {
+							if ('y' == low($response) || 'yes' == low($response)) {
 								$associations['belongsTo'][$i]['alias'] = $this->getInput("So what is the alias?", null, $associations['belongsTo'][$i]['alias']);
 							}
-							if($currentModelName != $associations['belongsTo'][$i]['alias']) {
+							if ($currentModelName != $associations['belongsTo'][$i]['alias']) {
 								$response = $this->getInput("$currentModelName belongsTo {$associations['belongsTo'][$i]['alias']}?", array('y','n'), 'y');
 							} else {
 								$response = 'n';
@@ -561,22 +561,22 @@ class Bake {
 						} else {
 							$response = $this->getInput("$currentModelName belongsTo {$associations['belongsTo'][$i]['alias']}?", array('y','n'), 'y');
 						}
-						if('n' == low($response) || 'no' == low($response)) {
+						if ('n' == low($response) || 'no' == low($response)) {
 							unset($associations['belongsTo'][$i]);
 						}
 					}
 					$associations['belongsTo'] = array_merge($associations['belongsTo']);
 				}
 
-				if(!empty($associations['hasOne'])) {
+				if (!empty($associations['hasOne'])) {
 					$count = count($associations['hasOne']);
-					for($i = 0; $i < $count; $i++) {
-						if($currentModelName == $associations['hasOne'][$i]['alias']) {
+					for ($i = 0; $i < $count; $i++) {
+						if ($currentModelName == $associations['hasOne'][$i]['alias']) {
 							$response = $this->getInput("{$currentModelName} hasOne {$associations['hasOne'][$i]['alias']}\nThis looks like a self join. Do you want to specify an alternate association alias?", array('y','n'), 'y');
-							if('y' == low($response) || 'yes' == low($response)) {
+							if ('y' == low($response) || 'yes' == low($response)) {
 								$associations['hasOne'][$i]['alias'] = $this->getInput("So what is the alias?", null, $associations['hasOne'][$i]['alias']);
 							}
-							if($currentModelName != $associations['hasOne'][$i]['alias']) {
+							if ($currentModelName != $associations['hasOne'][$i]['alias']) {
 								$response = $this->getInput("$currentModelName hasOne {$associations['hasOne'][$i]['alias']}?", array('y','n'), 'y');
 							} else {
 								$response = 'n';
@@ -584,22 +584,22 @@ class Bake {
 						} else {
 							$response = $this->getInput("$currentModelName hasOne {$associations['hasOne'][$i]['alias']}?", array('y','n'), 'y');
 						}
-						if('n' == low($response) || 'no' == low($response)) {
+						if ('n' == low($response) || 'no' == low($response)) {
 							unset($associations['hasOne'][$i]);
 						}
 					}
 					$associations['hasOne'] = array_merge($associations['hasOne']);
 				}
 
-				if(!empty($associations['hasMany'])) {
+				if (!empty($associations['hasMany'])) {
 					$count = count($associations['hasMany']);
-					for($i = 0; $i < $count; $i++) {
-						if($currentModelName == $associations['hasMany'][$i]['alias']) {
+					for ($i = 0; $i < $count; $i++) {
+						if ($currentModelName == $associations['hasMany'][$i]['alias']) {
 							$response = $this->getInput("{$currentModelName} hasMany {$associations['hasMany'][$i]['alias']}\nThis looks like a self join. Do you want to specify an alternate association alias?", array('y','n'), 'y');
-							if('y' == low($response) || 'yes' == low($response)) {
+							if ('y' == low($response) || 'yes' == low($response)) {
 								$associations['hasMany'][$i]['alias'] = $this->getInput("So what is the alias?", null, $associations['hasMany'][$i]['alias']);
 							}
-							if($currentModelName != $associations['hasMany'][$i]['alias']) {
+							if ($currentModelName != $associations['hasMany'][$i]['alias']) {
 								$response = $this->getInput("$currentModelName hasMany {$associations['hasMany'][$i]['alias']}?", array('y','n'), 'y');
 							} else {
 								$response = 'n';
@@ -607,22 +607,22 @@ class Bake {
 						} else {
 							$response = $this->getInput("$currentModelName hasMany {$associations['hasMany'][$i]['alias']}?", array('y','n'), 'y');
 						}
-						if('n' == low($response) || 'no' == low($response)) {
+						if ('n' == low($response) || 'no' == low($response)) {
 							unset($associations['hasMany'][$i]);
 						}
 					}
 					$associations['hasMany'] = array_merge($associations['hasMany']);
 				}
 
-				if(!empty($associations['hasAndBelongsToMany'])) {
+				if (!empty($associations['hasAndBelongsToMany'])) {
 					$count = count($associations['hasAndBelongsToMany']);
-					for($i = 0; $i < $count; $i++) {
-						if($currentModelName == $associations['hasAndBelongsToMany'][$i]['alias']) {
+					for ($i = 0; $i < $count; $i++) {
+						if ($currentModelName == $associations['hasAndBelongsToMany'][$i]['alias']) {
 							$response = $this->getInput("{$currentModelName} hasAndBelongsToMany {$associations['hasAndBelongsToMany'][$i]['alias']}\nThis looks like a self join. Do you want to specify an alternate association alias?", array('y','n'), 'y');
-							if('y' == low($response) || 'yes' == low($response)) {
+							if ('y' == low($response) || 'yes' == low($response)) {
 								$associations['hasAndBelongsToMany'][$i]['alias'] = $this->getInput("So what is the alias?", null, $associations['hasAndBelongsToMany'][$i]['alias']);
 							}
-							if($currentModelName != $associations['hasAndBelongsToMany'][$i]['alias']) {
+							if ($currentModelName != $associations['hasAndBelongsToMany'][$i]['alias']) {
 								$response = $this->getInput("$currentModelName hasAndBelongsToMany {$associations['hasAndBelongsToMany'][$i]['alias']}?", array('y','n'), 'y');
 							} else {
 								$response = 'n';
@@ -630,7 +630,7 @@ class Bake {
 						} else {
 							$response = $this->getInput("$currentModelName hasAndBelongsToMany {$associations['hasAndBelongsToMany'][$i]['alias']}?", array('y','n'), 'y');
 						}
-						if('n' == low($response) || 'no' == low($response)) {
+						if ('n' == low($response) || 'no' == low($response)) {
 							unset($associations['hasAndBelongsToMany'][$i]);
 						}
 					}
@@ -639,10 +639,10 @@ class Bake {
 			}
 			$wannaDoMoreAssoc = $this->getInput('Would you like to define some additional model associations?', array('y','n'), 'y');
 
-			while((low($wannaDoMoreAssoc) == 'y' || low($wannaDoMoreAssoc) == 'yes')) {
+			while ((low($wannaDoMoreAssoc) == 'y' || low($wannaDoMoreAssoc) == 'yes')) {
 				$assocs = array(1=>'belongsTo', 2=>'hasOne', 3=>'hasMany', 4=>'hasAndBelongsToMany');
 				$bad = true;
-				while($bad) {
+				while ($bad) {
 					$this->stdout('What is the association type?');
 					$prompt = "1- belongsTo\n";
 					$prompt .= "2- hasOne\n";
@@ -650,7 +650,7 @@ class Bake {
 					$prompt .= "4- hasAndBelongsToMany\n";
 					$assocType = intval($this->getInput($prompt, null, null));
 
-					if(intval($assocType) < 1 || intval($assocType) > 4) {
+					if (intval($assocType) < 1 || intval($assocType) > 4) {
 						$this->stdout('The selection you entered was invalid. Please enter a number between 1 and 4.');
 					} else {
 						$bad = false;
@@ -661,13 +661,13 @@ class Bake {
 				$associationName = $this->getInput('What is the name of this association?');
 				$className = $this->getInput('What className will '.$associationName.' use?', null, $associationName );
 				$suggestedForeignKey = null;
-				if($assocType == '1') {
+				if ($assocType == '1') {
 					$showKeys = $possibleKeys[$useTable];
 					$suggestedForeignKey = $this->__modelKey($associationName);
 				} else {
 					$otherTable = Inflector::tableize($className);
-					if(in_array($otherTable, $this->__tables)) {
-						if($assocType < '4') {
+					if (in_array($otherTable, $this->__tables)) {
+						if ($assocType < '4') {
 							$showKeys = $possibleKeys[$otherTable];
 						} else {
 							$showKeys = null;
@@ -678,7 +678,7 @@ class Bake {
 					}
 					$suggestedForeignKey = $this->__modelKey($currentModelName);
 				}
-				if(!empty($showKeys)) {
+				if (!empty($showKeys)) {
 					$this->stdout('A helpful List of possible keys');
 					for ($i = 0; $i < count($showKeys); $i++) {
 						$this->stdout($i + 1 . ". " . $showKeys[$i]);
@@ -688,10 +688,10 @@ class Bake {
 						$foreignKey = $showKeys[intval($foreignKey) - 1];
 					}
 				}
-				if(!isset($foreignKey)) {
+				if (!isset($foreignKey)) {
 					$foreignKey = $this->getInput('What is the foreignKey? Specify your own.', null, $suggestedForeignKey);
 				}
-				if($assocType == '4') {
+				if ($assocType == '4') {
 					$associationForeignKey = $this->getInput('What is the associationForeignKey?', null, $this->__modelKey($currentModelName));
 					$joinTable = $this->getInput('What is the joinTable?');
 				}
@@ -701,7 +701,7 @@ class Bake {
 				$associations[$assocs[$assocType]][$i]['alias'] = $associationName;
 				$associations[$assocs[$assocType]][$i]['className'] = $className;
 				$associations[$assocs[$assocType]][$i]['foreignKey'] = $foreignKey;
-				if($assocType == '4') {
+				if ($assocType == '4') {
 					$associations[$assocs[$assocType]][$i]['associationForeignKey'] = $associationForeignKey;
 					$associations[$assocs[$assocType]][$i]['joinTable'] = $joinTable;
 				}
@@ -715,34 +715,34 @@ class Bake {
 		$this->stdout("Model Name:    $currentModelName");
 		$this->stdout("DB Connection: " . ($usingDefault ? 'default' : $useDbConfig));
 		$this->stdout("DB Table:   " . $fullTableName);
-		if($primaryKey != 'id') {
+		if ($primaryKey != 'id') {
 			$this->stdout("Primary Key:   " . $primaryKey);
 		}
 		$this->stdout("Validation:    " . print_r($validate, true));
 
-		if(!empty($associations)) {
+		if (!empty($associations)) {
 			$this->stdout("Associations:");
 
-			if(count($associations['belongsTo'])) {
-				for($i = 0; $i < count($associations['belongsTo']); $i++) {
+			if (count($associations['belongsTo'])) {
+				for ($i = 0; $i < count($associations['belongsTo']); $i++) {
 					$this->stdout("            $currentModelName belongsTo {$associations['belongsTo'][$i]['alias']}");
 				}
 			}
 
-			if(count($associations['hasOne'])) {
-				for($i = 0; $i < count($associations['hasOne']); $i++) {
+			if (count($associations['hasOne'])) {
+				for ($i = 0; $i < count($associations['hasOne']); $i++) {
 					$this->stdout("            $currentModelName hasOne	{$associations['hasOne'][$i]['alias']}");
 				}
 			}
 
-			if(count($associations['hasMany'])) {
-				for($i = 0; $i < count($associations['hasMany']); $i++) {
+			if (count($associations['hasMany'])) {
+				for ($i = 0; $i < count($associations['hasMany']); $i++) {
 					$this->stdout("            $currentModelName hasMany   {$associations['hasMany'][$i]['alias']}");
 				}
 			}
 
-			if(count($associations['hasAndBelongsToMany'])) {
-				for($i = 0; $i < count($associations['hasAndBelongsToMany']); $i++) {
+			if (count($associations['hasAndBelongsToMany'])) {
+				for ($i = 0; $i < count($associations['hasAndBelongsToMany']); $i++) {
 					$this->stdout("            $currentModelName hasAndBelongsToMany {$associations['hasAndBelongsToMany'][$i]['alias']}");
 				}
 			}
@@ -817,7 +817,7 @@ class Bake {
 
 		if ((low($wannaDoAdmin) == 'y' || low($wannaDoAdmin) == 'yes')) {
 			require(CONFIGS.'core.php');
-			if(defined('CAKE_ADMIN')) {
+			if (defined('CAKE_ADMIN')) {
 				$admin = CAKE_ADMIN . '_';
 				$admin_url = '/'.CAKE_ADMIN;
 			} else {
@@ -828,7 +828,7 @@ class Bake {
 				while ($adminRoute == '') {
 					$adminRoute = $this->getInput("What would you like the admin route to be?", null, 'admin');
 				}
-				if($this->__addAdminRoute($adminRoute) !== true){
+				if ($this->__addAdminRoute($adminRoute) !== true) {
 					$this->stdout('Unable to write to /app/config/core.php.');
 					$this->stdout('You need to enable CAKE_ADMIN in /app/config/core.php to use admin routing.');
 					exit();
@@ -841,7 +841,7 @@ class Bake {
 		if (low($wannaDoScaffold) == 'y' || low($wannaDoScaffold) == 'yes') {
 			$file = CONTROLLERS . $controllerPath . '_controller.php';
 
-			if(!file_exists($file)) {
+			if (!file_exists($file)) {
 				$shortPath = str_replace(ROOT, null, $file);
 				$shortPath = str_replace('../', '', $shortPath);
 				$shortPath = str_replace('//', '/', $shortPath);
@@ -853,7 +853,7 @@ class Bake {
 				uses('controller'.DS.'controller');
 				loadController($controllerName);
 				//loadModels();
-				if($admin) {
+				if ($admin) {
 					$this->__bakeViews($controllerName, $controllerPath, $admin, $admin_url);
 				}
 				$this->__bakeViews($controllerName, $controllerPath, null, null);
@@ -894,10 +894,10 @@ class Bake {
 		$controllerClassName = $controllerName.'Controller';
 		$controllerObj = & new $controllerClassName();
 
-		if(!in_array('Html', $controllerObj->helpers)) {
+		if (!in_array('Html', $controllerObj->helpers)) {
 			$controllerObj->helpers[] = 'Html';
 		}
-		if(!in_array('Form', $controllerObj->helpers)) {
+		if (!in_array('Form', $controllerObj->helpers)) {
 			$controllerObj->helpers[] = 'Form';
 		}
 
@@ -915,7 +915,7 @@ class Bake {
 
 		//-------------------------[INDEX]-------------------------//
 		$indexView = null;
-		if(!empty($modelObj->alias)) {
+		if (!empty($modelObj->alias)) {
 			foreach ($modelObj->alias as $key => $value) {
 				$alias[] = $key;
 			}
@@ -933,14 +933,14 @@ class Bake {
 		$indexView .= "<?php foreach (\${$pluralName} as \${$singularName}): ?>\n";
 		$indexView .= "<tr>\n";
 		$count = 0;
-		foreach($fieldNames as $field => $value) {
-			if(isset($value['foreignKey'])) {
+		foreach ($fieldNames as $field => $value) {
+			if (isset($value['foreignKey'])) {
 				$otherModelName = $this->__modelName($value['model']);
 				$otherModelKey = Inflector::underscore($otherModelName);
 				$otherModelObj =& ClassRegistry::getObject($otherModelKey);
 				$otherControllerName = $this->__controllerName($otherModelName);
 				$otherControllerPath = $this->__controllerPath($otherControllerName);
-				if(is_object($otherModelObj)) {
+				if (is_object($otherModelObj)) {
 					$displayField = $otherModelObj->getDisplayField();
 					$indexView .= "\t<td>&nbsp;<?php echo \$html->link(\$".$singularName."['{$alias[$count]}']['{$displayField}'], '{$admin_url}/" . $otherControllerPath . "/view/' .\$".$singularName."['{$alias[$count]}']['{$otherModelObj->primaryKey}'])?></td>\n";
 				} else {
@@ -971,9 +971,9 @@ class Bake {
 		$viewView .= "<h2>View " . $singularHumanName . "</h2>\n\n";
 		$viewView .= "<dl>\n";
 		$count = 0;
-		foreach($fieldNames as $field => $value) {
+		foreach ($fieldNames as $field => $value) {
 			$viewView .= "\t<dt>" . $value['prompt'] . "</dt>\n";
-			if(isset($value['foreignKey'])) {
+			if (isset($value['foreignKey'])) {
 				$otherModelName = $this->__modelName($value['model']);
 				$otherModelKey = Inflector::underscore($otherModelName);
 				$otherModelObj =& ClassRegistry::getObject($otherModelKey);
@@ -992,10 +992,10 @@ class Bake {
 		$viewView .= "\t<li><?php echo \$html->link('Delete " . $singularHumanName . "', '{$admin_url}/{$controllerPath}/delete/' . \$".$singularName."['{$modelObj->name}']['{$modelObj->primaryKey}'], null, 'Are you sure you want to delete: id ' . \$".$singularName."['{$modelObj->name}']['{$modelObj->primaryKey}'] . '?') ?> </li>\n";
 		$viewView .= "\t<li><?php echo \$html->link('List " . $pluralHumanName ."',   '{$admin_url}/{$controllerPath}/index') ?> </li>\n";
 		$viewView .= "\t<li><?php echo \$html->link('New " . $singularHumanName . "',	'{$admin_url}/{$controllerPath}/add') ?> </li>\n";
-		foreach( $fieldNames as $field => $value ) {
-			if( isset( $value['foreignKey'] ) ) {
+		foreach ( $fieldNames as $field => $value ) {
+			if ( isset( $value['foreignKey'] ) ) {
 				$otherModelName = $this->__modelName($value['model']);
-				if($otherModelName != $currentModelName) {
+				if ($otherModelName != $currentModelName) {
 					$otherControllerName = $this->__controllerName($otherModelName);
 					$otherControllerPath = $this->__controllerPath($otherControllerName);
 					$otherSingularHumanName = $this->__singularHumanName($value['controller']);
@@ -1022,9 +1022,9 @@ class Bake {
 
 			$viewView .= "<div class=\"related\">\n";
 			$viewView .= "<h3>Related " . $otherPluralHumanName . "</h3>\n";
-			$viewView .= "<?php if(!empty(\$".$singularName."['{$associationName}'])): ?>\n";
+			$viewView .= "<?php if (!empty(\$".$singularName."['{$associationName}'])): ?>\n";
 			$viewView .= "<dl>\n";
-			$viewView .= "\t<?php foreach(\$".$singularName."['{$associationName}'] as \$field => \$value): ?>\n";
+			$viewView .= "\t<?php foreach (\$".$singularName."['{$associationName}'] as \$field => \$value): ?>\n";
 			$viewView .= "\t\t<dt><?php echo \$field ?></dt>\n";
 			$viewView .= "\t\t<dd>&nbsp;<?php echo \$value ?></dd>\n";
 			$viewView .= "\t<?php endforeach; ?>\n";
@@ -1038,7 +1038,7 @@ class Bake {
 		}
 		$relations = array_merge($modelObj->hasMany, $modelObj->hasAndBelongsToMany);
 
-		foreach($relations as $associationName => $relation) {
+		foreach ($relations as $associationName => $relation) {
 			$otherModelName = $this->__modelName($relation['className']);
 			$otherControllerName = $this->__controllerName($otherModelName);
 			$otherControllerPath = $this->__controllerPath($otherControllerName);
@@ -1050,17 +1050,17 @@ class Bake {
 
 			$viewView .= "<div class=\"related\">\n";
 			$viewView .= "<h3>Related " . $otherPluralHumanName . "</h3>\n";
-			$viewView .= "<?php if(!empty(\$".$singularName."['{$associationName}'])):?>\n";
+			$viewView .= "<?php if (!empty(\$".$singularName."['{$associationName}'])):?>\n";
 			$viewView .= "<table cellpadding=\"0\" cellspacing=\"0\">\n";
 			$viewView .= "<tr>\n";
-			$viewView .= "<?php foreach(\$".$singularName."['{$associationName}']['0'] as \$column => \$value): ?>\n";
+			$viewView .= "<?php foreach (\$".$singularName."['{$associationName}']['0'] as \$column => \$value): ?>\n";
 			$viewView .= "<th><?php echo \$column?></th>\n";
 			$viewView .= "<?php endforeach; ?>\n";
 			$viewView .= "<th>Actions</th>\n";
 			$viewView .= "</tr>\n";
-			$viewView .= "<?php foreach(\$".$singularName."['{$associationName}'] as \$".$otherSingularName."):?>\n";
+			$viewView .= "<?php foreach (\$".$singularName."['{$associationName}'] as \$".$otherSingularName."):?>\n";
 			$viewView .= "<tr>\n";
-			$viewView .= "\t<?php foreach(\$".$otherSingularName." as \$column => \$value):?>\n";
+			$viewView .= "\t<?php foreach (\$".$otherSingularName." as \$column => \$value):?>\n";
 			$viewView .= "\t\t<td><?php echo \$value;?></td>\n";
 			$viewView .= "\t<?php endforeach;?>\n";
 			$viewView .= "\t<td class=\"actions\">\n";
@@ -1089,7 +1089,7 @@ class Bake {
 		$addView .= "<li><?php echo \$html->link('List {$pluralHumanName}', '{$admin_url}/{$controllerPath}/index')?></li>\n";
 		foreach ($modelObj->belongsTo as $associationName => $relation) {
 			$otherModelName = $this->__modelName($associationName);
-			if($otherModelName != $currentModelName) {
+			if ($otherModelName != $currentModelName) {
 				$otherControllerName = $this->__controllerName($otherModelName);
 				$otherControllerPath = $this->__controllerPath($otherControllerName);
 				$otherSingularName = $this->__singularName($associationName);
@@ -1112,7 +1112,7 @@ class Bake {
 		$editView .= "<li><?php echo \$html->link('List {$pluralHumanName}', '{$admin_url}/{$controllerPath}/index')?></li>\n";
 		foreach ($modelObj->belongsTo as $associationName => $relation) {
 			$otherModelName = $this->__modelName($associationName);
-			if($otherModelName != $currentModelName) {
+			if ($otherModelName != $currentModelName) {
 				$otherControllerName = $this->__controllerName($otherModelName);
 				$otherControllerPath = $this->__controllerPath($otherControllerName);
 				$otherSingularName = $this->__singularName($associationName);
@@ -1125,7 +1125,7 @@ class Bake {
 
 		//------------------------------------------------------------------------------------//
 
-		if(!file_exists(VIEWS.$controllerPath)) {
+		if (!file_exists(VIEWS.$controllerPath)) {
 			mkdir(VIEWS.$controllerPath);
 		}
 		$filename = VIEWS . $controllerPath . DS .  $admin . 'index.thtml';
@@ -1227,7 +1227,7 @@ class Bake {
 		$admin_url = null;
 		if ((low($wannaDoAdmin) == 'y' || low($wannaDoAdmin) == 'yes')) {
 			require(CONFIGS.'core.php');
-			if(defined('CAKE_ADMIN')) {
+			if (defined('CAKE_ADMIN')) {
 				$admin = CAKE_ADMIN.'_';
 				$admin_url = '/'.CAKE_ADMIN;
 			} else {
@@ -1238,7 +1238,7 @@ class Bake {
 				while ($adminRoute == '') {
 					$adminRoute = $this->getInput("What would you like the admin route to be?", null, 'admin');
 				}
-				if($this->__addAdminRoute($adminRoute) !== true){
+				if ($this->__addAdminRoute($adminRoute) !== true) {
 					$this->stdout('Unable to write to /app/config/core.php.');
 					$this->stdout('You need to enable CAKE_ADMIN in /app/config/core.php to use admin routing.');
 					exit();
@@ -1252,12 +1252,12 @@ class Bake {
 		if (low($wannaDoScaffolding) == 'y' || low($wannaDoScaffolding) == 'yes') {
 			//loadModels();
 			$actions = $this->__bakeActions($controllerName, null, null, $wannaUseSession);
-			if($admin) {
+			if ($admin) {
 				$actions .= $this->__bakeActions($controllerName, $admin, $admin_url, $wannaUseSession);
 			}
 		}
 
-		if($this->interactive === true) {
+		if ($this->interactive === true) {
 			$this->stdout('');
 			$this->hr();
 			$this->stdout('The following controller will be created:');
@@ -1266,10 +1266,10 @@ class Bake {
 			if (low($wannaUseScaffold) == 'y' || low($wannaUseScaffold) == 'yes') {
 				$this->stdout("			var \$scaffold;");
 			}
-			if(count($uses)) {
+			if (count($uses)) {
 				$this->stdout("Uses:            ", false);
 
-				foreach($uses as $use) {
+				foreach ($uses as $use) {
 					if ($use != $uses[count($uses) - 1]) {
 						$this->stdout(ucfirst($use) . ", ", false);
 					} else {
@@ -1278,10 +1278,10 @@ class Bake {
 				}
 			}
 
-			if(count($helpers)) {
+			if (count($helpers)) {
 				$this->stdout("Helpers:			", false);
 
-				foreach($helpers as $help) {
+				foreach ($helpers as $help) {
 					if ($help != $helpers[count($helpers) - 1]) {
 						$this->stdout(ucfirst($help) . ", ", false);
 					} else {
@@ -1290,10 +1290,10 @@ class Bake {
 				}
 			}
 
-			if(count($components)) {
+			if (count($components)) {
 				$this->stdout("Components:            ", false);
 
-				foreach($components as $comp) {
+				foreach ($components as $comp) {
 					if ($comp != $components[count($components) - 1]) {
 						$this->stdout(ucfirst($comp) . ", ", false);
 					} else {
@@ -1331,7 +1331,7 @@ class Bake {
 		$singularName = $this->__singularName($currentModelName);
 		$singularHumanName = $this->__singularHumanName($currentModelName);
 		$pluralHumanName = $this->__pluralHumanName($controllerName);
-		if(!class_exists($currentModelName)) {
+		if (!class_exists($currentModelName)) {
 			$this->stdout('You must have a model for this class to build scaffold methods. Please try again.');
 			exit;
 		}
@@ -1342,7 +1342,7 @@ class Bake {
 		$actions .= "\t}\n";
 		$actions .= "\n";
 		$actions .= "\tfunction {$admin}view(\$id = null) {\n";
-		$actions .= "\t\tif(!\$id) {\n";
+		$actions .= "\t\tif (!\$id) {\n";
 		if (low($wannaUseSession) == 'y' || low($wannaUseSession) == 'yes') {
 		$actions .= "\t\t\t\$this->Session->setFlash('Invalid id for {$singularHumanName}.');\n";
 		$actions .= "\t\t\t\$this->redirect('{$admin_url}/{$controllerPath}/index');\n";
@@ -1355,10 +1355,10 @@ class Bake {
 		$actions .= "\n";
 		/* ADD ACTION */
 		$actions .= "\tfunction {$admin}add() {\n";
-		$actions .= "\t\tif(empty(\$this->data)) {\n";
+		$actions .= "\t\tif (empty(\$this->data)) {\n";
 
-		foreach($modelObj->hasAndBelongsToMany as $associationName => $relation) {
-			if(!empty($associationName)) {
+		foreach ($modelObj->hasAndBelongsToMany as $associationName => $relation) {
+			if (!empty($associationName)) {
 				$otherModelName = $this->__modelName($associationName);
 				$otherSingularName = $this->__singularName($associationName);
 				$otherPluralName = $this->__pluralName($associationName);
@@ -1367,8 +1367,8 @@ class Bake {
 				$actions .= "\t\t\t\$this->set('{$selectedOtherPluralName}', null);\n";
 			}
 		}
-		foreach($modelObj->belongsTo as $associationName => $relation) {
-			if(!empty($associationName)) {
+		foreach ($modelObj->belongsTo as $associationName => $relation) {
+			if (!empty($associationName)) {
 				$otherModelName = $this->__modelName($associationName);
 				$otherSingularName = $this->__singularName($associationName);
 				$otherPluralName = $this->__pluralName($associationName);
@@ -1378,7 +1378,7 @@ class Bake {
 		$actions .= "\t\t\t\$this->render();\n";
 		$actions .= "\t\t} else {\n";
 		$actions .= "\t\t\t\$this->cleanUpFields();\n";
-		$actions .= "\t\t\tif(\$this->{$currentModelName}->save(\$this->data)) {\n";
+		$actions .= "\t\t\tif (\$this->{$currentModelName}->save(\$this->data)) {\n";
 		if (low($wannaUseSession) == 'y' || low($wannaUseSession) == 'yes') {
 		$actions .= "\t\t\t\t\$this->Session->setFlash('The ".$this->__singularHumanName($currentModelName)." has been saved');\n";
 		$actions .= "\t\t\t\t\$this->redirect('{$admin_url}/{$controllerPath}/index');\n";
@@ -1390,19 +1390,19 @@ class Bake {
 		$actions .= "\t\t\t\t\$this->Session->setFlash('Please correct errors below.');\n";
 		}
 
-		foreach($modelObj->hasAndBelongsToMany as $associationName => $relation) {
-			if(!empty($associationName)) {
+		foreach ($modelObj->hasAndBelongsToMany as $associationName => $relation) {
+			if (!empty($associationName)) {
 				$otherModelName = $this->__modelName($associationName);
 				$otherSingularName = $this->__singularName($associationName);
 				$otherPluralName = $this->__pluralName($associationName);
 				$selectedOtherPluralName = 'selected' . ucfirst($otherPluralName);
 				$actions .= "\t\t\t\t\$this->set('{$otherPluralName}', \$this->{$currentModelName}->{$otherModelName}->generateList());\n";
-				$actions .= "\t\t\t\tif(empty(\$this->data['{$associationName}']['{$associationName}'])) { \$this->data['{$associationName}']['{$associationName}'] = null; }\n";
+				$actions .= "\t\t\t\tif (empty(\$this->data['{$associationName}']['{$associationName}'])) { \$this->data['{$associationName}']['{$associationName}'] = null; }\n";
 				$actions .= "\t\t\t\t\$this->set('{$selectedOtherPluralName}', \$this->data['{$associationName}']['{$associationName}']);\n";
 			}
 		}
-		foreach($modelObj->belongsTo as $associationName => $relation) {
-			if(!empty($associationName)) {
+		foreach ($modelObj->belongsTo as $associationName => $relation) {
+			if (!empty($associationName)) {
 				$otherModelName = $this->__modelName($associationName);
 				$otherSingularName = $this->__singularName($associationName);
 				$otherPluralName = $this->__pluralName($associationName);
@@ -1415,8 +1415,8 @@ class Bake {
 		$actions .= "\n";
 		/* EDIT ACTION */
 		$actions .= "\tfunction {$admin}edit(\$id = null) {\n";
-		$actions .= "\t\tif(empty(\$this->data)) {\n";
-		$actions .= "\t\t\tif(!\$id) {\n";
+		$actions .= "\t\tif (empty(\$this->data)) {\n";
+		$actions .= "\t\t\tif (!\$id) {\n";
 		if (low($wannaUseSession) == 'y' || low($wannaUseSession) == 'yes') {
 		$actions .= "\t\t\t\t\$this->Session->setFlash('Invalid id for {$singularHumanName}');\n";
 		$actions .= "\t\t\t\t\$this->redirect('{$admin_url}/{$controllerPath}/index');\n";
@@ -1426,8 +1426,8 @@ class Bake {
 		$actions .= "\t\t\t}\n";
 		$actions .= "\t\t\t\$this->data = \$this->{$currentModelName}->read(null, \$id);\n";
 
-		foreach($modelObj->hasAndBelongsToMany as $associationName => $relation) {
-			if(!empty($associationName)) {
+		foreach ($modelObj->hasAndBelongsToMany as $associationName => $relation) {
+			if (!empty($associationName)) {
 				$otherModelName = $this->__modelName($associationName);
 				$otherSingularName = $this->__singularName($associationName);
 				$otherPluralName = $this->__pluralName($associationName);
@@ -1435,12 +1435,12 @@ class Bake {
 				$otherModelObj =& ClassRegistry::getObject($otherModelKey);
 				$selectedOtherPluralName = 'selected' . ucfirst($otherPluralName);
 				$actions .= "\t\t\t\$this->set('{$otherPluralName}', \$this->{$currentModelName}->{$otherModelName}->generateList());\n";
-				$actions .= "\t\t\tif(empty(\$this->data['{$associationName}'])) { \$this->data['{$associationName}'] = null; }\n";
+				$actions .= "\t\t\tif (empty(\$this->data['{$associationName}'])) { \$this->data['{$associationName}'] = null; }\n";
 				$actions .= "\t\t\t\$this->set('{$selectedOtherPluralName}', \$this->_selectedArray(\$this->data['{$associationName}']));\n";
 			}
 		}
-		foreach($modelObj->belongsTo as $associationName => $relation) {
-			if(!empty($associationName)) {
+		foreach ($modelObj->belongsTo as $associationName => $relation) {
+			if (!empty($associationName)) {
 				$otherModelName = $this->__modelName($associationName);
 				$otherSingularName = $this->__singularName($associationName);
 				$otherPluralName = $this->__pluralName($associationName);
@@ -1449,7 +1449,7 @@ class Bake {
 		}
 		$actions .= "\t\t} else {\n";
 		$actions .= "\t\t\t\$this->cleanUpFields();\n";
-		$actions .= "\t\t\tif(\$this->{$currentModelName}->save(\$this->data)) {\n";
+		$actions .= "\t\t\tif (\$this->{$currentModelName}->save(\$this->data)) {\n";
 		if (low($wannaUseSession) == 'y' || low($wannaUseSession) == 'yes') {
 		$actions .= "\t\t\t\t\$this->Session->setFlash('The ".Inflector::humanize($currentModelName)." has been saved');\n";
 		$actions .= "\t\t\t\t\$this->redirect('{$admin_url}/{$controllerPath}/index');\n";
@@ -1461,19 +1461,19 @@ class Bake {
 		$actions .= "\t\t\t\t\$this->Session->setFlash('Please correct errors below.');\n";
 		}
 
-		foreach($modelObj->hasAndBelongsToMany as $associationName => $relation) {
-			if(!empty($associationName)) {
+		foreach ($modelObj->hasAndBelongsToMany as $associationName => $relation) {
+			if (!empty($associationName)) {
 				$otherModelName = $this->__modelName($associationName);
 				$otherSingularName = $this->__singularName($associationName);
 				$otherPluralName = $this->__pluralName($associationName);
 				$selectedOtherPluralName = 'selected' . ucfirst($otherPluralName);
 				$actions .= "\t\t\t\t\$this->set('{$otherPluralName}', \$this->{$currentModelName}->{$otherModelName}->generateList());\n";
-				$actions .= "\t\t\t\tif(empty(\$this->data['{$associationName}']['{$associationName}'])) { \$this->data['{$associationName}']['{$associationName}'] = null; }\n";
+				$actions .= "\t\t\t\tif (empty(\$this->data['{$associationName}']['{$associationName}'])) { \$this->data['{$associationName}']['{$associationName}'] = null; }\n";
 				$actions .= "\t\t\t\t\$this->set('{$selectedOtherPluralName}', \$this->data['{$associationName}']['{$associationName}']);\n";
 			}
 		}
-		foreach($modelObj->belongsTo as $associationName => $relation) {
-			if(!empty($associationName)) {
+		foreach ($modelObj->belongsTo as $associationName => $relation) {
+			if (!empty($associationName)) {
 				$otherModelName = $this->__modelName($associationName);
 				$otherSingularName = $this->__singularName($associationName);
 				$otherPluralName = $this->__pluralName($associationName);
@@ -1485,7 +1485,7 @@ class Bake {
 		$actions .= "\t}\n";
 		$actions .= "\n";
 		$actions .= "\tfunction {$admin}delete(\$id = null) {\n";
-		$actions .= "\t\tif(!\$id) {\n";
+		$actions .= "\t\tif (!\$id) {\n";
 		if (low($wannaUseSession) == 'y' || low($wannaUseSession) == 'yes') {
 		$actions .= "\t\t\t\$this->Session->setFlash('Invalid id for {$singularHumanName}');\n";
 		$actions .= "\t\t\t\$this->redirect('{$admin_url}/{$controllerPath}/index');\n";
@@ -1493,7 +1493,7 @@ class Bake {
 		$actions .= "\t\t\t\$this->flash('Invalid id for {$singularHumanName}', '{$admin_url}/{$controllerPath}/index');\n";
 		}
 		$actions .= "\t\t}\n";
-		$actions .= "\t\tif(\$this->{$currentModelName}->del(\$id)) {\n";
+		$actions .= "\t\tif (\$this->{$currentModelName}->del(\$id)) {\n";
 		if (low($wannaUseSession) == 'y' || low($wannaUseSession) == 'yes') {
 			$actions .= "\t\t\t\$this->Session->setFlash('The ".$this->__singularHumanName($currentModelName)." deleted: id '.\$id.'');\n";
 			$actions .= "\t\t\t\$this->redirect('{$admin_url}/{$controllerPath}/index');\n";
@@ -1578,19 +1578,19 @@ class Bake {
 		if (count($validate)) {
 			$out .= "\tvar \$validate = array(\n";
 			$keys = array_keys($validate);
-			for($i = 0; $i < count($validate); $i++) {
+			for ($i = 0; $i < count($validate); $i++) {
 				$out .= "\t\t'" . $keys[$i] . "' => " . $validate[$keys[$i]] . ",\n";
 			}
 			$out .= "\t);\n";
 		}
 		$out .= "\n";
 
-		if(!empty($associations)) {
+		if (!empty($associations)) {
 			$out.= "\t//The Associations below have been created with all possible keys, those that are not needed can be removed\n";
-			if(!empty($associations['belongsTo'])) {
+			if (!empty($associations['belongsTo'])) {
 				$out .= "\tvar \$belongsTo = array(\n";
 
-				for($i = 0; $i < count($associations['belongsTo']); $i++) {
+				for ($i = 0; $i < count($associations['belongsTo']); $i++) {
 					$out .= "\t\t\t'{$associations['belongsTo'][$i]['alias']}' =>\n";
 					$out .= "\t\t\t\tarray('className' => '{$associations['belongsTo'][$i]['className']}',\n";
 					$out .= "\t\t\t\t\t\t'foreignKey' => '{$associations['belongsTo'][$i]['foreignKey']}',\n";
@@ -1603,10 +1603,10 @@ class Bake {
 				$out .= "\t);\n\n";
 			}
 
-			if(!empty($associations['hasOne'])) {
+			if (!empty($associations['hasOne'])) {
 				$out .= "\tvar \$hasOne = array(\n";
 
-				for($i = 0; $i < count($associations['hasOne']); $i++) {
+				for ($i = 0; $i < count($associations['hasOne']); $i++) {
 					$out .= "\t\t\t'{$associations['hasOne'][$i]['alias']}' =>\n";
 					$out .= "\t\t\t\tarray('className' => '{$associations['hasOne'][$i]['className']}',\n";
 					$out .= "\t\t\t\t\t\t'foreignKey' => '{$associations['hasOne'][$i]['foreignKey']}',\n";
@@ -1619,10 +1619,10 @@ class Bake {
 				$out .= "\t);\n\n";
 			}
 
-			if(!empty($associations['hasMany'])) {
+			if (!empty($associations['hasMany'])) {
 				$out .= "\tvar \$hasMany = array(\n";
 
-				for($i = 0; $i < count($associations['hasMany']); $i++) {
+				for ($i = 0; $i < count($associations['hasMany']); $i++) {
 					$out .= "\t\t\t'{$associations['hasMany'][$i]['alias']}' =>\n";
 					$out .= "\t\t\t\tarray('className' => '{$associations['hasMany'][$i]['className']}',\n";
 					$out .= "\t\t\t\t\t\t'foreignKey' => '{$associations['hasMany'][$i]['foreignKey']}',\n";
@@ -1640,10 +1640,10 @@ class Bake {
 				$out .= "\t);\n\n";
 			}
 
-			if(!empty($associations['hasAndBelongsToMany'])) {
+			if (!empty($associations['hasAndBelongsToMany'])) {
 				$out .= "\tvar \$hasAndBelongsToMany = array(\n";
 
-				for($i = 0; $i < count($associations['hasAndBelongsToMany']); $i++) {
+				for ($i = 0; $i < count($associations['hasAndBelongsToMany']); $i++) {
 					$out .= "\t\t\t'{$associations['hasAndBelongsToMany'][$i]['alias']}' =>\n";
 					$out .= "\t\t\t\tarray('className' => '{$associations['hasAndBelongsToMany'][$i]['className']}',\n";
 					$out .= "\t\t\t\t\t\t'joinTable' => '{$associations['hasAndBelongsToMany'][$i]['joinTable']}',\n";
@@ -1678,7 +1678,7 @@ class Bake {
 	function bakeView($controllerName, $actionName, $content = '') {
 		$out = "<h2>{$actionName}</h2>\n";
 		$out .= $content;
-		if(!file_exists(VIEWS.$this->__controllerPath($controllerName))) {
+		if (!file_exists(VIEWS.$this->__controllerPath($controllerName))) {
 			mkdir(VIEWS.$this->__controllerPath($controllerName));
 		}
 		$filename = VIEWS . $this->__controllerPath($controllerName) . DS . Inflector::underscore($actionName) . '.thtml';
@@ -1697,14 +1697,14 @@ class Bake {
 		$out = "<?php\n";
 		$out .= "class $controllerName" . "Controller extends AppController {\n\n";
 		$out .= "\tvar \$name = '$controllerName';\n";
-		if(low($wannaUseScaffold) == 'y' || low($wannaUseScaffold) == 'yes') {
+		if (low($wannaUseScaffold) == 'y' || low($wannaUseScaffold) == 'yes') {
 		$out .= "\tvar \$scaffold;\n";
 		} else {
 
 			if (count($uses)) {
 				$out .= "\tvar \$uses = array('" . $this->__modelName($controllerName) . "', ";
 
-				foreach($uses as $use) {
+				foreach ($uses as $use) {
 					if ($use != $uses[count($uses) - 1]) {
 						$out .= "'" . $this->__modelName($use) . "', ";
 					} else {
@@ -1716,7 +1716,7 @@ class Bake {
 
 				$out .= "\tvar \$helpers = array('Html', 'Form' ";
 				if (count($helpers)) {
-					foreach($helpers as $help) {
+					foreach ($helpers as $help) {
 						if ($help != $helpers[count($helpers) - 1]) {
 							$out .= ", '" . Inflector::camelize($help) . "'";
 						} else {
@@ -1729,7 +1729,7 @@ class Bake {
 			if (count($components)) {
 				$out .= "\tvar \$components = array(";
 
-				foreach($components as $comp) {
+				foreach ($components as $comp) {
 					if ($comp != $components[count($components) - 1]) {
 						$out .= "'" . Inflector::camelize($comp) . "', ";
 					} else {
@@ -1790,14 +1790,14 @@ class Bake {
 		if (!$error) {
 			$this->stdout("Baking unit test for $className...");
 			$path = explode(DS, $path);
-			foreach($path as $i => $val) {
+			foreach ($path as $i => $val) {
 				if ($val == '' || $val == '../') {
 					unset($path[$i]);
 				}
 			}
 			$path = implode(DS, $path);
 			$unixPath = DS;
-			if (strpos(PHP_OS, 'WIN') === 0){
+			if (strpos(PHP_OS, 'WIN') === 0) {
 				$unixPath = null;
 			}
 			if (!is_dir($unixPath.$path)) {
@@ -1805,7 +1805,7 @@ class Bake {
 				if (low($create) == 'y' || low($create) == 'yes') {
 					$build = array();
 
-					foreach(explode(DS, $path) as $i => $dir) {
+					foreach (explode(DS, $path) as $i => $dir) {
 						$build[] = $dir;
 						if (!is_dir($unixPath.implode(DS, $build))) {
 							mkdir($unixPath.implode(DS, $build));
@@ -1833,7 +1833,7 @@ class Bake {
 			$print_options = '(' . implode('/', $options) . ')';
 		}
 
-		if($default == null) {
+		if ($default == null) {
 			$this->stdout('');
 			$this->stdout($prompt . " $print_options \n" . '> ', false);
 		} else {
@@ -1842,7 +1842,7 @@ class Bake {
 		}
 		$result = trim(fgets($this->stdin));
 
-		if($default != null && empty($result)) {
+		if ($default != null && empty($result)) {
 			return $default;
 		} else {
 			return $result;
@@ -1922,27 +1922,27 @@ class Bake {
  */
 	function generateFields( $fields, $readOnly = false ) {
 		$strFormFields = '';
-		foreach( $fields as $field ) {
-			if(isset( $field['type'])) {
-				if(!isset($field['required'])) {
+		foreach ( $fields as $field ) {
+			if (isset( $field['type'])) {
+				if (!isset($field['required'])) {
 					$field['required'] = false;
 				}
 
-				if(!isset( $field['errorMsg'])) {
+				if (!isset( $field['errorMsg'])) {
 					$field['errorMsg'] = null;
 				}
 
-				if(!isset( $field['htmlOptions'])) {
+				if (!isset( $field['htmlOptions'])) {
 					$field['htmlOptions'] = array();
 				}
 
-				if( $readOnly ) {
+				if ( $readOnly ) {
 					$field['htmlOptions']['READONLY'] = "readonly";
 				}
 
 				switch( $field['type'] ) {
 					case "input" :
-						if(!isset( $field['size'])) {
+						if (!isset( $field['size'])) {
 							$field['size'] = 60;
 						}
 						$strFormFields = $strFormFields.$this->generateInputDiv( $field['tagName'], $field['prompt'], $field['required'], $field['errorMsg'], $field['size'], $field['htmlOptions'] );
@@ -1952,31 +1952,31 @@ class Bake {
 					break;
 					case "select";
 					case "selectMultiple";
-						if( "selectMultiple" == $field['type'] ) {
+						if ( "selectMultiple" == $field['type'] ) {
 							$field['selectAttr']['multiple'] = 'multiple';
 							$field['selectAttr']['class'] = 'selectMultiple';
 						}
-						if(!isset( $field['selected'])) {
+						if (!isset( $field['selected'])) {
 							$field['selected'] = null;
 						}
-						if(!isset( $field['selectAttr'])) {
+						if (!isset( $field['selectAttr'])) {
 							$field['selectAttr'] = null;
 						}
-						if(!isset( $field['optionsAttr'])) {
+						if (!isset( $field['optionsAttr'])) {
 							$field['optionsAttr'] = null;
 						}
-						if($readOnly) {
+						if ($readOnly) {
 							$field['selectAttr']['DISABLED'] = true;
 						}
-						if(!isset( $field['options'])) {
+						if (!isset( $field['options'])) {
 							$field['options'] = null;
 						}
 						$this->__modelAlias = null;
-						if(isset($field['foreignKey'])) {
+						if (isset($field['foreignKey'])) {
 							$modelKey = Inflector::underscore($this->__modelClass);
 							$modelObj =& ClassRegistry::getObject($modelKey);
-							foreach($modelObj->belongsTo as $associationName => $value) {
-								if($field['model'] == $value['className']) {
+							foreach ($modelObj->belongsTo as $associationName => $value) {
+								if ($field['model'] == $value['className']) {
 									$this->__modelAlias = $this->__modelName($associationName);
 									break;
 								}
@@ -1985,10 +1985,10 @@ class Bake {
 						$strFormFields = $strFormFields.$this->generateSelectDiv( $field['tagName'], $field['prompt'], $field['options'], $field['selected'], $field['selectAttr'], $field['optionsAttr'], $field['required'], $field['errorMsg'] );
 					break;
 					case "area";
-						if(!isset( $field['rows'])) {
+						if (!isset( $field['rows'])) {
 							$field['rows'] = 10;
 						}
-						if(!isset( $field['cols'])) {
+						if (!isset( $field['cols'])) {
 							$field['cols'] = 60;
 						}
 						$strFormFields = $strFormFields.$this->generateAreaDiv( $field['tagName'], $field['prompt'], $field['required'], $field['errorMsg'], $field['cols'], $field['rows'], $field['htmlOptions'] );
@@ -2049,7 +2049,7 @@ class Bake {
 		$strLabel = "\n\t<?php echo \$form->labelTag( '{$tagName}', '{$prompt}' );?>\n";
 		$divClass = "optional";
 
-		if( $required ) {
+		if ( $required ) {
 			$divClass = "required";
 		}
 		$strError = "";// initialize the error to empty.
@@ -2073,7 +2073,7 @@ class Bake {
 		$str = "\t<?php echo \$html->tagErrorMsg('{$tagName}', 'Please check the {$prompt}.');?>\n";
 		$divClass = "optional";
 
-		if($required) {
+		if ($required) {
 			$divClass = "required";
 		}
 		$strError = "";// initialize the error to empty.
@@ -2098,7 +2098,7 @@ class Bake {
 		$strLabel = "\n\t<?php echo \$form->labelTag('{$tagName}', '{$prompt}');?>\n";
 		$divClass = "optional";
 
-		if($required) {
+		if ($required) {
 			$divClass = "required";
 		}
 		$strError = "";// initialize the error to empty.
@@ -2146,7 +2146,7 @@ class Bake {
 		$strLabel = "\n\t<?php echo \$form->labelTag('{$tagName}', '{$prompt}');?>\n";
 		$divClass = "optional";
 
-		if($required) {
+		if ($required) {
 			$divClass = "required";
 		}
 		$strError = "";// initialize the error to empty.
@@ -2172,7 +2172,7 @@ class Bake {
 		 $strLabel = "\n\t<?php echo \$form->labelTag('{$tagName}', '{$prompt}');?>\n";
 		$divClass = "optional";
 
-		if($required) {
+		if ($required) {
 			$divClass = "required";
 		}
 		$strError = "";// initialize the error to empty.
@@ -2195,17 +2195,17 @@ class Bake {
  */
 	function generateSelectDiv($tagName, $prompt, $options, $selected=null, $selectAttr=null, $optionAttr=null, $required=false,  $errorMsg=null) {
 
-		if($this->__modelAlias) {
+		if ($this->__modelAlias) {
 			$pluralName = $this->__pluralName($this->__modelAlias);
 		} else {
 			$tagArray = explode('/', $tagName);
 			$pluralName = $this->__pluralName($this->__modelNameFromKey($tagArray[1]));
 		}
 		$showEmpty = 'true';
-		if($required) {
+		if ($required) {
 			$showEmpty = 'false';
 		}
-		if($selectAttr['multiple'] != 'multiple') {
+		if ($selectAttr['multiple'] != 'multiple') {
 			$str = "\t<?php echo \$html->selectTag('{$tagName}', " . "\${$pluralName}, \$html->tagValue('{$tagName}'), " . $this->__attributesToArray($selectAttr) . ", " . $this->__attributesToArray($optionAttr) . ", " . $showEmpty . ");?>\n";
 			$str .= "\t<?php echo \$html->tagErrorMsg('{$tagName}', 'Please select the {$prompt}.') ?>\n";
 		} else {
@@ -2217,7 +2217,7 @@ class Bake {
 		$strLabel = "\n\t<?php echo \$form->labelTag('{$tagName}', '{$prompt}');?>\n";
 		$divClass = "optional";
 
-		if($required) {
+		if ($required) {
 			$divClass = "required";
 		}
 		$strError = "";// initialize the error to empty.
@@ -2259,16 +2259,16 @@ class Bake {
 			$vals = array_values($htmlAttributes);
 			$out = "array(";
 
-			for($i = 0; $i < count($htmlAttributes); $i++) {
+			for ($i = 0; $i < count($htmlAttributes); $i++) {
 				//don't put vars in quotes
-				if(substr($vals[$i], 0, 1) != '$') {
+				if (substr($vals[$i], 0, 1) != '$') {
 					$out .= "'{$keys[$i]}' => '{$vals[$i]}', ";
 				} else {
 					$out .= "'{$keys[$i]}' => {$vals[$i]}, ";
 				}
 			}
 			//Chop off last comma
-			if(substr($out, -2, 1) == ',') {
+			if (substr($out, -2, 1) == ',') {
 				$out = substr($out, 0, strlen($out) - 2);
 			}
 			$out .= ")";
@@ -2307,10 +2307,10 @@ class Bake {
  * @param string $projectPath
  */
 	function project($projectPath = null) {
-		if($projectPath != '') {
+		if ($projectPath != '') {
 			while ($this->__checkPath($projectPath) === true && $this->__checkPath(CONFIGS) === true) {
 				$response = $this->getInput('Bake -app in '.$projectPath, array('y','n'), 'y');
-				if(low($response) == 'y') {
+				if (low($response) == 'y') {
 					$this->main();
 					exit();
 				} else {
@@ -2328,7 +2328,7 @@ class Bake {
 		}
 		while ($newPath != 'y' && ($this->__checkPath($projectPath) === true || $projectPath == '')) {
 				$newPath = $this->getInput('Directory '.$projectPath.'  exists. Overwrite (y) or insert a new path', null, 'y');
-				if($newPath != 'y') {
+				if ($newPath != 'y') {
 					$projectPath = $newPath;
 				}
 			while ($projectPath == '') {
@@ -2338,7 +2338,7 @@ class Bake {
 		$parentPath = explode(DS, $projectPath);
 		$count = count($parentPath);
 		$appName = $parentPath[$count - 1];
-		if($appName == '') {
+		if ($appName == '') {
 			$appName = $parentPath[$count - 2];
 		}
 		$this->__buildDirLayout($projectPath, $appName);
@@ -2351,7 +2351,7 @@ class Bake {
  * @return True if given path is a directory.
  */
 	function __checkPath($projectPath) {
-		if(is_dir($projectPath)) {
+		if (is_dir($projectPath)) {
 			return true;
 		} else {
 			return false;
@@ -2368,7 +2368,7 @@ class Bake {
  */
 	function __buildDirLayout($projectPath, $appName) {
 		$skel = '';
-		if($this->__checkPath(CAKE_CORE_INCLUDE_PATH.DS.'cake'.DS.'scripts'.DS.'templates'.DS.'skel') === true) {
+		if ($this->__checkPath(CAKE_CORE_INCLUDE_PATH.DS.'cake'.DS.'scripts'.DS.'templates'.DS.'skel') === true) {
 			$skel = CAKE_CORE_INCLUDE_PATH.DS.'cake'.DS.'scripts'.DS.'templates'.DS.'skel';
 		} else {
 
@@ -2407,7 +2407,7 @@ class Bake {
 			$this->hr();
 			$this->__defaultHome($projectPath, $appName);
 			$this->stdout('Welcome page created');
-			if(chmodr($projectPath.DS.'tmp', 0777) === false) {
+			if (chmodr($projectPath.DS.'tmp', 0777) === false) {
 				$this->stdout('Could not set permissions on '. $projectPath.DS.'tmp'.DS.'*');
 				$this->stdout('You must manually check that these directories can be wrote to by the server');
 			}
@@ -2444,7 +2444,7 @@ class Bake {
 
 		if (!empty($errors)) {
 			if ($verbose) {
-				foreach($errors as $err) {
+				foreach ($errors as $err) {
 					$this->stdout('Error: '.$err);
 				}
 			}
@@ -2481,22 +2481,22 @@ class Bake {
 		closedir($handle);
 
 		if ($verbose) {
-			foreach($errors as $err) {
+			foreach ($errors as $err) {
 				$this->stdout('Error: '.$err);
 			}
-			foreach($messages as $msg) {
+			foreach ($messages as $msg) {
 				$this->stdout($msg);
 			}
 		}
 		return true;
 	}
 
-	function __addAdminRoute($name){
+	function __addAdminRoute($name) {
 		$file = file_get_contents(CONFIGS.'core.php');
 		if (preg_match('%([/\\t\\x20]*define\\(\'CAKE_ADMIN\',[\\t\\x20\'a-z]*\\);)%', $file, $match)) {
 			$result = str_replace($match[0], 'define(\'CAKE_ADMIN\', \''.$name.'\');', $file);
 
-			if(file_put_contents(CONFIGS.'core.php', $result)){
+			if (file_put_contents(CONFIGS.'core.php', $result)) {
 				return true;
 			} else {
 				return false;
@@ -2637,7 +2637,7 @@ class Bake {
 		$this->__modelNames = array();
 		$count = count($tables);
 		for ($i = 0; $i < $count; $i++) {
-			if(low($type) == 'controllers') {
+			if (low($type) == 'controllers') {
 				$this->__controllerNames[] = $this->__controllerName($this->__modelName($tables[$i]));
 				$this->stdout($i + 1 . ". " . $this->__controllerNames[$i]);
 			} else {

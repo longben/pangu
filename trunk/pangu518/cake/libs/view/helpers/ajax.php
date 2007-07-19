@@ -1,5 +1,5 @@
 <?php
-/* SVN FILE: $Id: ajax.php 4691 2007-03-27 04:22:51Z phpnut $ */
+/* SVN FILE: $Id: ajax.php 5421 2007-07-09 04:58:57Z phpnut $ */
 /**
  * Helper for AJAX operations.
  *
@@ -21,9 +21,9 @@
  * @package			cake
  * @subpackage		cake.cake.libs.view.helpers
  * @since			CakePHP(tm) v 0.10.0.1076
- * @version			$Revision: 4691 $
+ * @version			$Revision: 5421 $
  * @modifiedby		$LastChangedBy: phpnut $
- * @lastmodified	$Date: 2007-03-26 22:22:51 -0600 (Mon, 26 Mar 2007) $
+ * @lastmodified	$Date: 2007-07-08 23:58:57 -0500 (Sun, 08 Jul 2007) $
  * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 /**
@@ -545,7 +545,7 @@ class AjaxHelper extends Helper {
  * @access public
  */
 	function dropRemote($id, $options = array(), $ajaxOptions = array()) {
-		$options['onDrop'] = "function(element){" . $this->remoteFunction($ajaxOptions) . "}";
+		$options['onDrop'] = "function(element) {" . $this->remoteFunction($ajaxOptions) . "}";
 		$options = $this->_optionsForDroppable($options);
 		return $this->Javascript->codeBlock("Droppables.add('$id', $options);");
 	}
@@ -589,7 +589,7 @@ class AjaxHelper extends Helper {
 		$url = $this->Html->url($url);
 		$options['ajaxOptions'] = $this->__optionsForAjax($options);
 
-		foreach($this->ajaxOptions as $opt) {
+		foreach ($this->ajaxOptions as $opt) {
 			if (isset($options[$opt])) {
 				unset($options[$opt]);
 			}
@@ -615,7 +615,7 @@ class AjaxHelper extends Helper {
 	function sortable($id, $options = array()) {
 		if (!empty($options['url'])) {
 			$options['with'] = "Sortable.serialize('$id')";
-			$options['onUpdate'] = 'function(sortable){' . $this->remoteFunction($options) . '}';
+			$options['onUpdate'] = 'function(sortable) {' . $this->remoteFunction($options) . '}';
 		}
 
 		$options = $this->__optionsForSortable($options);
@@ -661,7 +661,7 @@ class AjaxHelper extends Helper {
 		);
 		$options = $this->_optionsToString($options, array('method'));
 
-		foreach($options as $key => $value) {
+		foreach ($options as $key => $value) {
 			switch($key) {
 				case 'type':
 					$jsOptions['asynchronous'] = ife(($value == 'synchronous'), 'false', 'true');
@@ -700,13 +700,13 @@ class AjaxHelper extends Helper {
  * @access private
  */
 	function __getHtmlOptions($options, $extra = array()) {
-		foreach($this->ajaxOptions as $key) {
+		foreach ($this->ajaxOptions as $key) {
 			if (isset($options[$key])) {
 				unset($options[$key]);
 			}
 		}
 
-		foreach($extra as $key) {
+		foreach ($extra as $key) {
 			if (isset($options[$key])) {
 				unset($options[$key]);
 			}
@@ -726,7 +726,7 @@ class AjaxHelper extends Helper {
 		if (is_array($options)) {
 			$out = array();
 
-			foreach($options as $k => $v) {
+			foreach ($options as $k => $v) {
 				if (in_array($k, $acceptable)) {
 					$out[] = "$k:$v";
 				}
@@ -769,11 +769,11 @@ class AjaxHelper extends Helper {
 	function _buildCallbacks($options) {
 		$callbacks = array();
 
-		foreach($this->callbacks as $callback) {
+		foreach ($this->callbacks as $callback) {
 			if (isset($options[$callback])) {
 				$name = 'on' . ucfirst($callback);
 				$code = $options[$callback];
-				$callbacks[$name] = "function(request){" . $code . "}";
+				$callbacks[$name] = "function(request) {" . $code . "}";
 			}
 		}
 		return $callbacks;
@@ -789,7 +789,7 @@ class AjaxHelper extends Helper {
  * @access protected
  */
 	function _optionsToString($options, $stringOpts = array()) {
-		foreach($stringOpts as $option) {
+		foreach ($stringOpts as $option) {
 			if (isset($options[$option]) && !$options[$option][0] != "'") {
 				if ($options[$option] === true || $options[$option] === 'true') {
 					$options[$option] = 'true';
@@ -820,7 +820,7 @@ class AjaxHelper extends Helper {
 			}
 
 			$out  = 'var __ajaxUpdater__ = {' . join(', ', $data) . '};' . "\n";
-			$out .= 'for (n in __ajaxUpdater__) { if (typeof __ajaxUpdater__[n] == "string" && $(n)) Element.update($(n), unescape(__ajaxUpdater__[n])); }';
+			$out .= 'for (n in __ajaxUpdater__) { if (typeof __ajaxUpdater__[n] == "string" && $(n)) Element.update($(n), unescape(decodeURIComponent(__ajaxUpdater__[n]))); }';
 
 			@ob_end_clean();
 			e($this->Javascript->codeBlock($out));

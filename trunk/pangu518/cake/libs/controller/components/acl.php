@@ -1,5 +1,5 @@
 <?php
-/* SVN FILE: $Id: acl.php 4409 2007-02-02 13:20:59Z phpnut $ */
+/* SVN FILE: $Id: acl.php 5317 2007-06-20 08:28:35Z phpnut $ */
 /**
  * Access Control List factory class.
  *
@@ -21,9 +21,9 @@
  * @package			cake
  * @subpackage		cake.cake.libs.controller.components
  * @since			CakePHP(tm) v 0.10.0.1076
- * @version			$Revision: 4409 $
+ * @version			$Revision: 5317 $
  * @modifiedby		$LastChangedBy: phpnut $
- * @lastmodified	$Date: 2007-02-02 07:20:59 -0600 (Fri, 02 Feb 2007) $
+ * @lastmodified	$Date: 2007-06-20 03:28:35 -0500 (Wed, 20 Jun 2007) $
  * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 /**
@@ -68,7 +68,7 @@ class AclComponent extends Object {
 			$this->_instance = new $classname;
 		}
 
-		if($classname == 'DB_ACL') {
+		if ($classname == 'DB_ACL') {
 			$this->Aro = new Aro();
 			$this->Aco = new Aco();
 		}

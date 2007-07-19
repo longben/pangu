@@ -1,5 +1,5 @@
 <?php
-/* SVN FILE: $Id: model_php4.php 5129 2007-05-20 05:47:57Z phpnut $ */
+/* SVN FILE: $Id: model_php4.php 5421 2007-07-09 04:58:57Z phpnut $ */
 /**
  * Object-relational mapper.
  *
@@ -21,9 +21,9 @@
  * @package			cake
  * @subpackage		cake.cake.libs.model
  * @since			CakePHP(tm) v 0.10.0.0
- * @version			$Revision: 5129 $
+ * @version			$Revision: 5421 $
  * @modifiedby		$LastChangedBy: phpnut $
- * @lastmodified	$Date: 2007-05-20 00:47:57 -0500 (Sun, 20 May 2007) $
+ * @lastmodified	$Date: 2007-07-08 23:58:57 -0500 (Sun, 08 Jul 2007) $
  * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 /**
@@ -289,9 +289,9 @@ class Model extends Object{
 
 		$this->id = $id;
 
-		if($table === false) {
+		if ($table === false) {
 			$this->useTable = false;
-		} else if($table) {
+		} elseif ($table) {
 			$this->useTable = $table;
 		}
 
@@ -354,10 +354,10 @@ class Model extends Object{
  */
 	function bindModel($params) {
 
-		foreach($params as $assoc => $model) {
+		foreach ($params as $assoc => $model) {
 			$this->__backAssociation[$assoc] = $this->{$assoc};
 
-			foreach($model as $key => $value) {
+			foreach ($model as $key => $value) {
 				$assocName = $key;
 
 				if (is_numeric($key)) {
@@ -379,10 +379,10 @@ class Model extends Object{
  * @access public
  */
 	function unbindModel($params) {
-		foreach($params as $assoc => $models) {
+		foreach ($params as $assoc => $models) {
 			$this->__backAssociation[$assoc] = $this->{$assoc};
 
-			foreach($models as $model) {
+			foreach ($models as $model) {
 				$this->__backAssociation = array_merge($this->__backAssociation, $this->{$assoc});
 				unset ($this->{$assoc}[$model]);
 			}
@@ -397,19 +397,19 @@ class Model extends Object{
 	function __createLinks() {
 
 		// Convert all string-based associations to array based
-		foreach($this->__associations as $type) {
+		foreach ($this->__associations as $type) {
 
 			if (!is_array($this->{$type})) {
 				$this->{$type} = explode(',', $this->{$type});
 
-				foreach($this->{$type} as $i => $className) {
+				foreach ($this->{$type} as $i => $className) {
 					$className = trim($className);
 					unset ($this->{$type}[$i]);
 					$this->{$type}[$className] = array();
 				}
 			}
 
-			foreach($this->{$type} as $assoc => $value) {
+			foreach ($this->{$type} as $assoc => $value) {
 				if (is_numeric($assoc)) {
 					unset ($this->{$type}[$assoc]);
 					$assoc = $value;
@@ -426,7 +426,7 @@ class Model extends Object{
 			}
 		}
 
-		foreach($this->__associations as $type) {
+		foreach ($this->__associations as $type) {
 			$this->__generateAssociation($type);
 		}
 	}
@@ -441,7 +441,7 @@ class Model extends Object{
 	function __constructLinkedModel($assoc, $className) {
 		$colKey = Inflector::underscore($className);
 
-		if(!class_exists($className)){
+		if (!class_exists($className)) {
 			loadModel($className);
 		}
 
@@ -464,10 +464,10 @@ class Model extends Object{
  * @access private
  */
 	function __generateAssociation($type) {
-		foreach($this->{$type}as $assocKey => $assocData) {
+		foreach ($this->{$type}as $assocKey => $assocData) {
 			$class = $assocKey;
 
-			foreach($this->__associationKeys[$type] as $key) {
+			foreach ($this->__associationKeys[$type] as $key) {
 				if (!isset($this->{$type}[$assocKey][$key]) || $this->{$type}[$assocKey][$key] == null) {
 					$data = '';
 
@@ -566,10 +566,10 @@ class Model extends Object{
 			$data = array($this->name => array($one => $two));
 		}
 
-		foreach($data as $n => $v) {
+		foreach ($data as $n => $v) {
 			if (is_array($v)) {
 
-				foreach($v as $x => $y) {
+				foreach ($v as $x => $y) {
 					if ($n == $this->name) {
 						if (isset($this->validationErrors[$x])) {
 							unset ($this->validationErrors[$x]);
@@ -614,7 +614,7 @@ class Model extends Object{
 		$db =& ConnectionManager::getDataSource($this->useDbConfig);
 		$cols = array();
 
-		foreach($columns as $col) {
+		foreach ($columns as $col) {
 			$cols[$col['name']] = $col['type'];
 		}
 		return $cols;
@@ -631,7 +631,7 @@ class Model extends Object{
 		$columns = $columns->value;
 		$cols = array();
 
-		foreach($columns as $col) {
+		foreach ($columns as $col) {
 			if ($col['name'] == $column) {
 				return $col['type'];
 			}
@@ -796,7 +796,6 @@ class Model extends Object{
 			return false;
 		}
 		$fields = $values = array();
-		$count = 0;
 
 		if (count($this->data) > 1) {
 			$weHaveMulti = true;
@@ -804,9 +803,10 @@ class Model extends Object{
 		} else {
 			$weHaveMulti = false;
 		}
+		$habtm = count($this->hasAndBelongsToMany);
 
-		foreach($this->data as $n => $v) {
-			if (isset($weHaveMulti) && isset($v[$n]) && $count > 0 && count($this->hasAndBelongsToMany) > 0) {
+		foreach ($this->data as $n => $v) {
+			if (isset($weHaveMulti) && isset($v[$n]) && $habtm > 0) {
 				$joined[] = $v;
 			} else {
 				if ($n === $this->name) {
@@ -816,7 +816,7 @@ class Model extends Object{
 						}
 					}
 
-					foreach($v as $x => $y) {
+					foreach ($v as $x => $y) {
 						if ($this->hasField($x) && ($whitelist && in_array($x, $fieldList) || !$whitelist)) {
 							$fields[] = $x;
 							$values[] = $y;
@@ -824,7 +824,6 @@ class Model extends Object{
 					}
 				}
 			}
-			$count++;
 		}
 		$exists = $this->exists();
 
@@ -890,8 +889,8 @@ class Model extends Object{
  */
 	function __saveMulti($joined, $id) {
 		$db =& ConnectionManager::getDataSource($this->useDbConfig);
-		foreach($joined as $x => $y) {
-			foreach($y as $assoc => $value) {
+		foreach ($joined as $x => $y) {
+			foreach ($y as $assoc => $value) {
 				if (isset($this->hasAndBelongsToMany[$assoc])) {
 					$joinTable[$assoc] = $this->hasAndBelongsToMany[$assoc]['joinTable'];
 					$mainKey[$assoc] = $this->hasAndBelongsToMany[$assoc]['foreignKey'];
@@ -900,7 +899,7 @@ class Model extends Object{
 					$fields[$assoc]  = join(',', $keys);
 					unset($keys);
 
-					foreach($value as $update) {
+					foreach ($value as $update) {
 						if (!empty($update)) {
 							$values[]  = $db->value($id, $this->getColumnType($this->primaryKey));
 							$values[]  = $db->value($update);
@@ -923,7 +922,7 @@ class Model extends Object{
 		if (isset($joinTable)) {
 			$total = count($joinTable);
 
-			if(is_array($newValue)) {
+			if (is_array($newValue)) {
 				foreach ($newValue as $loopAssoc => $val) {
 					$db =& ConnectionManager::getDataSource($this->useDbConfig);
 					$table = $db->name($db->fullTableName($joinTable[$loopAssoc]));
@@ -931,7 +930,7 @@ class Model extends Object{
 
 					if (!empty($newValue[$loopAssoc])) {
 						$secondCount = count($newValue[$loopAssoc]);
-						for($x = 0; $x < $secondCount; $x++) {
+						for ($x = 0; $x < $secondCount; $x++) {
 							$db->query("INSERT INTO {$table} ({$fields[$loopAssoc]}) VALUES {$newValue[$loopAssoc][$x]}");
 						}
 					}
@@ -1003,15 +1002,15 @@ class Model extends Object{
 			$savedAssociatons = $this->__backAssociation;
 			$this->__backAssociation = array();
 		}
-		foreach($this->hasMany as $assoc => $data) {
+		foreach ($this->hasMany as $assoc => $data) {
 			if ($data['dependent'] === true && $cascade === true) {
 				$model =& $this->{$data['className']};
 				$field = $model->escapeField($data['foreignKey']);
 				$model->recursive = 0;
 				$records = $model->findAll("$field = '$id'", $model->primaryKey, null, null);
 
-				if($records != false){
-					foreach($records as $record) {
+				if ($records != false) {
+					foreach ($records as $record) {
 						$model->del($record[$data['className']][$model->primaryKey]);
 					}
 				}
@@ -1033,15 +1032,15 @@ class Model extends Object{
 			$savedAssociatons = $this->__backAssociation;
 			$this->__backAssociation = array();
 		}
-		foreach($this->hasOne as $assoc => $data) {
+		foreach ($this->hasOne as $assoc => $data) {
 			if ($data['dependent'] === true && $cascade === true) {
 				$model =& $this->{$data['className']};
 				$field = $model->escapeField($data['foreignKey']);
 				$model->recursive = 0;
 				$records = $model->findAll("$field = '$id'", $model->primaryKey, null, null);
 
-				if($records != false){
-					foreach($records as $record) {
+				if ($records != false) {
+					foreach ($records as $record) {
 						$model->del($record[$data['className']][$model->primaryKey]);
 					}
 				}
@@ -1060,7 +1059,7 @@ class Model extends Object{
  */
 	function _deleteMulti($id) {
 		$db =& ConnectionManager::getDataSource($this->useDbConfig);
-		foreach($this->hasAndBelongsToMany as $assoc => $data) {
+		foreach ($this->hasAndBelongsToMany as $assoc => $data) {
 			$db->execute("DELETE FROM " . $db->name($db->fullTableName($data['joinTable'])) . " WHERE " . $db->name($data['foreignKey']) . " = '{$id}'");
 		}
 	}
@@ -1176,7 +1175,7 @@ class Model extends Object{
  * @access private
  */
 	function __resetAssociations() {
-		foreach($this->__associations as $type) {
+		foreach ($this->__associations as $type) {
 			if (isset($this->__backAssociation[$type])) {
 				$this->{$type} = $this->__backAssociation[$type];
 			}
@@ -1196,8 +1195,8 @@ class Model extends Object{
 		$db =& ConnectionManager::getDataSource($this->useDbConfig);
 		$data = $db->fetchAll($data, $this->cacheQueries);
 
-		foreach($data as $key => $value) {
-			foreach($this->tableToModel as $key1 => $value1) {
+		foreach ($data as $key => $value) {
+			foreach ($this->tableToModel as $key1 => $value1) {
 				if (isset($data[$key][$key1])) {
 					$newData[$key][$value1] = $data[$key][$key1];
 				}
@@ -1220,7 +1219,9 @@ class Model extends Object{
  * @access public
  */
 	function findCount($conditions = null, $recursive = 0) {
-		list($data) = $this->findAll($conditions, 'COUNT(*) AS count', null, null, 1, $recursive);
+		$db =& ConnectionManager::getDataSource($this->useDbConfig);
+
+		list($data) = $this->findAll($conditions, 'COUNT(*) AS ' . $db->name('count'), null, null, 1, $recursive);
 
 		if (isset($data[0]['count'])) {
 			return $data[0]['count'];
@@ -1257,7 +1258,7 @@ class Model extends Object{
 		$out = array();
 		$sizeOf = sizeof($data);
 
-		for($ii = 0; $ii < $sizeOf; $ii++) {
+		for ($ii = 0; $ii < $sizeOf; $ii++) {
 			if (($data[$ii][$this->name]['parent_id'] == $root) || (($root === null) && ($data[$ii][$this->name]['parent_id'] == '0'))) {
 				$tmp = $data[$ii];
 
@@ -1356,7 +1357,7 @@ class Model extends Object{
 			$data = $data[$this->name];
 		}
 
-		foreach($this->validate as $field_name => $validator) {
+		foreach ($this->validate as $field_name => $validator) {
 			if (isset($data[$field_name]) && !preg_match($validator, $data[$field_name])) {
 				$this->invalidate($field_name);
 			}
@@ -1387,7 +1388,7 @@ class Model extends Object{
 		$foreignKeys = array();
 
 		if (count($this->belongsTo)) {
-			foreach($this->belongsTo as $assoc => $data) {
+			foreach ($this->belongsTo as $assoc => $data) {
 				$foreignKeys[] = $data['foreignKey'];
 			}
 		}
@@ -1422,13 +1423,13 @@ class Model extends Object{
 		}
 		$recursive = $this->recursive;
 
-		if($recursive >= 1) {
+		if ($recursive >= 1) {
 			$this->recursive = -1;
 		}
 		$result = $this->findAll($conditions, $fields, $order, $limit);
 		$this->recursive = $recursive;
 
-		if(!$result) {
+		if (!$result) {
 			return false;
 		}
 
@@ -1480,7 +1481,7 @@ class Model extends Object{
 			return $this->id[$list];
 		}
 
-		foreach($this->id as $id) {
+		foreach ($this->id as $id) {
 			return $id;
 		}
 
@@ -1621,6 +1622,13 @@ class Model extends Object{
 		return true;
 	}
 /**
+ * DataSource error callback
+ *
+ * @return void
+ */
+	function onError() {
+	}
+/**
  * Private method.  Clears cache for this model
  *
  * @param string $type If null this deletes cached views if CACHE_CHECK is true
@@ -1633,8 +1641,8 @@ class Model extends Object{
 			if (defined('CACHE_CHECK') && CACHE_CHECK === true) {
 				$assoc[] = strtolower(Inflector::pluralize($this->name));
 
-				foreach($this->__associations as $key => $association) {
-					foreach($this->$association as $key => $className) {
+				foreach ($this->__associations as $key => $association) {
+					foreach ($this->$association as $key => $className) {
 						$check = strtolower(Inflector::pluralize($className['className']));
 
 						if (!in_array($check, $assoc)) {

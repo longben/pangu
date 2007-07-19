@@ -1,5 +1,5 @@
 <?php
-/* SVN FILE: $Id: dbo_postgres.php 5134 2007-05-20 06:44:09Z phpnut $ */
+/* SVN FILE: $Id: dbo_postgres.php 5421 2007-07-09 04:58:57Z phpnut $ */
 
 /**
  * PostgreSQL layer for DBO.
@@ -22,9 +22,9 @@
  * @package			cake
  * @subpackage		cake.cake.libs.model.dbo
  * @since			CakePHP(tm) v 0.9.1.114
- * @version			$Revision: 5134 $
+ * @version			$Revision: 5421 $
  * @modifiedby		$LastChangedBy: phpnut $
- * @lastmodified	$Date: 2007-05-20 01:44:09 -0500 (Sun, 20 May 2007) $
+ * @lastmodified	$Date: 2007-07-08 23:58:57 -0500 (Sun, 08 Jul 2007) $
  * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 
@@ -91,6 +91,7 @@ class DboPostgres extends DboSource {
 
 		if ($this->connection) {
 			$this->connected = true;
+			$this->_execute("SET search_path TO " . $config['schema']);
 		} else {
 			$this->connected = false;
 		}
@@ -142,7 +143,7 @@ class DboPostgres extends DboSource {
 		} else {
 			$tables = array();
 
-			foreach($result as $item) {
+			foreach ($result as $item) {
 				$tables[] = $item[0]['name'];
 			}
 
@@ -170,7 +171,7 @@ class DboPostgres extends DboSource {
 		$fields = false;
 		$cols = $this->fetchAll("SELECT DISTINCT column_name AS name, data_type AS type, is_nullable AS null, column_default AS default, ordinal_position AS position, character_maximum_length AS char_length, character_octet_length AS oct_length FROM information_schema.columns WHERE table_name =" . $this->value($model->tablePrefix . $model->table) . " ORDER BY position");
 
-		foreach($cols as $column) {
+		foreach ($cols as $column) {
 			$colKey = array_keys($column);
 
 			if (isset($column[$colKey[0]]) && !isset($column[0])) {
@@ -222,7 +223,7 @@ class DboPostgres extends DboSource {
 
 		switch($column) {
 			case 'inet':
-				if (!strlen($data)){
+				if (!strlen($data)) {
 					return 'DEFAULT';
 				} else {
 					$data = pg_escape_string($data);
@@ -240,14 +241,12 @@ class DboPostgres extends DboSource {
 
 			break;
 			case 'boolean':
-				$data = $this->boolean((bool)$data, false);
-				if ($data === true) {
-					$data = '1';
-				} elseif ($data === false) {
-					$data = '0';
-				}
-			break;
 			default:
+				if ($data === true) {
+					return 'TRUE';
+				} elseif ($data === false) {
+					return 'FALSE';
+				}
 				$data = pg_escape_string($data);
 			break;
 		}
@@ -386,7 +385,7 @@ class DboPostgres extends DboSource {
 		$count = count($fields);
 
 		if ($count >= 1 && $fields[0] != '*' && strpos($fields[0], 'COUNT(*)') === false) {
-			for($i = 0; $i < $count; $i++) {
+			for ($i = 0; $i < $count; $i++) {
 				if (!preg_match('/^.+\\(.*\\)/', $fields[$i]) && !preg_match('/\s+AS\s+/', $fields[$i])) {
 					$prepend = '';
 					if (strpos($fields[$i], 'DISTINCT') !== false) {
@@ -493,10 +492,6 @@ class DboPostgres extends DboSource {
 
 		if ($limit != null) {
 			return intval($limit);
-		} elseif ($col == 'integer') {
-			return 11;
-		} elseif (in_array($col, array('int2', 'int4', 'int8'))) {
-			return intval(r('int', '', $col));
 		}
 		return null;
 	}
@@ -512,7 +507,7 @@ class DboPostgres extends DboSource {
 		$index = 0;
 		$j = 0;
 
-		while($j < $num_fields) {
+		while ($j < $num_fields) {
 			$columnName = pg_field_name($results, $j);
 
 			if (strpos($columnName, '__')) {
@@ -534,7 +529,7 @@ class DboPostgres extends DboSource {
 			$resultRow = array();
 			$i = 0;
 
-			foreach($row as $index => $field) {
+			foreach ($row as $index => $field) {
 				list($table, $column) = $this->map[$index];
 				$resultRow[$table][$column] = $row[$index];
 				$i++;
@@ -557,7 +552,7 @@ class DboPostgres extends DboSource {
 		if ($data === true || $data === false) {
 			$result = $data;
 		} elseif (is_string($data) && !is_numeric($data)) {
-			if (strpos($data, 't') !== false) {
+			if (strpos(low($data), 't') !== false) {
 				$result = true;
 			} else {
 				$result = false;
@@ -565,11 +560,6 @@ class DboPostgres extends DboSource {
 		} else {
 			$result = (bool)$data;
 		}
-
-		if ($quote) {
-			$result = "'" . $result . "'";
-		}
-
 		return $result;
 	}
 /**

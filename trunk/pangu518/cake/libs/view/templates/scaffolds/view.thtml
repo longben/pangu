@@ -1,5 +1,5 @@
 <?php
-/* SVN FILE: $Id: view.thtml 4409 2007-02-02 13:20:59Z phpnut $ */
+/* SVN FILE: $Id: view.thtml 5317 2007-06-20 08:28:35Z phpnut $ */
 /**
  *
  * PHP versions 4 and 5
@@ -18,9 +18,9 @@
  * @package			cake
  * @subpackage		cake.cake.libs.view.templates.scaffolds
  * @since			CakePHP(tm) v 0.10.0.1076
- * @version			$Revision: 4409 $
+ * @version			$Revision: 5317 $
  * @modifiedby		$LastChangedBy: phpnut $
- * @lastmodified	$Date: 2007-02-02 07:20:59 -0600 (Fri, 02 Feb 2007) $
+ * @lastmodified	$Date: 2007-06-20 03:28:35 -0500 (Wed, 20 Jun 2007) $
  * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 ?>
@@ -28,12 +28,12 @@
 $modelName = ucwords(Inflector::singularize($this->name));
 $modelKey = Inflector::underscore($modelName);
 $objModel =& ClassRegistry::getObject($modelKey);
-if(is_null($this->plugin)) {
+if (is_null($this->plugin)) {
 	$path = '/';
 } else {
 	$path = '/'.$this->plugin.'/';
 }
-if(!empty($objModel->alias)) {
+if (!empty($objModel->alias)) {
 	foreach ($objModel->alias as $key => $value) {
 		$alias[] = $key;
 	}
@@ -44,13 +44,13 @@ if(!empty($objModel->alias)) {
 </h1>
 <dl>
 <?php
-foreach($fieldNames as $field => $value) {
+foreach ($fieldNames as $field => $value) {
 	echo "<dt>".$value['prompt']."</dt>";
-	if(isset($value['foreignKey'])) {
+	if (isset($value['foreignKey'])) {
 		$otherModelObject =& ClassRegistry::getObject(Inflector::underscore($objModel->tableToModel[$value['table']]));
 		$displayField = $otherModelObject->getDisplayField();
 		$displayText = $data[$alias[$count]][$displayField];
-		if(!empty($data[$objModel->tableToModel[$objModel->table]][$field]) && (isset($displayText))) {
+		if (!empty($data[$objModel->tableToModel[$objModel->table]][$field]) && (isset($displayText))) {
 			echo "<dd>".$html->link($displayText, $path.Inflector::underscore($value['controller']).'/view/'
 							.$data[$objModel->tableToModel[$objModel->table]][$field] )."</dd>";
 		} else {
@@ -58,7 +58,7 @@ foreach($fieldNames as $field => $value) {
 		}
 		$count++;
 	} else {
-		if( !empty($data[$objModel->tableToModel[$objModel->table]][$field])) {
+		if ( !empty($data[$objModel->tableToModel[$objModel->table]][$field])) {
 			echo "<dd>".$data[$objModel->tableToModel[$objModel->table]][$field]."</dd>";
 		} else {
 			echo "<dd>&nbsp;</dd>";
@@ -73,8 +73,8 @@ echo "<li>".$html->link('Delete  '.Inflector::humanize($objModel->name), $path.$
 echo "<li>".$html->link('List  '.Inflector::humanize($objModel->name), $path.$this->viewPath.'/index')."</li>";
 echo "<li>".$html->link('New  '.Inflector::humanize($objModel->name), $path.$this->viewPath.'/add')."</li>";
 
-foreach( $fieldNames as $field => $value ) {
-	if( isset( $value['foreignKey'] ) ) {
+foreach ( $fieldNames as $field => $value ) {
+	if ( isset( $value['foreignKey'] ) ) {
 		echo "<li>".$html->link( "List ".Inflector::humanize($value['controller']), $path.Inflector::underscore($value['controller'])."/index/")."</li>";
 	}
 }?>
@@ -89,11 +89,11 @@ foreach ($objModel->hasOne as $association => $relation) {
 	$new = true;
 	echo "<div class='related'><H2>Related ".Inflector::humanize($association)."</H2>";
 	echo "<dl>";
-	if(isset($data[$association]) && is_array($data[$association])) {
-		foreach($data[$association] as $field => $value) {
-			if(isset($value)) {
+	if (isset($data[$association]) && is_array($data[$association])) {
+		foreach ($data[$association] as $field => $value) {
+			if (isset($value)) {
 				echo "<dt>".Inflector::humanize($field)."</dt>";
-				if(!empty($value)) {
+				if (!empty($value)) {
 					echo "<dd>".$value."</dd>";
 				} else {
 					echo "<dd>&nbsp;</dd>";
@@ -102,7 +102,7 @@ foreach ($objModel->hasOne as $association => $relation) {
 			}
 		}
 		echo "</dl>";
-		if($new == null) {
+		if ($new == null) {
 			echo "<ul class='actions'><li>".$html->link('Edit '.Inflector::humanize($association),$path.Inflector::underscore($controller)."/edit/{$data[$association][$objModel->{$model}->primaryKey]}")."</li></ul></div>";
 		} else {
 			echo "<ul class='actions'><li>".$html->link('New '.Inflector::humanize($association),$path.Inflector::underscore($controller)."/add/{$data[$association][$objModel->{$model}->primaryKey]}")."</li></ul></div>";
@@ -114,27 +114,27 @@ foreach ($objModel->hasOne as $association => $relation) {
 <!-- HAS MANY AND HASANDBELONGSTOMANY -->
 <?php
 $relations = array_merge($objModel->hasMany, $objModel->hasAndBelongsToMany);
-foreach($relations as $association => $relation) {
+foreach ($relations as $association => $relation) {
 	$model = $relation['className'];
 	$count = 0;
 	$otherModelName = Inflector::singularize($model);
 	$controller = Inflector::pluralize($model);
 
 	echo "<div class='related'><H2>Related ".Inflector::humanize(Inflector::pluralize($association))."</H2>";
-	if(isset($data[$association][0]) && is_array($data[$association])) {?>
+	if (isset($data[$association][0]) && is_array($data[$association])) {?>
 		<table class="inav" cellspacing="0">
 			<tr>
 <?php
 		$bFound = false;
-		foreach($data[$association][0] as $column=>$value) {
+		foreach ($data[$association][0] as $column=>$value) {
 			echo "<th>".Inflector::humanize($column)."</th>";
 		}?>
 				<th>Actions</th>
 			</tr>
 <?php
-		foreach($data[$association] as $row) {
+		foreach ($data[$association] as $row) {
 			echo "<tr>";
-			foreach($row as $column=>$value) {
+			foreach ($row as $column=>$value) {
 				echo "<td>".$value."</td>";
 			}
 			if (isset($this->controller->{$modelName}->{$association})) {?>

@@ -1,5 +1,5 @@
 <?php
-/* SVN FILE: $Id: neat_array.php 4409 2007-02-02 13:20:59Z phpnut $ */
+/* SVN FILE: $Id: neat_array.php 5317 2007-06-20 08:28:35Z phpnut $ */
 /**
  * Library of array functions for Cake.
  *
@@ -21,9 +21,9 @@
  * @package			cake
  * @subpackage		cake.cake.libs
  * @since			CakePHP(tm) v 0.2.9
- * @version			$Revision: 4409 $
+ * @version			$Revision: 5317 $
  * @modifiedby		$LastChangedBy: phpnut $
- * @lastmodified	$Date: 2007-02-02 07:20:59 -0600 (Fri, 02 Feb 2007) $
+ * @lastmodified	$Date: 2007-06-20 03:28:35 -0500 (Wed, 20 Jun 2007) $
  * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 /**
@@ -69,7 +69,7 @@ class NeatArray{
 		$keys = array_keys($this->value);
 		$count = sizeof($keys);
 
-		for($i = 0; $i < $count; $i++) {
+		for ($i = 0; $i < $count; $i++) {
 			if (isset($this->value[$keys[$i]][$fieldName]) && ($this->value[$keys[$i]][$fieldName] == $value))
 			{
 				$out[$keys[$i]] = $this->value[$keys[$i]];
@@ -85,7 +85,7 @@ class NeatArray{
  */
 	function cleanup() {
 		$out = is_array($this->value) ? array(): null;
-		foreach($this->value as $k => $v) {
+		foreach ($this->value as $k => $v) {
 			if ($v == "0") {
 				$out[$k] = $v;
 			} elseif ($v) {
@@ -127,7 +127,7 @@ class NeatArray{
  */
 	function totals($sortedBy = 1, $reverse = true) {
 		$out = array();
-		foreach($this->value as $val) {
+		foreach ($this->value as $val) {
 			isset($out[$val]) ? $out[$val]++ : $out[$val] = 1;
 		}
 
@@ -170,7 +170,7 @@ class NeatArray{
  */
 	function sprintf($template) {
 		$count = count($this->value);
-		for($ii = 0; $ii < $count; $ii++) {
+		for ($ii = 0; $ii < $count; $ii++) {
 			$this->value[$ii] = sprintf($template, $this->value[$ii]);
 		}
 		return $this->value;
@@ -184,7 +184,7 @@ class NeatArray{
  */
 	function extract($name) {
 		$out = array();
-		foreach($this->value as $val) {
+		foreach ($this->value as $val) {
 			if (isset($val[$name]))
 			$out[]=$val[$name];
 		}
@@ -245,7 +245,7 @@ class NeatArray{
 		$his = new NeatArray($his);
 		$out = array();
 
-		foreach($this->value as $key => $val) {
+		foreach ($this->value as $key => $val) {
 			if ($fromHis = $his->findIn($onHis, $val[$onMine])) {
 				list($fromHis) = array_values($fromHis);
 				$out[$key] = array_merge($val, $fromHis);
@@ -269,7 +269,7 @@ class NeatArray{
 		$out = array();
 		$sizeof = sizeof($this->value);
 
-		for($ii = 0; $ii < $sizeof; $ii++) {
+		for ($ii = 0; $ii < $sizeof; $ii++) {
 			if ($this->value[$ii][$parentIdKey] == $root) {
 				$tmp = $this->value[$ii];
 				$tmp[$childrenKey]=isset($this->value[$ii][$idKey])
@@ -293,7 +293,7 @@ class NeatArray{
 		}
 
 		if (is_array($the_array)) {
-			foreach($the_array as $key => $value) {
+			foreach ($the_array as $key => $value) {
 				$result = $this->multi_search($search_value, $value);
 
 				if (is_array($result)) {

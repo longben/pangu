@@ -1,5 +1,5 @@
 <?php
-/* SVN FILE: $Id: session.php 4757 2007-04-04 08:24:30Z phpnut $ */
+/* SVN FILE: $Id: session.php 5317 2007-06-20 08:28:35Z phpnut $ */
 /**
  * Short description for file.
  *
@@ -21,9 +21,9 @@
  * @package			cake
  * @subpackage		cake.cake.libs.controller.components
  * @since			CakePHP(tm) v 0.10.0.1232
- * @version			$Revision: 4757 $
+ * @version			$Revision: 5317 $
  * @modifiedby		$LastChangedBy: phpnut $
- * @lastmodified	$Date: 2007-04-04 03:24:30 -0500 (Wed, 04 Apr 2007) $
+ * @lastmodified	$Date: 2007-06-20 03:28:35 -0500 (Wed, 20 Jun 2007) $
  * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 /**
@@ -94,8 +94,8 @@ class SessionComponent extends CakeSession {
  */
 	function write($name, $value = null) {
 		if ($this->__active === true) {
-			if(is_array($name)) {
-				foreach($name as $key => $value) {
+			if (is_array($name)) {
+				foreach ($name as $key => $value) {
 					if (parent::write($key, $value) === false) {
 						return false;
 					}

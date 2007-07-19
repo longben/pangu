@@ -1,5 +1,5 @@
 <?php
-/* SVN FILE: $Id: dbo_mysqli.php 5117 2007-05-18 16:46:55Z phpnut $ */
+/* SVN FILE: $Id: dbo_mysqli.php 5317 2007-06-20 08:28:35Z phpnut $ */
 /**
  * MySQLi layer for DBO
  *
@@ -21,9 +21,9 @@
  * @package			cake
  * @subpackage		cake.cake.libs.model.dbo
  * @since			CakePHP(tm) v 1.1.4.2974
- * @version			$Revision: 5117 $
+ * @version			$Revision: 5317 $
  * @modifiedby		$LastChangedBy: phpnut $
- * @lastmodified	$Date: 2007-05-18 11:46:55 -0500 (Fri, 18 May 2007) $
+ * @lastmodified	$Date: 2007-06-20 03:28:35 -0500 (Wed, 20 Jun 2007) $
  * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 
@@ -199,7 +199,7 @@ class DboMysqli extends DboSource {
 			return 'NULL';
 		}
 
-		if($data === '') {
+		if ($data === '') {
 			return  "''";
 		}
 
@@ -210,7 +210,7 @@ class DboMysqli extends DboSource {
 			case 'integer' :
 			case 'float' :
 			case null :
-				if(is_numeric($data)) {
+				if (is_numeric($data)) {
 					break;
 				}
 			default:
@@ -307,9 +307,9 @@ class DboMysqli extends DboSource {
  * @return in
  */
 	function lastInsertId($source = null) {
-		$id = $this->fetchAll('SELECT LAST_INSERT_ID() AS insertID', false);
-		if ($id !== false && !empty($id) && !empty($id[0]) && isset($id[0][0]['insertID'])) {
-			return $id[0][0]['insertID'];
+		$id = $this->fetchRow('SELECT LAST_INSERT_ID() AS insertID', false);
+		if ($id !== false && !empty($id) && !empty($id[0]) && isset($id[0]['insertID'])) {
+			return $id[0]['insertID'];
 		}
 
 		return null;
@@ -436,7 +436,7 @@ class DboMysqli extends DboSource {
  * @return string The database encoding
  */
 	function getEncoding() {
-		return mysql_client_encoding($this->connection);
+		return mysqli_client_encoding($this->connection);
 	}
 /**
  * Generate a MySQL schema for the given Schema object

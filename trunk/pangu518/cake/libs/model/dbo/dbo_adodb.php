@@ -1,5 +1,5 @@
 <?php
-/* SVN FILE: $Id: dbo_adodb.php 4717 2007-03-31 17:26:16Z phpnut $ */
+/* SVN FILE: $Id: dbo_adodb.php 5317 2007-06-20 08:28:35Z phpnut $ */
 
 /**
  * AdoDB layer for DBO.
@@ -22,9 +22,9 @@
  * @package			cake
  * @subpackage		cake.cake.libs.model.dbo
  * @since			CakePHP(tm) v 0.2.9
- * @version			$Revision: 4717 $
+ * @version			$Revision: 5317 $
  * @modifiedby		$LastChangedBy: phpnut $
- * @lastmodified	$Date: 2007-03-31 11:26:16 -0600 (Sat, 31 Mar 2007) $
+ * @lastmodified	$Date: 2007-06-20 03:28:35 -0500 (Wed, 20 Jun 2007) $
  * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 
@@ -93,8 +93,11 @@ class DboAdodb extends DboSource {
 		}
 
 		$this->_adodb = NewADOConnection($adodb_driver);
-		$adodb = &$this->_adodb;
-		$this->connected = $adodb->$connect($config['host'], $config['login'], $config['password'], $config['database']);
+
+		$this->startQuote = $this->_adodb->nameQuote;
+		$this->endQuote = $this->_adodb->nameQuote;
+
+		$this->connected = $this->_adodb->$connect($config['host'], $config['login'], $config['password'], $config['database']);
 		return $this->connected;
 	}
 /**
@@ -217,7 +220,7 @@ class DboAdodb extends DboSource {
 		$fields = false;
 		$cols = $this->_adodb->MetaColumns($this->fullTableName($model, false));
 
-		foreach($cols as $column) {
+		foreach ($cols as $column) {
 			$fields[] = array('name' => $column->name,
 									'type' => $this->column($column->type));
 		}
@@ -329,6 +332,10 @@ class DboAdodb extends DboSource {
  * @return array
  */
 	function fields(&$model, $alias, $fields) {
+		if (empty($alias)) {
+			$alias = $model->name;
+		}
+
 		if (is_array($fields)) {
 				$fields = $fields;
 		} else {
@@ -340,7 +347,7 @@ class DboAdodb extends DboSource {
 				}
 				$fields = array_map('trim', $fields);
 			} else {
-				foreach($model->_tableInfo->value as $field) {
+				foreach ($model->_tableInfo->value as $field) {
 					$fields[] = $field['name'];
 				}
 			}
@@ -349,7 +356,7 @@ class DboAdodb extends DboSource {
 		$count = count($fields);
 
 		if ($count >= 1 && $fields[0] != '*' && strpos($fields[0], 'COUNT(*)') === false) {
-			for($i = 0; $i < $count; $i++) {
+			for ($i = 0; $i < $count; $i++) {
 				if (!preg_match('/^.+\\(.*\\)/', $fields[$i])) {
 					$prepend = '';
 					if (strpos($fields[$i], 'DISTINCT') !== false) {
@@ -382,7 +389,7 @@ class DboAdodb extends DboSource {
 		$index = 0;
 		$j = 0;
 
-		while($j < $num_fields) {
+		while ($j < $num_fields) {
 			$columnName = $fields[$j];
 
 			if (strpos($columnName, '__')) {

@@ -1,5 +1,5 @@
 <?php
-/* SVN FILE: $Id: sanitize.php 4409 2007-02-02 13:20:59Z phpnut $ */
+/* SVN FILE: $Id: sanitize.php 5317 2007-06-20 08:28:35Z phpnut $ */
 /**
  * Washes strings from unwanted noise.
  *
@@ -21,9 +21,9 @@
  * @package			cake
  * @subpackage		cake.cake.libs
  * @since			CakePHP(tm) v 0.10.0.1076
- * @version			$Revision: 4409 $
+ * @version			$Revision: 5317 $
  * @modifiedby		$LastChangedBy: phpnut $
- * @lastmodified	$Date: 2007-02-02 07:20:59 -0600 (Fri, 02 Feb 2007) $
+ * @lastmodified	$Date: 2007-06-20 03:28:35 -0500 (Wed, 20 Jun 2007) $
  * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 /**
@@ -46,13 +46,13 @@ class Sanitize{
 	function paranoid($string, $allowed = array()) {
 		$allow = null;
 		if (!empty($allowed)) {
-			foreach($allowed as $value) {
+			foreach ($allowed as $value) {
 				$allow .= "\\$value";
 			}
 		}
 
 		if (is_array($string)) {
-			foreach($string as $key => $clean) {
+			foreach ($string as $key => $clean) {
 				$cleaned[$key] = preg_replace("/[^{$allow}a-zA-Z0-9]/", "", $clean);
 			}
 		} else {
@@ -111,7 +111,7 @@ class Sanitize{
  */
 	function cleanArrayR(&$toClean) {
 		if (is_array($toClean)) {
-			while(list($k, $v) = each($toClean)) {
+			while (list($k, $v) = each($toClean)) {
 				if (is_array($toClean[$k])) {
 					$this->cleanArray($toClean[$k]);
 				} else {
@@ -179,7 +179,7 @@ class Sanitize{
  * @access public
  */
 	function formatColumns(&$model) {
-		foreach($model->data as $name => $values) {
+		foreach ($model->data as $name => $values) {
 			if ($name == $model->name) {
 				$curModel =& $model;
 			} elseif (isset($model->{$name}) && is_object($model->{$name}) && is_subclass_of($model->{$name}, 'Model')) {
@@ -189,7 +189,7 @@ class Sanitize{
 			}
 
 			if ($curModel != null) {
-				foreach($values as $column => $data) {
+				foreach ($values as $column => $data) {
 					$colType = $curModel->getColumnType($column);
 
 					if ($colType != null) {

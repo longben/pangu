@@ -1,5 +1,5 @@
 <?php
-/* SVN FILE: $Id: ini_acl.php 4409 2007-02-02 13:20:59Z phpnut $ */
+/* SVN FILE: $Id: ini_acl.php 5317 2007-06-20 08:28:35Z phpnut $ */
 /**
  * This is core configuration file.
  *
@@ -21,9 +21,9 @@
  * @package			cake
  * @subpackage		cake.cake.libs.controller.componenets.iniacl
  * @since			CakePHP(tm) v 0.2.9
- * @version			$Revision: 4409 $
+ * @version			$Revision: 5317 $
  * @modifiedby		$LastChangedBy: phpnut $
- * @lastmodified	$Date: 2007-02-02 07:20:59 -0600 (Fri, 02 Feb 2007) $
+ * @lastmodified	$Date: 2007-06-20 03:28:35 -0500 (Wed, 20 Jun 2007) $
  * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 /**
@@ -89,7 +89,7 @@ class INI_ACL extends AclBase {
 		if (isset($aclConfig[$aro]['groups'])) {
 			$userGroups = $this->arrayTrim(explode(",", $aclConfig[$aro]['groups']));
 
-			foreach($userGroups as $group) {
+			foreach ($userGroups as $group) {
 				//If such a group exists,
 				if (array_key_exists($group, $aclConfig)) {
 					//If the group is specifically denied, then DENY
@@ -129,7 +129,7 @@ class INI_ACL extends AclBase {
 	function readConfigFile($fileName) {
 		$fileLineArray = file($fileName);
 
-		foreach($fileLineArray as $fileLine) {
+		foreach ($fileLineArray as $fileLine) {
 				$dataLine = trim($fileLine);
 				$firstChar = substr($dataLine, 0, 1);
 
@@ -170,7 +170,7 @@ class INI_ACL extends AclBase {
  * @return array
  */
 	function arrayTrim($array) {
-		foreach($array as $element) {
+		foreach ($array as $element) {
 			$element = trim($element);
 		}
 

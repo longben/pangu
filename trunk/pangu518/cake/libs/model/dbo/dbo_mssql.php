@@ -1,5 +1,5 @@
 <?php
-/* SVN FILE: $Id: dbo_mssql.php 5117 2007-05-18 16:46:55Z phpnut $ */
+/* SVN FILE: $Id: dbo_mssql.php 5317 2007-06-20 08:28:35Z phpnut $ */
 
 /**
  * MS SQL layer for DBO
@@ -22,9 +22,9 @@
  * @package			cake
  * @subpackage		cake.cake.libs.model.dbo
  * @since			CakePHP(tm) v 0.10.5.1790
- * @version			$Revision: 5117 $
+ * @version			$Revision: 5317 $
  * @modifiedby		$LastChangedBy: phpnut $
- * @lastmodified	$Date: 2007-05-18 11:46:55 -0500 (Fri, 18 May 2007) $
+ * @lastmodified	$Date: 2007-06-20 03:28:35 -0500 (Wed, 20 Jun 2007) $
  * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 
@@ -180,7 +180,7 @@ class DboMssql extends DboSource {
 		} else {
 			$tables = array();
 
-			foreach($result as $table) {
+			foreach ($result as $table) {
 				$tables[] = $table[0]['TABLE_NAME'];
 			}
 
@@ -204,7 +204,7 @@ class DboMssql extends DboSource {
 		$fields = false;
 		$cols = $this->fetchAll("SELECT COLUMN_NAME as Field, DATA_TYPE as Type, COL_LENGTH('" . $this->fullTableName($model, false) . "', COLUMN_NAME) as Length, IS_NULLABLE As [Null], COLUMN_DEFAULT as [Default], COLUMNPROPERTY(OBJECT_ID('" . $this->fullTableName($model, false) . "'), COLUMN_NAME, 'IsIdentity') as [Key], NUMERIC_SCALE as Size FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '" . $this->fullTableName($model, false) . "'", false);
 
-		foreach($cols as $column) {
+		foreach ($cols as $column) {
 			$fields[] = array(
 				'name' => $column[0]['Field'],
 				'type' => $this->column($column[0]['Type']),
@@ -266,7 +266,7 @@ class DboMssql extends DboSource {
 		$count = count($fields);
 
 		if ($count >= 1 && $fields[0] != '*' && strpos($fields[0], 'COUNT(*)') === false) {
-			for($i = 0; $i < $count; $i++) {
+			for ($i = 0; $i < $count; $i++) {
 				$dot = strrpos($fields[$i], '.');
 				$fieldAlias = count($this->__fieldMappings);
 
@@ -336,7 +336,7 @@ class DboMssql extends DboSource {
  * @return array
  */
 	function update(&$model, $fields = array(), $values = array()) {
-		foreach($fields as $i => $field) {
+		foreach ($fields as $i => $field) {
 			if ($field == $model->primaryKey) {
 				unset ($fields[$i]);
 				unset ($values[$i]);
@@ -391,8 +391,8 @@ class DboMssql extends DboSource {
  * @return in
  */
 	function lastInsertId($source = null) {
-		$id = $this->fetchAll('SELECT SCOPE_IDENTITY() AS insertID', false);
-		return $id[0][0]['insertID'];
+		$id = $this->fetchRow('SELECT SCOPE_IDENTITY() AS insertID', false);
+		return $id[0]['insertID'];
 	}
 /**
  * Returns a limit statement in the correct format for the particular database.
@@ -475,16 +475,16 @@ class DboMssql extends DboSource {
 		$index = 0;
 		$j = 0;
 
-		while($j < $num_fields) {
+		while ($j < $num_fields) {
 			$column = mssql_field_name($results, $j);
 
 			if (strpos($column, '__')) {
 				if (isset($this->__fieldMappings[$column]) && strpos($this->__fieldMappings[$column], '.')) {
 					$map = explode('.', $this->__fieldMappings[$column]);
-				} elseif(isset($this->__fieldMappings[$column])) {
+				} elseif (isset($this->__fieldMappings[$column])) {
 					$map = array(0, $this->__fieldMappings[$column]);
 				} else {
-					$map = array(0, $column);	
+					$map = array(0, $column);
 				}
 				$this->map[$index++] = $map;
 			} else {
@@ -494,7 +494,7 @@ class DboMssql extends DboSource {
 		}
 	}
 /**
- * Builds final SQL statement 
+ * Builds final SQL statement
  *
  * @param array $data Query data
  * @return string
@@ -513,7 +513,7 @@ class DboMssql extends DboSource {
 		}
 	}
 /**
- * Reverses the sort direction of ORDER statements to get paging offsets to work correctly 
+ * Reverses the sort direction of ORDER statements to get paging offsets to work correctly
  *
  * @param string $order
  * @return string
@@ -565,7 +565,7 @@ class DboMssql extends DboSource {
 			$resultRow = array();
 			$i = 0;
 
-			foreach($row as $index => $field) {
+			foreach ($row as $index => $field) {
 				list($table, $column) = $this->map[$index];
 				$resultRow[$table][$column] = $row[$index];
 				$i++;

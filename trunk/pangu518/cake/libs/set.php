@@ -1,5 +1,5 @@
 <?php
-/* SVN FILE: $Id: set.php 5117 2007-05-18 16:46:55Z phpnut $ */
+/* SVN FILE: $Id: set.php 5421 2007-07-09 04:58:57Z phpnut $ */
 /**
  * Library of array functions for Cake.
  *
@@ -19,9 +19,9 @@
  * @package			cake
  * @subpackage		cake.cake.libs
  * @since			CakePHP(tm) v 1.2.0
- * @version			$Revision: 5117 $
+ * @version			$Revision: 5421 $
  * @modifiedby		$LastChangedBy: phpnut $
- * @lastmodified	$Date: 2007-05-18 11:46:55 -0500 (Fri, 18 May 2007) $
+ * @lastmodified	$Date: 2007-07-08 23:58:57 -0500 (Sun, 08 Jul 2007) $
  * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 /**
@@ -55,6 +55,7 @@ class Set extends Object {
 /**
  * Returns the contents of the Set object
  *
+ * @return array
  * @access public
  */
 	function &get() {
@@ -67,15 +68,15 @@ class Set extends Object {
  *
  * Note: This function will work with an unlimited amount of arguments and typecasts non-array parameters into arrays.
  *
- * @param array $arr1
- * @param array $arr2
- * @return array
+ * @param array $arr1 Array to be merged
+ * @param array $arr2 Array to merge with
+ * @return array Merged array
  * @access public
  */
 	function merge($arr1, $arr2 = null) {
 		$args = func_get_args();
 
-		if(is_a($this, 'set')) {
+		if (is_a($this, 'set')) {
 			$backtrace = debug_backtrace();
 			$previousCall = low($backtrace[1]['class'].'::'.$backtrace[1]['function']);
 			if ($previousCall != 'set::merge') {
@@ -83,19 +84,19 @@ class Set extends Object {
 				array_unshift($args, null);
 			}
 		}
-		if(!isset($r)) {
+		if (!isset($r)) {
 			$r = (array)current($args);
 		}
 
-		while(($arg = next($args)) !== false) {
+		while (($arg = next($args)) !== false) {
 			if (is_a($arg, 'set')) {
 				$arg = $arg->get();
 			}
 
-			foreach((array)$arg as $key => $val)	 {
-				if(is_array($val) && isset($r[$key]) && is_array($r[$key])) {
+			foreach ((array)$arg as $key => $val)	 {
+				if (is_array($val) && isset($r[$key]) && is_array($r[$key])) {
 					$r[$key] = Set::merge($r[$key], $val);
-				} elseif(is_int($key)) {
+				} elseif (is_int($key)) {
 					$r[] = $val;
 				} else {
 					$r[$key] = $val;
@@ -107,7 +108,10 @@ class Set extends Object {
 /**
  * Filters empty elements out of a route array, excluding '0'.
  *
- * @return mixed
+ * @param mixed $var Either an array to filter, or value when in callback
+ * @param boolean $isArray Force to tell $var is an array when $var is empty
+ * @return mixed Either filtered array, or true/false when in callback
+ * @access public
  */
 	function filter($var, $isArray = false) {
 		if (is_array($var) && (!empty($var) || $isArray)) {
@@ -124,14 +128,14 @@ class Set extends Object {
 /**
  * Pushes the differences in $array2 onto the end of $array
  *
- * @param mixed $array
- * @param mixed $arrary2
- * @return array
+ * @param mixed $array Original array
+ * @param mixed $array2 Diferences to push
+ * @return array Combined array
  * @access public
  */
 	function pushDiff($array = null, $array2 = null) {
 		if ($array2 !== null && is_array($array2)) {
-			foreach($array2 as $key => $value) {
+			foreach ($array2 as $key => $value) {
 				if (!array_key_exists($key, $array)) {
 					$array[$key] = $value;
 				} else {
@@ -143,7 +147,7 @@ class Set extends Object {
 			return $array;
 		}
 
-		if(!isset($this->value)) {
+		if (!isset($this->value)) {
 			$this->value = array();
 		}
 		$this->value = Set::pushDiff($this->value, Set::__array($array));
@@ -153,7 +157,8 @@ class Set extends Object {
  * Maps the contents of the Set object to an object hierarchy
  *
  * @param string $class A class name of the type of object to map to
- * @return object
+ * @param string $tmp A temporary class name used as $class if $class is an array
+ * @return object Hierarchical object
  * @access public
  */
 	function map($class = 'stdClass', $tmp = 'stdClass') {
@@ -169,6 +174,18 @@ class Set extends Object {
 		}
 		return Set::__map($val, $class);
 	}
+
+/**
+ * Get the array value of $array. If $array is null, it will return
+ * the current array Set holds. If it is an object of type Set, it
+ * will return its value. If it is another object, its object variables.
+ * If it is anything else but an array, it will return an array whose first
+ * element is $array.
+ *
+ * @param mixed $array Data from where to get the array.
+ * @return array Array from $array.
+ * @access private
+ */
 	function __array($array) {
 		if ($array == null) {
 			$array = $this->value;
@@ -181,8 +198,21 @@ class Set extends Object {
 		}
 		return $array;
 	}
-	function __map($value, $class, $identity = null) {
 
+/**
+ * Maps the given value as an object. If $value is an object,
+ * it returns $value. Otherwise it maps $value as an object of
+ * type $class, and identity $identity. If $value is not empty,
+ * it will be used to set properties of returned object
+ * (recursively).
+ *
+ * @param mixed $value Value to map
+ * @param string $class Class name
+ * @param string $identity Identity to assign to class
+ * @return mixed Mapped object
+ * @access private
+ */
+	function __map($value, $class, $identity = null) {
 		if (is_object($value)) {
 			return $value;
 		}
@@ -217,13 +247,14 @@ class Set extends Object {
 				}
 			}
 		}
+
 		return $ret;
 	}
 /**
  * Checks to see if all the values in the array are numeric
  *
  * @param array $array The array to check.  If null, the value of the current Set object
- * @return boolean
+ * @return boolean true if values are numeric, false otherwise
  * @access public
  */
 	function numeric($array = null) {
@@ -252,9 +283,10 @@ class Set extends Object {
  *
  * $list defaults to 0 = no 1 = yes if param is not passed
  *
- * @param mixed $selected
+ * @param mixed $select Key in $list to return
  * @param mixed $list can be an array or a comma-separated list.
  * @return string the value of the array key or null if no match
+ * @access public
  */
 	function enum($select, $list = null) {
 		if (empty($list) && is_a($this, 'Set')) {
@@ -272,12 +304,13 @@ class Set extends Object {
 		return $return;
 	}
 /**
- * Gets a value from an array or object.
+ * Gets a value from an array or object that maps a given path.
  * The special {n}, as seen in the Model::generateList method, is taken care of here.
  *
- * @param array $data
- * @param mixed $path	As an array, or as a dot-separated string.
- * @return array
+ * @param array $data Array from where to extract
+ * @param mixed $path As an array, or as a dot-separated string.
+ * @return array Extracted data
+ * @access public
  */
 	function extract($data, $path = null) {
 		if ($path === null && is_a($this, 'set')) {
@@ -299,7 +332,7 @@ class Set extends Object {
 			return null;
 		}
 
-		foreach($path as $i => $key) {
+		foreach ($path as $i => $key) {
 			if (is_numeric($key) && intval($key) > 0 || $key == '0') {
 				if (isset($data[intval($key)])) {
 					$data = $data[intval($key)];
@@ -307,7 +340,7 @@ class Set extends Object {
 					return null;
 				}
 			} elseif ($key == '{n}') {
-				foreach($data as $j => $val) {
+				foreach ($data as $j => $val) {
 					$tmp[] = Set::extract($val, array_slice($path, $i + 1));
 				}
 				return $tmp;
@@ -324,10 +357,11 @@ class Set extends Object {
 /**
  * Inserts $data into an array as defined by $path.
  *
- * @param mixed $list
- * @param array $data
+ * @param mixed $list Where to insert into
  * @param mixed $path A dot-separated string.
+ * @param array $data Data to insert
  * @return array
+ * @access public
  */
 	function insert($list, $path, $data = null) {
 		if (empty($data) && is_a($this, 'Set')) {
@@ -340,7 +374,7 @@ class Set extends Object {
 		}
 		$_list =& $list;
 
-		foreach($path as $i => $key) {
+		foreach ($path as $i => $key) {
 			if (is_numeric($key) && intval($key) > 0 || $key == '0') {
 				$key = intval($key);
 			}
@@ -356,12 +390,12 @@ class Set extends Object {
 		return $list;
 	}
 /**
- * Removes an element from a Set or array
+ * Removes an element from a Set or array as defined by $path.
  *
- * @param mixed $list
- * @param array $data
+ * @param mixed $list From where to remove
  * @param mixed $path A dot-separated string.
- * @return array
+ * @return array Array with $path removed from its value
+ * @access public
  */
 	function remove($list, $path = null) {
 		if (empty($path) && is_a($this, 'Set')) {
@@ -373,7 +407,7 @@ class Set extends Object {
 		}
 		$_list =& $list;
 
-		foreach($path as $i => $key) {
+		foreach ($path as $i => $key) {
 			if (is_numeric($key) && intval($key) > 0 || $key == '0') {
 				$key = intval($key);
 			}
@@ -397,9 +431,10 @@ class Set extends Object {
 /**
  * Checks if a particular path is set in an array
  *
- * @param mixed $data
+ * @param mixed $data Data to check on
  * @param mixed $path A dot-separated string.
- * @return array
+ * @return boolean true if path is found, false otherwise
+ * @access public
  */
 	function check($data, $path = null) {
 		if (empty($path) && is_a($this, 'Set')) {
@@ -410,7 +445,7 @@ class Set extends Object {
 			$path = explode('.', $path);
 		}
 
-		foreach($path as $i => $key) {
+		foreach ($path as $i => $key) {
 			if (is_numeric($key) && intval($key) > 0 || $key == '0') {
 				$key = intval($key);
 			}
@@ -428,9 +463,10 @@ class Set extends Object {
 /**
  * Computes the difference between a Set and an array, two Sets, or two arrays
  *
- * @param mixed $val1
- * @param mixed $val2
- * @return array
+ * @param mixed $val1 First value
+ * @param mixed $val2 Second value
+ * @return array Computed difference
+ * @access public
  */
 	function diff($val1, $val2 = null) {
 		if ($val2 == null && (is_a($this, 'set') || is_a($this, 'Set'))) {
@@ -450,7 +486,7 @@ class Set extends Object {
 		foreach ($val1 as $key => $val) {
 			if (isset($val2[$key]) && $val2[$key] != $val) {
 				$out[$key] = $val;
-			} else if(!array_key_exists($key, $val2)){
+			} elseif (!array_key_exists($key, $val2)) {
 				$out[$key] = $val;
 			}
 		}
@@ -459,22 +495,26 @@ class Set extends Object {
 /**
  * Determines if two Sets or arrays are equal
  *
- * @param array $val1
- * @param array $val2
- * @return boolean
+ * @param array $val1 First value
+ * @param array $val2 Second value
+ * @return boolean true if they are equal, false otherwise
+ * @access public
  */
 	function isEqual($val1, $val2 = null) {
 		if ($val2 == null && (is_a($this, 'set') || is_a($this, 'Set'))) {
 			$val2 = $val1;
 			$val1 = $this->get();
 		}
+
+		return ($val1 == $val2);
 	}
 /**
  * Determines if one Set or array contains the exact keys and values of another.
  *
- * @param array $val1
- * @param array $val2
- * @return boolean
+ * @param array $val1 First value
+ * @param array $val2 Second value
+ * @return boolean true if $val1 contains $val2, false otherwise
+ * @access public
  */
 	function contains($val1, $val2 = null) {
 		if ($val2 == null && is_a($this, 'set')) {
@@ -498,10 +538,11 @@ class Set extends Object {
 		return true;
 	}
 /**
- * Counts the dimensions of an array
+ * Counts the dimensions of an array.
  *
- * @param array $array
+ * @param array $array Array to count dimensions on
  * @return int The number of dimensions in $array
+ * @access public
  */
 	function countDim($array = null) {
 		if ($array === null) {
@@ -517,13 +558,14 @@ class Set extends Object {
 		return $return;
 	}
 /**
- * Normalizes a string or array list
+ * Normalizes a string or array list.
  *
- * @param mixed $list
+ * @param mixed $list List to normalize
  * @param boolean $assoc If true, $list will be converted to an associative array
  * @param string $sep If $list is a string, it will be split into an array with $sep
  * @param boolean $trim If true, separated strings will be trimmed
  * @return array
+ * @access public
  */
 	function normalize($list, $assoc = true, $sep = ',', $trim = true) {
 		if (is_string($list)) {
@@ -560,6 +602,148 @@ class Set extends Object {
 			}
 		}
 		return $list;
+	}
+/**
+ * Creates an associative array using a $path1 as the path to build its keys, and optionally
+ * $path2 as path to get the values. If $path2 is not specified, all values will be initialized
+ * to null (useful for Set::merge). You can optionally group the values by what is obtained when
+ * following the path specified in $groupPath.
+ *
+ * @param array $data Array from where to extract keys and values
+ * @param mixed $path1 As an array, or as a dot-separated string.
+ * @param mixed $path2 As an array, or as a dot-separated string.
+ * @param string $groupPath As an array, or as a dot-separated string.
+ * @return array Combined array
+ * @access public
+ */
+	function combine($data, $path1 = null, $path2 = null, $groupPath = null) {
+		if (is_a($this, 'set') && is_string($data) && is_string($path1) && is_string($path2)) {
+			$groupPath = $path2;
+			$path2 = $path1;
+			$path1 = $data;
+			$data = $this->get();
+		} else if (is_a($this, 'set') && is_string($data) && empty($path2)) {
+			$path2 = $path1;
+			$path1 = $data;
+			$data = $this->get();
+		}
+
+		if (is_object($data)) {
+			$data = get_object_vars($data);
+		}
+
+		$keys = Set::extract($data, $path1);
+
+		if (!empty($path2)) {
+			$vals = Set::extract($data, $path2);
+		} else {
+			$count = count($keys);
+			for($i=0; $i < $count; $i++) {
+				$vals[$i] = null;
+			}
+		}
+
+		if ($groupPath != null) {
+			$group = Set::extract($data, $groupPath);
+			if (!empty($group)) {
+				$c = count($keys);
+				for ($i = 0; $i < $c; $i++) {
+					if (!isset($group[$i])) {
+						$group[$i] = 0;
+					}
+					if (!isset($out[$group[$i]])) {
+						$out[$group[$i]] = array();
+					}
+					$out[$group[$i]][$keys[$i]] = $vals[$i];
+				}
+				return $out;
+			}
+		}
+
+		return array_combine($keys, $vals);
+	}
+/**
+ * Converts an object into an array
+ *
+ * @param object $object
+ * @return array
+ */
+	function reverse($object) {
+		if (is_object($object)) {
+			$merge = array();
+			if (is_a($object, 'xmlnode') || is_a($object, 'XMLNode')) {
+				if ($object->name != Inflector::underscore($this->name)) {
+					if (is_object($object->child(Inflector::underscore($this->name)))) {
+						$object = $object->child(Inflector::underscore($this->name));
+						$object = $object->attributes;
+					} else {
+						return null;
+					}
+				}
+			} elseif (is_a($object, 'stdclass') || is_a($object, 'stdClass')) {
+				$object = get_object_vars($object);
+				$keys = array_keys($object);
+				$count = count($keys);
+
+				for ($i = 0; $i < $count; $i++) {
+					if ($keys[$i] == '__identity__') {
+						$key = $object[$keys[$i]];
+						unset($object[$keys[$i]]);
+						$object[$key] = $object;
+					} elseif (is_array($object[$keys[$i]])) {
+						$keys1 = array_keys($object[$keys[$i]]);
+						$count1 = count($keys1);
+						for ($ii = 0; $ii < $count1; $ii++) {
+							if (is_object($object[$keys[$i]][$keys1[$ii]])) {
+								$merge[$keys[$i]][$keys1[$ii]] = Set::reverse($object[$keys[$i]][$keys1[$ii]]);
+							} else {
+								$merge[$keys[$i]][$keys1[$ii]] = $object[$keys[$i]][$keys1[$ii]];
+							}
+						}
+						unset($object[$keys[$i]]);
+					} elseif (is_object($object[$keys[$i]])) {
+						$merge[$keys[$i]] = Set::reverse($object[$keys[$i]]);
+						unset($object[$keys[$i]]);
+					}
+				}
+			}
+			$return = $object;
+
+			if(!empty($merge)) {
+				$mergeKeys = array_keys($merge);
+				$objectKeys = array_keys($object);
+				$count = count($mergeKeys);
+				$change = $object;
+				$count1 = count($objectKeys);
+
+				for ($i = 0; $i < $count; $i++) {
+					$loop = $count1;
+
+					for ($ii = 0; $ii < $loop; $ii++) {
+						if(is_array($object[$objectKeys[$ii]])) {
+							if(array_key_exists($objectKeys[$ii], $object[$objectKeys[$ii]])) {
+								unset($change[$objectKeys[$ii]][$objectKeys[$ii]]);
+							}
+						} else {
+							unset($change[$objectKeys[$ii]]);
+						}
+					}
+
+					foreach ($objectKeys as $key => $value) {
+						if(is_array($object[$value])) {
+							if(array_key_exists($mergeKeys[$i], $object[$value])) {
+								unset($change[$value][$mergeKeys[$i]]);
+							}
+						} else {
+							unset($change[$value]);
+						}
+					}
+
+				}
+				$object = Set::pushDiff($change, $merge);
+			}
+			return $object;
+		}
 	}
 }
 ?>

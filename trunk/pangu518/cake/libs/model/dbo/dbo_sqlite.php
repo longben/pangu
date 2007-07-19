@@ -1,5 +1,5 @@
 <?php
-/* SVN FILE: $Id: dbo_sqlite.php 5117 2007-05-18 16:46:55Z phpnut $ */
+/* SVN FILE: $Id: dbo_sqlite.php 5317 2007-06-20 08:28:35Z phpnut $ */
 
 /**
  * SQLite layer for DBO
@@ -22,9 +22,9 @@
  * @package			cake
  * @subpackage		cake.cake.libs.model.dbo
  * @since			CakePHP(tm) v 0.9.0
- * @version			$Revision: 5117 $
+ * @version			$Revision: 5317 $
  * @modifiedby		$LastChangedBy: phpnut $
- * @lastmodified	$Date: 2007-05-18 11:46:55 -0500 (Fri, 18 May 2007) $
+ * @lastmodified	$Date: 2007-06-20 03:28:35 -0500 (Wed, 20 Jun 2007) $
  * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 /**
@@ -188,7 +188,7 @@ class DboSqlite extends DboSource {
 			return 'NULL';
 		}
 
-		if($data === '') {
+		if ($data === '') {
 			return  "''";
 		}
 
@@ -387,7 +387,7 @@ class DboSqlite extends DboSource {
 			}
 			$rt .= ' ' . $limit;
 			if ($offset) {
-				$rt .= ', ' . $offset;
+				$rt .= ' OFFSET ' . $offset;
 			}
 			return $rt;
 		}
