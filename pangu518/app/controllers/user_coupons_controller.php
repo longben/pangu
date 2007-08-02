@@ -43,6 +43,7 @@ class UserCouponsController extends AppController {
 				$this->data['UserCoupon']['coupon_id'] = $coupon_id;
 				$this->data['UserCoupon']['status'] = 421;
 				if($this->UserCoupon->save($this->data)) {
+					$this->UserCoupon->updateMerchantCouponStatus($this->Session->read('User.uid'),$coupon_id);
 					$this->Session->setFlash('代金券录入成功！');
 					$this->redirect('/user_coupons/input');
 				} else {

@@ -21,8 +21,21 @@ class UserCoupon extends AppModel {
 						'order' => '',
 						'counterCache' => ''
 				),
-
+				
+			'Merchant' =>
+				array('className' => 'Merchant',
+						'foreignKey' => 'merchant_id',
+						'conditions' => '',
+						'fields' => '',
+						'order' => '',
+						'counterCache' => ''
+				),
 	);
+	
+	function updateMerchantCouponStatus($user_id = null,$coupon_id = null){
+		$merchant = "update merchant_coupons set status = 421 where coupon_id = $coupon_id and status = 341";
+		$this->execute($merchant);
+	}
 
 }
 ?>

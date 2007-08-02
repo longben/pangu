@@ -1,6 +1,5 @@
-<div class="lotteries">
-<h2>List Lotteries</h2>
-
+<fieldset align=center>
+<legend>分红期数管理</legend> 
 <table cellpadding="0" cellspacing="0">
 <tr>
 	<th>Id</th>
@@ -43,4 +42,4 @@
 <ul class="actions">
 	<li><?php echo $html->link('New Lottery', '/lotteries/add'); ?></li>
 </ul>
-</div>
+</fieldset>

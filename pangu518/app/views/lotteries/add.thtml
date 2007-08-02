@@ -1,34 +1,25 @@
-<h2>New Lottery</h2>
+<fieldset align=center>
+<legend>分红期数管理</legend> 
 <form action="<?php echo $html->url('/lotteries/add'); ?>" method="post">
-<div class="optional"> 
-	<?php echo $form->labelTag('Lottery/lottery_year', 'Lottery Year');?>
- 	<?php echo $html->input('Lottery/lottery_year', array('size' => '60'));?>
+<div class="optional">
+	<?php echo $form->labelTag('Lottery/lottery_year', '开奖年份：');?>
+ 	<?php echo $html->yearOptionTag('Lottery/lottery','NONE','2007','2017',false,array('style' => 'width: 100px;'));?> 
 	<?php echo $html->tagErrorMsg('Lottery/lottery_year', 'Please enter the Lottery Year.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Lottery/lottery_times', 'Lottery Times');?>
+	<?php echo $form->labelTag('Lottery/lottery_times', '开奖期数：');?>
  	<?php echo $html->input('Lottery/lottery_times', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('Lottery/lottery_times', 'Please enter the Lottery Times.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Lottery/win_number', 'Win Number');?>
- 	<?php echo $html->input('Lottery/win_number', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Lottery/win_number', 'Please enter the Win Number.');?>
+	<?php echo $form->labelTag('Lottery/start_time', '开始日期：');?>
+ 	<?php echo $html->dateTimeOptionTag('Lottery/start_time', 'YMD' ,'24', mktime(date("G")+1, 0, 0, date("m"), date("d")+1, date("Y")), array());?>
+	<?php echo $html->tagErrorMsg('Lottery/start_time', 'Please select the Bday.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Lottery/win_count', 'Win Count');?>
- 	<?php echo $html->input('Lottery/win_count', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Lottery/win_count', 'Please enter the Win Count.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Lottery/createdby', 'Createdby');?>
- 	<?php echo $html->input('Lottery/createdby', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Lottery/createdby', 'Please enter the Createdby.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Lottery/flag', 'Flag');?>
- 	<?php echo $html->input('Lottery/flag', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Lottery/flag', 'Please enter the Flag.');?>
+	<?php echo $form->labelTag('Lottery/finish_time', '结束日期：');?>
+ 	<?php echo $html->dateTimeOptionTag('Lottery/finish_time', 'YMD' ,'24', mktime(date("G")+1, 0, 0, date("m"), date("d")+1, date("Y")), array());?>
+	<?php echo $html->tagErrorMsg('Lottery/finish_time', 'Please select the Bday.');?>
 </div>
 <div class="submit">
 	<?php echo $html->submit('Add');?>
@@ -37,3 +28,4 @@
 <ul class="actions">
 <li><?php echo $html->link('List Lotteries', '/lotteries/index')?></li>
 </ul>
+</fieldset>
