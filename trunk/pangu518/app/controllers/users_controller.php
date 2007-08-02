@@ -2,12 +2,16 @@
 class UsersController extends AppController {
 
 	var $name = 'Users';
-	var $helpers = array('Html', 'Form' );
+	var $helpers = array('Html', 'Form','Javascript' );
 
 	function index() {
 		$this->User->recursive = 0;
 		$this->set('users', $this->User->findAll('User.id <> 1'));
 	}
+	
+   function invite() {
+   	  $this->layout='jiwai';
+   }	
 
 	function view($id = null) {
 		if(!$id) {

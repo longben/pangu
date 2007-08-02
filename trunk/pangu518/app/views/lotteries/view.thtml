@@ -35,3 +35,18 @@
 </ul>
 
 </div>
+<div class="related">
+<h3>Related Lottery Bettings</h3>
+<?php if (!empty($lottery['LotteryBetting'])): ?>
+<dl>
+	<?php foreach ($lottery['LotteryBetting'] as $field => $value): ?>
+		<dt><?php echo $field ?></dt>
+		<dd>&nbsp;<?php echo $value ?></dd>
+	<?php endforeach; ?>
+</dl>
+<?php endif; ?>
+<ul class="actions">
+	<li><?php echo $html->link('Edit Lottery Betting', '/lottery_bettings/edit/' . $lottery['LotteryBetting']['id']);?></li>
+	<li><?php echo $html->link('New Lottery Betting', '/lottery_bettings/add/');?> </li>
+</ul>
+</div>

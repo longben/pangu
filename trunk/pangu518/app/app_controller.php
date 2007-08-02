@@ -37,27 +37,14 @@
  * @subpackage	cake.app
  */
 class AppController extends Controller {
-/**
- * Returns a SELECT element for months.
- *
- * @param string $tagName Prefix name for the SELECT element
- * @deprecated  string $value
- * @param string $selected Option which is selected.
- * @param array $optionAttr Attribute array for the option elements.
- * @param boolean $showEmpty Show/hide the empty select option
- * @return mixed
- * @access public
- */
-	function monthOptionTag($tagName, $value = null, $selected = null, $selectAttr = null, $optionAttr = null, $showEmpty = true) {
-		if (empty($selected) && ($this->tagValue($tagName))) {
-			$selected = date('m', strtotime($this->tagValue($tagName)));
-		}
-		$monthValue = empty($selected) ? ($showEmpty ? NULL : date('m')) : $selected;
-
-		$months = array('01' => '01', '02' => '02', '03' => '03', '04' => '04', '05' => '05', '06' => '06', '07' => '07', '08' => '08', '09' => '09', '10' => '10', '11' => '11', '12' => '12');
-
-
-		return $this->selectTag($tagName . "_month", $months, $monthValue, $selectAttr, $optionAttr, $showEmpty);
-	}
+	
+	/*  主体：0:无效 1:公司 2:会员 3:工作站 4:会员消费单位*/
+	var $_company = 1;
+	var $_user = 2;
+	var $_workstation = 3;
+	var $_merchant = 4;
+	
+	
+	
 }
 ?>

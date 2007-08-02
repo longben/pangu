@@ -52,7 +52,7 @@
 			asynchronous:false
 		});
 		
-		if(window.confirm('请确认！\n是否销售代金券给<?=$merchant_name?>？')){
+		if(checkMoney && window.confirm('注意：请确认！\n\n是否销售代金券给『<?=$merchant_name?>』会员消费单位？')){
 			checkMoney = true;
 		}else{
 			checkMoney = false;
