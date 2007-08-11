@@ -2,8 +2,8 @@
 
 <head>
 <meta http-equiv="Content-Language" content="zh-cn">
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
-<title>ĞÂ½¨ÍøÒ³ 1</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>ç›˜å¤ç»æµ</title>
 <style type="text/css">
 <!--
 a:link {
@@ -41,69 +41,69 @@ a:active {
 		<img border="0" src="img_www/logo3.jpg" width="215" height="62">&nbsp;&nbsp;&nbsp; </td>
 	</tr>
 	<tr>
-		<td width="197" height="129" valign="top" background="img_www/vipt01.jpg">¡¡</td>
+		<td width="197" height="129" valign="top" background="img_www/vipt01.jpg">ã€€</td>
 		<td width="612" height="129" valign="top" background="img_www/vipt02.jpg">
-		¡¡</td>
-		<td width="91" height="129" valign="top" background="img_www/vipt03.jpg">¡¡</td>
+		ã€€</td>
+		<td width="91" height="129" valign="top" background="img_www/vipt03.jpg">ã€€</td>
 	</tr>
 	<tr>
-		<td width="197" height="47" valign="top" background="img_www/vipt04.jpg">¡¡</td>
+		<td width="197" height="47" valign="top" background="img_www/vipt04.jpg">ã€€</td>
 		<td width="612" height="47" valign="middle" background="img_www/botton1.jpg">
 		<p align="center">
-		<font face="ºÚÌå" size="2"><a href="shouye.htm">Ê×Ò³</a></font><font face="ºÚÌå" size="2" color="#666666">|<a href="qiye.htm">ÆóÒµÎÄ»¯</a><font color="#666666">|</font><a href="falv.htm">·¨ÂÉ·¨¹æ</a><font color="#666666">|</font><a href="fenhong.htm">·Öºì¹æÔò</a><font color="#666666">|</font><a href="qiye.htm">¿Í»§·şÎñÖĞĞÄ</a><font color="#666666">|</font><a href="huikuan.htm">»ã¿îÄÚÈİ</a><font color="#666666">|</font><a href="VIPuse.htm">»áÔ±Ïû·Ñµ¥Î»</a><font color="#666666">|</font><a href="xiazai.htm">ÏÂÔØ×¨Çø</a><font color="#666666">|</font><a href="vip.htm">»áÔ±×¨Çø</a>|ÅÌ¹ÅÂÛÌ³</font></td>
-		<td width="91" height="47" valign="top" background="img_www/vipt05.jpg">¡¡</td>
+		<font face="é»‘ä½“" size="2"><a href="shouye.htm">é¦–é¡µ</a></font><font face="é»‘ä½“" size="2" color="#666666">|<a href="qiye.htm">ä¼ä¸šæ–‡åŒ–</a><font color="#666666">|</font><a href="falv.htm">æ³•å¾‹æ³•è§„</a><font color="#666666">|</font><a href="fenhong.htm">åˆ†çº¢è§„åˆ™</a><font color="#666666">|</font><a href="qiye.htm">å®¢æˆ·æœåŠ¡ä¸­å¿ƒ</a><font color="#666666">|</font><a href="huikuan.htm">æ±‡æ¬¾å†…å®¹</a><font color="#666666">|</font><a href="VIPuse.htm">ä¼šå‘˜æ¶ˆè´¹å•ä½</a><font color="#666666">|</font><a href="xiazai.htm">ä¸‹è½½ä¸“åŒº</a><font color="#666666">|</font><a href="vip.htm">ä¼šå‘˜ä¸“åŒº</a>|ç›˜å¤è®ºå›</font></td>
+		<td width="91" height="47" valign="top" background="img_www/vipt05.jpg">ã€€</td>
 	</tr>
 	<tr>
 		<td width="197" height="73" valign="top" rowspan="2">
 		<img border="0" src="img_www/huiyuanzhuanqu.jpg" width="197" height="73"></td>
-		<td width="612" height="35" valign="top" background="img_www/background4.jpg">¡¡</td>
-		<td width="91" height="505" valign="top" rowspan="5">¡¡</td>
+		<td width="612" height="35" valign="top" background="img_www/background4.jpg">ã€€</td>
+		<td width="91" height="505" valign="top" rowspan="5">ã€€</td>
 	</tr>
 	<tr>
-		<td width="612" height="38" valign="top" background="img_www/VIPB05.jpg">¡¡</td>
+		<td width="612" height="38" valign="top" background="img_www/VIPB05.jpg">ã€€</td>
 	</tr>
 	<tr>
 		<td width="197" height="36" valign="top">
 		<img border="0" src="img_www/side2.jpg" width="197" height="36"></td>
-		<td width="612" height="36" valign="top" background="img_www/VIPB06.jpg">¡¡</td>
+		<td width="612" height="36" valign="top" background="img_www/VIPB06.jpg">ã€€</td>
 	</tr>
 	<tr>
 		<td width="197" height="224" valign="top">
 		<img border="0" src="img_www/side3.jpg" width="197" height="33"><img border="0" src="img_www/side4.jpg" width="197" height="33"><img border="0" src="img_www/side5.jpg" width="197" height="33"><img border="0" src="img_www/side6.jpg" width="197" height="33"><img border="0" src="img_www/side7.jpg" width="197" height="51"><img border="0" src="img_www/side8.jpg" width="197" height="41"></td>
-		<td width="612" height="396" valign="top" rowspan="2" align="center">¡¡<table cellpadding="0" cellspacing="0" width="538">
+		<td width="612" height="396" valign="top" rowspan="2" align="center">ã€€<table cellpadding="0" cellspacing="0" width="538">
 			<!-- MSTableType="layout" -->
 			<tr>
 				<td height="277" valign="top">
 				<table cellpadding="0" cellspacing="0" width="500" height="341" id="table3">
 					<!-- MSTableType="layout" -->
 					<tr>
-						<td align="center" valign="top" height="341" width="500">¡¡<table cellpadding="0" cellspacing="0" id="table4" width="500" height="354">
+						<td align="center" valign="top" height="341" width="500">ã€€<table cellpadding="0" cellspacing="0" id="table4" width="500" height="354">
 							<!-- MSTableType="layout" -->
 							<tr>
-								<td bgcolor="#C0C0C0" align="center" valign="top" height="354" width="500">¡¡<table cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" id="table5" width="480" height="294">
+								<td bgcolor="#C0C0C0" align="center" valign="top" height="354" width="500">ã€€<table cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" id="table5" width="480" height="294">
 									<!-- MSTableType="layout" -->
 									<tr>
 										<td valign="top" height="294" bgcolor="#FFFFFF" align="left" width="480">
 										<br>
-										<span style="font-family: ËÎÌå; font-size: 9pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-										Ê¡·İ</span><span style="font-size: 9.0pt; font-family: ËÎÌå">£º</span><select size="1" name="D1">
-										<option>±±¾©</option>
-										</select><span style="font-size: 9.0pt; font-family: ËÎÌå"><br>
+										<span style="font-family: å®‹ä½“; font-size: 9pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+										çœä»½</span><span style="font-size: 9.0pt; font-family: å®‹ä½“">ï¼š</span><select size="1" name="D1">
+										<option>åŒ—äº¬</option>
+										</select><span style="font-size: 9.0pt; font-family: å®‹ä½“"><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; µÇÂ¼Ãû£º</span><input type="text" name="T1" size="20"><span style="font-size: 9.0pt; font-family: ËÎÌå"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ç™»å½•åï¼š</span><input type="text" name="T1" size="20"><span style="font-size: 9.0pt; font-family: å®‹ä½“"><br>
 &nbsp; <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ÃÜÂë£º</span><input type="text" name="T2" size="22"><span style="font-size: 9.0pt; font-family: ËÎÌå"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; å¯†ç ï¼š</span><input type="text" name="T2" size="22"><span style="font-size: 9.0pt; font-family: å®‹ä½“"><br>
 										<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ÕæÊµĞÕÃû£º</span><input type="text" name="T3" size="19"><span style="font-size: 9.0pt; font-family: ËÎÌå"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; çœŸå®å§“åï¼š</span><input type="text" name="T3" size="19"><span style="font-size: 9.0pt; font-family: å®‹ä½“"><br>
 										<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Éí·İÖ¤ºÅÂë£º</span><input type="text" name="T4" size="18"><p class="MsoNormal">
-										<span style="font-size: 9.0pt; font-family: ËÎÌå">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-										ÁªÏµ¹Ì¶¨µç»°£º</span><input type="text" name="T5" size="16"><span style="font-size: 9.0pt; font-family: ËÎÌå"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; èº«ä»½è¯å·ç ï¼š</span><input type="text" name="T4" size="18"><p class="MsoNormal">
+										<span style="font-size: 9.0pt; font-family: å®‹ä½“">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+										è”ç³»å›ºå®šç”µè¯ï¼š</span><input type="text" name="T5" size="16"><span style="font-size: 9.0pt; font-family: å®‹ä½“"><br>
 										<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ÁªÏµÊÖ»ú£º</span><input type="text" name="T6" size="19"><span style="font-size: 9.0pt; font-family: ËÎÌå"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; è”ç³»æ‰‹æœºï¼š</span><input type="text" name="T6" size="19"><span style="font-size: 9.0pt; font-family: å®‹ä½“"><br>
 										<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ÓÊÕş´¢ĞîÒøĞĞÕÊºÅ:</span><input type="text" name="T7" size="13"><br>
-¡¡</td>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; é‚®æ”¿å‚¨è“„é“¶è¡Œå¸å·:</span><input type="text" name="T7" size="13"><br>
+ã€€</td>
 									</tr>
 								</table>
 								</td>
@@ -117,12 +117,12 @@ a:active {
 						<img border="0" src="img_www/vipp04.JPG" width="401" height="5"><br>
 						<font size="2" color="#808080">&nbsp;&nbsp;&nbsp;&nbsp;
 						</font>
-						<img border="0" src="img_www/vipP05.JPG" width="7" height="7"><font size="2" color="#808080">»áÔ±×¢ÒâÊÂÏî 
+						<img border="0" src="img_www/vipP05.JPG" width="7" height="7"><font size="2" color="#808080">ä¼šå‘˜æ³¨æ„äº‹é¡¹ 
 						<br>
-&nbsp;&nbsp;&nbsp;&nbsp; 1 »áÔ±×¢ÒâÊÂÏî»áÔ±×¢ÒâÊÂÏî»áÔ±×¢ÒâÊÂÏî»áÔ±×¢ÒâÊÂÏî <br>
-&nbsp;&nbsp;&nbsp;&nbsp; 2 »áÔ±×¢ÒâÊÂÏî»áÔ±×¢ÒâÊÂÏî»áÔ±×¢ÒâÊÂÏî <br>
-&nbsp;&nbsp;&nbsp;&nbsp; 3 »áÔ±×¢ÒâÊÂÏî»áÔ±×¢ÒâÊÂÏî <br>
-&nbsp;&nbsp;&nbsp;&nbsp; 4 »áÔ±×¢ÒâÊÂÏî»áÔ±×¢ÒâÊÂÏî</font><p align="left" style="line-height: 150%">¡¡</td>
+&nbsp;&nbsp;&nbsp;&nbsp; 1 ä¼šå‘˜æ³¨æ„äº‹é¡¹ä¼šå‘˜æ³¨æ„äº‹é¡¹ä¼šå‘˜æ³¨æ„äº‹é¡¹ä¼šå‘˜æ³¨æ„äº‹é¡¹ <br>
+&nbsp;&nbsp;&nbsp;&nbsp; 2 ä¼šå‘˜æ³¨æ„äº‹é¡¹ä¼šå‘˜æ³¨æ„äº‹é¡¹ä¼šå‘˜æ³¨æ„äº‹é¡¹ <br>
+&nbsp;&nbsp;&nbsp;&nbsp; 3 ä¼šå‘˜æ³¨æ„äº‹é¡¹ä¼šå‘˜æ³¨æ„äº‹é¡¹ <br>
+&nbsp;&nbsp;&nbsp;&nbsp; 4 ä¼šå‘˜æ³¨æ„äº‹é¡¹ä¼šå‘˜æ³¨æ„äº‹é¡¹</font><p align="left" style="line-height: 150%">ã€€</td>
 					</tr>
 				</table>
 				</td>
@@ -131,17 +131,17 @@ a:active {
 		</td>
 	</tr>
 	<tr>
-		<td width="197" height="172" valign="top" background="img_www/background2.jpg">¡¡</td>
+		<td width="197" height="172" valign="top" background="img_www/background2.jpg">ã€€</td>
 	</tr>
 	<tr>
-		<td width="197" height="30" valign="top" background="img_www/background1.jpg">¡¡</td>
-		<td width="612" height="30" valign="top" background="img_www/background3.jpg">¡¡</td>
-		<td width="91" height="30" valign="top" background="img_www/top8.jpg">¡¡</td>
+		<td width="197" height="30" valign="top" background="img_www/background1.jpg">ã€€</td>
+		<td width="612" height="30" valign="top" background="img_www/background3.jpg">ã€€</td>
+		<td width="91" height="30" valign="top" background="img_www/top8.jpg">ã€€</td>
 	</tr>
 	<tr>
-		<td width="197" height="52" valign="top" background="img_www/top6.jpg">¡¡</td>
-		<td width="612" height="52" valign="top" background="img_www/top7.jpg">¡¡</td>
-		<td width="91" height="52" valign="top">¡¡</td>
+		<td width="197" height="52" valign="top" background="img_www/top6.jpg">ã€€</td>
+		<td width="612" height="52" valign="top" background="img_www/top7.jpg">ã€€</td>
+		<td width="91" height="52" valign="top">ã€€</td>
 	</tr>
 </table>
 

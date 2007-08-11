@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Language" content="zh-cn">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>PG</title>
+<TITLE>盘古经济</TITLE>
 <style type="text/css">
 <!--
 a:link {
