@@ -1,4 +1,5 @@
-<h2>Edit Merchant</h2>
+<fieldset align=center>
+<legend>维护会员消费单位资料</legend> 
 <form action="<?php echo $html->url('/merchants/edit/'.$html->tagValue('Merchant/id')); ?>" method="post">
 <div class="optional"> 
 	<?php echo $form->labelTag('Merchant/user_id', 'User');?>
@@ -6,82 +7,67 @@
 	<?php echo $html->tagErrorMsg('Merchant/user_id', 'Please select the User.') ?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Merchant/merchant_name', 'Merchant Name');?>
+	<?php echo $form->labelTag('Merchant/region_id', '所属地区：');?>
+ 	<?php echo $html->selectTag('Merchant/region_id', $regions, $html->tagValue('Merchant/region_id'), array(), array(), false);?>
+	<?php echo $html->tagErrorMsg('Merchant/region_id', 'Please select the Region.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Merchant/industry_id', '所属行业：');?>
+ 	<?php echo $html->selectTag('Merchant/industry_id', $industries, $html->tagValue('Merchant/industry_id'), array(), array(), false);?>
+	<?php echo $html->tagErrorMsg('Merchant/industry_id', 'Please select the Industry.') ?>
+</div>    
+<div class="optional"> 
+	<?php echo $form->labelTag('Merchant/merchant_name', '会员消费单位名称：');?>
  	<?php echo $html->input('Merchant/merchant_name', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('Merchant/merchant_name', 'Please enter the Merchant Name.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Merchant/owner', 'Owner');?>
+	<?php echo $form->labelTag('Merchant/owner', '拥有人：');?>
  	<?php echo $html->input('Merchant/owner', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('Merchant/owner', 'Please enter the Owner.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Merchant/telephone', 'Telephone');?>
+	<?php echo $form->labelTag('Merchant/telephone', '常用电话：');?>
  	<?php echo $html->input('Merchant/telephone', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('Merchant/telephone', 'Please enter the Telephone.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Merchant/mobile', 'Mobile');?>
+	<?php echo $form->labelTag('Merchant/mobile', '移动电话：');?>
  	<?php echo $html->input('Merchant/mobile', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('Merchant/mobile', 'Please enter the Mobile.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Merchant/office_phone', 'Office Phone');?>
+	<?php echo $form->labelTag('Merchant/office_phone', '办公室电话：');?>
  	<?php echo $html->input('Merchant/office_phone', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('Merchant/office_phone', 'Please enter the Office Phone.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Merchant/bank_accounts', 'Bank Accounts');?>
+	<?php echo $form->labelTag('Merchant/bank_accounts', '开户银行：');?>
  	<?php echo $html->input('Merchant/bank_accounts', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('Merchant/bank_accounts', 'Please enter the Bank Accounts.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Merchant/accounts', 'Accounts');?>
+	<?php echo $form->labelTag('Merchant/accounts', '银行帐号：');?>
  	<?php echo $html->input('Merchant/accounts', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('Merchant/accounts', 'Please enter the Accounts.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Merchant/salesman', 'Salesman');?>
- 	<?php echo $html->input('Merchant/salesman', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Merchant/salesman', 'Please enter the Salesman.');?>
+	<?php echo $form->labelTag('Merchant/referees', '推荐人：');?>
+ 	<?php echo $html->input('Merchant/referees', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Merchant/referees', 'Please enter the Referees.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Merchant/complaint_time', 'Complaint Time');?>
- 	<?php echo $html->input('Merchant/complaint_time', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Merchant/complaint_time', 'Please enter the Complaint Time.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Merchant/return_ratio', 'Return Ratio');?>
- 	<?php echo $html->input('Merchant/return_ratio', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Merchant/return_ratio', 'Please enter the Return Ratio.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Merchant/industry_id', 'Industry');?>
- 	<?php echo $html->selectTag('Merchant/industry_id', $industries, $html->tagValue('Merchant/industry_id'), array(), array(), true);?>
-	<?php echo $html->tagErrorMsg('Merchant/industry_id', 'Please select the Industry.') ?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Merchant/region_id', 'Region');?>
- 	<?php echo $html->selectTag('Merchant/region_id', $regions, $html->tagValue('Merchant/region_id'), array(), array(), true);?>
-	<?php echo $html->tagErrorMsg('Merchant/region_id', 'Please select the Region.') ?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Merchant/status', 'Status');?>
- 	<?php echo $html->input('Merchant/status', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Merchant/status', 'Please enter the Status.');?>
+	<?php echo $form->labelTag('Merchant/bargain_no', '合同编号：');?>
+ 	<?php echo $html->input('Merchant/bargain_no', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Merchant/bargain_no', 'Please enter the Salesman.');?>
 </div>
 <?php echo $html->hidden('Merchant/id')?>
 <div class="submit">
-	<?php echo $html->submit('Save');?>
+	<?php echo $html->submit('保存');?>
 </div>
 </form>
 <ul class="actions">
-<li><?php echo $html->link('Delete','/merchants/delete/' . $html->tagValue('Merchant/id'), null, 'Are you sure you want to delete: id ' . $html->tagValue('Merchant/id'));?>
-<li><?php echo $html->link('List Merchants', '/merchants/index')?></li>
-<li><?php echo $html->link('View Users', '/users/index/');?></li>
-<li><?php echo $html->link('Add Users', '/users/add/');?></li>
-<li><?php echo $html->link('View Industries', '/industries/index/');?></li>
-<li><?php echo $html->link('Add Industries', '/industries/add/');?></li>
-<li><?php echo $html->link('View Regions', '/regions/index/');?></li>
-<li><?php echo $html->link('Add Regions', '/regions/add/');?></li>
+<li><?php echo $html->link('删除','/merchants/delete/' . $html->tagValue('Merchant/id'), null, 'Are you sure you want to delete: id ' . $html->tagValue('Merchant/id'));?>
+<li><?php echo $html->link('会员消费单位列表', '/merchants/index')?></li>
 </ul>
+</fieldset>
