@@ -32,6 +32,6 @@
 </table>
 
 <ul class="actions">
-	<li><?php echo $html->link('New Workstation', '/workstations/add'); ?></li>
+	<li><?php echo $html->link('新增工作站', '/workstations/add'); ?></li>
 </ul>
 </fieldset>

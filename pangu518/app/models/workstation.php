@@ -108,6 +108,13 @@ class Workstation extends AppModel {
 		}
 		
 	}
+	
+	function getReferees($referees_no = null){
+		$ret = $this->findBySql("SELECT id FROM users as User
+                                   WHERE member_no = '$referees_no'");
+		$user_id = $ret[0]['User']['id'];
+		return $user_id;
+	}
 
 }
 ?>

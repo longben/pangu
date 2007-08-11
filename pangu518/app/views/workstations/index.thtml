@@ -17,15 +17,14 @@
 	<td><?php echo $workstation['Workstation']['ws_no']; ?></td>
 	<td><?php echo $html->link($workstation['Workstation']['ws_name'],'/workstations/view/' . $workstation['Workstation']['id'])?></td>
 	<td>&nbsp;<?php echo $html->link($workstation['User']['user_name'], '/users/view/' .$workstation['User']['id'])?></td>
-	<td><?php echo $workstation['Workstation']['referees']; ?></td>
+	<td><?php echo $workstation['Referee']['user_name']; ?></td>
 	<td><?php echo $workstation['Workstation']['bargain_no']; ?></td>
 	<td>&nbsp;<?php echo $workstation['Region']['region_name']?></td>
 	<td><?php echo $workstation['Workstation']['created']; ?></td>
-	<td><?php echo $workstation['Workstation']['status']; ?></td>
+	<td><?php echo $workstation['Workstation']['status']==9?'待审核':'有效'; ?></td>
 	<td class="actions">
 		<?php echo $html->link('编辑','/workstations/edit/' . $workstation['Workstation']['id'])?>
-		<?php echo $html->link('审核','/workstations/auditing/' . $workstation['Workstation']['id'])?>
-		<?php echo $html->link('删除','/workstations/delete/' . $workstation['Workstation']['id'], null, 'Are you sure you want to delete id ' . $workstation['Workstation']['id'])?>
+		<?php if($workstation['Workstation']['status']==9) echo $html->link('删除','/workstations/delete/' . $workstation['Workstation']['id'], null, '你是否要删除工作站：' . $workstation['Workstation']['ws_name'])?>
 	</td>
 </tr>
 <?php endforeach; ?>

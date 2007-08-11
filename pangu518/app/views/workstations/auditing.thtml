@@ -13,7 +13,7 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Workstation/referees', '推荐人：');?>
- 	<?php echo $html->input('Workstation/Referee/id');?>
+ 	<?php echo $html->input('Referee/user_name', array('size' => '60','readOnly' => 'true'));?>
 	<?php echo $html->tagErrorMsg('Workstation/referees', 'Please enter the Referees.');?>
 </div>
 <div class="optional"> 
@@ -37,31 +37,22 @@
 	<?php echo $html->tagErrorMsg('Workstation/principal', 'Please enter the Principal.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Workstation/introduction', '工作站简介：');?>
- 	<?php echo $html->input('Workstation/introduction', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Workstation/introduction', 'Please enter the Introduction.');?>
-</div>
-<div class="optional"> 
 	<?php echo $form->labelTag('Workstation/region_id', '所属地区：');?>
  	<?php echo $html->selectTag('Workstation/region_id', $regions, $html->tagValue('Workstation/region_id'), array(), array(), true);?>
 	<?php echo $html->tagErrorMsg('Workstation/region_id', 'Please select the Region.') ?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Workstation/income', '工作站返券率：');?>
- 	<?php echo $html->input('Workstation/income', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Workstation/income', 'Please enter the Income.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Workstation/status', '状态：');?>
- 	<?php echo $html->input('Workstation/status', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Workstation/status', 'Please enter the Status.');?>
+	<?php echo $form->labelTag('Workstation/introduction', '工作站简介：');?>
+ 	<?php echo $html->textarea('Workstation/introduction', array('cols' => '60', 'rows' => '5'));?>
+	<?php echo $html->tagErrorMsg('Workstation/introduction', 'Please enter the Introduction.');?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Workstation/money', '代金券金额：');?>
- 	<?php echo $html->input('Workstation/money', array('value'=>'20000','size' => '60'));?>
+ 	<?php echo $html->input('Workstation/money', array('value'=>'0','size' => '60'));?>
 	<?php echo $html->tagErrorMsg('Workstation/money', '代金券金额不能为空!');?>
 </div>
 <?php echo $html->hidden('Workstation/id')?>
+<?php echo $html->hidden('Workstation/status')?>
 <div class="submit">
 	<?php echo $html->submit('审核工作站');?>
 </div>
