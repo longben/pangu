@@ -32,13 +32,28 @@ class WorkstationsController extends AppController {
 			}
 			$this->data = $this->Workstation->read(null, $id);
 			$this->set('users', $this->Workstation->User->generateList());
-			$this->set('regions', $this->Workstation->Region->generateList());
+			$this->set('regions', $this->Workstation->Region->generateList(
+			  $conditions = "id like '__0000'",
+			  $order = 'id',
+			  $limit = null,
+			  $keyPath = '{n}.Region.id',
+			  $valuePath = '{n}.Region.region_name')
+			);
 		} else {
-			$status = $this->Workstation->findStatusById($id);
+			$status = $this->data['Workstation']['status'];
 			if($status == 9){
 				$this->cleanUpFields();
 				if($this->Workstation->auditing($this->data['Workstation']['id'],2,$this->data['Workstation']['money'])){
 					$this->data['Workstation']['status'] = '1'; //审核通过
+					
+					//取最大值
+					$ws_no = $this->Workstation->findCount(
+					  array(
+					    'Workstation.region_id' => $this->data['Workstation']['region_id'],
+					    'Workstation.status' => '1'
+					  ));
+					$this->data['Workstation']['ws_no'] = $this->data['Workstation']['region_id'].sprintf('%04s', $ws_no+1);
+					
 					if($this->Workstation->save($this->data)) {
 						$this->Session->setFlash('工作站审核成功！');
 						$this->redirect('/workstations/index');
@@ -79,11 +94,22 @@ class WorkstationsController extends AppController {
 			$this->render();
 		} else {
 			$this->cleanUpFields();
+			$user = $this->Workstation->User->findByLoginName($this->data['Workstation']['login_name']);
+			$user_id = $user['User']['id'];
+			$referes_no =  $this->data['Workstation']['referees_no'];
+			
+			//$user = $this->Workstation->User->findByMemberNo($referes_no);
+			//$referees = $user['User']['id']; 
+			
+			$referees = $this->Workstation->getReferees($referes_no);
+			$this->data['Workstation']['user_id'] = $user_id;
+			$this->data['Workstation']['referees'] = $referees;
+
 			if($this->Workstation->save($this->data)) {
 				$aco = new Aco();
 				$workstation_id = $this->Workstation->getLastInsertID(); //得到刚保存到数据库中的主键值
 				$aco->create($workstation_id, $workstation_id,$workstation_id.'-'.$this->data['Workstation']['ws_name']);
-				$this->Session->setFlash('The Workstation has been saved');
+				$this->Session->setFlash('工作站增加成功！');
 				$this->redirect('/workstations/index');
 			} else {
 				$this->Session->setFlash('添加工作站出错，请检查错误！');
@@ -100,8 +126,13 @@ class WorkstationsController extends AppController {
 				$this->redirect('/workstations/index');
 			}
 			$this->data = $this->Workstation->read(null, $id);
-			$this->set('users', $this->Workstation->User->generateList());
-			$this->set('regions', $this->Workstation->Region->generateList());
+			$this->set('regions', $this->Workstation->Region->generateList(
+			             $conditions = "id like '__0000'",
+			             $order = 'id',
+			             $limit = null,
+			             $keyPath = '{n}.Region.id',
+			             $valuePath = '{n}.Region.region_name')
+			);
 		} else {
 			$this->cleanUpFields();
 			if($this->Workstation->save($this->data)) {
@@ -109,8 +140,13 @@ class WorkstationsController extends AppController {
 				$this->redirect('/workstations/index');
 			} else {
 				$this->Session->setFlash('Please correct errors below.');
-				$this->set('users', $this->Workstation->User->generateList());
-				$this->set('regions', $this->Workstation->Region->generateList());
+                $this->set('regions', $this->Workstation->Region->generateList(
+			             $conditions = "id like '__0000'",
+			             $order = 'id',
+			             $limit = null,
+			             $keyPath = '{n}.Region.id',
+			             $valuePath = '{n}.Region.region_name')
+			    );
 			}
 		}
 	}

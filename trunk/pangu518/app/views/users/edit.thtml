@@ -33,12 +33,12 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('User/member_grades_id', '会员等级：');?>
- 	<?php echo $html->selectTag('User/member_grades_id', $memberGrades, $html->tagValue('User/member_grades_id'), array(), array(), true);?>
+ 	<?php echo $html->selectTag('User/member_grades_id', $memberGrades, $html->tagValue('User/member_grades_id'), array(), array(), false);?>
 	<?php echo $html->tagErrorMsg('User/member_grades_id', 'Please select the Member Grades.') ?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('User/region_id', '所属地区：');?>
- 	<?php echo $html->selectTag('User/region_id', $regions, $html->tagValue('User/region_id'), array(), array(), true);?>
+ 	<?php echo $html->selectTag('User/region_id', $regions, $html->tagValue('User/region_id'), array(), array(), false);?>
 	<?php echo $html->tagErrorMsg('User/region_id', 'Please select the Region.') ?>
 </div>
 <div class="optional"> 

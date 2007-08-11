@@ -46,12 +46,24 @@ class UsersController extends AppController {
 				$this->redirect('/users/index');
 			}
 			$this->data = $this->User->read(null, $id);
-			$this->set('memberGrades', $this->User->MemberGrade->generateList());
-			$this->set('regions', $this->User->Region->generateList());
+			$this->set('memberGrades', $this->User->MemberGrade->generateList(
+			  $conditions = null,
+			  $order = null,
+			  $limit = null,
+			  $keyPath = '{n}.MemberGrade.id',
+			  $valuePath = '{n}.MemberGrade.grade_name')
+			);
+			$this->set('regions', $this->User->Region->generateList(
+			  $conditions = "id like '__0000'",
+			  $order = 'id',
+			  $limit = null,
+			  $keyPath = '{n}.Region.id',
+			  $valuePath = '{n}.Region.region_name')
+			);
 		} else {
 			$this->cleanUpFields();
 			if($this->User->save($this->data)) {
-				$this->Session->setFlash('The User has been saved');
+				$this->Session->setFlash('会员资料保存成功！');
 				$this->redirect('/users/index');
 			} else {
 				$this->Session->setFlash('Please correct errors below.');

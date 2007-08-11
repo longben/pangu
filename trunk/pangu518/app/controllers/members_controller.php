@@ -99,6 +99,7 @@ class MembersController extends AppController {
 			$this->cleanUpFields();
 			if($this->Member->save($this->data)) {
 				$this->data['User']['id'] = $id;
+				$this->data['User']['member_no'] = $this->data['User']['region_id'].$this->data['User']['cert_number'];
 				if($this->Member->User->save($this->data)){
 					$this->Session->setFlash('会员信息修改成功！');
 				}else{
@@ -175,6 +176,20 @@ class MembersController extends AppController {
       	}
       }
    }
+   
+   function password() {
+		if(!empty($this->data)) {
+			$password = md5($this->data['Member']['new']);
+			$this->data = $this->Member->read(null, $this->Session->read('User.uid'));
+			$this->data['Member']['password'] = $password;
+			$this->cleanUpFields();
+			if($this->Member->save($this->data)) {
+				$this->Session->setFlash('会员口令修改成功！');
+			} else {
+				$this->Session->setFlash('口令修改失败！');
+			}			
+		}
+   }   
    
   function logout(){
     $this->layout="admin";

@@ -1,0 +1,80 @@
+<style type="text/css">
+<!--
+#invite_message {white-space:normal;
+}
+#invite_preview {background-color:#EEEEFF;
+font-size:1.2em;
+padding:10px;
+}
+-->
+</style>
+<div id="container">
+  <div id="content">
+    <div id="wrapper">
+      <h2>邀请您的朋友 </h2>
+      <p> 与朋友一起分享盘古！输入您朋友们的Email地址，我们将向他们发送一份邀请。
+        当他们接受邀请后，他们就成为盘古的会员啦！ </p>
+      <p><a href="">查看以前的邀请历史</a></p>
+      <form id="f" method="post" name="f">
+        <fieldset>
+          <table>
+            <tbody>
+              <tr>
+                <td> <label for="email_addresses"><nobr>Email 地址</nobr></label>
+                  <br />
+                </td>
+                <td><textarea cols="40" id="emails" name="email_addresses" onchange="onEmailChange();" rows="3"></textarea>
+                  <p><small>多个 Email 地址间使用逗号（,）分隔</small></p></td>
+              </tr>
+              <tr id="mutualrow" style="display: none;">
+                <th><label for="mutualcheck">互为朋友？</label></th>
+                <td><input id="reciprocal" name="reciprocal" value="1" type="checkbox" />
+                  <br />
+                  <p><small>如果您邀请的朋友之间互相也是好友，那么他们在注册之后，会自动互相加为好友。</small></p></td>
+              </tr>
+
+              <tr>
+                <th><label for="message">打个招呼？</label></th>
+                <td><textarea cols="40" id="message" name="message" onkeyup="updatePreview(this.value)" rows="3"></textarea>
+                  <p><small> 如果您还有别的话要跟朋友说，请在上面的框中输入，我们将在邀请中一并发送给他们. </small></p></td>
+              </tr>
+              <tr>
+                <th>预览</th>
+                <td><pre id="invite_preview">您好！
+
+<span id="invite_message"></span>
+
+您的朋友 王华 (bbc) 希望您加入盘古！
+
+
+请点击这里接受邀请：
+  http://www.pangu518.com/invitations/i/YAOQINGDAIMA
+
+或您可以在这里关注 王华 (bbc) 的最新动态：
+  http://www.pangu518.com/bbc/
+
+
+耶!
+盘古敬上
+									</pre>
+                </td>
+              </tr>
+              <tr>
+                <th></th>
+                <td><input name="commit" value="发送邀请" type="submit" /></td>
+              </tr>
+            </tbody>
+          </table>
+        </fieldset>
+      </form>
+      <script type="text/javascript">
+//<![CDATA[
+function updatePreview(value) {$('invite_message').innerHTML = value;};
+//]]>
+
+				</script>
+    </div>
+    <!-- wrapper -->
+  </div>
+  <!-- content -->
+</div>
