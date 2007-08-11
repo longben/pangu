@@ -3,6 +3,16 @@
 <form action="<?php echo $html->url('/merchants/profile/'.$html->tagValue('Merchant/id')); ?>" method="post">
     <?php echo $html->hiddenTag('Merchant/user_id',$user_id) ?>
 <div class="optional"> 
+	<?php echo $form->labelTag('Merchant/region_id', '所属地区：');?>
+ 	<?php echo $html->selectTag('Merchant/region_id', $regions, $html->tagValue('Merchant/region_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('Merchant/region_id', 'Please select the Region.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Merchant/industry_id', '所属行业：');?>
+ 	<?php echo $html->selectTag('Merchant/industry_id', $industries, $html->tagValue('Merchant/industry_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('Merchant/industry_id', 'Please select the Industry.') ?>
+</div>    
+<div class="optional"> 
 	<?php echo $form->labelTag('Merchant/merchant_name', '会员消费单位名称：');?>
  	<?php echo $html->input('Merchant/merchant_name', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('Merchant/merchant_name', 'Please enter the Merchant Name.');?>
@@ -46,16 +56,6 @@
 	<?php echo $form->labelTag('Merchant/bargain_no', '合同编号：');?>
  	<?php echo $html->input('Merchant/bargain_no', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('Merchant/bargain_no', 'Please enter the Salesman.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Merchant/industry_id', '所属行业：');?>
- 	<?php echo $html->selectTag('Merchant/industry_id', $industries, $html->tagValue('Merchant/industry_id'), array(), array(), true);?>
-	<?php echo $html->tagErrorMsg('Merchant/industry_id', 'Please select the Industry.') ?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Merchant/region_id', '所属地区：');?>
- 	<?php echo $html->selectTag('Merchant/region_id', $regions, $html->tagValue('Merchant/region_id'), array(), array(), true);?>
-	<?php echo $html->tagErrorMsg('Merchant/region_id', 'Please select the Region.') ?>
 </div>
 <?php echo $html->hidden('Merchant/id')?>
 <div class="submit">

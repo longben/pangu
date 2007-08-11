@@ -13,6 +13,15 @@ class Merchant extends AppModel {
 						'counterCache' => ''
 				),
 
+			'Referee' =>
+				array('className' => 'User',
+						'foreignKey' => 'referees',
+						'conditions' => '',
+						'fields' => '',
+						'order' => '',
+						'counterCache' => ''
+				),					
+				
 			'Industry' =>
 				array('className' => 'Industry',
 						'foreignKey' => 'industry_id',
@@ -85,6 +94,13 @@ class Merchant extends AppModel {
 		}		
 		
 	}
+	
+	function getReferees($referees_no = null){
+		$ret = $this->findBySql("SELECT id FROM users as User
+                                   WHERE member_no = '$referees_no'");
+		$user_id = $ret[0]['User']['id'];
+		return $user_id;
+	}	
 
 }
 ?>

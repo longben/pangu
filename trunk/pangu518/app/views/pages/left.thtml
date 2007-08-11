@@ -38,8 +38,8 @@
 
 		d.add(4201,42,'新增消费单位','/merchants/add');
 		d.add(4202,42,'消费单位列表','/merchants/index');
-		d.add(4203,42,'消费单位审核','/merchants/auditing');	
-		d.add(4204,42,'违规消费单位管理','/merchants/auditing');
+		d.add(4203,42,'消费单位审核','/merchants/audit');	
+		d.add(4204,42,'违规消费单位管理','/merchant_complaint_logs');
 
 		d.add(4301,43,'新增工作站','/workstations/add');		//公司权限才可操作
 		d.add(4302,43,'工作站列表','/workstations');			//公司权限才可看到【包括查询】
