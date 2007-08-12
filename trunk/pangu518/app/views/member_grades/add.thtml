@@ -1,24 +1,26 @@
-<h2>New Member Grade</h2>
+<fieldset>
+<legend>新增会员等级</legend> 
 <form action="<?php echo $html->url('/member_grades/add'); ?>" method="post">
 <div class="optional"> 
-	<?php echo $form->labelTag('MemberGrade/grade_name', 'Grade Name');?>
+	<?php echo $form->labelTag('MemberGrade/grade_name', '等级名称：');?>
  	<?php echo $html->input('MemberGrade/grade_name', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('MemberGrade/grade_name', 'Please enter the Grade Name.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('MemberGrade/member_per', 'Member Per');?>
+	<?php echo $form->labelTag('MemberGrade/member_per', '会员提成率：');?>
  	<?php echo $html->input('MemberGrade/member_per', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('MemberGrade/member_per', 'Please enter the Member Per.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('MemberGrade/ws_per', 'Ws Per');?>
+	<?php echo $form->labelTag('MemberGrade/ws_per', '消费单位提成率：');?>
  	<?php echo $html->input('MemberGrade/ws_per', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('MemberGrade/ws_per', 'Please enter the Ws Per.');?>
 </div>
 <div class="submit">
-	<?php echo $html->submit('Add');?>
+	<?php echo $html->submit('保存');?>
 </div>
 </form>
 <ul class="actions">
-<li><?php echo $html->link('List Member Grades', '/member_grades/index')?></li>
+<li><?php echo $html->link('会员等级列表', '/member_grades/index')?></li>
 </ul>
+</fieldset>
