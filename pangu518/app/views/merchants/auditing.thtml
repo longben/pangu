@@ -1,6 +1,6 @@
 <fieldset align=center>
-<legend>维护会员消费单位资料</legend> 
-<form action="<?php echo $html->url('/merchants/edit/'.$html->tagValue('Merchant/id')); ?>" method="post">
+<legend>审核会员消费单位资料</legend> 
+<form action="<?php echo $html->url('/merchants/auditing/'.$html->tagValue('Merchant/id')); ?>" method="post">
 <div class="optional"> 
 	<?php echo $form->labelTag('Merchant/user_id', '所有者：');?>
  	<?php echo $html->input('User/user_name', array('size' => '60','readOnly' => 'true'));?>
@@ -62,11 +62,12 @@
 	<?php echo $html->tagErrorMsg('Merchant/bargain_no', 'Please enter the Salesman.');?>
 </div>
 <?php echo $html->hidden('Merchant/id')?>
+<?php echo $html->hidden('Merchant/status')?>
 <div class="submit">
 	<?php echo $html->submit('保存');?>
 </div>
 </form>
 <ul class="actions">
-<li><?php echo $html->link('会员消费单位列表', '/merchants/index')?></li>
+<li><?php echo $html->link('待审核会员消费单位列表', '/merchants/audit')?></li>
 </ul>
 </fieldset>

@@ -16,7 +16,7 @@ class MerchantsController extends AppController {
 	
 	function trade() {
 		$this->Merchant->recursive = 0;
-		$this->set('merchants', $this->Merchant->findAll());
+		$this->set('merchants', $this->Merchant->findAllByStatus('1'));  
 	}
 	
 	function buy() {
@@ -66,7 +66,7 @@ class MerchantsController extends AppController {
 			
 			if($this->Merchant->save($this->data)) {
 				$this->Session->setFlash('The Merchant has been saved');
-				//$this->redirect('/merchants/index');
+				$this->redirect('/merchants/index');
 			} else {
 				$this->Session->setFlash('Please correct errors below.');
 				$this->set('users', $this->Merchant->User->generateList());
@@ -76,6 +76,74 @@ class MerchantsController extends AppController {
 		}
 	}
 
+    /**
+     * 审核
+     *
+     * @param int $id
+     */
+	function auditing($id = null) {
+		if(empty($this->data)) {
+			if(!$id) {
+				$this->Session->setFlash('无效请求！');
+				$this->redirect('/merchants/audit');
+			}
+			$this->data = $this->Merchant->read(null, $id);
+			$this->set('industries', $this->Merchant->Industry->generateList(
+			             $conditions = 'Industry.flag = 1',
+			             $order = 'Industry.id',
+			             $limit = null,
+			             $keyPath = '{n}.Industry.id',
+			             $valuePath = '{n}.Industry.industry_name')
+			);
+			$this->set('regions', $this->Merchant->Region->generateList(
+			             $conditions = "id like '__0000'",
+			             $order = 'id',
+			             $limit = null,
+			             $keyPath = '{n}.Region.id',
+			             $valuePath = '{n}.Region.region_name')
+			);
+		} else {
+			$status = $this->data['Merchant']['status'];
+			if($status==9){
+				$this->data['Merchant']['status'] = '1'; //审核通过
+
+				//取最大值
+				$merchant_no = $this->Merchant->findCount(
+					array(
+						'Merchant.region_id' => $this->data['Merchant']['region_id'],
+						'Merchant.status' => '1'
+					));
+				$this->data['Merchant']['merchant_no'] = $this->data['Merchant']['region_id'].sprintf('%07s', $merchant_no+1);
+			}
+			$this->cleanUpFields();
+			if($status ==9 && $this->Merchant->save($this->data)) {
+				$this->Session->setFlash('会员消费单位资料更新成功！');
+				$this->redirect('/merchants/audit');
+			} else {
+				if($status!=9){
+					$msg = '会员消费单位已经审核！';
+				}else{
+					$msg = '审核会员消费单位出错！';
+				}
+				$this->Session->setFlash($msg);
+				$this->set('industries', $this->Merchant->Industry->generateList(
+					$conditions = 'Industry.flag = 1',
+					$order = 'Industry.id',
+					$limit = null,
+					$keyPath = '{n}.Industry.id',
+					$valuePath = '{n}.Industry.industry_name')
+				);
+				$this->set('regions', $this->Merchant->Region->generateList(
+					$conditions = "id like '__0000'",
+					$order = 'id',
+					$limit = null,
+					$keyPath = '{n}.Region.id',
+					$valuePath = '{n}.Region.region_name')
+				);
+			}
+		}		
+	}
+
 	function edit($id = null) {
 		if(empty($this->data)) {
 			if(!$id) {
@@ -83,7 +151,6 @@ class MerchantsController extends AppController {
 				$this->redirect('/merchants/index');
 			}
 			$this->data = $this->Merchant->read(null, $id);
-			$this->set('users', $this->Merchant->User->generateList());
 			$this->set('industries', $this->Merchant->Industry->generateList(
 			             $conditions = 'Industry.flag = 1',
 			             $order = 'Industry.id',
