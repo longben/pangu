@@ -86,6 +86,7 @@ create table user_coupons(
   id               int(11)       not null auto_increment comment '主键',
   user_id          int(8)        not null                comment '会员编码',
   coupon_id        int(11)       not null                comment '代金券编码',
+  merchant_id      int(11)       not null                comment '会员消费单位',
   created          timestamp                             comment '获得代金券时间',
   modified         timestamp                             comment '代金券转出时间。即参与抽奖返回公司时间',
   status           int(3)        not null                comment '代金券状态',
@@ -98,7 +99,7 @@ create table user_coupons(
 /* 工作站 */
 create table workstations(
   id               int(11)       not null auto_increment comment '主键',
-  ws_no            varchar(11)   not null default '0'    comment '工作站编码:省代号+00001',
+  ws_no            varchar(15)   not null default '0'    comment '工作站编码:省代号+0001',
   ws_name          varchar(50)   not null                comment '工作站名称',
   user_id          int(8)        not null                comment '工作站所有人',
   referees         int(8)                                comment '工作站推荐者',
@@ -158,6 +159,7 @@ create table merchants(
   id               int(11)       not null auto_increment comment '主键',
   user_id          int(8)                                comment '会员消费拥有人',
   merchant_name    varchar(50)   not null                comment '消费单位名称',
+  merchant_no      varchar(15)   not null default '0'    comment '消费单位编码:省代号+000001',
   owner            varchar(10)                           comment '店主',
   telephone        varchar(30)                           comment '联系电话',
   mobile           varchar(11)                           comment '移动电话',
