@@ -32,7 +32,7 @@ create table regions(
 /* 代金券  */
 create table coupons(
   id               int(11)       not null auto_increment comment '主键',
-  coupon_no        varchar(15)   not null                comment '代金券编码。no.0000000001－no.1000000000，10亿一组',
+  coupon_no        varchar(15)   not null                comment '代金券编码。no.00000001－no.25000000，2500万一组',
   coupon_pwd       varchar(10)                           comment '代金券密码',
   custom_num       varchar(10)                           comment '用户随机数',
   random_num       varchar(10)                           comment '随机数',
@@ -239,3 +239,17 @@ create table lottery_bettings(
   flag             int(1)        not null default 1      comment '状态',
   primary key (id)  
 ) engine=MyISAM default charset=utf8 comment='彩票投注表';
+
+
+/* 代金券生成排序表  */
+create table coupon_lists(
+  id               int(11)       not null auto_increment comment '主键',
+  coupon_start     varchar(15)   not null                comment '代金券开始编码',
+  coupon_end	   varchar(15)   not null                comment '代金券结束编码',
+  coupon_group     char(3)       not null                comment '代金券组团 0组团 A组团',
+  custom_num       varchar(10)   not null                comment '用户随机数',
+  created          timestamp                             comment '创建时间',
+  modified         timestamp                             COMMENT '修改时间',
+  status           int(1)        not null default 0      comment '状态 0-等待中，1-生成中，2-生成完毕',
+  primary key (id)
+) engine=MyISAM default charset=utf8 comment='代金券生成排序';
