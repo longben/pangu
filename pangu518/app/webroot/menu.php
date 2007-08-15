@@ -1,0 +1,1 @@
+	<font face="黑体" size="2"><a href="main.php">首页</a>|<a href="qiye.php">企业风采</a>|<a href="falv.php">资讯发布</a>|<a href="fenhong.php">分红规则</a>|<a href="qiye.php">客户服务中心</a>|<a href="huikuan.php">疑难解答</a>|<a href="vip.php">会员专区</a>|<a href="VIPuse.php">会员消费单位</a>|<a href="xiazai.php">下载专区</a>|盘古论坛</font>

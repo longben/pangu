@@ -47,7 +47,9 @@ a:active {
   </tr>
   <tr>
     <td width="197"><img border="0" src="img_www/shouyeT04.JPG" width="197" height="47"></td>
-    <td background="img_www/botton1.jpg"><p align="center"> <font face="黑体" size="2"><a href="main.php">首页</a></font><font face="黑体" size="2" color="#666666">|<a href="qiye.php">企业文化</a><font color="#666666">|</font><a href="falv.php">法律法规</a><font color="#666666">|</font><a href="fenhong.php">分红规则</a><font color="#666666">|</font><a href="qiye.php">客户服务中心</a><font color="#666666">|</font><a href="huikuan.php">汇款内容</a><font color="#666666">|</font><a href="VIPuse.php">会员消费单位</a><font color="#666666">|</font><a href="xiazai.php">下载专区</a><font color="#666666">|</font><a href="vip.php">会员专区</a>|盘古论坛</font></td>
+    <td background="img_www/botton1.jpg">
+		<?php	include('menu.php');?>
+	</td>
     <td width="91"><img border="0" src="img_www/shouyeT05.JPG" width="91" height="47"></td>
   </tr>
 </table>
@@ -56,7 +58,7 @@ a:active {
     <td width="130" height="41" valign="top"><img border="0" src="img_www/fenghongjieguo.JPG" width="129" height="41" align="left"></td>
     <td width="666" valign="bottom">
 		<marquee direction="left" onmouseout=this.start() onmouseover=this.stop() scrollAmount=3 >
-		<font size="2" color="#FF0000">　　200715期分红结果：号码345、中奖数红120、参与数3499678！</font>
+		<font size="2" color="#FF0000">　　200715期分红结果：号码345、分红总数120、参与总数3499678！</font>
 		</marquee>
 	<br>
 	<img src="img_www/shouyep05.JPG" width="666" height="3" border="0"></td>

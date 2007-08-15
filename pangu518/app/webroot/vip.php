@@ -38,8 +38,8 @@ a:active {
 	<tr>
 		<td width="197" height="47" valign="top" background="img_www/vipt04.jpg">　</td>
 		<td width="612" height="47" valign="middle" background="img_www/botton1.jpg">
-		<p align="center">
-		<font face="黑体" size="2"><a href="main.php">首页</a></font><font face="黑体" size="2" color="#666666">|<a href="qiye.php">企业文化</a><font color="#666666">|</font><a href="falv.php">法律法规</a><font color="#666666">|</font><a href="fenhong.php">分红规则</a><font color="#666666">|</font><a href="qiye.php">客户服务中心</a><font color="#666666">|</font><a href="huikuan.php">汇款内容</a><font color="#666666">|</font><a href="VIPuse.php">会员消费单位</a><font color="#666666">|</font><a href="xiazai.php">下载专区</a><font color="#666666">|</font><a href="vip.php">会员专区</a>|盘古论坛</font></td>
+		<?php	include('menu.php');?>		
+		</td>
 		<td width="91" height="47" valign="top" background="img_www/vipt05.jpg">　</td>
 	</tr>
 	<tr>
