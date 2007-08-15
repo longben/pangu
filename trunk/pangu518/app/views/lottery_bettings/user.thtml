@@ -1,9 +1,12 @@
 <fieldset align=center>
-<legend>会员参与分红</legend> 
-<form action="<?php echo $html->url('/lottery_bettings/add'); ?>" method="post">
+<legend>会员参与分红</legend>
+<?php
+  if($lotteries != null){
+?>
+<form action="<?php echo $html->url('/lottery_bettings/user'); ?>" method="post">
 <div class="optional"> 
 	<?php echo $form->labelTag('LotteryBetting/lottery_id', '分红期数：');?>
- 	<?php echo $html->tagValue('Lottery/lottery_year').'年第'.$html->selectTag('LotteryBetting/lottery_id', $lotteries, $html->tagValue('LotteryBetting/lottery_id'), array(), array(), false).'期';?>
+ 	<?php echo date('Y').'年第'.$html->selectTag('LotteryBetting/lottery_id', $lotteries, $html->tagValue('LotteryBetting/lottery_id'), array(), array(), false).'期';?>
 	<?php echo $html->tagErrorMsg('LotteryBetting/lottery_id', 'Please select the Lottery.') ?>
 </div>
 <div class="optional"> 
@@ -22,4 +25,14 @@
 	<?php echo $html->submit('投注');?>
 </div>
 </form>
+<?php
+  }else{
+?>
+<h1>暂时没有分红信息。</h1>
+<?php
+  }
+?>
+<ul>
+  <li><?php echo $html->link('代金券录入', '/user_coupons/input'); ?></li>
+</ul>
 </fieldset>

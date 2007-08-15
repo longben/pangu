@@ -92,7 +92,7 @@ class Workstation extends AppModel {
 			for($i=0;$i<sizeof($rs);$i++){
 				if($i==0){
 					$ws_sql = 'insert into workstation_coupons(workstation_id,coupon_id,status)
-				  values('.$id.','.$rs[$i]['Coupon']['id'].','.$status.')';
+				       values('.$id.','.$rs[$i]['Coupon']['id'].','.$status.')';
 					$coupon_id = $rs[$i]['Coupon']['id'];
 				}else{
 					$ws_sql .= ',('.$id.','.$rs[$i]['Coupon']['id'].','.$status.')';
