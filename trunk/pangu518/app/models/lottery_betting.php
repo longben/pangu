@@ -106,7 +106,6 @@ class LotteryBetting extends AppModel {
     	$sql .= ' order by MerchantCoupon.coupon_id';
     	$sql .= ' limit '.$limit;
         $coupons = $this->query($sql);
-        echo $sql;
         $rs = $this->query($sql);
         
         if(sizeof($rs)>=$limit){

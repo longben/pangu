@@ -63,16 +63,16 @@
 		d.add(1004,1,'代金券录入','/user_coupons/input');
 		d.add(1005,1,'会员参与分红','/lottery_bettings/user');
 		
-		d.add(2001,2,'消费单位资料维护','/merchants/profile');		//消费单位权限
-		d.add(2002,2,'可用金额及代金券管理','/merchant_coupons');	//消费单位权限
-		d.add(2003,2,'代金券销售报表管理','/merchants');	//消费单位权限
-		d.add(2004,2,'消费单位参与分红','/lottery_bettings/merchant');		//消费单位权限
-		d.add(2005,2,'消费单位分红历史查询','/merchants');	//消费单位权限
+		d.add(2001,2,'消费单位资料维护','/merchants/profile');
+		d.add(2002,2,'可用金额及代金券管理','/merchant_coupons');
+		//d.add(2003,2,'代金券销售报表管理','/merchants');
+		d.add(2004,2,'消费单位参与分红','/lottery_bettings/merchant');
+		//d.add(2005,2,'消费单位分红历史查询','/merchants');
 		
 		d.add(3001,3,'工作站资料维护','/workstations/profile');			//工作站权限
 		d.add(3002,3,'可用金额及代金券管理','/workstation_coupons');	//工作站权限
-		d.add(3003,3,'工作站收益报表','/workstations/report');		//工作站权限【包括历史查询】
-		d.add(3004,3,'工作站转让申请','/workstations/translate');	//工作站权限提出申请	
+		//d.add(3003,3,'工作站收益报表','/workstations/report');		//工作站权限【包括历史查询】
+		//d.add(3004,3,'工作站转让申请','/workstations/translate');	//工作站权限提出申请	
 
 		
 		d.add(6001,6,'代金券生成','/coupons/add');
