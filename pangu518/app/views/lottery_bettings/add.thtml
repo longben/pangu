@@ -1,40 +1,50 @@
-<style type="text/css">
-<!--
-label {
-	width: 80px;
-	float:left;
-}
--->
-</style>
-<fieldset align=center>
-<legend style="border:0px;background-color:white;">
-代金券摇奖
-</legend> 
+<h2>New Lottery Betting</h2>
 <form action="<?php echo $html->url('/lottery_bettings/add'); ?>" method="post">
 <div class="optional"> 
-	<?php echo $form->labelTag('LotteryBetting/lottery_id', '彩票期数：');?>
+	<?php echo $form->labelTag('LotteryBetting/lottery_id', 'Lottery');?>
  	<?php echo $html->selectTag('LotteryBetting/lottery_id', $lotteries, $html->tagValue('LotteryBetting/lottery_id'), array(), array(), true);?>
 	<?php echo $html->tagErrorMsg('LotteryBetting/lottery_id', 'Please select the Lottery.') ?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('LotteryBetting/betting_number', '投注号码：');?>
- 	<?php echo $html->input('LotteryBetting/betting_number', array('size' => '30'));?>
+	<?php echo $form->labelTag('LotteryBetting/betting_number', 'Betting Number');?>
+ 	<?php echo $html->input('LotteryBetting/betting_number', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('LotteryBetting/betting_number', 'Please enter the Betting Number.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('LotteryBetting/betting_time', '投注数目：');?>
- 	<?php echo $html->input('LotteryBetting/betting_time', array('size' => '30'));?>
+	<?php echo $form->labelTag('LotteryBetting/betting_time', 'Betting Time');?>
+ 	<?php echo $html->input('LotteryBetting/betting_time', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('LotteryBetting/betting_time', 'Please enter the Betting Time.');?>
 </div>
-<?php if($merchants!=null){?>
 <div class="optional"> 
-	<?php echo $form->labelTag('LotteryBetting/merchant_id', '消费单位：');?>
- 	<?php echo $html->selectTag('LotteryBetting/merchant_id', $merchants, $html->tagValue('LotteryBetting/merchant_id'), array('style'=>'width:100px'), array(), true);?>
+	<?php echo $form->labelTag('LotteryBetting/betting_type', 'Betting Type');?>
+ 	<?php echo $html->input('LotteryBetting/betting_type', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('LotteryBetting/betting_type', 'Please enter the Betting Type.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('LotteryBetting/user_id', 'User');?>
+ 	<?php echo $html->selectTag('LotteryBetting/user_id', $users, $html->tagValue('LotteryBetting/user_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('LotteryBetting/user_id', 'Please select the User.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('LotteryBetting/merchant_id', 'Merchant');?>
+ 	<?php echo $html->selectTag('LotteryBetting/merchant_id', $merchants, $html->tagValue('LotteryBetting/merchant_id'), array(), array(), true);?>
 	<?php echo $html->tagErrorMsg('LotteryBetting/merchant_id', 'Please select the Merchant.') ?>
 </div>
-<?php }?>
+<div class="optional"> 
+	<?php echo $form->labelTag('LotteryBetting/flag', 'Flag');?>
+ 	<?php echo $html->input('LotteryBetting/flag', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('LotteryBetting/flag', 'Please enter the Flag.');?>
+</div>
 <div class="submit">
-	<?php echo $html->submit('参与抽奖');?>
+	<?php echo $html->submit('Add');?>
 </div>
 </form>
-</fieldset>
+<ul class="actions">
+<li><?php echo $html->link('List Lottery Bettings', '/lottery_bettings/index')?></li>
+<li><?php echo $html->link('View Lotteries', '/lotteries/index/');?></li>
+<li><?php echo $html->link('Add Lotteries', '/lotteries/add/');?></li>
+<li><?php echo $html->link('View Users', '/users/index/');?></li>
+<li><?php echo $html->link('Add Users', '/users/add/');?></li>
+<li><?php echo $html->link('View Merchants', '/merchants/index/');?></li>
+<li><?php echo $html->link('Add Merchants', '/merchants/add/');?></li>
+</ul>

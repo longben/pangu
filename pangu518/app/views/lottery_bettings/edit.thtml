@@ -1,15 +1,4 @@
-<style type="text/css">
-<!--
-label {
-	width: 80px;
-	float:left;
-}
--->
-</style>
-<fieldset align=center>
-<legend style="border:0px;background-color:white;">
-编辑代金券摇奖
-</legend>
+<h2>Edit Lottery Betting</h2>
 <form action="<?php echo $html->url('/lottery_bettings/edit/'.$html->tagValue('LotteryBetting/id')); ?>" method="post">
 <div class="optional"> 
 	<?php echo $form->labelTag('LotteryBetting/lottery_id', 'Lottery');?>
@@ -32,14 +21,32 @@ label {
 	<?php echo $html->tagErrorMsg('LotteryBetting/betting_type', 'Please enter the Betting Type.');?>
 </div>
 <div class="optional"> 
+	<?php echo $form->labelTag('LotteryBetting/user_id', 'User');?>
+ 	<?php echo $html->selectTag('LotteryBetting/user_id', $users, $html->tagValue('LotteryBetting/user_id'), array(), array(), true);?>
+	<?php echo $html->tagErrorMsg('LotteryBetting/user_id', 'Please select the User.') ?>
+</div>
+<div class="optional"> 
 	<?php echo $form->labelTag('LotteryBetting/merchant_id', 'Merchant');?>
  	<?php echo $html->selectTag('LotteryBetting/merchant_id', $merchants, $html->tagValue('LotteryBetting/merchant_id'), array(), array(), true);?>
 	<?php echo $html->tagErrorMsg('LotteryBetting/merchant_id', 'Please select the Merchant.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('LotteryBetting/flag', 'Flag');?>
+ 	<?php echo $html->input('LotteryBetting/flag', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('LotteryBetting/flag', 'Please enter the Flag.');?>
 </div>
 <?php echo $html->hidden('LotteryBetting/id')?>
 <div class="submit">
 	<?php echo $html->submit('Save');?>
 </div>
 </form>
-</fieldset>
 <ul class="actions">
+<li><?php echo $html->link('Delete','/lottery_bettings/delete/' . $html->tagValue('LotteryBetting/id'), null, 'Are you sure you want to delete: id ' . $html->tagValue('LotteryBetting/id'));?>
+<li><?php echo $html->link('List Lottery Bettings', '/lottery_bettings/index')?></li>
+<li><?php echo $html->link('View Lotteries', '/lotteries/index/');?></li>
+<li><?php echo $html->link('Add Lotteries', '/lotteries/add/');?></li>
+<li><?php echo $html->link('View Users', '/users/index/');?></li>
+<li><?php echo $html->link('Add Users', '/users/add/');?></li>
+<li><?php echo $html->link('View Merchants', '/merchants/index/');?></li>
+<li><?php echo $html->link('Add Merchants', '/merchants/add/');?></li>
+</ul>
