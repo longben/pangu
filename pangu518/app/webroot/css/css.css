@@ -1,0 +1,11 @@
+#网站二级栏目左边的子栏目
+left_title {
+	font-family: "宋体";
+	font-size: 14px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: capitalize;
+	color: #333333;
+}

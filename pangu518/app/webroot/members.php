@@ -2,7 +2,7 @@
 <head>
 <meta http-equiv="Content-Language" content="zh-cn">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<TITLE>盘古经济</TITLE>
+<TITLE>盘古消费财富</TITLE>
 <style type="text/css">
 <!--
 a:link {
