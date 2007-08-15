@@ -3,7 +3,7 @@
 <form action="<?php echo $html->url('/lotteries/add'); ?>" method="post">
 <div class="optional">
 	<?php echo $form->labelTag('Lottery/lottery_year', '开奖年份：');?>
- 	<?php echo $html->yearOptionTag('Lottery/lottery','NONE','2007','2017',false,array('style' => 'width: 100px;'));?> 
+ 	<?php echo $html->yearOptionTag('Lottery/lottery','NONE','2007','2017',date("Y"),array('style' => 'width: 100px;'));?> 
 	<?php echo $html->tagErrorMsg('Lottery/lottery_year', 'Please enter the Lottery Year.');?>
 </div>
 <div class="optional"> 
@@ -22,10 +22,10 @@
 	<?php echo $html->tagErrorMsg('Lottery/finish_time', 'Please select the Bday.');?>
 </div>
 <div class="submit">
-	<?php echo $html->submit('Add');?>
+	<?php echo $html->submit('新增分红期数');?>
 </div>
 </form>
 <ul class="actions">
-<li><?php echo $html->link('List Lotteries', '/lotteries/index')?></li>
+<li><?php echo $html->link('分红期数列表', '/lotteries/index')?></li>
 </ul>
 </fieldset>

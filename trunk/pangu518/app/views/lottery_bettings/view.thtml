@@ -12,8 +12,14 @@
 	<dd>&nbsp;<?php echo $lotteryBetting['LotteryBetting']['betting_time']?></dd>
 	<dt>Betting Type</dt>
 	<dd>&nbsp;<?php echo $lotteryBetting['LotteryBetting']['betting_type']?></dd>
+	<dt>User</dt>
+	<dd>&nbsp;<?php echo $html->link($lotteryBetting['User']['id'], '/users/view/' .$lotteryBetting['User']['id'])?></dd>
 	<dt>Merchant</dt>
 	<dd>&nbsp;<?php echo $html->link($lotteryBetting['Merchant']['id'], '/merchants/view/' .$lotteryBetting['Merchant']['id'])?></dd>
+	<dt>Created</dt>
+	<dd>&nbsp;<?php echo $lotteryBetting['LotteryBetting']['created']?></dd>
+	<dt>Flag</dt>
+	<dd>&nbsp;<?php echo $lotteryBetting['LotteryBetting']['flag']?></dd>
 </dl>
 <ul class="actions">
 	<li><?php echo $html->link('Edit Lottery Betting',   '/lottery_bettings/edit/' . $lotteryBetting['LotteryBetting']['id']) ?> </li>
@@ -22,6 +28,8 @@
 	<li><?php echo $html->link('New Lottery Betting',	'/lottery_bettings/add') ?> </li>
 	<li><?php echo $html->link('List Lottery', '/lotteries/index/')?> </li>
 	<li><?php echo $html->link('New Lotteries', '/lotteries/add/')?> </li>
+	<li><?php echo $html->link('List User', '/users/index/')?> </li>
+	<li><?php echo $html->link('New Users', '/users/add/')?> </li>
 	<li><?php echo $html->link('List Merchant', '/merchants/index/')?> </li>
 	<li><?php echo $html->link('New Merchants', '/merchants/add/')?> </li>
 </ul>

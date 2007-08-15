@@ -1,0 +1,22 @@
+<fieldset align=center>
+<legend>分红中奖维护</legend> 
+<form action="<?php echo $html->url('/lotteries/open/'.$html->tagValue('Lottery/id')); ?>" method="post">
+<div class="optional">
+	<?php echo $form->labelTag('Lottery/lottery_year', '开奖期数：');?>
+ 	<span><?php echo $html->tagValue('Lottery/lottery_year') . sprintf('%03s',$html->tagValue('Lottery/lottery_times'));?></span> 
+	<?php echo $html->tagErrorMsg('Lottery/lottery_year', 'Please enter the Lottery Year.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Lottery/win_number', '开奖号码：');?>
+ 	<?php echo $html->input('Lottery/win_number', array('size' => '30'));?>
+	<?php echo $html->tagErrorMsg('Lottery/win_number', 'Please enter the Lottery Times.');?>
+</div>
+<?php echo $html->hidden('Lottery/id')?>
+<div class="submit">
+	<?php echo $html->submit('保存');?>
+</div>
+</form>
+<ul class="actions">
+<li><?php echo $html->link('分红期数列表', '/lotteries/index')?></li>
+</ul>
+</fieldset>

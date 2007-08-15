@@ -1,0 +1,25 @@
+<fieldset align=center>
+<legend>会员参与分红</legend> 
+<form action="<?php echo $html->url('/lottery_bettings/add'); ?>" method="post">
+<div class="optional"> 
+	<?php echo $form->labelTag('LotteryBetting/lottery_id', '分红期数：');?>
+ 	<?php echo $html->tagValue('Lottery/lottery_year').'年第'.$html->selectTag('LotteryBetting/lottery_id', $lotteries, $html->tagValue('LotteryBetting/lottery_id'), array(), array(), false).'期';?>
+	<?php echo $html->tagErrorMsg('LotteryBetting/lottery_id', 'Please select the Lottery.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('LotteryBetting/betting_number', '投注号码：');?>
+ 	<?php echo $html->input('LotteryBetting/betting_number', array('size' => '30'));?>
+	<?php echo $html->tagErrorMsg('LotteryBetting/betting_number', 'Please enter the Betting Number.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('LotteryBetting/betting_time', '投注份数：');?>
+ 	<?php echo $html->input('LotteryBetting/betting_time', array('size' => '30'));?>
+	<?php echo $html->tagErrorMsg('LotteryBetting/betting_time', 'Please enter the Betting Time.');?>
+</div>
+<?php echo $html->hiddenTag('LotteryBetting/user_id',1);?>
+<?php echo $html->hiddenTag('LotteryBetting/betting_type',1);?>
+<div class="submit">
+	<?php echo $html->submit('投注');?>
+</div>
+</form>
+</fieldset>
