@@ -77,7 +77,8 @@ class LotteryBettingsController extends AppController {
 			$this->set('lotteries', $this->LotteryBetting->Lottery->generateList(
 			  $conditions = array(
 			    'start_time' => '<=' .date("Y-m-d H:i:s"),
-			    'finish_time' => '>='. date("Y-m-d H:i:s")),
+			    'finish_time' => '>='. date("Y-m-d H:i:s"),
+			    'flag' => '1'),
 			  $order = null,
 			  $limit = null,
 			  $keyPath = '{n}.Lottery.id',
@@ -86,16 +87,30 @@ class LotteryBettingsController extends AppController {
 			$this->render();
 		} else {
 			$this->cleanUpFields();
-			if ($this->LotteryBetting->save($this->data)) {
-				$this->Session->setFlash('The Lottery Betting has been saved');
-				$this->redirect('/lottery_bettings/index');
+			$user_id = $this->Session->read('User.uid');
+			$lottery_id = $this->data['LotteryBetting']['lottery_id'];
+			$betting_number = $this->data['LotteryBetting']['betting_number'];
+			$betting_time = $this->data['LotteryBetting']['betting_time'];
+			if ($this->LotteryBetting->saveUserBetting($user_id, $lottery_id, $betting_number, $betting_time)) {
+				$this->data['LotteryBetting']['user_id'] = $user_id;
+				if($this->LotteryBetting->save($this->data)){
+					$this->Session->setFlash('会员参与分红成功！');
+					$this->redirect('/lottery_bettings/user_histroy');
+				}
 			} else {
-				$this->Session->setFlash('Please correct errors below.');
-				$this->set('lotteries', $this->LotteryBetting->Lottery->generateList());
-				$this->set('users', $this->LotteryBetting->User->generateList());
-				$this->set('merchants', $this->LotteryBetting->Merchant->generateList());
+				$this->Session->setFlash('你拥有的代金券数量不足！');
+				$this->set('lotteries', $this->LotteryBetting->Lottery->generateList(
+				  $conditions = array(
+				    'start_time' => '<=' .date("Y-m-d H:i:s"),
+				    'finish_time' => '>='. date("Y-m-d H:i:s"),
+				    'flag' => '1'),
+				  $order = null,
+				  $limit = null,
+				  $keyPath = '{n}.Lottery.id',
+				  $valuePath = '{n}.Lottery.lottery_times')			
+				);
 			}
-		}   	
+		}
    }
    
    function merchant() {
@@ -103,25 +118,44 @@ class LotteryBettingsController extends AppController {
 			$this->set('lotteries', $this->LotteryBetting->Lottery->generateList(
 			  $conditions = array(
 			    'start_time' => '<=' .date("Y-m-d H:i:s"),
-			    'finish_time' => '>='. date("Y-m-d H:i:s")),
+			    'finish_time' => '>='. date("Y-m-d H:i:s"),
+			    'flag' => '1'),
 			  $order = null,
 			  $limit = null,
 			  $keyPath = '{n}.Lottery.id',
-			  $valuePath = '{n}.Lottery.lottery_year')			
+			  $valuePath = '{n}.Lottery.lottery_times')			
 			);
-			//$this->render();
+			$this->render();
 		} else {
 			$this->cleanUpFields();
-			if ($this->LotteryBetting->save($this->data)) {
-				$this->Session->setFlash('The Lottery Betting has been saved');
-				$this->redirect('/lottery_bettings/index');
+			$user_id = $this->Session->read('User.uid');
+			$Merchant = $this->LotteryBetting->Merchant->findByUserId($user_id);
+			$merchant_id = $Merchant['Merchant']['id'];
+
+			$lottery_id = $this->data['LotteryBetting']['lottery_id'];
+			$betting_number = $this->data['LotteryBetting']['betting_number'];
+			$betting_time = $this->data['LotteryBetting']['betting_time'];
+			if ($this->LotteryBetting->saveMerchantBetting($merchant_id, $lottery_id, $betting_number, $betting_time)) {
+				$this->data['LotteryBetting']['user_id'] = $user_id;
+				$this->data['LotteryBetting']['merchant_id'] = $merchant_id;
+				if($this->LotteryBetting->save($this->data)){
+					$this->Session->setFlash('会员参与分红成功！');
+					$this->redirect('/lottery_bettings/merchant_histroy');
+				}
 			} else {
-				$this->Session->setFlash('Please correct errors below.');
-				$this->set('lotteries', $this->LotteryBetting->Lottery->generateList());
-				$this->set('users', $this->LotteryBetting->User->generateList());
-				$this->set('merchants', $this->LotteryBetting->Merchant->generateList());
+				$this->Session->setFlash('你拥有的代金券数量不足！');
+				$this->set('lotteries', $this->LotteryBetting->Lottery->generateList(
+				  $conditions = array(
+				    'start_time' => '<=' .date("Y-m-d H:i:s"),
+				    'finish_time' => '>='. date("Y-m-d H:i:s"),
+				    'flag' => '1'),
+				  $order = null,
+				  $limit = null,
+				  $keyPath = '{n}.Lottery.id',
+				  $valuePath = '{n}.Lottery.lottery_times')			
+				);
 			}
-		}     	
+		}
    }   
 
 }

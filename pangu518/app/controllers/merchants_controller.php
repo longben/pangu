@@ -195,7 +195,7 @@ class MerchantsController extends AppController {
 		$this->set('user_id',$user_id);
 		if(empty($this->data)) {
 			if(!$user_id) {
-				$this->Session->setFlash('Invalid id for Merchant');
+				$this->Session->setFlash('无效的会员消费单位！');
 				$this->redirect('/merchants/profile');
 			}
 			$this->data = $this->Merchant->findByUserId($user_id);

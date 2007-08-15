@@ -1,9 +1,12 @@
 <fieldset align=center>
 <legend>会员消费单位参与分红</legend> 
-<form action="<?php echo $html->url('/lottery_bettings/add'); ?>" method="post">
+<?php
+  if($lotteries != null){
+?>
+<form action="<?php echo $html->url('/lottery_bettings/merchant'); ?>" method="post">
 <div class="optional"> 
 	<?php echo $form->labelTag('LotteryBetting/lottery_id', '分红期数：');?>
- 	<?php echo $html->selectTag('LotteryBetting/lottery_id', $lotteries, $html->tagValue('LotteryBetting/lottery_id'), array(), array(), false);?>
+ 	<?php echo date('Y').'年第'.$html->selectTag('LotteryBetting/lottery_id', $lotteries, $html->tagValue('LotteryBetting/lottery_id'), array(), array(), false).'期';?>
 	<?php echo $html->tagErrorMsg('LotteryBetting/lottery_id', 'Please select the Lottery.') ?>
 </div>
 <div class="optional"> 
@@ -16,10 +19,20 @@
  	<?php echo $html->input('LotteryBetting/betting_time', array('size' => '30'));?>
 	<?php echo $html->tagErrorMsg('LotteryBetting/betting_time', 'Please enter the Betting Time.');?>
 </div>
-<?php echo $html->hiddenTag('LotteryBetting/merchant_id',1);?>
+<?php echo $html->hiddenTag('LotteryBetting/user_id',1);?>
 <?php echo $html->hiddenTag('LotteryBetting/betting_type',2);?>
 <div class="submit">
 	<?php echo $html->submit('投注');?>
 </div>
 </form>
+<?php
+  }else{
+?>
+<h1>暂时没有分红信息。</h1>
+<?php
+  }
+?>
+<ul>
+  <li><?php echo $html->link('可用金额及代金券管理', '/merchant_coupons'); ?></li>
+</ul>
 </fieldset>

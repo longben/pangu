@@ -40,9 +40,15 @@ class LotteriesController extends AppController {
 			}
 			$this->data = $this->Lottery->read(null, $id);
 		} else {
+			$this->data['Lottery']['win_count'] = $this->Lottery->LotteryBetting->findCount(
+			  array(
+			    'LotteryBetting.lottery_id1' => $id,
+			    'LotteryBetting.betting_number' => $this->data['Lottery']['win_number']
+			  )
+			);
 			$this->cleanUpFields();
-			$this->data['Lottery']['win_count'] = $this->Lottery->LotteryBetting->findCount(array('betting_number' => '123'));
 			$this->data['Lottery']['open_time'] = date("Y-m-d H:i:s");
+			$this->data['Lottery']['flag'] = 9;
 			if ($this->Lottery->save($this->data)) {
 				$this->Session->setFlash('分红开奖资料保存成功！');
 				$this->redirect('/lotteries/index');

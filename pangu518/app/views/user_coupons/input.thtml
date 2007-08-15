@@ -19,5 +19,6 @@
 <ul>
  <li>可用代金券总数：<?=$available_capital?>张</li>
  <li>已消费代金券总数：<?=$expenditure?>张</li>
+ <li><?php echo $html->link('参与分红', '/lottery_bettings/user'); ?></li>
 </ul>
 </fieldset>
