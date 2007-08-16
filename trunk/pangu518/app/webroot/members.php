@@ -95,10 +95,11 @@ a:active {
 						<td align="center" valign="top" height="341" width="500">　<table cellpadding="0" cellspacing="0" id="table4" width="500">
 							<!-- MSTableType="layout" -->
 							<tr>
-								<td width="500" height="170" align="center" valign="top" bgcolor="#C0C0C0">　
+								<td width="500" height="140" align="center" valign="top" bgcolor="#C0C0C0">　
 								  <table cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" id="table5" width="460">
 									<!-- MSTableType="layout" -->
-									<form  method=post action="">
+									<form  method=post action="/members/login">
+									<!--
 									<tr>
 										<td valign="middle" bgcolor="#FFFFFF" align="right" width="192">
 									  <img border="0" src="img_www/vipP05.JPG" width="7" height="7"><font size="2" color="#808080">类　别：</font></td>
@@ -110,6 +111,7 @@ a:active {
 									        <option value="4">公司</option>
                                           </select></td>
 									</tr>
+									-->
 									<tr>
 									  <td valign="middle" bgcolor="#FFFFFF" align="right"><img border="0" src="img_www/vipP05.JPG" width="7" height="7"><font size="2" color="#808080">用户名：</font> </td>
 								      <td height="30" valign="middle" bgcolor="#FFFFFF">　
@@ -124,7 +126,7 @@ a:active {
 									  <td height="40" colspan="2" align="center" valign="middle" bgcolor="#FFFFFF"><input type="image" border="0" src="img_www/vipp01.JPG" width="71" height="28"></td>
 							      </tr>
 								  </form>
-								</table>							  </td>
+							  </table>							  </td>
 							</tr>
 						</table>
 						<p align="left" style="line-height: 150%">　　　　　　　　　　<a href="register.php"><img border="0" src="img_www/vipp02.JPG" width="84" height="25"></a>&nbsp;
