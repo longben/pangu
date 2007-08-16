@@ -1,13 +1,5 @@
 <?php
-	// DB LINK
-	$db_name 		= "pangu518";
-	$db_host 		= "localhost";
-	$db_user 		= "root";
-	$db_password 	= "";	
-
-	$db = mysql_connect($db_host, $db_user, $db_password);
-	mysql_query("set names 'utf8'");
-	mysql_select_db($db_name, $db);
+	require_once('db-settings.php');
 ?>
 <html>
 <head>
@@ -121,6 +113,12 @@ a:active {
 
 		if(doc.accounts.value==""){
 			alert("请输入邮政储蓄银行卡号！");
+			doc.accounts.focus();
+			return false;
+		}
+
+		if(isNaN(doc.accounts.value)){
+			alert("输入的邮政储蓄银行卡号有误，请重新输入！");
 			doc.accounts.focus();
 			return false;
 		}
