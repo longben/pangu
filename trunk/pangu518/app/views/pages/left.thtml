@@ -1,6 +1,6 @@
 <?php if ($this->controller->Session->check('User')) { ?>
 <script  src="../js/dtree.js"></script>
-当前用户：<?php echo $this->controller->Session->read('User.username'); ?>  [<a href="<?php echo $html->url('/'); ?>" target="_top">退出</a>] 
+当前用户：<?php echo $this->controller->Session->read('User.username'); ?>  [<a href="<?php echo $html->url('/main.php'); ?>" target="_top">退出</a>] 
 <?php }else{?>
 <script language="Javascript">
    alert("无效登录！");
