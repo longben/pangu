@@ -73,7 +73,7 @@ create table users(
   office_phone     varchar(30)                           comment '办公电话',
   home_phone       varchar(30)                           comment '家庭电话',
   email            varchar(30)                           comment '电子邮件',
-  bank_accounts    varchar(30)                           comment '开户银行',
+  bank_accounts    varchar(30) DEFAULT '邮政储蓄银行'    comment '开户银行',
   accounts         varchar(20)                           comment '银行帐号',
   created          timestamp                             comment '会员创建日期',
   flag             int(1)        not null default 1      comment '会员状态',
