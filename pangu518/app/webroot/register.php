@@ -1,3 +1,14 @@
+<?php
+	// DB LINK
+	$db_name 		= "pangu518";
+	$db_host 		= "localhost";
+	$db_user 		= "root";
+	$db_password 	= "";	
+
+	$db = mysql_connect($db_host, $db_user, $db_password);
+	mysql_query("set names 'utf8'");
+	mysql_select_db($db_name, $db);
+?>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -24,68 +35,164 @@ a:active {
 	color: #000066;
 	font-weight: bold;
 }
+.left_title {font-family: "宋体";
+	font-size: 13px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: capitalize;
+	color: #5B5B5B;
+}
+.STYLE3 {color: #FF0000}
 -->
 </style>
-<?php
-	// DB LINK
-	$db_name 		= "pangu518";
-	$db_host 		= "localhost";
-	$db_user 		= "root";
-	$db_password 	= "";	
 
-	$db = mysql_connect($db_host, $db_user, $db_password);
-	mysql_query("set names 'utf8'");
-	mysql_select_db($db_name, $db);
-?>
+<script language="JavaScript">
+<!--
+	function check() {
+		doc = document.form_pg;
+
+		if(doc.login_name.value==""){
+			alert("请输入登录名！");
+			doc.login_name.focus();
+			return false;
+		}
+
+		if(doc.login_name.value.length<3){
+			alert("登录名至少3位，请重新输入！");
+			doc.login_name.focus();
+			return false;
+		}
+
+		if(doc.password.value==""){
+			alert("请输入密码！");
+			doc.password.focus();
+			return false;
+		}
+
+		if(doc.password.value.length<6){
+			alert("密码至少6位，请重新输入！");
+			doc.password.focus();
+			return false;
+		}
+
+		if(doc.password2.value==""){
+			alert("请输入确认密码！");
+			doc.password2.focus();
+			return false;
+		}
+
+		if(doc.password.value!=doc.password2.value){
+			alert("两次输入的密码不符，请重新输入！");
+			doc.password.focus();
+			return false;
+		}
+
+		if(doc.user_name.value==""){
+			alert("请输入真实姓名！");
+			doc.user_name.focus();
+			return false;
+		}
+
+		if(doc.cert_number.value==""){
+			alert("请输入身份证号码！");
+			doc.cert_number.focus();
+			return false;
+		}
+
+		if((doc.cert_number.value.length != 15) && (doc.cert_number.value.length != 18)){
+			alert("身份证位数不对，请核对重新输入！");
+			doc.cert_number.focus();
+			return false;
+		}
+
+		if(doc.mobile.value==""){
+			alert("请输入手机号码！");
+			doc.mobile.focus();
+			return false;
+		}
+
+		if((doc.mobile.value.length != 11) || (isNaN(doc.mobile.value))){
+			alert("手机号码有误，请重新录入");
+			doc.mobile.focus();
+			return false;
+		}
+
+		if(doc.accounts.value==""){
+			alert("请输入邮政储蓄银行卡号！");
+			doc.accounts.focus();
+			return false;
+		}
+
+	}
+//-->
+</script>
 </head>
 
 <body topmargin="0" leftmargin="0">
 
 <?php	include("header.php");?>
-<table cellpadding="0" cellspacing="0" width="900" height="825" align="center">
+<table cellpadding="0" cellspacing="0" width="900" align="center">
 	<!-- MSTableType="layout" -->
 	<tr>
-		<td width="197" height="129" valign="top" background="img_www/vipt01.jpg">　</td>
-		<td width="612" height="129" valign="top" background="img_www/vipt02.jpg">
-		　</td>
-		<td width="91" height="129" valign="top" background="img_www/vipt03.jpg">　</td>
+		<td width="197" height="129" valign="top" background="img_www/vipt01.jpg">&nbsp;</td>
+		<td width="612" height="129" valign="top" background="img_www/vipt02.jpg">&nbsp;</td>
+		<td width="91" height="129" valign="top" background="img_www/vipt03.jpg">&nbsp;</td>
 	</tr>
 	<tr>
-		<td width="197" height="47" valign="top" background="img_www/vipt04.jpg">　</td>
+		<td width="197" height="47" valign="top" background="img_www/vipt04.jpg">&nbsp;</td>
 		<td width="612" height="47" valign="middle" background="img_www/botton1.jpg">
-		<p align="center">
-		<font face="黑体" size="2"><a href="main.php">首页</a></font><font face="黑体" size="2" color="#666666">|<a href="qiye.php">企业文化</a><font color="#666666">|</font><a href="falv.php">法律法规</a><font color="#666666">|</font><a href="fenhong.php">分红规则</a><font color="#666666">|</font><a href="qiye.php">客户服务中心</a><font color="#666666">|</font><a href="huikuan.php">汇款内容</a><font color="#666666">|</font><a href="VIPuse.php">会员消费单位</a><font color="#666666">|</font><a href="xiazai.php">下载专区</a><font color="#666666">|</font><a href="vip.php">会员专区</a>|盘古论坛</font></td>
-		<td width="91" height="47" valign="top" background="img_www/vipt05.jpg">　</td>
+		<?php	include("menu.php");?>
+		</td>
+		<td width="91" height="47" valign="top" background="img_www/vipt05.jpg">&nbsp;</td>
 	</tr>
 	<tr>
 		<td width="197" height="73" valign="top" rowspan="2">
 		<img border="0" src="img_www/huiyuanzhuanqu.jpg" width="197" height="73"></td>
 		<td width="612" height="35" valign="top" background="img_www/background4.jpg">　</td>
-		<td width="91" valign="top" rowspan="5">　</td>
+		<td width="91" valign="top" rowspan="5"><?php include("right_gg.php");?></td>
 	</tr>
 	<tr>
-		<td width="612" height="38" valign="top" background="img_www/VIPB05.jpg">　</td>
+		<td width="612" height="38" valign="top" background="img_www/VIPB05.jpg">&nbsp;</td>
 	</tr>
 	<tr>
-		<td width="197" height="36" valign="top">
-		<img border="0" src="img_www/side2.jpg" width="197" height="36"></td>
-		<td width="612" height="36" valign="top" background="img_www/VIPB06.jpg">　</td>
+		<td width="197" height="36" valign="top">&nbsp;</td>
+		<td width="612" height="36" valign="top" background="img_www/VIPB06.jpg">&nbsp;</td>
 	</tr>
 	<tr>
-		<td width="197" height="224" valign="top">
-		<img border="0" src="img_www/side3.jpg" width="197" height="33"><img border="0" src="img_www/side4.jpg" width="197" height="33"><img border="0" src="img_www/side5.jpg" width="197" height="33"><img border="0" src="img_www/side6.jpg" width="197" height="33"><img border="0" src="img_www/side7.jpg" width="197" height="51"><img border="0" src="img_www/side8.jpg" width="197" height="41"></td>
+		<td width="197" height="224" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td height="36" valign="middle" background="img_www/sidebg2.jpg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="contact.php">&nbsp;<span class="left_title">联系盘古</span></a></td>
+          </tr>
+          <tr>
+            <td height="36" valign="middle" background="img_www/sidebg2.jpg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="join.php">&nbsp;<span class="left_title">加盟盘古</span></a></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><a href="cooperation.php"><img src="img_www/side7.jpg" width="197" height="51" border="0"></a></td>
+          </tr>
+          <tr>
+            <td><img src="img_www/side8.jpg" width="197" height="41" border="0"></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+        </table></td>
 		<td width="612" valign="top" rowspan="2" align="center"><table cellpadding="0" cellspacing="0" width="538">
 			<!-- MSTableType="layout" -->
 			<tr>
 				<td valign="top">
-				<table cellpadding="0" cellspacing="0" width="500" height="341" id="table3">
+				<table cellpadding="0" cellspacing="0" width="500" id="table3">
 					<!-- MSTableType="layout" -->
 					<tr>
 						<td align="center" valign="top" width="500">　
-						  <table width="500" height="250" cellpadding="0" cellspacing="0" id="table4">
+						  <table width="500" cellpadding="0" cellspacing="0" id="table4">
 							<!-- MSTableType="layout" -->
 							<tr>
-							<form method=post action="register_do.php">
+							<form name="form_pg" method=post action="register_do.php" onSubmit="return check()">
 
 								<td align="center" valign="top" width="500">
 								<table cellpadding="3" cellspacing="1" bgcolor="#C0C0C0" id="table5" width="400">
@@ -94,8 +201,8 @@ a:active {
 									  <td height="35" colspan="2" align="center" valign="middle" bgcolor="#FFFFFF"><span class="STYLE2">会 员 注 册</span></td>
 								    </tr>
 									<tr>
-                                      <td width="480" height="23" align="left" valign="middle" bgcolor="#FFFFFF"><span style="font-family: 宋体; font-size: 9pt">省份</span><span style="font-size: 9.0pt; font-family: 宋体">：</span></td>
-									  <td width="480" align="left" valign="middle" bgcolor="#FFFFFF">
+                                      <td width="112" height="23" align="left" valign="middle" bgcolor="#FFFFFF"><span style="font-family: 宋体; font-size: 9pt">省份</span><span style="font-size: 9.0pt; font-family: 宋体">：</span></td>
+									  <td width="271" align="left" valign="middle" bgcolor="#FFFFFF">
 									  <select size="1" name="coupon">
 										<?php
 											$sql = "select id,region_name from regions where id like '__0000'";
@@ -104,51 +211,69 @@ a:active {
 												echo("<option value='".$arr[0]."'>".$arr[1]."</option>");
 											}
 										?>
-                                        </select>                                      </td>
+                                      </select>
+									  <span class="STYLE3">*</span> </td>
 								  </tr>
 									<tr>
                                       <td height="23" align="left" valign="middle" bgcolor="#FFFFFF"><span style="font-size: 9.0pt; font-family: 宋体">登录名：</span></td>
-									  <td valign="middle" bgcolor="#FFFFFF" align="left"><input name="login_name" type="text" id="login_name" size="15"></td>
+									  <td valign="middle" bgcolor="#FFFFFF" align="left"><input name="login_name" type="text" id="login_name" size="15" maxlength="15">
+									    <span class="STYLE3">*</span></td>
 								  </tr>
 									<tr>
                                       <td height="23" align="left" valign="middle" bgcolor="#FFFFFF"><span style="font-size: 9.0pt; font-family: 宋体">密码：</span></td>
-									  <td valign="middle" bgcolor="#FFFFFF" align="left"><input name="password" type="text" id="password" size="15"></td>
+									  <td align="left" valign="middle" bgcolor="#FFFFFF"><input name="password" type="password" id="password" size="15" maxlength="20">
+                                        <span class="STYLE3">*</span></td>
+								  </tr>
+									<tr>
+									  <td height="23" align="left" valign="middle" bgcolor="#FFFFFF"><span style="font-size: 9.0pt; font-family: 宋体">确认密码：</span></td>
+								      <td align="left" valign="middle" bgcolor="#FFFFFF"><input name="password2" type="password" id="password2" size="15" maxlength="20">
+                                        <span class="STYLE3">*</span></td>
 								  </tr>
 									<tr>
                                       <td height="23" align="left" valign="middle" bgcolor="#FFFFFF"><span style="font-size: 9.0pt; font-family: 宋体"> 真实姓名：</span></td>
-									  <td valign="middle" bgcolor="#FFFFFF" align="left"><input name="user_name" type="text" id="user_name" size="15"></td>
+									  <td valign="middle" bgcolor="#FFFFFF" align="left"><input name="user_name" type="text" id="user_name" size="15" maxlength="10">
+                                        <span class="STYLE3">*</span></td>
 								  </tr>
 									<tr>
                                       <td height="23" align="left" valign="middle" bgcolor="#FFFFFF"><span style="font-size: 9.0pt; font-family: 宋体">性别：</span></td>
-									  <td valign="middle" bgcolor="#FFFFFF" align="left"><input name="sex" type="text" id="sex" size="15"></td>
+									  <td valign="middle" bgcolor="#FFFFFF" align="left"><label>
+                                        <select name="sex" id="sex">
+                                          <option value="1" selected>男</option>
+                                          <option value="2">女</option>
+                                          </select>
+                                        </label>
+                                        <span class="STYLE3">*</span></td>
 								  </tr>
 									<tr>
                                       <td height="23" align="left" valign="middle" bgcolor="#FFFFFF"><span style="font-size: 9.0pt; font-family: 宋体"> 身份证号码：</span></td>
-									  <td valign="middle" bgcolor="#FFFFFF" align="left"><input name="cert_number" type="text" id="cert_number" size="15"></td>
+									  <td valign="middle" bgcolor="#FFFFFF" align="left"><input name="cert_number" type="text" id="cert_number" size="18" maxlength="18">
+                                        <span class="STYLE3">*</span></td>
 								  </tr>
 									<tr>
                                       <td height="23" align="left" valign="middle" bgcolor="#FFFFFF"><span style="font-size: 9.0pt; font-family: 宋体">固定电话：</span></td>
-									  <td valign="middle" bgcolor="#FFFFFF" align="left"><input name="telephone" type="text" id="telephone" size="15"></td>
+									  <td valign="middle" bgcolor="#FFFFFF" align="left"><input name="telephone" type="text" id="telephone" size="15" maxlength="20"></td>
 								  </tr>
 									<tr>
                                       <td height="23" align="left" valign="middle" bgcolor="#FFFFFF"><span style="font-size: 9.0pt; font-family: 宋体">联系手机：</span></td>
-									  <td valign="middle" bgcolor="#FFFFFF" align="left"><input name="mobile" type="text" id="mobile" size="15"></td>
+									  <td valign="middle" bgcolor="#FFFFFF" align="left"><input name="mobile" type="text" id="mobile" size="15" maxlength="11">
+                                        <span class="STYLE3">*</span></td>
 								  </tr>
 									<tr>
                                       <td height="23" align="left" valign="middle" bgcolor="#FFFFFF"><span style="font-size: 9.0pt; font-family: 宋体"> 邮政储蓄银行帐号：</span></td>
-									  <td valign="middle" bgcolor="#FFFFFF" align="left"><input name="accounts" type="text" id="accounts" size="20"></td>
+									  <td valign="middle" bgcolor="#FFFFFF" align="left"><input name="accounts" type="text" id="accounts" size="20" maxlength="21">
+                                        <span class="STYLE3">*</span></td>
 								  </tr>
 									<tr>
                                       <td height="23" align="left" valign="middle" bgcolor="#FFFFFF"><span style="font-size: 9.0pt; font-family: 宋体">推荐人帐号：</span></td>
-									  <td valign="middle" bgcolor="#FFFFFF" align="left"><input name="referees" type="text" id="referees" size="15"></td>
+									  <td valign="middle" bgcolor="#FFFFFF" align="left"><input name="referees" type="text" id="referees" size="15" maxlength="20"></td>
 								  </tr>
 									<tr>
-									  <td height="40" colspan="2" align="center" valign="middle" bgcolor="#FFFFFF"><img border="0" src="img_www/vipp02.JPG" width="84" height="25"></td>
+									  <td height="40" colspan="2" align="center" valign="middle" bgcolor="#FFFFFF">
+										<input type="image" border="0" src="img_www/vipp02.JPG" width="84" height="25">									   </td>
 								  </tr>
-									
 								</table>
 								</td>
-								</form>
+							  </form>
 							</tr>
 						</table>
 						  <br>
@@ -158,8 +283,8 @@ a:active {
 						</font>
 						<img border="0" src="img_www/vipP05.JPG" width="7" height="7"><font size="2" color="#808080">会员注意事项 
 						<br>
-&nbsp;&nbsp;&nbsp;&nbsp; 1 会员注意事项会员注意事项会员注意事项会员注意事项 <br>
-&nbsp;&nbsp;&nbsp;&nbsp; 2 会员注意事项会员注意事项会员注意事项 <br>
+&nbsp;&nbsp;&nbsp;&nbsp; 1 会员注意事项会员注意事项<br>
+&nbsp;&nbsp;&nbsp;&nbsp; 2 会员注意事项会员注意事项<br>
 &nbsp;&nbsp;&nbsp;&nbsp; 3 会员注意事项会员注意事项 <br>
 &nbsp;&nbsp;&nbsp;&nbsp; 4 会员注意事项会员注意事项</font>
 						<p align="left" style="line-height: 150%">　</td>

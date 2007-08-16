@@ -32,6 +32,7 @@ a:active {
 	color: #FF0000;
 	font-weight: bold;
 }
+
 -->
 </style>
 </head>
@@ -56,18 +57,19 @@ a:active {
 <table width="903" height="41" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
     <td width="130" height="41" valign="top"><img border="0" src="img_www/fenghongjieguo.JPG" width="129" height="41" align="left"></td>
-    <td width="666" valign="bottom">
+    <td valign="bottom">
 		<marquee direction="left" onmouseout=this.start() onmouseover=this.stop() scrollAmount=3 >
-		<font size="2" color="#FF0000">　　200715期分红结果：号码345、分红总数120、参与总数3499678！</font>
+		<font size="2" color="#FF0000">　　200715期分红结果：分红号码为：345；分红总数为：120注；分红参与总数为：3499678！</font>
 		</marquee>
 	<br>
 	<img src="img_www/shouyep05.JPG" width="666" height="3" border="0"></td>
-    <td valign="bottom">&nbsp;</td>
   </tr>
 </table>
 <table width="903" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
-    <td width="198" valign="top"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+    <td width="198" valign="top">
+	<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+	 <form  method=post action="">
       <tr>
         <td height="25" colspan="2"><font size="2" color="#808080">&nbsp;&nbsp; <b>会员登录</b></font></td>
         </tr>
@@ -80,8 +82,10 @@ a:active {
         <td><input name="password" type="text" id="password" size="11" maxlength="15"></td>
       </tr>
       <tr>
-        <td colspan="2" align="center"><img border="0" src="img_www/login.gif" width="84" height="25"><img border="0" src="img_www/vipp02.JPG" width="84" height="25"></td>
+        <td colspan="2" align="center"><input type="image" border="0" src="img_www/login.gif" width="84" height="25">
+          <a href="register.php"><img border="0" src="img_www/vipp02.JPG" width="84" height="25"></a></td>
         </tr>
+		</form>
       <tr>
         <td colspan="2" align="center"><img border="0" src="img_www/shouyep02.JPG" width="191" height="98"></td>
         </tr>
@@ -100,7 +104,7 @@ a:active {
         <td colspan="2" align="right"><span lang="EN-US" style="font-size: 9.0pt; font-family: Times New Roman"> </span><span style="font-size: 9.0pt; font-family: 宋体">更多</span><span lang="EN-US" style="font-size: 9.0pt;margin-right:12px; font-family: Times New Roman">…..</span></td>
         </tr>
       <tr>
-        <td colspan="2" align="center"><span lang="EN-US" style="font-size: 9.0pt; font-family: Times New Roman"><img border="0" src="img_www/zhandianbangzhu.jpg" width="191" height="89"></span></td>
+        <td colspan="2" align="center"><span lang="EN-US" style="font-size: 9.0pt; font-family: Times New Roman"><a href="faq.php"><img border="0" src="img_www/zhandianbangzhu.jpg" width="191" height="89"></a></span></td>
         </tr>
 
     </table></td>
@@ -198,7 +202,9 @@ a:active {
         <td width="325"><img border="0" src="img_www/shouyep12.JPG" width="325" height="275"></td>
       </tr>
     </table></td>
-    <td width="91" valign="top">&nbsp;</td>
+    <td width="91" valign="top">
+		<?php include("right_gg.php");?>
+	</td>
   </tr>
 </table>
 <table width="901" border="0" align="center" cellpadding="0" cellspacing="0">
@@ -208,7 +214,6 @@ a:active {
   </tr>
 </table>
 <?php include('footer.php');?>
-
 </body>
 
 </html>

@@ -26,6 +26,15 @@ a:active {
 	color: #808080;
 	font-size: 12px;
 }
+.left_title {	font-family: "宋体";
+	font-size: 13px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: capitalize;
+	color: #5B5B5B;
+}
 -->
 </style>
 </head>
@@ -43,29 +52,46 @@ a:active {
 	<tr>
 		<td width="197" height="47" valign="top" background="img_www/fenhongT04.jpg">　</td>
 		<td width="612" height="47" valign="middle" background="img_www/botton1.jpg">
-		<?php	include('menu.php');?>		
-		</td>
+		<?php	include('menu.php');?>		</td>
 		<td width="91" height="47" valign="top" background="img_www/fenhongT05.jpg">　</td>
 	</tr>
 	<tr>
 		<td width="197" height="73" valign="top" rowspan="2">
 		<img border="0" src="img_www/fenhonggueizhe.jpg" width="197" height="73"></td>
 		<td width="612" height="35" valign="top" background="img_www/background4.jpg">　</td>
-		<td width="91" valign="top" rowspan="5">　</td>
+		<td width="91" valign="top" rowspan="5"><?php include("right_gg.php");?></td>
 	</tr>
 	<tr>
 		<td width="612" height="38" valign="top" background="img_www/fenhongB05.jpg">　</td>
 	</tr>
 	<tr>
-		<td width="197" height="36" valign="top">
-		<img border="0" src="img_www/side2.jpg" width="197" height="36"></td>
+		<td width="197" height="36" valign="top">&nbsp;</td>
 		<td width="612" height="36" valign="top" background="img_www/fenhongB06.jpg">　</td>
 	</tr>
 	<tr>
-		<td width="197" height="224" valign="top">
-		<img height="33" src="img_www/side3.jpg" width="197" border="0"><img height="33" src="img_www/side4.jpg" width="197" border="0"><img height="33" src="img_www/side5.jpg" width="197" border="0"><img height="33" src="img_www/side6.jpg" width="197" border="0"><img height="51" src="img_www/side7.jpg" width="197" border="0"><img height="41" src="img_www/side8.jpg" width="197" border="0"></td>
+		<td width="197" height="224" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+
+          <tr>
+            <td height="36" valign="middle" background="img_www/sidebg2.jpg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="contact.php">&nbsp;<span class="left_title">联系盘古</span></a></td>
+          </tr>
+          <tr>
+            <td height="36" valign="middle" background="img_www/sidebg2.jpg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="join.php">&nbsp;<span class="left_title">加盟盘古</span></a></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><a href="cooperation.php"><img src="img_www/side7.jpg" width="197" height="51" border="0"></a></td>
+          </tr>
+          <tr>
+            <td><img src="img_www/side8.jpg" width="197" height="41" border="0"></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+        </table></td>
 		<td width="612" valign="top" rowspan="2">　
-		  <table width="600" border="0" align="right" cellpadding="0" cellspacing="0" id="table1">
+		  <table width="590" border="0" align="center" cellpadding="0" cellspacing="0" id="table1">
 			<tr>
 				<td align="left" valign="top"><p class="STYLE3">四川盘古经济咨询有限责任公司 <br>
 				  盘古消费资本财富分红规则 <br>
@@ -82,12 +108,10 @@ a:active {
   六、此规则如有修改公司会提前在网站上发出公告。 <br>
 				  七、此规则最终解释权归四川盘古经济咨询有限责任公司所有。 <br>
 				  <br> 
-					<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;四川盘古经济咨询有限责任公司</strong> <br>
-					<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;二00七年七月 </strong></p>				
-				</td>
+					<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;　　　　　　　　四川盘古经济咨询有限责任公司</strong> <br>
+					<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;　　　　　　　　　　　　　　　　&nbsp;二00七年七月 </strong></p>				</td>
 			</tr>
-		  </table>
-	  </td>
+		  </table>	  </td>
 	</tr>
 	<tr>
 		<td width="197" valign="top" background="img_www/background2.jpg">　</td>

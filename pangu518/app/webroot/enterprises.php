@@ -7,16 +7,16 @@
 <style type="text/css">
 <!--
 a:link {
-	color: #333333;
+	color: #5B5B5B;
 	text-decoration: none;
 }
 a:visited {
 	text-decoration: none;
-	color: #333333;
+	color: #5B5B5B;
 }
 a:hover {
 	text-decoration: none;
-	color: #333333;
+	color: #5B5B5B;
 }
 a:active {
 	text-decoration: none;
@@ -24,6 +24,22 @@ a:active {
 .style1 {font-size: 16px}
 .STYLE2 {color: #808080;font-size:12px}
 .STYLE4 {color: #003366; font-size: 30px; }
+
+.left_title {
+	font-family: "宋体";
+	font-size: 13px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: capitalize;
+	color: #5B5B5B;
+}
+
+.text {
+	color: #616161;
+	font-size:11px
+}
 -->
 </style>
 </head>
@@ -41,27 +57,47 @@ a:active {
 	<tr>
 		<td width="197" height="47" valign="top" background="img_www/qiyeT04.jpg">　</td>
 		<td width="612" height="47" valign="middle" background="img_www/botton1.jpg">
-		<?php	include('menu.php');?>		
-		</td>
+		<?php	include('menu.php');?>		</td>
 		<td width="91" height="47" valign="top" background="img_www/qiyeT05.jpg">　</td>
 	</tr>
 	<tr>
 		<td width="197" height="73" valign="top" rowspan="2">
-		<img border="0" src="img_www/qiyewenhua.jpg" width="197" height="73"></td>
+		<img border="0" src="img_www/qiyefengcai.jpg" width="197" height="73"></td>
 		<td width="612" height="35" valign="top" background="img_www/background4.jpg">　</td>
-		<td width="91" height="505" valign="top" rowspan="5">&nbsp;</td>
+		<td width="91" height="505" valign="top" rowspan="5"><?php include("right_gg.php");?></td>
 	</tr>
 	<tr>
 		<td width="612" height="38" valign="top" background="img_www/qiyeB05.jpg">　</td>
 	</tr>
 	<tr>
-		<td width="197" height="36" valign="top">
-		<img border="0" src="img_www/side2.jpg" width="197" height="36"></td>
+		<td width="197" height="36" valign="top">&nbsp;</td>
 		<td width="612" height="36" valign="top" background="img_www/qiyeB06.jpg">　</td>
 	</tr>
 	<tr>
-		<td width="197" height="224" valign="top">
-		<img height="33" src="img_www/side3.jpg" width="197" border="0"><img height="33" src="img_www/side4.jpg" width="197" border="0"><img height="33" src="img_www/side5.jpg" width="197" border="0"><img height="33" src="img_www/side6.jpg" width="197" border="0"><img height="51" src="img_www/side7.jpg" width="197" border="0"><img height="41" src="img_www/side8.jpg" width="197" border="0"></td>
+	  <td width="197" height="224" valign="top">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td height="36" valign="middle" background="img_www/sidebg2.jpg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="enterprises.php">&nbsp;<span class="left_title">总经理致辞</span></a></td>
+          </tr>
+          <tr>
+            <td height="36" valign="middle" background="img_www/sidebg2.jpg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="contact.php">&nbsp;<span class="left_title">联系盘古</span></a></td>
+          </tr>
+          <tr>
+            <td height="36" valign="middle" background="img_www/sidebg2.jpg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="join.php">&nbsp;<span class="left_title">加盟盘古</span></a></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td><a href="cooperation.php"><img height="51" src="img_www/side7.jpg" width="197" border="0"></a></td>
+          </tr>
+          <tr>
+            <td><img height="41" src="img_www/side8.jpg" width="197" border="0"></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+        </table>		</td>
 		<td width="612" valign="top" rowspan="2">　<table width="600" border="0" align="right" cellpadding="0" cellspacing="0" id="table1">
 			<tr>
 				<td width="600" align="left" valign="top"><b>
@@ -77,11 +113,10 @@ a:active {
 				    <span class="STYLE4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;大家好才是真的好<em>！<br>
 			  </em></span></td>
 			</tr>
-		</table>
-		</td>
+		</table>		</td>
 	</tr>
 	<tr>
-		<td width="197" height="172" valign="top" background="img_www/background2.jpg">　</td>
+		<td width="197" valign="top" background="img_www/background2.jpg">&nbsp;</td>
 	</tr>
 	<tr>
 		<td width="197" height="20" valign="top" background="img_www/background1.jpg">　</td>
