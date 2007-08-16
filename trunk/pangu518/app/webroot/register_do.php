@@ -22,10 +22,22 @@
 		exit();
 	}
 
+	if(!empty($referees)) {
+		$sql = "select uid from members where username='".$referees."'";
+		$stmt = mysql_query($sql);
+		$arr = mysql_fetch_array($stmt);
+
+		if(empty($arr[0])){
+			echo("<script language='JavaScript'>alert('抱歉，您输入的推荐人登录名不存在，请重新输入，或保留为空！');history.go(-1);</script>");
+			exit();
+		}		
+	}
+
+
 	$sql = "INSERT INTO members(username,password) VALUES ('".$login_name."', '".$password."')";
 	mysql_query($sql);
 
-	$sql = "select uid from members where username='".$username."'";
+	$sql = "select uid from members where username='".$login_name."'";
 	$stmt = mysql_query($sql);
 	$arr = mysql_fetch_array($stmt);
 	$id = $arr[0];
