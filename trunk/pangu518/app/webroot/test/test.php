@@ -1,15 +1,6 @@
 <?php
 
-	// DB LINK
-	$db_name 		= "pangu518";
-	$db_host 		= "localhost";
-	$db_user 		= "root";
-	$db_password 	= "";	
-
-	$db = mysql_connect($db_host, $db_user, $db_password);
-	mysql_query("set names 'utf8'");
-	mysql_select_db($db_name, $db);
-
+	require_once("../db-settings.php");
 	
 	set_time_limit(0);
 	$SLEEP_TIMER = 5;
@@ -17,15 +8,15 @@
 
 
 	/**
-	 * ÃÜÂëÉú³ÉËã·¨
+	 * å¯†ç ç”Ÿæˆç®—æ³•
 	 *
 	 * @param int $custom_num
 	 * @param int $random_num
 	 * @return int
 	 */
 	function getPassword($custom_num = 0,$random_num = 0){
-		$pwd = (int)$custom_num ^ (int)$random_num; //ÓÃ»§ÊäÈë6Î»Êý×ÖºÍ6Î»Ëæ»úÊýÒì»ò²úÉúÃÜÂë
-		$pwd = substr($pwd, 0, 6); //Ö»±£Áô6Î»Êý
+		$pwd = (int)$custom_num ^ (int)$random_num; //ç”¨æˆ·è¾“å…¥6ä½æ•°å­—å’Œ6ä½éšæœºæ•°å¼‚æˆ–äº§ç”Ÿå¯†ç 
+		$pwd = substr($pwd, 0, 6); //åªä¿ç•™6ä½æ•°
 		$pwd = sprintf('%06s', $pwd);
 		return $pwd;
 	}
@@ -49,13 +40,13 @@
 
 			//echo $i."<br>";
 
-			//µ±¿ªÊ¼Ö´ÐÐÉú³É´ú½ðÈ¯£¬½«ÐòÁÐÖÐµÄ¸ÃÌõ¼ÇÂ¼×´Ì¬¸ü¸ÄÎª1£¨Éú³ÉÖÐ£©
+			//å½“å¼€å§‹æ‰§è¡Œç”Ÿæˆä»£é‡‘åˆ¸ï¼Œå°†åºåˆ—ä¸­çš„è¯¥æ¡è®°å½•çŠ¶æ€æ›´æ”¹ä¸º1ï¼ˆç”Ÿæˆä¸­ï¼‰
 			if($i == $coupon_start){
 				$UpdateStatus = "update coupon_lists set status = 1 where id =".$updateID;
 				mysql_query($UpdateStatus);
 			}
 
-			srand((double)microtime()*1000000);//Ê±¼äµÄÒòËØ£¬ÒÔÖ´ÐÐÊ±µÄ°ÙÍò·ÖÖ®Ò»Ãëµ±ÂÒÊýÖÖ×Ó
+			srand((double)microtime()*1000000);//æ—¶é—´çš„å› ç´ ï¼Œä»¥æ‰§è¡Œæ—¶çš„ç™¾ä¸‡åˆ†ä¹‹ä¸€ç§’å½“ä¹±æ•°ç§å­
 			$randval = rand(10000,99999);
 
 			$coupon_no = $coupon_group .sprintf('%09s', $i);
@@ -66,7 +57,7 @@
 			$InsertCoupon = "insert into coupons(coupon_no,coupon_pwd,custom_num,random_num,coupon_group,created) values('".$coupon_no."','".$coupon_pwd."','".$custom_num."','".$randval."','".$coupon_group."',".$insert_time.")";
 			mysql_query($InsertCoupon);
 
-			//µ±È«²¿Ö´ÐÐÍê³É£¬Éú³ÉËùÓÐ´ú½ðÈ¯£¬½«ÐòÁÐÖÐµÄ¸ÃÌõ¼ÇÂ¼×´Ì¬¸ü¸ÄÎª2£¨Éú³ÉÍê±Ï£©
+			//å½“å…¨éƒ¨æ‰§è¡Œå®Œæˆï¼Œç”Ÿæˆæ‰€æœ‰ä»£é‡‘åˆ¸ï¼Œå°†åºåˆ—ä¸­çš„è¯¥æ¡è®°å½•çŠ¶æ€æ›´æ”¹ä¸º2ï¼ˆç”Ÿæˆå®Œæ¯•ï¼‰
 			if($i == $coupon_end){
 				$UpdateStatus = "update coupon_lists set status = 2 where id =".$updateID;
 				mysql_query($UpdateStatus);
@@ -78,9 +69,9 @@
 	}
 	
 	if($updateID){
-		echo('¸ÃÅú´Î´ú½ðÈ¯³õÊ¼»¯³É¹¦£¡');
+		echo('è¯¥æ‰¹æ¬¡ä»£é‡‘åˆ¸åˆå§‹åŒ–æˆåŠŸï¼');
 	}else{
-		echo('ÎÞÐÂÅú´Î´ú½ðÈ¯³õÊ¼»¯£¡');
+		echo('æ— æ–°æ‰¹æ¬¡ä»£é‡‘åˆ¸åˆå§‹åŒ–ï¼');
 	}
 
 ?>
