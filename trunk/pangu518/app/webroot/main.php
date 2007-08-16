@@ -1,3 +1,6 @@
+<?php
+	require_once("db-settings.php");
+?>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -143,34 +146,19 @@ a:active {
       <tr>
         <td><img border="0" src="img_www/shouyep07.JPG" width="271" height="34"></td>
       </tr>
+	
+	<?php
+		$strMerchants = "select id,user_id,merchant_name from merchants order by id desc";
+		$stmtMerchants = mysql_query($strMerchants);
+		while($row = mysql_fetch_array($stmtMerchants)) {
+	?>
       <tr>
-        <td height="22"><img src="img_www/shouyep08.JPG" alt=" " width="5" height="7" border="0"><font size="2"> 新闻标题标题标题<br>
-            <img src="img_www/shouyep05.JPG" alt=" " width="266" height="5" border="0"></font></td>
+        <td height="22"><img src="img_www/shouyep08.JPG" width="5" height="7" border="0"><font size="2"><?php echo($row[2]);?></font><br><img src="img_www/shouyep05.JPG" width="266" height="5" border="0"></td>
       </tr>
-      <tr>
-        <td height="22"><img src="img_www/shouyep08.JPG" alt=" " width="5" height="7" border="0"><font size="2"> 新闻标题标题标题<br>
-            <img src="img_www/shouyep05.JPG" alt=" " width="266" height="5" border="0"></font></td>
-      </tr>
-      <tr>
-        <td height="22"><img src="img_www/shouyep08.JPG" alt=" " width="5" height="7" border="0"><font size="2"> 新闻标题标题标题<br>
-            <img src="img_www/shouyep05.JPG" alt=" " width="266" height="5" border="0"></font></td>
-      </tr>
-      <tr>
-        <td height="22"><img src="img_www/shouyep08.JPG" alt=" " width="5" height="7" border="0"><font size="2"> 新闻标题标题标题<br>
-            <img src="img_www/shouyep05.JPG" alt=" " width="266" height="5" border="0"></font></td>
-      </tr>
-      <tr>
-        <td height="22"><img src="img_www/shouyep08.JPG" alt=" " width="5" height="7" border="0"><font size="2"> 新闻标题标题标题<br>
-            <img src="img_www/shouyep05.JPG" alt=" " width="266" height="5" border="0"></font></td>
-      </tr>
-      <tr>
-        <td height="22"><img src="img_www/shouyep08.JPG" alt=" " width="5" height="7" border="0"><font size="2"> 新闻标题标题标题<br>
-            <img src="img_www/shouyep05.JPG" alt=" " width="266" height="5" border="0"></font></td>
-      </tr>
-      <tr>
-        <td height="22"><img src="img_www/shouyep08.JPG" alt=" " width="5" height="7" border="0"><font size="2"> 新闻标题标题标题<br>
-            <img src="img_www/shouyep05.JPG" alt=" " width="266" height="5" border="0"></font></td>
-      </tr>
+	<?php
+		}
+	?>
+
     </table></td>
     <td width="10" valign="top" background="img_www/shouyeb01.JPG">&nbsp;</td>
     <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
