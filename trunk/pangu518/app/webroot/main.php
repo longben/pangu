@@ -69,17 +69,17 @@ a:active {
   <tr>
     <td width="198" valign="top">
 	<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
-	 <form  method=post action="">
+	 <form  method=post action="/members/login">
       <tr>
         <td height="25" colspan="2"><font size="2" color="#808080">&nbsp;&nbsp; <b>会员登录</b></font></td>
         </tr>
       <tr>
         <td width="37%" height="22" align="center"><img src="img_www/vipP05.JPG" alt=" " width="7" height="7" border="0"><font size="2" color="#808080">用户名：</font></td>
-        <td width="63%"><input name="username" type="text" id="username" size="11" maxlength="20"></td>
+        <td width="63%"><input name="data[Member][username]" type="text" id="data[Member][username]" size="11" maxlength="20"></td>
       </tr>
       <tr>
         <td height="22" align="center"><img src="img_www/vipP05.JPG" alt=" " width="7" height="7" border="0"><font size="2" color="#808080">密　码：</font></td>
-        <td><input name="password" type="text" id="password" size="11" maxlength="15"></td>
+        <td><input name="data[Member][password]" type="password" id="data[Member][password]" size="11" maxlength="15"></td>
       </tr>
       <tr>
         <td colspan="2" align="center"><input type="image" border="0" src="img_www/login.gif" width="84" height="25">
