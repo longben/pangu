@@ -1,13 +1,27 @@
 <?php
-	// DB LINK
-	$db_name 		= "pangu518";
-	$db_host 		= "localhost";
-	$db_user 		= "root";
-	$db_password 	= "";	
+	require_once("db-settings.php");
 
-	$db = mysql_connect($db_host, $db_user, $db_password);
-	mysql_query("set names 'utf8'");
-	mysql_select_db($db_name, $db);
+	echo("<script language=JavaScript>history.go(-1);</script>");
+	exit();
+
+	$username = trim($_POST["login_name"]);
+
+	$sql = "select uid from members where username='".$username."'";
+	$stmt = mysql_query($sql);
+	$arr = mysql_fetch_array($stmt);
+
+	if($arr[0]){
+		echo("<script language='JavaScript'>alert('±§Ç¸£¬ÄúÊäÈëµÄ');</script>");
+	}
+
+	$sql = "INSERT INTO members(username,password) VALUES ('".$username."', '".md5($_POST["password"])."')";
+	mysql_query($sql);
+
+	$sql = "select uid from members where username='".$username."'";
+	$stmt = mysql_query($sql);
+	$arr = mysql_fetch_array($stmt);
+	$id = $arr[0];
+
 
 
 ?>

@@ -59,7 +59,7 @@
 
 		d.add(1001,1,'编辑个人资料','/members/profile');
 		d.add(1002,1,'修改口令','/members/password');
-		d.add(1003,1,'邀请加入盘古','/users/invite');
+		//d.add(1003,1,'邀请加入盘古','/users/invite');		//直接在注册的时候填写推荐人帐号
 		d.add(1004,1,'代金券录入','/user_coupons/input');
 		d.add(1005,1,'会员参与分红','/lottery_bettings/user');
 		
