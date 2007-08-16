@@ -115,12 +115,12 @@ a:active {
 									<tr>
 									  <td valign="middle" bgcolor="#FFFFFF" align="right"><img border="0" src="img_www/vipP05.JPG" width="7" height="7"><font size="2" color="#808080">用户名：</font> </td>
 								      <td height="30" valign="middle" bgcolor="#FFFFFF">　
-							          <input name="username" type="text" id="username" size="12"></td>
+							          <input name="data[Member][username]" type="text" id="data[Member][username]" size="12"></td>
 								  </tr>
 									<tr>
 									  <td valign="middle" bgcolor="#FFFFFF" align="right"><img border="0" src="img_www/vipP05.JPG" width="7" height="7"><font size="2" color="#808080">密　码：</font></td>
 								      <td height="30" valign="middle" bgcolor="#FFFFFF">　
-							          <input name="password" type="text" id="password" size="12"></td>
+							          <input name="data[Member][password]" type="password" id="data[Member][password]" size="12"></td>
 								  </tr>
 									<tr>
 									  <td height="40" colspan="2" align="center" valign="middle" bgcolor="#FFFFFF"><input type="image" border="0" src="img_www/vipp01.JPG" width="71" height="28"></td>
