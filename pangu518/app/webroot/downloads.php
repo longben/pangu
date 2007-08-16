@@ -91,51 +91,43 @@ a:active {
 			<!-- MSTableType="layout" -->
 			<tr>
 				<td valign="top" width="555">
-				<table border="0" width="100%" cellspacing="0" cellpadding="0" id="table1">
+				<table width="95%" border="0" align="center" cellpadding="0" cellspacing="0" id="table1">
 					<tr>
 						<td width="65%" height="30" align="center" bgcolor="#808080"><font size="2">&nbsp;资料名称</font></td>
 					    <td width="23%" align="center" bgcolor="#808080"><font size="2">上传日期</font></td>
-					    <td width="12%" align="center" bgcolor="#808080"><font size="2">下载总量</font></td>
 				    </tr>
 					<tr>
 						<td height="30"><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 					    <a href="downloads/合作协议.doc">合作协议</a></font></td>
 					    <td align="center"><font size="2"> 2007-08-09</font></td>
-					    <td align="center"><font size="2">1000</font></td>
 				    </tr>
 					<tr>
 						<td height="30" bgcolor="#C0C0C0"><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 					    <a href="downloads/会员的权责利.doc">会员的权责利</a></font></td>
 					    <td align="center" bgcolor="#C0C0C0"><font size="2">2007-08-09</font></td>
-					    <td align="center" bgcolor="#C0C0C0"><font size="2">1000</font></td>
 				    </tr>
 					<tr>
 						<td height="30"><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 					        <a href="downloads/工作站协议.doc">工作站协议</a></font></td>
 					    <td align="center"><font size="2">2007-08-09</font></td>
-					    <td align="center"><font size="2">1000</font></td>
 				    </tr>
 					<tr>
 						<td height="30" bgcolor="#C0C0C0"><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 					    <a href="downloads/分红规则.doc">分红规则</a></font></td>
 					    <td align="center" bgcolor="#C0C0C0"><font size="2">2007-08-09</font></td>
-					    <td align="center" bgcolor="#C0C0C0"><font size="2">1000</font></td>
 				    </tr>
 					<tr>
 						<td height="30"><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 					    <a href="downloads/会员问题解答.doc">会员问题解答</a></font></td>
 					    <td align="center"><font size="2">2007-08-09</font></td>
-					    <td align="center"><font size="2">1000</font></td>
 				    </tr>
 					<tr>
 						<td height="30" bgcolor="#C0C0C0"><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 					    <a href="downloads/商家问题解答.doc">商家问题解答</a></font></td>
 					    <td align="center" bgcolor="#C0C0C0"><font size="2">2007-08-09</font></td>
-					    <td align="center" bgcolor="#C0C0C0"><font size="2">1000</font></td>
 				    </tr>
 					<tr>
 						<td height="30">　</td>
-					    <td>&nbsp;</td>
 					    <td>&nbsp;</td>
 				    </tr>
 				</table>
