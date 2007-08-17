@@ -9,10 +9,6 @@
 /*  在使用0和1表示状态的时候，如无特殊说明0始终表示无效，1始终表示有效。
 /*  个税应缴纳数额＝应缴纳所得款（月工资－起征点）×适用税率
 /*  所以代金券状态，请参考“代金券状态说明”
-/*  修改日志		merchants新增merchant_no字段
-/*					merchant_complaint_logs 原complaint_date字段修改为created	
-/*					
-/*  
 /*********************************************************************************************
 
 
@@ -163,7 +159,7 @@ create table merchants(
   id               int(11)       not null auto_increment comment '主键',
   user_id          int(8)                                comment '会员消费拥有人',
   merchant_name    varchar(50)   not null                comment '消费单位名称',
-  merchant_no      varchar(15)   not null default '0'    comment '消费单位编码:省代号+000001',	
+  merchant_no      varchar(15)   not null default '0'    comment '消费单位编码:省代号+0000001',
   owner            varchar(10)                           comment '店主',
   telephone        varchar(30)                           comment '联系电话',
   mobile           varchar(11)                           comment '移动电话',
@@ -202,7 +198,7 @@ create table merchant_complaint_logs(
   id               int(11)       not null auto_increment comment '主键',
   merchant_id      int(11)       not null                comment '会员消费单位',
   user_id          int(8)        not null                comment '会员',
-  created          timestamp                             comment '会员投诉会员消费单位时间',	
+  created          timestamp                             comment '会员投诉会员消费单位时间',
   complaint_reason varchar(500)                          comment '投诉原因',
   judge            int(8)                                comment '公司内部投诉审核人',
   auditing_date    timestamp                             comment '审核时间',
@@ -217,15 +213,15 @@ create table lotteries(
   id               int(5)        not null auto_increment comment '主键',
   lottery_year     int(4)        not null                comment '开奖年份',
   lottery_times    int(3)        not null default 0      comment '开奖次数',
-  start_time       timestamp                             comment '彩票期数的开始时间',
-  finish_time      timestamp                             comment '彩票期数的结束时间',
-  open_time        timestamp                             comment '开奖时间',
+  start_time       datetime                              comment '彩票期数的开始时间',
+  finish_time      datetime                              comment '彩票期数的结束时间',
+  open_time        datetime                              comment '开奖时间',
   win_number       varchar(5)                            comment '中奖号码',
   win_count        int(5)                                comment '中奖总数',
   created          timestamp                             comment '创建时间',
   modified         timestamp                             comment '修改时间',
   createdby        int(8)                                comment '创建者',
-  flag             int(1)        not null default 1      comment '状态',
+  flag             int(1)        not null default 1      comment '状态 1:正常 9:开奖',
   primary key (id)
 ) engine=MyISAM default charset=utf8 comment='彩票表';
 
