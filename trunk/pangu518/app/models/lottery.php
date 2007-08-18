@@ -3,7 +3,7 @@ class Lottery extends AppModel {
 
 	var $name = 'Lottery';
 
-	var $hasOne = array(
+	var $hasMany = array(
 			'LotteryBetting' =>
 				array('className' => 'LotteryBetting',
 						'foreignKey' => 'lottery_id',
