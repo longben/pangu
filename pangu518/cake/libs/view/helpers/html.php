@@ -587,7 +587,7 @@ class HtmlHelper extends Helper {
 			$selected = date('m', strtotime($this->tagValue($tagName)));
 		}
 		$monthValue = empty($selected) ? ($showEmpty ? NULL : date('m')) : $selected;
-		$months = array('01' => 'January', '02' => 'February', '03' => 'March', '04' => 'April', '05' => 'May', '06' => 'June', '07' => 'July', '08' => 'August', '09' => 'September', '10' => 'October', '11' => 'November', '12' => 'December');
+		$months = array('01' => '一月', '02' => '二月', '03' => '三月', '04' => '四月', '05' => '五月', '06' => '六月', '07' => '七月', '08' => '八月', '09' => '九月', '10' => '十月', '11' => '十一月', '12' => '十二月');
 
 		return $this->selectTag($tagName . "_month", $months, $monthValue, $selectAttr, $optionAttr, $showEmpty);
 	}
