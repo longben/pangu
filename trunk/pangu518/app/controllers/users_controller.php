@@ -42,8 +42,8 @@ class UsersController extends AppController {
 	function edit($id = null) {
 		if(empty($this->data)) {
 			if(!$id) {
-				$this->Session->setFlash('Invalid id for User');
-				$this->redirect('/users/index');
+				$this->Session->setFlash('非法请求！');
+				$this->redirect('/members/index');
 			}
 			$this->data = $this->User->read(null, $id);
 			$this->set('memberGrades', $this->User->MemberGrade->generateList(
@@ -64,11 +64,16 @@ class UsersController extends AppController {
 			$this->cleanUpFields();
 			if($this->User->save($this->data)) {
 				$this->Session->setFlash('会员资料保存成功！');
-				$this->redirect('/users/index');
+				$this->redirect('/members/index');
 			} else {
-				$this->Session->setFlash('Please correct errors below.');
-				$this->set('memberGrades', $this->User->MemberGrade->generateList());
-				$this->set('regions', $this->User->Region->generateList());
+				$this->Session->setFlash('请检查下面的错误.');
+				$this->set('regions', $this->User->Region->generateList(
+				  $conditions = "id like '__0000'",
+				  $order = 'id',
+				  $limit = null,
+				  $keyPath = '{n}.Region.id',
+				  $valuePath = '{n}.Region.region_name')
+				);
 			}
 		}
 	}
@@ -95,9 +100,31 @@ class UsersController extends AppController {
 			$this->redirect('/users/index');
 		}
 	}
-	
-   function performance($id = null) {
-   }
+
+	/**
+	 * 会员业绩
+	 *
+	 * @param unknown_type $user_id
+	 */
+	function performance($user_id = null) {
+	}
+
+	/**
+	 * 历史分红
+	 *
+	 * @param unknown_type $user_id
+	 */
+	function bonus($user_id = null) {
+	}
+
+	/**
+	 * 会员网络
+	 *
+	 * @param unknown_type $user_id
+	 */
+	function network($user_id = null) {
+	}
+     
 
 }
 ?>

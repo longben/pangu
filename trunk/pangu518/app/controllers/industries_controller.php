@@ -41,7 +41,7 @@ class IndustriesController extends AppController {
 		} else {
 			$this->cleanUpFields();
 			if($this->Industry->save($this->data)) {
-				$this->Session->setFlash('The Industry has been saved');
+				$this->Session->setFlash('行业信息修改成功！');
 				$this->redirect('/industries/index');
 			} else {
 				$this->Session->setFlash('Please correct errors below.');

@@ -15,8 +15,8 @@
 	<td><?php echo $member['User']['user_name']; ?></td>
 	<td><?php echo $member['Member']['email']; ?></td>
 	<td class="actions">
-		<?php echo $html->link('查看','/members/view/' . $member['Member']['uid'])?>
-		<?php echo $html->link('编辑','/members/edit/' . $member['Member']['uid'])?>
+		<?php echo $html->link('查看','/users/view/' . $member['Member']['uid'])?>
+		<?php echo $html->link('编辑','/users/edit/' . $member['Member']['uid'])?>
 		<?php echo $html->link('个人业绩','/users/performance/' . $member['Member']['uid'])?>
 		<?php echo $html->link('历史分红','/users/bonus/' . $member['Member']['uid'])?>
 		<?php echo $html->link('会员网络','/users/network/' . $member['Member']['uid'])?>
@@ -24,9 +24,10 @@
 </tr>
 <?php endforeach; ?>
 </table>
-
+<!--
 <ul class="actions">
 	<li><?php echo $html->link('添加新会员', '/members/add'); ?></li>
 	<li><?php echo $html->link('新会员注册', '/members/register'); ?></li>
 </ul>
+-->
 </fieldset>

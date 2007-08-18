@@ -1,0 +1,8 @@
+<fieldset align=center>
+<legend>会员历史分红</legend> 
+
+<ul class="actions">
+ <hr/>
+ <li><?php echo $html->link('用户列表', '/members/index') ?> </li>
+</ul>
+</fieldset>

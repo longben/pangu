@@ -1,6 +1,11 @@
 <fieldset align=center>
 <legend>修改个人资料</legend>
 <form action="<?php echo $html->url('/members/profile/'.$html->tagValue('Member/uid')); ?>" method="post">
+<div class="optional"> 
+	<?php echo $form->labelTag('User/region_id', '所属地区：');?>
+ 	<?php echo $html->selectTag('User/region_id', $regions, $html->tagValue('User/region_id'), array(), array(), false);?>
+	<?php echo $html->tagErrorMsg('User/region_id', 'Please select the Region.') ?>
+</div>
 <div class="required"> 
 	<?php echo $form->labelTag('Member/username', '登录名：');?>
  	<?php echo $html->input('Member/username', array('size' => '60','readOnly' => 'true'));?>
@@ -25,11 +30,6 @@
 	<?php echo $form->labelTag('Member/email', '电子邮箱：');?>
  	<?php echo $html->input('Member/email', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('Member/email', 'Please enter the Email.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('User/region_id', '所属地区：');?>
- 	<?php echo $html->selectTag('User/region_id', $regions, $html->tagValue('User/region_id'), array(), array(), false);?>
-	<?php echo $html->tagErrorMsg('User/region_id', 'Please select the Region.') ?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('User/telephone', '常用电话：');?>
@@ -63,7 +63,7 @@
 </div>
 <?php echo $html->hidden('Member/uid')?>
 <div class="submit">
-	<?php echo $html->submit('保存更新');?>
+	<?php echo $html->submit('保存');?>
 </div>
 </form>
 </fieldset>

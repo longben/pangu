@@ -32,12 +32,4 @@
 <?php
   }
 ?>
-<ul>
-  <li><?php echo $html->link('代金券录入', '/user_coupons/input'); ?></li>
-</ul>
 </fieldset>
-<SCRIPT LANGUAGE="JavaScript">
-<!--
-
-//-->
-</SCRIPT>

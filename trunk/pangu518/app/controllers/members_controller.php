@@ -92,7 +92,7 @@ class MembersController extends AppController {
 		);
 		if(empty($this->data)) {
 			if(!$id) {
-				$this->Session->setFlash('Invalid id for Member');
+				$this->Session->setFlash('无效的用户！');
 			}
 			$this->data = $this->Member->read(null, $id);
 		} else {

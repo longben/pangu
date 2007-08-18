@@ -41,7 +41,6 @@
 	<li><?php echo $html->link('个人业绩','/users/performance/' . $user['User']['id'])?></li>
 	<li><?php echo $html->link('历史分红','/users/bonus/' . $user['User']['id'])?></li>
 	<li><?php echo $html->link('会员网络','/users/network/' . $user['User']['id'])?></li>
-	<li><?php echo $html->link('用户列表', '/users/index') ?> </li>
+	<li><?php echo $html->link('用户列表', '/members/index') ?> </li>
 </ul>
-
 </fieldset>

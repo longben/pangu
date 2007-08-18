@@ -8,7 +8,7 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Lottery/lottery_times', '开奖期数：');?>
- 	<?php echo $html->input('Lottery/lottery_times', array('size' => '60'));?>
+ 	<?php echo $html->input('Lottery/lottery_times', array('size' => '37'));?>
 	<?php echo $html->tagErrorMsg('Lottery/lottery_times', 'Please enter the Lottery Times.');?>
 </div>
 <div class="optional"> 

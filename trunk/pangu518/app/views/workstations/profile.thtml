@@ -2,6 +2,11 @@
 <legend>工作站资料维护</legend> 
 <form action="<?php echo $html->url('/workstations/profile/'); ?>" method="post">
 <div class="optional"> 
+	<?php echo $form->labelTag('Workstation/region_id', '所属地区：');?>
+ 	<?php echo $html->selectTag('Workstation/region_id', $regions, $html->tagValue('Workstation/region_id'), array(), array(), false);?>
+	<?php echo $html->tagErrorMsg('Workstation/region_id', 'Please enter the Region Id.');?>
+</div>
+<div class="optional"> 
 	<?php echo $form->labelTag('Workstation/ws_no', '工作站编号：');?>
  	<?php echo $html->input('Workstation/ws_no', array('size' => '60','readOnly' => 'true'));?>
 	<?php echo $html->tagErrorMsg('Workstation/ws_no', 'Please enter the Ws No.');?>
@@ -30,11 +35,6 @@
 	<?php echo $form->labelTag('Workstation/introduction', '工作站简介：');?>
  	<?php echo $html->textArea('Workstation/introduction', array('cols'=>'60', 'rows'=>'5'));?>
 	<?php echo $html->tagErrorMsg('Workstation/introduction', 'Please enter the Introduction.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Workstation/region_id', '所属地区：');?>
- 	<?php echo $html->selectTag('Workstation/region_id', $regions, $html->tagValue('Workstation/region_id'), array(), array(), false);?>
-	<?php echo $html->tagErrorMsg('Workstation/region_id', 'Please enter the Region Id.');?>
 </div>
 <?php echo $html->hidden('Workstation/id')?>
 <div class="submit">
