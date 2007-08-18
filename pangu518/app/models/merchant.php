@@ -67,10 +67,9 @@ class Merchant extends AppModel {
 		//Configure::write('debug',2);
 		$status = 3*100 + 4*10 + 1;
 		$sql = "select WorkstationCoupon.coupon_id from workstation_coupons as WorkstationCoupon 
-		  where WorkstationCoupon.workstation_id = $workstation_id
-		    and WorkstationCoupon.status = 131 limit $sum";
-		$coupons = $this->query($sql);
-				
+		    where WorkstationCoupon.workstation_id = $workstation_id
+		      and WorkstationCoupon.status = 131 limit $sum";
+			
 		$rs = $this->query($sql);
 		if(sizeof($rs)==$sum){
 			for($i=0;$i<sizeof($rs);$i++){
@@ -100,7 +99,7 @@ class Merchant extends AppModel {
                                    WHERE member_no = '$referees_no'");
 		$user_id = $ret[0]['User']['id'];
 		return $user_id;
-	}	
+	}
 
 }
 ?>
