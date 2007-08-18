@@ -30,7 +30,9 @@
 		if(empty($arr[0])){
 			echo("<script language='JavaScript'>alert('抱歉，您输入的推荐人登录名不存在，请重新输入，或保留为空！');history.go(-1);</script>");
 			exit();
-		}		
+		}
+	}else{
+		$referees = 1;
 	}
 
 
@@ -43,7 +45,8 @@
 	$id = $arr[0];
 
 	$sql = "insert into users(id,login_name,password,user_name,sex,member_no,cert_number,referees,region_id,telephone,mobile,accounts) values(".$id.",'".$login_name."','".$password."','".$user_name."',".$_POST["sex"].",'".$member_no."','".$cert_number."','".$referees."','".$region_id."','".$telephone."','".$mobile."','".$accounts."')";
+	echo $sql;
 	mysql_query($sql);
 
-	echo("<script language='JavaScript'>alert('恭喜您，注册成功，您可以登录进入盘古运营系统！');location.replace('main.php');</script>");
+	//echo("<script language='JavaScript'>alert('恭喜您，注册成功，您可以登录进入盘古运营系统！');location.replace('main.php');</script>");
 ?>
