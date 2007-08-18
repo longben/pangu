@@ -12,7 +12,6 @@ class Lottery extends AppModel {
 						'order' => '',
 						'dependent' => ''
 				),
-
 	);
 
 }

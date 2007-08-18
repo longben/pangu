@@ -1,6 +1,6 @@
 <fieldset>
 <legend>添加代金券</legend> 
-<form action="<?php echo $html->url('/coupons/add'); ?>" method="post">
+<form method="post">
 <div class="optional"> 
 	<?php echo $form->labelTag('Coupon/coupon_group', '代金券组团编号：');?>
  	<?php echo $html->input('Coupon/coupon_group', array('size' => '26'));?>
@@ -16,12 +16,80 @@
  	<?php echo $html->input('Coupon/custom_num', array('size' => '26'));?>
 	<?php echo $html->tagErrorMsg('Coupon/custom_num', 'Please enter the Custom Num.');?>
 </div>
-<div class="submit">
-	<?php echo $html->submit('批量生成代金券');?> 
+<div class="submit" id='init'>
+	<input type="button" value="批量生成代金券"  onclick="init()"/>
 </div>
-注：生成时间稍长，请等待……
+<span style="color:red;font-size:14px;display:none" id="msg">注意：代金券后台生成中，预审核或者导出请10分钟后查看，请等待……</span>
 </form>
-<ul class="actions">
-<li><?php echo $html->link('代金券维护', '/coupons/index')?></li>
-</ul>
 </fieldset>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+   function init(){
+   	    if($F('CouponCouponGroup')==''){
+   	    	alert('代金券组团编号不能为空!');
+   	    	$('CouponCouponGroup').focus();
+   	    	return false;
+   	    }else{
+   	    	var patrn = /^[A-Za-z0]{1}$/;
+   	    	if(!patrn.test($F('CouponCouponGroup'))){
+   	    		alert('代金券组团编号只能为一位数字0或者一位字母!');
+   	    		$('CouponCouponGroup').focus();
+   	    		return false;
+   	    	}
+   	    }
+   	    
+   	    if($F('CouponStart')=='' || $F('CouponEnd')==''){
+   	    	alert('代金券起止号码不能为空！');
+   	    	$('CouponStart').focus();
+   	    	return false;
+   	    }else{
+   	    	var patrn=/^(\d){1,9}$/;
+   	    	if(!patrn.test($F('CouponStart')) || !patrn.test($F('CouponEnd'))){
+   	    		alert('代金券起止号码只能为1到9位的数字！');
+   	    		$('CouponStart').focus();
+   	    		return false;
+   	    	}else{
+   	    		if($F('CouponStart') >= $F('CouponEnd')){
+   	    			alert('代金券开始号码数字大于或者等于结束号码数字！');
+   	    			$('CouponStart').focus();
+   	    			return false;   	    			
+   	    		}
+   	    	}
+   	    }
+   	    
+   	    if($F('CouponCustomNum')==''){
+   	    	alert('6位数字不能为空！');
+   	    	$('CouponCustomNum').focus();
+   	    	return false;  
+   	    }else{
+   	    	var patrn = /^\d{6}$/;
+   	    	if(!patrn.test($F('CouponCustomNum'))){
+   	    		alert('只能输入6位数字！');
+   	    		$('CouponCustomNum').focus();
+   	    		return false;
+   	    	}   	    	
+   	    }
+		
+		if(window.confirm('注意：请确认！\n\n是否初始化该批次代金券？')){
+			var url = '/coupons/initialize';
+			url = url + '/' + $F('CouponCouponGroup') + '/' + $F('CouponStart') + '/' + $F('CouponEnd') + '/' + $F('CouponCustomNum');
+			
+			$('msg').style.display = '';
+			$('init').style.display = 'none';
+
+			var myAjax = new Ajax.Request(url,{
+				method: 'get',
+				onComplete: showResponse,
+				asynchronous: true
+			});	
+
+		}else{
+			return false;
+		}
+   }
+   
+   function showResponse(originalRequest){
+   	
+   }
+-->  
+</SCRIPT>

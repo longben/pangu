@@ -5,7 +5,6 @@
 	<th>内部编号</th>
 	<th>行业名称</th>
 	<th>行业描述</th>
-	<th>状态</th>
 	<th>操作</th>
 </tr>
 <?php foreach ($industries as $industry): ?>
@@ -13,10 +12,9 @@
 	<td><?php echo $industry['Industry']['id']; ?></td>
 	<td><?php echo $industry['Industry']['industry_name']; ?></td>
 	<td><?php echo $industry['Industry']['introduction']; ?></td>
-	<td><?php echo $industry['Industry']['flag']; ?></td>
 	<td class="actions">
 		<?php echo $html->link('编辑','/industries/edit/' . $industry['Industry']['id'])?>
-		<?php echo $html->link('删除','/industries/delete/' . $industry['Industry']['id'], null, 'Are you sure you want to delete id ' . $industry['Industry']['id'])?>
+		<?php //echo $html->link('删除','/industries/delete/' . $industry['Industry']['id'], null, 'Are you sure you want to delete id ' . $industry['Industry']['id'])?>
 	</td>
 </tr>
 <?php endforeach; ?>

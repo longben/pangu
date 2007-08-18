@@ -2,7 +2,7 @@
 class CouponsController extends AppController {
 
 	var $name = 'Coupons';
-	var $helpers = array('Html', 'Form' );
+	var $helpers = array('Html', 'Form', 'Javascript' );
 
 	function index() {
 		$this->Coupon->recursive = 0;
@@ -11,7 +11,6 @@ class CouponsController extends AppController {
 		//$this->set('coupons', $this->Coupon->field('coupon_group','status = 0'));
 
 		//field($name, $conditions, $order)
-
 
 	}
 //findAll ($conditions, $fields, $order, $limit, $page, $recursive)
@@ -36,6 +35,32 @@ class CouponsController extends AppController {
 			$this->redirect('/coupons/index');
 		}
 		$this->set('coupon', $this->Coupon->read(null, $id));
+	}
+	
+	function initialize($coupon_group = null, $start = null, $end = null, $custom_num = null){
+				
+		if($coupon_group!=null && $start!=null && $end!=null && $custom_num!=null) {
+			ignore_user_abort(); // 后台运行
+			set_time_limit(0); // 取消脚本运行时间的超时上限
+			
+			$this->layout = 'ajax';
+			
+			for($i=$start;$i<=$end;$i++){
+				$this->cleanUpFields();
+				srand((double)microtime()*1000000);//时间的因素，以执行时的百万分之一秒当乱数种子
+				$randval = rand(10000,99999);
+				$this->data['Coupon']['coupon_group'] = $coupon_group;
+				$this->data['Coupon']['custom_num'] = $custom_num;
+				$this->data['Coupon']['coupon_no'] = $coupon_group .sprintf('%09s', $i);
+				$this->data['Coupon']['coupon_pwd'] = $this->Coupon->getPassword($custom_num,$randval);
+				$this->data['Coupon']['random_num'] = $randval;
+				
+				$this->Coupon->save($this->data);
+				$this->Coupon->create(); //再循环
+			}
+		}else{
+			
+		}
 	}
 
 	function add() {

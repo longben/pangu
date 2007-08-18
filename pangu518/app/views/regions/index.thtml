@@ -20,14 +20,15 @@
 	<th>行政区划编号</th>
 	<th>行政区划名称</th>
 	<th>有效标志</th>
-	<th>操作</th>
 </tr>
 <?php foreach ($regions as $region): ?>
 <tr>
 	<td><?php echo $region['Region']['id']; ?></td>
 	<td><?php echo $region['Region']['region_name']; ?></td>
 	<td><?php echo $region['Region']['flag']==1?'有效':'失效'; ?></td>
+	<!--
 	<td><?php echo $html->link('编辑','/regions/edit/' . $region['Region']['id'])?></td>
+	-->
 </tr>
 <?php endforeach; ?>
 </table>

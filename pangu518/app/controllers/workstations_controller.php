@@ -168,7 +168,7 @@ class WorkstationsController extends AppController {
 		if(empty($this->data)) {
 			if(!$user_id) {
 				$this->Session->setFlash('无效的工作站！');
-				$this->redirect('/workstations/profile');
+				$this->redirect('/admin');
 			}
 			$this->data = $this->Workstation->findByUserId($user_id);
 			$this->set('regions', $this->Workstation->Region->generateList(

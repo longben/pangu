@@ -64,13 +64,6 @@ class User extends AppModel {
 				    	$this->execute($sql);
 				    }						
 					break;
-				case 5: //金领会员
-				    $user_count = $this->findCount(array('referees' => $user_id,'member_grades_id' => ' >= 5'));
-				    if($user_count >= 30){
-				    	$sql = "update users set member_grades_id = 6 where id = " . $user_id;
-				    	$this->execute($sql);
-				    }				
-					break;
 			}
 		}
 	}	

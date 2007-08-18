@@ -88,7 +88,14 @@ class LotteriesController extends AppController {
 	}
 	
    function dividend() {
-   }	
+   }
+   
+   /**
+    * 当期分红相关数据
+    *
+    */
+   function currently() {
+   }   
 
 }
 ?>

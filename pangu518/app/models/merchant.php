@@ -42,7 +42,7 @@ class Merchant extends AppModel {
 
 	);
 
-	var $hasOne = array(
+	var $hasMany = array(
 			'LotteryBetting' =>
 				array('className' => 'LotteryBetting',
 						'foreignKey' => 'merchant_id',

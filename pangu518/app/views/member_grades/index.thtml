@@ -17,7 +17,7 @@
 	<td><?php echo $memberGrade['MemberGrade']['ws_per']; ?></td>
 	<td class="actions">
 		<?php echo $html->link('编辑','/member_grades/edit/' . $memberGrade['MemberGrade']['id'])?>
-		<?php echo $html->link('删除','/member_grades/delete/' . $memberGrade['MemberGrade']['id'], null, '你是否真要删除：' . $memberGrade['MemberGrade']['grade_name'])?>
+		<?php //echo $html->link('删除','/member_grades/delete/' . $memberGrade['MemberGrade']['id'], null, '你是否真要删除：' . $memberGrade['MemberGrade']['grade_name'])?>
 	</td>
 </tr>
 <?php endforeach; ?>
