@@ -52,9 +52,9 @@
 	<?php echo $html->tagErrorMsg('Merchant/accounts', 'Please enter the Accounts.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Merchant/referees', '推荐人：');?>
+	<?php echo $form->labelTag('Merchant/user_name', '推荐人：');?>
  	<?php echo $html->input('Referee/user_name', array('size' => '60','readOnly' => 'true'));?>
-	<?php echo $html->tagErrorMsg('Merchant/referees', 'Please enter the Referees.');?>
+	<?php echo $html->tagErrorMsg('Merchant/user_name', 'Please enter the Referees.');?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Merchant/bargain_no', '合同编号：');?>
@@ -63,6 +63,7 @@
 </div>
 <?php echo $html->hidden('Merchant/id')?>
 <?php echo $html->hidden('Merchant/status')?>
+<?php echo $html->hidden('Merchant/referees')?>
 <div class="submit">
 	<?php echo $html->submit('保存');?>
 </div>

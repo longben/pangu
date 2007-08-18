@@ -53,7 +53,8 @@ class MerchantsController extends AppController {
 			             $limit = null,
 			             $keyPath = '{n}.Region.id',
 			             $valuePath = '{n}.Region.region_name')
-			);			$this->render();
+			);
+			$this->render();
 		} else {
 			$this->cleanUpFields();
 			$user = $this->Merchant->User->findByLoginName($this->data['Merchant']['login_name']);
@@ -65,13 +66,24 @@ class MerchantsController extends AppController {
 			$this->data['Merchant']['referees'] = $referees;
 			
 			if($this->Merchant->save($this->data)) {
-				$this->Session->setFlash('The Merchant has been saved');
+				$this->Session->setFlash('会员消费单位添加成功，审核后生效。');
 				$this->redirect('/merchants/index');
 			} else {
-				$this->Session->setFlash('Please correct errors below.');
-				$this->set('users', $this->Merchant->User->generateList());
-				$this->set('industries', $this->Merchant->Industry->generateList());
-				$this->set('regions', $this->Merchant->Region->generateList());
+				$this->Session->setFlash('会员消费单位添加失败，请检查下面的错误！');
+				$this->set('industries', $this->Merchant->Industry->generateList(
+				             $conditions = 'Industry.flag = 1',
+				             $order = 'Industry.id',
+				             $limit = null,
+				             $keyPath = '{n}.Industry.id',
+				             $valuePath = '{n}.Industry.industry_name')
+				);
+				$this->set('regions', $this->Merchant->Region->generateList(
+				             $conditions = "id like '__0000'",
+				             $order = 'id',
+				             $limit = null,
+				             $keyPath = '{n}.Region.id',
+				             $valuePath = '{n}.Region.region_name')
+				);
 			}
 		}
 	}
@@ -117,6 +129,7 @@ class MerchantsController extends AppController {
 			}
 			$this->cleanUpFields();
 			if($status ==9 && $this->Merchant->save($this->data)) {
+				$this->Merchant->User->updateGrade($this->data['Merchant']['referees']); //更新会员等级
 				$this->Session->setFlash('会员消费单位资料更新成功！');
 				$this->redirect('/merchants/audit');
 			} else {
