@@ -48,5 +48,5 @@
 	echo $sql;
 	mysql_query($sql);
 
-	//echo("<script language='JavaScript'>alert('恭喜您，注册成功，您可以登录进入盘古运营系统！');location.replace('main.php');</script>");
+	echo("<script language='JavaScript'>alert('恭喜您，注册成功，您可以登录进入盘古运营系统！');location.replace('main.php');</script>");
 ?>
