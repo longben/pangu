@@ -1,0 +1,54 @@
+<div class="category">
+<h2>View Category</h2>
+
+<dl>
+	<dt>Id</dt>
+	<dd>&nbsp;<?php echo $category['Category']['id']?></dd>
+	<dt>Category Name</dt>
+	<dd>&nbsp;<?php echo $category['Category']['category_name']?></dd>
+	<dt>Category Nicename</dt>
+	<dd>&nbsp;<?php echo $category['Category']['category_nicename']?></dd>
+	<dt>Category Description</dt>
+	<dd>&nbsp;<?php echo $category['Category']['category_description']?></dd>
+	<dt>Category Parent</dt>
+	<dd>&nbsp;<?php echo $category['Category']['category_parent']?></dd>
+	<dt>Category Count</dt>
+	<dd>&nbsp;<?php echo $category['Category']['category_count']?></dd>
+</dl>
+<ul class="actions">
+	<li><?php echo $html->link('Edit Category',   '/categories/edit/' . $category['Category']['id']) ?> </li>
+	<li><?php echo $html->link('Delete Category', '/categories/delete/' . $category['Category']['id'], null, 'Are you sure you want to delete: id ' . $category['Category']['id'] . '?') ?> </li>
+	<li><?php echo $html->link('List Categories',   '/categories/index') ?> </li>
+	<li><?php echo $html->link('New Category',	'/categories/add') ?> </li>
+</ul>
+
+</div>
+<div class="related">
+<h3>Related Posts</h3>
+<?php if (!empty($category['Post'])):?>
+<table cellpadding="0" cellspacing="0">
+<tr>
+<?php foreach ($category['Post']['0'] as $column => $value): ?>
+<th><?php echo $column?></th>
+<?php endforeach; ?>
+<th>Actions</th>
+</tr>
+<?php foreach ($category['Post'] as $post):?>
+<tr>
+	<?php foreach ($post as $column => $value):?>
+		<td><?php echo $value;?></td>
+	<?php endforeach;?>
+	<td class="actions">
+		<?php echo $html->link('View', '/posts/view/' . $post['id']);?>
+		<?php echo $html->link('Edit', '/posts/edit/' . $post['id']);?>
+		<?php echo $html->link('Delete', '/posts/delete/' . $post['id'], null, 'Are you sure you want to delete: id ' . $post['id'] . '?');?>
+	</td>
+</tr>
+<?php endforeach; ?>
+</table>
+<?php endif; ?>
+
+<ul class="actions">
+	<li><?php echo $html->link('New Post', '/posts/add/');?> </li>
+</ul>
+</div>

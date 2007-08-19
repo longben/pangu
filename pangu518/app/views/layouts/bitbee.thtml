@@ -1,0 +1,14 @@
+<html>
+<head>
+<title>盘古消费运营软件</title>
+<?php echo $html->charset('UTF-8');?>
+<link rel="icon" href="<?php echo $this->webroot . 'favicon.ico';?>" type="image/x-icon" />
+<link rel="shortcut icon" href="<?php echo $this->webroot . 'favicon.ico';?>" type="image/x-icon" />
+</head>
+<body>
+<?php
+  echo $content_for_layout;
+  echo $cakeDebug;
+?>
+</body>
+</html>

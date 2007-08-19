@@ -160,7 +160,6 @@ class MembersController extends AppController {
 	}
 	
    function login() {
-      //$this->layout="admin";
       $this->set('error', false);
       if (!empty($this->data)){
       	$someone = $this->Member->findByUsername($this->data['Member']['username']);
@@ -169,7 +168,7 @@ class MembersController extends AppController {
       	if(!empty($someone['Member']['password']) &&
             ($someone['Member']['password'] == md5($this->data['Member']['password']))){
       		$this->Session->write('User', $someone['Member']);
-      		$this->redirect('/admin_index.php');
+      		$this->redirect('/admin_index');
       	}
       	else{
       		$this->set('error', true);

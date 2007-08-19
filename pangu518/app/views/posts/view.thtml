@@ -1,0 +1,12 @@
+<fieldset align=center>
+<legend>消息阅读</legend>
+<div align="center"><?php echo $post['Post']['post_title']?>[<?php echo $post['Category']['category_name'];?>]</div>
+<hr/>
+<div><?php echo $post['Post']['post_content']?></div>
+<hr/>
+<div align="left">撰写时间：<?php echo $post['Post']['created']?></div>
+<ul class="actions">
+	<li><?php echo $html->link('编辑',   '/posts/edit/' . $post['Post']['id']) ?> </li>
+	<li><?php echo $html->link('返回',   '/posts/index') ?> </li>
+</ul>
+</fieldset>

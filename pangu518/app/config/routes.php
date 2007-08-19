@@ -35,7 +35,7 @@
  */
     $Route->connect('/admin', array('controller' => 'members', 'action' => 'login'));
 	$Route->connect('/', array('controller' => 'pages', 'action' => 'display', 'home'));
-	$Route->connect('/admin_index', array('controller' => 'pages', 'action' => 'display', 'admin_index'));
+	$Route->connect('/admin_index', array('controller' => 'pages', 'action' => 'admin_index', 'admin_index'));
 /**
  * ...and connect the rest of 'Pages' controller's urls.
  */
