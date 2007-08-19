@@ -249,7 +249,33 @@ create table coupon_lists(
   coupon_group     char(3)       not null                comment '代金券组团 0组团 A组团',
   custom_num       varchar(10)   not null                comment '用户随机数',
   created          timestamp                             comment '创建时间',
-  modified         timestamp                             COMMENT '修改时间',
+  modified         timestamp                             comment '修改时间',
   status           int(1)        not null default 0      comment '状态 0-等待中，1-生成中，2-生成完毕',
   primary key (id)
 ) engine=MyISAM default charset=utf8 comment='代金券生成排序';
+
+
+/* 网站栏目分类表 */
+create table categories(
+  id                   int(10)       not null auto_increment comment '主键',
+  category_name        varchar(18)   not null default ''     comment '栏目分类名称',
+  category_nicename    varchar(66)   not null default ''     comment '栏目分类别名',
+  category_description longtext                              comment '栏目简介',
+  category_parent      int(10)                               comment '父亲栏目',
+  category_count       int(10)                               comment '栏目点击',
+  primary key (id)
+) engine=MyISAM default charset=utf8 comment='网站栏目分类';
+
+
+/* 网站栏目文章表 */
+create table posts(
+  id                   int(10)       not null auto_increment comment '主键',
+  category_id          varchar(18)   not null default ''     comment '栏目分类',
+  post_title           varchar(255)  not null                comment '标题',
+  post_content         longtext      not null                comment '内容',
+  post_status          enum('publish','draft','private','static','object','attachment') not null default 'publish' comment '发布状态',
+  post_count           int(10)       not null default 0      comment '点击次数',
+  created              timestamp                             comment '创建时间',
+  modified             timestamp                             comment '修改时间',
+  primary key (id)
+) engine=MyISAM default charset=utf8 comment='网站栏目文章';
