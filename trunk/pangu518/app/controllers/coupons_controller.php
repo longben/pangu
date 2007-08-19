@@ -2,7 +2,7 @@
 class CouponsController extends AppController {
 
 	var $name = 'Coupons';
-	var $helpers = array('Html', 'Form', 'Javascript' );
+	var $helpers = array('Html', 'Form', 'Javascript', 'Xls');
 
 	function index() {
 		$this->Coupon->recursive = 0;
@@ -118,6 +118,18 @@ class CouponsController extends AppController {
 			$this->Session->setFlash('The Coupon deleted: id '.$id.'');
 			$this->redirect('/coupons/index');
 		}
+	}
+	function export($coupon_group = null, $custom_num = null) {
+		set_time_limit(120);
+		
+		$this->layout = 'ajax';
+		$this->data = $this->Coupon->findAll(
+		array(
+		'coupon_group' => $coupon_group,
+		'custom_num' => $custom_num,
+		'status' => 0)
+		);
+		$this->set('coupons',$this->data);
 	}
 
 }
