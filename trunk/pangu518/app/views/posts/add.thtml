@@ -1,0 +1,31 @@
+<fieldset align=center>
+<legend>新增消息</legend>
+<form action="<?php echo $html->url('/posts/add'); ?>" method="post">
+<div class="optional"> 
+	<?php echo $form->labelTag('Post/category_id', '消息分类：');?>
+ 	<?php echo $html->selectTag('Post/category_id', $categories, $html->tagValue('Post/category_id'), array('style'=>'width: 150px'), array(), false);?>
+	<?php echo $html->tagErrorMsg('Post/category_id', 'Please select the Category.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Post/post_status', '发布状态：');?>
+ 	<?php echo $html->selectTag('Post/post_status', $postStatuses, 'draft', array('style'=>'width: 150px'), array(), false);?>
+	<?php echo $html->tagErrorMsg('Post/post_status', 'Please select the Post Status.') ?>
+</div>
+<div class="required"> 
+	<?php echo $form->labelTag('Post/post_title', '消息标题：');?>
+ 	<?php echo $html->input('Post/post_title', array('size' => '80'));?>
+	<?php echo $html->tagErrorMsg('Post/post_title', '消息标题不能为空.');?>
+</div>
+<div class="required"> 
+	<?php echo $form->labelTag( 'Post/post_content', '消息内容：' );?>
+ 	<?php echo $html->textarea('Post/post_content', array('cols' => '80', 'rows' => '10'));?>
+	<?php echo $html->tagErrorMsg('Post/post_content', '消息内容不能为空.');?>
+</div>
+<div class="submit">
+	<?php echo $html->submit('新增');?>
+</div>
+</form>
+<ul class="actions">
+<li><?php echo $html->link('消息列表', '/posts/index')?></li>
+</ul>
+</fieldset>

@@ -101,5 +101,10 @@ class PagesController extends AppController{
 		  $this->set('title', $title);
 		  $this->render(join('/', $path));
 	 }
+	 
+	 function admin_index() {
+	 	$this->layout = 'ajax';
+	 }
+	 
 }
 ?>

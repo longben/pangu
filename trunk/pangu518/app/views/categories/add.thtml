@@ -1,0 +1,26 @@
+<fieldset align=center>
+<legend>新增消息分类</legend> 
+<form action="<?php echo $html->url('/categories/add'); ?>" method="post">
+<div class="required"> 
+	<?php echo $form->labelTag('Category/category_name', '分类名称：');?>
+ 	<?php echo $html->input('Category/category_name', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Category/category_name', '分类名称不能为空！');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Category/category_nicename', '分类别名：');?>
+ 	<?php echo $html->input('Category/category_nicename', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Category/category_nicename', 'Please enter the Category Nicename.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag( 'Category/category_description', '分类描述：' );?>
+ 	<?php echo $html->textarea('Category/category_description', array('cols' => '60', 'rows' => '10'));?>
+	<?php echo $html->tagErrorMsg('Category/category_description', 'Please enter the Category Description.');?>
+</div>
+<div class="submit">
+	<?php echo $html->submit('新增');?>
+</div>
+</form>
+<ul class="actions">
+<li><?php echo $html->link('消息分类列表', '/categories/index')?></li>
+</ul>
+</fieldset>

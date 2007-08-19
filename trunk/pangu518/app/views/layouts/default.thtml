@@ -8,6 +8,7 @@
 <?php 
 if(isset($javascript)):
     echo $javascript->link('prototype.js');
+	echo $javascript->link('tiny_mce/tiny_mce.js');
 endif;          
 ?> 
 <?php echo $html->css('pangu.generic');?>

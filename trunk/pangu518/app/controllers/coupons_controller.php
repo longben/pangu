@@ -120,7 +120,7 @@ class CouponsController extends AppController {
 		}
 	}
 	function export($coupon_group = null, $custom_num = null) {
-		set_time_limit(120);
+		set_time_limit(0);
 		
 		$this->layout = 'ajax';
 		$this->data = $this->Coupon->findAll(

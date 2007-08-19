@@ -1,0 +1,29 @@
+<fieldset align=center>
+<legend>网站消息列表</legend> 
+<table cellpadding="0" cellspacing="0" width="100%">
+<tr>
+	<th>标题</th>
+	<th>所属分类</th>
+	<th>消息状态</th>
+	<th>撰写时间</th>
+	<th>操作</th>
+</tr>
+<?php foreach ($posts as $post): ?>
+<tr>
+	<td><?php echo $post['Post']['post_title']; ?></td>
+	<td><?php echo $post['Category']['category_name']; ?></td>
+	<td><?php echo $post['Post']['post_status']; ?></td>
+	<td><?php echo $post['Post']['created']; ?></td>
+	<td class="actions">
+		<?php echo $html->link('查看','/posts/view/' . $post['Post']['id'])?>
+		<?php echo $html->link('编辑','/posts/edit/' . $post['Post']['id'])?>
+		<?php echo $html->link('删除','/posts/delete/' . $post['Post']['id'], null, '你是否真要删除文章： ' . $post['Post']['post_title'])?>
+	</td>
+</tr>
+<?php endforeach; ?>
+</table>
+
+<ul class="actions">
+	<li><?php echo $html->link('新增消息', '/posts/add'); ?></li>
+</ul>
+</fieldset>
