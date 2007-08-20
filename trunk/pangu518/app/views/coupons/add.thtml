@@ -43,9 +43,9 @@
    	    	$('CouponStart').focus();
    	    	return false;
    	    }else{
-   	    	var patrn=/^(\d){1,9}$/;
+   	    	var patrn=/^(\d){1,6}$/;
    	    	if(!patrn.test($F('CouponStart')) || !patrn.test($F('CouponEnd'))){
-   	    		alert('代金券起止号码只能为1到9位的数字！');
+   	    		alert('代金券起止号码只能为1到6位的数字！');
    	    		$('CouponStart').focus();
    	    		return false;
    	    	}else{
