@@ -1,7 +1,6 @@
-
 <fieldset>
 <legend>编辑会员资料</legend> 
-<form action="<?php echo $html->url('/users/edit/'.$html->tagValue('User/id')); ?>" method="post">
+<form action="<?php echo $html->url('/users/edit/'.$html->tagValue('User/id')); ?>" method="post" onsubmit="return check()">
 <div class="optional"> 
 	<?php echo $form->labelTag('User/region_id', '所属地区：');?>
  	<?php echo $html->selectTag('User/region_id', $regions, $html->tagValue('User/region_id'), array(), array(), false);?>
@@ -9,7 +8,7 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('User/login_name', '登录名：');?>
- 	<?php echo $html->input('User/login_name', array('size' => '60'));?>
+ 	<?php echo $html->input('User/login_name', array('size' => '60','readOnly' => 'true'));?>
 	<?php echo $html->tagErrorMsg('User/login_name', 'Please enter the Login Name.');?>
 </div>
 <div class="optional"> 
@@ -83,3 +82,24 @@
 <li><?php echo $html->link('用户列表', '/members/index') ?> </li>
 </ul>
 </fieldset>
+<script language="Javascript">
+  function check(){
+  	if($F('UserUserName')==''){
+  		alert('用户真实姓名不能为空！');
+  		$('UserUserName').focus();
+  		return false;
+  	}
+  	
+  	if($F('UserCertNumber')==''){
+  		alert('身份证号码不能为空！');
+  		$('UserCertNumber').focus();
+  		return false;
+  	}
+  	
+  	if($F('UserAccounts')==''){
+  		alert('为了便于转账结算，银行帐号不能为空！');
+  		$('UserAccounts').focus();
+  		return false;
+  	}
+  }
+</script>

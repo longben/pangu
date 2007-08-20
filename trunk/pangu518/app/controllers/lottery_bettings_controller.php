@@ -95,7 +95,8 @@ class LotteryBettingsController extends AppController {
 				$this->data['LotteryBetting']['user_id'] = $user_id;
 				if($this->LotteryBetting->save($this->data)){
 					$this->Session->setFlash('会员参与分红成功！');
-					$this->redirect('/lottery_bettings/user_histroy');
+					//$this->redirect('/lottery_bettings/user_histroy');
+					$this->redirect('/user_coupons/input');
 				}
 			} else {
 				$this->Session->setFlash('你拥有的代金券数量不足！');
@@ -139,8 +140,9 @@ class LotteryBettingsController extends AppController {
 				$this->data['LotteryBetting']['user_id'] = $user_id;
 				$this->data['LotteryBetting']['merchant_id'] = $merchant_id;
 				if($this->LotteryBetting->save($this->data)){
-					$this->Session->setFlash('会员参与分红成功！');
-					$this->redirect('/lottery_bettings/merchant_histroy');
+					$this->Session->setFlash('会员消费单位参与分红成功！');
+					//$this->redirect('/lottery_bettings/merchant_histroy');
+					$this->redirect('/merchant_coupons');
 				}
 			} else {
 				$this->Session->setFlash('你拥有的代金券数量不足！');
