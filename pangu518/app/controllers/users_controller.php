@@ -124,7 +124,11 @@ class UsersController extends AppController {
 	 */
 	function network($user_id = null) {
 	}
-     
+	
+	function check($login_name = null){
+		$this->layout = 'ajax';
+		$this->set('isExistUser',$this->User->findCount(array('login_name' => $login_name)));
+	}
 
 }
 ?>

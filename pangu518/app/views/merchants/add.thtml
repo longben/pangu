@@ -1,14 +1,14 @@
 <fieldset align=center>
 <legend>新增会员消费单位</legend> 
-<form action="<?php echo $html->url('/merchants/add'); ?>" method="post">
+<form action="<?php echo $html->url('/merchants/add'); ?>" method="post" onsubmit="return check()">
 <div class="optional"> 
 	<?php echo $form->labelTag('Merchant/region_id', '所属地区：');?>
- 	<?php echo $html->selectTag('Merchant/region_id', $regions, $html->tagValue('Merchant/region_id'), array(), array(), false);?>
+ 	<?php echo $html->selectTag('Merchant/region_id', $regions, $html->tagValue('Merchant/region_id'), array('style'=>'width: 150px'), array(), false);?>
 	<?php echo $html->tagErrorMsg('Merchant/region_id', 'Please select the Region.') ?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Merchant/industry_id', '所属行业：');?>
- 	<?php echo $html->selectTag('Merchant/industry_id', $industries, $html->tagValue('Merchant/industry_id'), array(), array(), false);?>
+ 	<?php echo $html->selectTag('Merchant/industry_id', $industries, $html->tagValue('Merchant/industry_id'), array('style'=>'width: 150px'), array(), false);?>
 	<?php echo $html->tagErrorMsg('Merchant/industry_id', 'Please select the Industry.') ?>
 </div>
 <div class="optional"> 
@@ -18,7 +18,7 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Merchant/login_name', '消费单位拥有人：');?>
- 	<?php echo $html->input('Merchant/login_name', array('size' => '50'));?>会员登录名
+ 	<?php echo $html->input('Merchant/login_name', array('size' => '50'));?><span style='color:red'>会员登录名</span>
 	<?php echo $html->tagErrorMsg('Merchant/login_name', 'Please select the User.') ?>
 </div>
 <div class="optional"> 
@@ -69,3 +69,38 @@
 <li><?php echo $html->link('会员消费单位列表', '/merchants/index')?></li>
 </ul>
 </fieldset>
+<script language="Javascript">
+    var checkMoney = false;
+	function check(){
+		if($F('MerchantMerchantName')==''){
+			alert('消费单位名称不能为空！');
+			$('MerchantMerchantName').focus();
+			return false;
+		}
+		
+		if($F('MerchantLoginName')==''){
+			alert('消费单位拥有人不能为空！\n\n请直接填写会员消费单位所有者会员帐号！');
+			$('MerchantLoginName').focus();
+			return false;
+		}else{
+			var url = '/users/check/' + $F('MerchantLoginName');
+			var myAjax = new Ajax.Request(url,{
+				method: 'get',
+				onComplete: showResponse,
+				asynchronous:false
+			});
+			return checkMoney;
+		}
+	}
+
+   function showResponse(originalRequest){
+   	  var count = parseInt(originalRequest.responseText);
+      if(count == 0){
+      	alert('消费单位拥有人帐号录入不正确，请检查重新录入。');
+      	$('MerchantLoginName').focus();
+        checkMoney = false;
+      }else{
+      	checkMoney = true;
+      }
+   }
+</script>

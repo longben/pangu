@@ -1,6 +1,6 @@
 <fieldset align=center>
 <legend>代金券录入</legend> 
-<form action="<?php echo $html->url('/user_coupons/input'); ?>" method="post">
+<form action="<?php echo $html->url('/user_coupons/input'); ?>" method="post" onsubmit="return check()">
    <?php echo $html->hiddenTag('UserCoupon/user_id',$this->controller->Session->read('User.uid'));?>
 <div class="optional"> 
 	<?php echo $form->labelTag('Coupon/coupon_no', '代金券编号：');?>
@@ -22,3 +22,28 @@
  <li><?php echo $html->link('参与分红', '/lottery_bettings/user'); ?></li>
 </ul>
 </fieldset>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+	function check(){
+		if($F('CouponCouponNo')==''){
+			alert('代金券编号不能为空！');
+			$('CouponCouponNo').focus();
+			return false;
+		}
+		
+		if($F('CouponCouponPwd')==''){
+			alert('代金券密码不能为空！');
+			$('CouponCouponPwd').focus();
+			return false;
+		}else{
+	  		var patrn=/^(\d){6}$/;
+	  		if(!patrn.test($F('CouponCouponPwd'))){
+	  			alert('代金券密码为6位数字！');
+	  			$('CouponCouponPwd').focus();
+	  			return false;
+	  		}			
+		}
+		
+	}
+//-->
+</SCRIPT>

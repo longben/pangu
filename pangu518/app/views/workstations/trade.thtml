@@ -43,7 +43,15 @@
    function check(){
    	    if($F('MerchantNumber')==''){
    	    	alert('预销售的代金券份额不能为空!');
+   	    	$('MerchantNumber').focus();
    	    	return false;
+   	    }else{
+   	    	var patrn = /^\d$/;
+   	    	if(!patrn.test($F('MerchantNumber'))){
+   	    		alert('预销售的代金券份额只能输入数字！');
+   	    		$('MerchantNumber').focus();
+   	    		return false;
+   	    	}   	    	
    	    }
 		var url = '/workstation_coupons/balance/<?=$this->controller->Session->read('ws_id')?>';
 		var myAjax = new Ajax.Request(url,{

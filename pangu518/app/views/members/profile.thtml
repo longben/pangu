@@ -1,6 +1,6 @@
 <fieldset align=center>
 <legend>修改个人资料</legend>
-<form action="<?php echo $html->url('/members/profile/'.$html->tagValue('Member/uid')); ?>" method="post">
+<form action="<?php echo $html->url('/members/profile/'.$html->tagValue('Member/uid')); ?>" method="post" onsubmit="return check()">
 <div class="optional"> 
 	<?php echo $form->labelTag('User/region_id', '所属地区：');?>
  	<?php echo $html->selectTag('User/region_id', $regions, $html->tagValue('User/region_id'), array(), array(), false);?>
@@ -67,3 +67,27 @@
 </div>
 </form>
 </fieldset>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+	function check(){
+		if($F('UserUserName')==''){
+			alert('真实姓名不能为空！');
+			$('UserUserName').focus();
+			return false;
+		}
+		
+		if($F('UserCertNumber')==''){
+			alert('身份证号码不能为空！');
+			$('UserCertNumber').focus();
+			return false;
+		}
+		
+		if($F('MemberEmail')==''){
+			alert('电子邮箱不能为空！');
+			$('MemberEmail').focus();
+			return false;
+		}
+		
+	}
+//-->
+</SCRIPT>

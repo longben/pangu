@@ -1,6 +1,6 @@
 <fieldset align=center>
 <legend>工作站资料维护</legend> 
-<form action="<?php echo $html->url('/workstations/profile/'); ?>" method="post">
+<form action="<?php echo $html->url('/workstations/profile/'); ?>" method="post" onsubmit="return check()">
 <div class="optional"> 
 	<?php echo $form->labelTag('Workstation/region_id', '所属地区：');?>
  	<?php echo $html->selectTag('Workstation/region_id', $regions, $html->tagValue('Workstation/region_id'), array(), array(), false);?>
@@ -42,3 +42,14 @@
 </div>
 </form>
 </fieldset>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+	function check(){
+		if($F('WorkstationWsName')==''){
+			alert('工作站名称不能为空！');
+			$('WorkstationWsName').focus();
+			return false;
+		}
+	}
+//-->
+</SCRIPT>

@@ -2,7 +2,7 @@
 class MerchantsController extends AppController {
 
 	var $name = 'Merchants';
-	var $helpers = array('Html', 'Form' );
+	var $helpers = array('Html', 'Form', 'Javascript' );
 
 	function index() {
 		$this->Merchant->recursive = 0;
