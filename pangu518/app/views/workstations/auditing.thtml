@@ -2,6 +2,11 @@
 <legend>工作站审核</legend> 
 <form action="<?php echo $html->url('/workstations/auditing/'.$html->tagValue('Workstation/id')); ?>" method="post">
 <div class="optional"> 
+	<?php echo $form->labelTag('Workstation/region_id', '所属地区：');?>
+ 	<?php echo $html->selectTag('Workstation/region_id', $regions, $html->tagValue('Workstation/region_id'), array('style'=>'width:150px'), array(), true);?>
+	<?php echo $html->tagErrorMsg('Workstation/region_id', 'Please select the Region.') ?>
+</div>
+<div class="optional"> 
 	<?php echo $form->labelTag('Workstation/ws_name', '工作站名称：');?>
  	<?php echo $html->input('Workstation/ws_name', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('Workstation/ws_name', 'Please enter the Ws Name.');?>
@@ -35,11 +40,6 @@
 	<?php echo $form->labelTag('Workstation/principal', '工作站负责人：');?>
  	<?php echo $html->input('Workstation/principal', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('Workstation/principal', 'Please enter the Principal.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Workstation/region_id', '所属地区：');?>
- 	<?php echo $html->selectTag('Workstation/region_id', $regions, $html->tagValue('Workstation/region_id'), array(), array(), true);?>
-	<?php echo $html->tagErrorMsg('Workstation/region_id', 'Please select the Region.') ?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Workstation/introduction', '工作站简介：');?>

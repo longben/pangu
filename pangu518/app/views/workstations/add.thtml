@@ -1,6 +1,6 @@
 <fieldset align=center>
 <legend>添加工作站</legend> 
-<form action="<?php echo $html->url('/workstations/add'); ?>" method="post">
+<form action="<?php echo $html->url('/workstations/add'); ?>" method="post" onsubmit="return check()">
 <?php echo $html->hiddenTag('Workstation/member_id',$this->controller->Session->read('User.uid'))?>
 <div class="optional"> 
 	<?php echo $form->labelTag('Workstation/region_id', '所属地区：');?>
@@ -52,3 +52,38 @@
 </div>
 </form>
 </fieldset>
+<script language="Javascript">
+    var checkMoney = false;
+	function check(){	
+		if($F('WorkstationLoginName')==''){
+			alert('工作站所有人不能为空！\n\n请直接填写工作站所有人会员帐号！');
+			$('WorkstationLoginName').focus();
+			return false;
+		}else{
+			var url = '/users/check/' + $F('WorkstationLoginName');
+			var myAjax = new Ajax.Request(url,{
+				method: 'get',
+				onComplete: showResponse,
+				asynchronous:false
+			});
+			return checkMoney;
+		}
+
+		if($F('WorkstationWsName')==''){
+			alert('工作站名称不能为空！');
+			$('WorkstationWsName').focus();
+			return false;
+		}		
+	}
+
+   function showResponse(originalRequest){
+   	  var count = parseInt(originalRequest.responseText);
+      if(count == 0){
+      	alert('工作站所有人帐号录入不正确，请检查重新录入。');
+      	$('WorkstationLoginName').focus();
+        checkMoney = false;
+      }else{
+      	checkMoney = true;
+      }
+   }
+</script>

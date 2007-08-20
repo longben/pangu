@@ -15,11 +15,11 @@
 <?php foreach ($workstations as $workstation): ?>
 <tr>
 	<td><?php echo $workstation['Workstation']['ws_no']; ?></td>
-	<td><?php echo $html->link($workstation['Workstation']['ws_name'],'/workstations/view/' . $workstation['Workstation']['id'])?></td>
-	<td>&nbsp;<?php echo $html->link($workstation['User']['user_name'], '/users/view/' .$workstation['User']['id'])?></td>
+	<td><?php echo $workstation['Workstation']['ws_name']; ?></td>
+	<td><?php echo $workstation['User']['user_name']; ?></td>
 	<td><?php echo $workstation['Referee']['user_name']; ?></td>
 	<td><?php echo $workstation['Workstation']['bargain_no']; ?></td>
-	<td>&nbsp;<?php echo $workstation['Region']['region_name']?></td>
+	<td><?php echo $workstation['Region']['region_name']?></td>
 	<td><?php echo $workstation['Workstation']['created']; ?></td>
 	<td><?php echo $workstation['Workstation']['status']==9?'待审核':'有效'; ?></td>
 	<td class="actions">
