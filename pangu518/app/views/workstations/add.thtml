@@ -9,37 +9,37 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Workstation/login_name', '工作站所有人：');?>
- 	<?php echo $html->input('Workstation/login_name', array('size' => '50'));?>会员登录名
+ 	<?php echo $html->input('Workstation/login_name', array('size' => '50','maxlength' => '20'));?>会员登录名
 	<?php echo $html->tagErrorMsg('Workstation/login_name', '必须输入工作站所有人！');?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Workstation/ws_name', '工作站名称：');?>
- 	<?php echo $html->input('Workstation/ws_name', array('size' => '60'));?>
+ 	<?php echo $html->input('Workstation/ws_name', array('size' => '60','maxlength' => '40'));?>
 	<?php echo $html->tagErrorMsg('Workstation/ws_name', '必须输入工作站名称！');?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Workstation/principal', '工作站负责人：');?>
- 	<?php echo $html->input('Workstation/principal', array('size' => '60'));?>
+ 	<?php echo $html->input('Workstation/principal', array('size' => '60','maxlength' => '20'));?>
 	<?php echo $html->tagErrorMsg('Workstation/principal', 'Please enter the Principal.');?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Workstation/referees_no', '推荐人编号：');?>
- 	<?php echo $html->input('Workstation/referees_no', array('size' => '60'));?>
+ 	<?php echo $html->input('Workstation/referees_no', array('size' => '60','maxlength' => '20'));?>
 	<?php echo $html->tagErrorMsg('Workstation/referees_no', 'Please enter the Principal.');?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Workstation/bargain_no', '合同编号：');?>
- 	<?php echo $html->input('Workstation/bargain_no', array('size' => '60'));?>
+ 	<?php echo $html->input('Workstation/bargain_no', array('size' => '60','maxlength' => '20'));?>
 	<?php echo $html->tagErrorMsg('Workstation/bargain_no', 'Please enter the Bargain No.');?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Workstation/address', '地址：');?>
- 	<?php echo $html->input('Workstation/address', array('size' => '60'));?>
+ 	<?php echo $html->input('Workstation/address', array('size' => '60','maxlength' => '50'));?>
 	<?php echo $html->tagErrorMsg('Workstation/address', 'Please enter the Address.');?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Workstation/telphone', '联系电话：');?>
- 	<?php echo $html->input('Workstation/telphone', array('size' => '60'));?>
+ 	<?php echo $html->input('Workstation/telphone', array('size' => '60','maxlength' => '30'));?>
 	<?php echo $html->tagErrorMsg('Workstation/telphone', 'Please enter the Telphone.');?>
 </div>
 <div class="optional"> 
@@ -59,7 +59,41 @@
 			alert('工作站所有人不能为空！\n\n请直接填写工作站所有人会员帐号！');
 			$('WorkstationLoginName').focus();
 			return false;
+		}
+
+		if($F('WorkstationWsName')==''){
+			alert('工作站名称不能为空！');
+			$('WorkstationWsName').focus();
+			return false;
+		}
+
+		if($F('WorkstationPrincipal')==''){
+			alert('工作站负责人不能为空！');
+			$('WorkstationPrincipal').focus();
+			return false;
+		}
+
+		if($F('WorkstationTelphone')==''){
+			alert('常用电话不能为空！');
+			$('WorkstationTelphone').focus();
+			return false;
 		}else{
+			var patrn = /[0-9/-]$/;
+			if(!patrn.test($F('WorkstationTelphone'))){
+				alert('电话格式不对');
+				$('WorkstationTelphone').focus();
+				return false;
+			}	
+		}
+
+		if($F('WorkstationIntroduction')==''){
+			alert('工作站简介不能为空！');
+			$('WorkstationIntroduction').focus();
+			return false;
+		}
+		
+		if($F('WorkstationLoginName')!=''){
+
 			var url = '/users/check/' + $F('WorkstationLoginName');
 			var myAjax = new Ajax.Request(url,{
 				method: 'get',
@@ -68,12 +102,6 @@
 			});
 			return checkMoney;
 		}
-
-		if($F('WorkstationWsName')==''){
-			alert('工作站名称不能为空！');
-			$('WorkstationWsName').focus();
-			return false;
-		}		
 	}
 
    function showResponse(originalRequest){
