@@ -3,17 +3,17 @@
 <form method="post">
 <div class="optional"> 
 	<?php echo $form->labelTag('Coupon/coupon_group', '代金券组团编号：');?>
- 	<?php echo $html->input('Coupon/coupon_group', array('size' => '26'));?>
+ 	<?php echo $html->input('Coupon/coupon_group', array('size' => '26','maxlength' => '6'));?>
 	<?php echo $html->tagErrorMsg('Coupon/coupon_group', 'Please enter the Coupon Group.');?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Coupon/custom_num', '代金券起止号码：');?>
- 	从<?php echo $html->input('Coupon/start', array('size' => '9'));?>
- 	到<?php echo $html->input('Coupon/end', array('size' => '9'));?> 	
+ 	从<?php echo $html->input('Coupon/start', array('size' => '9','maxlength' => '10'));?>
+ 	到<?php echo $html->input('Coupon/end', array('size' => '9','maxlength' => '10'));?> 	
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Coupon/custom_num', '6位数字：');?>
- 	<?php echo $html->input('Coupon/custom_num', array('size' => '26'));?>
+ 	<?php echo $html->input('Coupon/custom_num', array('size' => '26','maxlength' => '6'));?>
 	<?php echo $html->tagErrorMsg('Coupon/custom_num', 'Please enter the Custom Num.');?>
 </div>
 <div class="submit" id='init'>
