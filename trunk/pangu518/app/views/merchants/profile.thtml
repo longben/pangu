@@ -23,14 +23,14 @@
 	<?php echo $html->tagErrorMsg('Merchant/owner', 'Please enter the Owner.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Merchant/telephone', '常用电话：');?>
- 	<?php echo $html->input('Merchant/telephone', array('size' => '60','maxlength' => '30'));?>
-	<?php echo $html->tagErrorMsg('Merchant/telephone', 'Please enter the Telephone.');?>
-</div>
-<div class="optional"> 
 	<?php echo $form->labelTag('Merchant/mobile', '移动电话：');?>
  	<?php echo $html->input('Merchant/mobile', array('size' => '60','maxlength' => '11'));?>
 	<?php echo $html->tagErrorMsg('Merchant/mobile', 'Please enter the Mobile.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Merchant/telephone', '常用电话：');?>
+ 	<?php echo $html->input('Merchant/telephone', array('size' => '60','maxlength' => '30'));?>
+	<?php echo $html->tagErrorMsg('Merchant/telephone', 'Please enter the Telephone.');?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Merchant/office_phone', '办公室电话：');?>
@@ -39,12 +39,12 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Merchant/bank_accounts', '开户银行：');?>
- 	<?php echo $html->input('Merchant/bank_accounts', array('size' => '60','maxlength' => '20'));?>
+ 	<?php echo $html->input('Merchant/bank_accounts', array('size' => '60','maxlength' => '20','ReadOnly' => 'true'));?>
 	<?php echo $html->tagErrorMsg('Merchant/bank_accounts', 'Please enter the Bank Accounts.');?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Merchant/accounts', '银行帐号：');?>
- 	<?php echo $html->input('Merchant/accounts', array('size' => '60','maxlength' => '30'));?>
+ 	<?php echo $html->input('Merchant/accounts', array('size' => '60','maxlength' => '19'));?>
 	<?php echo $html->tagErrorMsg('Merchant/accounts', 'Please enter the Accounts.');?>
 </div>
 <div class="optional"> 
@@ -76,10 +76,30 @@
 		$('MerchantMobile').focus();
 		return false;
 	}
-	if( $F('MerchantMobile').length !=11 ){
+	if( ($F('MerchantMobile')!='') && ($F('MerchantMobile').length !=11) ){
 		alert('手机号码位数不对！');
 		$('MerchantMobile').focus();
 		return false;
+	}
+
+	if($F('MerchantTelephone')!=''){
+
+		var patrn = /[0-9/-]$/;
+		if(!patrn.test($F('MerchantTelephone'))){
+			alert('电话格式不对');
+			$('MerchantTelephone').focus();
+			return false;
+		}
+	}
+
+	if($F('MerchantOfficePhone')!=''){
+
+		var patrn = /[0-9/-]$/;
+		if(!patrn.test($F('MerchantOfficePhone'))){
+			alert('办公电话格式不对');
+			$('MerchantOfficePhone').focus();
+			return false;
+		}
 	}
 
   	if($F('MerchantAccounts')==''){
@@ -89,6 +109,11 @@
   	}
 	if(isNaN($F('MerchantAccounts'))){
 		alert('银行帐号必须为数字！');
+		$('MerchantAccounts').focus();
+		return false;
+	}
+	if( $F('MerchantAccounts').length !=19 ){
+		alert('银行帐号位数不对，必须为19位邮政储蓄卡！');
 		$('MerchantAccounts').focus();
 		return false;
 	}
