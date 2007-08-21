@@ -1,6 +1,6 @@
 <?php
     // Send Header
-    $xls->setHeader('代金券组团_'.date('Y_m_d').'.xls');
+    $xls->setHeader(date('Y_m_d').'.xls');
 
     // XLS Data Cell
     $xls->BOF();
