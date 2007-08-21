@@ -44,20 +44,16 @@ class CouponsController extends AppController {
 			set_time_limit(0); // 取消脚本运行时间的超时上限
 			
 			$this->layout = 'ajax';
+
+			$this->Coupon->query('set @_start='. $start);
+			$this->Coupon->query('set @_end='.$end);
+			$this->Coupon->query('set @_num='.$custom_num);
+			$this->Coupon->query("set @_group='".$coupon_group."'");
+
+			$this->Coupon->query('CALL init_coupon(@flag,@_start,@_end,@_num,@_group)');
+			$res = $this->Coupon->query("select @flag");
+			$this->set('isExistUser',$res);
 			
-			for($i=$start;$i<=$end;$i++){
-				$this->cleanUpFields();
-				srand((double)microtime()*1000000);//时间的因素，以执行时的百万分之一秒当乱数种子
-				$randval = rand(10000,99999);
-				$this->data['Coupon']['coupon_group'] = $coupon_group;
-				$this->data['Coupon']['custom_num'] = $custom_num;
-				$this->data['Coupon']['coupon_no'] = $coupon_group .sprintf('%09s', $i);
-				$this->data['Coupon']['coupon_pwd'] = $this->Coupon->getPassword($custom_num,$randval);
-				$this->data['Coupon']['random_num'] = $randval;
-				
-				$this->Coupon->save($this->data);
-				$this->Coupon->create(); //再循环
-			}
 		}else{
 			
 		}
