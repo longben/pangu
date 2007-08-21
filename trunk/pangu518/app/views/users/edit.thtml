@@ -39,12 +39,12 @@
  	<?php echo $html->input('User/referees', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('User/referees', 'Please enter the Referees.');?>
 </div>
--->
 <div class="optional"> 
 	<?php echo $form->labelTag('User/telephone', '常用电话：');?>
  	<?php echo $html->input('User/telephone', array('size' => '60','maxlength' => '30'));?>
 	<?php echo $html->tagErrorMsg('User/telephone', 'Please enter the Telephone.');?>
 </div>
+-->
 <div class="optional"> 
 	<?php echo $form->labelTag('User/mobile', '移动电话：');?>
  	<?php echo $html->input('User/mobile', array('size' => '60','maxlength' => '11'));?>
@@ -62,12 +62,12 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('User/bank_accounts', '开户银行：');?>
- 	<?php echo $html->input('User/bank_accounts', array('size' => '60','maxlength' => '20'));?>
+ 	<?php echo $html->input('User/bank_accounts', array('size' => '60','maxlength' => '20','readOnly' => 'true'));?>
 	<?php echo $html->tagErrorMsg('User/bank_accounts', 'Please enter the Bank Accounts.');?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('User/accounts', '银行帐号：');?>
- 	<?php echo $html->input('User/accounts', array('size' => '60','maxlength' => '30'));?>
+ 	<?php echo $html->input('User/accounts', array('size' => '60','maxlength' => '19'));?>
 	<?php echo $html->tagErrorMsg('User/accounts', 'Please enter the Accounts.');?>
 </div>
 <?php echo $html->hidden('User/id')?>
@@ -102,6 +102,16 @@
 		return false;
 	}
 
+	if($F('UserCertNumber')!=''){
+
+		var patrn = /[0-9Xx]$/;
+		if(!patrn.test($F('UserCertNumber'))){
+			alert('身份证号码格式不对！');
+			$('UserCertNumber').focus();
+			return false;
+		}
+	}
+
 /*
 	if($F('MemberEmail')==''){
 		alert('电子邮箱不能为空！');
@@ -120,6 +130,26 @@
 		alert('手机号码位数不对！');
 		$('UserMobile').focus();
 		return false;
+	}
+
+	if($F('UserOfficePhone')!=''){
+
+		var patrn = /[0-9/-]$/;
+		if(!patrn.test($F('UserOfficePhone'))){
+			alert('办公电话格式不对');
+			$('UserOfficePhone').focus();
+			return false;
+		}
+	}
+
+	if($F('UserHomePhone')!=''){
+
+		var patrn = /[0-9/-]$/;
+		if(!patrn.test($F('UserHomePhone'))){
+			alert('家庭电话格式不对');
+			$('UserHomePhone').focus();
+			return false;
+		}
 	}
 
   	if($F('UserAccounts')==''){

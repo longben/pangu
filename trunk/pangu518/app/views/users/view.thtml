@@ -10,17 +10,37 @@
 	<dt>真实姓名：</dt>
 	<dd>&nbsp;<?php echo $user['User']['user_name']?></dd>
 	<dt>性别：</dt>
-	<dd>&nbsp;<?php echo $user['User']['sex']?></dd>
+	<dd>&nbsp;
+		<?php 
+			if($user['User']['sex']==1){
+				echo "男";
+			}else{
+				echo "女";
+			}
+		?>
+	</dd>
 	<dt>身份证号码：</dt>
 	<dd>&nbsp;<?php echo $user['User']['cert_number']?></dd>
 	<dt>推荐人：</dt>
 	<dd>&nbsp;<?php echo $user['User']['referees']?></dd>
 	<dt>会员等级：</dt>
-	<dd>&nbsp;<?php echo $html->link($user['MemberGrade']['id'], '/member_grades/view/' .$user['MemberGrade']['id'])?></dd>
+	<dd>&nbsp;
+	<?php 
+		//echo $html->link($user['MemberGrade']['id'], '/member_grades/view/' .$user['MemberGrade']['id']);
+		echo $user['MemberGrade']['id'];
+	?>
+	</dd>
 	<dt>所属地区：</dt>
-	<dd>&nbsp;<?php echo $html->link($user['Region']['id'], '/regions/view/' .$user['Region']['id'])?></dd>
+	<dd>&nbsp;
+	<?php 
+		//echo $html->link($user['Region']['id'], '/regions/view/' .$user['Region']['id']);
+		echo $user['Region']['id'];
+	?>
+	</dd>
+	<!--
 	<dt>联系电话：</dt>
 	<dd>&nbsp;<?php echo $user['User']['telephone']?></dd>
+	-->
 	<dt>移动电话：</dt>
 	<dd>&nbsp;<?php echo $user['User']['mobile']?></dd>
 	<dt>办公电话：</dt>
