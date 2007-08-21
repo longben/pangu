@@ -13,22 +13,22 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Workstation/ws_name', '工作站名称：');?>
- 	<?php echo $html->input('Workstation/ws_name', array('size' => '60'));?>
+ 	<?php echo $html->input('Workstation/ws_name', array('size' => '60','maxlength' => '40'));?>
 	<?php echo $html->tagErrorMsg('Workstation/ws_name', 'Please enter the Ws Name.');?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Workstation/address', '地址：');?>
- 	<?php echo $html->input('Workstation/address', array('size' => '60'));?>
+ 	<?php echo $html->input('Workstation/address', array('size' => '60','maxlength' => '60'));?>
 	<?php echo $html->tagErrorMsg('Workstation/address', 'Please enter the Address.');?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Workstation/telphone', '常用电话：');?>
- 	<?php echo $html->input('Workstation/telphone', array('size' => '60'));?>
+ 	<?php echo $html->input('Workstation/telphone', array('size' => '60','maxlength' => '30'));?>
 	<?php echo $html->tagErrorMsg('Workstation/telphone', 'Please enter the Telphone.');?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Workstation/principal', '工作站负责人：');?>
- 	<?php echo $html->input('Workstation/principal', array('size' => '60'));?>
+ 	<?php echo $html->input('Workstation/principal', array('size' => '60','maxlength' => '20'));?>
 	<?php echo $html->tagErrorMsg('Workstation/principal', 'Please enter the Principal.');?>
 </div>
 <div class="optional"> 
@@ -44,12 +44,37 @@
 </fieldset>
 <SCRIPT LANGUAGE="JavaScript">
 <!--
-	function check(){
-		if($F('WorkstationWsName')==''){
-			alert('工作站名称不能为空！');
-			$('WorkstationWsName').focus();
-			return false;
-		}
+function check(){
+	if($F('WorkstationWsName')==''){
+		alert('工作站名称不能为空！');
+		$('WorkstationWsName').focus();
+		return false;
 	}
+
+	if($F('WorkstationTelphone')==''){
+		alert('常用电话不能为空！');
+		$('WorkstationTelphone').focus();
+		return false;
+	}else{
+		var patrn = /[0-9/-]$/;
+		if(!patrn.test($F('WorkstationTelphone'))){
+			alert('电话格式不对');
+			$('WorkstationTelphone').focus();
+			return false;
+		}	
+	}
+
+	if($F('WorkstationPrincipal')==''){
+		alert('工作站负责人不能为空！');
+		$('WorkstationPrincipal').focus();
+		return false;
+	}
+
+	if($F('WorkstationIntroduction')==''){
+		alert('工作站简介不能为空！');
+		$('WorkstationIntroduction').focus();
+		return false;
+	}
+}
 //-->
 </SCRIPT>

@@ -126,7 +126,7 @@
 		return false;
 	}
 
-	if( $F('UserMobile').length !=11 ){
+	if( ($F('UserMobile')!='') && ($F('UserMobile').length !=11) ){
 		alert('手机号码位数不对！');
 		$('UserMobile').focus();
 		return false;
@@ -163,5 +163,12 @@
 		$('UserAccounts').focus();
 		return false;
 	}
+
+	if( $F('UserAccounts').length !=19 ){
+		alert('银行帐号位数不对，必须为19位邮政储蓄卡！');
+		$('UserAccounts').focus();
+		return false;
+	}
+
   }
 </script>
