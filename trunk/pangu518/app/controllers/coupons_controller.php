@@ -121,6 +121,7 @@ class CouponsController extends AppController {
 	}
 	function export($coupon_group = null, $custom_num = null) {
 		set_time_limit(0);
+		ini_set("memory_limit","50M");
 		
 		$this->layout = 'ajax';
 		$this->data = $this->Coupon->findAll(
