@@ -12,6 +12,10 @@
 	$mobile = trim($_POST["mobile"]);
 	$accounts = trim($_POST["accounts"]);
 
+	if(empty($referees)){
+		$referees = "www7777";		//Ä¬ÈÏÍÆ¼öÈË
+	}
+
 
 	$sql = "select uid from members where username='".$login_name."'";
 	$stmt = mysql_query($sql);
