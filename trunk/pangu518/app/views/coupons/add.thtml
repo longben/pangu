@@ -19,7 +19,7 @@
 <div class="submit" id='init'>
 	<input type="button" value="批量生成代金券"  onclick="init()"/>
 </div>
-<span style="color:red;font-size:14px;display:none" id="msg">注意：代金券后台生成中，预审核或者导出请10分钟后查看，请等待……</span>
+<span style="color:red;font-size:14px;display:none" id="msg">注意：代金券后台生成中，请在【代金券审核】查看批量代金券状态</span>
 </form>
 </fieldset>
 <SCRIPT LANGUAGE="JavaScript">
