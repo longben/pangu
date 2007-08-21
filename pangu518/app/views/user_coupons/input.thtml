@@ -4,12 +4,12 @@
    <?php echo $html->hiddenTag('UserCoupon/user_id',$this->controller->Session->read('User.uid'));?>
 <div class="optional"> 
 	<?php echo $form->labelTag('Coupon/coupon_no', '代金券编号：');?>
-	<?php echo $html->input('Coupon/coupon_no', array('size' => '60',,'maxlength' => '10'));?>
+	<?php echo $html->input('Coupon/coupon_no', array('size' => '60','maxlength' => '10'));?>
 	<?php echo $html->tagErrorMsg('Coupon/coupon_no', '代金券编号不能为空！') ?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Coupon/coupon_pwd', '代金券密码：');?>
-	<?php echo $html->input('Coupon/coupon_pwd', array('size' => '60',,'maxlength' => '6'));?>
+	<?php echo $html->input('Coupon/coupon_pwd', array('size' => '60','maxlength' => '6'));?>
 	<?php echo $html->tagErrorMsg('Coupon/coupon_pwd', '代金券密码不能为空！') ?>
 </div>
 <div class="submit">
