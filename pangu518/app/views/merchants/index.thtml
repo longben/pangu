@@ -2,7 +2,9 @@
 <legend>会员消费单位列表</legend> 
 <table cellpadding="0" cellspacing="0">
 <tr>
+<!--编码显示错误，先屏蔽
 	<th>消费单位编码</th>
+-->
 	<th>消费单位</th>
 	<th>所有者</th>	
 	<th>推荐人</th>
@@ -14,7 +16,9 @@
 </tr>
 <?php foreach ($merchants as $merchant): ?>
 <tr>
+<!--
     <td><?php echo $merchant['Merchant']['merchant_no']; ?></td>
+-->
 	<td><?php echo $merchant['Merchant']['merchant_name']; ?></td>
 	<td>&nbsp;<?php echo $html->link($merchant['User']['user_name'], '/users/view/' .$merchant['User']['id'])?></td>
 	<td><?php echo $merchant['Referee']['user_name']; ?></td>

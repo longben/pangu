@@ -13,7 +13,7 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('User/user_name', '真实姓名：');?>
- 	<?php echo $html->input('User/user_name', array('size' => '60'));?>
+ 	<?php echo $html->input('User/user_name', array('size' => '60','maxlength' => '20'));?>
 	<?php echo $html->tagErrorMsg('User/user_name', 'Please enter the User Name.');?>
 </div>
 <!--
@@ -30,7 +30,7 @@
 -->
 <div class="optional"> 
 	<?php echo $form->labelTag('User/cert_number', '身份证号码：');?>
- 	<?php echo $html->input('User/cert_number', array('size' => '60'));?>
+ 	<?php echo $html->input('User/cert_number', array('size' => '60','maxlength' => '18'));?>
 	<?php echo $html->tagErrorMsg('User/cert_number', 'Please enter the Cert Number.');?>
 </div>
 <!--
@@ -42,32 +42,32 @@
 -->
 <div class="optional"> 
 	<?php echo $form->labelTag('User/telephone', '常用电话：');?>
- 	<?php echo $html->input('User/telephone', array('size' => '60'));?>
+ 	<?php echo $html->input('User/telephone', array('size' => '60','maxlength' => '30'));?>
 	<?php echo $html->tagErrorMsg('User/telephone', 'Please enter the Telephone.');?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('User/mobile', '移动电话：');?>
- 	<?php echo $html->input('User/mobile', array('size' => '60'));?>
+ 	<?php echo $html->input('User/mobile', array('size' => '60','maxlength' => '11'));?>
 	<?php echo $html->tagErrorMsg('User/mobile', 'Please enter the Mobile.');?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('User/office_phone', '办公电话：');?>
- 	<?php echo $html->input('User/office_phone', array('size' => '60'));?>
+ 	<?php echo $html->input('User/office_phone', array('size' => '60','maxlength' => '30'));?>
 	<?php echo $html->tagErrorMsg('User/office_phone', 'Please enter the Office Phone.');?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('User/home_phone', '家庭电话：');?>
- 	<?php echo $html->input('User/home_phone', array('size' => '60'));?>
+ 	<?php echo $html->input('User/home_phone', array('size' => '60','maxlength' => '30'));?>
 	<?php echo $html->tagErrorMsg('User/home_phone', 'Please enter the Home Phone.');?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('User/bank_accounts', '开户银行：');?>
- 	<?php echo $html->input('User/bank_accounts', array('size' => '60'));?>
+ 	<?php echo $html->input('User/bank_accounts', array('size' => '60','maxlength' => '20'));?>
 	<?php echo $html->tagErrorMsg('User/bank_accounts', 'Please enter the Bank Accounts.');?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('User/accounts', '银行帐号：');?>
- 	<?php echo $html->input('User/accounts', array('size' => '60'));?>
+ 	<?php echo $html->input('User/accounts', array('size' => '60','maxlength' => '30'));?>
 	<?php echo $html->tagErrorMsg('User/accounts', 'Please enter the Accounts.');?>
 </div>
 <?php echo $html->hidden('User/id')?>
@@ -96,10 +96,42 @@
   		return false;
   	}
   	
+	if(($F('UserCertNumber').length !=15) && ($F('UserCertNumber').length !=18)){
+		alert('身份证号码位数不对！');
+		$('UserCertNumber').focus();
+		return false;
+	}
+
+/*
+	if($F('MemberEmail')==''){
+		alert('电子邮箱不能为空！');
+		$('MemberEmail').focus();
+		return false;
+	}
+*/
+
+	if( ($F('UserMobile')!='') && isNaN($F('UserMobile')) ){
+		alert('手机号码格式不对！');
+		$('UserMobile').focus();
+		return false;
+	}
+
+	if( $F('UserMobile').length !=11 ){
+		alert('手机号码位数不对！');
+		$('UserMobile').focus();
+		return false;
+	}
+
   	if($F('UserAccounts')==''){
   		alert('为了便于转账结算，银行帐号不能为空！');
   		$('UserAccounts').focus();
   		return false;
   	}
+
+	if(isNaN($F('UserAccounts'))){
+		alert('银行帐号必须为数字！');
+		$('UserAccounts').focus();
+		return false;
+	}
   }
 </script>
