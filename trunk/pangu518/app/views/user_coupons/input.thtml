@@ -29,6 +29,13 @@
 			alert('代金券编号不能为空！');
 			$('CouponCouponNo').focus();
 			return false;
+		}else{
+			var patrn = /[0-9a-zA-Z]$/;
+			if(!patrn.test($F('CouponCouponNo'))){
+				alert('录入的代金券编号格式不对！');
+				$('CouponCouponNo').focus();
+				return false;
+			}
 		}
 		
 		if($F('CouponCouponPwd')==''){
