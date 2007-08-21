@@ -106,6 +106,18 @@ function check(){
 		return false;
 	}
 
+	if( ($F('UserMobile')!='') && isNaN($F('UserMobile')) ){
+		alert('手机号码格式不对！');
+		$('UserMobile').focus();
+		return false;
+	}
+
+	if( ($F('UserMobile')!='') && ($F('UserMobile').length !=11) ){
+		alert('手机号码位数不对！');
+		$('UserMobile').focus();
+		return false;
+	}
+
 	if($F('UserOfficePhone')!=''){
 
 		var patrn = /[0-9/-]$/;
@@ -124,18 +136,6 @@ function check(){
 			$('UserHomePhone').focus();
 			return false;
 		}
-	}
-
-	if( ($F('UserMobile')!='') && isNaN($F('UserMobile')) ){
-		alert('手机号码格式不对！');
-		$('UserMobile').focus();
-		return false;
-	}
-
-	if( ($F('UserMobile')!='') && ($F('UserMobile').length !=11) ){
-		alert('手机号码位数不对！');
-		$('UserMobile').focus();
-		return false;
 	}
 
 	if($F('UserAccounts')==''){
