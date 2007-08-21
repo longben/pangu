@@ -43,7 +43,7 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Merchant/bank_accounts', '开户银行：');?>
- 	<?php echo $html->input('Merchant/bank_accounts', array('size' => '60','maxlength' => '20'));?>
+ 	<?php echo $html->input('Merchant/bank_accounts', array('size' => '60','maxlength' => '20','value' => '邮政储蓄','ReadOnly' => 'true'));?>
 	<?php echo $html->tagErrorMsg('Merchant/bank_accounts', 'Please enter the Bank Accounts.');?>
 </div>
 <div class="optional"> 
@@ -82,14 +82,6 @@
 			alert('消费单位拥有人不能为空！\n\n请直接填写会员消费单位所有者会员帐号！');
 			$('MerchantLoginName').focus();
 			return false;
-		}else{
-			var url = '/users/check/' + $F('MerchantLoginName');
-			var myAjax = new Ajax.Request(url,{
-				method: 'get',
-				onComplete: showResponse,
-				asynchronous:false
-			});
-			return checkMoney;
 		}
 
 		if($F('MerchantOwner')==''){
@@ -128,6 +120,39 @@
 				return false;
 			}
 		}
+
+		if($F('MerchantAccounts')==''){
+			alert('银行帐号不能为空！');
+			$('MerchantAccounts').focus();
+			return false;
+		}
+		if(isNaN($F('MerchantAccounts'))){
+			alert('银行帐号必须为数字！');
+			$('MerchantAccounts').focus();
+			return false;
+		}
+		if( $F('MerchantAccounts').length !=19 ){
+			alert('银行帐号位数不对，必须为19位邮政储蓄卡！');
+			$('MerchantAccounts').focus();
+			return false;
+		}
+
+		if($F('MerchantRefereesNo')==''){
+			alert('推荐人不能为空！\n\n如果没有推荐人请直接填写 1 。');
+			$('MerchantRefereesNo').focus();
+			return false;
+		} 
+
+		if($F('MerchantLoginName')!=''){
+			var url = '/users/check/' + $F('MerchantLoginName');
+			var myAjax = new Ajax.Request(url,{
+				method: 'get',
+				onComplete: showResponse,
+				asynchronous:false
+			});
+			return checkMoney;
+		}
+
 	}
 
    function showResponse(originalRequest){

@@ -1,6 +1,6 @@
 <fieldset align=center>
 <legend>维护会员消费单位资料</legend> 
-<form action="<?php echo $html->url('/merchants/edit/'.$html->tagValue('Merchant/id')); ?>" method="post">
+<form action="<?php echo $html->url('/merchants/edit/'.$html->tagValue('Merchant/id')); ?>" method="post"  onsubmit="return check()">
 <div class="optional"> 
 	<?php echo $form->labelTag('Merchant/user_id', '所有者：');?>
  	<?php echo $html->input('User/user_name', array('size' => '60','readOnly' => 'true'));?>
@@ -18,37 +18,42 @@
 </div>    
 <div class="optional"> 
 	<?php echo $form->labelTag('Merchant/merchant_name', '会员消费单位名称：');?>
- 	<?php echo $html->input('Merchant/merchant_name', array('size' => '60'));?>
+ 	<?php echo $html->input('Merchant/merchant_name', array('size' => '60','maxlength' => '30'));?>
 	<?php echo $html->tagErrorMsg('Merchant/merchant_name', 'Please enter the Merchant Name.');?>
 </div>
 <div class="optional"> 
+	<?php echo $form->labelTag('Merchant/login_name', '消费单位拥有人：');?>
+ 	<?php echo $html->input('Merchant/login_name', array('size' => '50','maxlength' => '20'));?><span style='color:red'>会员登录名</span>
+	<?php echo $html->tagErrorMsg('Merchant/login_name', 'Please select the User.') ?>
+</div>
+<div class="optional"> 
 	<?php echo $form->labelTag('Merchant/owner', '负责人：');?>
- 	<?php echo $html->input('Merchant/owner', array('size' => '60'));?>
+ 	<?php echo $html->input('Merchant/owner', array('size' => '60','maxlength' => '20'));?>
 	<?php echo $html->tagErrorMsg('Merchant/owner', 'Please enter the Owner.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Merchant/telephone', '常用电话：');?>
- 	<?php echo $html->input('Merchant/telephone', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Merchant/telephone', 'Please enter the Telephone.');?>
-</div>
-<div class="optional"> 
 	<?php echo $form->labelTag('Merchant/mobile', '移动电话：');?>
- 	<?php echo $html->input('Merchant/mobile', array('size' => '60'));?>
+ 	<?php echo $html->input('Merchant/mobile', array('size' => '60','maxlength' => '11'));?>
 	<?php echo $html->tagErrorMsg('Merchant/mobile', 'Please enter the Mobile.');?>
 </div>
 <div class="optional"> 
+	<?php echo $form->labelTag('Merchant/telephone', '常用电话：');?>
+ 	<?php echo $html->input('Merchant/telephone', array('size' => '60','maxlength' => '30'));?>
+	<?php echo $html->tagErrorMsg('Merchant/telephone', 'Please enter the Telephone.');?>
+</div>
+<div class="optional"> 
 	<?php echo $form->labelTag('Merchant/office_phone', '办公室电话：');?>
- 	<?php echo $html->input('Merchant/office_phone', array('size' => '60'));?>
+ 	<?php echo $html->input('Merchant/office_phone', array('size' => '60','maxlength' => '30'));?>
 	<?php echo $html->tagErrorMsg('Merchant/office_phone', 'Please enter the Office Phone.');?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Merchant/bank_accounts', '开户银行：');?>
- 	<?php echo $html->input('Merchant/bank_accounts', array('size' => '60'));?>
+ 	<?php echo $html->input('Merchant/bank_accounts', array('size' => '60','ReadOnly' => 'true'));?>
 	<?php echo $html->tagErrorMsg('Merchant/bank_accounts', 'Please enter the Bank Accounts.');?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Merchant/accounts', '银行帐号：');?>
- 	<?php echo $html->input('Merchant/accounts', array('size' => '60'));?>
+ 	<?php echo $html->input('Merchant/accounts', array('size' => '60','maxlength' => '19'));?>
 	<?php echo $html->tagErrorMsg('Merchant/accounts', 'Please enter the Accounts.');?>
 </div>
 <div class="optional"> 
@@ -58,7 +63,7 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Merchant/bargain_no', '合同编号：');?>
- 	<?php echo $html->input('Merchant/bargain_no', array('size' => '60'));?>
+ 	<?php echo $html->input('Merchant/bargain_no', array('size' => '60','maxlength' => '20'));?>
 	<?php echo $html->tagErrorMsg('Merchant/bargain_no', 'Please enter the Salesman.');?>
 </div>
 <?php echo $html->hidden('Merchant/id')?>
@@ -70,3 +75,100 @@
 <li><?php echo $html->link('会员消费单位列表', '/merchants/index')?></li>
 </ul>
 </fieldset>
+<script language="Javascript">
+    var checkMoney = false;
+	function check(){
+		if($F('MerchantMerchantName')==''){
+			alert('消费单位名称不能为空！');
+			$('MerchantMerchantName').focus();
+			return false;
+		}
+		
+		if($F('MerchantLoginName')==''){
+			alert('消费单位拥有人不能为空！\n\n请直接填写会员消费单位所有者会员帐号！');
+			$('MerchantLoginName').focus();
+			return false;
+		}
+
+		if($F('MerchantOwner')==''){
+			alert('消费单位负责人不能为空！');
+			$('MerchantOwner').focus();
+			return false;
+		}
+
+		if( ($F('MerchantMobile')!='') && isNaN($F('MerchantMobile')) ){
+			alert('手机号码格式不对！');
+			$('MerchantMobile').focus();
+			return false;
+		}
+		if( ($F('MerchantMobile')!='') && ($F('MerchantMobile').length !=11) ){
+			alert('手机号码位数不对！');
+			$('MerchantMobile').focus();
+			return false;
+		}
+
+		if($F('MerchantTelephone')!=''){
+
+			var patrn = /[0-9/-]$/;
+			if(!patrn.test($F('MerchantTelephone'))){
+				alert('电话格式不对');
+				$('MerchantTelephone').focus();
+				return false;
+			}
+		}
+
+		if($F('MerchantOfficePhone')!=''){
+
+			var patrn = /[0-9/-]$/;
+			if(!patrn.test($F('MerchantOfficePhone'))){
+				alert('办公电话格式不对');
+				$('MerchantOfficePhone').focus();
+				return false;
+			}
+		}
+
+		if($F('MerchantAccounts')==''){
+			alert('银行帐号不能为空！');
+			$('MerchantAccounts').focus();
+			return false;
+		}
+		if(isNaN($F('MerchantAccounts'))){
+			alert('银行帐号必须为数字！');
+			$('MerchantAccounts').focus();
+			return false;
+		}
+		if( $F('MerchantAccounts').length !=19 ){
+			alert('银行帐号位数不对，必须为19位邮政储蓄卡！');
+			$('MerchantAccounts').focus();
+			return false;
+		}
+
+		if($F('MerchantRefereesNo')==''){
+			alert('推荐人不能为空！\n\n如果没有推荐人请直接填写 1 。');
+			$('MerchantRefereesNo').focus();
+			return false;
+		} 
+
+		if($F('MerchantLoginName')!=''){
+			var url = '/users/check/' + $F('MerchantLoginName');
+			var myAjax = new Ajax.Request(url,{
+				method: 'get',
+				onComplete: showResponse,
+				asynchronous:false
+			});
+			return checkMoney;
+		}
+
+	}
+
+   function showResponse(originalRequest){
+   	  var count = parseInt(originalRequest.responseText);
+      if(count == 0){
+      	alert('消费单位拥有人帐号录入不正确，请检查重新录入。');
+      	$('MerchantLoginName').focus();
+        checkMoney = false;
+      }else{
+      	checkMoney = true;
+      }
+   }
+</script>
