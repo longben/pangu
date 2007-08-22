@@ -1,5 +1,4 @@
 <?php
-    ini_set("memory_limit","50M");
     // Send Header
     $xls->setHeader(date('Y_m_d').'.xls');
 
