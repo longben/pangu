@@ -41,7 +41,7 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('User/telephone', '常用电话：');?>
- 	<?php echo $html->input('User/telephone', array('size' => '60','maxlength' => '30'));?>
+ 	<?php echo $html->input('User/telephone', array('size' => '60','maxlength' => '12'));?>
 	<?php echo $html->tagErrorMsg('User/telephone', 'Please enter the Telephone.');?>
 </div>
 -->
@@ -52,12 +52,12 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('User/office_phone', '办公电话：');?>
- 	<?php echo $html->input('User/office_phone', array('size' => '60','maxlength' => '30'));?>
+ 	<?php echo $html->input('User/office_phone', array('size' => '45','maxlength' => '12'));?><span style='color:red'>格式：区号-号码</span>
 	<?php echo $html->tagErrorMsg('User/office_phone', 'Please enter the Office Phone.');?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('User/home_phone', '家庭电话：');?>
- 	<?php echo $html->input('User/home_phone', array('size' => '60','maxlength' => '30'));?>
+ 	<?php echo $html->input('User/home_phone', array('size' => '45','maxlength' => '12'));?><span style='color:red'>格式：区号-号码</span>
 	<?php echo $html->tagErrorMsg('User/home_phone', 'Please enter the Home Phone.');?>
 </div>
 <div class="optional"> 
@@ -134,7 +134,7 @@
 
 	if($F('UserOfficePhone')!=''){
 
-		var patrn = /[0-9/-]$/;
+		var patrn=/^0\d{2,3}\-\d{7,8}$/;
 		if(!patrn.test($F('UserOfficePhone'))){
 			alert('办公电话格式不对');
 			$('UserOfficePhone').focus();
@@ -144,7 +144,7 @@
 
 	if($F('UserHomePhone')!=''){
 
-		var patrn = /[0-9/-]$/;
+		var patrn=/^0\d{2,3}\-\d{7,8}$/;
 		if(!patrn.test($F('UserHomePhone'))){
 			alert('家庭电话格式不对');
 			$('UserHomePhone').focus();

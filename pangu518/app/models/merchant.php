@@ -95,8 +95,10 @@ class Merchant extends AppModel {
 	}
 	
 	function getReferees($referees_no = null){
+		//暂时用的login_name
 		$ret = $this->findBySql("SELECT id FROM users as User
-                                   WHERE member_no = '$referees_no'");
+                                   WHERE login_name = '$referees_no'");
+
 		if(sizeof($ret)>=1){
 			$user_id = $ret[0]['User']['id'];
 		}else{

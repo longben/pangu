@@ -9,7 +9,7 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Workstation/login_name', '工作站所有人：');?>
- 	<?php echo $html->input('Workstation/login_name', array('size' => '50','maxlength' => '20'));?>会员登录名
+ 	<?php echo $html->input('Workstation/login_name', array('size' => '50','maxlength' => '20'));?><span style='color:red'>会员登录名</span>
 	<?php echo $html->tagErrorMsg('Workstation/login_name', '必须输入工作站所有人！');?>
 </div>
 <div class="optional"> 
@@ -23,8 +23,8 @@
 	<?php echo $html->tagErrorMsg('Workstation/principal', 'Please enter the Principal.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Workstation/referees_no', '推荐人编号：');?>
- 	<?php echo $html->input('Workstation/referees_no', array('size' => '60','maxlength' => '20'));?>
+	<?php echo $form->labelTag('Workstation/referees_no', '推荐人：');?>
+ 	<?php echo $html->input('Workstation/referees_no', array('size' => '50','maxlength' => '20'));?><span style='color:red'>会员登录名</span>
 	<?php echo $html->tagErrorMsg('Workstation/referees_no', 'Please enter the Principal.');?>
 </div>
 <div class="optional"> 
@@ -39,7 +39,7 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Workstation/telphone', '联系电话：');?>
- 	<?php echo $html->input('Workstation/telphone', array('size' => '60','maxlength' => '30'));?>
+ 	<?php echo $html->input('Workstation/telphone', array('size' => '45','maxlength' => '12'));?><span style='color:red'>格式：区号-号码</span>
 	<?php echo $html->tagErrorMsg('Workstation/telphone', 'Please enter the Telphone.');?>
 </div>
 <div class="optional"> 
@@ -78,7 +78,7 @@
 			$('WorkstationTelphone').focus();
 			return false;
 		}else{
-			var patrn = /[0-9/-]$/;
+			var patrn=/^0\d{2,3}\-\d{7,8}$/;
 			if(!patrn.test($F('WorkstationTelphone'))){
 				alert('电话格式不对');
 				$('WorkstationTelphone').focus();

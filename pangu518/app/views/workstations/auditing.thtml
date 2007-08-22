@@ -1,6 +1,6 @@
 <fieldset>
 <legend>工作站审核</legend> 
-<form action="<?php echo $html->url('/workstations/auditing/'.$html->tagValue('Workstation/id')); ?>" method="post">
+<form action="<?php echo $html->url('/workstations/auditing/'.$html->tagValue('Workstation/id')); ?>" method="post" onsubmit="return check()">
 <div class="optional"> 
 	<?php echo $form->labelTag('Workstation/region_id', '所属地区：');?>
  	<?php echo $html->selectTag('Workstation/region_id', $regions, $html->tagValue('Workstation/region_id'), array('style'=>'width:150px'), array(), true);?>
@@ -8,7 +8,7 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Workstation/ws_name', '工作站名称：');?>
- 	<?php echo $html->input('Workstation/ws_name', array('size' => '60'));?>
+ 	<?php echo $html->input('Workstation/ws_name', array('size' => '60','readOnly' => 'true'));?>
 	<?php echo $html->tagErrorMsg('Workstation/ws_name', 'Please enter the Ws Name.');?>
 </div>
 <div class="optional"> 
@@ -23,22 +23,22 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Workstation/bargain_no', '合同编号：');?>
- 	<?php echo $html->input('Workstation/bargain_no', array('size' => '60'));?>
+ 	<?php echo $html->input('Workstation/bargain_no', array('size' => '60','readOnly' => 'true'));?>
 	<?php echo $html->tagErrorMsg('Workstation/bargain_no', 'Please enter the Bargain No.');?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Workstation/address', '工作站地址：');?>
- 	<?php echo $html->input('Workstation/address', array('size' => '60'));?>
+ 	<?php echo $html->input('Workstation/address', array('size' => '60','readOnly' => 'true'));?>
 	<?php echo $html->tagErrorMsg('Workstation/address', 'Please enter the Address.');?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Workstation/telphone', '联系电话：');?>
- 	<?php echo $html->input('Workstation/telphone', array('size' => '60'));?>
+ 	<?php echo $html->input('Workstation/telphone', array('size' => '60','readOnly' => 'true'));?>
 	<?php echo $html->tagErrorMsg('Workstation/telphone', 'Please enter the Telphone.');?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Workstation/principal', '工作站负责人：');?>
- 	<?php echo $html->input('Workstation/principal', array('size' => '60'));?>
+ 	<?php echo $html->input('Workstation/principal', array('size' => '60','readOnly' => 'true'));?>
 	<?php echo $html->tagErrorMsg('Workstation/principal', 'Please enter the Principal.');?>
 </div>
 <div class="optional"> 
@@ -48,7 +48,7 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Workstation/money', '代金券金额：');?>
- 	<?php echo $html->input('Workstation/money', array('value'=>'0','size' => '60'));?>
+ 	<?php echo $html->input('Workstation/money', array('value'=>'0','size' => '60','maxlength' => '8'));?>
 	<?php echo $html->tagErrorMsg('Workstation/money', '代金券金额不能为空!');?>
 </div>
 <?php echo $html->hidden('Workstation/id')?>
@@ -58,3 +58,76 @@
 </div>
 </form>
 </fieldset>
+
+<script language="Javascript">
+    var checkMoney = false;
+	function check(){	
+	/*
+		if($F('WorkstationUserId')==''){
+			alert('工作站所有人不能为空！\n\n请直接填写工作站所有人会员帐号！');
+			$('WorkstationUserId').focus();
+			return false;
+		}
+*/
+		if($F('WorkstationWsName')==''){
+			alert('工作站名称不能为空！');
+			$('WorkstationWsName').focus();
+			return false;
+		}
+
+		if($F('WorkstationPrincipal')==''){
+			alert('工作站负责人不能为空！');
+			$('WorkstationPrincipal').focus();
+			return false;
+		}
+
+
+		if($F('WorkstationTelphone')==''){
+			alert('常用电话不能为空！');
+			$('WorkstationTelphone').focus();
+			return false;
+		}else{
+			var patrn=/^0\d{2,3}\-\d{7,8}$/;
+			if(!patrn.test($F('WorkstationTelphone'))){
+				alert('电话格式不对');
+				$('WorkstationTelphone').focus();
+				return false;
+			}	
+		}
+
+		if($F('WorkstationIntroduction')==''){
+			alert('工作站简介不能为空！');
+			$('WorkstationIntroduction').focus();
+			return false;
+		}
+
+		if(isNaN($F('WorkstationMoney'))){
+			alert('代金券金额只能为数字！');
+			$('WorkstationMoney').focus();
+			return false;
+		}
+/*		
+		if($F('WorkstationUserId')!=''){
+
+			var url = '/users/check/' + $F('WorkstationUserId');
+			var myAjax = new Ajax.Request(url,{
+				method: 'get',
+				onComplete: showResponse,
+				asynchronous:false
+			});
+			return checkMoney;
+		}
+*/
+	}
+
+   function showResponse(originalRequest){
+   	  var count = parseInt(originalRequest.responseText);
+      if(count == 0){
+      	alert('工作站所有人帐号录入不正确，请检查重新录入。');
+      	$('WorkstationUserId').focus();
+        checkMoney = false;
+      }else{
+      	checkMoney = true;
+      }
+   }
+</script>
