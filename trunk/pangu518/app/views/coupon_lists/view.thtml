@@ -1,0 +1,29 @@
+<div class="couponList">
+<h2>View Coupon List</h2>
+
+<dl>
+	<dt>Id</dt>
+	<dd>&nbsp;<?php echo $couponList['CouponList']['id']?></dd>
+	<dt>Coupon Start</dt>
+	<dd>&nbsp;<?php echo $couponList['CouponList']['coupon_start']?></dd>
+	<dt>Coupon End</dt>
+	<dd>&nbsp;<?php echo $couponList['CouponList']['coupon_end']?></dd>
+	<dt>Coupon Group</dt>
+	<dd>&nbsp;<?php echo $couponList['CouponList']['coupon_group']?></dd>
+	<dt>Custom Num</dt>
+	<dd>&nbsp;<?php echo $couponList['CouponList']['custom_num']?></dd>
+	<dt>Created</dt>
+	<dd>&nbsp;<?php echo $couponList['CouponList']['created']?></dd>
+	<dt>Modified</dt>
+	<dd>&nbsp;<?php echo $couponList['CouponList']['modified']?></dd>
+	<dt>Status</dt>
+	<dd>&nbsp;<?php echo $couponList['CouponList']['status']?></dd>
+</dl>
+<ul class="actions">
+	<li><?php echo $html->link('Edit Coupon List',   '/coupon_lists/edit/' . $couponList['CouponList']['id']) ?> </li>
+	<li><?php echo $html->link('Delete Coupon List', '/coupon_lists/delete/' . $couponList['CouponList']['id'], null, 'Are you sure you want to delete: id ' . $couponList['CouponList']['id'] . '?') ?> </li>
+	<li><?php echo $html->link('List Coupon Lists',   '/coupon_lists/index') ?> </li>
+	<li><?php echo $html->link('New Coupon List',	'/coupon_lists/add') ?> </li>
+</ul>
+
+</div>
