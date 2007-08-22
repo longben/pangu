@@ -198,7 +198,7 @@ class MerchantsController extends AppController {
 			$this->redirect('/merchants/index');
 		}
 		if($this->Merchant->del($id)) {
-			$this->Session->setFlash('The Merchant deleted: id '.$id.'');
+			$this->Session->setFlash('会员消费单位删除成功!');
 			$this->redirect('/merchants/index');
 		}
 	}

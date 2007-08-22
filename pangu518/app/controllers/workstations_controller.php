@@ -157,7 +157,7 @@ class WorkstationsController extends AppController {
 			$this->redirect('/workstations/index');
 		}
 		if($this->Workstation->del($id)) {
-			$this->Session->setFlash('The Workstation deleted: id '.$id.'');
+			$this->Session->setFlash('工作站删除成功! ');
 			$this->redirect('/workstations/index');
 		}
 	}
