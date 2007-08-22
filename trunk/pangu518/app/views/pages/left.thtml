@@ -76,7 +76,7 @@
 
 		
 		d.add(6001,6,'代金券生成','/coupons/add');
-		d.add(6002,6,'代金券审核','/coupons/index'); //不同级别进行不同的审核
+		d.add(6002,6,'代金券审核','/coupon_lists/index'); //不同级别进行不同的审核
 		
 		d.add(8001,8,'系统初始化','/members/install');
 		d.add(8002,8,'角色维护');
