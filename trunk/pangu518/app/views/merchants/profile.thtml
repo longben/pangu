@@ -29,12 +29,12 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Merchant/telephone', '常用电话：');?>
- 	<?php echo $html->input('Merchant/telephone', array('size' => '60','maxlength' => '30'));?>
+ 	<?php echo $html->input('Merchant/telephone', array('size' => '45','maxlength' => '12'));?><span style='color:red'>格式：区号-号码</span>
 	<?php echo $html->tagErrorMsg('Merchant/telephone', 'Please enter the Telephone.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Merchant/office_phone', '办公室电话：');?>
- 	<?php echo $html->input('Merchant/office_phone', array('size' => '60','maxlength' => '30'));?>
+	<?php echo $form->labelTag('Merchant/office_phone', '办公电话：');?>
+ 	<?php echo $html->input('Merchant/office_phone', array('size' => '45','maxlength' => '12'));?><span style='color:red'>格式：区号-号码</span>
 	<?php echo $html->tagErrorMsg('Merchant/office_phone', 'Please enter the Office Phone.');?>
 </div>
 <div class="optional"> 
@@ -49,7 +49,7 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Merchant/referees', '推荐人：');?>
- 	<?php echo $html->input('Merchant/referees', array('size' => '60','maxlength' => '20'));?>
+ 	<?php echo $html->input('Merchant/referees', array('size' => '50','maxlength' => '20','ReadOnly' => 'true'));?><span style='color:red'>会员登录名</span>
 	<?php echo $html->tagErrorMsg('Merchant/referees', 'Please enter the Referees.');?>
 </div>
 <div class="optional"> 
@@ -84,9 +84,9 @@
 
 	if($F('MerchantTelephone')!=''){
 
-		var patrn = /[0-9/-]$/;
+		var patrn=/^0\d{2,3}\-\d{7,8}$/;
 		if(!patrn.test($F('MerchantTelephone'))){
-			alert('电话格式不对');
+			alert('常用电话格式不对');
 			$('MerchantTelephone').focus();
 			return false;
 		}
@@ -94,7 +94,7 @@
 
 	if($F('MerchantOfficePhone')!=''){
 
-		var patrn = /[0-9/-]$/;
+		var patrn=/^0\d{2,3}\-\d{7,8}$/;
 		if(!patrn.test($F('MerchantOfficePhone'))){
 			alert('办公电话格式不对');
 			$('MerchantOfficePhone').focus();

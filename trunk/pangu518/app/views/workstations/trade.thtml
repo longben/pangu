@@ -46,7 +46,7 @@
    	    	$('MerchantNumber').focus();
    	    	return false;
    	    }else{
-   	    	var patrn = /^\d$/;
+   	    	var patrn = /\d$/;
    	    	if(!patrn.test($F('MerchantNumber'))){
    	    		alert('预销售的代金券份额只能输入数字！');
    	    		$('MerchantNumber').focus();

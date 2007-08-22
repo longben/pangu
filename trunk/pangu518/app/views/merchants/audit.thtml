@@ -16,8 +16,8 @@
 	<td><?php echo $merchant['Merchant']['merchant_name']; ?></td>
 	<td>&nbsp;<?php echo $html->link($merchant['User']['user_name'], '/users/view/' .$merchant['User']['id'])?></td>
 	<td><?php echo $merchant['Referee']['user_name']; ?></td>
-	<td>&nbsp;<?php echo $html->link($merchant['Industry']['industry_name'], '/industries/view/' .$merchant['Industry']['id'])?></td>
-	<td>&nbsp;<?php echo $html->link($merchant['Region']['region_name'], '/regions/view/' .$merchant['Region']['id'])?></td>
+	<td>&nbsp;<?php echo $merchant['Industry']['industry_name']; ?></td>
+	<td>&nbsp;<?php echo $merchant['Region']['region_name']; ?></td>
 	<td><?php echo $merchant['Merchant']['created']; ?></td>
 	<td><?php echo $merchant['Merchant']['status']==9?'待审核':'正常'; ?></td>
 	<td class="actions">

@@ -23,7 +23,7 @@
 	<td><?php echo $workstation['Workstation']['created']; ?></td>
 	<td><?php echo $workstation['Workstation']['status']; ?></td>
 	<td class="actions">
-		<?php echo $html->link('查看','/workstations/view/' . $workstation['Workstation']['id'])?>
+		<?php //echo $html->link('查看','/workstations/view/' . $workstation['Workstation']['id'])?>
 		<?php echo $html->link('审核','/workstations/auditing/' . $workstation['Workstation']['id'])?>
 		<?php echo $html->link('删除','/workstations/delete/' . $workstation['Workstation']['id'], null, '你是否真要删除『' . $workstation['Workstation']['ws_name'].'』')?>
 	</td>
