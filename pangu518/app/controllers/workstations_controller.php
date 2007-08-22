@@ -106,9 +106,9 @@ class WorkstationsController extends AppController {
 			$this->data['Workstation']['referees'] = $referees;
 
 			if($this->Workstation->save($this->data)) {
-				$aco = new Aco();
+				//$aco = new Aco();
 				$workstation_id = $this->Workstation->getLastInsertID(); //得到刚保存到数据库中的主键值
-				$aco->create($workstation_id, $workstation_id,$workstation_id.'-'.$this->data['Workstation']['ws_name']);
+				//$aco->create($workstation_id, $workstation_id,$workstation_id.'-'.$this->data['Workstation']['ws_name']);
 				$this->Session->setFlash('工作站增加成功！');
 				$this->redirect('/workstations/index');
 			} else {
