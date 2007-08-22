@@ -1,0 +1,34 @@
+<h2>New Coupon List</h2>
+<form action="<?php echo $html->url('/coupon_lists/add'); ?>" method="post">
+<div class="optional"> 
+	<?php echo $form->labelTag('CouponList/coupon_start', 'Coupon Start');?>
+ 	<?php echo $html->input('CouponList/coupon_start', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('CouponList/coupon_start', 'Please enter the Coupon Start.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('CouponList/coupon_end', 'Coupon End');?>
+ 	<?php echo $html->input('CouponList/coupon_end', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('CouponList/coupon_end', 'Please enter the Coupon End.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('CouponList/coupon_group', 'Coupon Group');?>
+ 	<?php echo $html->input('CouponList/coupon_group', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('CouponList/coupon_group', 'Please enter the Coupon Group.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('CouponList/custom_num', 'Custom Num');?>
+ 	<?php echo $html->input('CouponList/custom_num', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('CouponList/custom_num', 'Please enter the Custom Num.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('CouponList/status', 'Status');?>
+ 	<?php echo $html->input('CouponList/status', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('CouponList/status', 'Please enter the Status.');?>
+</div>
+<div class="submit">
+	<?php echo $html->submit('Add');?>
+</div>
+</form>
+<ul class="actions">
+<li><?php echo $html->link('List Coupon Lists', '/coupon_lists/index')?></li>
+</ul>
