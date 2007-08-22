@@ -178,14 +178,19 @@ class MembersController extends AppController {
    
    function password() {
 		if(!empty($this->data)) {
+			$old_password = md5($this->data['Member']['old']);
 			$password = md5($this->data['Member']['new']);
 			$this->data = $this->Member->read(null, $this->Session->read('User.uid'));
-			$this->data['Member']['password'] = $password;
-			$this->cleanUpFields();
-			if($this->Member->save($this->data)) {
-				$this->Session->setFlash('会员口令修改成功！');
-			} else {
-				$this->Session->setFlash('口令修改失败！');
+			if($old_password != $this->data['Member']['password']){
+				$this->Session->setFlash('会员原口令不正确！');
+			}else{
+				$this->data['Member']['password'] = $password;
+				$this->cleanUpFields();
+				if($this->Member->save($this->data)) {
+					$this->Session->setFlash('会员口令修改成功！');
+				} else {
+					$this->Session->setFlash('口令修改失败！');
+				}				
 			}			
 		}
    }   
