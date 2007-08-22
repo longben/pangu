@@ -101,11 +101,25 @@
 			return false;
 		}
 
+		if($F('WorkstationMoney') == ''){
+			alert('请输入代金券金额！');
+			$('WorkstationMoney').focus();
+			return false;
+		}
+
 		if(isNaN($F('WorkstationMoney'))){
 			alert('代金券金额只能为数字！');
 			$('WorkstationMoney').focus();
 			return false;
 		}
+
+		if((parseInt($F('WorkstationMoney')/2)*2) != $F('WorkstationMoney')){
+			alert('金额只能为2的倍数');
+			$('WorkstationMoney').focus();
+			return false;
+		}
+
+
 /*		
 		if($F('WorkstationUserId')!=''){
 
