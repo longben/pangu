@@ -99,6 +99,16 @@ a:active {
 			return false;
 		}
 
+		if(doc.cert_number.value!=''){
+
+			var patrn = /[0-9Xx]$/;
+			if(!patrn.test(doc.cert_number.value)){
+				alert('身份证号码格式不对！');
+				doc.cert_number.focus();
+				return false;
+			}
+		}
+
 		if(doc.mobile.value==""){
 			alert("请输入手机号码！");
 			doc.mobile.focus();
@@ -111,14 +121,41 @@ a:active {
 			return false;
 		}
 
+		if(doc.office_phone.value!=''){
+
+			var patrn = /[0-9/-]$/;
+			if(!patrn.test(doc.office_phone.value)){
+				alert('办公电话格式不对');
+				doc.office_phone.focus();
+				return false;
+			}
+		}
+
+		if(doc.home_phone.value!=''){
+
+			var patrn = /[0-9/-]$/;
+			if(!patrn.test(doc.home_phone.value)){
+				alert('家庭电话格式不对');
+				doc.home_phone.focus();
+				return false;
+			}
+		}
+
+
 		if(doc.accounts.value==""){
-			alert("请输入邮政储蓄银行卡号！");
+			alert("请输入邮政储蓄卡号！");
+			doc.accounts.focus();
+			return false;
+		}
+
+		if(doc.accounts.value.length != 19){
+			alert("邮政储蓄卡号必须为19位！");
 			doc.accounts.focus();
 			return false;
 		}
 
 		if(isNaN(doc.accounts.value)){
-			alert("输入的邮政储蓄银行卡号有误，请重新输入！");
+			alert("输入的邮政储蓄卡号有误，请重新输入！");
 			doc.accounts.focus();
 			return false;
 		}
@@ -248,17 +285,21 @@ a:active {
                                         <span class="STYLE3">*</span></td>
 								  </tr>
 									<tr>
-                                      <td height="23" align="left" valign="middle" bgcolor="#FFFFFF"><span style="font-size: 9.0pt; font-family: 宋体">固定电话：</span></td>
-									  <td valign="middle" bgcolor="#FFFFFF" align="left"><input name="telephone" type="text" id="telephone" size="15" maxlength="20"></td>
-								  </tr>
-									<tr>
-                                      <td height="23" align="left" valign="middle" bgcolor="#FFFFFF"><span style="font-size: 9.0pt; font-family: 宋体">联系手机：</span></td>
+                                      <td height="23" align="left" valign="middle" bgcolor="#FFFFFF"><span style="font-size: 9.0pt; font-family: 宋体">手机号码：</span></td>
 									  <td valign="middle" bgcolor="#FFFFFF" align="left"><input name="mobile" type="text" id="mobile" size="15" maxlength="11">
                                         <span class="STYLE3">*</span></td>
 								  </tr>
 									<tr>
-                                      <td height="23" align="left" valign="middle" bgcolor="#FFFFFF"><span style="font-size: 9.0pt; font-family: 宋体"> 邮政储蓄银行帐号：</span></td>
-									  <td valign="middle" bgcolor="#FFFFFF" align="left"><input name="accounts" type="text" id="accounts" size="20" maxlength="21">
+                                      <td height="23" align="left" valign="middle" bgcolor="#FFFFFF"><span style="font-size: 9.0pt; font-family: 宋体">办公电话：</span></td>
+									  <td valign="middle" bgcolor="#FFFFFF" align="left"><input name="office_phone" type="text" id="office_phone" size="15" maxlength="20"></td>
+								  </tr>
+									<tr>
+                                      <td height="23" align="left" valign="middle" bgcolor="#FFFFFF"><span style="font-size: 9.0pt; font-family: 宋体">家庭电话：</span></td>
+									  <td valign="middle" bgcolor="#FFFFFF" align="left"><input name="home_phone" type="text" id="home_phone" size="15" maxlength="20"></td>
+								  </tr>
+									<tr>
+                                      <td height="23" align="left" valign="middle" bgcolor="#FFFFFF"><span style="font-size: 9.0pt; font-family: 宋体"> 邮政储蓄卡号：</span></td>
+									  <td valign="middle" bgcolor="#FFFFFF" align="left"><input name="accounts" type="text" id="accounts" size="20" maxlength="19">
                                         <span class="STYLE3">*</span></td>
 								  </tr>
 									<tr>
@@ -279,13 +320,12 @@ a:active {
 						<img border="0" src="img_www/vipp04.JPG" width="401" height="5"><br>
 						<font size="2" color="#808080">&nbsp;&nbsp;&nbsp;&nbsp;
 						</font>
+						<!--
 						<img border="0" src="img_www/vipP05.JPG" width="7" height="7"><font size="2" color="#808080">会员注意事项 
 						<br>
-&nbsp;&nbsp;&nbsp;&nbsp; 1 会员注意事项会员注意事项<br>
-&nbsp;&nbsp;&nbsp;&nbsp; 2 会员注意事项会员注意事项<br>
-&nbsp;&nbsp;&nbsp;&nbsp; 3 会员注意事项会员注意事项 <br>
-&nbsp;&nbsp;&nbsp;&nbsp; 4 会员注意事项会员注意事项</font>
-						<p align="left" style="line-height: 150%">　</td>
+&nbsp;&nbsp;&nbsp;&nbsp; 会员注意事项会员注意事项会员注意事项会员注意事项会员注意事项会员注意事项 <br></font>
+-->
+						</td>
 					</tr>
 				</table>
 			  </td>

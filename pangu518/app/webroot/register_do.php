@@ -6,10 +6,11 @@
 	$user_name = trim($_POST["user_name"]);
 	$cert_number = trim($_POST["cert_number"]);
 	$member_no = $_POST["coupon"].$cert_number;
-	$referees = $_POST["referees"];
+	$referees = trim($_POST["referees"]);
 	$region_id = $_POST["coupon"];
-	$telephone = trim($_POST["telephone"]);
 	$mobile = trim($_POST["mobile"]);
+	$office_phone = trim($_POST["office_phone"]);
+	$home_phone = trim($_POST["home_phone"]);
 	$accounts = trim($_POST["accounts"]);
 
 	if(empty($referees)){
@@ -36,7 +37,7 @@
 			exit();
 		}
 	}else{
-		$referees = 1;
+		$referees = 'www7777';
 	}
 
 
@@ -48,7 +49,7 @@
 	$arr = mysql_fetch_array($stmt);
 	$id = $arr[0];
 
-	$sql = "insert into users(id,login_name,password,user_name,sex,member_no,cert_number,referees,region_id,telephone,mobile,accounts) values(".$id.",'".$login_name."','".$password."','".$user_name."',".$_POST["sex"].",'".$member_no."','".$cert_number."','".$referees."','".$region_id."','".$telephone."','".$mobile."','".$accounts."')";
+	$sql = "insert into users(id,login_name,password,user_name,sex,member_no,cert_number,referees,region_id,office_phone,home_phone,mobile,accounts) values(".$id.",'".$login_name."','".$password."','".$user_name."',".$_POST["sex"].",'".$member_no."','".$cert_number."','".$referees."','".$region_id."','".$office_phone."','".$home_phone."''".$mobile."','".$accounts."')";
 	mysql_query($sql);
 
 	echo("<script language='JavaScript'>alert('恭喜您，注册成功，您可以登录进入盘古运营系统！');location.replace('main.php');</script>");
