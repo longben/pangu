@@ -123,7 +123,7 @@ a:active {
 
 		if(doc.office_phone.value!=''){
 
-			var patrn = /[0-9/-]$/;
+			var patrn=/^0\d{2,3}\-\d{7,8}$/;
 			if(!patrn.test(doc.office_phone.value)){
 				alert('办公电话格式不对');
 				doc.office_phone.focus();
@@ -133,7 +133,7 @@ a:active {
 
 		if(doc.home_phone.value!=''){
 
-			var patrn = /[0-9/-]$/;
+			var patrn=/^0\d{2,3}\-\d{7,8}$/;
 			if(!patrn.test(doc.home_phone.value)){
 				alert('家庭电话格式不对');
 				doc.home_phone.focus();
