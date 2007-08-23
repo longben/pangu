@@ -27,7 +27,7 @@ begin
 		set _pwd = rpad(_random ^ _num,6,'0');
 		set _no = concat(_group,lpad(_start,9,'0'));
 		insert into coupons(list_id,coupon_no,coupon_pwd,custom_num,random_num,coupon_group) 
-			values(@lid,_no,_pwd,_num,_random,_group);
+			values(@lid,_no,_pwd,_num,_random,UPPER(_group));
 		if mod(_count,10000) = 0 then 
 		  commit;
 		end if;
