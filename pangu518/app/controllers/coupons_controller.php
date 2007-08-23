@@ -2,7 +2,7 @@
 class CouponsController extends AppController {
 
 	var $name = 'Coupons';
-	var $helpers = array('Html', 'Form', 'Javascript', 'Xls');
+	var $helpers = array('Html', 'Form', 'Javascript', 'Zipexport');
 
 	function index() {
 		$this->Coupon->recursive = 0;
@@ -115,9 +115,11 @@ class CouponsController extends AppController {
 			$this->redirect('/coupons/index');
 		}
 	}
+
+
+	/*
 	function export($coupon_group = null, $custom_num = null) {
 		set_time_limit(0);
-		ini_set("memory_limit","50M");
 		
 		$this->layout = 'ajax';
 		$this->data = $this->Coupon->findAll(
@@ -127,6 +129,22 @@ class CouponsController extends AppController {
 		'status' => 0)
 		);
 		$this->set('coupons',$this->data);
+	}
+	*/
+
+	function export($list_id = null){
+
+		/*
+		if(!$id){
+			
+			$this->redirect('/coupon_lists/index');
+		}
+
+		$this->Coupon->query('set @_id='. $list_id);
+
+		$this->Coupon->query('CALL export_coupon(@flag,@_id)');
+		$res = $this->Coupon->query("select @flag");
+		*/
 	}
 
 }

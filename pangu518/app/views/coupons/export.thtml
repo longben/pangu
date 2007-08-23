@@ -1,17 +1,7 @@
 <?php
     // Send Header
-    $xls->setHeader(date('Y_m_d').'.xls');
+    $zipexport->setHeader('/test/logo.bz2');
 
-    // XLS Data Cell
-    $xls->BOF();
-    $xls->writeLabel(0,0,"NO.");
-    $xls->writeLabel(0,1,"PASSWORD");
-	$i = 1;
-	foreach ($coupons as $coupon):
-	  $xls->writeLabel($i,0,$coupon['Coupon']['coupon_no']);
-	  $xls->writeLabel($i,1,$coupon['Coupon']['coupon_pwd']);
-	  $i++;
-	endforeach;
-    $xls->EOF();
+
     exit();
 ?> 
