@@ -78,7 +78,7 @@ create table users(
   user_name        varchar(20)   not null                comment '真实姓名',
   sex              int(1)        not null  default 1     comment '性别: 1:男 0:女',
   member_no        varchar(25)   not null  default ''    comment '省编号+身份证号码成为会员编号',
-  cert_number      varchar(18)   not null  default ''    comment '身份证号码',
+  cert_int      varchar(18)   not null  default ''    comment '身份证号码',
   referees         int(8)                                comment '推荐人',
   member_grades_id int(2)        not null default 1      comment '会员等级，默认为普通会员',
   region_id        int(11)                               comment '会员所属地区',
@@ -230,7 +230,7 @@ create table lotteries(
   start_time       datetime                              comment '彩票期数的开始时间',
   finish_time      datetime                              comment '彩票期数的结束时间',
   open_time        datetime                              comment '开奖时间',
-  win_number       varchar(5)                            comment '中奖号码',
+  win_int       varchar(5)                            comment '中奖号码',
   win_count        int(5)                                comment '中奖总数',
   created          timestamp                             comment '创建时间',
   modified         timestamp                             comment '修改时间',
@@ -244,7 +244,7 @@ create table lotteries(
 create table lottery_bettings(
   id               int(11)       not null auto_increment comment '主键',
   lottery_id       int(5)        not null                comment '彩票期数',
-  betting_number   varchar(5)    not null                comment '彩票投注号码',
+  betting_int   varchar(5)    not null                comment '彩票投注号码',
   betting_time     int(5)        not null default 1      comment '投注份数',
   betting_type     int(1)        not null default 1      comment '投注类型：1:个人投注 2:会员消费单位投注',
   user_id          int(8)                                comment '个人会员',
@@ -279,3 +279,64 @@ create table posts(
   modified             timestamp                             comment '修改时间',
   primary key (id)
 ) engine=MyISAM default charset=utf8 comment='网站栏目文章';
+
+/* 角色表 */
+create table roles (
+  id                   int(10)         not null auto_increment comment '主键',
+  role_name            varchar(200)    not null                comment '角色名称',
+  type_id              int(1)          not null default 1      comment '类型',
+  hierarchy            int(1)                                  comment '角色等级',
+  father_id            int(1)                                  comment '父亲角色',
+  valid_from           date                                    comment '生效日期',
+  valid_thru           date                                    comment '终止日期',
+  flag                 int(1)          not null default 1      comment '有效标志(1: 有效; 0: 无效)',
+  memo                 varchar(2000)                           comment '备注',
+  primary key  (id)
+) engine=MyISAM default charset=utf8 comment='角色';
+
+/* 用户角色表 */
+create table user_attributes(
+  id                   int(10)         not null auto_increment comment '主键',
+  user_id              int(10)         not null                comment '用户',
+  role_id              int(10)         not null                comment '角色',
+  valid_from           date                                    comment '生效日期',
+  valid_thru           date                                    comment '终止日期',
+  primary key (id)
+) engine=MyISAM default charset=utf8 comment='用户角色';
+
+/* 栏目表 */
+create table modules  (
+  id                   int(10)         not null auto_increment comment '主键',
+  module_name   varchar(60)    not null ,  -- 栏目(功能) 名称	*
+  module_type   int(3)                ,  -- 栏目(功能) 类型 (1:系统模块 2:OA系统固定模板  3:网站栏目)
+  parent_id     int(10)               ,  -- 上级栏目id
+  hierarchy     int(3)      default 1 ,  -- 级别		
+  node          int(1)      default 0 ,  -- 节点 (1:根  0:节点 )
+  image_uri     varchar(200)            ,  -- 栏目图标 (限止大小、长度、宽度)	*
+  url           varchar(200)            ,  -- 链接地址				* 
+  target        varchar(20)             ,  -- 打开方式 (_top/_self/_parent/_winname/_blank)	*
+  allow_del     int(1)                ,  -- 此栏目是否允许删除      （1：允许  2：不允许 ）
+  allow_add     int(1)                ,  -- 此栏目是否允许新增子栏目（1：允许  2：不允许 ）
+  allow_publish int(1)                ,  -- 此栏目是否允许上文章    （1： 允许上文章 2： 不允许上文章《例如：总队简介、相关下载等》）
+  duty_person   varchar(200)            ,  -- 栏目责任人		* (一级栏目必填)
+  duty_company  int(10)	         ,  -- 栏目责任单位		* (一级栏目必填)
+  duty_lead     varchar(200)            ,  -- 栏目责任领导		* (一级栏目必填)
+  order_list    int(10)               ,  -- 栏目的排序	
+  max_num       int(10)     default 5 ,  -- 每页最大显示记录数	
+  visit_count   int(10)               ,  -- 栏目被访问的次数
+  page_type     int(1)                ,  -- 栏目的类别 （1：菜单  2：栏目）
+  memo          varchar(4000)           ,  -- 备注
+  flag          int(1)      default 1 ,  -- 有效标志
+  primary key  (id)
+ ) engine=MyISAM default charset=utf8 comment='栏目表';
+
+ /*  角色所属栏目 */
+create table role_modules (
+  id                   int(10)         not null auto_increment comment '主键',
+  role_id      int(10)      not null ,  -- 角色id
+  module_id    int(10)      not null ,  -- 功能id
+  valid_from   date                     ,  -- 生效日期
+  valid_thru   date                     ,  -- 终止日期
+  type_id      int(1)                ,  -- 角色对应栏目的类型 （1: 发布   2:审核 )
+  primary key  (id)
+) engine=MyISAM default charset=utf8 comment='角色所属栏目';
