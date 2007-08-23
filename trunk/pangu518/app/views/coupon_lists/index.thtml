@@ -15,7 +15,17 @@
 	<td><?php echo $couponList['CouponList']['coupon_start']; ?></td>
 	<td><?php echo $couponList['CouponList']['coupon_end']; ?></td>
 	<td><?php echo $couponList['CouponList']['custom_num']; ?></td>
-	<td><?php echo $couponList['CouponList']['status']; ?></td>
+	<td>
+		<?php 
+			if($couponList['CouponList']['status'] == 0){
+				echo "等待生成";
+			}elseif($couponList['CouponList']['status'] == 1){
+				echo "生成中";
+			}elseif($couponList['CouponList']['status'] == 2){
+				echo "生成完毕";
+			}
+		?>
+	</td>
 	<td class="actions">
 		<?php echo $html->link('财务审核','/coupons/audit/' . $couponList['CouponList']['coupon_group'] . '/' . $couponList['CouponList']['custom_num'])?>
 		<?php echo $html->link('导出该组团代金券','/coupons/export/' . $couponList['CouponList']['coupon_group']. '/' . $couponList['CouponList']['custom_num'])?>
