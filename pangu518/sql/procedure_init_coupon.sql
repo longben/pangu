@@ -9,7 +9,7 @@ begin
 
     -- insert list data
 	insert into coupon_lists(coupon_start,coupon_end,coupon_group,custom_num,status)
-      values(_start,_end,_group,_num,0);
+      values(_start,_end,UPPER(_group),_num,0);
     commit;
 
 	-- record list id
