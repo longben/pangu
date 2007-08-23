@@ -1,0 +1,32 @@
+<fieldset align=center>
+<legend>角色修改</legend> 
+<form action="<?php echo $html->url('/roles/edit/'.$html->tagValue('Role/id')); ?>" method="post">
+<div class="required"> 
+	<?php echo $form->labelTag('Role/role_name', '角色名称：');?>
+ 	<?php echo $html->input('Role/role_name', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Role/role_name', '角色名称不能为空.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Role/valid_from', '生效开始日期：');?>
+ 	<?php echo $html->dateTimeOptionTag('Role/valid_from', 'YMD' , 'NONE', $html->tagValue('Role/valid_from'), array());?>
+	<?php echo $html->tagErrorMsg('Role/valid_from', 'Please select the Valid From.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Role/valid_thru', '生效结束日期：');?>
+ 	<?php echo $html->dateTimeOptionTag('Role/valid_thru', 'YMD' , 'NONE', $html->tagValue('Role/valid_thru'), array());?>
+	<?php echo $html->tagErrorMsg('Role/valid_thru', 'Please select the Valid Thru.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Role/memo', '备注：');?>
+ 	<?php echo $html->input('Role/memo', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Role/memo', 'Please enter the Memo.');?>
+</div>
+<?php echo $html->hidden('Role/id')?>
+<div class="submit">
+	<?php echo $html->submit('保存');?>
+</div>
+</form>
+<ul class="actions">
+<li><?php echo $html->link('返回角色列表', '/roles/index')?></li>
+</ul>
+</fieldset>
