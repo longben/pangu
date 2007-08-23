@@ -30,24 +30,24 @@
 
 </div>
 <div class="related">
-<h3>Related Role Modules</h3>
-<?php if (!empty($role['RoleModule'])):?>
+<h3>Related Modules</h3>
+<?php if (!empty($role['Module'])):?>
 <table cellpadding="0" cellspacing="0">
 <tr>
-<?php foreach ($role['RoleModule']['0'] as $column => $value): ?>
+<?php foreach ($role['Module']['0'] as $column => $value): ?>
 <th><?php echo $column?></th>
 <?php endforeach; ?>
 <th>Actions</th>
 </tr>
-<?php foreach ($role['RoleModule'] as $roleModule):?>
+<?php foreach ($role['Module'] as $module):?>
 <tr>
-	<?php foreach ($roleModule as $column => $value):?>
+	<?php foreach ($module as $column => $value):?>
 		<td><?php echo $value;?></td>
 	<?php endforeach;?>
 	<td class="actions">
-		<?php echo $html->link('View', '/role_modules/view/' . $roleModule['id']);?>
-		<?php echo $html->link('Edit', '/role_modules/edit/' . $roleModule['id']);?>
-		<?php echo $html->link('Delete', '/role_modules/delete/' . $roleModule['id'], null, 'Are you sure you want to delete: id ' . $roleModule['id'] . '?');?>
+		<?php echo $html->link('View', '/modules/view/' . $module['id']);?>
+		<?php echo $html->link('Edit', '/modules/edit/' . $module['id']);?>
+		<?php echo $html->link('Delete', '/modules/delete/' . $module['id'], null, 'Are you sure you want to delete: id ' . $module['id'] . '?');?>
 	</td>
 </tr>
 <?php endforeach; ?>
@@ -55,35 +55,6 @@
 <?php endif; ?>
 
 <ul class="actions">
-	<li><?php echo $html->link('New Role Module', '/role_modules/add/');?> </li>
-</ul>
-</div>
-<div class="related">
-<h3>Related User Attributes</h3>
-<?php if (!empty($role['UserAttribute'])):?>
-<table cellpadding="0" cellspacing="0">
-<tr>
-<?php foreach ($role['UserAttribute']['0'] as $column => $value): ?>
-<th><?php echo $column?></th>
-<?php endforeach; ?>
-<th>Actions</th>
-</tr>
-<?php foreach ($role['UserAttribute'] as $userAttribute):?>
-<tr>
-	<?php foreach ($userAttribute as $column => $value):?>
-		<td><?php echo $value;?></td>
-	<?php endforeach;?>
-	<td class="actions">
-		<?php echo $html->link('View', '/user_attributes/view/' . $userAttribute['id']);?>
-		<?php echo $html->link('Edit', '/user_attributes/edit/' . $userAttribute['id']);?>
-		<?php echo $html->link('Delete', '/user_attributes/delete/' . $userAttribute['id'], null, 'Are you sure you want to delete: id ' . $userAttribute['id'] . '?');?>
-	</td>
-</tr>
-<?php endforeach; ?>
-</table>
-<?php endif; ?>
-
-<ul class="actions">
-	<li><?php echo $html->link('New User Attribute', '/user_attributes/add/');?> </li>
+	<li><?php echo $html->link('New Module', '/modules/add/');?> </li>
 </ul>
 </div>

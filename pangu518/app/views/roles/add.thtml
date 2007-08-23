@@ -1,29 +1,26 @@
 <fieldset align=center>
 <legend>新增角色</legend> 
+
 <form action="<?php echo $html->url('/roles/add'); ?>" method="post">
 <div class="required"> 
 	<?php echo $form->labelTag('Role/role_name', '角色名称：');?>
- 	<?php echo $html->input('Role/role_name', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Role/role_name', '角色名称不能为空!');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Role/valid_from', '生效开始日期：');?>
- 	<?php echo $html->dateTimeOptionTag('Role/valid_from', 'YMD' , 'NONE', mktime(date("G")+1, 0, 0, date("m"), date("d")+1, date("Y")), array());?>
-	<?php echo $html->tagErrorMsg('Role/valid_from', 'Please select the Valid From.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Role/valid_thru', '生效结束日期：');?>
- 	<?php echo $html->dateTimeOptionTag('Role/valid_thru', 'YMD' , 'NONE', mktime(date("G")+1, 0, 0, date("m"), date("d")+1, date("Y")), array());?>
-	<?php echo $html->tagErrorMsg('Role/valid_thru', 'Please select the Valid Thru.');?>
+ 	<?php echo $html->input('Role/role_name', array('size' => '30'));?>
+	<?php echo $html->tagErrorMsg('Role/role_name', '角色名称不能为空.');?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Role/memo', '备注：');?>
- 	<?php echo $html->input('Role/memo', array('size' => '60'));?>
+ 	<?php echo $html->input('Role/memo', array('size' => '30'));?>
 	<?php echo $html->tagErrorMsg('Role/memo', 'Please enter the Memo.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Module/Module', '系统功能权限：');?>
+ 	<?php echo $html->selectTag('Module/Module', $modules, $selectedModules, array('multiple' => 'multiple', 'class' => 'selectMultiple','style' => 'width:235px'), array(), false);?>
+	<?php echo $html->tagErrorMsg('Module/Module', 'Please select the Related Modules.');?>
 </div>
 <div class="submit">
 	<?php echo $html->submit('保存');?>
 </div>
+<pre><?php //print_r($modules); ?></pre> 
 </form>
 <ul class="actions">
 <li><?php echo $html->link('返回角色列表', '/roles/index')?></li>
