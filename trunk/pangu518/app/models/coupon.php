@@ -68,6 +68,12 @@ class Coupon extends AppModel {
 			    and Coupon.custom_num = $custom_num
 			     and Coupon.status = 0";
 			return $this->query($sql);
+
+			$sql = "update coupon_lists as CouponList set CouponList.status = 4
+			  where CouponList.coupon_group = '$coupon_group'
+			    and CouponList.custom_num = $custom_num
+			     and CouponList.status = 2";
+			return $this->query($sql);
 		}
 	}
 	
