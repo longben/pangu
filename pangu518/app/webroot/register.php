@@ -304,7 +304,7 @@ a:active {
 								  </tr>
 									<tr>
                                       <td height="23" align="left" valign="middle" bgcolor="#FFFFFF"><span style="font-size: 9.0pt; font-family: 宋体">推荐人帐号：</span></td>
-									  <td valign="middle" bgcolor="#FFFFFF" align="left"><input name="referees" type="text" id="referees" size="15" maxlength="20"></td>
+									  <td valign="middle" bgcolor="#FFFFFF" align="left"><input name="referees" type="text" id="referees" size="15" maxlength="20" value="www7777"></td>
 								  </tr>
 									<tr>
 									  <td height="40" colspan="2" align="center" valign="middle" bgcolor="#FFFFFF">
