@@ -32,6 +32,7 @@ create table regions(
 /* 代金券  */
 create table coupons(
   id               int(11)       not null auto_increment comment '主键',
+  list_id		   int(11)		 NOT NULL				 COMMENT '代金券批号ID',
   coupon_no        varchar(15)   not null                comment '代金券编码。no.00000001－no.25000000，2500万一组',
   coupon_pwd       varchar(10)                           comment '代金券密码',
   custom_num       varchar(10)                           comment '用户随机数',
