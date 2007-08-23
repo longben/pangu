@@ -17,12 +17,25 @@
 	<td><?php echo $couponList['CouponList']['custom_num']; ?></td>
 	<td>
 		<?php 
-			if($couponList['CouponList']['status'] == 0){
-				echo "等待生成";
-			}elseif($couponList['CouponList']['status'] == 1){
-				echo "生成中";
-			}elseif($couponList['CouponList']['status'] == 2){
-				echo "生成完毕";
+			switch($couponList['CouponList']['status']){
+				case 0:
+					echo "等待生成";
+					break;
+				case 1:
+					echo "生成中";
+					break;
+				case 2:
+					echo "生成完毕(待审核)";
+					break;
+				case 3:
+					echo "已导出";
+					break;
+				case 4:
+					echo "已审核";
+					break;
+				default:
+					echo "等待生成";
+					break;
 			}
 		?>
 	</td>

@@ -55,7 +55,7 @@ create table coupon_lists(
   custom_num       varchar(10)   not null                comment '用户随机数',
   created          timestamp                             comment '创建时间',
   modified         timestamp                             comment '修改时间',
-  status           int(1)        not null default 0      comment '状态 0-等待中，1-生成中，2-生成完毕',
+  status           int(1)        not null default 0      comment '状态 0-等待生成，1-生成中，2-生成完毕(待审核)，3-已导出,4-已审核',
   primary key (id)
 ) engine=MyISAM default charset=utf8 comment='代金券生成排序';
 
