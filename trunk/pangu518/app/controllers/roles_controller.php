@@ -19,14 +19,47 @@ class RolesController extends AppController {
 
 	function add() {
 		if (empty($this->data)) {
+
+			$this->set('modules', $this->Role->Module->generateList(
+			  $conditions = null,
+			  $order = null,
+			  $limit = null,
+			  $keyPath = '{n}.Module.id',
+			  $valuePath = '{n}.Module.module_name')
+			);
+
+
+			/*
+			$this->set('modules', $this->Role->Module->generateList4TreeData(
+			  $conditions = null,
+			  $order = 'id',
+			  $limit = null,
+			  $keyPath = '{n}.Module.id',
+			  $valuePath = '{n}.Module.module_name')
+			);
+			*/
+
+			//$this->set('modules', $this->Role->Module->findAllThreaded(null,null,'id'));
+
+			$this->set('selectedModules', null);
 			$this->render();
 		} else {
 			$this->cleanUpFields();
 			if ($this->Role->save($this->data)) {
-				$this->Session->setFlash('角色保存成功!');
+				$this->Session->setFlash('角色保存成功.');
 				$this->redirect('/roles/index');
 			} else {
-				$this->Session->setFlash('角色保存失败，请检查下面错误.');
+				$this->Session->setFlash('请检查下面的错误.');
+				$this->set('modules', $this->Role->Module->generateList(
+				  $conditions = null,
+				  $order = null,
+				  $limit = null,
+				  $keyPath = '{n}.Module.id',
+				  $valuePath = '{n}.Module.module_name')
+				);
+
+				if (empty($this->data['Module']['Module'])) { $this->data['Module']['Module'] = null; }
+				$this->set('selectedModules', $this->data['Module']['Module']);
 			}
 		}
 	}
@@ -38,13 +71,32 @@ class RolesController extends AppController {
 				$this->redirect('/roles/index');
 			}
 			$this->data = $this->Role->read(null, $id);
+			$this->set('modules', $this->Role->Module->generateList(
+			  $conditions = null,
+			  $order = null,
+			  $limit = null,
+			  $keyPath = '{n}.Module.id',
+			  $valuePath = '{n}.Module.module_name')
+			);
+
+			if (empty($this->data['Module'])) { $this->data['Module'] = null; }
+			$this->set('selectedModules', $this->_selectedArray($this->data['Module']));
 		} else {
 			$this->cleanUpFields();
 			if ($this->Role->save($this->data)) {
-				$this->Session->setFlash('角色修改保存成功!');
+				$this->Session->setFlash('角色修改成功.');
 				$this->redirect('/roles/index');
 			} else {
-				$this->Session->setFlash('角色修改保存失败，请检查下面错误.');
+				$this->Session->setFlash('请检查下面的错误.');
+				$this->set('modules', $this->Role->Module->generateList(
+				  $conditions = null,
+				  $order = null,
+				  $limit = null,
+				  $keyPath = '{n}.Module.id',
+				  $valuePath = '{n}.Module.module_name')
+				);
+				if (empty($this->data['Module']['Module'])) { $this->data['Module']['Module'] = null; }
+				$this->set('selectedModules', $this->data['Module']['Module']);
 			}
 		}
 	}
@@ -55,7 +107,7 @@ class RolesController extends AppController {
 			$this->redirect('/roles/index');
 		}
 		if ($this->Role->del($id)) {
-			$this->Session->setFlash('角色删除成功!');
+			$this->Session->setFlash('角色删除成功.');
 			$this->redirect('/roles/index');
 		}
 	}

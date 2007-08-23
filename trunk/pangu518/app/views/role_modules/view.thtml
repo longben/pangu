@@ -1,0 +1,25 @@
+<div class="roleModule">
+<h2>View Role Module</h2>
+
+<dl>
+	<dt>Id</dt>
+	<dd>&nbsp;<?php echo $roleModule['RoleModule']['id']?></dd>
+	<dt>Role Id</dt>
+	<dd>&nbsp;<?php echo $roleModule['RoleModule']['role_id']?></dd>
+	<dt>Module Id</dt>
+	<dd>&nbsp;<?php echo $roleModule['RoleModule']['module_id']?></dd>
+	<dt>Valid From</dt>
+	<dd>&nbsp;<?php echo $roleModule['RoleModule']['valid_from']?></dd>
+	<dt>Valid Thru</dt>
+	<dd>&nbsp;<?php echo $roleModule['RoleModule']['valid_thru']?></dd>
+	<dt>Type Id</dt>
+	<dd>&nbsp;<?php echo $roleModule['RoleModule']['type_id']?></dd>
+</dl>
+<ul class="actions">
+	<li><?php echo $html->link('Edit Role Module',   '/role_modules/edit/' . $roleModule['RoleModule']['id']) ?> </li>
+	<li><?php echo $html->link('Delete Role Module', '/role_modules/delete/' . $roleModule['RoleModule']['id'], null, 'Are you sure you want to delete: id ' . $roleModule['RoleModule']['id'] . '?') ?> </li>
+	<li><?php echo $html->link('List Role Modules',   '/role_modules/index') ?> </li>
+	<li><?php echo $html->link('New Role Module',	'/role_modules/add') ?> </li>
+</ul>
+
+</div>

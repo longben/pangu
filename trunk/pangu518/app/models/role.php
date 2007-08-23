@@ -6,33 +6,22 @@ class Role extends AppModel {
 		'role_name' => VALID_NOT_EMPTY,
 	);
 
-	var $hasMany = array(
-			'RoleModule' =>
-				array('className' => 'RoleModule',
-						'foreignKey' => 'role_id',
-						'conditions' => '',
-						'fields' => '',
-						'order' => '',
-						'limit' => '',
-						'offset' => '',
-						'dependent' => '',
-						'exclusive' => '',
-						'finderQuery' => '',
-						'counterQuery' => ''
-				),
 
-			'UserAttribute' =>
-				array('className' => 'UserAttribute',
+	var $hasAndBelongsToMany = array(
+			'Module' =>
+				array('className' => 'Module',
+						'joinTable' => 'role_modules',
 						'foreignKey' => 'role_id',
+						'associationForeignKey' => '',
 						'conditions' => '',
 						'fields' => '',
 						'order' => '',
 						'limit' => '',
 						'offset' => '',
-						'dependent' => '',
-						'exclusive' => '',
+						'unique' => '',
 						'finderQuery' => '',
-						'counterQuery' => ''
+						'deleteQuery' => '',
+						'insertQuery' => ''
 				),
 
 	);

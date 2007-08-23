@@ -1,9 +1,9 @@
 <fieldset align=center>
-<legend>角色列表</legend> 
-<table cellpadding="0" cellspacing="0" width="90%">
+<legend>系统角色维护</legend> 
+
+<table cellpadding="0" cellspacing="0" width="96%">
 <tr>
 	<th>角色名称</th>
-	<th>有效起止</th>
 	<th>状态</th>
 	<th>备注</th>
 	<th>操作</th>
@@ -11,13 +11,11 @@
 <?php foreach ($roles as $role): ?>
 <tr>
 	<td><?php echo $role['Role']['role_name']; ?></td>
-	<td><?php echo $role['Role']['valid_from']; ?> 至 <?php echo $role['Role']['valid_thru']; ?></td>
 	<td><?php echo $role['Role']['flag']==1?'有效':'无效'; ?></td>
 	<td><?php echo $role['Role']['memo']; ?></td>
 	<td class="actions">
 		<?php echo $html->link('编辑','/roles/edit/' . $role['Role']['id'])?>
-		<?php echo $html->link('授权','/roles/authorization/' . $role['Role']['id'])?>
-		<?php echo $html->link('删除','/roles/delete/' . $role['Role']['id'], null, '你是否真要删除：' . $role['Role']['role_name'])?>
+		<?php echo $html->link('删除','/roles/delete/' . $role['Role']['id'], null, '确认是否删除角色:' . $role['Role']['role_name'])?>
 	</td>
 </tr>
 <?php endforeach; ?>

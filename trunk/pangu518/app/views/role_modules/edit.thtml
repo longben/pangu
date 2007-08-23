@@ -1,0 +1,36 @@
+<h2>Edit Role Module</h2>
+<form action="<?php echo $html->url('/role_modules/edit/'.$html->tagValue('RoleModule/id')); ?>" method="post">
+<div class="optional"> 
+	<?php echo $form->labelTag('RoleModule/role_id', 'Role Id');?>
+ 	<?php echo $html->input('RoleModule/role_id', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('RoleModule/role_id', 'Please enter the Role Id.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('RoleModule/module_id', 'Module Id');?>
+ 	<?php echo $html->input('RoleModule/module_id', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('RoleModule/module_id', 'Please enter the Module Id.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('RoleModule/valid_from', 'Valid From');?>
+ 	<?php echo $html->dateTimeOptionTag('RoleModule/valid_from', 'MDY' , 'NONE', $html->tagValue('RoleModule/valid_from'), array());?>
+	<?php echo $html->tagErrorMsg('RoleModule/valid_from', 'Please select the Valid From.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('RoleModule/valid_thru', 'Valid Thru');?>
+ 	<?php echo $html->dateTimeOptionTag('RoleModule/valid_thru', 'MDY' , 'NONE', $html->tagValue('RoleModule/valid_thru'), array());?>
+	<?php echo $html->tagErrorMsg('RoleModule/valid_thru', 'Please select the Valid Thru.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('RoleModule/type_id', 'Type Id');?>
+ 	<?php echo $html->input('RoleModule/type_id', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('RoleModule/type_id', 'Please enter the Type Id.');?>
+</div>
+<?php echo $html->hidden('RoleModule/id')?>
+<div class="submit">
+	<?php echo $html->submit('Save');?>
+</div>
+</form>
+<ul class="actions">
+<li><?php echo $html->link('Delete','/role_modules/delete/' . $html->tagValue('RoleModule/id'), null, 'Are you sure you want to delete: id ' . $html->tagValue('RoleModule/id'));?>
+<li><?php echo $html->link('List Role Modules', '/role_modules/index')?></li>
+</ul>

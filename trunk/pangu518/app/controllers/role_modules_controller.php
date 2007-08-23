@@ -19,8 +19,6 @@ class RoleModulesController extends AppController {
 
 	function add() {
 		if (empty($this->data)) {
-			$this->set('roles', $this->RoleModule->Role->generateList());
-			$this->set('modules', $this->RoleModule->Module->generateList());
 			$this->render();
 		} else {
 			$this->cleanUpFields();
@@ -29,8 +27,6 @@ class RoleModulesController extends AppController {
 				$this->redirect('/role_modules/index');
 			} else {
 				$this->Session->setFlash('Please correct errors below.');
-				$this->set('roles', $this->RoleModule->Role->generateList());
-				$this->set('modules', $this->RoleModule->Module->generateList());
 			}
 		}
 	}
@@ -42,8 +38,6 @@ class RoleModulesController extends AppController {
 				$this->redirect('/role_modules/index');
 			}
 			$this->data = $this->RoleModule->read(null, $id);
-			$this->set('roles', $this->RoleModule->Role->generateList());
-			$this->set('modules', $this->RoleModule->Module->generateList());
 		} else {
 			$this->cleanUpFields();
 			if ($this->RoleModule->save($this->data)) {
@@ -51,8 +45,6 @@ class RoleModulesController extends AppController {
 				$this->redirect('/role_modules/index');
 			} else {
 				$this->Session->setFlash('Please correct errors below.');
-				$this->set('roles', $this->RoleModule->Role->generateList());
-				$this->set('modules', $this->RoleModule->Module->generateList());
 			}
 		}
 	}
