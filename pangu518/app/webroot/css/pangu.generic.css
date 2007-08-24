@@ -396,3 +396,16 @@ dd{ text-align:left;height:auto;padding:8px 0;}
 	color:#fff;
 	text-decoration:none;
 }
+
+ul.checkboxMultiple {
+    margin:0;
+    padding:0;
+    list-style-type:none;
+}
+
+ul.checkboxMultiple li {
+    display:block;
+    float:left;
+    width: 220px;
+    margin: 0 8px 0 0;
+} 

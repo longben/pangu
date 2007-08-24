@@ -3,8 +3,13 @@
 <form action="<?php echo $html->url('/users/edit/'.$html->tagValue('User/id')); ?>" method="post" onsubmit="return check()">
 <div class="optional"> 
 	<?php echo $form->labelTag('User/region_id', '所属地区：');?>
- 	<?php echo $html->selectTag('User/region_id', $regions, $html->tagValue('User/region_id'), array(), array(), false);?>
+ 	<?php echo $html->selectTag('User/region_id', $regions, $html->tagValue('User/region_id'), array('style' => 'width:150px'), array(), false);?>
 	<?php echo $html->tagErrorMsg('User/region_id', 'Please select the Region.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('User/role_id', '所属角色：');?>
+ 	<?php echo $html->selectTag('User/role_id', $roles, $html->tagValue('User/role_id'), array('style' => 'width:150px'), array(), false);?><span style='color:red'>注意：请仔细确认该用户角色</span>
+	<?php echo $html->tagErrorMsg('User/role_id', 'Please select the Region.') ?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('User/login_name', '登录名：');?>
@@ -16,35 +21,11 @@
  	<?php echo $html->input('User/user_name', array('size' => '60','maxlength' => '20'));?>
 	<?php echo $html->tagErrorMsg('User/user_name', 'Please enter the User Name.');?>
 </div>
-<!--
-<div class="optional"> 
-	<?php echo $form->labelTag('User/sex', '性别：');?>
- 	<?php echo $html->input('User/sex', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('User/sex', 'Please enter the Sex.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('User/member_no', '会员编号');?>
- 	<?php echo $html->input('User/member_no', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('User/member_no', 'Please enter the Member No.');?>
-</div>
--->
 <div class="optional"> 
 	<?php echo $form->labelTag('User/cert_number', '身份证号码：');?>
  	<?php echo $html->input('User/cert_number', array('size' => '60','maxlength' => '18'));?>
 	<?php echo $html->tagErrorMsg('User/cert_number', 'Please enter the Cert Number.');?>
 </div>
-<!--
-<div class="optional"> 
-	<?php echo $form->labelTag('User/referees', '推荐人：');?>
- 	<?php echo $html->input('User/referees', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('User/referees', 'Please enter the Referees.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('User/telephone', '常用电话：');?>
- 	<?php echo $html->input('User/telephone', array('size' => '60','maxlength' => '12'));?>
-	<?php echo $html->tagErrorMsg('User/telephone', 'Please enter the Telephone.');?>
-</div>
--->
 <div class="optional"> 
 	<?php echo $form->labelTag('User/mobile', '移动电话：');?>
  	<?php echo $html->input('User/mobile', array('size' => '60','maxlength' => '11'));?>
@@ -167,6 +148,10 @@
 	if( $F('UserAccounts').length !=19 ){
 		alert('银行帐号位数不对，必须为19位邮政储蓄卡！');
 		$('UserAccounts').focus();
+		return false;
+	}
+
+	if(!window.confirm('请确认！\n\n是否给当前用户授权角色：' + $('UserRoleId').options[$('UserRoleId').selectedIndex].text)){
 		return false;
 	}
 

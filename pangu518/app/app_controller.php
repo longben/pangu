@@ -7,6 +7,7 @@ class AppController extends Controller {
 	var $_workstation = 3;
 	var $_merchant = 4;
 
+
 	function bzip2($in, $out){
 	   if (!file_exists ($in) || !is_readable ($in))
 		   return false;
