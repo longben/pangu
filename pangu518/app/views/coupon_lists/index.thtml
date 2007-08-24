@@ -25,7 +25,7 @@
 					echo "生成中";
 					break;
 				case 2:
-					echo "生成完毕(待审核)";
+					echo "生成完毕(待导出)";
 					break;
 				case 3:
 					echo "已导出";
@@ -40,7 +40,14 @@
 		?>
 	</td>
 	<td class="actions">
-		<?php echo $html->link('财务审核','/coupons/audit/' . $couponList['CouponList']['coupon_group'] . '/' . $couponList['CouponList']['custom_num'])?>
+		<?php 
+			if($couponList['CouponList']['status'] == 3){
+				echo $html->link('财务审核','/coupons/audit/' . $couponList['CouponList']['coupon_group'] . '/' . $couponList['CouponList']['custom_num']);				
+			}else{
+				echo "<font color='#999999'>财务审核</font>";
+			}
+
+		?>
 		<?php echo $html->link('导出该组团代金券','/coupons/export/' . $couponList['CouponList']['id'])?>
 	</td>
 </tr>
