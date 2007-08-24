@@ -204,7 +204,7 @@ class MerchantsController extends AppController {
 	}
 	
 	function profile() {
-		$user_id = $this->Session->read('User.uid');
+		$user_id = $this->Session->read('User.id');
 		$this->set('user_id',$user_id);
 		if(empty($this->data)) {
 			if(!$user_id) {

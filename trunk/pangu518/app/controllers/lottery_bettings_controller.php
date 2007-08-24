@@ -87,7 +87,7 @@ class LotteryBettingsController extends AppController {
 			$this->render();
 		} else {
 			$this->cleanUpFields();
-			$user_id = $this->Session->read('User.uid');
+			$user_id = $this->Session->read('User.id');
 			$lottery_id = $this->data['LotteryBetting']['lottery_id'];
 			$betting_number = $this->data['LotteryBetting']['betting_number'];
 			$betting_time = $this->data['LotteryBetting']['betting_time'];
@@ -129,7 +129,7 @@ class LotteryBettingsController extends AppController {
 			$this->render();
 		} else {
 			$this->cleanUpFields();
-			$user_id = $this->Session->read('User.uid');
+			$user_id = $this->Session->read('User.id');
 			$Merchant = $this->LotteryBetting->Merchant->findByUserId($user_id);
 			$merchant_id = $Merchant['Merchant']['id'];
 

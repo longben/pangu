@@ -1,7 +1,15 @@
-﻿<table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
+<?php if ($this->controller->Session->check('User')): ?>
+<?php
+   if($this->controller->Session->read('User.id') ==1){
+	   $page = "pages/left";
+   }else{
+	   $page = "roles/left";
+   }
+?>
+<table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
   <tr>
     <td valign="top" nowrap id="frmLeftTd" name="frmLeftTd" width="209">
-      <iframe id="frmLeft" name="frmLeft" style="height:100%; visibility: inherit; width:100%;" frameborder="0" scrolling="auto" src="pages/left" ></iframe>
+      <iframe id="frmLeft" name="frmLeft" style="height:100%; visibility: inherit; width:100%;" frameborder="0" scrolling="auto" src="<?=$page?>" ></iframe>
     </td>
     <td width="10" align="center" bgcolor="#658c10" onClick="switchSysBar()">
       <table  border="0" cellspacing="0" cellpadding="0">
@@ -36,3 +44,11 @@ window.onload = setBody;
 
 //-->
 </script>
+<?php endif;?>
+
+<?php if (!$this->controller->Session->check('User')): ?>
+<script language="Javascript">
+   alert("无效登录！");
+   top.location.replace("/admin");
+</script>
+<?php endif;?>

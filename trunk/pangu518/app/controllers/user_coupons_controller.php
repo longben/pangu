@@ -19,13 +19,13 @@ class UserCouponsController extends AppController {
 
 	function input() {
 		$criteria = array(
-		  'UserCoupon.user_id' => $this->Session->read('User.uid'),
+		  'UserCoupon.user_id' => $this->Session->read('User.id'),
 		  'UserCoupon.status' => 421
 		);
 		$available_capital = $this->UserCoupon->findCount($criteria);
 		
 		$criteria = array(
-		  'UserCoupon.user_id' => $this->Session->read('User.uid'),
+		  'UserCoupon.user_id' => $this->Session->read('User.id'),
 		  'UserCoupon.status' => 212
 		);		
 		$expenditure = $this->UserCoupon->findCount($criteria);
@@ -43,7 +43,7 @@ class UserCouponsController extends AppController {
 				$this->data['UserCoupon']['coupon_id'] = $coupon_id;
 				$this->data['UserCoupon']['status'] = 421;
 				if($this->UserCoupon->save($this->data)) {
-					$this->UserCoupon->updateMerchantCouponStatus($this->Session->read('User.uid'),$coupon_id);
+					$this->UserCoupon->updateMerchantCouponStatus($this->Session->read('User.id'),$coupon_id);
 					$this->Session->setFlash('代金券录入成功！');
 					$this->redirect('/user_coupons/input');
 				} else {

@@ -5,7 +5,7 @@ class WorkstationCouponsController extends AppController {
 	var $helpers = array('Html', 'Form' );
 	
 	function index() {
-		$user_id = $this->Session->read('User.uid');
+		$user_id = $this->Session->read('User.id');
 		$this->data = $this->WorkstationCoupon->Workstation->findByUserId($user_id);
 		if(empty($this->data)){
 			$this->Session->setFlash('请先申请成立会员消费单位！');
@@ -17,13 +17,13 @@ class WorkstationCouponsController extends AppController {
 		
 		//统计查询条件
 		$criteria = array(
-		  'Workstation.user_id' => $this->Session->read('User.uid'),
+		  'Workstation.user_id' => $this->Session->read('User.id'),
 		  'WorkstationCoupon.status' => 131
 		);
 		$this->set('total', $this->WorkstationCoupon->findCount($criteria));
 		
 		$criteria = array(
-		  'Workstation.user_id' => $this->Session->read('User.uid'),
+		  'Workstation.user_id' => $this->Session->read('User.id'),
 		  'WorkstationCoupon.status' => 341
 		);
 		$this->set('total2', $this->WorkstationCoupon->findCount($criteria));		
