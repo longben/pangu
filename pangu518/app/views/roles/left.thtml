@@ -1,0 +1,34 @@
+<?php if ($this->controller->Session->check('User')) { ?>
+<script  src="/js/dtree.js"></script>
+当前用户：<?php echo $this->controller->Session->read('User.user_name'); ?>  [<a href="<?php echo $html->url('/main.php'); ?>" target="_top">退出</a>] 
+<?php }else{?>
+<script language="Javascript">
+   alert("无效登录！");
+   top.location.replace("/admin");
+</script>
+<?php }?>
+
+<br/>
+<div id="dtree">
+	<script type="text/javascript">
+		<!--
+
+		d = new dTree('d');
+		d.config.target = "right";
+
+		d.add(0,-1,'盘古消费运营软件');
+
+		<?php 
+		  if (!empty($role['Module'])){
+			  foreach ($role['Module'] as $module):
+				  echo("d.add(". $module['id']. ",". $module['parent_id'] . ",'" . $module['module_name'] . "','" . $module['url'] . "');\n");
+			  endforeach;
+		  }
+		?>
+
+		document.write(d);
+
+		//-->
+	</script>
+
+</div>

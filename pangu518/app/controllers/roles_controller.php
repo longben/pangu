@@ -9,6 +9,15 @@ class RolesController extends AppController {
 		$this->set('roles', $this->Role->findAll());
 	}
 
+	function left(){
+		$id = $this->Session->read('User.role_id');
+		if (!$id && $id!=0) {
+			$this->Session->setFlash('无效请求.');
+			$this->redirect('/admin');
+		}
+		$this->set('role', $this->Role->read(null, $id));
+	}
+
 	function view($id = null) {
 		if (!$id) {
 			$this->Session->setFlash('Invalid id for Role.');

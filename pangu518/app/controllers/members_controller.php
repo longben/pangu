@@ -26,7 +26,7 @@ class MembersController extends AppController {
 	}
 
 	function view($id = null) {
-		if ($this->Acl->check($this->Session->read('User.uid'), $this->Session->read('User.username'), 'read')){
+		if ($this->Acl->check($this->Session->read('User.id'), $this->Session->read('User.username'), 'read')){
 			$this->Session->setFlash('无权查看！');
 			$this->redirect('/members/index');
 		}
@@ -56,7 +56,7 @@ class MembersController extends AppController {
         		  $aco = new Aco();
         		  $aco->create($member_id, 3, $member_alias);
         		  $this->Acl->allow('Admins', $member_alias,'*');
-        		  $this->Acl->allow($this->Session->read('User.uid'), $member_alias, '*');
+        		  $this->Acl->allow($this->Session->read('User.id'), $member_alias, '*');
        		   		          		  
 				  $this->Session->setFlash('添加成功！');
 				  $this->redirect('/members/index');
@@ -82,7 +82,7 @@ class MembersController extends AppController {
 	}
 	
 	function profile() {
-		$id = $this->Session->read('User.uid');
+		$id = $this->Session->read('User.id');
 		$this->set('regions', $this->Member->User->Region->generateList(
 			             $conditions = "id like '__0000'",
 			             $order = 'id',
@@ -167,7 +167,9 @@ class MembersController extends AppController {
       	// Compare the MD5 encrypted version of the password against recorded encrypted password.
       	if(!empty($someone['Member']['password']) &&
             ($someone['Member']['password'] == md5($this->data['Member']['password']))){
-      		$this->Session->write('User', $someone['Member']);
+			$user = $this->Member->User->read(null, $someone['Member']['uid']);
+			$this->Session->write('User',$user['User']);
+      		$this->Session->write('Member', $someone['Member']);
       		$this->redirect('/admin_index');
       	}
       	else{
@@ -180,7 +182,7 @@ class MembersController extends AppController {
 		if(!empty($this->data)) {
 			$old_password = md5($this->data['Member']['old']);
 			$password = md5($this->data['Member']['new']);
-			$this->data = $this->Member->read(null, $this->Session->read('User.uid'));
+			$this->data = $this->Member->read(null, $this->Session->read('User.id'));
 			if($old_password != $this->data['Member']['password']){
 				$this->Session->setFlash('会员原口令不正确！');
 			}else{

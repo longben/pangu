@@ -15,7 +15,7 @@ class Role extends AppModel {
 						'associationForeignKey' => '',
 						'conditions' => '',
 						'fields' => '',
-						'order' => '',
+						'order' => 'id',
 						'limit' => '',
 						'offset' => '',
 						'unique' => '',
