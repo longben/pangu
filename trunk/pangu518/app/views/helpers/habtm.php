@@ -35,9 +35,9 @@ class HabtmHelper extends HtmlHelper {
                 $optionsHere['checked'] = 'checked'; 
             } 
             $optionsHere['value'] = $name; 
-            $checkbox[] = "<li>" . sprintf($this->tags['checkboxmultiple'], $this->model, $this->field, $this->parseHtmlOptions($optionsHere), $title) . "</li>\n"; 
+            $checkbox[] =  sprintf($this->tags['checkboxmultiple'], $this->model, $this->field, $this->parseHtmlOptions($optionsHere), $title) ."<br/>"; 
         } 
-        return "\n" . sprintf($this->tags['hiddenmultiple'], $this->model, $this->field, null, $title) . "\n<ul class=\"checkboxMultiple\">\n" . $this->output(implode($checkbox), $return) . "</ul>\n"; 
+        return "\n" . sprintf($this->tags['hiddenmultiple'], $this->model, $this->field, null, $title) .  $this->output(implode($checkbox), $return) ; 
     } 
      
 } 

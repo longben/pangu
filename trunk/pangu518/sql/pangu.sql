@@ -32,7 +32,7 @@ create table regions(
 /* 代金券  */
 create table coupons(
   id               int(11)       not null auto_increment comment '主键',
-  list_id		   int(11)		 NOT NULL				 COMMENT '代金券批号ID',
+  list_id	   int(11)       not null		 comment '代金券批号id',
   coupon_no        varchar(15)   not null                comment '代金券编码。no.00000001－no.25000000，2500万一组',
   coupon_pwd       varchar(10)                           comment '代金券密码',
   custom_num       varchar(10)                           comment '用户随机数',
@@ -79,7 +79,7 @@ create table users(
   user_name        varchar(20)   not null                comment '真实姓名',
   sex              int(1)        not null  default 1     comment '性别: 1:男 0:女',
   member_no        varchar(25)   not null  default ''    comment '省编号+身份证号码成为会员编号',
-  cert_int      varchar(18)   not null  default ''    comment '身份证号码',
+  cert_int         varchar(18)   not null  default ''    comment '身份证号码',
   referees         int(8)                                comment '推荐人',
   member_grades_id int(2)        not null default 1      comment '会员等级，默认为普通会员',
   region_id        int(11)                               comment '会员所属地区',
@@ -91,6 +91,7 @@ create table users(
   bank_accounts    varchar(30) DEFAULT '邮政储蓄银行'    comment '开户银行',
   accounts         varchar(20)                           comment '银行帐号',
   created          timestamp                             comment '会员创建日期',
+  role_id          int(6)        default 0               comment '用户角色',       
   flag             int(1)        not null default 1      comment '会员状态',
   primary key (id)
 ) engine=MyISAM default charset=utf8 comment='会员扩展信息';

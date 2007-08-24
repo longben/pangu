@@ -2,7 +2,7 @@
 class RolesController extends AppController {
 
 	var $name = 'Roles';
-	var $helpers = array('Html', 'Form' );
+	var $helpers = array('Html', 'Form', 'Habtm');
 
 	function index() {
 		$this->Role->recursive = 0;
@@ -20,16 +20,17 @@ class RolesController extends AppController {
 	function add() {
 		if (empty($this->data)) {
 
+            
 			$this->set('modules', $this->Role->Module->generateList(
 			  $conditions = null,
-			  $order = null,
+			  $order = 'Module.id',
 			  $limit = null,
 			  $keyPath = '{n}.Module.id',
 			  $valuePath = '{n}.Module.module_name')
 			);
+			
 
-
-			/*
+            /*
 			$this->set('modules', $this->Role->Module->generateList4TreeData(
 			  $conditions = null,
 			  $order = 'id',

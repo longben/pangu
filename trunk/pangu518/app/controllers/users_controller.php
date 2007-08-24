@@ -60,6 +60,13 @@ class UsersController extends AppController {
 			  $keyPath = '{n}.Region.id',
 			  $valuePath = '{n}.Region.region_name')
 			);
+			$this->set('roles', $this->User->Role->generateList(
+			  $conditions = null,
+			  $order = 'id',
+			  $limit = null,
+			  $keyPath = '{n}.Role.id',
+			  $valuePath = '{n}.Role.role_name')
+			);
 		} else {
 			$this->cleanUpFields();
 			if($this->User->save($this->data)) {

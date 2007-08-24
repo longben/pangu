@@ -22,6 +22,15 @@ class User extends AppModel {
 						'counterCache' => ''
 				),
 
+			'Role' =>
+				array('className' => 'Role',
+						'foreignKey' => 'role_id',
+						'conditions' => '',
+						'fields' => '',
+						'order' => '',
+						'counterCache' => ''
+				),
+
 	);
 
 	function updateGrade($user_id = null){
