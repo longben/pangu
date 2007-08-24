@@ -9,25 +9,25 @@ begin
 
     -- insert list data
 	insert into coupon_lists(coupon_start,coupon_end,coupon_group,custom_num,status)
-      values(_start,_end,UPPER(_group),_num,0);
+      values(_start,_end,upper(_group),_num,0);
     commit;
 
 	-- record list id
-	select id INTO @lid FROM coupon_lists 
+	select id into @lid from coupon_lists 
 			  where coupon_start = _start and coupon_end = _end 
 					and coupon_group = _group and custom_num = _num and status = 0;
 
     -- 生成代金券
 	while  _start <= _end do
 		-- 开始执行更改list状态
-		IF _count = 0 THEN 
+		if _count = 0 then 
 			update coupon_lists set status = 1 where id = @lid;
-		END IF ;
+		end if ;
 		set _random = rpad(rand(_start) * 1000000,6,'0');
 		set _pwd = rpad(_random ^ _num,6,'0');
-		set _no = concat(_group,lpad(_start,9,'0'));
+		set _no = concat(upper(_group),lpad(_start,9,'0'));
 		insert into coupons(list_id,coupon_no,coupon_pwd,custom_num,random_num,coupon_group) 
-			values(@lid,_no,_pwd,_num,_random,UPPER(_group));
+			values(@lid,_no,_pwd,_num,_random,upper(_group));
 		if mod(_count,10000) = 0 then 
 		  commit;
 		end if;
