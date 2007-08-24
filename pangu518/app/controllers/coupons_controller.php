@@ -2,7 +2,7 @@
 class CouponsController extends AppController {
 
 	var $name = 'Coupons';
-	var $helpers = array('Html', 'Form', 'Javascript', 'Zipexport');
+	var $helpers = array('Html', 'Form', 'Javascript');
 
 	function index() {
 		$this->Coupon->recursive = 0;
@@ -133,18 +133,31 @@ class CouponsController extends AppController {
 	*/
 
 	function export($list_id = null){
+		$this->layout = 'ajax';
 
-		/*
-		if(!$id){
-			
-			$this->redirect('/coupon_lists/index');
+		$path = 'd:/pg_export_files/';
+		$source_filename = $path.'export.csv';
+		$target_filename = $path.'export.bz2';
+
+		if (file_exists($source_filename)) {
+			if(unlink($source_filename)){
+				$this->Coupon->query('set @_id='. $list_id);
+				$this->Coupon->query('CALL export_coupon(@flag,@_id)');
+			}
+		}else{
+			$this->Coupon->query('set @_id='. $list_id);
+			$this->Coupon->query('CALL export_coupon(@flag,@_id)');
 		}
 
-		$this->Coupon->query('set @_id='. $list_id);
+		if(file_exists($target_filename)){
+			unlink($target_filename);
+		}
 
-		$this->Coupon->query('CALL export_coupon(@flag,@_id)');
-		$res = $this->Coupon->query("select @flag");
-		*/
+		$this->bzip2($source_filename,$target_filename);
+
+		$this->set('path',$path);
+		$this->set('filename','export.bz2');
+
 	}
 
 }
