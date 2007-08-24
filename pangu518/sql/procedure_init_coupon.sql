@@ -1,4 +1,4 @@
-create procedure init_coupon(out flag int,in _start int ,in _end int ,in _num int ,in _group char)
+create or replace procedure init_coupon(out flag int,in _start int ,in _end int ,in _num int ,in _group char)
 begin 
     declare _random  char(6);
     declare _pwd  char(6);
