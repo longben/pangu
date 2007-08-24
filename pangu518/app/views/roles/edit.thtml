@@ -13,7 +13,7 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Module/Module', '系统功能权限：');?>
- 	<?php echo $html->selectTag('Module/Module', $modules, $selectedModules, array('multiple' => 'multiple', 'class' => 'selectMultiple','style' => 'width:235px'), array(), false);?>
+ 	<?php echo $html->selectTag('Module/Module', $modules, $selectedModules, array('multiple' => 'multiple', 'class' => 'selectMultiple','style' => 'width:235px','size' => 10), array(), false);?>
 	<?php echo $html->tagErrorMsg('Module/Module', 'Please select the Related Modules.');?>
 </div>
 <?php echo $html->hidden('Role/id')?>
