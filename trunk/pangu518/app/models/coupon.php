@@ -61,19 +61,17 @@ class Coupon extends AppModel {
 	 * @param unknown_type $coupon_group
 	 * @return unknown
 	 */
-	function updateStatusByGroup($coupon_group=null,$custom_num=null){
-		if($coupon_group!=null && $custom_num != null){
+	function updateStatusByGroup($coupon_list_id = null){
+		if($coupon_list_id != null){
 			$sql = "update coupons as Coupon set Coupon.status = 113
-			  where Coupon.coupon_group = '$coupon_group'
-			    and Coupon.custom_num = $custom_num
+			  where Coupon.list_id = $coupon_list_id
 			     and Coupon.status = 0";
-			return $this->query($sql);
+			$this->execute($sql);
 
-			$sql = "update coupon_lists as CouponList set CouponList.status = 4
-			  where CouponList.coupon_group = '$coupon_group'
-			    and CouponList.custom_num = $custom_num
-			     and CouponList.status = 2";
-			return $this->query($sql);
+			$sql = "update coupon_lists set status = 4
+			  where id = $coupon_list_id
+			     and status = 3";
+			$this->execute($sql);
 		}
 	}
 	
