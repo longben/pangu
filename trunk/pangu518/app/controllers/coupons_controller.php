@@ -155,9 +155,6 @@ class CouponsController extends AppController {
 
 		$this->set('path',$path);
 		$this->set('filename','export.bz2');
-
-		$this->redirect('/coupon_lists/index');
-
 	}
 
 }
