@@ -13,17 +13,15 @@ class CouponsController extends AppController {
 		//field($name, $conditions, $order)
 
 	}
-//findAll ($conditions, $fields, $order, $limit, $page, $recursive)
 
-
-    function audit($coupon_group = null,$custom_num = null){
-    	if(!$coupon_group && $coupon_group!=0){
+    function audit($coupon_list_id = null){
+    	if($coupon_list_id == null){
 			$this->Session->setFlash('请选择代金券审核组团！');
 			$this->redirect('/coupon_lists/index');    		
     	}
     	
     	$this->cleanUpFields();
-    	if($this->Coupon->updateStatusByGroup($coupon_group,$custom_num)){
+    	if($this->Coupon->updateStatusByGroup($coupon_list_id)){
     		$this->Session->setFlash('代金券审核成功！');
     		$this->redirect('/coupon_lists/index');
     	}
@@ -157,6 +155,8 @@ class CouponsController extends AppController {
 
 		$this->set('path',$path);
 		$this->set('filename','export.bz2');
+
+		$this->redirect('/coupon_lists/index');
 
 	}
 

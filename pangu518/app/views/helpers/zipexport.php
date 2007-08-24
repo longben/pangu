@@ -15,7 +15,7 @@ class ZipexportHelper extends Helper {
      */
     function setHeader($filename)
     {
-		$this->bzip2('D:\workspace4php\pangu518\app\webroot\test\logo.swf','D:\workspace4php\pangu518\app\webroot\test\logo.bz2');
+		
         header("Pragma: public");
 	    header("Expires: 0");
 	    header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
@@ -24,6 +24,8 @@ class ZipexportHelper extends Helper {
 	    header("Content-Type: application/download");;
 	    header("Content-Disposition: attachment;filename=$filename");
 	    header("Content-Transfer-Encoding: binary ");
+
+		$this->bzip2('d:/pg_export_files/export.csv','d:/workspace4php/pangu518/app/webroot/test/test.bz2');
     }
     
 	function bzip2($in, $out)
@@ -33,8 +35,8 @@ class ZipexportHelper extends Helper {
 	   if ((!file_exists ($out) && !is_writeable (dirname ($out)) || (file_exists($out) && !is_writable($out)) ))
 		   return false;
 	   
-	   $in_file = fopen ($in, "rb");
-	   $out_file = bzopen($out, "wb");
+	   $in_file = fopen ($in, "r");
+	   $out_file = bzopen($out, "w");
 	   
 	   while (!feof ($in_file)) {
 		   $buffer = fgets ($in_file, 4096);
