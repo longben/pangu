@@ -6,7 +6,10 @@ class WorkstationCouponsController extends AppController {
 	
 	function index() {
 		$user_id = $this->Session->read('User.id');
-		$this->data = $this->WorkstationCoupon->Workstation->findByUserId($user_id,'Workstation.id');
+		$criteria = array(
+		  'Workstation.user_id' => $user_id
+		);		
+		$this->data = $this->WorkstationCoupon->Workstation->find($criteria,null,'Workstation.id desc',null);
 		if(empty($this->data)){
 			$this->Session->setFlash('请先申请成立会员消费单位！');
 			$this->redirect('/workstations/profile');
