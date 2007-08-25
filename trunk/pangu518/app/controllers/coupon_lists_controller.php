@@ -41,8 +41,10 @@ class CouponListsController extends AppController {
 	    	$msg = "提示：[" .$coupon_group ."]组团代金券，起止号码[$coupon_start]至[$coupon_end]已经使用！\n请重新选择起止号码！\n\n";
 		    $this->data = $this->CouponList->findAllByCouponGroup($coupon_group);
 		    $msg .= $coupon_group ."组团代金券数据：\n";
+		    $msg .= "_______________________________\n";
 		    foreach ($this->data as $couponList){
 		    	$msg .= "开始号码：" . $couponList['CouponList']['coupon_start'] ."  结束号码：" . $couponList['CouponList']['coupon_end'] . "\n";
+		    	$msg .= "_______________________________\n";
 		    }
 	    }
 	    $this->set('msg',$msg);
