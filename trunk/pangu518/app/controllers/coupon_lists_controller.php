@@ -30,6 +30,23 @@ class CouponListsController extends AppController {
 			}
 		}
 	}
+	
+	function check($coupon_group = null,$coupon_start = null,$coupon_end = null){
+	    $this->layout = 'ajax';
+	    $coupon_group = strtoupper($coupon_group);
+	    $msg = '';
+	    $count = $this->CouponList->findCount("coupon_group = '$coupon_group' and (coupon_start >= $coupon_start
+	       or coupon_start >= $coupon_end or coupon_end >= $coupon_start or coupon_end >= $coupon_end)");
+	    if($count>0){
+	    	$msg = "提示：[" .$coupon_group ."]组团代金券，起止号码[$coupon_start]至[$coupon_end]已经使用！\n请重新选择起止号码！\n\n";
+		    $this->data = $this->CouponList->findAllByCouponGroup($coupon_group);
+		    $msg .= $coupon_group ."组团代金券数据：\n";
+		    foreach ($this->data as $couponList){
+		    	$msg .= "开始号码：" . $couponList['CouponList']['coupon_start'] ."  结束号码：" . $couponList['CouponList']['coupon_end'] . "\n";
+		    }
+	    }
+	    $this->set('msg',$msg);
+    }
 
 	function edit($id = null) {
 		if (empty($this->data)) {

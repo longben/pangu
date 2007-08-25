@@ -24,6 +24,7 @@
 </fieldset>
 <SCRIPT LANGUAGE="JavaScript">
 <!--
+   var flag = false;
    function init(){
    	    if($F('CouponCouponGroup')==''){
    	    	alert('代金券组团编号不能为空!');
@@ -49,7 +50,7 @@
    	    		$('CouponStart').focus();
    	    		return false;
    	    	}else{
-   	    		if($F('CouponStart') >= $F('CouponEnd')){
+   	    		if(Number($F('CouponStart')) >= Number($F('CouponEnd'))){
    	    			alert('代金券开始号码数字大于或者等于结束号码数字！');
    	    			$('CouponStart').focus();
    	    			return false;   	    			
@@ -69,27 +70,49 @@
    	    		return false;
    	    	}   	    	
    	    }
+   	    
+        var checkurl = '/coupon_lists/check';
+        checkurl = checkurl + '/' + $F('CouponCouponGroup') + '/' + $F('CouponStart') + '/' + $F('CouponEnd');
+		var myAjax = new Ajax.Request(checkurl,{
+			method: 'get',
+			onComplete: showResponse,
+			asynchronous: false
+		});
 		
-		if(window.confirm('注意：请确认！\n\n是否初始化该批次代金券？')){
-			var url = '/coupons/initialize';
-			url = url + '/' + $F('CouponCouponGroup') + '/' + $F('CouponStart') + '/' + $F('CouponEnd') + '/' + $F('CouponCustomNum');
-			
-			$('msg').style.display = '';
-			$('init').style.display = 'none';
-
-			var myAjax = new Ajax.Request(url,{
-				method: 'get',
-				onComplete: showResponse,
-				asynchronous: true
-			});	
-
-		}else{
-			return false;
+		if(flag){
+			if(window.confirm('注意：请确认！\n\n是否初始化该批次代金券？')){
+				var url = '/coupons/initialize';
+				url = url + '/' + $F('CouponCouponGroup') + '/' + $F('CouponStart') + '/' + $F('CouponEnd') + '/' + $F('CouponCustomNum');
+				
+				$('msg').style.display = '';
+				$('init').style.display = 'none';
+	
+				var myAjax = new Ajax.Request(url,{
+					method: 'get',
+					onComplete: gotoList,
+					asynchronous: true
+				});
+			}			
 		}
-   }
+    }
    
    function showResponse(originalRequest){
-   	
+   	   var msg = originalRequest.responseText;
+   	   if(msg!=''){
+   	   	  alert(msg);
+   	   	  $('CouponStart').focus();
+   	   	  flag = false;
+   	   }else{
+   	   	  flag = true;
+   	   }
    }
+   
+   function gotoList(originalRequest){
+   	  if(window.confirm('该批次代金券生成成功，是否审核该批次代金券？')){
+   	  	location.replace('/coupon_lists/index');
+   	  }else{
+   	  	location.replace('/coupons/add');
+   	  }
+   }   
 -->  
 </SCRIPT>
