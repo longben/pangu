@@ -97,11 +97,9 @@ class WorkstationsController extends AppController {
 			$user = $this->Workstation->User->findByLoginName($this->data['Workstation']['login_name']);
 			$user_id = $user['User']['id'];
 			$referes_no =  $this->data['Workstation']['referees_no'];
-			
-			//$user = $this->Workstation->User->findByMemberNo($referes_no);
-			//$referees = $user['User']['id']; 
-			
+					
 			$referees = $this->Workstation->getReferees($referes_no);
+			
 			$this->data['Workstation']['user_id'] = $user_id;
 			$this->data['Workstation']['referees'] = $referees;
 
