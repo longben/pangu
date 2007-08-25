@@ -11,12 +11,12 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('LotteryBetting/betting_number', '投注号码：');?>
- 	<?php echo $html->input('LotteryBetting/betting_number', array('size' => '30'));?>
+ 	<?php echo $html->input('LotteryBetting/betting_number', array('size' => '30','maxlength' => '3'));?>
 	<?php echo $html->tagErrorMsg('LotteryBetting/betting_number', 'Please enter the Betting Number.');?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('LotteryBetting/betting_time', '投注份数：');?>
- 	<?php echo $html->input('LotteryBetting/betting_time', array('size' => '30'));?>
+ 	<?php echo $html->input('LotteryBetting/betting_time', array('size' => '16'));?><span style="color:red"> 每注25份代金券</span>
 	<?php echo $html->tagErrorMsg('LotteryBetting/betting_time', 'Please enter the Betting Time.');?>
 </div>
 <?php echo $html->hiddenTag('LotteryBetting/user_id',1);?>

@@ -35,8 +35,16 @@ class CouponListsController extends AppController {
 	    $this->layout = 'ajax';
 	    $coupon_group = strtoupper($coupon_group);
 	    $msg = '';
+		$conditions = "	where coupon_group='$coupon_group'
+		    and  ((coupon_start  = $coupon_start 
+		      or coupon_start = $coupon_end  or coupon_end =$coupon_start
+                  or coupon_end = $coupon_end ) or (coupon_start < $coupon_start
+                     and $coupon_end <coupon_end ) or (coupon_start < $coupon_start
+                        and $coupon_start <coupon_end ) or (coupon_start < $coupon_end
+                          and $coupon_end <coupon_end ))";
 	    $count = $this->CouponList->findCount("coupon_group = '$coupon_group' and (coupon_start >= $coupon_start
 	       or coupon_start >= $coupon_end or coupon_end >= $coupon_start or coupon_end >= $coupon_end)");
+        //$count = $this->CouponList->findCount($conditions);
 	    if($count>0){
 	    	$msg = "提示：[" .$coupon_group ."]组团代金券，起止号码[$coupon_start]至[$coupon_end]已经使用！\n请重新选择起止号码！\n\n";
 		    $this->data = $this->CouponList->findAllByCouponGroup($coupon_group);

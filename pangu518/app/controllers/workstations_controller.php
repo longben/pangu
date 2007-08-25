@@ -10,6 +10,11 @@ class WorkstationsController extends AppController {
 		$this->set('workstations', $this->Workstation->findAll());
 	}
 	
+	function sell() {
+		$this->Workstation->recursive = 0;
+		$this->set('workstations', $this->Workstation->findAll('status = 1'));
+	}	
+	
 	function audit() {
 		$this->Workstation->recursive = 0;
 		$this->set('workstations', $this->Workstation->findAll('status = 9'));
@@ -70,6 +75,34 @@ class WorkstationsController extends AppController {
 			}else{
 				$this->Session->setFlash('该工作站已经审核！');
 				$this->redirect('/workstations/index');
+			}
+		}
+	}
+	
+	function buy($id = null) {
+		if(empty($this->data)) {
+			if(!$id) {
+				$this->Session->setFlash('无效的工作站编号！');
+				$this->redirect('/workstations/index');
+			}
+			$this->data = $this->Workstation->read(null, $id);
+			$this->set('users', $this->Workstation->User->generateList());
+			$this->set('regions', $this->Workstation->Region->generateList(
+			  $conditions = "id like '__0000'",
+			  $order = 'id',
+			  $limit = null,
+			  $keyPath = '{n}.Region.id',
+			  $valuePath = '{n}.Region.region_name')
+			);
+		} else {
+			$this->cleanUpFields();
+			if($this->Workstation->auditing($this->data['Workstation']['id'],2,$this->data['Workstation']['money'])){
+				$this->Session->setFlash('代金券销售成功！');
+				$this->redirect('/workstations/sell');
+			}else{
+				$this->Session->setFlash('审核尚未成功，库存代金券数量过少！');
+				$this->set('users', $this->Workstation->User->generateList());
+				$this->set('regions', $this->Workstation->Region->generateList());
 			}
 		}
 	}	
