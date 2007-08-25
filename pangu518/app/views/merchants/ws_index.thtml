@@ -1,0 +1,31 @@
+<fieldset align=center>
+<legend>会员消费单位列表</legend> 
+<table cellpadding="0" cellspacing="0">
+<tr>
+	<th>消费单位编码</th>
+	<th>消费单位</th>
+	<th>所有者</th>	
+	<th>推荐人</th>
+	<th>行业</th>
+	<th>地区</th>
+	<th>创建日期</th>
+	<th>状态</th>
+</tr>
+<?php foreach ($merchants as $merchant): ?>
+<tr>
+    <td><?php echo $merchant['Merchant']['merchant_no']; ?></td>
+	<td><?php echo $merchant['Merchant']['merchant_name']; ?></td>
+	<td><?php echo $merchant['User']['user_name'];?></td>
+	<td><?php echo $merchant['Referee']['user_name']; ?></td>
+	<td><?php echo $merchant['Industry']['industry_name']; ?></td>
+	<td><?php echo $merchant['Region']['region_name']; ?></td>
+	<td><?php echo date("Y-m-d",strtotime($merchant['Merchant']['created'])); ?></td>
+	<td><?php echo $merchant['Merchant']['status']==9?'等待公司审核':'正常'; ?></td>
+</tr>
+<?php endforeach; ?>
+</table>
+
+<ul class="actions">
+	<li><?php echo $html->link('新增会员消费单位', '/merchants/ws_add'); ?></li>
+</ul>
+</fieldset>

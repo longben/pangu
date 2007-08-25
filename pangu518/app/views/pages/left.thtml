@@ -71,6 +71,7 @@
 		
 		d.add(3001,3,'工作站资料维护','/workstations/profile');			//工作站权限
 		d.add(3002,3,'可用金额及代金券管理','/workstation_coupons');	//工作站权限
+		d.add(3003,3,'增加会员消费单位','/merchants/ws_add');	//工作站权限
 		//d.add(3003,3,'工作站收益报表','/workstations/report');		//工作站权限【包括历史查询】
 		//d.add(3004,3,'工作站转让申请','/workstations/translate');	//工作站权限提出申请	
 

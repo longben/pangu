@@ -9,6 +9,11 @@ class MerchantsController extends AppController {
 		$this->set('merchants', $this->Merchant->findAll());
 	}
 	
+	function ws_index(){
+		$this->Merchant->recursive = 0;
+		$this->set('merchants', $this->Merchant->findAllByReferees($this->Session->read('User.id')));		
+	}
+	
    function audit() {
 		$this->Merchant->recursive = 0;
 		$this->set('merchants', $this->Merchant->findAllByStatus('9'));   	
@@ -66,7 +71,7 @@ class MerchantsController extends AppController {
 			$this->data['Merchant']['referees'] = $referees;
 			
 			if($this->Merchant->save($this->data)) {
-				$this->Session->setFlash('会员消费单位添加成功，审核后生效。');
+				$this->Session->setFlash('会员消费单位添加成功，等待公司审核后生效。');
 				$this->redirect('/merchants/index');
 			} else {
 				$this->Session->setFlash('会员消费单位添加失败，请检查下面的错误！');
@@ -88,6 +93,56 @@ class MerchantsController extends AppController {
 		}
 	}
 
+	function ws_add() {
+		if(empty($this->data)) {
+			$this->set('industries', $this->Merchant->Industry->generateList(
+			             $conditions = 'Industry.flag = 1',
+			             $order = 'Industry.id',
+			             $limit = null,
+			             $keyPath = '{n}.Industry.id',
+			             $valuePath = '{n}.Industry.industry_name')
+			);
+			$this->set('regions', $this->Merchant->Region->generateList(
+			             $conditions = "id like '__0000'",
+			             $order = 'id',
+			             $limit = null,
+			             $keyPath = '{n}.Region.id',
+			             $valuePath = '{n}.Region.region_name')
+			);
+			$this->render();
+		} else {
+			$this->cleanUpFields();
+			$user = $this->Merchant->User->findByLoginName($this->data['Merchant']['login_name']);
+			$user_id = $user['User']['id'];
+			$referes_no =  $this->data['Merchant']['referees_no'];
+			
+			$referees = $this->Merchant->getReferees($referes_no);
+			$this->data['Merchant']['user_id'] = $user_id;
+			$this->data['Merchant']['referees'] = $referees;
+			
+			if($this->Merchant->save($this->data)) {
+				$this->Session->setFlash('会员消费单位添加成功，审核后生效。');
+				$this->redirect('/merchants/ws_index');
+			} else {
+				$this->Session->setFlash('会员消费单位添加失败，请检查下面的错误！');
+				$this->set('industries', $this->Merchant->Industry->generateList(
+				             $conditions = 'Industry.flag = 1',
+				             $order = 'Industry.id',
+				             $limit = null,
+				             $keyPath = '{n}.Industry.id',
+				             $valuePath = '{n}.Industry.industry_name')
+				);
+				$this->set('regions', $this->Merchant->Region->generateList(
+				             $conditions = "id like '__0000'",
+				             $order = 'id',
+				             $limit = null,
+				             $keyPath = '{n}.Region.id',
+				             $valuePath = '{n}.Region.region_name')
+				);
+			}
+		}
+	}	
+	
     /**
      * 审核
      *
