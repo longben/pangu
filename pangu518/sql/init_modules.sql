@@ -26,6 +26,8 @@
    values(31,3,'工作站资料维护',1,'/workstations/profile');
  insert into modules(id,parent_id,module_name,module_type,url)
    values(32,3,'可用金额及代金券管理',1,'/workstation_coupons');
+ insert into modules(id,parent_id,module_name,module_type,url)
+   values(33,3,'增加会员消费单位',1,'/merchants/ws_add');
 
 
  insert into modules(id,parent_id,module_name,module_type,url)
