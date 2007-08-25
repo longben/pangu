@@ -30,7 +30,7 @@ class MerchantsController extends AppController {
 			$this->Session->setFlash('代金券销售成功！');
 			$this->redirect('/workstation_coupons/index');
 		}else{
-			$this->Session->setFlash('代金券销售失败！');
+			$this->Session->setFlash('代金券销售失败，请检查代金券库存！');
 			$this->redirect('/merchants/trade');
 		}
 	}	

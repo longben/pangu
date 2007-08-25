@@ -1,6 +1,6 @@
 <fieldset>
-<legend>工作站审核</legend> 
-<form action="<?php echo $html->url('/workstations/auditing/'.$html->tagValue('Workstation/id')); ?>" method="post" onsubmit="return check()">
+<legend>代金券销售</legend> 
+<form action="<?php echo $html->url('/workstations/buy/'.$html->tagValue('Workstation/id')); ?>" method="post" onsubmit="return check()">
 <div class="optional"> 
 	<?php echo $form->labelTag('Workstation/region_id', '所属地区：');?>
  	<?php echo $html->selectTag('Workstation/region_id', $regions, $html->tagValue('Workstation/region_id'), array('style'=>'width:150px'), array(), true);?>
@@ -54,7 +54,7 @@
 <?php echo $html->hidden('Workstation/id')?>
 <?php echo $html->hidden('Workstation/status')?>
 <div class="submit">
-	<?php echo $html->submit('审核工作站');?>
+	<?php echo $html->submit('代金券销售');?>
 </div>
 </form>
 </fieldset>
@@ -136,6 +136,7 @@
 			});
 			return checkMoney;
 		}
+
 */
 	}
 
