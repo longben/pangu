@@ -40,8 +40,13 @@ class UserCouponsController extends AppController {
 			//检查代金券有效性，返回0表示无效。非0表示有效
 			$coupon_id = $this->UserCoupon->Coupon->verify($this->data['Coupon']['coupon_no'],$this->data['Coupon']['coupon_pwd']);
 			if($coupon_id!=0){
+			    $coupon = $this->UserCoupon->Coupon->read(null,$coupon_id);
 				$this->data['UserCoupon']['coupon_id'] = $coupon_id;
 				$this->data['UserCoupon']['status'] = 421;
+				$this->data['UserCoupon']['user_id'] = $this->Session->read('User.id');
+				$this->data['UserCoupon']['merchant_id'] = 1;
+				
+				
 				if($this->UserCoupon->save($this->data)) {
 					$this->UserCoupon->updateMerchantCouponStatus($this->Session->read('User.id'),$coupon_id);
 					$this->Session->setFlash('代金券录入成功！');
