@@ -26,7 +26,7 @@ class WorkstationCouponsController extends AppController {
 		  'Workstation.user_id' => $this->Session->read('User.id'),
 		  'WorkstationCoupon.status' => 341
 		);
-		$this->set('total2', $this->WorkstationCoupon->findCount($criteria));		
+		$this->set('total_sale', $this->WorkstationCoupon->findCount($criteria));		
 	}
 	
 	function add(){

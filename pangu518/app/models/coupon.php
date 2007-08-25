@@ -4,8 +4,8 @@ class Coupon extends AppModel {
 	var $name = 'Coupon';
 
 	var $hasMany = array(
-			'MemberCoupon' =>
-				array('className' => 'MemberCoupon',
+			'UserCoupon' =>
+				array('className' => 'UserCoupon',
 						'foreignKey' => 'coupon_id',
 						'conditions' => '',
 						'fields' => '',
@@ -85,7 +85,7 @@ class Coupon extends AppModel {
 	function getPassword($custom_num = 0,$random_num = 0){
 		$pwd = (int)$custom_num ^ (int)$random_num; //用户输入6位数字和6位随机数异或产生密码
 		$pwd = substr($pwd, 0, 6); //只保留6位数
-		$pwd = sprintf('%06s', $pwd);
+		$pwd = sprintf('%-06s', $pwd); //位数不够，右边补零
 		return $pwd;
 	}
 	

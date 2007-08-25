@@ -33,8 +33,16 @@ class UserCoupon extends AppModel {
 	);
 	
 	function updateMerchantCouponStatus($user_id = null,$coupon_id = null){
-		$merchant = "update merchant_coupons set status = 421 where coupon_id = $coupon_id and status = 341";
-		$this->execute($merchant);
+		$merchant = "update merchant_coupons 
+          set status = 421 where coupon_id = $coupon_id and status = 341";
+        $this->execute($merchant);
+		
+		$user_coupon = "update user_coupons 
+          set merchant_id = (select merchant_id from merchant_coupons where coupon_id = $coupon_id)";
+		$this->execute($user_coupon);
+		
+		$coupon = "update coupons set status = 421 where id = $coupon_id";
+		$this->execute($coupon);
 	}
 
 }
