@@ -184,8 +184,12 @@ class MerchantsController extends AppController {
 			}
 			$this->cleanUpFields();
 			if($status ==9 && $this->Merchant->save($this->data)) {
+				$user = $this->Merchant->User->read(null,$this->data['Merchant']['user_id']);
+				$user['User']['role_id'] = 2; //会员消费单位默认角色为2
+				$this->Merchant->User->save($user);
+				
 				$this->Merchant->User->updateGrade($this->data['Merchant']['referees']); //更新会员等级
-				$this->Session->setFlash('会员消费单位资料更新成功！');
+				$this->Session->setFlash('会员消费单位资料审核成功！');
 				$this->redirect('/merchants/audit');
 			} else {
 				if($status!=9){

@@ -9,7 +9,6 @@
 	<th>合同编号</th>
 	<th>所属地区</th>
 	<th>创建日期</th>
-	<th>状态</th>
 	<th>操作</th>
 </tr>
 <?php foreach ($workstations as $workstation): ?>
@@ -21,7 +20,6 @@
 	<td><?php echo $workstation['Workstation']['bargain_no']; ?></td>
 	<td>&nbsp;<?php echo $workstation['Region']['region_name']?></td>
 	<td><?php echo $workstation['Workstation']['created']; ?></td>
-	<td><?php echo $workstation['Workstation']['status']; ?></td>
 	<td class="actions">
 		<?php //echo $html->link('查看','/workstations/view/' . $workstation['Workstation']['id'])?>
 		<?php echo $html->link('审核','/workstations/auditing/' . $workstation['Workstation']['id'])?>

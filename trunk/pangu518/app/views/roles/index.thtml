@@ -15,7 +15,7 @@
 	<td><?php echo $role['Role']['memo']; ?></td>
 	<td class="actions">
 		<?php echo $html->link('编辑','/roles/edit/' . $role['Role']['id'])?>
-		<?php echo $html->link('删除','/roles/delete/' . $role['Role']['id'], null, '确认是否删除角色:' . $role['Role']['role_name'])?>
+		<?php if($role['Role']['id']>10)echo $html->link('删除','/roles/delete/' . $role['Role']['id'], null, '确认是否删除角色:' . $role['Role']['role_name'])?>
 	</td>
 </tr>
 <?php endforeach; ?>

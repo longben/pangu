@@ -2,10 +2,11 @@
 <legend>审核会员消费单位资料</legend> 
 <form action="<?php echo $html->url('/merchants/auditing/'.$html->tagValue('Merchant/id')); ?>" method="post" onsubmit="return check()">
 <div class="optional"> 
-	<?php echo $form->labelTag('Merchant/user_id', '所有者：');?>
+	<?php echo $form->labelTag('User/user_name', '所有者：');?>
  	<?php echo $html->input('User/user_name', array('size' => '60','readOnly' => 'true'));?>
 	<?php echo $html->tagErrorMsg('Merchant/user_id', 'Please select the User.') ?>
 </div>
+<?php echo $html->hiddenTag('Merchant/user_id');?>
 <div class="optional"> 
 	<?php echo $form->labelTag('Merchant/region_id', '所属地区：');?>
  	<?php echo $html->selectTag('Merchant/region_id', $regions, $html->tagValue('Merchant/region_id'), array(), array(), false);?>
