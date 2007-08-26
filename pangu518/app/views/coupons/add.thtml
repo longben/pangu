@@ -21,6 +21,11 @@
 </div>
 <span style="color:red;font-size:14px;display:none" id="msg">注意：代金券后台生成中，请在【代金券审核】查看批量代金券状态</span>
 </form>
+<ul>
+ <li>库存代金券总数:<?=$total?>。共计：<?=$total*2?>元</li>
+ <li>待审核代金券总数:<?=$total_init?>。共计：<?=$total_init*2?>元</li>
+ <li>已销售代金券总数:<?=$total_sale?>。共计：<?=$total_sale*2?>元</li>
+</ul>
 </fieldset>
 <SCRIPT LANGUAGE="JavaScript">
 <!--

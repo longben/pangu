@@ -5,13 +5,11 @@ class CouponsController extends AppController {
 	var $helpers = array('Html', 'Form', 'Javascript');
 
 	function index() {
-		$this->Coupon->recursive = 0;
 		//$this->set('coupons', $this->Coupon->findAll());
-		$this->set('coupons', $this->Coupon->getGroupByStatus());
 		//$this->set('coupons', $this->Coupon->field('coupon_group','status = 0'));
-
-		//field($name, $conditions, $order)
-
+		$this->set('total', $this->Coupon->findCount('status = 113'));
+		$this->set('total_init', $this->Coupon->findCount('status = 0'));
+		$this->set('total_sale', $this->Coupon->findCount('status <> 0 and status <> 113'));
 	}
 
     function audit($coupon_list_id = null){
@@ -59,6 +57,9 @@ class CouponsController extends AppController {
 
 	function add() {
 		if(empty($this->data)) {
+			$this->set('total', $this->Coupon->findCount('status = 113')); //库存代金券总数
+			$this->set('total_init', $this->Coupon->findCount('status = 0')); //待审核代金券总数
+			$this->set('total_sale', $this->Coupon->findCount('status <> 0 and status <> 113')); //已销售代金券总数
 			$this->render();
 		} else {
 			$start = $this->data['Coupon']['start'];
