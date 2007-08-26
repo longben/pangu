@@ -48,12 +48,6 @@ class Coupon extends AppModel {
 
 	);
 
-	function getGroupByStatus(){
-		$sql = "select distinct Coupon.coupon_group,Coupon.custom_num,Coupon.status
-		  from coupons as Coupon 
-		    where Coupon.status = 0 order by Coupon.coupon_group,Coupon.created";
-		return $this->query($sql);
-	}
 	
 	/**
 	 * 更新代金券状态
