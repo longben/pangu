@@ -49,7 +49,12 @@
 	$arr = mysql_fetch_array($stmt);
 	$id = $arr[0];
 
-	$sql = "insert into users(id,login_name,password,user_name,sex,member_no,cert_number,referees,region_id,office_phone,home_phone,mobile,accounts) values(".$id.",'".$login_name."','".$password."','".$user_name."',".$_POST["sex"].",'".$member_no."','".$cert_number."','".$referees."','".$region_id."','".$office_phone."','".$home_phone."','".$mobile."','".$accounts."')";
+	$sql_re = "select uid from members where username='".$referees."'";
+	$stmt_re = mysql_query($sql_re);
+	$arr_re = mysql_fetch_array($stmt_re);
+	$refer_id = $arr_re[0];
+
+	$sql = "insert into users(id,login_name,password,user_name,sex,member_no,cert_number,referees,region_id,office_phone,home_phone,mobile,accounts) values(".$id.",'".$login_name."','".$password."','".$user_name."',".$_POST["sex"].",'".$member_no."','".$cert_number."','".$refer_id."','".$region_id."','".$office_phone."','".$home_phone."','".$mobile."','".$accounts."')";
 	mysql_query($sql);
 
 	echo("<script language='JavaScript'>alert('恭喜您，注册成功，您可以登录进入盘古运营系统！');location.replace('main.php');</script>");
