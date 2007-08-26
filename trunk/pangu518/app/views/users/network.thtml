@@ -1,8 +1,28 @@
 <fieldset align=center>
-<legend>会员网络</legend> 
-
-<ul class="actions">
+<legend>我推荐的会员</legend> 
+<table cellpadding="0" cellspacing="0" width="98%">
+<tr>
+	<th>登录名</th>
+	<th>姓名</th>
+	<th>性别</th>
+	<th>会员等级</th>
+	<th>所属地区</th>
+	<th>联系电话</th>
+	<th>手机</th>
+</tr>
+<?php foreach ($users as $user): ?>
+<tr>
+	<td><?php echo $user['User']['login_name']; ?></td>
+	<td><?php echo $user['User']['user_name']; ?></td>
+	<td><?php echo $user['User']['sex']==1?'男':'女'; ?></td>
+	<td><?php echo $user['MemberGrade']['grade_name']; ?></td>
+	<td><?php echo $user['Region']['region_name']; ?></td>
+	<td><?php echo $user['User']['telephone']; ?></td>
+	<td><?php echo $user['User']['mobile']; ?></td>
+</tr>
+<?php endforeach; ?>
+</table>
  <hr/>
- <li><?php echo $html->link('用户列表', '/members/index') ?> </li>
+ <li><?php echo $html->link('返回用户列表', '/members/index') ?> </li>
 </ul>
 </fieldset>

@@ -130,6 +130,8 @@ class UsersController extends AppController {
 	 * @param unknown_type $user_id
 	 */
 	function network($user_id = null) {
+		$this->User->recursive = 0;
+		$this->set('users', $this->User->findAllByReferees($user_id));		
 	}
 	
 	function check($login_name = null){
