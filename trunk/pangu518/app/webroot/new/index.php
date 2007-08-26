@@ -21,6 +21,11 @@
 	$stmtTitle_GZZ = mysql_query($strTitle_GZZ);
 	$arrTitle_GZZ = mysql_fetch_array($stmtTitle_GZZ);
 	$Title_GZZ_ID = $arrTitle_GZZ[0];
+
+	$strTitle_FHJG = "select id from categories where category_name = '分红结果' ";
+	$stmtTitle_FHJG = mysql_query($strTitle_FHJG);
+	$arrTitle_FHJG = mysql_fetch_array($stmtTitle_FHJG);
+	$Title_FHJG_ID = $arrTitle_FHJG[0];
 ?>
 <HEAD>
 <TITLE>盘古消费财富网</TITLE>
@@ -33,9 +38,15 @@
 <tr>
   <td width=129><img src="images/index_title_01.jpg"></td>
   <td style="padding-left:10px;padding-right:10px;">
+  <?php
+	$strFHJG = "select a.post_title,a.post_content from posts a,categories b  where a.category_id=b.id and b.id = $Title_FHJG_ID and a.post_status = 'publish' order by created desc limit 1";
+	$stmtFHJG = mysql_query($strFHJG);
+	while($arrFHJG = mysql_fetch_array($stmtFHJG)) {  
+  ?>
 	  <marquee direction="left" onmouseout=this.start() onmouseover=this.stop() scrollAmount=3 >
-		200715期分红结果&nbsp;&nbsp;&nbsp;&nbsp;分红号码为：345；分红数为：120注；分红参与总数为：3499678 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" target="_blank">>>更多</a>
+		<b><?=$arrFHJG[0]?></b>&nbsp;&nbsp;&nbsp;&nbsp;<?=$arrFHJG[1]?> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"> >>更多</a>
 	  </marquee>
+  <?php	}?>
   </td>
 </tr>
 </table>
