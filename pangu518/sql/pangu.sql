@@ -91,7 +91,7 @@ create table users(
   bank_accounts    varchar(30) DEFAULT '邮政储蓄银行'    comment '开户银行',
   accounts         varchar(20)                           comment '银行帐号',
   created          timestamp                             comment '会员创建日期',
-  role_id          int(6)        default 0               comment '用户角色',       
+  role_id          int(6)        default 1               comment '用户角色',       
   flag             int(1)        not null default 1      comment '会员状态',
   primary key (id)
 ) engine=MyISAM default charset=utf8 comment='会员扩展信息';

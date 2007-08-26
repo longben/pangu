@@ -49,6 +49,10 @@ class WorkstationsController extends AppController {
 			if($status == 9){
 				$this->cleanUpFields();
 				if($this->Workstation->auditing($this->data['Workstation']['id'],2,$this->data['Workstation']['money'])){
+					$user = $this->Workstation->User->read(null,$this->data['Workstation']['user_id']);
+					$user['User']['role_id'] = 3; //工作站默认角色为3
+					$this->Workstation->User->save($user);					
+					
 					$this->data['Workstation']['status'] = '1'; //审核通过
 					
 					//取最大值
@@ -100,7 +104,7 @@ class WorkstationsController extends AppController {
 				$this->Session->setFlash('代金券销售成功！');
 				$this->redirect('/workstations/sell');
 			}else{
-				$this->Session->setFlash('审核尚未成功，库存代金券数量过少！');
+				$this->Session->setFlash('销售尚未成功，库存代金券数量过少！');
 				$this->set('users', $this->Workstation->User->generateList());
 				$this->set('regions', $this->Workstation->Region->generateList());
 			}

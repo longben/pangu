@@ -12,10 +12,11 @@
 	<?php echo $html->tagErrorMsg('Workstation/ws_name', 'Please enter the Ws Name.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Workstation/user_id', '工作站所有人：');?>
+	<?php echo $form->labelTag('User/user_name', '工作站所有人：');?>
 	<?php echo $html->input('User/user_name', array('size' => '60','readOnly' => 'true'));?>
-	<?php echo $html->tagErrorMsg('Workstation/user_id', 'Please select the Member.') ?>
+	<?php echo $html->tagErrorMsg('User/user_name', 'Please select the Member.') ?>
 </div>
+<?php echo $html->hiddenTag('Workstation/user_id')?>
 <div class="optional"> 
 	<?php echo $form->labelTag('Workstation/referees', '推荐人：');?>
  	<?php echo $html->input('Referee/user_name', array('size' => '60','readOnly' => 'true'));?>
