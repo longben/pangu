@@ -1,64 +1,27 @@
-<html>
+<?php
+	session_start();
+	require_once("db-settings.php");
 
+	if($_GET["type"]){
+		$Title_JJZX_ID = $_GET["type"];
+	}else{
+		$strTitle_JJZX = "select id from categories where category_name = '经济资讯' ";
+		$stmtTitle_JJZX = mysql_query($strTitle_JJZX);
+		$arrTitle_JJZX = mysql_fetch_array($stmtTitle_JJZX);
+		$Title_JJZX_ID = $arrTitle_JJZX[0];	
+	}
+?>
+<html>
 <head>
 <meta http-equiv="Content-Language" content="zh-cn">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="css/style.css" rel="stylesheet" type="text/css">
 <TITLE>盘古经济</TITLE>
-<style type="text/css">
-<!--
-a:link {
-	color: #333333;
-	text-decoration: none;
-}
-a:visited {
-	text-decoration: none;
-	color: #333333;
-}
-a:hover {
-	text-decoration: none;
-	color: #333333;
-}
-a:active {
-	text-decoration: none;
-}
-.style1 {font-size: 16px}
-.left_title {font-family: "宋体";
-	font-size: 13px;
-	font-style: normal;
-	line-height: normal;
-	font-weight: bold;
-	font-variant: normal;
-	text-transform: capitalize;
-	color: #5B5B5B;
-}
-.text {
-	color: #616161;
-	font-size:11px
-}
-.text_a {
-	color: #000000;
-	font-size:11px
-}
--->
-</style>
 </head>
 
 <body topmargin="0" leftmargin="0">
 <?php	include("header.php");?>
 <table width="900" align="center" cellpadding="0" cellspacing="0">
-	<!-- MSTableType="layout" -->
-	<tr>
-		<td width="197" height="129" valign="top" background="img_www/qiyeT01.jpg">&nbsp;</td>
-		<td width="612" height="129" valign="top" background="img_www/qiyeT02.jpg">&nbsp;</td>
-		<td width="91" height="129" valign="top" background="img_www/qiyeT03.jpg">&nbsp;</td>
-	</tr>
-	<tr>
-		<td width="197" height="47" valign="top" background="img_www/qiyeT04.jpg">&nbsp;</td>
-		<td width="612" height="47" valign="middle" background="img_www/botton1.jpg">
-		<?php	include("menu.php");?>
-		</td>
-		<td width="91" height="47" valign="top" background="img_www/qiyeT05.jpg">&nbsp;</td>
-	</tr>
 	<tr>
 		<td width="197" height="73" valign="top" rowspan="2">
 		<img border="0" src="img_www/zixunfabu.jpg" width="197" height="73"></td>
@@ -95,41 +58,21 @@ a:active {
         </table></td>
 		<td width="612" valign="top" rowspan="2" align="center"><table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
 
+	<?php
+		$strJJZX = "select a.id,a.post_title,a.created from posts a,categories b  where a.category_id=b.id and b.id = $Title_JJZX_ID and a.post_status = 'publish' order by created desc ";
+		$stmtJJZX = mysql_query($strJJZX);
+		while($arrJJZX = mysql_fetch_array($stmtJJZX)) {
+	?>
+
           <tr>
-            <td width="354" height="22" class="text_a"><img src="img_www/shouyep06.JPG" alt=" " width="5" height="7" border="0"><font size="2"> 　新闻标题标题标题<br>
-            <img src="img_www/shouyep05.JPG" alt=" " width="100%" height="5" border="0"></font></td>
-            <td width="195" height="22" class="text">2007-07-20</td>
+            <td width="354" height="22" class="text_a"><img src="img_www/shouyep06.JPG" alt=" " width="5" height="7" border="0">
+				<a href="javascript:;"><span onClick = "javascript:window.open('view.php?id=<?=$arrJJZX[0]?>&type=<?=$Title_JJZX_ID?>','PG','scrollbars=auto,width=420,height=300')"><?=$arrJJZX[1]?></span></a><br>
+            <img src="img_www/shouyep05.JPG" alt=" " width="100%" height="5" border="0"></td>
+            <td width="195" height="22" class="text"><?=$arrJJZX[2]?></td>
           </tr>
-          <tr>
-            <td height="22" class="text_a"><img src="img_www/shouyep06.JPG" alt=" " width="5" height="7" border="0"><font size="2"> 　新闻标题标题标题<br>
-            <img src="img_www/shouyep05.JPG" alt=" " width="100%" height="5" border="0"></font></td>
-            <td class="text">2007-07-20</td>
-          </tr>
-          <tr>
-            <td height="22" class="text_a"><img src="img_www/shouyep06.JPG" alt=" " width="5" height="7" border="0"><font size="2"> 　新闻标题标题标题<br>
-            <img src="img_www/shouyep05.JPG" alt=" " width="100%" height="5" border="0"></font></td>
-            <td class="text">2007-07-20</td>
-          </tr>
-          <tr>
-            <td height="22" class="text_a"><img src="img_www/shouyep06.JPG" alt=" " width="5" height="7" border="0"><font size="2"> 　新闻标题标题标题<br>
-            <img src="img_www/shouyep05.JPG" alt=" " width="100%" height="5" border="0"></font></td>
-            <td class="text">2007-07-20</td>
-          </tr>
-          <tr>
-            <td height="22" class="text_a"><img src="img_www/shouyep06.JPG" alt=" " width="5" height="7" border="0"><font size="2">　 新闻标题标题标题<br>
-            <img src="img_www/shouyep05.JPG" alt=" " width="100%" height="5" border="0"></font></td>
-            <td class="text">2007-07-20</td>
-          </tr>
-          <tr>
-            <td height="22" class="text_a"><img src="img_www/shouyep06.JPG" alt=" " width="5" height="7" border="0"><font size="2">　 新闻标题标题标题<br>
-            <img src="img_www/shouyep05.JPG" alt=" " width="100%" height="5" border="0"></font></td>
-            <td class="text">2007-07-20</td>
-          </tr>
-          <tr>
-            <td height="22" class="text_a"><img src="img_www/shouyep06.JPG" alt=" " width="5" height="7" border="0"><font size="2"> 　新闻标题标题标题<br>
-            <img src="img_www/shouyep05.JPG" alt=" " width="100%" height="5" border="0"></font></td>
-            <td class="text">2007-07-20</td>
-          </tr>
+
+	<?php	}?>
+
 
         </table></td>
 	</tr>
