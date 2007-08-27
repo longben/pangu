@@ -1,10 +1,28 @@
-<html>
+<?php
+	require_once("db-settings.php");
 
+	$strTop3 = "select id,merchant_name,industry_id from merchants where status = 1 order by id desc limit 3";
+	$stmtTop3 = mysql_query($strTop3);
+
+	$strIndustry = "select id,industry_name from industries where flag = 1 order by id asc limit 6";
+	$stmtIndustry = mysql_query($strIndustry);
+
+?>
+<html>
 <head>
 <meta http-equiv="Content-Language" content="zh-cn">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="css/style.css" rel="stylesheet" type="text/css">
 <TITLE>盘古消费财富</TITLE>
+<style type="text/css">
+<!--
+.STYLE1 {
+	color: #000033;
+	font-weight: bold;
+	font-size: 14px;
+}
+-->
+</style>
 </head>
 
 <body topmargin="0" leftmargin="0">
@@ -13,15 +31,14 @@
 	<tr>
 		<td width="197" height="73" valign="top" rowspan="2">
 		<img border="0" src="img_www/huiyuanxiaofeidanwei.jpg" width="197" height="73"></td>
-		<td width="612" height="35" valign="top" background="img_www/background4.jpg">　</td>
+		<td width="612" height="35" valign="top" background="img_www/background4.jpg">&nbsp;</td>
 		<td width="91" valign="top" rowspan="5"><?php include("right_gg.php");?></td>
 	</tr>
 	<tr>
-		<td width="612" height="38" valign="top" background="img_www/background5.jpg">　</td>
+		<td width="612" height="38" valign="top" background="img_www/background5.jpg">&nbsp;</td>
 	</tr>
 	<tr>
-		<td width="197" height="36" valign="top">&nbsp;</td>
-		<td width="612" height="36" valign="top" background="img_www/background6.jpg">　</td>
+		<td height="2" colspan="2" valign="top">&nbsp;</td>
 	</tr>
 	<tr>
 		<td width="197" height="224" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -47,175 +64,102 @@
 		<td rowspan="2" valign="top">
 		  <table width="96%" border="0" align="center" cellpadding="0" cellspacing="0">
             <tr>
-              <td align="center"><font face="黑体" color="#333333"><img src="img_www/VIPUSEP.JPG" alt=" " width="132" height="87" border="0" /></font></td>
-              <td align="center"><font face="黑体" color="#333333"><img src="img_www/VIPUSEP.JPG" alt=" " width="132" height="87" border="0" /></font></td>
-              <td align="center"><font face="黑体" color="#333333"><img src="img_www/VIPUSEP.JPG" alt=" " width="132" height="87" border="0" /></font></td>
-            </tr>
-            <tr>
-              <td align="center"><font size="2">[会员消费单位]</font></td>
-              <td align="center"><font size="2">[会员消费单位]</font></td>
-              <td align="center"><font size="2">[会员消费单位]</font></td>
-            </tr>
-            <tr>
-              <td>&nbsp;</td>
-              <td>&nbsp;</td>
-              <td>&nbsp;</td>
-            </tr>
-            <tr>
-              <td><font face="黑体" color="#333333">&nbsp;<img src="img_www/vipusep01.JPG" alt=" " width="13" height="14" border="0" />餐饮</font></td>
-              <td><font face="黑体" color="#333333">&nbsp;<img src="img_www/vipusep01.JPG" alt=" " width="13" height="14" border="0" />餐饮</font></td>
-              <td><font face="黑体" color="#333333">&nbsp;<img src="img_www/vipusep01.JPG" alt=" " width="13" height="14" border="0" />餐饮</font></td>
-            </tr>
-            <tr>
-              <td align="center" valign="top"><table border="1" width="204" cellspacing="0" cellpadding="0" id="table4" height="85" bordercolordark="#FFFFFF">
+
+			<?php	while($arrTop3 = mysql_fetch_array($stmtTop3)) {?>
+              <td align="center" valign="top">
+			  <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
                 <tr>
-                  <td align="left" valign="top" height="18" bgcolor="#808080"><p align="center">　</p></td>
+                  <td align="center"><font face="黑体" color="#333333"><img src="img_www/VIPUSEP.JPG" alt=" " width="132" height="87" border="0" /></font></td>
                 </tr>
                 <tr>
-                  <td align="center" valign="top"><p align="center"><font size="2">+会员消费单位</font></p></td>
+                  <td height="30" align="center" valign="bottom"><font size="2">
+				  【<a href="javascript:;"><span onClick = "javascript:window.open('view_merchant.php?id=<?=$arrTop3[0]?>&industry_id=<?=$arrTop3[2]?>','PG','scrollbars=auto,width=420,height=300')"><?=$arrTop3[1]?></span></a>】</font></td>
                 </tr>
-                <tr>
-                  <td align="center" valign="top" bgcolor="#C0C0C0"><p align="center"><font size="2">+会员消费单位</font></p></td>
-                </tr>
-                <tr>
-                  <td align="center" valign="top"><p align="center"><font size="2">+会员消费单位</font></p></td>
-                </tr>
-                <tr>
-                  <td align="center" valign="top" bgcolor="#C0C0C0"><p align="center"><font size="2">+会员消费单位</font></p></td>
-                </tr>
-                <tr>
-                  <td align="center" valign="top"><font size="2">+会员消费单位</font></td>
-                </tr>
-              </table></td>
-              <td align="center" valign="top"><table border="1" width="204" cellspacing="0" cellpadding="0" id="table4" height="85" bordercolordark="#FFFFFF">
-                <tr>
-                  <td align="left" valign="top" height="18" bgcolor="#808080"><p align="center">　</p></td>
-                </tr>
-                <tr>
-                  <td align="center" valign="top"><p align="center"><font size="2">+会员消费单位</font></p></td>
-                </tr>
-                <tr>
-                  <td align="center" valign="top" bgcolor="#C0C0C0"><p align="center"><font size="2">+会员消费单位</font></p></td>
-                </tr>
-                <tr>
-                  <td align="center" valign="top"><p align="center"><font size="2">+会员消费单位</font></p></td>
-                </tr>
-                <tr>
-                  <td align="center" valign="top" bgcolor="#C0C0C0"><p align="center"><font size="2">+会员消费单位</font></p></td>
-                </tr>
-                <tr>
-                  <td align="center" valign="top"><font size="2">+会员消费单位</font></td>
-                </tr>
-              </table></td>
-              <td align="center" valign="top"><table border="1" width="204" cellspacing="0" cellpadding="0" id="table4" height="85" bordercolordark="#FFFFFF">
-                <tr>
-                  <td align="left" valign="top" height="18" bgcolor="#808080"><p align="center">　</p></td>
-                </tr>
-                <tr>
-                  <td align="center" valign="top"><p align="center"><font size="2">+会员消费单位</font></p></td>
-                </tr>
-                <tr>
-                  <td align="center" valign="top" bgcolor="#C0C0C0"><p align="center"><font size="2">+会员消费单位</font></p></td>
-                </tr>
-                <tr>
-                  <td align="center" valign="top"><p align="center"><font size="2">+会员消费单位</font></p></td>
-                </tr>
-                <tr>
-                  <td align="center" valign="top" bgcolor="#C0C0C0"><p align="center"><font size="2">+会员消费单位</font></p></td>
-                </tr>
-                <tr>
-                  <td align="center" valign="top"><font size="2">+会员消费单位</font></td>
-                </tr>
-              </table></td>
+              </table>
+			  </td>
+			<?php	}?>
             </tr>
             <tr>
               <td>&nbsp;</td>
               <td>&nbsp;</td>
               <td>&nbsp;</td>
             </tr>
-            <tr>
-              <td><font face="黑体" color="#333333">&nbsp;<img src="img_www/vipusep01.JPG" alt=" " width="13" height="14" border="0" />餐饮</font></td>
-              <td><font face="黑体" color="#333333">&nbsp;<img src="img_www/vipusep01.JPG" alt=" " width="13" height="14" border="0" />餐饮</font></td>
-              <td><font face="黑体" color="#333333">&nbsp;<img src="img_www/vipusep01.JPG" alt=" " width="13" height="14" border="0" />餐饮</font></td>
-            </tr>
-            <tr>
-              <td align="center" valign="top"><table border="1" width="204" cellspacing="0" cellpadding="0" id="table4" height="85" bordercolordark="#FFFFFF">
+
+			<?php
+				$i = 1;
+				while($arrIndustry = mysql_fetch_array($stmtIndustry)) {
+					if($i == 1 || $i == 4) {
+						echo("<tr>");
+					}
+			?>
+
+
+              <td valign="top">
+			  <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
-                  <td align="left" valign="top" height="18" bgcolor="#808080"><p align="center">　</p></td>
+                  <td height="25">
+					&nbsp;<img src="img_www/vipusep01.JPG" alt=" " width="13" height="14" border="0" /><span class="title_small"><?=$arrIndustry[1]?></span></td>
                 </tr>
                 <tr>
-                  <td align="center" valign="top"><p align="center"><font size="2">+会员消费单位</font></p></td>
+                  <td>
+				  <table border="1" width="204" cellspacing="0" cellpadding="0" id="table4" height="85" bordercolordark="#FFFFFF">
+                    <tr>
+                      <td align="left" valign="top" height="18" bgcolor="#808080"><p align="center">　</p></td>
+                    </tr>
+					<?php
+						$strMerchant = "select id,merchant_name,industry_id from merchants where status = 1 and industry_id = ".$arrIndustry[0]." order by id desc limit 5";
+						$stmtMerchant = mysql_query($strMerchant);
+						$j = 1;
+						while($arrMerchant = mysql_fetch_array($stmtMerchant)) {
+							if($j == 2 || $j == 4) {
+								$bgcolor = "#C0C0C0";
+							}else {
+								$bgcolor = "";
+							}
+					?>
+                    <tr>
+                      <td align="center" valign="middle" bgcolor="<?=$bgcolor?>"><font size="2">
+					  <a href="javascript:;"><span onClick = "javascript:window.open('view_merchant.php?id=<?=$arrMerchant[0]?>&industry_id=<?=$arrMerchant[2]?>','PG','scrollbars=auto,width=420,height=300')"><?=$arrMerchant[1]?></span></a>
+					</font></td>
+                    </tr>
+					<?php
+							$j++;
+						}
+					?>
+
+                  </table>
+				  </td>
                 </tr>
-                <tr>
-                  <td align="center" valign="top" bgcolor="#C0C0C0"><p align="center"><font size="2">+会员消费单位</font></p></td>
-                </tr>
-                <tr>
-                  <td align="center" valign="top"><p align="center"><font size="2">+会员消费单位</font></p></td>
-                </tr>
-                <tr>
-                  <td align="center" valign="top" bgcolor="#C0C0C0"><p align="center"><font size="2">+会员消费单位</font></p></td>
-                </tr>
-                <tr>
-                  <td align="center" valign="top"><font size="2">+会员消费单位</font></td>
-                </tr>
-              </table></td>
-              <td align="center" valign="top"><table border="1" width="204" cellspacing="0" cellpadding="0" id="table4" height="85" bordercolordark="#FFFFFF">
-                <tr>
-                  <td align="left" valign="top" height="18" bgcolor="#808080"><p align="center">　</p></td>
-                </tr>
-                <tr>
-                  <td align="center" valign="top"><p align="center"><font size="2">+会员消费单位</font></p></td>
-                </tr>
-                <tr>
-                  <td align="center" valign="top" bgcolor="#C0C0C0"><p align="center"><font size="2">+会员消费单位</font></p></td>
-                </tr>
-                <tr>
-                  <td align="center" valign="top"><p align="center"><font size="2">+会员消费单位</font></p></td>
-                </tr>
-                <tr>
-                  <td align="center" valign="top" bgcolor="#C0C0C0"><p align="center"><font size="2">+会员消费单位</font></p></td>
-                </tr>
-                <tr>
-                  <td align="center" valign="top"><font size="2">+会员消费单位</font></td>
-                </tr>
-              </table></td>
-              <td align="center" valign="top"><table border="1" width="204" cellspacing="0" cellpadding="0" id="table4" height="85" bordercolordark="#FFFFFF">
-                <tr>
-                  <td align="left" valign="top" height="18" bgcolor="#808080"><p align="center">　</p></td>
-                </tr>
-                <tr>
-                  <td align="center" valign="top"><p align="center"><font size="2">+会员消费单位</font></p></td>
-                </tr>
-                <tr>
-                  <td align="center" valign="top" bgcolor="#C0C0C0"><p align="center"><font size="2">+会员消费单位</font></p></td>
-                </tr>
-                <tr>
-                  <td align="center" valign="top"><p align="center"><font size="2">+会员消费单位</font></p></td>
-                </tr>
-                <tr>
-                  <td align="center" valign="top" bgcolor="#C0C0C0"><p align="center"><font size="2">+会员消费单位</font></p></td>
-                </tr>
-                <tr>
-                  <td align="center" valign="top"><font size="2">+会员消费单位</font></td>
-                </tr>
-              </table></td>
-            </tr>
-            <tr>
-              <td>&nbsp;</td>
-              <td>&nbsp;</td>
-              <td>&nbsp;</td>
-            </tr>
+              </table>
+			  </td>
+
+			<?php	
+					if($i == 3 || $i == 6) {
+						echo("
+							</tr>
+							<tr>
+							  <td>&nbsp;</td>
+							  <td>&nbsp;</td>
+							  <td>&nbsp;</td>
+							</tr>						
+						");
+					}
+
+					$i++;
+				}
+			?>
+
           </table>
 		  <p><br>
 </p></td>
 	</tr>
 	<tr>
-		<td width="197" valign="top" background="img_www/background2.jpg">　</td>
+		<td width="197" valign="top" background="img_www/background2.jpg">&nbsp;</td>
 	</tr>
 	<tr>
-		<td width="197" height="20" valign="top" background="img_www/background1.jpg">　</td>
-		<td width="612" height="20" valign="top" background="img_www/background3.jpg">　</td>
-		<td width="91" height="20" valign="top" background="img_www/top8.jpg">　</td>
+		<td width="197" height="20" valign="top" background="img_www/background1.jpg">&nbsp;</td>
+		<td width="612" height="20" valign="top" background="img_www/background3.jpg">&nbsp;</td>
+		<td width="91" height="20" valign="top" background="img_www/top8.jpg">&nbsp;</td>
 	</tr>
 </table>
 <?php	include("footer.php");?>
