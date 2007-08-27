@@ -10,6 +10,11 @@
 		$arrTitle_JJZX = mysql_fetch_array($stmtTitle_JJZX);
 		$Title_JJZX_ID = $arrTitle_JJZX[0];	
 	}
+
+	$Title_JJZX_ID = str_replace("'","",$Title_JJZX_ID);
+	$Title_JJZX_ID = str_replace("\\","",$Title_JJZX_ID);
+	$Title_JJZX_ID = (int)$Title_JJZX_ID;
+
 ?>
 <html>
 <head>

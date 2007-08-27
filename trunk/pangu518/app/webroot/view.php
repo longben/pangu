@@ -4,6 +4,14 @@
 	$id = $_GET["id"];
 	$type_id = $_GET["type"];
 
+	$id = str_replace("'","",$id);
+	$id = str_replace("\\","",$id);
+	$id = (int)$id;
+
+	$type_id = str_replace("'","",$type_id);
+	$type_id = str_replace("\\","",$type_id);
+	$type_id = (int)$type_id;
+
 	$strNEWS = "select a.post_title,a.post_content,b.category_name from posts a,categories b where a.category_id=b.id and b.id = $type_id and a.id = $id";
 	$stmtNEWS = mysql_query($strNEWS);
 	$arrNEWS = mysql_fetch_array($stmtNEWS);

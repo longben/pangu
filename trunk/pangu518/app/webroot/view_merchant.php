@@ -4,6 +4,14 @@
 	$id = $_GET["id"];
 	$industry_id = $_GET["industry_id"];
 
+	$id = str_replace("'","",$id);
+	$id = str_replace("\\","",$id);
+	$id = (int)$id;
+
+	$industry_id = str_replace("'","",$industry_id);
+	$industry_id = str_replace("\\","",$industry_id);
+	$industry_id = (int)$industry_id;
+
 	$sql = "select a.merchant_name,a.owner,a.created,b.industry_name from merchants a,industries b where a.industry_id=b.id and b.id = $industry_id and a.id = $id";
 	$stmt = mysql_query($sql);
 	$arr = mysql_fetch_array($stmt);
