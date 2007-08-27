@@ -13,7 +13,7 @@
   <td>
   <table border=0 cellpadding=0 cellspacing=0 width=900>
   <tr>
-    <td align=center><a href="home.php"><img src="images/menu_01.jpg" border="0"></a></td>
+    <td align=center><a href="main.php"><img src="images/menu_01.jpg" border="0"></a></td>
 	<td width=4><img src="images/menu_line.jpg"></td>
 	<td align=center><a href="enterprises.php"><img src="images/menu_02.jpg" border="0"></a></td>
 	<td width=4><img src="images/menu_line.jpg"></td>

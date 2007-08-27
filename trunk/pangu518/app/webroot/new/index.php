@@ -64,10 +64,10 @@
     <td height=34 background="images/index_title_02_bg.jpg"><img src="images/index_title_02.jpg"></td>
   </tr>
   <tr>
-  <form  method=post action="login.php">
+  <form  method=post action="login.php" name="loginForm" id="loginForm" >
     <td style="padding:10px" align=center>
 
-<?php	if($_loginFlag) {?>
+<?php	if($_SESSION["osLGflag"] == "bitbee") {?>
 
 	<table border=0 cellpadding=0 cellspacing=0>
 		<tr>
@@ -75,7 +75,7 @@
 		</tr>
 		<tr>
 		  <td height=30>用户名:</td>
-		  <td align="left">张三</td>
+		  <td align="left"><?=$_SESSION["osUsername"]?></td>
 		</tr>
 		<tr>
 		  <td height=30>级&nbsp;&nbsp;别:</td>
@@ -99,7 +99,7 @@
 		  <td height=30>验证码:</td>
 		  <td align=left>
 			<input type="text" style="border:1px solid #999999;width:80px;height:19px;" maxlength="4">
-			&nbsp;<img src="safecode.php" width=40 height=19 align="absbottom"><?=$_SESSION["osSafeCode"]?></td>
+			&nbsp;<img src="safecode.php" width=40 height=19 align="absbottom"></td>
 		</tr>
 	</table>
 	<table border=0 cellpadding=0 cellspacing=0 style="margin-top:5px;">
