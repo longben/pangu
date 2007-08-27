@@ -137,6 +137,8 @@ class CouponsController extends AppController {
 	function export($list_id = null){
 		$this->layout = 'ajax';
 
+		set_time_limit(0); // 取消脚本运行时间的超时上限
+		
 		$path = 'd:/pg_export_files/';
 		$source_filename = $path.'export.csv';
 		$target_filename = $path.'export.bz2';
