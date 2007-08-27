@@ -8,12 +8,12 @@
 
 <body topmargin="0" leftmargin="0">
 <?php	include("header.php");?>
-<table width="900" height="825" align="center" cellpadding="0" cellspacing="0">
+<table width="900" align="center" cellpadding="0" cellspacing="0">
 	<tr>
 		<td width="197" height="73" valign="top" rowspan="2">
 		<img border="0" src="img_www/qiyefengcai.jpg" width="197" height="73"></td>
 		<td width="612" height="35" valign="top" background="img_www/background4.jpg">　</td>
-		<td width="91" height="505" valign="top" rowspan="5"><?php include("right_gg.php");?></td>
+	  <td width="91" valign="top" rowspan="5"><?php include("right_gg.php");?></td>
 	</tr>
 	<tr>
 		<td width="612" height="38" valign="top" background="img_www/qiyeB05.jpg">　</td>
@@ -59,7 +59,7 @@
 			    只有发展，才能生存，只有创新，才能壮大。我们将用一颗执著、真诚的心来服务你们！盘古还有很漫长的路要走，而这条路肯定不会平坦，正如古人所云：“路漫漫兮修远，吾将上下而求索。”盘古人将沿着成功的道路不断求索下去，不管有多少艰难险阻，不管有多少沟壑山涧，盘古人将始终沿着这条路走下去，盘古人必将达到理想的彼岸，盘古人坚信必将能共同体验成功的喜悦。 <br>
 			    我们将以盘古消费财富网为一个平台让大家都有机会展示自己的才能，创造自己的事业，让大家在不断的努力中使自己得到发展，也使盘古得到发展。我们的利益是一致的，我们的理想是一致的，我们的未来是美好的，成功必将属于盘古，属于我们大家。从我做起，从现在做起，让我们携起手来，共同开拓、创造盘古灿烂辉煌的明天！ </span><br>
 			    <br>
-				    <span class="STYLE4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;大家好才是真的好<em>！<br>
+				    <span class="title">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;大家好才是真的好<em>！<br>
 			  </em></span></td>
 			</tr>
 		</table>		</td>
