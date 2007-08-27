@@ -57,6 +57,9 @@ class CouponsController extends AppController {
 
 	function add() {
 		if(empty($this->data)) {
+			$this->Coupon->unbindModel(array('hasMany' => array('UserCoupon')));
+			$this->Coupon->unbindModel(array('hasMany' => array('MerchantCoupon')));
+			$this->Coupon->unbindModel(array('hasMany' => array('MerchantCoupon')));
 			$this->set('total', $this->Coupon->findCount('status = 113')); //库存代金券总数
 			$this->set('total_init', $this->Coupon->findCount('status = 0')); //待审核代金券总数
 			$this->set('total_sale', $this->Coupon->findCount('status <> 0 and status <> 113')); //已销售代金券总数
