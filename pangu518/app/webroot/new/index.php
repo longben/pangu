@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	$_loginFlag = $_GET["tt"];
 	require_once("db-settings.php");
 
@@ -63,7 +64,7 @@
     <td height=34 background="images/index_title_02_bg.jpg"><img src="images/index_title_02.jpg"></td>
   </tr>
   <tr>
-  <form  method=post action="/members/login">
+  <form  method=post action="login.php">
     <td style="padding:10px" align=center>
 
 <?php	if($_loginFlag) {?>
@@ -84,6 +85,7 @@
 
 <?php	}else {?>		
 
+	<INPUT TYPE="hidden" name="SafeCode" value="<?=$_SESSION['SafeCode']?>">
 	<table border=0 cellpadding=0 cellspacing=0>
 		<tr>
 		  <td height=30>用户名:</td>
@@ -96,8 +98,8 @@
 		<tr>
 		  <td height=30>验证码:</td>
 		  <td align=left>
-			<input type="text" style="border:1px solid #999999;width:80px;height:19px;" maxlength="4">&nbsp;<img src="" width=50 height=19>
-		  </td>
+			<input type="text" style="border:1px solid #999999;width:80px;height:19px;" maxlength="4">
+			&nbsp;<img src="safecode.php" width=40 height=19 align="absbottom"><?=$_SESSION["osSafeCode"]?></td>
 		</tr>
 	</table>
 	<table border=0 cellpadding=0 cellspacing=0 style="margin-top:5px;">
