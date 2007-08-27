@@ -2,54 +2,13 @@
 <head>
 <meta http-equiv="Content-Language" content="zh-cn">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="css/style.css" rel="stylesheet" type="text/css">
 <TITLE>盘古消费财富</TITLE>
-<style type="text/css">
-<!--
-a:link {
-	color: #333333;
-	text-decoration: none;
-}
-a:visited {
-	text-decoration: none;
-	color: #333333;
-}
-a:hover {
-	text-decoration: none;
-	color: #333333;
-}
-a:active {
-	text-decoration: none;
-}
-.style1 {font-size: 16px}
-.left_title {font-family: "宋体";
-	font-size: 13px;
-	font-style: normal;
-	line-height: normal;
-	font-weight: bold;
-	font-variant: normal;
-	text-transform: capitalize;
-	color: #5B5B5B;
-}
--->
-</style>
 </head>
 
 <body topmargin="0" leftmargin="0">
 <?php	include("header.php");?>
 <table cellpadding="0" cellspacing="0" width="900" align="center">
-	<!-- MSTableType="layout" -->
-	<tr>
-		<td width="197" height="129" valign="top" background="img_www/vipt01.jpg">　</td>
-		<td width="612" height="129" valign="top" background="img_www/vipt02.jpg">
-		　</td>
-		<td width="91" height="129" valign="top" background="img_www/vipt03.jpg">　</td>
-	</tr>
-	<tr>
-		<td width="197" height="47" valign="top" background="img_www/vipt04.jpg">　</td>
-		<td width="612" height="47" valign="middle" background="img_www/botton1.jpg">
-		<?php	include('menu.php');?>		</td>
-		<td width="91" height="47" valign="top" background="img_www/vipt05.jpg">　</td>
-	</tr>
 	<tr>
 		<td width="197" height="73" valign="top" rowspan="2">
 		<img border="0" src="img_www/huiyuanzhuanqu.jpg" width="197" height="73"></td>

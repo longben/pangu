@@ -3,69 +3,13 @@
 <head>
 <meta http-equiv="Content-Language" content="zh-cn">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="css/style.css" rel="stylesheet" type="text/css">
 <TITLE>盘古消费财富</TITLE>
-<style type="text/css">
-<!--
-a:link {
-	color: #5B5B5B;
-	text-decoration: none;
-}
-a:visited {
-	text-decoration: none;
-	color: #5B5B5B;
-}
-a:hover {
-	text-decoration: none;
-	color: #5B5B5B;
-}
-a:active {
-	text-decoration: none;
-}
-.style1 {font-size: 16px}
-.STYLE2 {color: #808080;font-size:12px}
-.STYLE4 {color: #003366; font-size: 30px; }
-
-.left_title {
-	font-family: "宋体";
-	font-size: 13px;
-	font-style: normal;
-	line-height: normal;
-	font-weight: bold;
-	font-variant: normal;
-	text-transform: capitalize;
-	color: #5B5B5B;
-}
-
-.text {
-	color: #616161;
-	font-size:11px
-}
-
-.text3 {
-	color: #616161;
-	font-size:16px;
-	line-height:36px;
-}
--->
-</style>
 </head>
 
 <body topmargin="0" leftmargin="0">
 <?php	include("header.php");?>
 <table width="900" align="center" cellpadding="0" cellspacing="0">
-	<!-- MSTableType="layout" -->
-	<tr>
-		<td width="197" height="129" valign="top" background="img_www/qiyeT01.jpg">　</td>
-		<td width="612" height="129" valign="top" background="img_www/qiyeT02.jpg">
-		　</td>
-		<td width="91" height="129" valign="top" background="img_www/qiyeT03.jpg">　</td>
-	</tr>
-	<tr>
-		<td width="197" height="47" valign="top" background="img_www/qiyeT04.jpg">　</td>
-		<td width="612" height="47" valign="middle" background="img_www/botton1.jpg">
-		<?php	include('menu.php');?>		</td>
-		<td width="91" height="47" valign="top" background="img_www/qiyeT05.jpg">　</td>
-	</tr>
 	<tr>
 		<td width="197" height="73" valign="top" rowspan="2">
 		<img border="0" src="img_www/qiyefengcai.jpg" width="197" height="73"></td>

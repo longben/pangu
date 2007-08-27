@@ -1,16 +1,39 @@
-<table width="903" height="66" border="0" align="center" cellpadding="0" cellspacing="0">
-  <tr>
-    <td width="66" valign="top"><object classid="clsid:D27CDB6E-AE6D-11CF-96B8-444553540000" id="obj1" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0" border="0" width="60" height="60">
-      <param name="movie" value="img_www/logo.swf">
-      <param name="quality" value="High">
-      <embed src="img_www/logo.swf" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" name="obj1" width="60" height="60" quality="High">    
-    </object></td>
-    <td align=""left><img border="0" src="img_www/logo3.jpg" height="62"></td>
-	<!--
-	<td align="right" valign="top">
-	<img border="0" src="img_www/shouyeguanggao.JPG" width="424" height="62">
-	</td>
-	-->
-    <td width="2" align="right" valign="top">&nbsp;</td>
+<table border=0 cellpadding=0 cellspacing=0 width=900 align=center>
+<tr>
+  <td><object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="900" height="264">
+    <param name="movie" value="images/top.swf">
+    <param name="quality" value="high">
+    <embed src="images/top.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="900" height="264"></embed>
+  </object></td>
   </tr>
+</table>
+
+<table border=0 cellpadding=0 cellspacing=0 width=900 align=center background="images/menu_bg.jpg" height=41>
+<tr>
+  <td>
+  <table border=0 cellpadding=0 cellspacing=0 width=900>
+  <tr>
+    <td align=center><a href="main.php"><img src="images/menu_01.jpg" border="0"></a></td>
+	<td width=4><img src="images/menu_line.jpg"></td>
+	<td align=center><a href="enterprises.php"><img src="images/menu_02.jpg" border="0"></a></td>
+	<td width=4><img src="images/menu_line.jpg"></td>
+	<td align=center><a href="news.php"><img src="images/menu_03.jpg" border="0"></a></td>
+	<td width=4><img src="images/menu_line.jpg"></td>
+	<td align=center><a href="market.php"><img src="images/menu_04.jpg" border="0"></a></td>
+	<td width=4><img src="images/menu_line.jpg"></td>
+	<td align=center><a href="services.php"><img src="images/menu_05.jpg" border="0"></a></td>
+	<td width=4><img src="images/menu_line.jpg"></td>
+	<td align=center><a href="legal.php"><img src="images/menu_06.jpg" border="0"></a></td>
+	<td width=4><img src="images/menu_line.jpg"></td>
+	<td align=center><a href="members.php"><img src="images/menu_07.jpg" border="0"></a></td>
+	<td width=4><img src="images/menu_line.jpg"></td>
+	<td align=center><a href="merchants.php"><img src="images/menu_08.jpg" border="0"></a></td>
+	<td width=4><img src="images/menu_line.jpg"></td>
+	<td align=center><a href="downloads.php"><img src="images/menu_09.jpg" border="0"></a></td>
+	<td width=4><img src="images/menu_line.jpg"></td>
+	<td align=center><a href="#"><img src="images/menu_10.jpg" border="0"></a></td>
+  </tr>
+  </table>
+  </td>
+</tr>
 </table>

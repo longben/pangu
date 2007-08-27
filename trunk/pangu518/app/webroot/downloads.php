@@ -2,56 +2,13 @@
 <head>
 <meta http-equiv="Content-Language" content="zh-cn">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="css/style.css" rel="stylesheet" type="text/css">
 <TITLE>盘古消费财富</TITLE>
-<style type="text/css">
-<!--
-a:link {
-	text-decoration: none;
-	color: #333333;
-}
-a:visited {
-	text-decoration: none;
-	color: #333333;
-}
-a:hover {
-	text-decoration: none;
-	color: #333333;
-}
-a:active {
-	text-decoration: none;
-	color: #D4D0C8;
-}
-.style1 {font-size: 16px}
-.style4 {font-size: 16px; color: #333333; }
-.left_title {font-family: "宋体";
-	font-size: 13px;
-	font-style: normal;
-	line-height: normal;
-	font-weight: bold;
-	font-variant: normal;
-	text-transform: capitalize;
-	color: #5B5B5B;
-}
--->
-</style></head>
+</head>
 
 <body topmargin="0" leftmargin="0">
 <?php	include("header.php");?>
 <table cellpadding="0" cellspacing="0" width="900" align="center">
-	<!-- MSTableType="layout" -->
-	<tr>
-		<td width="197" height="129" valign="top" background="img_www/xiazait01.jpg">　</td>
-		<td width="612" height="129" valign="top" background="img_www/xiazait02.jpg">
-		　</td>
-		<td width="91" height="129" valign="top" background="img_www/xiazait03.jpg">　</td>
-	</tr>
-	<tr>
-		<td width="197" height="47" valign="top" background="img_www/xiazait04.jpg">　</td>
-		<td width="612" height="47" valign="middle" background="img_www/botton1.jpg">
-		<?php	include('menu.php');?>		
-		</td>
-		<td width="91" height="47" valign="top" background="img_www/xiazait05.jpg">　</td>
-	</tr>
 	<tr>
 		<td width="197" height="73" valign="top" rowspan="2">
 		<img border="0" src="img_www/xiazaizhuanqu.jpg" width="197" height="73"></td>
@@ -93,7 +50,7 @@ a:active {
 				<td valign="top" width="555">
 				<table width="95%" border="0" align="center" cellpadding="0" cellspacing="0" id="table1">
 					<tr>
-						<td width="65%" height="30" align="center" bgcolor="#808080"><font size="2">&nbsp;资料名称</font></td>
+						<td width="65%" height="30" bgcolor="#808080"><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 资料名称</font></td>
 					    <td width="23%" align="center" bgcolor="#808080"><font size="2">上传日期</font></td>
 				    </tr>
 					<tr>
