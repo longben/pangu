@@ -73,7 +73,7 @@
                 </tr>
                 <tr>
                   <td height="30" align="center" valign="bottom"><font size="2">
-				  【<a href="javascript:;"><span onClick = "javascript:window.open('view_merchant.php?id=<?=$arrTop3[0]?>&industry_id=<?=$arrTop3[2]?>','PG','scrollbars=auto,width=420,height=300')"><?=$arrTop3[1]?></span></a>】</font></td>
+				  <a href="javascript:;"><span onClick = "javascript:window.open('view_merchant.php?id=<?=$arrTop3[0]?>&industry_id=<?=$arrTop3[2]?>','PG','scrollbars=auto,width=420,height=300')"><?=$arrTop3[1]?></span></a></font></td>
                 </tr>
               </table>
 			  </td>
