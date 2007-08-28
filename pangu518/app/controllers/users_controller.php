@@ -113,7 +113,8 @@ class UsersController extends AppController {
 	 *
 	 * @param unknown_type $user_id
 	 */
-	function performance($user_id = null) {
+	function performance($user_id = null, $start_date = null, $end_date = null) {
+		$this->set('performance', $this->User->getPerformance($user_id, $start_date, $end_date));
 	}
 
 	/**
