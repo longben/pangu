@@ -101,6 +101,12 @@
 	}
 */
 
+	if($F('UserMobile')==''){
+		alert('联系方式手机号码不能为空！');
+		$('UserMobile').focus();
+		return false;
+	}
+
 	if( ($F('UserMobile')!='') && isNaN($F('UserMobile')) ){
 		alert('手机号码格式不对！');
 		$('UserMobile').focus();

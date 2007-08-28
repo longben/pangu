@@ -51,6 +51,12 @@ function check(){
 		return false;
 	}
 
+	if($F('WorkstationAddress')==''){
+		alert('工作站地址不能为空！');
+		$('WorkstationAddress').focus();
+		return false;
+	}
+
 	if($F('WorkstationTelphone')==''){
 		alert('常用电话不能为空！');
 		$('WorkstationTelphone').focus();
