@@ -29,6 +29,7 @@
 ?>
 <HEAD>
 <TITLE>盘古消费财富网</TITLE>
+<meta http-equiv="Content-Language" content="zh-cn">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link href="css/style.css" rel="stylesheet" type="text/css">
 </head>
