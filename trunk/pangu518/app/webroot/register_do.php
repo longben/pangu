@@ -1,6 +1,8 @@
 <?php
 	require_once("db-settings.php");
 
+	echo "<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />";
+
 	$login_name = trim($_POST["login_name"]);
 	$password = md5($_POST["password"]);
 	$user_name = trim($_POST["user_name"]);
@@ -14,7 +16,7 @@
 	$accounts = trim($_POST["accounts"]);
 
 	if(empty($referees)){
-		$referees = "www7777";		//Ä¬ÈÏÍÆ¼öÈË
+		$referees = "www7777";		//é»˜è®¤æ¨èäºº
 	}
 
 
@@ -23,7 +25,7 @@
 	$arr = mysql_fetch_array($stmt);
 
 	if($arr[0]){
-		echo("<script language='JavaScript'>alert('±§Ç¸£¬ÄúÊäÈëµÄµÇÂ¼ÃûÒÑ´æÔÚ£¬ÇëÖØĞÂÊäÈë£¡');history.go(-1);</script>");
+		echo("<script language='JavaScript'>alert('æŠ±æ­‰ï¼Œæ‚¨è¾“å…¥çš„ç™»å½•åå·²å­˜åœ¨ï¼Œè¯·é‡æ–°è¾“å…¥ï¼');history.go(-1);</script>");
 		exit();
 	}
 
@@ -33,7 +35,7 @@
 		$arr = mysql_fetch_array($stmt);
 
 		if(empty($arr[0])){
-			echo("<script language='JavaScript'>alert('±§Ç¸£¬ÄúÊäÈëµÄÍÆ¼öÈËµÇÂ¼Ãû²»´æÔÚ£¬ÇëÖØĞÂÊäÈë£¬»ò±£ÁôÎª¿Õ£¡');history.go(-1);</script>");
+			echo("<script language='JavaScript'>alert('æŠ±æ­‰ï¼Œæ‚¨è¾“å…¥çš„æ¨èäººç™»å½•åä¸å­˜åœ¨ï¼Œè¯·é‡æ–°è¾“å…¥ï¼Œæˆ–ä¿ç•™ä¸ºç©ºï¼');history.go(-1);</script>");
 			exit();
 		}
 	}else{
@@ -57,5 +59,5 @@
 	$sql = "insert into users(id,login_name,password,user_name,sex,member_no,cert_number,referees,region_id,office_phone,home_phone,mobile,accounts) values(".$id.",'".$login_name."','".$password."','".$user_name."',".$_POST["sex"].",'".$member_no."','".$cert_number."','".$refer_id."','".$region_id."','".$office_phone."','".$home_phone."','".$mobile."','".$accounts."')";
 	mysql_query($sql);
 
-	echo("<script language='JavaScript'>alert('¹§Ï²Äú£¬×¢²á³É¹¦£¬Äú¿ÉÒÔµÇÂ¼½øÈëÅÌ¹ÅÔËÓªÏµÍ³£¡');location.replace('main.php');</script>");
+	echo("<script language='JavaScript'>alert('æ­å–œæ‚¨ï¼Œæ³¨å†ŒæˆåŠŸï¼Œæ‚¨å¯ä»¥ç™»å½•è¿›å…¥ç›˜å¤è¿è¥ç³»ç»Ÿï¼');location.replace('main.php');</script>");
 ?>
