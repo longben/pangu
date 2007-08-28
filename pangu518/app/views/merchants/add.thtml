@@ -90,6 +90,12 @@
 			return false;
 		}
 
+		if($F('MerchantMobile')==''){
+			alert('联系方式手机号码不能为空！');
+			$('MerchantMobile').focus();
+			return false;
+		}
+
 		if( ($F('MerchantMobile')!='') && isNaN($F('MerchantMobile')) ){
 			alert('手机号码格式不对！');
 			$('MerchantMobile').focus();
@@ -151,6 +157,13 @@
 				asynchronous:false
 			});
 			return checkMoney;
+		}
+
+
+		if($F('MerchantBargainno')==''){
+			alert('合同编号不能为空！');
+			$('MerchantBargainno').focus();
+			return false;
 		}
 
 	}
