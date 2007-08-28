@@ -19,7 +19,9 @@
 <div class="submit" id='init'>
 	<input type="button" value="批量生成代金券"  onclick="init()"/>
 </div>
+<!--
 <span style="color:red;font-size:14px;display:none" id="msg">注意：代金券后台生成中，请在【代金券审核】查看批量代金券状态</span>
+-->
 </form>
 <ul>
  <li>库存代金券总数:<?=$total?>。共计：<?=$total*2?>元</li>
