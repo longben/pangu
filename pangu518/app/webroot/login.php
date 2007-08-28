@@ -2,6 +2,8 @@
 	session_start();
 	require_once("db-settings.php");
 
+	echo "<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />";
+
 	$username = $_POST["username"];
 	$password = md5($_POST["password"]);
 	$SafeCode = $_POST["SafeCode"];

@@ -19,14 +19,14 @@ $b = Array(225,236,166,125);
 
 $key = rand(0,3);
 
-//$backColor = ImageColorAllocate($im,$r[$key],$g[$key],$b[$key]);//±³¾°É«£¨Ëæ»ú£©
+//$backColor = ImageColorAllocate($im,$r[$key],$g[$key],$b[$key]);//èƒŒæ™¯è‰²ï¼ˆéšæœºï¼‰
 $backColor = imagecolorallocate($im, 255, 255, 255);
-$borderColor = ImageColorAllocate($im, 0, 0, 0);//±ß¿òÉ«
-$pointColor = ImageColorAllocate($im, 255, 170, 255);//µãÑÕÉ«
+$borderColor = ImageColorAllocate($im, 0, 0, 0);//è¾¹æ¡†è‰²
+$pointColor = ImageColorAllocate($im, 255, 170, 255);//ç‚¹é¢œè‰²
 
 
-@imagefilledrectangle($im, 0, 0, $width - 1, $height - 1, $backColor);//±³¾°Î»ÖÃ
-@imagerectangle($im, 0, 0, $width-1, $height-1, $borderColor); //±ß¿òÎ»ÖÃ
+@imagefilledrectangle($im, 0, 0, $width - 1, $height - 1, $backColor);//èƒŒæ™¯ä½ç½®
+@imagerectangle($im, 0, 0, $width-1, $height-1, $borderColor); //è¾¹æ¡†ä½ç½®
 $stringColor = ImageColorAllocate($im, 255,51,153);
 
 for($i=0;$i<=100;$i++){
@@ -41,7 +41,7 @@ $ImageFun($im);
 @ImageDestroy($im);
 $_SESSION['osSafeCode'] = $randval;
 
-//²úÉúËæ»ú×Ö·û´®
+//äº§ç”Ÿéšæœºå­—ç¬¦ä¸²
 function randStr($len=4,$format='ALL') {
 	switch($format) {
 	case 'ALL':
