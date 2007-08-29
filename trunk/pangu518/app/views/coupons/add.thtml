@@ -24,7 +24,7 @@
 <ul>
  <li>库存分红凭证总数:<?=$total?>。共计：<?=$total*2?>元</li>
  <li>待审核分红凭证总数:<?=$total_init?>。共计：<?=$total_init*2?>元</li>
- <li>已销售分红凭证总数:<?=$total_sale?>。共计：<?=$total_sale*2?>元</li>
+ <li>已转入分红凭证总数:<?=$total_sale?>。共计：<?=$total_sale*2?>元</li>
 </ul>
 </fieldset>
 <SCRIPT LANGUAGE="JavaScript">

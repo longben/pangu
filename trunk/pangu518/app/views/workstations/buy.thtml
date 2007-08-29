@@ -1,5 +1,5 @@
 <fieldset>
-<legend>分红凭证销售</legend> 
+<legend>分红凭证转入</legend> 
 <form action="<?php echo $html->url('/workstations/buy/'.$html->tagValue('Workstation/id')); ?>" method="post" onsubmit="return check()">
 <div class="optional"> 
 	<?php echo $form->labelTag('Workstation/region_id', '所属地区：');?>
@@ -54,7 +54,7 @@
 <?php echo $html->hidden('Workstation/id')?>
 <?php echo $html->hidden('Workstation/status')?>
 <div class="submit">
-	<?php echo $html->submit('分红凭证销售');?>
+	<?php echo $html->submit('分红凭证转入');?>
 </div>
 </form>
 </fieldset>
@@ -119,7 +119,7 @@
 			return false;
 		}
 
-		if(window.confirm("注意：\n\n请确认是否销售分红凭证" + $F('WorkstationMoney') + "元给该工作站?")){
+		if(window.confirm("注意：\n\n请确认是否转入分红凭证" + $F('WorkstationMoney') + "元给该工作站?")){
 		}else{
 			return false;
 		}

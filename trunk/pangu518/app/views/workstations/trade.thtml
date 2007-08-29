@@ -1,5 +1,5 @@
 <fieldset align=center>
-<legend>分红凭证销售确认</legend> 
+<legend>分红凭证转入确认</legend> 
 <form action="<?php echo $html->url('/merchants/buy'); ?>" method="post" onsubmit="return check()">
    <?php echo $html->hiddenTag('Merchant/id',$merchant_id)?>
 <div class="error">注意：请仔细核实选择的会员消费单位是否正确！</div>
@@ -20,7 +20,7 @@
  	<span class="formText"><?php echo $telephone;?></span>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Merchant/number', '销售分红凭证份数：');?>
+	<?php echo $form->labelTag('Merchant/number', '转入分红凭证份数：');?>
  	<?php echo $html->input('Merchant/number', array('size' => '60','onKeyUp' => 'showMoney()'));?>
 	<?php echo $html->tagErrorMsg('Merchant/number', '请正确输入分红凭证份数。');?>
 </div>
@@ -29,7 +29,7 @@
  	<span id="money"></span>
 </div>
 <div class="submit">
-	<?php echo $html->submit('确认销售');?>
+	<?php echo $html->submit('确认转入');?>
 </div>
 <div class="error">注意：请仔细核实会员消费单位和分红凭证金额是否正确！</div>
 </form>
@@ -42,13 +42,13 @@
    var checkMoney = false;
    function check(){
    	    if($F('MerchantNumber')==''){
-   	    	alert('预销售的分红凭证份额不能为空!');
+   	    	alert('预转入的分红凭证份额不能为空!');
    	    	$('MerchantNumber').focus();
    	    	return false;
    	    }else{
    	    	var patrn = /\d$/;
    	    	if(!patrn.test($F('MerchantNumber'))){
-   	    		alert('预销售的分红凭证份额只能输入数字！');
+   	    		alert('预转入的分红凭证份额只能输入数字！');
    	    		$('MerchantNumber').focus();
    	    		return false;
    	    	}   	    	
@@ -60,7 +60,7 @@
 			asynchronous:false
 		});
 		
-		if(checkMoney && window.confirm('注意：请确认！\n\n是否销售分红凭证给『<?=$merchant_name?>』会员消费单位？')){
+		if(checkMoney && window.confirm('注意：请确认！\n\n是否转入分红凭证给『<?=$merchant_name?>』会员消费单位？')){
 			checkMoney = true;
 		}else{
 			checkMoney = false;
@@ -72,7 +72,7 @@
    function showResponse(originalRequest){
    	  var count = parseInt(originalRequest.responseText);
       if(count < $F('MerchantNumber')){
-      	alert('预销售的分红凭证金额大于库存分红凭证金额！\n\n你目前库存分红凭证金额为：' + count + '张。合计：' + count*2 + '元');
+      	alert('预转入的分红凭证金额大于库存分红凭证金额！\n\n你目前库存分红凭证金额为：' + count + '张。合计：' + count*2 + '元');
       	checkMoney = false;
       }else{
       	checkMoney = true;
