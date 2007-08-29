@@ -146,6 +146,19 @@ create table workstation_coupons(
 ) engine=MyISAM default charset=utf8 comment='工作站代金券';
 
 
+/* 工作站代金券列表 */
+create table workstation_coupon_lists(
+  id               int(11)       not null auto_increment comment '主键',
+  workstation_id   int(11)       not null                comment '工作站编码',
+  coupon_start     varchar(15)   not null                comment '代金券开始编码',
+  coupon_end	   varchar(15)   not null                comment '代金券结束编码',
+  coupon_group     char(3)       not null                comment '代金券组团 0组团 A组团',
+  created          timestamp                             comment '创建时间',
+  status           int(3)        not null default 131    comment '状态',
+  primary key (id)
+) engine=MyISAM default charset=utf8 comment='工作站代金券列表';
+
+
 /* 工作站转让记录 */
 create table workstation_attorn_logs(
   id               int(11)       not null auto_increment comment '主键',
@@ -208,6 +221,19 @@ create table merchant_coupons(
   primary key (id),
   key coupon_id (coupon_id)
 ) engine=MyISAM default charset=utf8 comment='会员消费单位代金券';
+
+
+/* 会员消费单位代金券列表 */
+create table merchant_coupon_lists(
+  id               int(11)       not null auto_increment comment '主键',
+  merchant_id      int(11)       not null                comment '会员消费单位',
+  coupon_start     varchar(15)   not null                comment '代金券开始编码',
+  coupon_end	   varchar(15)   not null                comment '代金券结束编码',
+  coupon_group     char(3)       not null                comment '代金券组团 0组团 A组团',
+  created          timestamp                             comment '创建时间',
+  status           int(3)        not null default 341    comment '状态',
+  primary key (id)
+) engine=MyISAM default charset=utf8 comment='会员消费单位代金券列表';
 
 
 /* 会员消费单位被投诉记录表 */
