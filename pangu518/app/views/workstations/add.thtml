@@ -38,6 +38,11 @@
 	<?php echo $html->tagErrorMsg('Workstation/address', 'Please enter the Address.');?>
 </div>
 <div class="optional"> 
+	<?php echo $form->labelTag('Workstation/mobile', '移动电话：');?>
+ 	<?php echo $html->input('Workstation/mobile', array('size' => '60','maxlength' => '11'));?>
+	<?php echo $html->tagErrorMsg('Workstation/mobile', 'Please enter the Mobile.');?>
+</div>
+<div class="optional"> 
 	<?php echo $form->labelTag('Workstation/telphone', '联系电话：');?>
  	<?php echo $html->input('Workstation/telphone', array('size' => '45','maxlength' => '12'));?><span style='color:red'>格式：区号-号码</span>
 	<?php echo $html->tagErrorMsg('Workstation/telphone', 'Please enter the Telphone.');?>
@@ -90,6 +95,24 @@
 			$('WorkstationAddress').focus();
 			return false;
 		}
+
+		if($F('WorkstationMobile')==''){
+			alert('联系方式手机号码不能为空！');
+			$('WorkstationMobile').focus();
+			return false;
+		}
+
+		if( ($F('WorkstationMobile')!='') && isNaN($F('WorkstationMobile')) ){
+			alert('手机号码格式不对！');
+			$('WorkstationMobile').focus();
+			return false;
+		}
+		if( ($F('WorkstationMobile')!='') && ($F('WorkstationMobile').length !=11) ){
+			alert('手机号码位数不对！');
+			$('WorkstationMobile').focus();
+			return false;
+		}
+
 
 		if($F('WorkstationTelphone')==''){
 			alert('常用电话不能为空！');
