@@ -131,7 +131,7 @@
 			return false;
 		}
 
-		if(window.confirm("注意：\n\n请确认是否销售分红凭证" + $F('WorkstationMoney') + "元给该工作站?")){
+		if(window.confirm("注意：\n\n请确认是否转入分红凭证" + $F('WorkstationMoney') + "元给该工作站?")){
 		}else{
 			return false;
 		}
