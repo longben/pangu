@@ -30,7 +30,7 @@
 <table cellpadding="0" cellspacing="0" width="900" align="center">
 	<tr>
 		<td width="197" height="73" valign="top" rowspan="2">
-		<img border="0" src="img_www/huiyuanxiaofeidanwei.jpg" width="197" height="73"></td>
+		<img border="0" src="img_www/shangjiazhuanqu.jpg" width="197" height="73"></td>
 		<td width="612" height="35" valign="top" background="img_www/background4.jpg">&nbsp;</td>
 		<td width="91" valign="top" rowspan="5"><?php include("right_gg.php");?></td>
 	</tr>

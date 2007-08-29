@@ -4,23 +4,24 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="css/style.css" rel="stylesheet" type="text/css">
 <TITLE>盘古消费财富</TITLE>
+<style type="text/css">
+<!--
+.STYLE1 {color: #FFFFFF}
+-->
+</style>
 </head>
 
 <body topmargin="0" leftmargin="0">
 <?php	include("header.php");?>
-<table width="900" height="825" align="center" cellpadding="0" cellspacing="0">
+<table width="900" align="center" cellpadding="0" cellspacing="0">
 	<tr>
 		<td width="197" height="73" valign="top" rowspan="2">
-		<img border="0" src="img_www/fenhonggueizhe.jpg" width="197" height="73"></td>
-		<td width="612" height="35" valign="top" background="img_www/background4.jpg">　</td>
+		<img border="0" src="img_www/shichangyingyun.jpg" width="197" height="73"></td>
+		<td width="612" height="35" valign="top" background="img_www/background4.jpg">&nbsp;</td>
 		<td width="91" valign="top" rowspan="5"><?php include("right_gg.php");?></td>
 	</tr>
 	<tr>
-		<td width="612" height="38" valign="top" background="img_www/fenhongB05.jpg">　</td>
-	</tr>
-	<tr>
-		<td width="197" height="36" valign="top">&nbsp;</td>
-		<td width="612" height="36" valign="top" background="img_www/fenhongB06.jpg">　</td>
+		<td width="612" height="38" align="center" valign="middle"><span class="title">个人所得税税率表</span></td>
 	</tr>
 	<tr>
 		<td width="197" height="224" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -44,36 +45,96 @@
             <td>&nbsp;</td>
           </tr>
         </table></td>
-		<td width="612" valign="top" rowspan="2">　
-		  <table width="590" border="0" align="center" cellpadding="0" cellspacing="0" id="table1">
-			<tr>
-				<td align="left" valign="top"><p class="text">四川盘古经济咨询有限责任公司 <br>
-				  盘古消费资本财富分红规则 <br>
-				  四川盘古经济咨询有限责任公司是以世界新经济研究院院长，英、美、日、加拿大等多家跨国公司高级经济顾问陈瑜教授所著《消费者也能成为“资本家”》一书之消费资本化理论为基础，通过消费作为纽带，把生产者、经营者和消费者密切联系起来，最终以电子商务系统为运行平台的消费资本财富分红的营运模式，达到三方共赢、共同创造消费资本财富之目的。下面就将盘古消费资本财富分红规则约定如下： <br>
-				  一、四川盘古经济咨询有限责任公司开发并发行盘古消费资本财富分红资格凭证，每张面值为两元。<br>
-				  二、盘古消费资本财富分红规则，是以一个3位自然数为分红号码，个人会员和会员消费单位从000-999的数字中任意选择一个3位自然数录入本公司网站进行分红。每次编写的号码和当期开出的分红号码相同，即可享受当期分红，每期分红金额最高为4999元（含税）。（注：详细操作方法请参照＜个人会员和会员消费单位权、责、利＞）。 <br>
-				  三、个人会员和会员消费单位参与本公司分红的细则：<br>
-				  1、个人会员参与分红的，如消费过程中获得本公司盘古消费资本财富分红资格凭证1张（每张2元），即有一次分红资格；如消费过程中获得本公司盘古消费资本财富分红资格凭证50张（共计100元），即有50次分红资格，依次类推。 <br>
-				  2、以消费单位参与分红的，如一次在工作站购本公司盘古消费资本财富分红资格凭证25张（共计50元），即有一次分红资格；如一次在工作站购本公司盘古消费资本财富分红资格凭证50张（共计100元），即有2次分红资格，依次类推。 <br>
-				  3、盘古消费资本财富每期分红总金额是当期个人会员登录盘古消费财富网，以个人会员身份录入系统的盘古消费资本财富分红资格凭证总额的50%，如当期个人会员录入盘古消费资本财富分红资格凭证的总额为100万元，即当期个人会员和会员消费单位的分红总金额为50万元；如当期个人会员录入盘古消费资本财富分红资格凭证的总额为200万元，即当期个人会员和会员消费单位的分红总金额为100万元，依次类推。 <br>
-				  4、具体分红金额：如当期分红总金额为100万元，有150个盘古消费资本财富分红资格编写的三位数与当期开出的三位数相同，即每个盘古消费资本财富分红资格获分红金额4999元（含税），余下的转入下期分红；如有400个盘古消费资本财富分红资格编写的三位数与当期开出的三位数相同即每个盘古消费资本财富分红资格获分红金额2500元（含税），依次类推。 <br>
-				  四、分红号码在四川盘古经济咨询有限责任公司大厅上午10：00公开进行，在公证人员监督下，由本公司抽中的两个会员和一个会员消费单位的代表组成当期分红号码小组，以最传统的抓阄方式，三个代表每人依次抓一个数字，组成当期分红号码。并同时开通公司网上在线，当日即在公司网站上公布分红号码和分红金额，并于次日将分红金额（税后）转入所获分红号码的个人会员和会员消费单位代表的邮政储蓄卡上。 <br>
-				  五、四川盘古经济咨询有限责任公司负责抽出分红号码的工作，从第一期分红号码开出后，每两天在公司所在地抽出当期分红号码，全国共享统一的一个号码。 <br>
-  六、此规则如有修改公司会提前在网站上发出公告。 <br>
-				  七、此规则最终解释权归四川盘古经济咨询有限责任公司所有。 <br>
-				  <br> 
-					<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;　　　　　　　　四川盘古经济咨询有限责任公司</strong> <br>
-					<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;　　　　　　　　　　　　　　　　&nbsp;二00七年七月 </strong></p>				</td>
-			</tr>
-		  </table>	  </td>
+		<td width="612" valign="top" rowspan="2"><table width="99%" border="0" align="right" cellpadding="0" cellspacing="0">
+          <tr>
+            <td height="30" align="center" class="title_small">工资、薪金个人所得适用税率</td>
+          </tr>
+          <tr>
+            <td><table width="100%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#003333">
+              <tr>
+                <td width="32" height="30" bgcolor="#66FFCC">级数&nbsp;</td>
+                <td width="165" height="20" bgcolor="#66FFCC">&nbsp;全月应纳税所得额（含税）</td>
+                <td width="160" bgcolor="#66FFCC">&nbsp;全月不含税收入级距</td>
+                <td width="56" bgcolor="#66FFCC">&nbsp;税率(%)</td>
+                <td width="92" bgcolor="#66FFCC">&nbsp;速算扣除数(元)</td>
+              </tr>
+              <tr>
+                <td width="32" height="30" bgcolor="#FFFFFF">&nbsp;1</td>
+                <td width="165" height="20" bgcolor="#FFFFFF">&nbsp;不超过500元的部分</td>
+                <td width="160" bgcolor="#FFFFFF">&nbsp;不超过475元的部分</td>
+                <td width="56" bgcolor="#FFFFFF">&nbsp;5</td>
+                <td width="92" bgcolor="#FFFFFF">&nbsp;0</td>
+              </tr>
+              <tr>
+                <td width="32" height="30" bgcolor="#FFFFFF">&nbsp;2</td>
+                <td width="165" height="20" bgcolor="#FFFFFF">&nbsp;超过500元至2000元的部分</td>
+                <td width="160" bgcolor="#FFFFFF">超过475元至1825元的部分&nbsp;</td>
+                <td width="56" bgcolor="#FFFFFF">&nbsp;10</td>
+                <td width="92" bgcolor="#FFFFFF">&nbsp;25</td>
+              </tr>
+              <tr>
+                <td width="32" height="30" bgcolor="#FFFFFF">&nbsp;3</td>
+                <td width="165" height="20" bgcolor="#FFFFFF">&nbsp;超过2000元至5000元的部分</td>
+                <td width="160" bgcolor="#FFFFFF">&nbsp;超过1825元至4375元的部分</td>
+                <td width="56" bgcolor="#FFFFFF">&nbsp;15</td>
+                <td width="92" bgcolor="#FFFFFF">&nbsp;125</td>
+              </tr>
+              <tr>
+                <td width="32" height="30" bgcolor="#FFFFFF">&nbsp;4</td>
+                <td width="165" height="20" bgcolor="#FFFFFF">&nbsp;超过5000元至20000元的部分</td>
+                <td width="160" bgcolor="#FFFFFF">&nbsp;超过4375元至16375元的部分</td>
+                <td width="56" bgcolor="#FFFFFF">&nbsp;20</td>
+                <td width="92" bgcolor="#FFFFFF">&nbsp;375</td>
+              </tr>
+              <tr>
+                <td width="32" height="30" bgcolor="#FFFFFF">&nbsp;5</td>
+                <td width="165" height="20" bgcolor="#FFFFFF">&nbsp;超过20000元至40000元的部分</td>
+                <td width="160" bgcolor="#FFFFFF">&nbsp;超过16375元至31375元的部分</td>
+                <td width="56" bgcolor="#FFFFFF">&nbsp;25</td>
+                <td width="92" bgcolor="#FFFFFF">&nbsp;1375</td>
+              </tr>
+              <tr>
+                <td width="32" height="30" bgcolor="#FFFFFF">&nbsp;6</td>
+                <td width="165" height="20" bgcolor="#FFFFFF">&nbsp;超过40000元至60000元的部分</td>
+                <td width="160" bgcolor="#FFFFFF">&nbsp;超过31375元至45375元的部分</td>
+                <td width="56" bgcolor="#FFFFFF">&nbsp;30</td>
+                <td width="92" bgcolor="#FFFFFF">&nbsp;3375</td>
+              </tr>
+              <tr>
+                <td width="32" height="30" bgcolor="#FFFFFF">&nbsp;7</td>
+                <td width="165" height="20" bgcolor="#FFFFFF">&nbsp;超过60000元至80000元的部分</td>
+                <td width="160" bgcolor="#FFFFFF">&nbsp;超过45375元至58375元的部分</td>
+                <td width="56" bgcolor="#FFFFFF">&nbsp;35</td>
+                <td width="92" bgcolor="#FFFFFF">&nbsp;6375</td>
+              </tr>
+              <tr>
+                <td width="32" height="30" bgcolor="#FFFFFF">&nbsp;8</td>
+                <td width="165" height="20" bgcolor="#FFFFFF">&nbsp;超过80000元至100000元的部分</td>
+                <td width="160" bgcolor="#FFFFFF">&nbsp;超过58375元至70375元的部分</td>
+                <td width="56" bgcolor="#FFFFFF">&nbsp;40</td>
+                <td width="92" bgcolor="#FFFFFF">&nbsp;10375</td>
+              </tr>
+              <tr>
+                <td width="32" height="30" bgcolor="#FFFFFF">&nbsp;9</td>
+                <td width="165" height="20" bgcolor="#FFFFFF">&nbsp;超过100000元的部分</td>
+                <td width="160" bgcolor="#FFFFFF">&nbsp;超过70375元的部分</td>
+                <td width="56" bgcolor="#FFFFFF">&nbsp;45</td>
+                <td width="92" bgcolor="#FFFFFF">&nbsp;15375</td>
+              </tr>
+            </table></td>
+          </tr>
+          <tr>
+            <td height="50" align="center">说明：本表含税级距指以每月收入额减除费用一千六百元后的余额或者减除附加减除费用后的余额。</td>
+          </tr>
+        </table></td>
 	</tr>
 	<tr>
-		<td width="197" valign="top" background="img_www/background2.jpg">　</td>
+		<td width="197" valign="top" background="img_www/background2.jpg">&nbsp;</td>
 	</tr>
 	<tr>
-		<td width="197" height="20" valign="top" background="img_www/background1.jpg">　</td>
-		<td width="612" height="20" valign="top" background="img_www/background3.jpg">　</td>
-		<td width="91" height="20" valign="top" background="img_www/top8.jpg">　</td>
+		<td width="197" height="20" valign="top" background="img_www/background1.jpg">&nbsp;</td>
+		<td width="612" height="20" valign="top" background="img_www/background3.jpg">&nbsp;</td>
+		<td width="91" height="20" valign="top" background="img_www/top8.jpg">&nbsp;</td>
 	</tr>
 </table>
 <?php	include("footer.php");?>

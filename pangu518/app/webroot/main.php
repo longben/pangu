@@ -95,7 +95,7 @@
 		  <td><input name="username" type="text" id="username" style="border:1px solid #999999;width:140px;height:19px;"></td>
 		</tr>
 		<tr>
-		  <td height=30>密码:</td>
+		  <td height=30>密&nbsp;&nbsp;码:</td>
 		  <td><input name="password" type="password" id="password" style="border:1px solid #999999;width:140px;height:19px;"></td>
 		</tr>
 		<tr>
@@ -112,9 +112,9 @@
 	  <td><input type="reset" style="width:81px;height:22px;border:0;background:url(images/button_reset.gif)" value=""></td>
 	</tr>
 	<tr>
-	  <td height=30><a href="register.php">注册</a></td>
+	  <td height=30 align="center"><a href="register.php">注册</a></td>
 	  <td width=20></td>
-	  <td><a href="#">忘记密码?</a></td>
+	  <td align="center">忘记密码?</td>
 	</tr>
 	</table>
 <?php	}?>
