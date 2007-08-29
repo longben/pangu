@@ -2,7 +2,7 @@
 class IndustriesController extends AppController {
 
 	var $name = 'Industries';
-	var $helpers = array('Html', 'Form' );
+	var $helpers = array('Html', 'Form', 'Javascript' );
 
 	function index() {
 		$this->Industry->recursive = 0;
