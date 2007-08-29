@@ -2,7 +2,7 @@
 class LotteriesController extends AppController {
 
 	var $name = 'Lotteries';
-	var $helpers = array('Html', 'Form' ,'Time');
+	var $helpers = array('Html', 'Form' , 'Time', 'Javascript');
 
 	function index() {
 		$this->Lottery->recursive = 0;

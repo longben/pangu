@@ -9,35 +9,79 @@
 if(isset($javascript)):
     echo $javascript->link('prototype.js');
 	echo $javascript->link('tiny_mce/tiny_mce.js');
+	//echo $javascript->link('fat.js');
 endif;          
 ?> 
 <?php echo $html->css('pangu.generic');?>
+<style type="text/css">
+.message
+{
+    position:absolute;
+    top:100px;
+    left:100px;
+    width:300px;
+    font-size:14px;
+    border: solid 1px #c9b484;
+    border-top:0px;
+    padding:12px;
+    color:#000;
+    background-color:#fff9d9;
+    text-align:center;
+}
+</style>
+ 
+<script language="javascript" type="text/javascript"> 
+<!--
+ 
+var allPageTags = new Array(); 
+function hideFlash()
+{
+	/*
+    var theClass = 'message';
+    var allPageTags=document.getElementsByTagName("div");
+	var msg = ' ';
+ 
+    for (i=0; i<allPageTags.length; i++)
+    {
+        if (allPageTags.className==theClass){
+			//alert(allPageTags);
+            allPageTags.style.display='none'; 
+        }
+    }
+	*/
+      var msg = 'TEST';
+	  var option = {};
+	  var width = parseInt("");
+	  var height = parseInt("");
+	  var color = "#5B9CCC";
+	  var bgcolor = "";
+	  var opacity = "";
+	  var title = "";
+	  var picDir = "/magoa/images/message/";
+	  
+	  if(!isNaN(width)) option.width = width;
+	  if(!isNaN(height)) option.height = height;
+	  if(color != "") option.color = color;
+	  if(bgcolor != "") option.bgcolor = bgcolor; 
+	  if(opacity != "")	option.opacity = opacity;
+	  if(title != "") option.title = title;	
+	  new ErrorDialog(msg,option);
+}
+//--> 
+</script>
 </head>
 <body>
 	<div id="container">
-	    <!--
-		<div id="header"></div>
-		-->
-	    <!--
-		<div id="content">
-		-->
-			<?php if ($session->check('Message.flash'))
-					{
-						$session->flash();
-					}
-					echo $content_for_layout;
-			?>
-		<!--
-		</div>
-		-->
-		<!--
-		<div id="footer">
-			&nbsp;
-			<a href="http://www.bitbee.com/" target="_new">
-				<?php echo $html->image('cake.power.png', array('alt'=>"CakePHP(tm) : Rapid Development Framework", 'border'=>"0"));?>
-			</a>
-		</div>
-		-->
+	   <?php
+	   if ($session->check('Message.flash')){
+		   if(isset($javascript)){
+			   echo $javascript->link('dialog.js');
+			   echo '<script language="javascript" type="text/javascript">hideFlash();</script>';
+		   } 
+		  $session->flash();
+	   }
+	   echo $content_for_layout;
+	   ?>
 	</div>
 <?php echo $cakeDebug?>
 </body>
