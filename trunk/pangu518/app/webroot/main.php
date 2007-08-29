@@ -27,13 +27,13 @@
 	$arrTitle_FHJG = mysql_fetch_array($stmtTitle_FHJG);
 	$Title_FHJG_ID = $arrTitle_FHJG[0];
 ?>
-<HEAD>
-<TITLE>盘古消费财富网</TITLE>
-<meta http-equiv="Content-Language" content="zh-cn">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>盘古消费财富网</title>
 <link href="css/style.css" rel="stylesheet" type="text/css">
 </head>
-<body >
+<body>
 <?php	include("header.php");?>
 <table border=0 cellpadding=0 cellspacing=0 width=900 align=center height=37 style="border:1px solid #cccccc;margin-top:5px;">
 <tr>
@@ -343,6 +343,8 @@
   <tr>
     <td height=21 background="images/index_media_top_02.jpg" style="border-bottom:1px solid #cccccc">
 	<table border=0 cellpadding=0 cellspacing=0 width=100%>
+
+
 	<tr>
 	  <td align=left style="padding-left:10px"><img src="images/index_title_07.jpg"></td>
 	  <td align=right style="padding-right:10px"><a href="news.php?type=<?=$Title_GZZ_ID?>"><img src="images/more.jpg" border="0"></a></td>
