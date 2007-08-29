@@ -1,5 +1,5 @@
 <fieldset>
-<legend>代金券维护</legend>
+<legend>分红凭证维护</legend>
 <table cellpadding="0" cellspacing="0" width="90%">
 <tr>
 	<th>组团编号</th>
@@ -41,13 +41,13 @@
 	</td>
 	<td class="actions">
 		<?php echo $couponList['CouponList']['status'] == 3?$html->link('财务审核','/coupons/audit/' . $couponList['CouponList']['id']):"<font color='#999999'>财务审核</font>"; ?>
-		<?php if($couponList['CouponList']['status'] == 2) echo $html->link('导出该组团代金券','/coupons/export/' . $couponList['CouponList']['id']); ?>
+		<?php if($couponList['CouponList']['status'] == 2) echo $html->link('导出该组团分红凭证','/coupons/export/' . $couponList['CouponList']['id']); ?>
 	</td>
 </tr>
 <?php endforeach; ?>
 </table>
 
 <ul class="actions">
-<li><?php echo $html->link('代金券生成', '/coupons/add')?></li>
+<li><?php echo $html->link('分红凭证生成', '/coupons/add')?></li>
 </ul>
 </fieldset>

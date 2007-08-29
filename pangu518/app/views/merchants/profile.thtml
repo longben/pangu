@@ -71,6 +71,11 @@
   		$('MerchantMerchantName').focus();
   		return false;
   	}
+  	if($F('MerchantMobile')==''){
+  		alert('会员消费单位手机号码不能为空！');
+  		$('MerchantMobile').focus();
+  		return false;
+  	}
 	if( ($F('MerchantMobile')!='') && isNaN($F('MerchantMobile')) ){
 		alert('手机号码格式不对！');
 		$('MerchantMobile').focus();
@@ -123,6 +128,13 @@
   		$('MerchantReferees').focus();
   		return false;
   	}  	
+
+  	if($F('MerchantBargainNo')==''){
+  		alert('合同编号不能为空！');
+  		$('MerchantBargainNo').focus();
+  		return false;
+  	}
+	
   }
 //-->
 </SCRIPT>

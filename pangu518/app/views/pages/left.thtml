@@ -24,7 +24,7 @@
 		d.add(3,0,'工作站专区');
 		d.add(4,0,'公司总部管理');
 
-		d.add(6,0,'代金券认证系统');		
+		d.add(6,0,'分红凭证认证系统');		
 		d.add(8,0,'权限管理');
 		d.add(9,0,'基础代码管理');
 		d.add(11,0,'系统消息');
@@ -46,7 +46,7 @@
 		d.add(4301,43,'新增工作站','/workstations/add');
 		d.add(4302,43,'工作站列表','/workstations');
 		d.add(4303,43,'工作站审核','/workstations/audit');
-		d.add(4304,43,'代金券销售','/workstations/sell');
+		d.add(4304,43,'分红凭证销售','/workstations/sell');
 
 		d.add(4401,44,'分红期数管理','/lotteries'); 
 		//d.add(4402,44,'摇选幸运抽奖单位');
@@ -61,24 +61,24 @@
 		d.add(1001,1,'编辑个人资料','/members/profile');
 		d.add(1002,1,'修改口令','/members/password');
 		//d.add(1003,1,'邀请加入盘古','/users/invite');		//直接在注册的时候填写推荐人帐号
-		d.add(1004,1,'代金券录入','/user_coupons/input');
+		d.add(1004,1,'分红凭证录入','/user_coupons/input');
 		d.add(1005,1,'会员参与分红','/lottery_bettings/user');
 		
 		d.add(2001,2,'消费单位资料维护','/merchants/profile');
-		d.add(2002,2,'可用金额及代金券管理','/merchant_coupons');
-		//d.add(2003,2,'代金券销售报表管理','/merchants');
+		d.add(2002,2,'可用财富积点及分红凭证管理','/merchant_coupons');
+		//d.add(2003,2,'分红凭证销售报表管理','/merchants');
 		d.add(2004,2,'消费单位参与分红','/lottery_bettings/merchant');
 		//d.add(2005,2,'消费单位分红历史查询','/merchants');
 		
 		d.add(3001,3,'工作站资料维护','/workstations/profile');			//工作站权限
-		d.add(3002,3,'可用金额及代金券管理','/workstation_coupons');	//工作站权限
+		d.add(3002,3,'可用财富积点及分红凭证管理','/workstation_coupons');	//工作站权限
 		d.add(3003,3,'增加会员消费单位','/merchants/ws_add');	//工作站权限
 		//d.add(3003,3,'工作站收益报表','/workstations/report');		//工作站权限【包括历史查询】
 		//d.add(3004,3,'工作站转让申请','/workstations/translate');	//工作站权限提出申请	
 
 		
-		d.add(6001,6,'代金券生成','/coupons/add');
-		d.add(6002,6,'代金券审核','/coupon_lists/index'); //不同级别进行不同的审核
+		d.add(6001,6,'分红凭证生成','/coupons/add');
+		d.add(6002,6,'分红凭证审核','/coupon_lists/index'); //不同级别进行不同的审核
 		
 		d.add(8001,8,'系统初始化','/members/install');
 		d.add(8002,8,'角色维护','/roles/index');

@@ -16,7 +16,7 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('LotteryBetting/betting_time', '投注份数：');?>
- 	<?php echo $html->input('LotteryBetting/betting_time', array('size' => '16'));?><span style="color:red"> 每注25份代金券</span>
+ 	<?php echo $html->input('LotteryBetting/betting_time', array('size' => '16'));?><span style="color:red"> 每注25份分红凭证</span>
 	<?php echo $html->tagErrorMsg('LotteryBetting/betting_time', 'Please enter the Betting Time.');?>
 </div>
 <?php echo $html->hiddenTag('LotteryBetting/user_id',1);?>
@@ -33,7 +33,7 @@
   }
 ?>
 <ul>
-  <li><?php echo $html->link('可用金额及代金券管理', '/merchant_coupons'); ?></li>
+  <li><?php echo $html->link('可用财富积点及分红凭证管理', '/merchant_coupons'); ?></li>
 </ul>
 </fieldset>
 <SCRIPT LANGUAGE="JavaScript">

@@ -98,7 +98,7 @@
 		}
 
 		if($F('MerchantMobile')==''){
-			alert('联系方式移动电话不能为空！');
+			alert('手机号码不能为空！');
 			$('MerchantMobile').focus();
 			return false;
 		}
@@ -113,6 +113,7 @@
 			$('MerchantMobile').focus();
 			return false;
 		}
+
 
 		if($F('MerchantTelephone')!=''){
 
@@ -150,13 +151,19 @@
 			return false;
 		}
 
+		if($F('MerchantBargainno')==''){
+			alert('合同编号不能为空！');
+			$('MerchantBargainno').focus();
+			return false;
+		}
+
 /*
+		
 		if($F('MerchantRefereesNo')==''){
-			alert('推荐人不能为空！\n\n如果没有推荐人请直接填写 1 。');
+			alert('推荐人不能为空！\n\n如果没有推荐人请直接填写 www7777。');
 			$('MerchantRefereesNo').focus();
 			return false;
 		} 
-
 
 		if($F('MerchantLoginName')!=''){
 			var url = '/users/check/' + $F('MerchantLoginName');
@@ -168,11 +175,6 @@
 			return checkMoney;
 		}
 
-		if($F('MerchantBargainno')==''){
-			alert('合同编号不能为空！');
-			$('MerchantBargainno').focus();
-			return false;
-		}
 */
 
 	}

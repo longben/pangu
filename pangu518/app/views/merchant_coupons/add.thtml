@@ -1,5 +1,5 @@
 <fieldset align=center>
-<legend>购买代金券</legend> 
+<legend>购买分红凭证</legend> 
 <form action="<?php echo $html->url('/merchant_coupons/add'); ?>" method="post">
 <div class="optional">
     <?php ?>
@@ -14,7 +14,7 @@
 	<?php echo $html->tagErrorMsg('MerchantCoupon/workstation_id', 'Please select the Workstation.') ?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('MerchantCoupon/sum', '购买代金券份额：');?>
+	<?php echo $form->labelTag('MerchantCoupon/sum', '购买分红凭证份额：');?>
  	<?php echo $html->input('MerchantCoupon/sum', array('size' => '30'));?>份
 	<?php echo $html->tagErrorMsg('MerchantCoupon/sum', 'Please enter the Status.');?>
 </div>

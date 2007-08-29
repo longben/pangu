@@ -1,5 +1,5 @@
 <fieldset>
-<legend>代金券销售</legend> 
+<legend>分红凭证销售</legend> 
 <form action="<?php echo $html->url('/workstations/buy/'.$html->tagValue('Workstation/id')); ?>" method="post" onsubmit="return check()">
 <div class="optional"> 
 	<?php echo $form->labelTag('Workstation/region_id', '所属地区：');?>
@@ -47,14 +47,14 @@
 	<?php echo $html->tagErrorMsg('Workstation/introduction', 'Please enter the Introduction.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Workstation/money', '代金券金额：');?>
+	<?php echo $form->labelTag('Workstation/money', '分红凭证金额：');?>
  	<?php echo $html->input('Workstation/money', array('value'=>'0','size' => '60','maxlength' => '8'));?>
-	<?php echo $html->tagErrorMsg('Workstation/money', '代金券金额不能为空!');?>
+	<?php echo $html->tagErrorMsg('Workstation/money', '分红凭证金额不能为空!');?>
 </div>
 <?php echo $html->hidden('Workstation/id')?>
 <?php echo $html->hidden('Workstation/status')?>
 <div class="submit">
-	<?php echo $html->submit('代金券销售');?>
+	<?php echo $html->submit('分红凭证销售');?>
 </div>
 </form>
 </fieldset>
@@ -102,13 +102,13 @@
 		}
 
 		if($F('WorkstationMoney') == ''){
-			alert('请输入代金券金额！');
+			alert('请输入分红凭证金额！');
 			$('WorkstationMoney').focus();
 			return false;
 		}
 
 		if(isNaN($F('WorkstationMoney'))){
-			alert('代金券金额只能为数字！');
+			alert('分红凭证金额只能为数字！');
 			$('WorkstationMoney').focus();
 			return false;
 		}
@@ -119,7 +119,7 @@
 			return false;
 		}
 
-		if(window.confirm("注意：\n\n请确认是否销售代金券" + $F('WorkstationMoney') + "元给该工作站?")){
+		if(window.confirm("注意：\n\n请确认是否销售分红凭证" + $F('WorkstationMoney') + "元给该工作站?")){
 		}else{
 			return false;
 		}
