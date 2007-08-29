@@ -102,7 +102,7 @@ class Coupon extends AppModel {
 		}else{
 			return 0;
 		}
-	}	
+	}
 
 }
 ?>

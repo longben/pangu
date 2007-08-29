@@ -162,6 +162,13 @@ class CouponsController extends AppController {
 		$this->set('path',$path);
 		$this->set('filename','export.bz2');
 	}
+	
+	function min($status = null, $limit = null){
+		$this->layout = 'ajax';
+		$rs = $this->Coupon->findBySql("select min(coupon_no)
+		   from (select * from coupons where status = $status order by id limit $limit) as c");
+		$this->set('min_no',$rs[0][0]['min(coupon_no)']);
+	}
 
 }
 ?>
