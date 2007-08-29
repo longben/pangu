@@ -11,7 +11,7 @@
 <table width="900" height="825" align="center" cellpadding="0" cellspacing="0">
 	<tr>
 		<td width="197" height="73" valign="top" rowspan="2">
-		<img border="0" src="img_www/fenhonggueizhe.jpg" width="197" height="73"></td>
+		<img border="0" src="img_www/xiangguanfalv.jpg" width="197" height="73"></td>
 		<td width="612" height="35" valign="top" background="img_www/background4.jpg">　</td>
 		<td width="91" valign="top" rowspan="5"><?php include("right_gg.php");?></td>
 	</tr>

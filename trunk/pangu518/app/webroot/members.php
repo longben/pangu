@@ -55,7 +55,7 @@
 							<!-- MSTableType="layout" -->
 							<tr>
 								<td width="500" height="140" align="center" valign="top" bgcolor="#C0C0C0">　
-								  <table cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" id="table5" width="460">
+								  <table cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" id="table5" width="480">
 									<!-- MSTableType="layout" -->
 									<form  method=post action="/members/login">
 									<!--
@@ -72,17 +72,17 @@
 									</tr>
 									-->
 									<tr>
-									  <td valign="middle" bgcolor="#FFFFFF" align="right"><img border="0" src="img_www/vipP05.JPG" width="7" height="7"><font size="2" color="#808080">用户名：</font> </td>
+									  <td height="35" align="right" valign="middle" bgcolor="#FFFFFF"><img border="0" src="img_www/vipP05.JPG" width="7" height="7"><font size="2" color="#808080">用户名：</font> </td>
 								      <td height="30" valign="middle" bgcolor="#FFFFFF">　
 							          <input name="data[Member][username]" type="text" id="data[Member][username]" size="12"></td>
 								  </tr>
 									<tr>
-									  <td valign="middle" bgcolor="#FFFFFF" align="right"><img border="0" src="img_www/vipP05.JPG" width="7" height="7"><font size="2" color="#808080">密　码：</font></td>
+									  <td height="35" align="right" valign="middle" bgcolor="#FFFFFF"><img border="0" src="img_www/vipP05.JPG" width="7" height="7"><font size="2" color="#808080">密　码：</font></td>
 								      <td height="30" valign="middle" bgcolor="#FFFFFF">　
 							          <input name="data[Member][password]" type="password" id="data[Member][password]" size="12"></td>
 								  </tr>
 									<tr>
-									  <td height="40" colspan="2" align="center" valign="middle" bgcolor="#FFFFFF"><input type="image" border="0" src="img_www/vipp01.JPG" width="71" height="28"></td>
+									  <td height="44" colspan="2" align="center" valign="middle" bgcolor="#FFFFFF"><input type="image" border="0" src="img_www/vipp01.JPG" width="71" height="28"></td>
 							      </tr>
 								  </form>
 							  </table>							  </td>
