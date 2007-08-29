@@ -6,7 +6,7 @@ class RegionsController extends AppController {
 	var $components = array ('Pagination','Pager'); // Added
 
 
-	function index($page=1) {
+	function index($page=1,$keyword='') {
         
 		$key = $this->data['Region']['keyword'];
 		if($key){
@@ -24,11 +24,11 @@ class RegionsController extends AppController {
 		$this->Pagination->style = "ajax";
 		$this->Session->write('search_term', $this->data['Region']['keyword']);
 
-		$this->Pagination->privateParams  = Array('t1' => 'wwww','t2' => 'demo');
+		$this->Pagination->privateParams  = Array('Region.id' => '110000');
 
 		$settings = array (
 			'show' => 15,
-			'privateParams' => array('test' => 'www'),
+			'privateParams' => array('Region.id' => '110000'),
 		); 
 		
 		list($order,$limit,$page) = $this->Pagination->init($criteria,null,$settings); // Added

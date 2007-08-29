@@ -48,8 +48,14 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Workstation/money', '分红凭证金额：');?>
- 	<?php echo $html->input('Workstation/money', array('value'=>'0','size' => '60','maxlength' => '8'));?>
+ 	<?php echo $html->input('Workstation/money', array('value'=>'0','size' => '60','maxlength' => '8','onblur' => 'getMinNo()'));?>
 	<?php echo $html->tagErrorMsg('Workstation/money', '分红凭证金额不能为空!');?>
+</div>
+<div class="optional">
+   <?php echo $form->labelTag('Workstation/s', '分红凭证起止号码：');?>
+   <?php echo $html->input('Workstation/coupon_start', array('value'=>'0','size' => '10','maxlength' => '10'));?>
+   至
+   <?php echo $html->input('Workstation/coupon_end', array('value'=>'0','size' => '10','maxlength' => '10'));?>
 </div>
 <?php echo $html->hidden('Workstation/id')?>
 <?php echo $html->hidden('Workstation/status')?>
@@ -139,6 +145,25 @@
 
 */
 	}
+	
+   function getMinNo(){
+		if((parseInt($F('WorkstationMoney')/2)*2) != $F('WorkstationMoney')){
+			alert('金额只能为2的倍数');
+			$('WorkstationMoney').focus();
+			return false;
+		}
+		   	
+		var url = '/coupons/min/113/' + ;
+		var myAjax = new Ajax.Request(url,{
+			method: 'get',
+			onComplete: setMinValue,
+			asynchronous:false
+		});
+   }
+   
+   function setMinValue(originalRequest){
+   	  $('WorkstationCouponStart').value = originalRequest.responseText;
+   }
 
    function showResponse(originalRequest){
    	  var count = parseInt(originalRequest.responseText);

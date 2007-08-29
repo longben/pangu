@@ -36,9 +36,9 @@
    	    	$('CouponCouponGroup').focus();
    	    	return false;
    	    }else{
-   	    	var patrn = /^[A-Za-z0]{1}$/;
+   	    	var patrn = /^[A-Za-z]{1}$/;
    	    	if(!patrn.test($F('CouponCouponGroup'))){
-   	    		alert('分红凭证组团编号只能为一位数字0或者一位字母!');
+   	    		alert('分红凭证组团编号只能为一位字母!');
    	    		$('CouponCouponGroup').focus();
    	    		return false;
    	    	}
