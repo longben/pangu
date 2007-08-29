@@ -1,13 +1,13 @@
 <fieldset>
-<legend>添加代金券</legend> 
+<legend>添加分红凭证</legend> 
 <form method="post">
 <div class="optional"> 
-	<?php echo $form->labelTag('Coupon/coupon_group', '代金券组团编号：');?>
+	<?php echo $form->labelTag('Coupon/coupon_group', '分红凭证组团编号：');?>
  	<?php echo $html->input('Coupon/coupon_group', array('size' => '26','maxlength' => '6'));?>
 	<?php echo $html->tagErrorMsg('Coupon/coupon_group', 'Please enter the Coupon Group.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Coupon/custom_num', '代金券起止号码：');?>
+	<?php echo $form->labelTag('Coupon/custom_num', '分红凭证起止号码：');?>
  	从<?php echo $html->input('Coupon/start', array('size' => '9','maxlength' => '10'));?>
  	到<?php echo $html->input('Coupon/end', array('size' => '9','maxlength' => '10'));?> 	
 </div>
@@ -17,14 +17,14 @@
 	<?php echo $html->tagErrorMsg('Coupon/custom_num', 'Please enter the Custom Num.');?>
 </div>
 <div class="submit" id='init'>
-	<input type="button" value="批量生成代金券"  onclick="init()"/>
+	<input type="button" value="批量生成分红凭证"  onclick="init()"/>
 </div>
-<span style="color:red;font-size:14px;display:none" id="msg"><!--注意：代金券后台生成中，请在【代金券审核】查看批量代金券状态--></span>
+<span style="color:red;font-size:14px;display:none" id="msg"><!--注意：分红凭证后台生成中，请在【分红凭证审核】查看批量分红凭证状态--></span>
 </form>
 <ul>
- <li>库存代金券总数:<?=$total?>。共计：<?=$total*2?>元</li>
- <li>待审核代金券总数:<?=$total_init?>。共计：<?=$total_init*2?>元</li>
- <li>已销售代金券总数:<?=$total_sale?>。共计：<?=$total_sale*2?>元</li>
+ <li>库存分红凭证总数:<?=$total?>。共计：<?=$total*2?>元</li>
+ <li>待审核分红凭证总数:<?=$total_init?>。共计：<?=$total_init*2?>元</li>
+ <li>已销售分红凭证总数:<?=$total_sale?>。共计：<?=$total_sale*2?>元</li>
 </ul>
 </fieldset>
 <SCRIPT LANGUAGE="JavaScript">
@@ -32,31 +32,31 @@
    var flag = false;
    function init(){
    	    if($F('CouponCouponGroup')==''){
-   	    	alert('代金券组团编号不能为空!');
+   	    	alert('分红凭证组团编号不能为空!');
    	    	$('CouponCouponGroup').focus();
    	    	return false;
    	    }else{
    	    	var patrn = /^[A-Za-z0]{1}$/;
    	    	if(!patrn.test($F('CouponCouponGroup'))){
-   	    		alert('代金券组团编号只能为一位数字0或者一位字母!');
+   	    		alert('分红凭证组团编号只能为一位数字0或者一位字母!');
    	    		$('CouponCouponGroup').focus();
    	    		return false;
    	    	}
    	    }
    	    
    	    if($F('CouponStart')=='' || $F('CouponEnd')==''){
-   	    	alert('代金券起止号码不能为空！');
+   	    	alert('分红凭证起止号码不能为空！');
    	    	$('CouponStart').focus();
    	    	return false;
    	    }else{
    	    	var patrn=/^(\d){1,9}$/;
    	    	if(!patrn.test($F('CouponStart')) || !patrn.test($F('CouponEnd'))){
-   	    		alert('代金券起止号码只能为1到9位的数字！');
+   	    		alert('分红凭证起止号码只能为1到9位的数字！');
    	    		$('CouponStart').focus();
    	    		return false;
    	    	}else{
    	    		if(Number($F('CouponStart')) >= Number($F('CouponEnd'))){
-   	    			alert('代金券开始号码数字大于或者等于结束号码数字！');
+   	    			alert('分红凭证开始号码数字大于或者等于结束号码数字！');
    	    			$('CouponStart').focus();
    	    			return false;   	    			
    	    		}
@@ -85,7 +85,7 @@
 		});
 		
 		if(flag){
-			if(window.confirm('注意：请确认！\n\n是否初始化该批次代金券？')){
+			if(window.confirm('注意：请确认！\n\n是否初始化该批次分红凭证？')){
 				var url = '/coupons/initialize';
 				url = url + '/' + $F('CouponCouponGroup') + '/' + $F('CouponStart') + '/' + $F('CouponEnd') + '/' + $F('CouponCustomNum');
 				
@@ -113,7 +113,7 @@
    }
    
    function gotoList(originalRequest){
-   	  if(window.confirm('该批次代金券生成成功，是否审核该批次代金券？')){
+   	  if(window.confirm('该批次分红凭证生成成功，是否审核该批次分红凭证？')){
    	  	location.replace('/coupon_lists/index');
    	  }else{
    	  	location.replace('/coupons/add');

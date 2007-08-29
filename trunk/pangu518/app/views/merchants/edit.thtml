@@ -83,7 +83,8 @@
 			$('MerchantMerchantName').focus();
 			return false;
 		}
-		
+
+	
 		if($F('MerchantLoginName')==''){
 			alert('消费单位拥有人不能为空！\n\n请直接填写会员消费单位所有者会员帐号！');
 			$('MerchantLoginName').focus();
@@ -93,6 +94,12 @@
 		if($F('MerchantOwner')==''){
 			alert('消费单位负责人不能为空！');
 			$('MerchantOwner').focus();
+			return false;
+		}
+
+		if($F('MerchantMobile')==''){
+			alert('手机号码不能为空！');
+			$('MerchantMobile').focus();
 			return false;
 		}
 
@@ -143,11 +150,18 @@
 			return false;
 		}
 
+		if($F('MerchantBargainNo')==''){
+			alert('合同编号不能为空！');
+			$('MerchantBargainNo').focus();
+			return false;
+		}
+
 		if($F('MerchantRefereesNo')==''){
-			alert('推荐人不能为空！\n\n如果没有推荐人请直接填写 1 。');
+			alert('推荐人不能为空！\n\n如果没有推荐人请直接填写www7777。');
 			$('MerchantRefereesNo').focus();
 			return false;
 		} 
+
 
 		if($F('MerchantLoginName')!=''){
 			var url = '/users/check/' + $F('MerchantLoginName');

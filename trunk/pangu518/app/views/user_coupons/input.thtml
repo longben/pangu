@@ -1,24 +1,24 @@
 <fieldset align=center>
-<legend>代金券录入</legend> 
+<legend>分红凭证录入</legend> 
 <form action="<?php echo $html->url('/user_coupons/input'); ?>" method="post" onsubmit="return check()">
    <?php echo $html->hiddenTag('UserCoupon/user_id',$this->controller->Session->read('User.uid'));?>
 <div class="optional"> 
-	<?php echo $form->labelTag('Coupon/coupon_no', '代金券编号：');?>
+	<?php echo $form->labelTag('Coupon/coupon_no', '分红凭证编号：');?>
 	<?php echo $html->input('Coupon/coupon_no', array('size' => '60','maxlength' => '10'));?>
-	<?php echo $html->tagErrorMsg('Coupon/coupon_no', '代金券编号不能为空！') ?>
+	<?php echo $html->tagErrorMsg('Coupon/coupon_no', '分红凭证编号不能为空！') ?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Coupon/coupon_pwd', '代金券密码：');?>
+	<?php echo $form->labelTag('Coupon/coupon_pwd', '分红凭证密码：');?>
 	<?php echo $html->input('Coupon/coupon_pwd', array('size' => '60','maxlength' => '6'));?>
-	<?php echo $html->tagErrorMsg('Coupon/coupon_pwd', '代金券密码不能为空！') ?>
+	<?php echo $html->tagErrorMsg('Coupon/coupon_pwd', '分红凭证密码不能为空！') ?>
 </div>
 <div class="submit">
 	<?php echo $html->submit('添加');?>
 </div>
 </form>
 <ul>
- <li>可用代金券总数：<?=$available_capital?>张</li>
- <li>已消费代金券总数：<?=$expenditure?>张</li>
+ <li>可用分红凭证总数：<?=$available_capital?>张</li>
+ <li>已消费分红凭证总数：<?=$expenditure?>张</li>
  <li><?php echo $html->link('参与分红', '/lottery_bettings/user'); ?></li>
 </ul>
 </fieldset>
@@ -26,26 +26,26 @@
 <!--
 	function check(){
 		if($F('CouponCouponNo')==''){
-			alert('代金券编号不能为空！');
+			alert('分红凭证编号不能为空！');
 			$('CouponCouponNo').focus();
 			return false;
 		}else{
 			var patrn = /[0-9a-zA-Z]$/;
 			if(!patrn.test($F('CouponCouponNo'))){
-				alert('录入的代金券编号格式不对！');
+				alert('录入的分红凭证编号格式不对！');
 				$('CouponCouponNo').focus();
 				return false;
 			}
 		}
 		
 		if($F('CouponCouponPwd')==''){
-			alert('代金券密码不能为空！');
+			alert('分红凭证密码不能为空！');
 			$('CouponCouponPwd').focus();
 			return false;
 		}else{
 	  		var patrn=/^(\d){6}$/;
 	  		if(!patrn.test($F('CouponCouponPwd'))){
-	  			alert('代金券密码为6位数字！');
+	  			alert('分红凭证密码为6位数字！');
 	  			$('CouponCouponPwd').focus();
 	  			return false;
 	  		}			

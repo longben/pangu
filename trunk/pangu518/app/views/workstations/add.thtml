@@ -24,7 +24,7 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Workstation/referees_no', '推荐人：');?>
- 	<?php echo $html->input('Workstation/referees_no', array('size' => '50','maxlength' => '20'));?><span style='color:red'>会员登录名</span>
+ 	<?php echo $html->input('Workstation/referees_no', array('size' => '50','maxlength' => '20','value' => 'www7777'));?><span style='color:red'>会员登录名</span>
 	<?php echo $html->tagErrorMsg('Workstation/referees_no', 'Please enter the Principal.');?>
 </div>
 <div class="optional"> 
@@ -73,6 +73,12 @@
 			return false;
 		}
 
+		if($F('WorkstationRefereesNo')==''){
+			alert('推荐人不能为空！');
+			$('WorkstationRefereesNo').focus();
+			return false;
+		}
+
 		if($F('WorkstationBargainNo')==''){
 			alert('合同编号不能为空！');
 			$('WorkstationBargainNo').focus();
@@ -114,6 +120,7 @@
 			});
 			return checkMoney;
 		}
+
 	}
 
    function showResponse(originalRequest){
@@ -126,4 +133,6 @@
       	checkMoney = true;
       }
    }
+
+
 </script>

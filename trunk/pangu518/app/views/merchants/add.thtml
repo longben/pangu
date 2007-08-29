@@ -53,7 +53,7 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Merchant/referees_no', '推荐人：');?>
- 	<?php echo $html->input('Merchant/referees_no', array('size' => '50','maxlength' => '20'));?><span style='color:red'>会员登录名</span>
+ 	<?php echo $html->input('Merchant/referees_no', array('size' => '50','maxlength' => '20','value' => 'www7777'));?><span style='color:red'>会员登录名</span>
 	<?php echo $html->tagErrorMsg('Merchant/referees_no', 'Please enter the Referees.');?>
 </div>
 <div class="optional"> 
@@ -144,10 +144,17 @@
 		}
 
 		if($F('MerchantRefereesNo')==''){
-			alert('推荐人不能为空！\n\n如果没有推荐人请直接填写 1 。');
+			alert('推荐人不能为空！\n\n如果没有推荐人请直接填写 www7777 。');
 			$('MerchantRefereesNo').focus();
 			return false;
 		} 
+
+
+		if($F('MerchantBargainNo')==''){
+			alert('合同编号不能为空！');
+			$('MerchantBargainNo').focus();
+			return false;
+		}
 
 		if($F('MerchantLoginName')!=''){
 			var url = '/users/check/' + $F('MerchantLoginName');
@@ -159,11 +166,14 @@
 			return checkMoney;
 		}
 
-
-		if($F('MerchantBargainno')==''){
-			alert('合同编号不能为空！');
-			$('MerchantBargainno').focus();
-			return false;
+		if($F('MerchantRefereesNo')!=''){
+			var url = '/users/check/' + $F('MerchantRefereesNo');
+			var myAjax = new Ajax.Request(url,{
+				method: 'get',
+				onComplete: showResponse,
+				asynchronous:false
+			});
+			return checkMoney;
 		}
 
 	}

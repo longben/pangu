@@ -4,9 +4,9 @@
  <li>推荐工作站数目：<?=$performance['user_workstation']?>个</li> 
  <li>推荐工作站所得佣金(含税)：<?=$performance['user_workstation_pay']?>元</li> 
  <li>签定会员消费单位数目：<?=$performance['user_merchant']?>个</li> 
- <li>签定会员消费单位所购代金券所得佣金(含税)：<?=$performance['user_merchant_coupon']?>元</li>
+ <li>签定会员消费单位所购分红凭证所得佣金(含税)：<?=$performance['user_merchant_coupon']?>元</li>
  <li>推荐会员数目：<?=$performance['user_referees']?>个</li>
- <li>推荐会员所得代金券数目所得佣金(含税)：<?=$performance['user_referees_coupon']?>元</li>
+ <li>推荐会员所得分红凭证数目所得佣金(含税)：<?=$performance['user_referees_coupon']?>元</li>
  <li>佣金累计数目代扣所得税：<?=$performance['income_tax']?>元</li>
  <li>管理费：<?=$performance['overhead_expenses']?>元</li>
  <hr/> 

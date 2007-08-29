@@ -1,9 +1,9 @@
 <fieldset>
-<legend>代金券维护</legend>
+<legend>分红凭证维护</legend>
 
 <table cellpadding="0" cellspacing="0" width="100%">
 <tr>
-	<th>代金券组团</th>
+	<th>分红凭证组团</th>
 	<th>开始编码</th>
 	<th>结束编码</th>
 	<th>状态</th>
@@ -17,13 +17,13 @@
 	<td>财务尚未审核</td>
 	<td class="actions">
 		<?php echo $html->link('财务审核','/coupons/audit/' . $coupon['Coupon']['coupon_group'] . '/' . $coupon['Coupon']['custom_num'])?>
-		<?php echo $html->link('导出该组团代金券','/coupons/export/' . $coupon['Coupon']['coupon_group']. '/' . $coupon['Coupon']['custom_num'])?>
+		<?php echo $html->link('导出该组团分红凭证','/coupons/export/' . $coupon['Coupon']['coupon_group']. '/' . $coupon['Coupon']['custom_num'])?>
 	</td>
 </tr>
 <?php endforeach; ?>
 </table>
 
 <ul class="actions">
-	<li><?php echo $html->link('批量生成代金券', '/coupons/add'); ?></li>
+	<li><?php echo $html->link('批量生成分红凭证', '/coupons/add'); ?></li>
 </ul>
 </fieldset>
