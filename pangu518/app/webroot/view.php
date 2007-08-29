@@ -16,23 +16,24 @@
 	$stmtNEWS = mysql_query($strNEWS);
 	$arrNEWS = mysql_fetch_array($stmtNEWS);
 ?>
-<HEAD>
-<TITLE><?=$arrNEWS[2]?></TITLE>
+<html>
+<head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title><?=$arrNEWS[2]?></title>
 <link href="css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<table width="400" border="0" align="center" cellpadding="0" cellspacing="0">
+<p>&nbsp;</p>
+<table width="400" border="0" align="center" cellpadding="1" cellspacing="1" bgcolor="#000033">
   <tr>
-    <td height="35" align="center"><span class="title"><?=$arrNEWS[0]?></span></td>
+    <td height="35" align="center" bgcolor="#FFFFFF"><span class="title"><?=$arrNEWS[0]?></span></td>
   </tr>
   <tr>    
-	<td height="150" valign="top" class="text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?=$arrNEWS[1]?></td>
+	<td height="150" valign="top" bgcolor="#FFFFFF" class="text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?=$arrNEWS[1]?></td>
   </tr>
   <tr>
-    <td height="15" align="center">[<a href="javascript:window.close()">关闭窗口</a>]</td>
+    <td height="15" align="center" bgcolor="#FFFFFF">[<a href="javascript:window.close()">关闭窗口</a>]</td>
   </tr>
 </table>
-<p>&nbsp;</p>
 </body>
 </html>
