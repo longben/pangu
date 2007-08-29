@@ -121,6 +121,7 @@ create table workstations(
   referees         int(8)                                comment '工作站推荐者',
   bargain_no       varchar(30)                           comment '合同编号',
   address          varchar(100)                          comment '工作站地址',
+  mobile           varchar(11)                           comment '移动电话',
   telphone         varchar(20)                           comment '工作站联系电话',
   principal        varchar(20)                           comment '工作站负责人',
   introduction     varchar(2000)                         comment '工作站简介',
