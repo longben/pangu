@@ -117,7 +117,7 @@
 		}
 
 		if($('WorkstationCouponGroup')== '' || $('WorkstationCouponStart')== '' || $('WorkstationCouponEnd').value == ''){
-			alert('请录入分红凭证数目！');
+			alert('请录入分红凭证组团及起止号码！');
 			return false;
 		}
 
@@ -143,22 +143,37 @@
 	}
 	
 	function getNoByGroup(){
+		if(isNaN($F('WorkstationMoney'))){
+			return false;
+		}
+
 		if($F('WorkstationMoney')==0 || $F('WorkstationMoney') == ''){
 			alert('请先录入预转入的分红凭证金额！');
 			$('WorkstationMoney').focus();
+			return false;
 		}else{
-			getNo();
 			if($F('WorkstationCouponStart')==''){
 				alert('该组团无数据！');
 				$('WorkstationCouponGroup').focus();
+				return false;	
 			}
+			getNo();
 		}
 	}
 	
    function getNo(){
-   	  if($F('WorkstationMoney')==0 || $F('WorkstationMoney') == ''){
+
+   	  if($F('WorkstationMoney')==0 || $F('WorkstationMoney') == '' ){
+		alert('请先录入预转入的分红凭证金额！');
    	  	return false;
    	  }else{
+
+		if(isNaN($F('WorkstationMoney'))){
+			alert('分红凭证金额只能为数字！');
+			$('WorkstationMoney').focus();
+			return false;
+		}
+
 		if((parseInt($F('WorkstationMoney')/2)*2) != $F('WorkstationMoney')){
 			alert('金额只能为2的倍数');
 			$('WorkstationMoney').focus();
