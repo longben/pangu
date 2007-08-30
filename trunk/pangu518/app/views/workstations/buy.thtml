@@ -98,12 +98,6 @@
 			}	
 		}
 
-		if($F('WorkstationIntroduction')==''){
-			alert('工作站简介不能为空！');
-			$('WorkstationIntroduction').focus();
-			return false;
-		}
-
 		if($F('WorkstationMoney') == ''){
 			alert('请输入分红凭证金额！');
 			$('WorkstationMoney').focus();
@@ -121,14 +115,15 @@
 			$('WorkstationMoney').focus();
 			return false;
 		}
-		
-		if($F('WorkstationCouponGroup') == '' || $F('WorkstationCouponStart') == '' || $F('WorkstationCouponEnd') == ''){
+
+		if($('WorkstationCouponGroup')== '' || $('WorkstationCouponStart')== '' || $('WorkstationCouponEnd').value == ''){
 			alert('请录入分红凭证数目！');
 			return false;
 		}else{
 			alert('ddd');
 			return false;
 		}
+
 
 		if(window.confirm("注意：\n\n请确认是否转入分红凭证" + $F('WorkstationMoney') + "元给该工作站?")){
 		}else{
