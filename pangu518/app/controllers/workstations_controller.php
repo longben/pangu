@@ -98,7 +98,7 @@ class WorkstationsController extends AppController {
 				$this->Session->setFlash('代金券销售成功！');
 				$this->redirect('/workstations/sell');
 			}else{
-				$this->Session->setFlash('销售尚未成功，库存代金券数量过少！');
+				$this->Session->setFlash('销售尚未成功，库存代金券数量过少或号段不在同一个组团！');
 				$this->set('regions', $this->Workstation->Region->generateList(
 				  $conditions = "id like '__0000'",
 				  $order = 'id',
