@@ -14,7 +14,7 @@ endif;
 ?> 
 <?php echo $html->css('pangu.generic');?>
 <style type="text/css">
-.message
+.message_ddd
 {
     position:absolute;
     top:100px;
@@ -74,10 +74,12 @@ function hideFlash()
 	<div id="container">
 	   <?php
 	   if ($session->check('Message.flash')){
+		   /*
 		   if(isset($javascript)){
 			   echo $javascript->link('dialog.js');
 			   echo '<script language="javascript" type="text/javascript">hideFlash();</script>';
 		   } 
+		   */
 		  $session->flash();
 	   }
 	   echo $content_for_layout;
