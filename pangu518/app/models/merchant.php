@@ -63,15 +63,18 @@ class Merchant extends AppModel {
 
 	);
 	
-	function buy($workstation_id=null,$merchant_id=null,$sum=null) {
+	function buy($workstation_id=null,$merchant_id=null,$sum=null,$money = null, $coupon_start = null , $coupon_end = null, $coupon_group = null) {
 		//Configure::write('debug',2);
 		$status = 3*100 + 4*10 + 1;
+		$limit = $money / $sum;
 		$sql = "select WorkstationCoupon.coupon_id from workstation_coupons as WorkstationCoupon 
 		    where WorkstationCoupon.workstation_id = $workstation_id
-		      and WorkstationCoupon.status = 131 limit $sum";
+		      and WorkstationCoupon.coupon_no >= '$coupon_start'
+		      and WorkstationCoupon.coupon_no <= '$coupon_end'
+		      and WorkstationCoupon.status = 131";
 			
 		$rs = $this->query($sql);
-		if(sizeof($rs)==$sum){
+		if(sizeof($rs)==$limit){
 			for($i=0;$i<sizeof($rs);$i++){
 				if($i==0){
 					$merchant_sql = 'insert into merchant_coupons(merchant_id,coupon_id,workstation_id,status)
@@ -84,8 +87,11 @@ class Merchant extends AppModel {
 			}
 			$coupon_sql = 'update coupons set status = '.$status.' where id in('. $coupon_id .')';
 			$updateWorkstationCoupon = 'update workstation_coupons set status = '.$status.' where coupon_id in('. $coupon_id .')';
+			$merchant_coupon_list_sql = "insert into merchant_coupon_lists(merchant_id,workstation_id,coupon_start,coupon_end,coupon_group)
+			  values($merchant_id,$workstation_id,'$coupon_start','$coupon_end','$coupon_group')";
 			$this->execute($merchant_sql); //插入会员消费单位代金券
 			$this->execute($coupon_sql); //更新代金券状态
+			$this->execute($merchant_coupon_list_sql); //插入会员消费单位代金券列表
 			$this->execute($updateWorkstationCoupon); //更新工作站代金券状态
 			return true;
 		}else{

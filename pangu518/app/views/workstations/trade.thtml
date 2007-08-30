@@ -20,13 +20,17 @@
  	<span class="formText"><?php echo $telephone;?></span>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Merchant/number', '转入分红凭证份数：');?>
- 	<?php echo $html->input('Merchant/number', array('size' => '60','onKeyUp' => 'showMoney()'));?>
-	<?php echo $html->tagErrorMsg('Merchant/number', '请正确输入分红凭证份数。');?>
+	<?php echo $form->labelTag('Workstation/money', '分红凭证金额：');?>
+ 	<?php echo $html->input('Workstation/money', array('size' => '60','maxlength' => '8','onblur' => 'getNo()'));?>
+	<?php echo $html->tagErrorMsg('Workstation/money', '分红凭证金额不能为空!');?>
 </div>
-<div class="optional"> 
-	<?php echo $form->labelTag('money', '合计金额：');?>
- 	<span id="money"></span>
+<div class="optional">
+   <?php echo $form->labelTag('Workstation/s', '组团及起止号码：');?>
+   <?php echo $html->input('Workstation/coupon_group', array('size' => '2','maxlength' => '2', 'onblur' => 'getNoByGroup()'));?> 组团
+   <?php echo $html->input('Workstation/coupon_start', array('size' => '10','maxlength' => '10','onblur' => 'getMaxNo()'));?>
+   至
+   <?php echo $html->input('Workstation/coupon_end', array('size' => '10','maxlength' => '10'));?>
+   <span style="color:red"> 分红凭证只能同组团销售</span>
 </div>
 <div class="submit">
 	<?php echo $html->submit('确认转入');?>
@@ -41,24 +45,25 @@
 <!--
    var checkMoney = false;
    function check(){
-   	    if($F('MerchantNumber')==''){
+   	    if($F('WorkstationMoney')==''){
    	    	alert('预转入的分红凭证份额不能为空!');
-   	    	$('MerchantNumber').focus();
+   	    	$('WorkstationMoney').focus();
    	    	return false;
    	    }else{
    	    	var patrn = /\d$/;
-   	    	if(!patrn.test($F('MerchantNumber'))){
+   	    	if(!patrn.test($F('WorkstationMoney'))){
    	    		alert('预转入的分红凭证份额只能输入数字！');
-   	    		$('MerchantNumber').focus();
+   	    		$('WorkstationMoney').focus();
    	    		return false;
-   	    	}   	    	
+   	    	}else{
+				var url = '/workstation_coupons/balance/<?=$this->controller->Session->read('ws_id')?>';
+				var myAjax = new Ajax.Request(url,{
+					method: 'get',
+					onComplete: showResponse,
+					asynchronous:false
+				});   	    		
+   	    	}
    	    }
-		var url = '/workstation_coupons/balance/<?=$this->controller->Session->read('ws_id')?>';
-		var myAjax = new Ajax.Request(url,{
-			method: 'get',
-			onComplete: showResponse,
-			asynchronous:false
-		});
 		
 		if(checkMoney && window.confirm('注意：请确认！\n\n是否转入分红凭证给『<?=$merchant_name?>』会员消费单位？')){
 			checkMoney = true;
@@ -68,19 +73,88 @@
 
 		return checkMoney;
    }
+   
+	function getNoByGroup(){
+		if($F('WorkstationMoney')==0 || $F('WorkstationMoney') == ''){
+			alert('请先录入预转入的分红凭证金额！');
+			$('WorkstationMoney').focus();
+		}else{
+			getNo();
+			if($F('WorkstationCouponStart')==''){
+				alert('该组团无数据！');
+				$('WorkstationCouponGroup').focus();
+			}
+		}
+	}
+	
+   function getNo(){
+   	  if($F('WorkstationMoney')==0 || $F('WorkstationMoney') == ''){
+   	  	return false;
+   	  }else{
+		if((parseInt($F('WorkstationMoney')/2)*2) != $F('WorkstationMoney')){
+			alert('金额只能为2的倍数');
+			$('WorkstationMoney').focus();
+			return false;
+		}else{
+			var url = '/workstations/min/131/' + $F('WorkstationMoney')/2;
+			if($F('WorkstationCouponGroup')!=''){
+				url = url + '/' + $F('WorkstationCouponGroup');
+			}
+			
+			var myAjax = new Ajax.Request(url,{
+				method: 'get',
+				onComplete: setMinValue,
+				asynchronous:false
+			});
+			
+			if($F('WorkstationCouponStart')!=''){
+				var url = '/workstations/max/131/' + $F('WorkstationMoney')/2;
+				var myAjax = new Ajax.Request(url,{
+					method: 'get',
+					onComplete: setMaxValue,
+					asynchronous:false
+				});					
+			} 
+		}  	  	
+   	  }	
+   }
+
+   function getMaxNo(){
+   	    if($F('WorkstationCouponStart')==''){
+   	    	$('WorkstationCouponEnd').value = '';
+   	    }else{
+			var url = '/workstations/max/131/' + $F('WorkstationMoney')/2 + '/' + $F('WorkstationCouponStart');
+			var myAjax = new Ajax.Request(url,{
+				method: 'get',
+				onComplete: setMaxValue,
+				asynchronous:false
+			});	    	    	
+   	    }  	
+   }
+   
+   function setMinValue(originalRequest){
+   	  if(originalRequest.responseText == ''){
+   	  	$('WorkstationCouponGroup').value = '';
+   	  	$('WorkstationCouponStart').value = '';
+   	  	$('WorkstationCouponEnd').value = '';
+   	  }else{
+   	  	$('WorkstationCouponGroup').value = originalRequest.responseText.substring(0,1);
+   	  	$('WorkstationCouponStart').value = originalRequest.responseText;   	  	
+   	  }
+   }
+
+   function setMaxValue(originalRequest){
+   	  $('WorkstationCouponEnd').value = originalRequest.responseText;
+   }      
 	
    function showResponse(originalRequest){
    	  var count = parseInt(originalRequest.responseText);
-      if(count < $F('MerchantNumber')){
+      if(count < $F('WorkstationMoney')){
       	alert('预转入的分红凭证金额大于库存分红凭证金额！\n\n你目前库存分红凭证金额为：' + count + '张。合计：' + count*2 + '元');
       	checkMoney = false;
       }else{
       	checkMoney = true;
       }
-   }	
-	
-  function showMoney(){
-  	 $('money').innerHTML = $F('MerchantNumber')*2 + '元';
-  }
+   }
 //-->
 </script>

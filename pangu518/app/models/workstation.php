@@ -84,7 +84,7 @@ class Workstation extends AppModel {
 		    动作：0:无效 1:销售 2:参与抽奖 3:财务审核 4:其它 */
 		$status = 1*100 + 3*10 + 1; //应该定义成全局变量
 		$limit = $money / $sum;
-		$sql = "select Coupon.id from coupons as Coupon 
+		$sql = "select Coupon.id, Coupon.coupon_no, Coupon.coupon_group from coupons as Coupon 
 		   where Coupon.status = 113 
 		     and Coupon.coupon_no >= '$coupon_start'
 		     and Coupon.coupon_no <= '$coupon_end'";
@@ -96,11 +96,11 @@ class Workstation extends AppModel {
        	}else{
 			for($i=0;$i<sizeof($rs);$i++){
 				if($i==0){
-					$ws_sql = 'insert into workstation_coupons(workstation_id,coupon_id,status)
-				       values('.$id.','.$rs[$i]['Coupon']['id'].','.$status.')';
+					$ws_sql = "insert into workstation_coupons(workstation_id,coupon_id,coupon_no,coupon_group,status) 
+					  values(" .$id.",".$rs[$i]['Coupon']['id'].",'".$rs[$i]['Coupon']['coupon_no']."','".$rs[$i]['Coupon']['coupon_group']."',$status)";
 					$coupon_id = $rs[$i]['Coupon']['id'];
 				}else{
-					$ws_sql .= ',('.$id.','.$rs[$i]['Coupon']['id'].','.$status.')';
+					$ws_sql .= ",(" .$id.",".$rs[$i]['Coupon']['id'].",'".$rs[$i]['Coupon']['coupon_no']."','".$rs[$i]['Coupon']['coupon_group']."',$status)";
 					$coupon_id .= ','.$rs[$i]['Coupon']['id'];
 				}
 			}
