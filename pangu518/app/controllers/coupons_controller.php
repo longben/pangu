@@ -163,12 +163,34 @@ class CouponsController extends AppController {
 		$this->set('filename','export.bz2');
 	}
 	
-	function min($status = null, $limit = null){
+	function min($status = null, $limit = null, $group = null){
 		$this->layout = 'ajax';
-		$rs = $this->Coupon->findBySql("select min(coupon_no)
-		   from (select * from coupons where status = $status order by id limit $limit) as c");
+		if($group == null){
+			$rs = $this->Coupon->findBySql("
+			 select min(coupon_no)
+			   from (select * from coupons where status = $status
+			     order by coupon_no limit $limit) as c");			
+		}else{
+			$rs = $this->Coupon->findBySql("
+			 select min(coupon_no)
+			   from (select * from coupons where status = $status and coupon_group = '$group'
+			     order by coupon_no limit $limit) as c");			
+		}
 		$this->set('min_no',$rs[0][0]['min(coupon_no)']);
 	}
+	
+	function max($status = null, $limit = null, $start = null, $group = null){
+		$this->layout = 'ajax';
+		if($start == null){
+			$rs = $this->Coupon->findBySql("select max(coupon_no)
+			   from (select * from coupons where status = $status order by coupon_no limit $limit) as c");			
+		}else{
+			$rs = $this->Coupon->findBySql("select max(coupon_no)
+			   from (select * from coupons where status = $status and coupon_no > '$start'
+			     order by coupon_no limit $limit) as c");			
+	    }
+		$this->set('min_no',$rs[0][0]['max(coupon_no)']);
+	}	
 
 }
 ?>
