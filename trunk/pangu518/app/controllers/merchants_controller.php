@@ -26,7 +26,7 @@ class MerchantsController extends AppController {
 	
 	function buy() {
 		$this->Merchant->recursive = 0;
-		if($this->Merchant->buy($this->Session->read('ws_id'),$this->data['Merchant']['id'],$this->data['Merchant']['number'])){
+		if($this->Merchant->buy($this->Session->read('ws_id'),$this->data['Merchant']['id'],2,$this->data['Workstation']['money'],$this->data['Workstation']['coupon_start'],$this->data['Workstation']['coupon_end'],$this->data['Workstation']['coupon_group'])){
 			$this->Session->setFlash('代金券销售成功！');
 			$this->redirect('/workstation_coupons/index');
 		}else{

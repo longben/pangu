@@ -230,6 +230,46 @@ class WorkstationsController extends AppController {
 			}
 		}
 	}
+	
+	function min($status = null, $limit = null, $group = null){
+		$this->layout = 'ajax';
+		$user_id = $this->Session->read('User.id');
+		$this->data = $this->Workstation->findByUserId($user_id);
+		$id = $this->data['Workstation']['id'];
+		if($group == null){
+			$rs = $this->Workstation->findBySql("
+			 select min(coupon_no)
+			   from (select * from workstation_coupons 
+			     where status = $status and workstation_id = $id
+			     order by coupon_no limit $limit) as c");
+		}else{
+			$rs = $this->Workstation->findBySql("
+			 select min(coupon_no)
+			   from (select * from workstation_coupons
+			     where status = $status and coupon_group = '$group' and workstation_id = $id
+			     order by coupon_no limit $limit) as c");
+		}
+		$this->set('min_no',$rs[0][0]['min(coupon_no)']);
+	}
+	
+	function max($status = null, $limit = null, $start = null, $group = null){
+		$this->layout = 'ajax';
+		$user_id = $this->Session->read('User.id');
+		$this->data = $this->Workstation->findByUserId($user_id);
+		$id = $this->data['Workstation']['id'];
+		if($start == null){
+			$rs = $this->Workstation->findBySql("select max(coupon_no)
+			   from (select * from workstation_coupons 
+			     where status = $status and workstation_id = $id
+			     order by coupon_no limit $limit) as c");			
+		}else{
+			$rs = $this->Workstation->findBySql("select max(coupon_no)
+			   from (select * from workstation_coupons 
+			     where status = $status and workstation_id = $id and coupon_no > '$start'
+			     order by coupon_no limit $limit) as c");			
+	    }
+		$this->set('min_no',$rs[0][0]['max(coupon_no)']);
+	}	
 
 }
 ?>
