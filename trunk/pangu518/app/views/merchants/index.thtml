@@ -26,7 +26,7 @@
 		<?php echo $html->link('编辑','/merchants/edit/' . $merchant['Merchant']['id'])?>
 		<?php
 		  if($merchant['Merchant']['status']==9){
-			  echo $html->link('删除','/merchants/delete/' . $merchant['Merchant']['id'], null, 'Are you sure you want to delete id ' . $merchant['Merchant']['id']);
+			  echo $html->link('删除','/merchants/delete/' . $merchant['Merchant']['id'], null, '你是否要删除会员消费单位：' . $merchant['Merchant']['merchant_name']);
 		  }
 		?>
 	</td>
