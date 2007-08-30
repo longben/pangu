@@ -48,31 +48,25 @@ class WorkstationsController extends AppController {
 			$status = $this->data['Workstation']['status'];
 			if($status == 9){
 				$this->cleanUpFields();
-				if($this->Workstation->auditing($this->data['Workstation']['id'],2,$this->data['Workstation']['money'])){
-					$user = $this->Workstation->User->read(null,$this->data['Workstation']['user_id']);
-					$user['User']['role_id'] = 3; //工作站默认角色为3
-					$this->Workstation->User->save($user);					
-					
-					$this->data['Workstation']['status'] = '1'; //审核通过
-					
-					//取最大值
-					$ws_no = $this->Workstation->findCount(
-					  array(
-					    'Workstation.region_id' => $this->data['Workstation']['region_id'],
-					    'Workstation.status' => '1'
-					  ));
-					$this->data['Workstation']['ws_no'] = $this->data['Workstation']['region_id'].sprintf('%04s', $ws_no+1);
-					
-					if($this->Workstation->save($this->data)) {
-						$this->Session->setFlash('工作站审核成功！');
-						$this->redirect('/workstations/index');
-					}else{
-						$this->Session->setFlash('Please correct errors below.');
-						$this->set('users', $this->Workstation->User->generateList());
-						$this->set('regions', $this->Workstation->Region->generateList());
-					}
+				$user = $this->Workstation->User->read(null,$this->data['Workstation']['user_id']);
+				$user['User']['role_id'] = 3; //工作站默认角色为3
+				$this->Workstation->User->save($user);					
+				
+				$this->data['Workstation']['status'] = '1'; //审核通过
+				
+				//取最大值
+				$ws_no = $this->Workstation->findCount(
+				  array(
+				    'Workstation.region_id' => $this->data['Workstation']['region_id'],
+				    'Workstation.status' => '1'
+				  ));
+				$this->data['Workstation']['ws_no'] = $this->data['Workstation']['region_id'].sprintf('%04s', $ws_no+1);
+				
+				if($this->Workstation->save($this->data)) {
+					$this->Session->setFlash('工作站审核成功！');
+					$this->redirect('/workstations/index');
 				}else{
-					$this->Session->setFlash('审核尚未成功，库存代金券数量过少！');
+					$this->Session->setFlash('Please correct errors below.');
 					$this->set('users', $this->Workstation->User->generateList());
 					$this->set('regions', $this->Workstation->Region->generateList());
 				}
