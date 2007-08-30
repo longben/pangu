@@ -42,20 +42,17 @@
 	<?php echo $html->tagErrorMsg('Workstation/principal', 'Please enter the Principal.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Workstation/introduction', '工作站简介：');?>
- 	<?php echo $html->textarea('Workstation/introduction', array('cols' => '60', 'rows' => '5'));?>
-	<?php echo $html->tagErrorMsg('Workstation/introduction', 'Please enter the Introduction.');?>
-</div>
-<div class="optional"> 
 	<?php echo $form->labelTag('Workstation/money', '分红凭证金额：');?>
- 	<?php echo $html->input('Workstation/money', array('value'=>'0','size' => '60','maxlength' => '8','onblur' => 'getMinNo()'));?>
+ 	<?php echo $html->input('Workstation/money', array('size' => '60','maxlength' => '8','onblur' => 'getNo()'));?>
 	<?php echo $html->tagErrorMsg('Workstation/money', '分红凭证金额不能为空!');?>
 </div>
 <div class="optional">
-   <?php echo $form->labelTag('Workstation/s', '分红凭证起止号码：');?>
-   <?php echo $html->input('Workstation/coupon_start', array('value'=>'0','size' => '10','maxlength' => '10'));?>
+   <?php echo $form->labelTag('Workstation/s', '组团及起止号码：');?>
+   <?php echo $html->input('Workstation/coupon_group', array('size' => '2','maxlength' => '2', 'onblur' => 'getNoByGroup()'));?> 组团
+   <?php echo $html->input('Workstation/coupon_start', array('size' => '10','maxlength' => '10','onblur' => 'getMaxNo()'));?>
    至
-   <?php echo $html->input('Workstation/coupon_end', array('value'=>'0','size' => '10','maxlength' => '10'));?>
+   <?php echo $html->input('Workstation/coupon_end', array('size' => '10','maxlength' => '10'));?>
+   <span style="color:red"> 分红凭证只能同组团销售</span>
 </div>
 <?php echo $html->hidden('Workstation/id')?>
 <?php echo $html->hidden('Workstation/status')?>
@@ -124,6 +121,14 @@
 			$('WorkstationMoney').focus();
 			return false;
 		}
+		
+		if($F('WorkstationCouponGroup') == '' || $F('WorkstationCouponStart') == '' || $F('WorkstationCouponEnd') == ''){
+			alert('请录入分红凭证数目！');
+			return false;
+		}else{
+			alert('ddd');
+			return false;
+		}
 
 		if(window.confirm("注意：\n\n请确认是否转入分红凭证" + $F('WorkstationMoney') + "元给该工作站?")){
 		}else{
@@ -146,25 +151,79 @@
 */
 	}
 	
-   function getMinNo(){
+	function getNoByGroup(){
+		if($F('WorkstationMoney')==0 || $F('WorkstationMoney') == ''){
+			alert('请先录入预转入的分红凭证金额！');
+			$('WorkstationMoney').focus();
+		}else{
+			getNo();
+			if($F('WorkstationCouponStart')==''){
+				alert('该组团无数据！');
+				$('WorkstationCouponGroup').focus();
+			}
+		}
+	}
+	
+   function getNo(){
+   	  if($F('WorkstationMoney')==0 || $F('WorkstationMoney') == ''){
+   	  	return false;
+   	  }else{
 		if((parseInt($F('WorkstationMoney')/2)*2) != $F('WorkstationMoney')){
 			alert('金额只能为2的倍数');
 			$('WorkstationMoney').focus();
 			return false;
-		}
-		   	
-		var url = '/coupons/min/113/' + ;
-		var myAjax = new Ajax.Request(url,{
-			method: 'get',
-			onComplete: setMinValue,
-			asynchronous:false
-		});
+		}else{
+			var url = '/coupons/min/113/' + $F('WorkstationMoney')/2;
+			if($F('WorkstationCouponGroup')!=''){
+				url = url + '/' + $F('WorkstationCouponGroup');
+			}
+			
+			var myAjax = new Ajax.Request(url,{
+				method: 'get',
+				onComplete: setMinValue,
+				asynchronous:false
+			});
+			
+			if($F('WorkstationCouponStart')!=''){
+				var url = '/coupons/max/113/' + $F('WorkstationMoney')/2;
+				var myAjax = new Ajax.Request(url,{
+					method: 'get',
+					onComplete: setMaxValue,
+					asynchronous:false
+				});					
+			} 
+		}  	  	
+   	  }	
+   }
+
+   function getMaxNo(){
+   	    if($F('WorkstationCouponStart')==''){
+   	    	$('WorkstationCouponEnd').value = '';
+   	    }else{
+			var url = '/coupons/max/113/' + $F('WorkstationMoney')/2 + '/' + $F('WorkstationCouponStart');
+			var myAjax = new Ajax.Request(url,{
+				method: 'get',
+				onComplete: setMaxValue,
+				asynchronous:false
+			});	    	    	
+   	    }  	
    }
    
    function setMinValue(originalRequest){
-   	  $('WorkstationCouponStart').value = originalRequest.responseText;
+   	  if(originalRequest.responseText == ''){
+   	  	$('WorkstationCouponGroup').value = '';
+   	  	$('WorkstationCouponStart').value = '';
+   	  	$('WorkstationCouponEnd').value = '';
+   	  }else{
+   	  	$('WorkstationCouponGroup').value = originalRequest.responseText.substring(0,1);
+   	  	$('WorkstationCouponStart').value = originalRequest.responseText;   	  	
+   	  }
    }
 
+   function setMaxValue(originalRequest){
+   	  $('WorkstationCouponEnd').value = originalRequest.responseText;
+   }   
+   
    function showResponse(originalRequest){
    	  var count = parseInt(originalRequest.responseText);
       if(count == 0){

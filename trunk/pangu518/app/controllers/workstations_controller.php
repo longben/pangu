@@ -90,7 +90,6 @@ class WorkstationsController extends AppController {
 				$this->redirect('/workstations/index');
 			}
 			$this->data = $this->Workstation->read(null, $id);
-			$this->set('users', $this->Workstation->User->generateList());
 			$this->set('regions', $this->Workstation->Region->generateList(
 			  $conditions = "id like '__0000'",
 			  $order = 'id',
@@ -100,13 +99,19 @@ class WorkstationsController extends AppController {
 			);
 		} else {
 			$this->cleanUpFields();
-			if($this->Workstation->auditing($this->data['Workstation']['id'],2,$this->data['Workstation']['money'])){
+			//if($this->Workstation->auditing($this->data['Workstation']['id'],2,$this->data['Workstation']['money'])){
+			if($this->Workstation->buy($this->data['Workstation']['id'],2,$this->data['Workstation']['money'],$this->data['Workstation']['coupon_start'],$this->data['Workstation']['coupon_end'],$this->data['Workstation']['coupon_group'])){
 				$this->Session->setFlash('代金券销售成功！');
 				$this->redirect('/workstations/sell');
 			}else{
 				$this->Session->setFlash('销售尚未成功，库存代金券数量过少！');
-				$this->set('users', $this->Workstation->User->generateList());
-				$this->set('regions', $this->Workstation->Region->generateList());
+				$this->set('regions', $this->Workstation->Region->generateList(
+				  $conditions = "id like '__0000'",
+				  $order = 'id',
+				  $limit = null,
+				  $keyPath = '{n}.Region.id',
+				  $valuePath = '{n}.Region.region_name')
+				);
 			}
 		}
 	}	

@@ -78,6 +78,42 @@ class Workstation extends AppModel {
 
 	);
 	
+	function buy($id = null, $sum = null, $money = null, $coupon_start = null , $coupon_end = null, $coupon_group = null){
+		/*  计算方法：转出方主体×100 + 接收方主体×10 + 动作
+		    主体：0:无效 1:公司 2:会员 3:工作站 4:会员消费单位
+		    动作：0:无效 1:销售 2:参与抽奖 3:财务审核 4:其它 */
+		$status = 1*100 + 3*10 + 1; //应该定义成全局变量
+		$limit = $money / $sum;
+		$sql = "select Coupon.id from coupons as Coupon 
+		   where Coupon.status = 113 
+		     and Coupon.coupon_no >= '$coupon_start'
+		     and Coupon.coupon_no <= '$coupon_end'";
+        $coupons = $this->query($sql);
+       	$rs = $this->query($sql);
+       	
+       	if(sizeof($rs)<$limit){
+       		return false;
+       	}else{
+			for($i=0;$i<sizeof($rs);$i++){
+				if($i==0){
+					$ws_sql = 'insert into workstation_coupons(workstation_id,coupon_id,status)
+				       values('.$id.','.$rs[$i]['Coupon']['id'].','.$status.')';
+					$coupon_id = $rs[$i]['Coupon']['id'];
+				}else{
+					$ws_sql .= ',('.$id.','.$rs[$i]['Coupon']['id'].','.$status.')';
+					$coupon_id .= ','.$rs[$i]['Coupon']['id'];
+				}
+			}
+			$coupon_sql = 'update coupons set status = '.$status.' where id in('. $coupon_id .')';
+			$ws_coupon_list_sql = "insert into workstation_coupon_lists(workstation_id,coupon_start,coupon_end,coupon_group)
+			  values($id,'$coupon_start','$coupon_end','$coupon_group')";
+			$this->execute($ws_coupon_list_sql);
+			$this->execute($ws_sql);
+			$this->execute($coupon_sql);
+			return true;
+       	}
+	}
+	
 	function auditing($id = null,$sum = null,$money = null){
 		/*  计算方法：转出方主体×100 + 接收方主体×10 + 动作
 		    主体：0:无效 1:公司 2:会员 3:工作站 4:会员消费单位
@@ -106,7 +142,6 @@ class Workstation extends AppModel {
 		}else{
 			return false;
 		}
-		
 	}
 	
 	function getReferees($referees_no = null){
