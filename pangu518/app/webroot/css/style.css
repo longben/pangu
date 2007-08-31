@@ -1,5 +1,5 @@
 body{
-	margin:0px;
+	margin-top: 0px;
 	font-size:12px;
 	line-height:20px;
 }
@@ -35,6 +35,11 @@ a.menubottom:hover{
 .text{
 	font-size:12px;
 	line-height:20px;
+}
+
+.text2{
+	font-size:12px;
+	letter-spacing: 0.05em;
 }
 
 .title_small{
