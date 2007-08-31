@@ -83,7 +83,13 @@
 			$sql_member_count = "select count(*) from users where region_id = ".$arr_member_sheng[0]." and to_days(created) = (to_days(now())-".(date('t')-$i).")";
 			$stmt_member_count = mysql_query($sql_member_count);
 			while ($arr_member_count = mysql_fetch_array($stmt_member_count)){
-				echo("<td align='center'>$arr_member_count[0]</td>");			
+				echo "<td align='center'>";
+				if($arr_member_count[0] == 0){
+					echo "&nbsp;";
+				}else{
+					echo $arr_member_count[0];
+				}
+				echo "</td>";
 			}
 		}	
 	?>
@@ -118,7 +124,13 @@
 			$sql_merchant_count = "select count(*) from merchants where region_id = ".$arr_merchant_sheng[0]." and to_days(created) = (to_days(now())-".(date('t')-$i).")";
 			$stmt_merchant_count = mysql_query($sql_merchant_count);
 			while ($arr_merchant_count = mysql_fetch_array($stmt_merchant_count)){
-				echo("<td align='center'>$arr_merchant_count[0]</td>");			
+				echo "<td align='center'>";
+				if($arr_merchant_count[0] == 0){
+					echo "&nbsp;";
+				}else{
+					echo $arr_merchant_count[0];
+				}
+				echo "</td>";
 			}
 		}	
 	?>
@@ -155,7 +167,13 @@
 			$sql_workstation_count = "select count(*) from workstations where region_id = ".$arr_workstation_sheng[0]." and to_days(created) = (to_days(now())-".(date('t')-$i).")";
 			$stmt_workstation_count = mysql_query($sql_workstation_count);
 			while ($arr_workstation_count = mysql_fetch_array($stmt_workstation_count)){
-				echo("<td align='center'>$arr_workstation_count[0]</td>");			
+				echo "<td align='center'>";
+				if($arr_workstation_count[0] == 0){
+					echo "&nbsp;";
+				}else{
+					echo $arr_workstation_count[0];
+				}
+				echo "</td>";
 			}
 		}	
 	?>
