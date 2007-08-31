@@ -9,10 +9,10 @@
 </head>
 
 <body>
-<p align="center" class="title">当月数据统计</p>
+<br><div align="left" class="title">当月数据统计</div>
 <table width="100%" border="1" align="center" cellpadding="0" cellspacing="0" bordercolor="#33FFCC">
   <tr>
-    <td colspan="2" rowspan="2" align="center" bgcolor="#CCFFCC"><?=date('Y')?>年</td>
+    <td colspan="2" rowspan="2" align="center" bgcolor="#CCFFCC" class="title"><?=date('Y')?>年</td>
     <td width="70" rowspan="2" align="center" bgcolor="#CCFFCC">新增会员总数</td>
     <td colspan="31" align="center" bgcolor="#CCFFCC">新增会员分省总数</td>
     <td width="140" rowspan="2" align="center" bgcolor="#CCFFCC">新增会员消费单位总数</td>
@@ -59,7 +59,7 @@
 		//显示第一列月份，且根据当月的天数判断rowspan
 		if($i == 1){
   ?>
-    <td rowspan="<?=date('t')?>" align="center"><?=date('m')?>月</td>
+    <td rowspan="<?=date('t')?>" align="center" class="title"><?=date('n')?>月</td>
   <?php	}?>
 
 	<!--显示第二列天-->
