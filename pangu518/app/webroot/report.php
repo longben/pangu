@@ -9,7 +9,7 @@
 </head>
 
 <body>
-<br><div align="left" class="title">当月数据统计报表</div>
+<br><div align="left" class="title">当月数据统计报表&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:window.print()" class="text">【打印报表】</a></div>
 <table width="100%" border="1" align="center" cellpadding="0" cellspacing="0" bordercolor="#33FFCC">
   <tr>
     <td colspan="2" rowspan="2" align="center" bgcolor="#CCFFCC" class="title"><?=date('Y')?>年</td>
