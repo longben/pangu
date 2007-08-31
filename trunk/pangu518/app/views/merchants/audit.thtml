@@ -14,8 +14,8 @@
 <?php foreach ($merchants as $merchant): ?>
 <tr>
 	<td><?php echo $merchant['Merchant']['merchant_name']; ?></td>
-	<td><?php echo $merchant['User']['user_name'];?></td>
-	<td><?php echo $merchant['Referee']['user_name']; ?></td>
+	<td><?php echo $merchant['User']['login_name'];?></td>
+	<td><?php echo $merchant['Referee']['login_name']; ?></td>
 	<td>&nbsp;<?php echo $merchant['Industry']['industry_name']; ?></td>
 	<td>&nbsp;<?php echo $merchant['Region']['region_name']; ?></td>
 	<td><?php echo $merchant['Merchant']['created']; ?></td>
