@@ -1,6 +1,6 @@
 <fieldset align=center>
 <legend>分红中奖维护</legend> 
-<form action="<?php echo $html->url('/lotteries/open/'.$html->tagValue('Lottery/id')); ?>" method="post">
+<form action="<?php echo $html->url('/lotteries/open/'.$html->tagValue('Lottery/id')); ?>" method="post"  onsubmit="return check()">
 <div class="optional">
 	<?php echo $form->labelTag('Lottery/lottery_year', '开奖期数：');?>
  	<span><?php echo $html->tagValue('Lottery/lottery_year') . sprintf('%03s',$html->tagValue('Lottery/lottery_times'));?></span> 
@@ -8,7 +8,7 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Lottery/win_number', '开奖号码：');?>
- 	<?php echo $html->input('Lottery/win_number', array('size' => '30'));?>
+ 	<?php echo $html->input('Lottery/win_number', array('size' => '30',maxlength => '3'));?>
 	<?php echo $html->tagErrorMsg('Lottery/win_number', 'Please enter the Lottery Times.');?>
 </div>
 <?php echo $html->hidden('Lottery/id')?>
@@ -20,3 +20,18 @@
 <li><?php echo $html->link('分红期数列表', '/lotteries/index')?></li>
 </ul>
 </fieldset>
+<script language="Javascript">
+  function check(){
+  	if($F('LotteryWinNumber')==''){
+  		alert('开奖号码不能为空！');
+  		$('LotteryWinNumber').focus();
+  		return false;
+  	}else{
+  		if(isNaN($F('LotteryWinNumber'))){
+  			alert('开奖号码必须是数字！');
+  			$('LotteryWinNumber').focus();
+  			return false;
+  		}
+  	}
+  }
+</script>
