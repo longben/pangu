@@ -2,8 +2,8 @@
 <legend>可用财富积点及分红凭证管理</legend> 
 <ul class="actions">
     <li>可用分红凭证总数：<?php echo $total?>份，共计<?php echo $total*2?>元。</li>
-    <li>已销售的分红凭证总数：<?php echo $total_sale?>份，共计<?php echo $total_sale*2?>元。</li> 
+    <li>已转出的分红凭证总数：<?php echo $total_sale?>份，共计<?php echo $total_sale*2?>元。</li> 
     <hr/>
-    <li><?php echo $html->link('销售分红凭证给会员消费单位','/merchants/trade')?></li>
+    <li><?php echo $html->link('转入分红凭证给会员消费单位','/merchants/trade')?></li>
 </ul>
 </fieldset>

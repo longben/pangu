@@ -16,8 +16,8 @@
 <tr>
 	<td><?php echo $workstation['Workstation']['ws_no']; ?></td>
 	<td><?php echo $workstation['Workstation']['ws_name']; ?></td>
-	<td><?php echo $workstation['User']['user_name']; ?></td>
-	<td><?php echo $workstation['Referee']['user_name']; ?></td>
+	<td><?php echo $workstation['User']['login_name']; ?></td>
+	<td><?php echo $workstation['Referee']['login_name']; ?></td>
 	<td><?php echo $workstation['Workstation']['bargain_no']; ?></td>
 	<td><?php echo $workstation['Region']['region_name']?></td>
 	<td><?php echo $workstation['Workstation']['created']; ?></td>
