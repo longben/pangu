@@ -9,77 +9,51 @@
 if(isset($javascript)):
     echo $javascript->link('prototype.js');
 	echo $javascript->link('tiny_mce/tiny_mce.js');
-	//echo $javascript->link('fat.js');
 endif;          
 ?> 
 <?php echo $html->css('pangu.generic');?>
 <style type="text/css">
-.message_ddd
+.message
 {
     position:absolute;
-    top:100px;
+    top:110px;
     left:100px;
     width:300px;
+	height:80px;
     font-size:14px;
-    border: solid 1px #c9b484;
+    border: solid 1px #658c10;
     border-top:0px;
     padding:12px;
-    color:#000;
-    background-color:#fff9d9;
+    color:#FFFFFF;
+	background-color:#658c10;
+	border-color:#6d6;
     text-align:center;
 }
 </style>
  
-<script language="javascript" type="text/javascript"> 
+<SCRIPT LANGUAGE="JavaScript">
 <!--
- 
-var allPageTags = new Array(); 
-function hideFlash()
-{
-	/*
-    var theClass = 'message';
-    var allPageTags=document.getElementsByTagName("div");
-	var msg = ' ';
- 
-    for (i=0; i<allPageTags.length; i++)
-    {
-        if (allPageTags.className==theClass){
-			//alert(allPageTags);
-            allPageTags.style.display='none'; 
-        }
-    }
-	*/
-      var msg = 'TEST';
-	  var option = {};
-	  var width = parseInt("");
-	  var height = parseInt("");
-	  var color = "#5B9CCC";
-	  var bgcolor = "";
-	  var opacity = "";
-	  var title = "";
-	  var picDir = "/magoa/images/message/";
-	  
-	  if(!isNaN(width)) option.width = width;
-	  if(!isNaN(height)) option.height = height;
-	  if(color != "") option.color = color;
-	  if(bgcolor != "") option.bgcolor = bgcolor; 
-	  if(opacity != "")	option.opacity = opacity;
-	  if(title != "") option.title = title;	
-	  new ErrorDialog(msg,option);
+function hideFlash(){
+	element = document.getElementById("flashMessage");
+	if(element != null){
+		element.style.display = "none";
+	}
 }
-//--> 
-</script>
+//-->
+</SCRIPT>
+
 </head>
 <body>
 	<div id="container">
 	   <?php
 	   if ($session->check('Message.flash')){
-		   /*
-		   if(isset($javascript)){
-			   echo $javascript->link('dialog.js');
-			   echo '<script language="javascript" type="text/javascript">hideFlash();</script>';
-		   } 
-		   */
+	   ?>
+	      <SCRIPT LANGUAGE="JavaScript">
+	      <!--
+			setTimeout('hideFlash()',3000);
+	      //-->
+	      </SCRIPT>
+	   <?php
 		  $session->flash();
 	   }
 	   echo $content_for_layout;

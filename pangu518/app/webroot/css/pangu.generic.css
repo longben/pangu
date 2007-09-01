@@ -302,7 +302,7 @@ textarea,input,select
 	letter-spacing:0;
 }
 
-#flashMessage,.error,.error_message
+#.error,.error_message
 {
 	color:#900;
 	font-size:14px;
