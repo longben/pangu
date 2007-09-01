@@ -139,6 +139,6 @@ class UsersController extends AppController {
 		$this->layout = 'ajax';
 		$this->set('isExistUser',$this->User->findCount(array('login_name' => $login_name)));
 	}
-
+	
 }
 ?>

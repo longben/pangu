@@ -21,13 +21,16 @@ class LotteriesController extends AppController {
 		if (empty($this->data)) {
 			$this->render();
 		} else {
-			echo $this->data['Lottery']['start'];
 			$this->cleanUpFields();
-			if ($this->Lottery->save($this->data)) {
-				$this->Session->setFlash('分红期数新增成功！');
-				$this->redirect('/lotteries/index');
-			} else {
-				$this->Session->setFlash('Please correct errors below.');
+			if($this->data['Lottery']['start_time']>=$this->data['Lottery']['finish_time']){
+				$this->Session->setFlash('分红开始日期大于或者等于结束日期！');
+			}else{
+				if ($this->Lottery->save($this->data)) {
+					$this->Session->setFlash('分红期数新增成功！');
+					$this->redirect('/lotteries/index');
+				} else {
+					$this->Session->setFlash('Please correct errors below.');
+				}				
 			}
 		}
 	}
