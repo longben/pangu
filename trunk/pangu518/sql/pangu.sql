@@ -262,7 +262,7 @@ create table lotteries(
   start_time       datetime                              comment '彩票期数的开始时间',
   finish_time      datetime                              comment '彩票期数的结束时间',
   open_time        datetime                              comment '开奖时间',
-  win_int       varchar(5)                            comment '中奖号码',
+  win_int          varchar(5)                            comment '中奖号码',
   win_count        int(5)                                comment '中奖总数',
   created          timestamp                             comment '创建时间',
   modified         timestamp                             comment '修改时间',
@@ -276,7 +276,7 @@ create table lotteries(
 create table lottery_bettings(
   id               int(11)       not null auto_increment comment '主键',
   lottery_id       int(5)        not null                comment '彩票期数',
-  betting_int   varchar(5)    not null                comment '彩票投注号码',
+  betting_number   varchar(5)    not null                comment '彩票投注号码',
   betting_time     int(5)        not null default 1      comment '投注份数',
   betting_type     int(1)        not null default 1      comment '投注类型：1:个人投注 2:会员消费单位投注',
   user_id          int(8)                                comment '个人会员',

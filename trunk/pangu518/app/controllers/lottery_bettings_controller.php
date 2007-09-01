@@ -84,6 +84,7 @@ class LotteryBettingsController extends AppController {
 			  $keyPath = '{n}.Lottery.id',
 			  $valuePath = '{n}.Lottery.lottery_times')			
 			);
+			$this->set('ulbs',$this->LotteryBetting->findAll("LotteryBetting.user_id = " . $this->Session->read('User.id') ." and LotteryBetting.betting_type = 1"));
 			$this->render();
 		} else {
 			$this->cleanUpFields();
@@ -126,6 +127,7 @@ class LotteryBettingsController extends AppController {
 			  $keyPath = '{n}.Lottery.id',
 			  $valuePath = '{n}.Lottery.lottery_times')			
 			);
+			$this->set('ulbs',$this->LotteryBetting->findAll("LotteryBetting.user_id = " . $this->Session->read('User.id') ." and LotteryBetting.betting_type = 2"));
 			$this->render();
 		} else {
 			$this->cleanUpFields();

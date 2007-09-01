@@ -51,7 +51,7 @@ class LotteryBetting extends AppModel {
 		    动作：0:无效 1:销售 2:参与抽奖 3:财务审核 4:其它 */
 		$status = 2*100 + 1*10 + 2; //应该定义成全局变量    	
     	
-    	$limit = $betting_time * 2; //会员消费单位每2张代金券一次分红资格
+    	$limit = $betting_time * 1; //会员消费单位每1张代金券一次分红资格
     	$sql = 'select UserCoupon.coupon_id from user_coupons as UserCoupon ';
     	$sql .= ' where UserCoupon.user_id = ' . $user_id;
     	$sql .= ' and UserCoupon.status = 421';
