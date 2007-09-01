@@ -1,5 +1,12 @@
 <fieldset align=center>
 <legend>会员消费单位列表</legend> 
+<div align="left">
+	<form action="<?php echo $html->url('/merchants/index/'); ?>" method="post">
+	  输入会员消费单位名称：
+	  <?php echo $html->input('Merchant/keyword', array('size' => '60'));?>
+	  <?php echo $html->submit('查询');?>
+	</form> 
+</div>
 <table cellpadding="0" cellspacing="0">
 <tr>
 	<th>消费单位编码</th>
@@ -33,6 +40,7 @@
 </tr>
 <?php endforeach; ?>
 </table>
+<p><div align="center"><?php echo $this->renderElement('pagination'); // 分页导航页 ?></div></p>
 
 <ul class="actions">
 	<li><?php echo $html->link('新增会员消费单位', '/merchants/add'); ?></li>
