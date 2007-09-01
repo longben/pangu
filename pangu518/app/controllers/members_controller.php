@@ -202,6 +202,21 @@ class MembersController extends AppController {
     $this->Session->delete('User');
     $this->redirect('/admin/');
   }
+  
+  function initpassword($id = null, $pwd = null){
+  	$this->layout = 'ajax';
+  	if($pwd == null){
+  		$pwd = '888888';
+  	}
+	$this->data = $this->Member->read(null, $id);
+	$this->data['Member']['password'] = md5($pwd);
+	$this->cleanUpFields();
+	if($this->Member->save($this->data)) {
+		$this->Session->setFlash('会员口令修改成功！');
+	} else {
+		$this->Session->setFlash('口令修改失败！');
+	}
+  }
    
 }
 ?>
