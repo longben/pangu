@@ -1,26 +1,62 @@
 <fieldset>
-<legend>分红凭证维护</legend>
+<legend>分红凭证查询</legend>
 
 <table cellpadding="0" cellspacing="0" width="100%">
 <tr>
-	<th>分红凭证组团</th>
-	<th>开始编码</th>
-	<th>结束编码</th>
-	<th>状态</th>
-	<th>操作</th>
+	<th  colspan="3" style="text-align:left">总生成的分红凭证 <?=$total?> 份</th>
 </tr>
-<?php foreach ($coupons as $coupon): ?>
 <tr>
-	<td><?php echo $coupon['Coupon']['coupon_group']; ?></td>
-	<td><?php echo $coupon['Coupon']['custom_num']; ?></td>
-	<td>财务尚未审核</td>
-	<td>财务尚未审核</td>
-	<td class="actions">
-		<?php echo $html->link('财务审核','/coupons/audit/' . $coupon['Coupon']['coupon_group'] . '/' . $coupon['Coupon']['custom_num'])?>
-		<?php echo $html->link('导出该组团分红凭证','/coupons/export/' . $coupon['Coupon']['coupon_group']. '/' . $coupon['Coupon']['custom_num'])?>
-	</td>
+	<th>组团号</th>
+	<th>号码段</th>
+	<th>生成日期</th>
+</tr>
+<?php foreach ($cls as $cl): ?>
+<tr>
+	<td><?php echo $cl['CouponList']['coupon_group']?></td>
+	<td><?php echo $cl['CouponList']['coupon_group'].sprintf('%09s',$cl['CouponList']['coupon_start']) . ' -- ' . $cl['CouponList']['coupon_group'].sprintf('%09s',$cl['CouponList']['coupon_end']) ;?></td>
+	<td><?php echo $cl['CouponList']['created']?></td>
 </tr>
 <?php endforeach; ?>
+</table>
+<br/><br/>
+<table cellpadding="0" cellspacing="0" width="100%">
+<tr>
+	<th  colspan="5" style="text-align:left">分红凭证转入工作站记录</th>
+</tr>
+<tr>
+	<th>工作站</th>
+	<th>份数</th>
+	<th>组团号</th>
+	<th>号码段</th>
+	<th>转入日期</th>
+</tr>
+<?php foreach ($wcls as $wcl): ?>
+<tr>
+	<td><?php echo $wcl['Workstation']['ws_name'];?></td>
+	<td><?php echo (substr($wcl['WorkstationCouponList']['coupon_end'],1,9)-substr($wcl['WorkstationCouponList']['coupon_start'],1,9));?></td>
+	<td><?php echo $wcl['WorkstationCouponList']['coupon_group'];?></td>
+	<td><?php echo $wcl['WorkstationCouponList']['coupon_start'] . ' -- ' . $wcl['WorkstationCouponList']['coupon_end'] ;?></td>
+	<td><?php echo $wcl['WorkstationCouponList']['created'];?></td>
+</tr>
+<?php endforeach; ?>
+</table>
+<br/><br/>
+<table cellpadding="0" cellspacing="0" width="100%">
+<tr>
+	<th  colspan="3" style="text-align:left">总部剩下分红凭证 <?=$storage?> 份</th>
+</tr>
+<tr>
+	<th>组团号</th>
+	<th>号码段</th>
+	<th>生成日期</th>
+</tr>
+<?php //foreach ($coupons as $coupon): ?>
+<tr>
+	<td>组团号：XX</td>
+	<td>号码段 XXXXXX --- XXXXXX </td>
+	<td>生成日期：</td>
+</tr>
+<?php //endforeach; ?>
 </table>
 
 <ul class="actions">
