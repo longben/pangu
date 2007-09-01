@@ -190,7 +190,11 @@ class CouponsController extends AppController {
 			     order by coupon_no limit $limit) as c");			
 	    }
 		$this->set('min_no',$rs[0][0]['max(coupon_no)']);
-	}	
+	}
+	
+	function query(){
+		
+	}
 
 }
 ?>
