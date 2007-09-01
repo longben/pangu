@@ -8,7 +8,7 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Lottery/win_number', '开奖号码：');?>
- 	<?php echo $html->input('Lottery/win_number', array('size' => '30',maxlength => '3'));?>
+ 	<?php echo $html->input('Lottery/win_number', array('size' => '30','maxlength' => '3'));?>
 	<?php echo $html->tagErrorMsg('Lottery/win_number', 'Please enter the Lottery Times.');?>
 </div>
 <?php echo $html->hidden('Lottery/id')?>
@@ -29,6 +29,7 @@
   	}else{
   		if(isNaN($F('LotteryWinNumber'))){
   			alert('开奖号码必须是数字！');
+  			$('LotteryWinNumber').value = '';
   			$('LotteryWinNumber').focus();
   			return false;
   		}

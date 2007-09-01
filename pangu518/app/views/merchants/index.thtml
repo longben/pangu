@@ -16,8 +16,8 @@
 <tr>
     <td><?php echo $merchant['Merchant']['merchant_no']; ?></td>
 	<td><?php echo $merchant['Merchant']['merchant_name']; ?></td>
-	<td><?php echo $merchant['User']['login_name'];?></td>
-	<td><?php echo $merchant['Referee']['login_name']; ?></td>
+	<td><?php echo $merchant['User']['user_name'];?></td>
+	<td><?php echo $merchant['Referee']['user_name']; ?></td>
 	<td><?php echo $merchant['Industry']['industry_name']; ?></td>
 	<td><?php echo $merchant['Region']['region_name']; ?></td>
 	<td><?php echo date("Y-m-d",strtotime($merchant['Merchant']['created'])); ?></td>

@@ -8,12 +8,12 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Merchant/region_id', '所属地区：');?>
- 	<?php echo $html->selectTag('Merchant/region_id', $regions, $html->tagValue('Merchant/region_id'), array(), array(), false);?>
+ 	<?php echo $html->selectTag('Merchant/region_id', $regions, $html->tagValue('Merchant/region_id'), array('style'=>'width: 150px'), array(), false);?>
 	<?php echo $html->tagErrorMsg('Merchant/region_id', 'Please select the Region.') ?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Merchant/industry_id', '所属行业：');?>
- 	<?php echo $html->selectTag('Merchant/industry_id', $industries, $html->tagValue('Merchant/industry_id'), array(), array(), false);?>
+ 	<?php echo $html->selectTag('Merchant/industry_id', $industries, $html->tagValue('Merchant/industry_id'), array('style'=>'width: 150px'), array(), false);?>
 	<?php echo $html->tagErrorMsg('Merchant/industry_id', 'Please select the Industry.') ?>
 </div>    
 <div class="optional"> 
@@ -22,8 +22,8 @@
 	<?php echo $html->tagErrorMsg('Merchant/merchant_name', 'Please enter the Merchant Name.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Merchant/login_name', '消费单位拥有人：');?>
- 	<?php echo $html->input('Merchant/login_name', array('size' => '50','maxlength' => '20'));?><span style='color:red'>会员登录名</span>
+	<?php echo $form->labelTag('User/user_name', '消费单位拥有人：');?>
+ 	<?php echo $html->input('User/user_name', array('size' => '60','maxlength' => '20', 'readOnly' => 'true'));?>
 	<?php echo $html->tagErrorMsg('Merchant/login_name', 'Please select the User.') ?>
 </div>
 <div class="optional"> 
@@ -57,9 +57,9 @@
 	<?php echo $html->tagErrorMsg('Merchant/accounts', 'Please enter the Accounts.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Merchant/referees', '推荐人：');?>
- 	<?php echo $html->input('Referee/user_name', array('size' => '50','readOnly' => 'true'));?><span style='color:red'>会员登录名</span>
-	<?php echo $html->tagErrorMsg('Merchant/referees', 'Please enter the Referees.');?>
+	<?php echo $form->labelTag('Referee/user_name', '推荐人：');?>
+ 	<?php echo $html->input('Referee/user_name', array('size' => '60','readOnly' => 'true'));?>
+	<?php echo $html->tagErrorMsg('Referee/user_name', 'Please enter the Referees.');?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Merchant/bargain_no', '合同编号：');?>

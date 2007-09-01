@@ -51,7 +51,7 @@
 		d.add(4401,44,'分红期数管理','/lotteries'); 
 		//d.add(4402,44,'摇选幸运抽奖单位');
 		//d.add(4403,44,'摇选幸运会员');
-		d.add(4404,44,'当期分红相关数据','/lotteries/currently');
+		//d.add(4404,44,'分红数据查询','/lotteries/query');
 		//d.add(4405,44,'分红金额发放管理');	//由公司财务人员系统外处理，此处只是做记录
 
 		d.add(4501,45,'当月数据统计报表','/report.php');
@@ -79,6 +79,7 @@
 		
 		d.add(6001,6,'分红凭证生成','/coupons/add');
 		d.add(6002,6,'分红凭证审核','/coupon_lists/index'); //不同级别进行不同的审核
+		d.add(6003,6,'分红凭证查询','/coupons/query'); //不同级别进行不同的审核
 		
 		d.add(8001,8,'系统初始化','/members/install');
 		d.add(8002,8,'角色维护','/roles/index');

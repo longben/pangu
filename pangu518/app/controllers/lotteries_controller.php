@@ -6,7 +6,7 @@ class LotteriesController extends AppController {
 
 	function index() {
 		$this->Lottery->recursive = 0;
-		$this->set('lotteries', $this->Lottery->findAll());
+		$this->set('lotteries', $this->Lottery->findAll('order by Lottery.open_time desc'));
 	}
 
 	function view($id = null) {
@@ -35,17 +35,16 @@ class LotteriesController extends AppController {
 	function open($id = null) {
 		if (empty($this->data)) {
 			if (!$id) {
-				$this->Session->setFlash('Invalid id for Lottery');
+				$this->Session->setFlash('非法数据请求！');
 				$this->redirect('/lotteries/index');
 			}
 			$this->data = $this->Lottery->read(null, $id);
 		} else {
-			$this->data['Lottery']['win_count'] = $this->Lottery->LotteryBetting->findCount(
-			  array(
-			    'LotteryBetting.lottery_id1' => $id,
-			    'LotteryBetting.betting_number' => $this->data['Lottery']['win_number']
-			  )
-			);
+			
+			$rs = $this->Lottery->LotteryBetting->findBySql("select sum(betting_time) from lottery_bettings 
+			   where lottery_id =  $id 
+			   and betting_number = '" .$this->data['Lottery']['win_number'] ."'");
+			$this->data['Lottery']['win_count'] = $rs[0][0]['sum(betting_time)'];
 			$this->cleanUpFields();
 			$this->data['Lottery']['open_time'] = date("Y-m-d H:i:s");
 			$this->data['Lottery']['flag'] = 9;
@@ -94,7 +93,7 @@ class LotteriesController extends AppController {
     * 当期分红相关数据
     *
     */
-   function currently() {
+   function query() {
    }   
 
 }
