@@ -52,7 +52,7 @@
    <?php echo $html->input('Workstation/coupon_start', array('size' => '10','maxlength' => '10','onblur' => 'getMaxNo()'));?>
    至
    <?php echo $html->input('Workstation/coupon_end', array('size' => '10','maxlength' => '10'));?>
-   <span style="color:red"> 分红凭证只能同组团销售</span>
+   <span style="color:red"> 分红凭证只能同组团转入</span>
 </div>
 <?php echo $html->hidden('Workstation/id')?>
 <?php echo $html->hidden('Workstation/status')?>
