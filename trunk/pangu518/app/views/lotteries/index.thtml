@@ -22,7 +22,7 @@
 		  	echo $html->link('编辑','/lotteries/edit/' . $lottery['Lottery']['id']);
 		  	echo " ".$html->link('开奖','/lotteries/open/' . $lottery['Lottery']['id']);
 		  }else{
-		  	echo $html->link('分红数据','/lotteries/dividend/' . $lottery['Lottery']['id']);
+		  	echo $html->link('分红数据','/lotteries/dividend/' . $lottery['Lottery']['id'] . '/' .$lottery['Lottery']['win_number']);
 		  }
 		?>
 	</td>
