@@ -15,7 +15,7 @@ begin
 	-- record list id
 	select id INTO @lid FROM coupon_lists
 			  where coupon_start = _start and coupon_end = _end
-					and coupon_group = _group and custom_num = _num and status = 0;
+					and coupon_group = UPPER(_group) and custom_num = _num and status = 0;
 
     -- 生成代金券
 	while  _start <= _end do
@@ -26,6 +26,7 @@ begin
 		set _random = rpad(rand(_start) * 1000000,6,'0');
 		set _pwd = rpad(_random ^ _num,6,'0');
 		set _no = concat(UPPER(_group),lpad(_start,9,'0'));
+		set _group = upper(_group);
 		insert into coupons(list_id,coupon_no,coupon_pwd,custom_num,random_num,coupon_group)
 			values(@lid,_no,_pwd,_num,_random,_group);
 		if mod(_count,10000) = 0 then
