@@ -1,5 +1,37 @@
 <fieldset align=center>
 <legend>分红数据</legend>
-  <div  align="center">
-  </div>
+<dl>
+	<div>分红期数：【<?php echo $lottery['Lottery']['lottery_year'] . sprintf('%03s', $lottery['Lottery']['lottery_times'])?>】</div>
+	<div>分红起止日期：【<?php echo $lottery['Lottery']['start_time'] .' 至 '. $lottery['Lottery']['finish_time'];?>】</div>
+	<div>开奖日期：【<?php echo $lottery['Lottery']['open_time']?>】</div>
+	<div>分红中奖号码：【<?php echo $lottery['Lottery']['win_number']?>】</div>
+	<div>分红中奖数：【<?php echo $lottery['Lottery']['win_count']?>】</div>
+	<div>分红总金额:【<?php echo $lottery['Lottery']['total']?>】</div>
+	<div>每份红利:【<?php echo $lottery['Lottery']['dividend']?>】</div>
+	<div>本期余额:【<?php echo $lottery['Lottery']['balance']?>】</div>
+</dl>
+<table cellpadding="0" cellspacing="0" width="100%">
+<tr>
+	<th>中奖会员</th>
+	<th>中奖金额</th>
+	<th>应交所得税</th>
+	<th>联系电话</th>
+	<th>银行帐号</th>
+	<th>投注类型</th>
+</tr>
+<?php foreach ($lotteryBettings as $lotteryBetting): ?>
+<tr>
+    <td><?php echo $lotteryBetting['User']['user_name'];?></td>
+    <td><?php echo $lotteryBetting['LotteryBetting']['betting_time'] * $lottery['Lottery']['dividend'];?></td>
+    <td></td>
+    <td><?php echo $lotteryBetting['User']['telephone'];?></td>
+    <td><?php echo $lotteryBetting['User']['bank_accounts']. ':' .$lotteryBetting['User']['accounts'];?></td>
+    <td><?php echo $lotteryBetting['LotteryBetting']['betting_type']==1?'会员投注':'消费单位投注';?></td>
+</tr>
+<?php endforeach; ?>
+</table>
+<ul class="actions">
+<li><?php echo $html->link('分红期数列表', '/lotteries/index')?></li>
+<li><a href="Javascript:self.print()">打印</a></li>
+</ul>
 </fieldset>
