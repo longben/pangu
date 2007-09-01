@@ -81,7 +81,7 @@
 		d.add(6002,6,'分红凭证审核','/coupon_lists/index'); //不同级别进行不同的审核
 		d.add(6003,6,'分红凭证查询','/coupons/query'); //不同级别进行不同的审核
 		
-		d.add(8001,8,'系统初始化','/members/install');
+		//d.add(8001,8,'系统初始化','/members/install');
 		d.add(8002,8,'角色维护','/roles/index');
 				
 		d.add(9001,9,'行政区划维护','/regions');
