@@ -31,8 +31,8 @@
 </fieldset>
 <script language="Javascript">
   function check(){
-  	if($F('LotteryLotteryTimes')==''){
-  		alert('分红期数不能为空！');
+  	if($F('LotteryLotteryTimes')=='' || $F('LotteryLotteryTimes')==0){
+  		alert('分红期数不能为空或零！');
   		$('LotteryLotteryTimes').focus();
   		return false;
   	}else{

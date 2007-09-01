@@ -206,7 +206,7 @@
    	    if($F('WorkstationCouponStart')==''){
    	    	$('WorkstationCouponEnd').value = '';
    	    }else{
-			var url = '/coupons/max/113/' + $F('WorkstationMoney')/2 + '/' + $F('WorkstationCouponStart');
+			var url = '/coupons/max/113/' + ($F('WorkstationMoney')/2-1) + '/' + $F('WorkstationCouponStart');
 			var myAjax = new Ajax.Request(url,{
 				method: 'get',
 				onComplete: setMaxValue,

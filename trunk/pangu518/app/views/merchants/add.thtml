@@ -155,6 +155,12 @@
 			$('MerchantBargainNo').focus();
 			return false;
 		}
+		
+		if($F('MerchantRefereesNo')==$F('MerchantLoginName')){
+			alert('消费单位拥有人和推荐人不能为同一人！');
+			$('MerchantLoginName').focus();
+			return false;
+		}
 
 		if($F('MerchantLoginName')!=''){
 			var url = '/users/check/' + $F('MerchantLoginName');
