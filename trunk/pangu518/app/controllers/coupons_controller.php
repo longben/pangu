@@ -59,7 +59,6 @@ class CouponsController extends AppController {
 		if(empty($this->data)) {
 			$this->Coupon->unbindModel(array('hasMany' => array('UserCoupon')));
 			$this->Coupon->unbindModel(array('hasMany' => array('MerchantCoupon')));
-			$this->Coupon->unbindModel(array('hasMany' => array('MerchantCoupon')));
 			$this->set('total', $this->Coupon->findCount('status = 113')); //库存代金券总数
 			$this->set('total_init', $this->Coupon->findCount('status = 0')); //待审核代金券总数
 			$this->set('total_sale', $this->Coupon->findCount('status <> 0 and status <> 113')); //已销售代金券总数
@@ -189,13 +188,17 @@ class CouponsController extends AppController {
 			   from (select * from coupons where status = $status and coupon_no > '$start'
 			     order by coupon_no limit $limit) as c");			
 	    }
-		$this->set('min_no',$rs[0][0]['max(coupon_no)']);
+		$this->set('max_no',$rs[0][0]['max(coupon_no)']);
 	}
 	
 	function query(){
 		//
+		$this->Coupon->unbindModel(array('hasMany' => array('UserCoupon')));
+		$this->Coupon->unbindModel(array('hasMany' => array('MerchantCoupon')));
 		$this->set('total', $this->Coupon->findCount('status <> 0')); //通过审核的代金券总数
-		
+
+		$this->Coupon->unbindModel(array('hasMany' => array('UserCoupon')));
+		$this->Coupon->unbindModel(array('hasMany' => array('MerchantCoupon')));		
 		$this->set('storage', $this->Coupon->findCount('status = 113')); //库存代金券总数
 		
 		$cl = $this->Coupon->findBySql("select * from coupon_lists as CouponList where CouponList.status = 4 order by created");
@@ -205,6 +208,11 @@ class CouponsController extends AppController {
 		  from workstation_coupon_lists as WorkstationCouponList, workstations as Workstation
 		    where WorkstationCouponList.workstation_id = Workstation.id");
 		$this->set('wcls',$ws);
+
+		$this->Coupon->unbindModel(array('hasMany' => array('UserCoupon')));
+		$this->Coupon->unbindModel(array('hasMany' => array('MerchantCoupon')));		
+		$coupons = $this->Coupon->findAll("status = 113 group by coupon_group  order by coupon_no");
+		$this->set('coupons', $coupons);
 	}
 
 }

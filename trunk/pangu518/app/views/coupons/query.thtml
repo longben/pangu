@@ -33,7 +33,7 @@
 <?php foreach ($wcls as $wcl): ?>
 <tr>
 	<td><?php echo $wcl['Workstation']['ws_name'];?></td>
-	<td><?php echo (substr($wcl['WorkstationCouponList']['coupon_end'],1,9)-substr($wcl['WorkstationCouponList']['coupon_start'],1,9));?></td>
+	<td><?php echo (substr($wcl['WorkstationCouponList']['coupon_end'],1,9)-substr($wcl['WorkstationCouponList']['coupon_start'],1,9)+1);?></td>
 	<td><?php echo $wcl['WorkstationCouponList']['coupon_group'];?></td>
 	<td><?php echo $wcl['WorkstationCouponList']['coupon_start'] . ' -- ' . $wcl['WorkstationCouponList']['coupon_end'] ;?></td>
 	<td><?php echo $wcl['WorkstationCouponList']['created'];?></td>
@@ -50,13 +50,13 @@
 	<th>号码段</th>
 	<th>生成日期</th>
 </tr>
-<?php //foreach ($coupons as $coupon): ?>
+<?php foreach ($coupons as $coupon): ?>
 <tr>
-	<td>组团号：XX</td>
-	<td>号码段 XXXXXX --- XXXXXX </td>
-	<td>生成日期：</td>
+	<td><?php echo $coupon['Coupon']['coupon_group']?></td>
+	<td><?php echo $coupon['Coupon']['coupon_no']?></td>
+	<td><?php echo $coupon['Coupon']['created']?></td>
 </tr>
-<?php //endforeach; ?>
+<?php endforeach; ?>
 </table>
 
 <ul class="actions">
