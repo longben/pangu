@@ -149,7 +149,7 @@
 	?>
 		<tr>
 			<td height=23>
-				·<a href="javascript:;"><span onClick = "javascript:window.open('view.php?id=<?=$arrGSDT[0]?>&type=<?=$Title_GSDT_ID?>','PG','scrollbars=auto,width=420,height=300')"><?=$arrGSDT[1]?></span></a></td>
+				·<a href="view.php?id=<?=$arrGSDT[0]?>&type=<?=$Title_GSDT_ID?>"><?=$arrGSDT[1]?></a></td>
 		</tr>
 		<tr>
 			<td height=1 background='images/point.jpg'></td>
@@ -205,7 +205,7 @@
 		  </tr>
 		   <tr>
 			<td style="border-left:1px solid #cccccc;border-right:1px solid #cccccc;border-bottom:1px solid #cccccc" align=center height=20>
-				<a href="javascript:;"><span onClick = "javascript:window.open('view.php?id=<?=$arrXFDW[0]?>&type=<?=$Title_XFDW_ID?>','PG','scrollbars=auto,width=420,height=300')"><?=$arrXFDW[1]?></span></a>			
+				<a href="view.php?id=<?=$arrXFDW[0]?>&type=<?=$Title_XFDW_ID?>"><?=$arrXFDW[1]?></a>			
 			</td>
 		  </tr>
 		  </table>
@@ -308,7 +308,7 @@
 		$stmtJJZX = mysql_query($strJJZX);
 		while($arrJJZX = mysql_fetch_array($stmtJJZX)) {
 	?>
-			·<a href="javascript:;"><span onClick = "javascript:window.open('view.php?id=<?=$arrJJZX[0]?>&type=<?=$Title_JJZX_ID?>','PG','scrollbars=auto,width=420,height=300')"><?=$arrJJZX[1]?></span></a><br>
+			·<a href="view.php?id=<?=$arrJJZX[0]?>&type=<?=$Title_JJZX_ID?>"><?=$arrJJZX[1]?></a><br>
 	<?php	}?>
 	</td>
   </tr>
@@ -359,7 +359,7 @@
 		$stmtGZZ = mysql_query($strGZZ);
 		while($arrGZZ = mysql_fetch_array($stmtGZZ)) {
 	?>
-			·<a href="javascript:;"><span onClick = "javascript:window.open('view.php?id=<?=$arrGZZ[0]?>&type=<?=$Title_GZZ_ID?>','PG','scrollbars=auto,width=420,height=300')"><?=$arrGZZ[1]?></span></a><br>
+			·<a href="view.php?id=<?=$arrGZZ[0]?>&type=<?=$Title_GZZ_ID?>"><?=$arrGZZ[1]?></a><br>
 	<?php	}?>
 	</td>
   </tr>

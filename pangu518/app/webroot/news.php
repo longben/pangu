@@ -71,7 +71,7 @@
 
           <tr>
             <td width="354" height="22" class="text_a"><img src="img_www/shouyep06.JPG" alt=" " width="5" height="7" border="0">
-				<a href="javascript:;"><span onClick = "javascript:window.open('view.php?id=<?=$arrJJZX[0]?>&type=<?=$Title_JJZX_ID?>','PG','scrollbars=auto,width=420,height=300')"><?=$arrJJZX[1]?></span></a><br>
+				<a href="view.php?id=<?=$arrJJZX[0]?>&type=<?=$Title_JJZX_ID?>"><?=$arrJJZX[1]?></a><br>
             <img src="img_www/shouyep05.JPG" alt=" " width="100%" height="5" border="0"></td>
             <td width="195" height="22" class="text"><?=$arrJJZX[2]?></td>
           </tr>
