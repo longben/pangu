@@ -19,6 +19,7 @@
 		<?php echo $html->link('编辑','/users/edit/' . $member['Member']['uid'])?>
 		<?php echo $html->link('个人业绩','/users/performance/' . $member['Member']['uid'])?>
 		<?php echo $html->link('会员网络','/users/network/' . $member['Member']['uid'])?>
+		<span style="color:red;cursor:hand" onclick="initpwd('<?=$member['Member']['username']?>',<?=$member['Member']['uid']?>)">重置口令</span>
 	</td>
 </tr>
 <?php endforeach; ?>
@@ -30,3 +31,26 @@
 </ul>
 -->
 </fieldset>
+<script language="Javascript">
+<!--
+  function initpwd(username,id){
+  	if(window.confirm('是否要将会员：' + username + ' 口令重置为888888？')){
+        var url = '/members/initpassword/' + id;
+		var myAjax = new Ajax.Request(url,{
+			method: 'get',
+			onComplete: showResponse,
+			asynchronous: false
+		});  		
+  	}
+  }
+  
+   function showResponse(originalRequest){
+   	   var msg = originalRequest.responseText;
+   	   if(msg!=''){
+   	   	  alert(msg);
+   	   }else{
+   	   	  alert('会员口令重置成功！');
+   	   }
+   }  
+-->
+</script>
