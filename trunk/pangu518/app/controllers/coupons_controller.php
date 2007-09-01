@@ -193,7 +193,18 @@ class CouponsController extends AppController {
 	}
 	
 	function query(){
+		//
+		$this->set('total', $this->Coupon->findCount('status <> 0')); //通过审核的代金券总数
 		
+		$this->set('storage', $this->Coupon->findCount('status = 113')); //库存代金券总数
+		
+		$cl = $this->Coupon->findBySql("select * from coupon_lists as CouponList where CouponList.status = 4 order by created");
+		$this->set('cls',$cl);
+		
+		$ws = $this->Coupon->findBySql("select * 
+		  from workstation_coupon_lists as WorkstationCouponList, workstations as Workstation
+		    where WorkstationCouponList.workstation_id = Workstation.id");
+		$this->set('wcls',$ws);
 	}
 
 }

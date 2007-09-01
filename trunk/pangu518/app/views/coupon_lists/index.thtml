@@ -12,8 +12,8 @@
 <?php foreach ($couponLists as $couponList): ?>
 <tr>
 	<td><?php echo $couponList['CouponList']['coupon_group']; ?></td>
-	<td><?php echo $couponList['CouponList']['coupon_start']; ?></td>
-	<td><?php echo $couponList['CouponList']['coupon_end']; ?></td>
+	<td><?php echo $couponList['CouponList']['coupon_group'].sprintf('%09s', $couponList['CouponList']['coupon_start']); ?></td>
+	<td><?php echo $couponList['CouponList']['coupon_group'].sprintf('%09s', $couponList['CouponList']['coupon_end']); ?></td>
 	<td><?php echo $couponList['CouponList']['custom_num']; ?></td>
 	<td>
 		<?php 
