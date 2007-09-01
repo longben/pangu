@@ -2,8 +2,8 @@
 class MembersController extends AppController {
 
 	var $name = 'Members';
-	var $components = array('Acl','AjaxValid');//Make sure you include this, it makes the magic work.
-	var $helpers = array('Html', 'Javascript', 'Ajax', 'Form', 'Time');
+	var $components = array('Acl','AjaxValid','Pagination');//Make sure you include this, it makes the magic work.
+	var $helpers = array('Html', 'Javascript', 'Ajax', 'Form', 'Time','Pagination');
 	
     function validator(){
         $this->layout = '';
@@ -20,9 +20,21 @@ class MembersController extends AppController {
         }
     } 
 
-	function index() {
+	function index($keyword = null, $page=1) {
 		$this->Member->recursive = 0;
-		$this->set('members', $this->Member->findAll('uid <> 1'));
+		
+		$criteria = "Member.uid <> 1";
+		if($keyword == null){
+			$keyword = $this->data['Member']['keyword'];
+		}		
+		if($keyword != null){
+			$criteria = "Member.uid <> 1 and (Member.username like '$keyword%' or User.user_name like '%$keyword%')";
+		}
+
+		list($order,$limit,$page) = $this->Pagination->init($criteria,null,array('ajaxDivUpdate'=>'cs','url'=> 'index/'.$keyword));
+		
+		$data = $this->Member->findAll($criteria, NULL, null, $limit, $page); 			
+		$this->set('members',$data);
 	}
 
 	function view($id = null) {

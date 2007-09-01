@@ -2,6 +2,13 @@
 <legend>
 会员列表
 </legend> 
+<div align="left">
+	<form action="<?php echo $html->url('/members/index/'); ?>" method="post">
+	  输入姓名或者登录名：
+	  <?php echo $html->input('Member/keyword', array('size' => '60'));?>
+	  <?php echo $html->submit('查询');?>
+	</form> 
+</div>
 <table cellpadding="0" cellspacing="0" width="98%">
 <tr>
 	<th>登录名</th>
@@ -24,6 +31,7 @@
 </tr>
 <?php endforeach; ?>
 </table>
+<p><div align="center"><?php echo $this->renderElement('pagination'); // 分页导航页 ?></div></p>
 <!--
 <ul class="actions">
 	<li><?php echo $html->link('添加新会员', '/members/add'); ?></li>
