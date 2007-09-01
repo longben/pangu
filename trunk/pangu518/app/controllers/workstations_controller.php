@@ -2,12 +2,25 @@
 class WorkstationsController extends AppController {
 
 	var $name = 'Workstations';
-	var $helpers = array('Html', 'Form' , 'Ajax', 'JavaScript');
-	var $components = array('Acl');
+	var $helpers = array('Html', 'Form' , 'Ajax', 'JavaScript', 'Pagination');
+	var $components = array('Acl', 'Pagination');
 
 	function index() {
 		$this->Workstation->recursive = 0;
-		$this->set('workstations', $this->Workstation->findAll());
+		
+		$criteria = null;
+		if($keyword == null){
+			$keyword = $this->data['Workstation']['keyword'];
+		}		
+		if($keyword != null){
+			$criteria = "Workstation.ws_name like '%$keyword%'";
+		}
+
+		list($order,$limit,$page) = $this->Pagination->init($criteria,null,array('url'=> 'index/'.$keyword));
+		
+		$data = $this->Workstation->findAll($criteria, NULL, NULL, $limit, $page); 	
+		
+		$this->set('workstations', $data);
 	}
 	
 	function sell() {

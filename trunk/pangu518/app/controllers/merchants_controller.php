@@ -2,11 +2,25 @@
 class MerchantsController extends AppController {
 
 	var $name = 'Merchants';
-	var $helpers = array('Html', 'Form', 'Javascript' );
+	var $helpers = array('Html', 'Form', 'Javascript', 'Pagination');
+	var $components = array('Pagination');
 
-	function index() {
+	function index($keyword = null, $page=1) {
 		$this->Merchant->recursive = 0;
-		$this->set('merchants', $this->Merchant->findAll());
+		
+		$criteria = null;
+		if($keyword == null){
+			$keyword = $this->data['Merchant']['keyword'];
+		}		
+		if($keyword != null){
+			$criteria = "Merchant.merchant_name like '%$keyword%'";
+		}
+
+		list($order,$limit,$page) = $this->Pagination->init($criteria,null,array('ajaxDivUpdate'=>'cs','url'=> 'index/'.$keyword));
+		
+		$data = $this->Merchant->findAll($criteria, NULL, NULL, $limit, $page); 			
+		
+		$this->set('merchants', $data);
 	}
 	
 	function ws_index(){

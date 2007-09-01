@@ -28,7 +28,7 @@ class MembersController extends AppController {
 			$keyword = $this->data['Member']['keyword'];
 		}		
 		if($keyword != null){
-			$criteria = "Member.uid <> 1 and (Member.username like '$keyword%' or User.user_name like '%$keyword%')";
+			$criteria = "Member.uid <> 1 and (Member.username like '%$keyword%' or User.user_name like '%$keyword%')";
 		}
 
 		list($order,$limit,$page) = $this->Pagination->init($criteria,null,array('ajaxDivUpdate'=>'cs','url'=> 'index/'.$keyword));
