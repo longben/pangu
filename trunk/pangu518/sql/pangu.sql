@@ -137,6 +137,7 @@ create table workstations(
 create table workstation_coupons(
   id               int(11)       not null auto_increment comment '主键',
   workstation_id   int(11)       not null                comment '工作站编码',
+  user_id          int(8)        not null                comment '工作站所有人',
   coupon_id        int(11)       not null                comment '代金券编码',
   coupon_no        varchar(15)   not null                comment '代金券编码。no.00000001－no.25000000，2500万一组',
   coupon_group     char(3)                               comment '代金券组团 0组团 A组团',
