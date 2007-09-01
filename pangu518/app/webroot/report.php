@@ -25,9 +25,9 @@
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
 	  <form name="form1" method="post" action="report.php">	
-      <td width="36%" height="30" valign="middle" class="title">会员·消费单位·工作站数据统计报表</td>
-      <td width="13%" valign="middle">【<a href="javascript:window.print()" class="text">打印报表</a>】</td>
-      <td width="17%" valign="middle" class="title_small">
+      <td width="350" height="30" valign="middle" class="title_small_new">会员·消费单位·工作站数据统计报表</td>
+      <td width="135" valign="middle">【<a href="javascript:window.print()" class="text">打印报表</a>】</td>
+      <td width="192" valign="middle" class="title_small_new">
         <select name="year" id="year">
 		<?php
 			for($iyear=2007; $iyear<2010; $iyear++) {
@@ -62,8 +62,8 @@
 		?>
       </select>
       月</td>
-      <td width="34%" valign="middle">
-        <input name="Submit" type="submit" class="backbotton" value="查 询">      </td>
+      <td width="298" valign="middle">
+        <input name="Submit" type="submit" class="backbotton" value="查 询"></td>
 	  </form>	  
     </tr>
 </table>
