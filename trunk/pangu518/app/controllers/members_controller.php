@@ -186,13 +186,9 @@ class MembersController extends AppController {
 			if($old_password != $this->data['Member']['password']){
 				$this->Session->setFlash('会员原口令不正确！');
 			}else{
-				$this->data['Member']['password'] = $password;
-				$this->cleanUpFields();
-				if($this->Member->save($this->data)) {
-					$this->Session->setFlash('会员口令修改成功！');
-				} else {
-					$this->Session->setFlash('口令修改失败！');
-				}				
+			  	$sql = "update members set password = '$password' where uid = " .$this->Session->read('User.id');
+			  	$this->Member->execute($sql);
+			  	$this->Session->setFlash('会员口令修改成功！');		
 			}			
 		}
    }   
@@ -206,16 +202,14 @@ class MembersController extends AppController {
   function initpassword($id = null, $pwd = null){
   	$this->layout = 'ajax';
   	if($pwd == null){
-  		$pwd = '888888';
+  		$pwd = md5('888888');
+  	}else{
+  		$pwd = md5($pwd);
   	}
-	$this->data = $this->Member->read(null, $id);
-	$this->data['Member']['password'] = md5($pwd);
-	$this->cleanUpFields();
-	if($this->Member->save($this->data)) {
-		$this->Session->setFlash('会员口令修改成功！');
-	} else {
-		$this->Session->setFlash('口令修改失败！');
-	}
+  	
+  	$sql = "update members set password = '$pwd' where uid = $id";
+  	$this->Member->execute($sql);
+  
   }
    
 }
