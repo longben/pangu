@@ -47,3 +47,7 @@ a.menubottom:hover{
 	font-weight: bold;
 	font-size: 14px;
 }
+.backbotton{
+	width:50px;
+	height:20px; 
+}
