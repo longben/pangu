@@ -9,12 +9,12 @@
 
 <body topmargin="0" leftmargin="0">
 <?php	include("header.php");?>
-<table width="900" align="center" cellpadding="0" cellspacing="0">
+<table width="778" align="center" cellpadding="0" cellspacing="0">
 	<tr>
 		<td width="197" valign="top" rowspan="2">
 		<img border="0" src="img_www/hezuochengluo.jpg" width="197" height="73"></td>
 		<td width="612" height="30" valign="top" background="img_www/background4.jpg">　</td>
-		<td width="91" valign="top" rowspan="4"><?php include("right_gg.php");?></td>
+		<td width="1" valign="top" rowspan="5"><?php include("right_gg.php");?>　</td>
 	</tr>
 	<tr>
 		<td width="612" height="30" align="center" valign="middle">&nbsp;</td>
@@ -59,7 +59,6 @@
 	<tr>
 		<td width="197" height="20" valign="top" background="img_www/background1.jpg">　</td>
 		<td width="612" height="20" valign="top" background="img_www/background3.jpg">　</td>
-		<td width="91" height="20" valign="top" background="img_www/top8.jpg">　</td>
 	</tr>
 </table>
 <?php	include("footer.php");?>

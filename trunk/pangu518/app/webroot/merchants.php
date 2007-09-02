@@ -27,12 +27,12 @@
 
 <body topmargin="0" leftmargin="0">
 <?php	include("header.php");?>
-<table cellpadding="0" cellspacing="0" width="900" align="center">
+<table cellpadding="0" cellspacing="0" width="778" align="center">
 	<tr>
 		<td width="197" height="73" valign="top" rowspan="2">
 		<img border="0" src="img_www/shangjiazhuanqu.jpg" width="197" height="73"></td>
-		<td width="612" height="35" valign="top" background="img_www/background4.jpg">&nbsp;</td>
-		<td width="91" valign="top" rowspan="5"><?php include("right_gg.php");?></td>
+		<td width="612" height="73" valign="top" background="img_www/background4.jpg">&nbsp;</td>
+		<td width="1" valign="top" rowspan="6"><?php include("right_gg.php");?></td>
 	</tr>
 	<tr>
 		<td width="612" height="38" valign="top" background="img_www/background5.jpg">&nbsp;</td>
@@ -75,8 +75,7 @@
                   <td height="30" align="center" valign="bottom"><font size="2">
 				  <a href="view_merchant.php?id=<?=$arrTop3[0]?>&industry_id=<?=$arrTop3[2]?>"><?=$arrTop3[1]?></a></font></td>
                 </tr>
-              </table>
-			  </td>
+              </table>			  </td>
 			<?php	}?>
             </tr>
             <tr>
@@ -102,7 +101,7 @@
                 </tr>
                 <tr>
                   <td>
-				  <table border="1" width="204" cellspacing="0" cellpadding="0" id="table4" height="85" bordercolordark="#FFFFFF">
+				  <table border="1" width="194" cellspacing="0" cellpadding="0" id="table4" height="85" bordercolordark="#FFFFFF">
                     <tr>
                       <td align="left" valign="top" height="18" bgcolor="#808080"><p align="center">　</p></td>
                     </tr>
@@ -126,12 +125,9 @@
 							$j++;
 						}
 					?>
-
-                  </table>
-				  </td>
+                  </table>				  </td>
                 </tr>
-              </table>
-			  </td>
+              </table>			  </td>
 
 			<?php	
 					if($i == 3 || $i == 6) {
@@ -155,11 +151,6 @@
 	</tr>
 	<tr>
 		<td width="197" valign="top" background="img_www/background2.jpg">&nbsp;</td>
-	</tr>
-	<tr>
-		<td width="197" height="20" valign="top" background="img_www/background1.jpg">&nbsp;</td>
-		<td width="612" height="20" valign="top" background="img_www/background3.jpg">&nbsp;</td>
-		<td width="91" height="20" valign="top" background="img_www/top8.jpg">&nbsp;</td>
 	</tr>
 </table>
 <?php	include("footer.php");?>

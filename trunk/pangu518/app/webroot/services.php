@@ -9,12 +9,12 @@
 
 <body topmargin="0" leftmargin="0">
 <?php	include("header.php");?>
-<table width="900" align="center" cellpadding="0" cellspacing="0">
+<table width="778" align="center" cellpadding="0" cellspacing="0">
 	<tr>
 		<td width="197" valign="top" rowspan="2">
 		<img border="0" src="img_www/kehufuwuzhongxin.jpg" width="197" height="73"></td>
 		<td width="612" height="30" valign="top" background="img_www/background4.jpg">　</td>
-		<td width="91" valign="top" rowspan="4"><?php include("right_gg.php");?></td>
+		<td width="1" valign="top" rowspan="5"><?php include("right_gg.php");?></td>
 	</tr>
 	<tr>
 		<td width="612" height="30" align="center" valign="middle"><strong class="title">成为盘古消费资本财富个人会员的好处所在</strong></td>
@@ -56,8 +56,7 @@
               <li class="text">盘古消费资本财富分红资格凭证获得越多，您的分红机会就越多。 </li>
               <li class="text">订阅公司发布的电子刊物，使您更加了解您所要关注的会员消费单位及商品的最新动态。 </li>
               <li class="text">轻松书写BLOG，记录您的消费心情，与朋友交流消费心得，使你的消费财富之路更加广阔。</li>
-            </ol>
-            </td>
+            </ol>            </td>
           </tr>
         </table>		<p class="text">&nbsp;</p>	  </td>
 	</tr>
@@ -68,7 +67,6 @@
 	<tr>
 		<td width="197" height="20" valign="top" background="img_www/background1.jpg">　</td>
 		<td width="612" height="20" valign="top" background="img_www/background3.jpg">　</td>
-		<td width="91" height="20" valign="top" background="img_www/top8.jpg">&nbsp;</td>
 	</tr>
 </table>
 <?php	include("footer.php");?>

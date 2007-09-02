@@ -35,45 +35,10 @@
 </head>
 <body>
 <?php
+	include("header.php");
 	//require_once("index_gg_left.php");
 	require_once("index_gg_right.php");
 ?>
-<table border=0 cellpadding=0 cellspacing=0 width=778 align=center>
-  <tr>
-    <td><object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="778" height="264">
-      <param name="movie" value="images/top.swf">
-      <param name="quality" value="high">
-      <embed src="images/top.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="778" height="264"></embed>
-    </object></td>
-  </tr>
-</table>
-<table border=0 cellpadding=0 cellspacing=0 width=778 align=center background="images/menu_bg.jpg" height=41>
-  <tr>
-    <td><table border=0 cellpadding=0 cellspacing=0 width=778>
-      <tr>
-        <td align=center><a href="main.php"><img src="images/menu_01.jpg" border="0"></a></td>
-        <td width=4><img src="images/menu_line.jpg"></td>
-        <td align=center><a href="enterprises.php"><img src="images/menu_02.jpg" border="0"></a></td>
-        <td width=4><img src="images/menu_line.jpg"></td>
-        <td align=center><a href="news.php"><img src="images/menu_03.jpg" border="0"></a></td>
-        <td width=4><img src="images/menu_line.jpg"></td>
-        <td align=center><a href="market.php"><img src="images/menu_04.jpg" border="0"></a></td>
-        <td width=4><img src="images/menu_line.jpg"></td>
-        <td align=center><a href="services.php"><img src="images/menu_05.jpg" border="0"></a></td>
-        <td width=4><img src="images/menu_line.jpg"></td>
-        <td align=center><a href="legal.php"><img src="images/menu_06.jpg" border="0"></a></td>
-        <td width=4><img src="images/menu_line.jpg"></td>
-        <td align=center><a href="members.php"><img src="images/menu_07.jpg" border="0"></a></td>
-        <td width=4><img src="images/menu_line.jpg"></td>
-        <td align=center><a href="merchants.php"><img src="images/menu_08.jpg" border="0"></a></td>
-        <td width=4><img src="images/menu_line.jpg"></td>
-        <td align=center><a href="downloads.php"><img src="images/menu_09.jpg" border="0"></a></td>
-        <td width=4><img src="images/menu_line.jpg"></td>
-        <td align=center><a href="#"><img src="images/menu_10.jpg" border="0"></a></td>
-      </tr>
-    </table></td>
-  </tr>
-</table>
 <table border=0 cellpadding=0 cellspacing=0 width=778 align=center height=37 style="border:1px solid #cccccc;margin-top:5px;">
 <tr>
   <td width=129><img src="images/index_title_01.jpg"></td>
@@ -497,21 +462,6 @@
   </td>
 </tr>
 </table>
-<table border=0 cellpadding=0 cellspacing=0 width=778 align=center style="margin:4px">
-  <tr>
-    <td height=4 bgcolor="#ff0000"></td>
-  </tr>
-  <tr>
-    <td height=33 bgcolor="#6A6869" align=center style="color:#ffffff"><a href="#" class="menubottom">公司介绍</a> | <a href="#" class="menubottom">盘古招聘</a> | <a href="#" class="menubottom">常见问题</a> | <a href="#" class="menubottom">设计资源</a> | <a href="#" class="menubottom">合作伙伴</a> |<a href="#" class="menubottom"> 在线订单</a> | <a href="#" class="menubottom">联系方式</a> </td>
-  </tr>
-</table>
-<table border=0 cellpadding=0 cellspacing=0 width=778 align=center>
-  <tr>
-    <td style="padding-top:10px;padding-bottom:10px" align=center> 四川盘古经济咨询有限责任公司 版权所有 &copy; Copyright 2007 <a href="http:/www.pangu518.com">www.pangu518.com</a><br>
-      公司总部地址：四川省成都市猛追湾街125号4楼　公司总部电话：028-XXXXXXXXX<br>
-      川ICP备*****号　工商经营许可证5101002016468号<br>
-    </td>
-  </tr>
-</table>
+<?php	include("footer.php");?>
 </body>
 </html>

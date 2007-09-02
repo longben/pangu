@@ -1,4 +1,4 @@
-<table border=0 cellpadding=0 cellspacing=0 width=900 align=center style="margin:4px">
+<table border=0 cellpadding=0 cellspacing=0 width=778 align=center style="margin:4px">
 <tr>
   <td height=4 bgcolor="#ff0000"></td>
 </tr>
@@ -8,7 +8,7 @@
 </tr>
 </table>
 
-<table border=0 cellpadding=0 cellspacing=0 width=900 align=center>
+<table border=0 cellpadding=0 cellspacing=0 width=778 align=center>
 <tr>
   <td style="padding-top:10px;padding-bottom:10px" align=center>
   四川盘古经济咨询有限责任公司 版权所有 &copy; Copyright 2007 <a href="http:/www.pangu518.com">www.pangu518.com</a><br>

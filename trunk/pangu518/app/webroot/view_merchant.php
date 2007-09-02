@@ -26,12 +26,12 @@
 
 <body topmargin="0" leftmargin="0">
 <?php	include("header.php");?>
-<table width="900" align="center" cellpadding="0" cellspacing="0">
+<table width="778" align="center" cellpadding="0" cellspacing="0">
 	<tr>
 		<td width="197" height="73" valign="top" rowspan="2">
 		<img border="0" src="img_www/jingjizixun.jpg" width="197" height="73"></td>
-		<td width="612" height="35" valign="top" background="img_www/background4.jpg">&nbsp;</td>
-		<td width="91" valign="top" rowspan="5"><?php include("right_gg.php");?></td>
+		<td width="612" height="73" valign="top" background="img_www/background4.jpg">&nbsp;</td>
+		<td width="1" valign="top" rowspan="6"><?php include("right_gg.php");?>　</td>
 	</tr>
 	<tr>
 		<td width="612" height="38" valign="top" background="img_www/qiyeB05.jpg">&nbsp;</td>
@@ -79,9 +79,7 @@
 				<td height="15" align="center" bgcolor="#FFFFFF">加入日期：</td>
 				<td bgcolor="#FFFFFF"><?=$arr[2]?></td>
 			  </tr>
-		  </table>
-		
-		</td>
+		  </table>		</td>
 	</tr>
 	<tr>
 		<td width="197" valign="top" background="img_www/background2.jpg">　</td>
@@ -89,7 +87,6 @@
 	<tr>
 		<td width="197" height="20" valign="top" background="img_www/background1.jpg">　</td>
 		<td width="612" height="20" valign="top" background="img_www/background3.jpg">　</td>
-		<td width="91" height="20" valign="top" background="img_www/top8.jpg">　</td>
 	</tr>
 </table>
 <?php	include("footer.php");?>

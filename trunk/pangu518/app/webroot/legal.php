@@ -8,12 +8,12 @@
 
 <body topmargin="0" leftmargin="0">
 <?php	include("header.php");?>
-<table width="900" height="825" align="center" cellpadding="0" cellspacing="0">
+<table width="778" align="center" cellpadding="0" cellspacing="0">
 	<tr>
 		<td width="197" height="73" valign="top" rowspan="2">
 		<img border="0" src="img_www/xiangguanfalv.jpg" width="197" height="73"></td>
-		<td width="612" height="35" valign="top" background="img_www/background4.jpg">　</td>
-		<td width="91" valign="top" rowspan="5"><?php include("right_gg.php");?></td>
+		<td width="612" height="73" valign="top" background="img_www/background4.jpg">　</td>
+		<td width="1" valign="top" rowspan="6"><?php include("right_gg.php");?>　</td>
 	</tr>
 	<tr>
 		<td width="612" height="38" valign="top" background="img_www/fenhongB05.jpg">　</td>
@@ -44,8 +44,8 @@
             <td>&nbsp;</td>
           </tr>
         </table></td>
-		<td width="612" valign="top" rowspan="2">　
-		  <table width="590" border="0" align="center" cellpadding="0" cellspacing="0" id="table1">
+		<td valign="top" rowspan="2">　
+		  <table width="550" border="0" align="center" cellpadding="0" cellspacing="0" id="table1">
 			<tr>
 				<td align="left" valign="top"><p class="text">四川盘古经济咨询有限责任公司 <br>
 				  盘古消费资本财富分红规则 <br>
@@ -73,7 +73,6 @@
 	<tr>
 		<td width="197" height="20" valign="top" background="img_www/background1.jpg">　</td>
 		<td width="612" height="20" valign="top" background="img_www/background3.jpg">　</td>
-		<td width="91" height="20" valign="top" background="img_www/top8.jpg">　</td>
 	</tr>
 </table>
 <?php	include("footer.php");?>
