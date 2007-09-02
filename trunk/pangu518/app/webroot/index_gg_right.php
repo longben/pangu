@@ -54,9 +54,9 @@ function JSFX_FloatTopDiv()
 
 {
 
-       var startX =860,
+       var startX =892,
 
-       startY = 300;
+       startY = 600;
 
        var ns = (navigator.appName.indexOf("Netscape") != -1);
 
