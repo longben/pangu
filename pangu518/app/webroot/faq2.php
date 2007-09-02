@@ -9,12 +9,12 @@
 
 <body topmargin="0" leftmargin="0">
 <?php	include("header.php");?>
-<table width="900" align="center" cellpadding="0" cellspacing="0">
+<table width="778" align="center" cellpadding="0" cellspacing="0">
 	<tr>
 		<td width="197" valign="top" rowspan="2">
 		<img border="0" src="img_www/kehufuwuzhongxin.jpg" width="197" height="73"></td>
 		<td width="612" height="30" valign="top" background="img_www/background4.jpg">　</td>
-		<td width="91" valign="top" rowspan="4"><?php include("right_gg.php");?></td>
+		<td width="1" valign="top" rowspan="4"><?php include("right_gg.php");?></td>
 	</tr>
 	<tr>
 		<td width="612" height="30" align="center" valign="middle"><span class="title"><strong>会员消费单位提出的问题及解决方法</strong></span></td>

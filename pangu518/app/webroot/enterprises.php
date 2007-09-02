@@ -8,12 +8,12 @@
 
 <body topmargin="0" leftmargin="0">
 <?php	include("header.php");?>
-<table width="900" align="center" cellpadding="0" cellspacing="0">
+<table width="778" align="center" cellpadding="0" cellspacing="0">
 	<tr>
 		<td width="197" height="73" valign="top" rowspan="2">
 		<img border="0" src="img_www/qiyefengcai.jpg" width="197" height="73"></td>
-		<td width="612" height="35" valign="top" background="img_www/background4.jpg">　</td>
-	  <td width="91" valign="top" rowspan="5"><?php include("right_gg.php");?></td>
+		<td width="612" height="73" valign="top" background="img_www/background4.jpg">　</td>
+	  <td width="1" valign="top" rowspan="6"><?php include("right_gg.php");?>　</td>
 	</tr>
 	<tr>
 		<td width="612" height="38" valign="top" background="img_www/qiyeB05.jpg">　</td>
@@ -47,7 +47,8 @@
             <td>&nbsp;</td>
           </tr>
         </table>		</td>
-		<td width="612" valign="top" rowspan="2">　<table width="600" border="0" align="right" cellpadding="0" cellspacing="0" id="table1">
+		<td valign="top" rowspan="2">　
+		  <table width="550" border="0" align="right" cellpadding="0" cellspacing="0" id="table1">
 			<tr>
 				<td width="600" align="left" valign="top"><b>
 				<font color="#FF3300" size="5">总 经 理 致 辞<img border="0" src="img_www/qiyeP01.JPG" width="143" height="166" align="right"></font></b>
@@ -62,7 +63,7 @@
 				    <span class="title">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;大家好才是真的好<em>！<br>
 			  </em></span></td>
 			</tr>
-		</table>		</td>
+	  </table>		</td>
 	</tr>
 	<tr>
 		<td width="197" valign="top" background="img_www/background2.jpg">&nbsp;</td>
@@ -70,7 +71,6 @@
 	<tr>
 		<td width="197" height="20" valign="top" background="img_www/background1.jpg">　</td>
 		<td width="612" height="20" valign="top" background="img_www/background3.jpg">　</td>
-		<td width="91" height="20" valign="top" background="img_www/top8.jpg">　</td>
 	</tr>
 </table>
 <?php	include('footer.php');?>

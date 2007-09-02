@@ -1,17 +1,17 @@
-<table border=0 cellpadding=0 cellspacing=0 width=900 align=center>
+<table border=0 cellpadding=0 cellspacing=0 width=778 align=center>
 <tr>
-  <td><object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="900" height="264">
+  <td><object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="778" height="264">
     <param name="movie" value="images/top.swf">
     <param name="quality" value="high">
-    <embed src="images/top.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="900" height="264"></embed>
+    <embed src="images/top.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="778" height="264"></embed>
   </object></td>
   </tr>
 </table>
 
-<table border=0 cellpadding=0 cellspacing=0 width=900 align=center background="images/menu_bg.jpg" height=41>
+<table border=0 cellpadding=0 cellspacing=0 width=778 align=center background="images/menu_bg.jpg" height=41>
 <tr>
   <td>
-  <table border=0 cellpadding=0 cellspacing=0 width=900>
+  <table border=0 cellpadding=0 cellspacing=0 width=778>
   <tr>
     <td align=center><a href="main.php"><img src="images/menu_01.jpg" border="0"></a></td>
 	<td width=4><img src="images/menu_line.jpg"></td>

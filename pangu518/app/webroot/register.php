@@ -134,12 +134,12 @@
 <body topmargin="0" leftmargin="0">
 
 <?php	include("header.php");?>
-<table cellpadding="0" cellspacing="0" width="900" align="center">
+<table cellpadding="0" cellspacing="0" width="778" align="center">
 	<tr>
 		<td width="197" height="73" valign="top" rowspan="2">
 		<img border="0" src="img_www/huiyuanzhuanqu.jpg" width="197" height="73"></td>
-		<td width="612" height="35" valign="top" background="img_www/background4.jpg">　</td>
-		<td width="91" valign="top" rowspan="5"><?php include("right_gg.php");?></td>
+		<td width="612" height="73" valign="top" background="img_www/background4.jpg">　</td>
+		<td width="1" valign="top" rowspan="6"><?php include("right_gg.php");?>　</td>
 	</tr>
 	<tr>
 		<td width="612" height="38" valign="top" background="img_www/VIPB05.jpg">&nbsp;</td>
@@ -228,7 +228,7 @@
                                         <select name="sex" id="sex">
                                           <option value="1" selected>男</option>
                                           <option value="2">女</option>
-                                          </select>
+                                      </select>
                                         </label>
                                         <span class="STYLE3">*</span></td>
 								  </tr>
@@ -263,16 +263,14 @@
 									  <td height="40" colspan="2" align="center" valign="middle" bgcolor="#FFFFFF">
 										<input type="image" border="0" src="img_www/vipp02.JPG" width="84" height="25">									   </td>
 								  </tr>
-								</table>
-								</td>
+								</table>								</td>
 							  </form>
 							</tr>
 						</table>
 						  <br>
 						  <p align="left" style="line-height: 150%">&nbsp;<br>
 						<img border="0" src="img_www/vipp04.JPG" width="401" height="5"><br>
-						<font size="2" color="#808080">&nbsp;&nbsp;&nbsp;&nbsp;
-						</font>
+						<font size="2" color="#808080">&nbsp;&nbsp;&nbsp;&nbsp;						</font>
 						<!--
 						<img border="0" src="img_www/vipP05.JPG" width="7" height="7"><font size="2" color="#808080">会员注意事项 
 						<br>
@@ -280,11 +278,9 @@
 						-->
 						</td>
 					</tr>
-				</table>
-			  </td>
+				</table>			  </td>
 			</tr>
-		</table>
-	  </td>
+		</table>	  </td>
 	</tr>
 	<tr>
 		<td width="197" valign="top" background="img_www/background2.jpg">　</td>
@@ -292,7 +288,6 @@
 	<tr>
 		<td width="197" height="20" valign="top" background="img_www/background1.jpg">　</td>
 		<td width="612" height="20" valign="top" background="img_www/background3.jpg">　</td>
-		<td width="91" height="20" valign="top" background="img_www/top8.jpg">　</td>
 	</tr>
 </table>
 <?php	include("footer.php");?>

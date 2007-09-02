@@ -13,12 +13,12 @@
 
 <body topmargin="0" leftmargin="0">
 <?php	include("header.php");?>
-<table width="900" align="center" cellpadding="0" cellspacing="0">
+<table width="778" align="center" cellpadding="0" cellspacing="0">
 	<tr>
 		<td width="197" height="73" valign="top" rowspan="2">
 		<img border="0" src="img_www/shichangyingyun.jpg" width="197" height="73"></td>
 		<td width="612" height="35" valign="top" background="img_www/background4.jpg">&nbsp;</td>
-		<td width="91" valign="top" rowspan="5"><?php include("right_gg.php");?></td>
+		<td height="20" rowspan="5" valign="top"><?php include("right_gg.php");?></td>
 	</tr>
 	<tr>
 		<td width="612" height="38" align="center" valign="middle"><span class="title">个人所得税税率表</span></td>
@@ -132,9 +132,8 @@
 		<td width="197" valign="top" background="img_www/background2.jpg">&nbsp;</td>
 	</tr>
 	<tr>
-		<td width="197" height="20" valign="top" background="img_www/background1.jpg">&nbsp;</td>
-		<td width="612" height="20" valign="top" background="img_www/background3.jpg">&nbsp;</td>
-		<td width="91" height="20" valign="top" background="img_www/top8.jpg">&nbsp;</td>
+		<td width="197" height="10" valign="top" background="img_www/background1.jpg">&nbsp;</td>
+		<td width="612" height="10" valign="top" background="img_www/background3.jpg">&nbsp;</td>
 	</tr>
 </table>
 <?php	include("footer.php");?>
