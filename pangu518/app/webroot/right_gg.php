@@ -24,11 +24,11 @@ document.write('<div id="divStayTopLeft" style="position:absolute">')
 
 if (online[0]==0)
 
-document.write("&nbsp;&nbsp;&nbsp;&nbsp;<img src= http://imis.qq.com/images/wpa/images/QQoffline.gif border=0 align=middle>&nbsp;&nbsp;<a class='qqb' target=blank href='http://wpa.qq.com/msgrd?V=1&Uin=18700132&Site=在线咨询&Menu=no' title='客服不在线，请留言'>客服1</a><br>&nbsp;&nbsp;&nbsp;&nbsp;<img src= http://imis.qq.com/images/wpa/images/QQoffline.gif border=0 align=middle>&nbsp;&nbsp;<a class='qqb' target=blank href='http://wpa.qq.com/msgrd?V=1&Uin=195043836&Site=在线咨询&Menu=no' title='客服不在线，请留言'>客服2</a>");
+document.write("&nbsp;&nbsp;&nbsp;&nbsp;<img src= http://imis.qq.com/images/wpa/images/QQoffline.gif border=0 align=middle>&nbsp;&nbsp;<a class='qqb' target=blank href='http://wpa.qq.com/msgrd?V=1&Uin=592554822&Site=在线咨询&Menu=no' title='客服不在线，请留言'>客服1</a><br>&nbsp;&nbsp;&nbsp;&nbsp;<img src= http://imis.qq.com/images/wpa/images/QQoffline.gif border=0 align=middle>&nbsp;&nbsp;<a class='qqb' target=blank href='http://wpa.qq.com/msgrd?V=1&Uin=756888640&Site=在线咨询&Menu=no' title='客服不在线，请留言'>客服2</a><br>&nbsp;&nbsp;&nbsp;&nbsp;<img src= http://imis.qq.com/images/wpa/images/QQoffline.gif border=0 align=middle>&nbsp;&nbsp;<a class='qqb' target=blank href='http://wpa.qq.com/msgrd?V=1&Uin=506680731&Site=在线咨询&Menu=no' title='客服不在线，请留言'>客服3</a>");
 
 else
 
-document.write("&nbsp;&nbsp;&nbsp;&nbsp;<img src= http://imis.qq.com/images/wpa/images/QQonline.gif border=0 align=middle>&nbsp;&nbsp;<a class='qqa' target=blank href='http://wpa.qq.com/msgrd?V=1&Uin=18700132&Site=在线咨询&Menu=no' title='在线即时交谈'>客服1</a><br>&nbsp;&nbsp;&nbsp;&nbsp;<img src= http://imis.qq.com/images/wpa/images/QQonline.gif border=0 align=middle>&nbsp;&nbsp;<a class='qqa' target=blank href='http://wpa.qq.com/msgrd?V=1&Uin=195043836&Site=在线咨询&Menu=no' title='在线即时交谈'>客服2</a>");
+document.write("&nbsp;&nbsp;&nbsp;&nbsp;<img src= http://imis.qq.com/images/wpa/images/QQonline.gif border=0 align=middle>&nbsp;&nbsp;<a class='qqa' target=blank href='http://wpa.qq.com/msgrd?V=1&Uin=592554822&Site=在线咨询&Menu=no' title='在线即时交谈'>客服1</a><br>&nbsp;&nbsp;&nbsp;&nbsp;<img src= http://imis.qq.com/images/wpa/images/QQonline.gif border=0 align=middle>&nbsp;&nbsp;<a class='qqa' target=blank href='http://wpa.qq.com/msgrd?V=1&Uin=756888640&Site=在线咨询&Menu=no' title='在线即时交谈'>客服2</a><br>&nbsp;&nbsp;&nbsp;&nbsp;<img src= http://imis.qq.com/images/wpa/images/QQonline.gif border=0 align=middle>&nbsp;&nbsp;<a class='qqa' target=blank href='http://wpa.qq.com/msgrd?V=1&Uin=506680731&Site=在线咨询&Menu=no' title='在线即时交谈'>客服3</a>");
 
 </script >
 
