@@ -22,8 +22,8 @@
 	<?php echo $html->tagErrorMsg('Merchant/merchant_name', 'Please enter the Merchant Name.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('User/user_name', '消费单位拥有人：');?>
- 	<?php echo $html->input('User/user_name', array('size' => '60','maxlength' => '20', 'readOnly' => 'true'));?>
+	<?php echo $form->labelTag('User/login_name', '消费单位拥有人：');?>
+ 	<?php echo $html->input('User/login_name', array('size' => '60','maxlength' => '20', 'readOnly' => 'true'));?>
 	<?php echo $html->tagErrorMsg('Merchant/login_name', 'Please select the User.') ?>
 </div>
 <div class="optional"> 
