@@ -6,4 +6,18 @@
     <hr/>
     <li><?php echo $html->link('转入分红凭证给会员消费单位','/merchants/trade')?></li>
 </ul>
+<table cellpadding="0" cellspacing="0" width="100%">
+<tr>
+	<th>组团号</th>
+	<th>分红凭证可用号码段</th>
+	<th>转入日期</th>
+</tr>
+<?php foreach ($coupons as $coupon): ?>
+<tr>
+	<td><?php echo $coupon['WorkstationCoupon']['coupon_group']?></td>
+	<td><?php echo $coupon['WorkstationCoupon']['coupon_no'] . ' -- '. $this->controller->getMax(131,$coupon['WorkstationCoupon']['coupon_no'],$coupon['WorkstationCoupon']['coupon_group'])?></td>
+	<td><?php echo $coupon['WorkstationCoupon']['created']; ?></td>
+</tr>
+<?php endforeach; ?>
+</table>
 </fieldset>

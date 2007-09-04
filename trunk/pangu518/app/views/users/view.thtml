@@ -13,10 +13,8 @@
 	<dd><?php echo $user['User']['sex']==1?'男':'女'?></dd>
 	<dt>身份证号码：</dt>
 	<dd>&nbsp;<?php echo $user['User']['cert_number']?></dd>
-	<!--
 	<dt>推荐人：</dt>
-	<dd>&nbsp;<?php echo $user['User']['referees']?></dd>
-	-->
+	<dd>&nbsp;<?php echo $this->controller->getUserName($user['User']['referees'])?></dd>
 	<dt>会员等级：</dt>
 	<dd><?php echo $user['MemberGrade']['grade_name'];?></dd>
 	<dt>所属地区：</dt>

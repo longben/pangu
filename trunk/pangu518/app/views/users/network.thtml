@@ -9,6 +9,7 @@
 	<th>所属地区</th>
 	<th>联系电话</th>
 	<th>手机</th>
+	<th>会员状态</th>
 </tr>
 <?php foreach ($users as $user): ?>
 <tr>
@@ -19,6 +20,24 @@
 	<td><?php echo $user['Region']['region_name']; ?></td>
 	<td><?php echo $user['User']['telephone']; ?></td>
 	<td><?php echo $user['User']['mobile']; ?></td>
+	<td>
+	<?php 
+	  switch ($user['User']['role_id']){
+	  	case 1:
+	  		echo '个人会员';
+	  		break;
+	  	case 2:
+	  		echo '会员消费单位';
+	  		break;
+	  	case 3:
+	  		echo '工作站';
+	  		break;
+	  	default:
+	  		echo '其它';
+	  		break;
+	  }
+	?>
+	</td>
 </tr>
 <?php endforeach; ?>
 </table>
