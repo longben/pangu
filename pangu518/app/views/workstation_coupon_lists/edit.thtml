@@ -1,0 +1,36 @@
+<h2>Edit Workstation Coupon List</h2>
+<form action="<?php echo $html->url('/workstation_coupon_lists/edit/'.$html->tagValue('WorkstationCouponList/id')); ?>" method="post">
+<div class="optional"> 
+	<?php echo $form->labelTag('WorkstationCouponList/workstation_id', 'Workstation Id');?>
+ 	<?php echo $html->input('WorkstationCouponList/workstation_id', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('WorkstationCouponList/workstation_id', 'Please enter the Workstation Id.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('WorkstationCouponList/coupon_start', 'Coupon Start');?>
+ 	<?php echo $html->input('WorkstationCouponList/coupon_start', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('WorkstationCouponList/coupon_start', 'Please enter the Coupon Start.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('WorkstationCouponList/coupon_end', 'Coupon End');?>
+ 	<?php echo $html->input('WorkstationCouponList/coupon_end', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('WorkstationCouponList/coupon_end', 'Please enter the Coupon End.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('WorkstationCouponList/coupon_group', 'Coupon Group');?>
+ 	<?php echo $html->input('WorkstationCouponList/coupon_group', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('WorkstationCouponList/coupon_group', 'Please enter the Coupon Group.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('WorkstationCouponList/status', 'Status');?>
+ 	<?php echo $html->input('WorkstationCouponList/status', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('WorkstationCouponList/status', 'Please enter the Status.');?>
+</div>
+<?php echo $html->hidden('WorkstationCouponList/id')?>
+<div class="submit">
+	<?php echo $html->submit('Save');?>
+</div>
+</form>
+<ul class="actions">
+<li><?php echo $html->link('Delete','/workstation_coupon_lists/delete/' . $html->tagValue('WorkstationCouponList/id'), null, 'Are you sure you want to delete: id ' . $html->tagValue('WorkstationCouponList/id'));?>
+<li><?php echo $html->link('List Workstation Coupon Lists', '/workstation_coupon_lists/index')?></li>
+</ul>

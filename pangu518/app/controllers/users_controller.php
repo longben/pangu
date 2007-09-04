@@ -140,5 +140,10 @@ class UsersController extends AppController {
 		$this->set('isExistUser',$this->User->findCount(array('login_name' => $login_name)));
 	}
 	
+	function getUserName($id = null){
+		$this->data = $this->User->read(null, $id);
+		return $this->data['User']['user_name'];
+	}
+	
 }
 ?>

@@ -30,7 +30,12 @@ class WorkstationCouponsController extends AppController {
 		  'Workstation.user_id' => $this->Session->read('User.id'),
 		  'WorkstationCoupon.status' => 341
 		);
-		$this->set('total_sale', $this->WorkstationCoupon->findCount($criteria));		
+		$this->set('total_sale', $this->WorkstationCoupon->findCount($criteria));
+		
+		$this->WorkstationCoupon->unbindModel(array('belongsTo' => array('Coupon')));
+		$this->WorkstationCoupon->unbindModel(array('belongsTo' => array('Workstation')));
+		$coupons = $this->WorkstationCoupon->findAll("status = 131 group by coupon_group  order by coupon_no");
+		$this->set('coupons', $coupons);	
 	}
 	
 	function add(){
@@ -45,5 +50,13 @@ class WorkstationCouponsController extends AppController {
 		);
 		$this->set('balance', $this->WorkstationCoupon->findCount($criteria));
 	}
+	
+	function getMax($status = null, $start = null, $group = null){
+		$ws_id = $this->Session->read("ws_id");
+		$rs = $this->WorkstationCoupon->findBySql("select max(coupon_no)
+		   from (select * from workstation_coupons 
+		     where status = $status and workstation_id = $ws_id and coupon_no > '$start') as c");			
+		return $rs[0][0]['max(coupon_no)'];
+	}		
 }
 ?>

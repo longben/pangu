@@ -1,0 +1,27 @@
+<div class="workstationCouponList">
+<h2>View Workstation Coupon List</h2>
+
+<dl>
+	<dt>Id</dt>
+	<dd>&nbsp;<?php echo $workstationCouponList['WorkstationCouponList']['id']?></dd>
+	<dt>Workstation Id</dt>
+	<dd>&nbsp;<?php echo $workstationCouponList['WorkstationCouponList']['workstation_id']?></dd>
+	<dt>Coupon Start</dt>
+	<dd>&nbsp;<?php echo $workstationCouponList['WorkstationCouponList']['coupon_start']?></dd>
+	<dt>Coupon End</dt>
+	<dd>&nbsp;<?php echo $workstationCouponList['WorkstationCouponList']['coupon_end']?></dd>
+	<dt>Coupon Group</dt>
+	<dd>&nbsp;<?php echo $workstationCouponList['WorkstationCouponList']['coupon_group']?></dd>
+	<dt>Created</dt>
+	<dd>&nbsp;<?php echo $workstationCouponList['WorkstationCouponList']['created']?></dd>
+	<dt>Status</dt>
+	<dd>&nbsp;<?php echo $workstationCouponList['WorkstationCouponList']['status']?></dd>
+</dl>
+<ul class="actions">
+	<li><?php echo $html->link('Edit Workstation Coupon List',   '/workstation_coupon_lists/edit/' . $workstationCouponList['WorkstationCouponList']['id']) ?> </li>
+	<li><?php echo $html->link('Delete Workstation Coupon List', '/workstation_coupon_lists/delete/' . $workstationCouponList['WorkstationCouponList']['id'], null, 'Are you sure you want to delete: id ' . $workstationCouponList['WorkstationCouponList']['id'] . '?') ?> </li>
+	<li><?php echo $html->link('List Workstation Coupon Lists',   '/workstation_coupon_lists/index') ?> </li>
+	<li><?php echo $html->link('New Workstation Coupon List',	'/workstation_coupon_lists/add') ?> </li>
+</ul>
+
+</div>

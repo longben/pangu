@@ -1,5 +1,12 @@
 <fieldset align=center>
 <legend>选择转入的会员消费单位</legend> 
+<div align="left">
+	<form action="<?php echo $html->url('/merchants/trade'); ?>" method="post">
+	  输入会员消费单位名称：
+	  <?php echo $html->input('Merchant/keyword', array('size' => '60'));?>
+	  <?php echo $html->submit('查询');?>
+	</form> 
+</div>
 <table cellpadding="0" cellspacing="0" width="100%">
 <tr>
 	<th>会员消费单位</th>
@@ -24,4 +31,5 @@
 </tr>
 <?php endforeach; ?>
 </table>
+<p><div align="center"><?php echo $this->renderElement('pagination'); // 分页导航页 ?></div></p>
 </fieldset>
