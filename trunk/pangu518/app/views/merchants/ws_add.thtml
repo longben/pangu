@@ -52,17 +52,21 @@
 	<?php echo $html->tagErrorMsg('Merchant/accounts', 'Please enter the Accounts.');?>
 </div>
 <div class="optional"> 
+	<?php echo $form->labelTag('Merchant/referees_no', '推荐人：');?>
+ 	<?php echo $html->input('Merchant/referees_no', array('size' => '50','maxlength' => '20','value' => $this->controller->Session->read('User.login_name')));?><span style='color:red'>会员登录名</span>
+	<?php echo $html->tagErrorMsg('Merchant/referees_no', 'Please enter the Referees.');?>
+</div>
+<div class="optional"> 
 	<?php echo $form->labelTag('Merchant/bargain_no', '合同编号：');?>
  	<?php echo $html->input('Merchant/bargain_no', array('size' => '60','maxlength' => '20'));?>
 	<?php echo $html->tagErrorMsg('Merchant/bargain_no', 'Please enter the Salesman.');?>
 </div>
-<?php echo $html->hiddenTag('Merchant/referees_no', $this->controller->Session->read('User.login_name'))?>
 <div class="submit">
 	<?php echo $html->submit('保存');?>
 </div>
 </form>
 <ul class="actions">
-  <li><?php echo $html->link('会员消费单位列表', '/merchants/ws_index')?></li>
+<li><?php echo $html->link('会员消费单位列表', '/merchants/index')?></li>
 </ul>
 </fieldset>
 <script language="Javascript">
@@ -83,6 +87,12 @@
 		if($F('MerchantOwner')==''){
 			alert('消费单位负责人不能为空！');
 			$('MerchantOwner').focus();
+			return false;
+		}
+
+		if($F('MerchantMobile')==''){
+			alert('联系方式手机号码不能为空！');
+			$('MerchantMobile').focus();
 			return false;
 		}
 
@@ -134,10 +144,23 @@
 		}
 
 		if($F('MerchantRefereesNo')==''){
-			alert('推荐人不能为空！\n\n如果没有推荐人请直接填写 1 。');
+			alert('推荐人不能为空！\n\n如果没有推荐人请直接填写 www7777 。');
 			$('MerchantRefereesNo').focus();
 			return false;
 		} 
+
+
+		if($F('MerchantBargainNo')==''){
+			alert('合同编号不能为空！');
+			$('MerchantBargainNo').focus();
+			return false;
+		}
+		
+		if($F('MerchantRefereesNo')==$F('MerchantLoginName')){
+			alert('消费单位拥有人和推荐人不能为同一人！');
+			$('MerchantLoginName').focus();
+			return false;
+		}
 
 		if($F('MerchantLoginName')!=''){
 			var url = '/users/check/' + $F('MerchantLoginName');
@@ -146,9 +169,26 @@
 				onComplete: showResponse,
 				asynchronous:false
 			});
-			return checkMoney;
 		}
 
+		if($F('MerchantRefereesNo')!=''){
+			var url = '/users/check/' + $F('MerchantRefereesNo');
+			var myAjax = new Ajax.Request(url,{
+				method: 'get',
+				onComplete: showResponse2,
+				asynchronous:false
+			});
+		}
+		
+		if($F('MerchantBargainNo')!=''){
+			var url = '/merchants/check_bargain/' + $F('MerchantBargainNo');
+			var myAjax = new Ajax.Request(url,{
+				method: 'get',
+				onComplete: checkBargain,
+				asynchronous:false
+			});	
+			return 	checkMoney;
+		}		
 	}
 
    function showResponse(originalRequest){
@@ -157,8 +197,26 @@
       	alert('消费单位拥有人帐号录入不正确，请检查重新录入。');
       	$('MerchantLoginName').focus();
         checkMoney = false;
+      }
+   }
+   
+   function showResponse2(originalRequest){
+   	  var count = parseInt(originalRequest.responseText);
+      if(count == 0){
+      	alert('消费单位推荐人帐号录入不正确，请检查重新录入。');
+      	$('MerchantRefereesNo').focus();
+        checkMoney = false;
+      }
+   }   
+   
+   function checkBargain(originalRequest){
+   	  var count = parseInt(originalRequest.responseText);
+      if(count > 0){
+      	alert('会员消费单位合同编号已经存在，请检查重新录入。');
+      	$('MerchantBargainNo').focus();
+        checkMoney = false;
       }else{
       	checkMoney = true;
       }
-   }
+   }   
 </script>
