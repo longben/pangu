@@ -53,9 +53,9 @@
 	<?php echo $html->tagErrorMsg('Merchant/accounts', 'Please enter the Accounts.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Merchant/user_name', '推荐人：');?>
- 	<?php echo $html->input('Referee/user_name', array('size' => '50','readOnly' => 'true'));?><span style='color:red'>会员登录名</span>
-	<?php echo $html->tagErrorMsg('Merchant/user_name', 'Please enter the Referees.');?>
+	<?php echo $form->labelTag('Merchant/login_name', '推荐人：');?>
+ 	<?php echo $html->input('Referee/login_name', array('size' => '50','readOnly' => 'true'));?><span style='color:red'>会员登录名</span>
+	<?php echo $html->tagErrorMsg('Merchant/login_name', 'Please enter the Referees.');?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Merchant/bargain_no', '合同编号：');?>

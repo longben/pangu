@@ -13,12 +13,12 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Workstation/user_id', '工作站所有人：');?>
-	<?php echo $html->input('User/user_name', array('size' => '60','readOnly' => 'true'));?>
+	<?php echo $html->input('User/login_name', array('size' => '60','readOnly' => 'true'));?>
 	<?php echo $html->tagErrorMsg('Workstation/user_id', 'Please select the Member.') ?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Workstation/referees', '推荐人：');?>
- 	<?php echo $html->input('Referee/user_name', array('size' => '60','readOnly' => 'true'));?>
+ 	<?php echo $html->input('Referee/login_name', array('size' => '60','readOnly' => 'true'));?>
 	<?php echo $html->tagErrorMsg('Workstation/referees', 'Please enter the Referees.');?>
 </div>
 <div class="optional"> 
