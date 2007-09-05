@@ -40,6 +40,8 @@
 	<th>分红期数</th>
 	<th>投注号码</th>
 	<th>投注份数</th>
+	<th>开奖号码</th>
+	<th>中奖金额(含税)</th>
 	<th>投注时间</th>
 </tr>
 <?php foreach ($ulbs as $ulb): ?>
@@ -47,6 +49,16 @@
 	<td><?php echo $ulb['Lottery']['lottery_year'] . sprintf('%03s',$ulb['LotteryBetting']['lottery_id'])?></td>
 	<td><?php echo $ulb['LotteryBetting']['betting_number']?></td>
 	<td><?php echo $ulb['LotteryBetting']['betting_time']?></td>
+	<td><?php echo $ulb['Lottery']['win_number']?></td>
+	<td>
+	<?php
+	if($ulb['Lottery']['win_number'] == $ulb['LotteryBetting']['betting_number']){
+		echo $ulb['LotteryBetting']['betting_time'] * $ulb['Lottery']['dividend'];
+	}else{
+		echo 0;
+	}
+	?>
+	</td>
 	<td><?php echo $ulb['LotteryBetting']['created']?></td>
 </tr>
 <?php endforeach; ?>

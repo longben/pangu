@@ -281,8 +281,14 @@ class WorkstationsController extends AppController {
 			     where status = $status and workstation_id = $id and coupon_no > '$start'
 			     order by coupon_no limit $limit) as c");			
 	    }
-		$this->set('min_no',$rs[0][0]['max(coupon_no)']);
-	}	
+		$this->set('max_no',$rs[0][0]['max(coupon_no)']);
+	}
+	
+	function check_bargain($bargain_no = null){
+		$this->layout = 'ajax';
+		$count = $this->Workstation->findCount("bargain_no = '$bargain_no'");
+		$this->set('count',$count);
+	}
 
 }
 ?>

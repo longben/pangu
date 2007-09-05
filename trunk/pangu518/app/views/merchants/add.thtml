@@ -169,19 +169,26 @@
 				onComplete: showResponse,
 				asynchronous:false
 			});
-			return checkMoney;
 		}
 
 		if($F('MerchantRefereesNo')!=''){
 			var url = '/users/check/' + $F('MerchantRefereesNo');
 			var myAjax = new Ajax.Request(url,{
 				method: 'get',
-				onComplete: showResponse,
+				onComplete: showResponse2,
 				asynchronous:false
 			});
-			return checkMoney;
 		}
-
+		
+		if($F('MerchantBargainNo')!=''){
+			var url = '/merchants/check_bargain/' + $F('MerchantBargainNo');
+			var myAjax = new Ajax.Request(url,{
+				method: 'get',
+				onComplete: checkBargain,
+				asynchronous:false
+			});	
+			return 	checkMoney;
+		}		
 	}
 
    function showResponse(originalRequest){
@@ -190,8 +197,26 @@
       	alert('消费单位拥有人帐号录入不正确，请检查重新录入。');
       	$('MerchantLoginName').focus();
         checkMoney = false;
+      }
+   }
+   
+   function showResponse2(originalRequest){
+   	  var count = parseInt(originalRequest.responseText);
+      if(count == 0){
+      	alert('消费单位推荐人帐号录入不正确，请检查重新录入。');
+      	$('MerchantRefereesNo').focus();
+        checkMoney = false;
+      }
+   }   
+   
+   function checkBargain(originalRequest){
+   	  var count = parseInt(originalRequest.responseText);
+      if(count > 0){
+      	alert('会员消费单位合同编号已经存在，请检查重新录入。');
+      	$('MerchantBargainNo').focus();
+        checkMoney = false;
       }else{
       	checkMoney = true;
       }
-   }
+   }   
 </script>
