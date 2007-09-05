@@ -64,7 +64,7 @@ class LotteriesController extends AppController {
 			$_last_time_balance = $rsBalance['Lottery']['balance']; //上期分红余额
 			
 			//本期分红总金额
-			$_total2 = $_total+ $_last_time_balance; 
+			$_total2 = $_total * 0.5 + $_last_time_balance; 
 			
 			//每份金额
 			$_dividend = $_total2 / $_win_count;
