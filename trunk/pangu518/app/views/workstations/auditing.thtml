@@ -19,7 +19,7 @@
 <?php echo $html->hiddenTag('Workstation/user_id')?>
 <div class="optional"> 
 	<?php echo $form->labelTag('Workstation/referees', '推荐人：');?>
- 	<?php echo $html->input('Referee/user_name', array('size' => '60','readOnly' => 'true'));?>
+ 	<?php echo $html->input('Referee/login_name', array('size' => '60','readOnly' => 'true'));?>
 	<?php echo $html->tagErrorMsg('Workstation/referees', 'Please enter the Referees.');?>
 </div>
 <div class="optional"> 
