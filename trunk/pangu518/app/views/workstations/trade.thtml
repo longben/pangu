@@ -149,7 +149,7 @@
 	
    function showResponse(originalRequest){
    	  var count = parseInt(originalRequest.responseText);
-      if(count < $F('WorkstationMoney')){
+      if(count*2 < $F('WorkstationMoney')){
       	alert('预转入的分红凭证金额大于库存分红凭证金额！\n\n你目前库存分红凭证金额为：' + count + '张。合计：' + count*2 + '元');
       	checkMoney = false;
       }else{
