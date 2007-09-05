@@ -69,7 +69,7 @@
 </table>
 </div>
 <!-- 选择45×25CM的纸张，横向打印  -->
-<table width="100%" border="1" align="center" cellpadding="0" cellspacing="0" bordercolor="#33FFCC">
+<table width="100%" border="1" align="center" cellpadding="0" cellspacing="0" bordercolor="#888888">
   <tr>
     <td colspan="2" rowspan="2" align="center" bgcolor="#CCFFCC" class="title"><?=$reportYear?>年</td>
     <td width="70" rowspan="2" align="center" bgcolor="#CCFFCC">新增会员总数</td>
