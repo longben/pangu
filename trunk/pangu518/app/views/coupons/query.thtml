@@ -53,7 +53,7 @@
 <?php foreach ($coupons as $coupon): ?>
 <tr>
 	<td><?php echo $coupon['Coupon']['coupon_group']?></td>
-	<td><?php echo $coupon['Coupon']['coupon_no']?></td>
+	<td><?php echo $coupon['Coupon']['coupon_no'] . ' -- ' . $this->controller->getMaxNo(113,$coupon['Coupon']['coupon_no'],$coupon['Coupon']['coupon_group'])?></td>
 	<td><?php echo $coupon['Coupon']['created']?></td>
 </tr>
 <?php endforeach; ?>

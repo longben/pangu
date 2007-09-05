@@ -214,6 +214,12 @@ class CouponsController extends AppController {
 		$coupons = $this->Coupon->findAll("status = 113 group by coupon_group  order by coupon_no");
 		$this->set('coupons', $coupons);
 	}
+	
+	function getMaxNo($status = null, $start = null, $group = null){
+		$rs = $this->Coupon->findBySql("select max(coupon_no)
+		   from (select * from coupons where status = $status and coupon_group = '$group' and coupon_no > '$start') as c");
+		return $rs[0][0]['max(coupon_no)'];	
+	}	
 
 }
 ?>
