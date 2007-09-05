@@ -327,6 +327,12 @@ class MerchantsController extends AppController {
 		}
 
 	}
+	
+	function check_bargain($bargain_no = null){
+		$this->layout = 'ajax';
+		$count = $this->Merchant->findCount("bargain_no = '$bargain_no'");
+		$this->set('count',$count);
+	}	
 
 }
 ?>

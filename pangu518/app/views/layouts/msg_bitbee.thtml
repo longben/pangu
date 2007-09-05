@@ -1,0 +1,3 @@
+<div class="message" id="msgBox" style="background-color:#cfc;border-color:#6d6;">Success!  
+<?php echo $content_for_layout ?>
+</div> 

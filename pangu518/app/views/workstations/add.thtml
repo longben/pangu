@@ -134,26 +134,42 @@
 		}
 		
 		if($F('WorkstationLoginName')!=''){
-
 			var url = '/users/check/' + $F('WorkstationLoginName');
 			var myAjax = new Ajax.Request(url,{
 				method: 'get',
 				onComplete: showResponse,
-				asynchronous:false
-			});
-			return checkMoney;
+				asynchronous:true
+			});	
 		}
-
+		
+		if($F('WorkstationBargainNo')!=''){
+			var url = '/workstations/check_bargain/' + $F('WorkstationBargainNo');
+			var myAjax = new Ajax.Request(url,{
+				method: 'get',
+				onComplete: checkBargain,
+				asynchronous:true
+			});	
+			return 	checkMoney;
+		}
 	}
 
+   function checkBargain(originalRequest){
+   	  var count = parseInt(originalRequest.responseText);
+      if(count > 0){
+      	alert('工作站合同编号已经存在，请检查重新录入。');
+      	$('WorkstationBargainNo').focus();
+        checkMoney = false;
+      }else{
+      	checkMoney = true;
+      }
+   }	
+	
    function showResponse(originalRequest){
    	  var count = parseInt(originalRequest.responseText);
       if(count == 0){
       	alert('工作站所有人帐号录入不正确，请检查重新录入。');
       	$('WorkstationLoginName').focus();
         checkMoney = false;
-      }else{
-      	checkMoney = true;
       }
    }
 
