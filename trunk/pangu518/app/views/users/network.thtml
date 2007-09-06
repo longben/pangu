@@ -42,6 +42,8 @@
 <?php endforeach; ?>
 </table>
  <hr/>
+<?php if(empty($_GET['u'])){ ?>
  <li><?php echo $html->link('返回用户列表', '/members/index') ?> </li>
+<?php	}?>
 </ul>
 </fieldset>
