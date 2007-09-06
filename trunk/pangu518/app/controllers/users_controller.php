@@ -138,6 +138,7 @@ class UsersController extends AppController {
 	function check($login_name = null){
 		$this->layout = 'ajax';
 		$this->set('isExistUser',$this->User->findCount(array('login_name' => $login_name)));
+		//$this->set('isExistUser',$this->User->updateGrade($login_name));
 	}
 	
 	function getUserName($id = null){
