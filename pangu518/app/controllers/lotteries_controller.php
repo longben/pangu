@@ -6,7 +6,7 @@ class LotteriesController extends AppController {
 
 	function index() {
 		$this->Lottery->recursive = 0;
-		$this->set('lotteries', $this->Lottery->findAll('order by Lottery.open_time desc'));
+		$this->set('lotteries', $this->Lottery->findAll('order by Lottery.lottery_times desc'));
 	}
 
 	function view($id = null) {
@@ -25,6 +25,18 @@ class LotteriesController extends AppController {
 			if($this->data['Lottery']['start_time']>=$this->data['Lottery']['finish_time']){
 				$this->Session->setFlash('分红开始日期大于或者等于结束日期！');
 			}else{
+
+				//判断是否重复开奖号码，以及不允许编号回走
+				$rsCode = $this->Lottery->findBySql("select count(*) from lotteries
+				   where lottery_year = ".$this->data['Lottery']['lottery_year']." and lottery_times <=".$this->data['Lottery']['lottery_times']);
+				$_code = $rsCode[0][0]['count(*)']; 
+				$this->data['Lottery']['code'] = $_code;
+				if($_code > 0){
+					$this->Session->setFlash('存在相同或更大的期数，请录入大于已有的期数！');
+					$this->redirect('/lotteries/add');
+					exit();
+				}
+
 				if ($this->Lottery->save($this->data)) {
 					$this->Session->setFlash('分红期数新增成功！');
 					$this->redirect('/lotteries/index');
@@ -44,7 +56,19 @@ class LotteriesController extends AppController {
 			$this->data = $this->Lottery->read(null, $id);
 		} else {
 			$this->cleanUpFields();
-			
+
+			//判断是否存在还未开奖的以前的期数，若有则不允许，需要顺序开奖
+			$rsList = $this->Lottery->findBySql("select count(*) from lotteries
+			   where id <  $id 
+				and flag = 1");
+			$_list = $rsList[0][0]['count(*)']; 
+			$this->data['Lottery']['list'] = $_list;
+			if($_list > 0){
+				$this->Session->setFlash('存在前期尚未开奖数据，请先开出前期结果！');
+				$this->redirect('/lotteries/index');
+				exit();
+			}
+
 			//计算会员投注总金额
 			$rsUser = $this->Lottery->LotteryBetting->findBySql("select sum(betting_time)*2 from lottery_bettings
 			   where lottery_id =  $id
