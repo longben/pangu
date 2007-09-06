@@ -108,10 +108,10 @@ class WorkstationsController extends AppController {
 			$this->cleanUpFields();
 			//if($this->Workstation->auditing($this->data['Workstation']['id'],2,$this->data['Workstation']['money'])){
 			if($this->Workstation->buy($this->data['Workstation']['id'],2,$this->data['Workstation']['money'],$this->data['Workstation']['coupon_start'],$this->data['Workstation']['coupon_end'],$this->data['Workstation']['coupon_group'])){
-				$this->Session->setFlash('代金券销售成功！');
+				$this->Session->setFlash('分红凭证转入成功！');
 				$this->redirect('/workstations/sell');
 			}else{
-				$this->Session->setFlash('销售尚未成功，库存代金券数量过少或号段不在同一个组团！');
+				$this->Session->setFlash('分红凭证转入失败！<br>库存分红凭证数量过少或号段不在同一个组团或你选择的号段已被转入其他工作站！');
 				$this->set('regions', $this->Workstation->Region->generateList(
 				  $conditions = "id like '__0000'",
 				  $order = 'id',

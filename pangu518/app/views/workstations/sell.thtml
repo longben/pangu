@@ -21,7 +21,7 @@
 	<td><?php echo $workstation['Region']['region_name']?></td>
 	<td><?php echo $workstation['Workstation']['created']; ?></td>
 	<td class="actions">
-		<?php echo $html->link('分红凭证转入','/workstations/buy/' . $workstation['Workstation']['id'])?>
+		<?php echo $html->link('分红凭证转入','/workstations/buy/' . $workstation['Workstation']['id'] . '?random()')?>
 	</td>
 </tr>
 <?php endforeach; ?>
