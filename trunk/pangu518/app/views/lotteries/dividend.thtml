@@ -6,14 +6,14 @@
 	<div>开奖日期：【<?php echo $lottery['Lottery']['open_time']?>】</div>
 	<div>分红中奖号码：【<?php echo $lottery['Lottery']['win_number']?>】</div>
 	<div>分红中奖数：【<?php echo $lottery['Lottery']['win_count']?>】</div>
-	<div>分红总金额:【<?php echo $lottery['Lottery']['total']?>】</div>
+	<div>分红总积点:【<?php echo $lottery['Lottery']['total']?>】</div>
 	<div>每份红利:【<?php echo $lottery['Lottery']['dividend']?>】</div>
 	<div>本期余额:【<?php echo $lottery['Lottery']['balance']?>】</div>
 </dl>
 <table cellpadding="0" cellspacing="0" width="100%">
 <tr>
 	<th>中奖会员</th>
-	<th>中奖金额</th>
+	<th>中奖积点</th>
 	<th>应交所得税</th>
 	<th>联系电话</th>
 	<th>银行帐号</th>

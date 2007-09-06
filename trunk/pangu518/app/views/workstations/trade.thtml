@@ -20,9 +20,9 @@
  	<span class="formText"><?php echo $telephone;?></span>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Workstation/money', '分红凭证金额：');?>
+	<?php echo $form->labelTag('Workstation/money', '分红凭证积点：');?>
  	<?php echo $html->input('Workstation/money', array('size' => '60','maxlength' => '8','onblur' => 'getNo()'));?>
-	<?php echo $html->tagErrorMsg('Workstation/money', '分红凭证金额不能为空!');?>
+	<?php echo $html->tagErrorMsg('Workstation/money', '分红凭证积点不能为空!');?>
 </div>
 <div class="optional">
    <?php echo $form->labelTag('Workstation/s', '组团及起止号码：');?>
@@ -35,7 +35,7 @@
 <div class="submit">
 	<?php echo $html->submit('确认转入');?>
 </div>
-<div class="error">注意：请仔细核实会员消费单位和分红凭证金额是否正确！</div>
+<div class="error">注意：请仔细核实会员消费单位和分红凭证积点是否正确！</div>
 </form>
 <ul class="actions">
 <li><?php echo $html->link('返回会员消费单位列表', '/merchants/trade')?></li>
@@ -76,7 +76,7 @@
    
 	function getNoByGroup(){
 		if($F('WorkstationMoney')==0 || $F('WorkstationMoney') == ''){
-			alert('请先录入预转入的分红凭证金额！');
+			alert('请先录入预转入的分红凭证积点！');
 			$('WorkstationMoney').focus();
 		}else{
 			getNo();
@@ -92,7 +92,7 @@
    	  	return false;
    	  }else{
 		if((parseInt($F('WorkstationMoney')/2)*2) != $F('WorkstationMoney')){
-			alert('金额只能为2的倍数');
+			alert('积点只能为2的倍数');
 			$('WorkstationMoney').focus();
 			return false;
 		}else{
@@ -150,7 +150,7 @@
    function showResponse(originalRequest){
    	  var count = parseInt(originalRequest.responseText);
       if(count*2 < $F('WorkstationMoney')){
-      	alert('预转入的分红凭证金额大于库存分红凭证金额！\n\n你目前库存分红凭证金额为：' + count + '张。合计：' + count*2 + '元');
+      	alert('预转入的分红凭证积点大于库存分红凭证积点！\n\n你目前库存分红凭证积点为：' + count + '张。合计：' + count*2 + '元');
       	checkMoney = false;
       }else{
       	checkMoney = true;
