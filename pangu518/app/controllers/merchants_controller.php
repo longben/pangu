@@ -218,7 +218,7 @@ class MerchantsController extends AppController {
 				
 				$this->Merchant->User->updateGrade($this->data['Merchant']['referees']); //更新会员等级
 				$this->Session->setFlash('会员消费单位资料审核成功！');
-				$this->redirect('/merchants/audit');
+				//$this->redirect('/merchants/audit');
 			} else {
 				if($status!=9){
 					$msg = '会员消费单位已经审核！';
