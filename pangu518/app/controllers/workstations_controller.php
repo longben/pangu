@@ -246,6 +246,7 @@ class WorkstationsController extends AppController {
 	
 	function min($status = null, $limit = null, $group = null){
 		$this->layout = 'ajax';
+		$this->cacheAction = true;
 		$user_id = $this->Session->read('User.id');
 		$this->data = $this->Workstation->findByUserId($user_id);
 		$id = $this->data['Workstation']['id'];
@@ -267,6 +268,7 @@ class WorkstationsController extends AppController {
 	
 	function max($status = null, $limit = null, $start = null, $group = null){
 		$this->layout = 'ajax';
+		$this->cacheAction = true;
 		$user_id = $this->Session->read('User.id');
 		$this->data = $this->Workstation->findByUserId($user_id);
 		$id = $this->data['Workstation']['id'];

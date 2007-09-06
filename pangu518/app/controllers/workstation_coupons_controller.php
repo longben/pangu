@@ -44,6 +44,7 @@ class WorkstationCouponsController extends AppController {
 	
 	function balance($workstation_id = null){
 		$this->layout = 'ajax';
+		$this->cacheAction = true;
 		$criteria = array(
 		  'WorkstationCoupon.workstation_id' => $workstation_id,
 		  'WorkstationCoupon.status' => 131

@@ -33,6 +33,7 @@ class CouponListsController extends AppController {
 	
 	function check($coupon_group = null,$coupon_start = null,$coupon_end = null){
 	    $this->layout = 'ajax';
+		$this->cacheAction = true;
 	    $coupon_group = strtoupper($coupon_group);
 	    $msg = '';
 		$conditions = "	where coupon_group='$coupon_group'
