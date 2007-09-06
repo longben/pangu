@@ -41,7 +41,7 @@
 	<th>投注号码</th>
 	<th>投注份数</th>
 	<th>开奖号码</th>
-	<th>中奖金额(含税)</th>
+	<th>中奖积点(含税)</th>
 	<th>投注时间</th>
 </tr>
 <?php foreach ($ulbs as $ulb): ?>
