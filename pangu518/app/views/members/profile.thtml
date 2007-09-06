@@ -68,6 +68,13 @@
 	<?php echo $html->submit('保存');?>
 </div>
 </form>
+
+<div class="optional" align="center"> 
+	<?php echo $html->link('个人业绩','/users/performance/' . $this->controller->Session->read('User.id') . '?u=personal')?>
+	&nbsp;&nbsp;
+	<?php echo $html->link('会员网络','/users/network/' . $this->controller->Session->read('User.id') . '?u=personal')?>
+</div>
+
 </fieldset>
 <SCRIPT LANGUAGE="JavaScript">
 <!--
