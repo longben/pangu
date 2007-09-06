@@ -164,6 +164,7 @@ class CouponsController extends AppController {
 	
 	function min($status = null, $limit = null, $group = null){
 		$this->layout = 'ajax';
+		$this->cacheAction = true;
 		if($group == null){
 			$rs = $this->Coupon->findBySql("
 			 select min(coupon_no)
@@ -180,6 +181,7 @@ class CouponsController extends AppController {
 	
 	function max($status = null, $limit = null, $start = null, $group = null){
 		$this->layout = 'ajax';
+		$this->cacheAction = true;
 		if($start == null){
 			$rs = $this->Coupon->findBySql("select max(coupon_no)
 			   from (select * from coupons where status = $status order by coupon_no limit $limit) as c");			
