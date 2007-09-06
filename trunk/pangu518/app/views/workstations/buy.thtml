@@ -98,6 +98,7 @@
 			}	
 		}
 
+/*onblur调取了，此处屏蔽
 		if($F('WorkstationMoney') == ''){
 			alert('请输入分红凭证金额！');
 			$('WorkstationMoney').focus();
@@ -115,6 +116,7 @@
 			$('WorkstationMoney').focus();
 			return false;
 		}
+*/
 
 		if($('WorkstationCouponGroup')== '' || $('WorkstationCouponStart')== '' || $('WorkstationCouponEnd').value == ''){
 			alert('请录入分红凭证组团及起止号码！');
