@@ -23,7 +23,9 @@ class LotteriesController extends AppController {
 		} else {
 			$this->cleanUpFields();
 			if($this->data['Lottery']['start_time']>=$this->data['Lottery']['finish_time']){
-				$this->Session->setFlash('分红开始日期大于或者等于结束日期！');
+				//$this->Session->setFlash('分红开始日期大于或者等于结束日期！');
+				$msg = '分红开始日期大于或者等于结束日期！';
+				$this->redirect('/lotteries/add?msg='.urlencode($msg));
 			}else{
 
 				//判断是否重复开奖号码，以及不允许编号回走
@@ -32,14 +34,16 @@ class LotteriesController extends AppController {
 				$_code = $rsCode[0][0]['count(*)']; 
 				$this->data['Lottery']['code'] = $_code;
 				if($_code > 0){
-					$this->Session->setFlash('存在相同或更大的期数，请录入大于已有的期数！');
-					$this->redirect('/lotteries/add');
+					//$this->Session->setFlash('存在相同或更大的期数，请录入大于已有的期数！');
+					$msg = '存在相同或更大的期数，录入的期数不能小于或等于已有期数！';
+					$this->redirect('/lotteries/add?msg='.urlencode($msg));
 					exit();
 				}
 
 				if ($this->Lottery->save($this->data)) {
-					$this->Session->setFlash('分红期数新增成功！');
-					$this->redirect('/lotteries/index');
+					//$this->Session->setFlash('分红期数新增成功！');
+					$msg = '分红期数新增成功！';
+					$this->redirect('/lotteries/index?msg='.urlencode($msg));
 				} else {
 					$this->Session->setFlash('Please correct errors below.');
 				}				
