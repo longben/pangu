@@ -76,16 +76,18 @@ class WorkstationsController extends AppController {
 				$this->data['Workstation']['ws_no'] = $this->data['Workstation']['region_id'].sprintf('%04s', $ws_no+1);
 				
 				if($this->Workstation->save($this->data)) {
-					$this->Session->setFlash('工作站审核成功！');
-					$this->redirect('/workstations/index');
+					//$this->Session->setFlash('工作站审核成功！');
+					$msg = '工作站审核成功！';
+					$this->redirect('/workstations/index?msg='.urlencode($msg));	
 				}else{
 					$this->Session->setFlash('Please correct errors below.');
 					$this->set('users', $this->Workstation->User->generateList());
 					$this->set('regions', $this->Workstation->Region->generateList());
 				}
 			}else{
-				$this->Session->setFlash('该工作站已经审核！');
-				$this->redirect('/workstations/index');
+				//$this->Session->setFlash('该工作站已经审核！');
+				$msg = '该工作站已经审核！';
+				$this->redirect('/workstations/index?msg='.urlencode($msg));	
 			}
 		}
 	}
@@ -93,8 +95,9 @@ class WorkstationsController extends AppController {
 	function buy($id = null) {
 		if(empty($this->data)) {
 			if(!$id) {
-				$this->Session->setFlash('无效的工作站编号！');
-				$this->redirect('/workstations/index');
+				//$this->Session->setFlash('无效的工作站编号！');
+				$msg = '无效的工作站编号！';
+				$this->redirect('/workstations/sell?msg='.urlencode($msg));	
 			}
 			$this->data = $this->Workstation->read(null, $id);
 			$this->set('regions', $this->Workstation->Region->generateList(
@@ -108,10 +111,13 @@ class WorkstationsController extends AppController {
 			$this->cleanUpFields();
 			//if($this->Workstation->auditing($this->data['Workstation']['id'],2,$this->data['Workstation']['money'])){
 			if($this->Workstation->buy($this->data['Workstation']['id'],2,$this->data['Workstation']['money'],$this->data['Workstation']['coupon_start'],$this->data['Workstation']['coupon_end'],$this->data['Workstation']['coupon_group'])){
-				$this->Session->setFlash('分红凭证转入成功！');
-				$this->redirect('/workstations/sell');
+				//$this->Session->setFlash('分红凭证转入成功！');
+				$msg = '分红凭证转入成功！';
+				$this->redirect('/workstations/sell?msg='.urlencode($msg));	
 			}else{
-				$this->Session->setFlash('分红凭证转入失败！<br>库存分红凭证数量过少或号段不在同一个组团或你选择的号段已被转入其他工作站！');
+				//$this->Session->setFlash('分红凭证转入失败！<br>库存分红凭证数量过少或号段不在同一个组团或你选择的号段已被转入其他工作站！');
+				$msg = '分红凭证转入失败！/n库存分红凭证数量过少或号段不在同一个组团或你选择的号段已被转入其他工作站！';
+				$this->redirect('/workstations/sell?msg='.urlencode($msg));	
 				$this->set('regions', $this->Workstation->Region->generateList(
 				  $conditions = "id like '__0000'",
 				  $order = 'id',
@@ -119,6 +125,7 @@ class WorkstationsController extends AppController {
 				  $keyPath = '{n}.Region.id',
 				  $valuePath = '{n}.Region.region_name')
 				);
+
 			}
 		}
 	}	
@@ -156,10 +163,13 @@ class WorkstationsController extends AppController {
 				//$aco = new Aco();
 				$workstation_id = $this->Workstation->getLastInsertID(); //得到刚保存到数据库中的主键值
 				//$aco->create($workstation_id, $workstation_id,$workstation_id.'-'.$this->data['Workstation']['ws_name']);
-				$this->Session->setFlash('工作站增加成功！');
-				$this->redirect('/workstations/index');
+				//$this->Session->setFlash('工作站增加成功！');
+				$msg = '工作站增加成功！';
+				$this->redirect('/workstations/index?msg='.urlencode($msg));	
 			} else {
-				$this->Session->setFlash('添加工作站出错，请检查错误！');
+				//$this->Session->setFlash('添加工作站出错，请检查错误！');
+				$msg = '添加工作站出错，请检查错误！';
+				$this->redirect('/workstations/add?msg='.urlencode($msg));	
 				$this->set('members', $this->Workstation->Member->generateList());
 				$this->set('regions', $this->Workstation->Region->generateList());
 			}
@@ -183,8 +193,9 @@ class WorkstationsController extends AppController {
 		} else {
 			$this->cleanUpFields();
 			if($this->Workstation->save($this->data)) {
-				$this->Session->setFlash('工作站资料修改成功！');
-				$this->redirect('/workstations/index');
+				//$this->Session->setFlash('工作站资料修改成功！');
+				$msg = '工作站资料修改成功！';
+				$this->redirect('/workstations/index?msg='.urlencode($msg));	
 			} else {
 				$this->Session->setFlash('Please correct errors below.');
                 $this->set('regions', $this->Workstation->Region->generateList(
@@ -204,8 +215,9 @@ class WorkstationsController extends AppController {
 			$this->redirect('/workstations/index');
 		}
 		if($this->Workstation->del($id)) {
-			$this->Session->setFlash('工作站删除成功! ');
-			$this->redirect('/workstations/index');
+			//$this->Session->setFlash('工作站删除成功! ');
+			$msg = '工作站删除成功';
+			$this->redirect('/workstations/index?msg='.urlencode($msg));	
 		}
 	}
 	
@@ -229,8 +241,9 @@ class WorkstationsController extends AppController {
 			$this->cleanUpFields();
 			$this->data['Workstation']['user_id'] = $user_id;
 			if($this->Workstation->save($this->data)) {
-				$this->Session->setFlash('工作站资料保存成功！');
-				$this->redirect('/workstations/profile');
+				//$this->Session->setFlash('工作站资料保存成功！');
+				$msg = '工作站资料保存成功！';
+				$this->redirect('/workstations/profile?msg='.urlencode($msg));	
 			} else {
 				$this->Session->setFlash('Please correct errors below.');
 				$this->set('regions', $this->Workstation->Region->generateList(

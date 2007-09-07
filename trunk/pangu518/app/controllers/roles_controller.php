@@ -56,8 +56,9 @@ class RolesController extends AppController {
 		} else {
 			$this->cleanUpFields();
 			if ($this->Role->save($this->data)) {
-				$this->Session->setFlash('角色保存成功.');
-				$this->redirect('/roles/index');
+				//$this->Session->setFlash('角色保存成功.');
+				$msg = '角色保存成功';
+				$this->redirect('/roles/index?msg='.urlencode($msg));	
 			} else {
 				$this->Session->setFlash('请检查下面的错误.');
 				$this->set('modules', $this->Role->Module->generateList(
@@ -94,8 +95,9 @@ class RolesController extends AppController {
 		} else {
 			$this->cleanUpFields();
 			if ($this->Role->save($this->data)) {
-				$this->Session->setFlash('角色修改成功.');
-				$this->redirect('/roles/index');
+				//$this->Session->setFlash('角色修改成功.');
+				$msg = '角色修改成功';
+				$this->redirect('/roles/index?msg='.urlencode($msg));	
 			} else {
 				$this->Session->setFlash('请检查下面的错误.');
 				$this->set('modules', $this->Role->Module->generateList(
@@ -117,8 +119,9 @@ class RolesController extends AppController {
 			$this->redirect('/roles/index');
 		}
 		if ($this->Role->del($id)) {
-			$this->Session->setFlash('角色删除成功.');
-			$this->redirect('/roles/index');
+			//$this->Session->setFlash('角色删除成功.');
+			$msg = '角色删除成功';
+			$this->redirect('/roles/index?msg='.urlencode($msg));	
 		}
 	}
 

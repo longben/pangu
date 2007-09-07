@@ -95,12 +95,15 @@ class LotteryBettingsController extends AppController {
 			if ($this->LotteryBetting->saveUserBetting($user_id, $lottery_id, $betting_number, $betting_time)) {
 				$this->data['LotteryBetting']['user_id'] = $user_id;
 				if($this->LotteryBetting->save($this->data)){
-					$this->Session->setFlash('会员参与分红成功！');
+					//$this->Session->setFlash('会员参与分红成功！');
 					//$this->redirect('/lottery_bettings/user_histroy');
-					$this->redirect('/user_coupons/input');
+					$msg = '会员参与分红成功！';
+					$this->redirect('/user_coupons/input?msg='.urlencode($msg));
 				}
 			} else {
-				$this->Session->setFlash('你拥有的代金券数量不足！');
+				//$this->Session->setFlash('你拥有的代金券数量不足！');
+				$msg = '你拥有的代金券数量不足！';
+				$this->redirect('/user_coupons/index?msg='.urlencode($msg));
 				$this->set('lotteries', $this->LotteryBetting->Lottery->generateList(
 				  $conditions = array(
 				    'start_time' => '<=' .date("Y-m-d H:i:s"),
@@ -142,12 +145,14 @@ class LotteryBettingsController extends AppController {
 				$this->data['LotteryBetting']['user_id'] = $user_id;
 				$this->data['LotteryBetting']['merchant_id'] = $merchant_id;
 				if($this->LotteryBetting->save($this->data)){
-					$this->Session->setFlash('会员消费单位参与分红成功！');
-					//$this->redirect('/lottery_bettings/merchant_histroy');
-					$this->redirect('/merchant_coupons');
+					//$this->Session->setFlash('会员消费单位参与分红成功！');
+					$msg = '你拥有的代金券数量不足！';
+					$this->redirect('/merchant_coupons/index?msg='.urlencode($msg));
 				}
 			} else {
-				$this->Session->setFlash('你拥有的代金券数量不足！');
+				//$this->Session->setFlash('你拥有的代金券数量不足！');
+				$msg = '你拥有的代金券数量不足！';
+				$this->redirect('/merchant_coupons/index?msg='.urlencode($msg));
 				$this->set('lotteries', $this->LotteryBetting->Lottery->generateList(
 				  $conditions = array(
 				    'start_time' => '<=' .date("Y-m-d H:i:s"),

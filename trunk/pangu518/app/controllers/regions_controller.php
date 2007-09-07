@@ -40,7 +40,9 @@ class RegionsController extends AppController {
 		} else {
 			$this->cleanUpFields();
 			if($this->Region->save($this->data)) {
-				$this->flash('修改成功！', '/regions/index');
+				//$this->flash('修改成功！', '/regions/index');
+				$msg = '修改成功！';
+				$this->redirect('/regions/index?msg='.urlencode($msg));	
 			} else {
 			}
 		}

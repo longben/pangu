@@ -23,10 +23,13 @@ class CategoriesController extends AppController {
 		} else {
 			$this->cleanUpFields();
 			if ($this->Category->save($this->data)) {
-				$this->Session->setFlash('消息分类添加成功！');
-				$this->redirect('/categories/index');
+				//$this->Session->setFlash('消息分类添加成功！');
+				$msg = '消息分类添加成功！';
+				$this->redirect('/categories/index?msg='.urlencode($msg));				
 			} else {
-				$this->Session->setFlash('请检查下面的错误：');
+				//$this->Session->setFlash('请检查下面的错误：');
+				$msg = '请检查下面的错误：';
+				$this->redirect('/categories/index?msg='.urlencode($msg));				
 			}
 		}
 	}
@@ -41,8 +44,9 @@ class CategoriesController extends AppController {
 		} else {
 			$this->cleanUpFields();
 			if ($this->Category->save($this->data)) {
-				$this->Session->setFlash('消息分类保存成功！');
-				$this->redirect('/categories/index');
+				//$this->Session->setFlash('消息分类保存成功！');
+				$msg = '消息分类保存成功！';
+				$this->redirect('/categories/index?msg='.urlencode($msg));				
 			} else {
 				$this->Session->setFlash('请检查下面的错误.');
 			}
@@ -55,8 +59,9 @@ class CategoriesController extends AppController {
 			$this->redirect('/categories/index');
 		}
 		if ($this->Category->del($id)) {
-			$this->Session->setFlash('分类删除成功！');
-			$this->redirect('/categories/index');
+			//$this->Session->setFlash('分类删除成功！');
+			$msg = '分类删除成功！';
+			$this->redirect('/categories/index?msg='.urlencode($msg));	
 		}
 	}
 
