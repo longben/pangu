@@ -24,20 +24,19 @@ class LotteriesController extends AppController {
 			$this->cleanUpFields();
 			if($this->data['Lottery']['start_time']>=$this->data['Lottery']['finish_time']){
 				//$this->Session->setFlash('分红开始日期大于或者等于结束日期！');
-				$msg = '分红开始日期大于或者等于结束日期！';
+				$msg = '分红开始日期必须小于结束日期！';
 				$this->redirect('/lotteries/add?msg='.urlencode($msg));
 			}else{
 
 				//判断是否重复开奖号码，以及不允许编号回走
 				$rsCode = $this->Lottery->findBySql("select count(*) from lotteries
-				   where lottery_year = ".$this->data['Lottery']['lottery_year']." and lottery_times <=".$this->data['Lottery']['lottery_times']);
+				   where lottery_year = ".$this->data['Lottery']['lottery_year']." and lottery_times >=".$this->data['Lottery']['lottery_times']);
 				$_code = $rsCode[0][0]['count(*)']; 
 				$this->data['Lottery']['code'] = $_code;
 				if($_code > 0){
 					//$this->Session->setFlash('存在相同或更大的期数，请录入大于已有的期数！');
 					$msg = '存在相同或更大的期数，录入的期数不能小于或等于已有期数！';
 					$this->redirect('/lotteries/add?msg='.urlencode($msg));
-					exit();
 				}
 
 				if ($this->Lottery->save($this->data)) {
@@ -54,8 +53,9 @@ class LotteriesController extends AppController {
 	function open($id = null) {
 		if (empty($this->data)) {
 			if (!$id) {
-				$this->Session->setFlash('非法数据请求！');
-				$this->redirect('/lotteries/index');
+				//$this->Session->setFlash('非法数据请求！');
+				$msg = '非法数据请求！';
+				$this->redirect('/lotteries/index?msg='.urlencode($msg));
 			}
 			$this->data = $this->Lottery->read(null, $id);
 		} else {
@@ -68,9 +68,9 @@ class LotteriesController extends AppController {
 			$_list = $rsList[0][0]['count(*)']; 
 			$this->data['Lottery']['list'] = $_list;
 			if($_list > 0){
-				$this->Session->setFlash('存在前期尚未开奖数据，请先开出前期结果！');
-				$this->redirect('/lotteries/index');
-				exit();
+				//$this->Session->setFlash('存在前期尚未开奖数据，请先开出前期结果！');
+				$msg = '存在前期尚未开奖数据，请先开出前期结果！';
+				$this->redirect('/lotteries/index?msg='.urlencode($msg));
 			}
 
 			//计算会员投注总金额
@@ -111,8 +111,9 @@ class LotteriesController extends AppController {
 			
 			
 			if ($this->Lottery->save($this->data)) {
-				$this->Session->setFlash('分红开奖资料保存成功！');
-				$this->redirect('/lotteries/index');
+				//$this->Session->setFlash('分红开奖资料保存成功！');
+				$msg = '分红开奖资料保存成功！';
+				$this->redirect('/lotteries/index?msg='.urlencode($msg));
 			} else {
 				$this->Session->setFlash('Please correct errors below.');
 			}
@@ -129,8 +130,9 @@ class LotteriesController extends AppController {
 		} else {
 			$this->cleanUpFields();
 			if ($this->Lottery->save($this->data)) {
-				$this->Session->setFlash('分红资料更新成功！');
-				$this->redirect('/lotteries/index');
+				//$this->Session->setFlash('分红资料更新成功！');
+				$msg = '分红资料更新成功！';
+				$this->redirect('/lotteries/index?msg='.urlencode($msg));
 			} else {
 				$this->Session->setFlash('Please correct errors below.');
 			}
@@ -150,8 +152,9 @@ class LotteriesController extends AppController {
 	
    function dividend($id = null, $num = null) {
 		if (!$id) {
-			$this->Session->setFlash('非法数据请求.');
-			$this->redirect('/lotteries/index');
+			//$this->Session->setFlash('非法数据请求.');
+			$msg = '非法数据请求';
+			$this->redirect('/lotteries/index?msg='.urlencode($msg));
 		}
 		$this->set('lottery', $this->Lottery->read(null, $id));
 		$this->set('lotteryBettings', $this->Lottery->LotteryBetting->findAll("lottery_id = $id and betting_number = '$num'"));

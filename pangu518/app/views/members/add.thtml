@@ -42,3 +42,9 @@ if(isset($javascript)){
 <ul class="actions">
 <li><?php echo $html->link('用户列表', '/members/index')?></li>
 </ul>
+
+<?php
+	if($_GET["msg"]){
+		echo "<script language='javascript'>alert('".urldecode($_GET["msg"])."');</script>";
+	}
+?>

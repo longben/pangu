@@ -14,14 +14,16 @@ class CouponsController extends AppController {
 
     function audit($coupon_list_id = null){
     	if($coupon_list_id == null){
-			$this->Session->setFlash('请选择代金券审核组团！');
-			$this->redirect('/coupon_lists/index');    		
+			//$this->Session->setFlash('请选择代金券审核组团！');
+			$msg = '请选择代金券审核组团！';
+			$this->redirect('/coupon_lists/index?msg='.urlencode($msg));				
     	}
     	
     	$this->cleanUpFields();
     	if($this->Coupon->updateStatusByGroup($coupon_list_id)){
-    		$this->Session->setFlash('代金券审核成功！');
-    		$this->redirect('/coupon_lists/index');
+    		//$this->Session->setFlash('代金券审核成功！');
+			$msg = '代金券审核成功！';
+			$this->redirect('/coupon_lists/index?msg='.urlencode($msg));				
     	}
     }
 
@@ -83,8 +85,9 @@ class CouponsController extends AppController {
 				$this->Coupon->save($this->data);
 				$this->Coupon->create(); //再循环
 			}
-			$this->Session->setFlash('该批次代金券初始化成功！');
-			$this->redirect('/coupons/index');
+			//$this->Session->setFlash('该批次代金券初始化成功！');
+			$msg = '该批次代金券初始化成功！';
+			$this->redirect('/coupons/index?msg='.urlencode($msg));				
 		}
 	}
 

@@ -28,3 +28,9 @@
 <li><?php echo $html->link('View Coupons', '/coupons/index/');?></li>
 <li><?php echo $html->link('Add Coupons', '/coupons/add/');?></li>
 </ul>
+
+<?php
+	if($_GET["msg"]){
+		echo "<script language='javascript'>alert('".urldecode($_GET["msg"])."');</script>";
+	}
+?>

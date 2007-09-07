@@ -48,3 +48,9 @@
 <li><?php echo $html->link('View Merchants', '/merchants/index/');?></li>
 <li><?php echo $html->link('Add Merchants', '/merchants/add/');?></li>
 </ul>
+
+<?php
+	if($_GET["msg"]){
+		echo "<script language='javascript'>alert('".urldecode($_GET["msg"])."');</script>";
+	}
+?>
