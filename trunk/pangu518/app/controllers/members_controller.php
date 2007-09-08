@@ -104,9 +104,7 @@ class MembersController extends AppController {
 		);
 		if(empty($this->data)) {
 			if(!$id) {
-				//$this->Session->setFlash('无效的用户！');
-				$msg = '无效的用户！';
-				$this->redirect('/members/profile?msg='.urlencode($msg));
+				$this->Session->setFlash('无效的用户！');
 			}
 			$this->data = $this->Member->read(null, $id);
 		} else {
@@ -115,18 +113,12 @@ class MembersController extends AppController {
 				$this->data['User']['id'] = $id;
 				$this->data['User']['member_no'] = $this->data['User']['region_id'].$this->data['User']['cert_number'];
 				if($this->Member->User->save($this->data)){
-					//$this->Session->setFlash('会员信息修改成功！');
-					$msg = '会员信息修改成功！';
-					$this->redirect('/members/profile?msg='.urlencode($msg));
+					$this->Session->setFlash('会员信息修改成功！');
 				}else{
-					//$this->Session->setFlash('会员信息保存出错！');
-					$msg = '会员信息保存出错！';
-					$this->redirect('/members/profile?msg='.urlencode($msg));
+					$this->Session->setFlash('会员信息保存出错！');
 				}
 			} else {
-				//$this->Session->setFlash('会员信息保存出错！');
-				$msg = '会员信息保存出错！';
-				$this->redirect('/members/profile?msg='.urlencode($msg));
+				$this->Session->setFlash('会员信息保存出错！');
 			}
 		}
 	}	
@@ -134,17 +126,15 @@ class MembersController extends AppController {
 	function edit($id = null) {
 		if(empty($this->data)) {
 			if(!$id) {
-				//$this->Session->setFlash('Invalid id for Member');
-				$msg = '无效数据！';
-				$this->redirect('/members/index?msg='.urlencode($msg));
+				$this->Session->setFlash('Invalid id for Member');
+				$this->redirect('/members/index');
 			}
 			$this->data = $this->Member->read(null, $id);
 		} else {
 			$this->cleanUpFields();
 			if($this->Member->save($this->data)) {
-				//$this->Session->setFlash('会员信息修改成功！');
-				$msg = '会员信息修改成功！';
-				$this->redirect('/members/index?msg='.urlencode($msg));
+				$this->Session->setFlash('会员信息修改成功！');
+				$this->redirect('/members/index');
 			} else {
 				$this->Session->setFlash('Please correct errors below.');
 			}
@@ -153,14 +143,12 @@ class MembersController extends AppController {
 
 	function delete($id = null) {
 		if(!$id) {
-			//$this->Session->setFlash('Invalid id for Member');
-			$msg = '无效数据！';
-			$this->redirect('/members/index?msg='.urlencode($msg));
+			$this->Session->setFlash('Invalid id for Member');
+			$this->redirect('/members/index');
 		}
 		if($this->Member->del($id)) {
-			//$this->Session->setFlash('The Member deleted: id '.$id.'');
-			$msg = "删除用户编号".$id;
-			$this->redirect('/members/index?msg='.urlencode($msg));
+			$this->Session->setFlash('The Member deleted: id '.$id.'');
+			$this->redirect('/members/index');
 		}
 	}
 	
@@ -208,16 +196,11 @@ class MembersController extends AppController {
 			$password = md5($this->data['Member']['new']);
 			$this->data = $this->Member->read(null, $this->Session->read('User.id'));
 			if($old_password != $this->data['Member']['password']){
-				//$this->Session->setFlash('会员原口令不正确！');
-				$msg = '会员原口令不正确！';
-				$this->redirect('/members/password?msg='.urlencode($msg));
-
+				$this->Session->setFlash('会员原口令不正确！');
 			}else{
 			  	$sql = "update members set password = '$password' where uid = " .$this->Session->read('User.id');
 			  	$this->Member->execute($sql);
-			  	//$this->Session->setFlash('会员口令修改成功！');		
-				$msg = '会员口令修改成功！';
-				$this->redirect('/members/password?msg='.urlencode($msg));
+			  	$this->Session->setFlash('会员口令修改成功！');		
 			}			
 		}
    }   

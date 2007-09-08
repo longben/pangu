@@ -32,8 +32,3 @@
 	<li><?php echo $html->link('New User Coupon', '/user_coupons/add'); ?></li>
 </ul>
 </div>
-<?php
-	if($_GET["msg"]){
-		echo "<script language='javascript'>alert('".urldecode($_GET["msg"])."');</script>";
-	}
-?>

@@ -70,9 +70,8 @@ class UsersController extends AppController {
 		} else {
 			$this->cleanUpFields();
 			if($this->User->save($this->data)) {
-				//$this->Session->setFlash('会员资料保存成功！');
-				$msg = '会员资料保存成功！';
-				$this->redirect('/members/index?msg='.urlencode($msg));	
+				$this->Session->setFlash('会员资料保存成功！');
+				$this->redirect('/members/index');
 			} else {
 				$this->Session->setFlash('请检查下面的错误.');
 				$this->set('regions', $this->User->Region->generateList(

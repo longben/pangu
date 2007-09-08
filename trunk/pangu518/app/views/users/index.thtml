@@ -32,9 +32,3 @@
 <?php endforeach; ?>
 </table>
 </fieldset>
-
-<?php
-	if($_GET["msg"]){
-		echo "<script language='javascript'>alert('".urldecode($_GET["msg"])."');</script>";
-	}
-?>

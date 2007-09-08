@@ -165,7 +165,7 @@ class CouponsController extends AppController {
 		$this->set('filename','export.bz2');
 	}
 	
-	function min($status = null, $limit = null, $group = null){
+	function min($status = null, $limit = null, $r = null ,$group = null){
 		$this->layout = 'ajax';
 		$this->cacheAction = true;
 		if($group == null){
@@ -182,7 +182,7 @@ class CouponsController extends AppController {
 		$this->set('min_no',$rs[0][0]['min(coupon_no)']);
 	}
 	
-	function max($status = null, $limit = null, $start = null, $group = null){
+	function max($status = null, $limit = null, $start = null, $r = null, $group = null){
 		$this->layout = 'ajax';
 		$this->cacheAction = true;
 		if($start == null){

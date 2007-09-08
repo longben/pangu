@@ -23,9 +23,8 @@ class MemberGradesController extends AppController {
 		} else {
 			$this->cleanUpFields();
 			if($this->MemberGrade->save($this->data)) {
-				//$this->Session->setFlash('会员等级添加成功！');
-				$msg = '会员等级添加成功！';
-				$this->redirect('/member_grades/index?msg='.urlencode($msg));
+				$this->Session->setFlash('会员等级添加成功！');
+				$this->redirect('/member_grades/index');
 			} else {
 				$this->Session->setFlash('Please correct errors below.');
 			}
@@ -42,9 +41,8 @@ class MemberGradesController extends AppController {
 		} else {
 			$this->cleanUpFields();
 			if($this->MemberGrade->save($this->data)) {
-				//$this->Session->setFlash('会员等级修改成功！');
-				$msg = '会员等级修改成功！';
-				$this->redirect('/member_grades/index?msg='.urlencode($msg));
+				$this->Session->setFlash('会员等级修改成功！');
+				$this->redirect('/member_grades/index');
 			} else {
 				$this->Session->setFlash('Please correct errors below.');
 			}

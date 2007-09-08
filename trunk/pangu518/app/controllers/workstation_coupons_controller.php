@@ -11,9 +11,8 @@ class WorkstationCouponsController extends AppController {
 		);		
 		$this->data = $this->WorkstationCoupon->Workstation->find($criteria,null,'Workstation.id',null);
 		if(empty($this->data)){
-			//$this->Session->setFlash('请先申请成立会员消费单位！');
-			$msg = '请先申请成立会员消费单位！';
-			$this->redirect('/workstations/profile?msg='.urlencode($msg));	
+			$this->Session->setFlash('请先申请成立会员消费单位！');
+			$this->redirect('/workstations/profile');
 		}else{
 		    //设置工作站ID
 			$this->Session->write('ws_id',$this->data['Workstation']['id']);

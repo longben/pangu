@@ -49,18 +49,13 @@ class UserCouponsController extends AppController {
 				
 				if($this->UserCoupon->save($this->data)) {
 					$this->UserCoupon->updateMerchantCouponStatus($this->Session->read('User.id'),$coupon_id);
-					//$this->Session->setFlash('代金券录入成功！');
-					$msg = '代金券录入成功！';
-					$this->redirect('/user_coupons/input?msg='.urlencode($msg));
+					$this->Session->setFlash('代金券录入成功！');
+					$this->redirect('/user_coupons/input');
 				} else {
-					//$this->Session->setFlash('代金券录入不成功！');
-					$msg = '代金券录入不成功！';
-					$this->redirect('/user_coupons/input?msg='.urlencode($msg));
+					$this->Session->setFlash('代金券录入不成功！');
 				}
 			}else{
-				//$this->Session->setFlash('不是有效的代金券，请检查代金券编号和密码是否正确录入。');
-				$msg = '不是有效的代金券，请检查代金券编号和密码是否正确录入。';
-				$this->redirect('/user_coupons/input?msg='.urlencode($msg));
+				$this->Session->setFlash('不是有效的代金券，请检查代金券编号和密码是否正确录入。');
 			}
 		}
 	}

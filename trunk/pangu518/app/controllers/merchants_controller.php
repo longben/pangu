@@ -55,13 +55,11 @@ class MerchantsController extends AppController {
 	function buy() {
 		$this->Merchant->recursive = 0;
 		if($this->Merchant->buy($this->Session->read('ws_id'),$this->data['Merchant']['id'],2,$this->data['Workstation']['money'],$this->data['Workstation']['coupon_start'],$this->data['Workstation']['coupon_end'],$this->data['Workstation']['coupon_group'])){
-			//$this->Session->setFlash('代金券销售成功！');
-			$msg = '代金券销售成功！';
-			$this->redirect('/workstation_coupons/index?msg='.urlencode($msg));	
+			$this->Session->setFlash('代金券销售成功！');
+			$this->redirect('/workstation_coupons/index');
 		}else{
-			//$this->Session->setFlash('代金券销售失败，请检查代金券库存！');
-			$msg = '代金券销售失败，请检查代金券库存！';
-			$this->redirect('/merchants/trade?msg='.urlencode($msg));	
+			$this->Session->setFlash('代金券销售失败，请检查代金券库存！');
+			$this->redirect('/merchants/trade');
 		}
 	}	
 	
@@ -101,13 +99,10 @@ class MerchantsController extends AppController {
 			$this->data['Merchant']['referees'] = $referees;
 			
 			if($this->Merchant->save($this->data)) {
-				//$this->Session->setFlash('会员消费单位添加成功，等待公司审核后生效。');
-				$msg = '会员消费单位添加成功，等待公司审核后生效。';
-				$this->redirect('/merchants/index?msg='.urlencode($msg));	
+				$this->Session->setFlash('会员消费单位添加成功，等待公司审核后生效。');
+				$this->redirect('/merchants/index');
 			} else {
-				//$this->Session->setFlash('会员消费单位添加失败，请检查下面的错误！');
-				$msg = '会员消费单位添加失败，请检查下面的错误！';
-				$this->redirect('/merchants/add?msg='.urlencode($msg));	
+				$this->Session->setFlash('会员消费单位添加失败，请检查下面的错误！');
 				$this->set('industries', $this->Merchant->Industry->generateList(
 				             $conditions = 'Industry.flag = 1',
 				             $order = 'Industry.id',
@@ -154,13 +149,10 @@ class MerchantsController extends AppController {
 			$this->data['Merchant']['referees'] = $referees;
 			
 			if($this->Merchant->save($this->data)) {
-				//$this->Session->setFlash('会员消费单位添加成功，审核后生效。');
-				$msg = '会员消费单位添加成功，审核后生效。';
-				$this->redirect('/merchants/ws_index?msg='.urlencode($msg));	
+				$this->Session->setFlash('会员消费单位添加成功，审核后生效。');
+				$this->redirect('/merchants/ws_index');
 			} else {
-				//$this->Session->setFlash('会员消费单位添加失败，请检查下面的错误！');
-				$msg = '会员消费单位添加失败，请检查下面的错误！';
-				$this->redirect('/merchants/ws_add?msg='.urlencode($msg));	
+				$this->Session->setFlash('会员消费单位添加失败，请检查下面的错误！');
 				$this->set('industries', $this->Merchant->Industry->generateList(
 				             $conditions = 'Industry.flag = 1',
 				             $order = 'Industry.id',
@@ -225,16 +217,15 @@ class MerchantsController extends AppController {
 				$this->Merchant->User->save($user);
 				
 				$this->Merchant->User->updateGrade($this->data['Merchant']['referees']); //更新会员等级
-				//$this->Session->setFlash('会员消费单位资料审核成功！');
-				$msg = '会员消费单位资料审核成功！';
-				$this->redirect('/merchants/audit?msg='.urlencode($msg));	
+				$this->Session->setFlash('会员消费单位资料审核成功！');
+				//$this->redirect('/merchants/audit');
 			} else {
 				if($status!=9){
 					$msg = '会员消费单位已经审核！';
 				}else{
 					$msg = '审核会员消费单位出错！';
 				}
-				$this->redirect('/merchants/audit?msg='.urlencode($msg));	
+				$this->Session->setFlash($msg);
 				$this->set('industries', $this->Merchant->Industry->generateList(
 					$conditions = 'Industry.flag = 1',
 					$order = 'Industry.id',
@@ -277,9 +268,8 @@ class MerchantsController extends AppController {
 		} else {
 			$this->cleanUpFields();
 			if($this->Merchant->save($this->data)) {
-				//$this->Session->setFlash('会员消费单位资料更新成功！');
-				$msg = '会员消费单位资料更新成功！';
-				$this->redirect('/merchants/index?msg='.urlencode($msg));	
+				$this->Session->setFlash('会员消费单位资料更新成功！');
+				$this->redirect('/merchants/index');
 			} else {
 				$this->Session->setFlash('Please correct errors below.');
 				$this->set('users', $this->Merchant->User->generateList());
@@ -295,9 +285,8 @@ class MerchantsController extends AppController {
 			$this->redirect('/merchants/index');
 		}
 		if($this->Merchant->del($id)) {
-			//$this->Session->setFlash('会员消费单位删除成功!');
-			$msg = '会员消费单位删除成功';
-			$this->redirect('/merchants/index?msg='.urlencode($msg));	
+			$this->Session->setFlash('会员消费单位删除成功!');
+			$this->redirect('/merchants/index');
 		}
 	}
 	
@@ -306,9 +295,8 @@ class MerchantsController extends AppController {
 		$this->set('user_id',$user_id);
 		if(empty($this->data)) {
 			if(!$user_id) {
-				//$this->Session->setFlash('无效的会员消费单位！');
-				$msg = '无效的会员消费单位！';
-				$this->redirect('/merchants/profile?msg='.urlencode($msg));
+				$this->Session->setFlash('无效的会员消费单位！');
+				$this->redirect('/merchants/profile');
 			}
 			$this->data = $this->Merchant->findByUserId($user_id);
 			$this->set('industries', $this->Merchant->Industry->generateList(
@@ -328,9 +316,8 @@ class MerchantsController extends AppController {
 		} else {
 			$this->cleanUpFields();
 			if($this->Merchant->save($this->data)) {
-				//$this->Session->setFlash('会员消费单位资料保存成功！');
-				$msg = '会员消费单位资料保存成功！';
-				$this->redirect('/merchants/profile?msg='.urlencode($msg));
+				$this->Session->setFlash('会员消费单位资料保存成功！');
+				$this->redirect('/merchants/profile');
 			} else {
 				$this->Session->setFlash('Please correct errors below.');
 				$this->set('users', $this->Merchant->User->generateList());

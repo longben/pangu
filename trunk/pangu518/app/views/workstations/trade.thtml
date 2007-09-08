@@ -108,7 +108,7 @@
 			});
 			
 			if($F('WorkstationCouponStart')!=''){
-				var url = '/workstations/max/131/' + $F('WorkstationMoney')/2;
+				var url = '/workstations/max/131/' + $F('WorkstationMoney')/2 + '/' + $F('WorkstationCouponStart') + '/' + <?=rand()?> + '/' +  $F('WorkstationCouponGroup');
 				var myAjax = new Ajax.Request(url,{
 					method: 'get',
 					onComplete: setMaxValue,
