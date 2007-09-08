@@ -12,49 +12,21 @@ if(isset($javascript)):
 endif;          
 ?> 
 <?php echo $html->css('pangu.generic');?>
-<style type="text/css">
-.message
-{
-    position:absolute;
-    top:110px;
-    left:100px;
-    width:300px;
-	height:80px;
-    font-size:14px;
-    border: solid 1px #658c10;
-    border-top:0px;
-    padding:12px;
-    color:#FFFFFF;
-	background-color:#658c10;
-	border-color:#6d6;
-    text-align:center;
-}
-</style>
- 
-<SCRIPT LANGUAGE="JavaScript">
-<!--
-function hideFlash(){
-	element = document.getElementById("flashMessage");
-	if(element != null){
-		element.style.display = "none";
-	}
-}
-//-->
-</SCRIPT>
-
 </head>
 <body>
 	<div id="container">
 	   <?php
 	   if ($session->check('Message.flash')){
+	   	  $session->flash();
 	   ?>
 	      <SCRIPT LANGUAGE="JavaScript">
 	      <!--
-			setTimeout('hideFlash()',3000);
+			element = document.getElementById("flashMessage");
+			element.style.display = "none";
+			alert(element.innerHTML);
 	      //-->
 	      </SCRIPT>
 	   <?php
-		  $session->flash();
 	   }
 	   echo $content_for_layout;
 	   ?>

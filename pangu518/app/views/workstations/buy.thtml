@@ -182,6 +182,7 @@
 			return false;
 		}else{
 			var url = '/coupons/min/113/' + $F('WorkstationMoney')/2;
+			url = url + '/' + <?=rand()?>;
 			if($F('WorkstationCouponGroup')!=''){
 				url = url + '/' + $F('WorkstationCouponGroup');
 			}
@@ -193,7 +194,7 @@
 			});
 			
 			if($F('WorkstationCouponStart')!=''){
-				var url = '/coupons/max/113/' + $F('WorkstationMoney')/2;
+				var url = '/coupons/max/113/' + $F('WorkstationMoney')/2  + '/' + $F('WorkstationCouponStart') + '/' + <?=rand()?> + '/' + $F('WorkstationCouponGroup');
 				var myAjax = new Ajax.Request(url,{
 					method: 'get',
 					onComplete: setMaxValue,
@@ -243,8 +244,3 @@
       }
    }
 </script>
-<?php
-	if($_GET["msg"]){
-		echo "<script language='javascript'>alert('".urldecode($_GET["msg"])."');</script>";
-	}
-?>

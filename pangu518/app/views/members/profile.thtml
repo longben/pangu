@@ -68,12 +68,10 @@
 	<?php echo $html->submit('保存');?>
 </div>
 </form>
-
-<div class="optional" align="center"> 
-	<?php echo $html->link('个人业绩','/users/performance/' . $this->controller->Session->read('User.id') . '?u=personal')?>
-	&nbsp;&nbsp;
-	<?php echo $html->link('会员网络','/users/network/' . $this->controller->Session->read('User.id') . '?u=personal')?>
-</div>
+<ul>
+ <li><?php echo $html->link('个人业绩','/users/performance/' . $this->controller->Session->read('User.id') . '?u=personal')?></li>
+ <li><?php echo $html->link('会员网络','/users/network/' . $this->controller->Session->read('User.id') . '?u=personal')?></li>
+</ul>
 
 </fieldset>
 <SCRIPT LANGUAGE="JavaScript">
@@ -172,9 +170,3 @@ function check(){
 }
 //-->
 </SCRIPT>
-
-<?php
-	if($_GET["msg"]){
-		echo "<script language='javascript'>alert('".urldecode($_GET["msg"])."');</script>";
-	}
-?>

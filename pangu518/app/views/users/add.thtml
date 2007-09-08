@@ -91,10 +91,3 @@
 <li><?php echo $html->link('View Regions', '/regions/index/');?></li>
 <li><?php echo $html->link('Add Regions', '/regions/add/');?></li>
 </ul>
-
-
-<?php
-	if($_GET["msg"]){
-		echo "<script language='javascript'>alert('".urldecode($_GET["msg"])."');</script>";
-	}
-?>

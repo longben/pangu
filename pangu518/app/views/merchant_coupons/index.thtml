@@ -8,9 +8,3 @@
 	<li><?php echo $html->link('参与分红', '/lottery_bettings/merchant'); ?></li>
 </ul>
 </fieldset>
-
-<?php
-	if($_GET["msg"]){
-		echo "<script language='javascript'>alert('".urldecode($_GET["msg"])."');</script>";
-	}
-?>

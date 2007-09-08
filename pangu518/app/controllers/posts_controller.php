@@ -31,9 +31,8 @@ class PostsController extends AppController {
 		} else {
 			$this->cleanUpFields();
 			if ($this->Post->save($this->data)) {
-				//$this->Session->setFlash('文章保存成功！');
-				$msg = '文章保存成功！';
-				$this->redirect('/posts/index?msg='.urlencode($msg));	
+				$this->Session->setFlash('文章保存成功！');
+				$this->redirect('/posts/index');
 			} else {
 				$this->Session->setFlash('请检查下面错误.');
 				$this->set('categories', $this->Post->Category->generateList(
@@ -66,9 +65,8 @@ class PostsController extends AppController {
 		} else {
 			$this->cleanUpFields();
 			if ($this->Post->save($this->data)) {
-				//$this->Session->setFlash('消息文章修改成功！');
-				$msg = '消息文章修改成功！';
-				$this->redirect('/posts/index?msg='.urlencode($msg));	
+				$this->Session->setFlash('消息文章修改成功！');
+				$this->redirect('/posts/index');
 			} else {
 				$this->Session->setFlash('请检查下面的错误.');
 				$this->set('categories', $this->Post->Category->generateList(

@@ -8,9 +8,8 @@ class MerchantCouponsController extends AppController {
 		$user_id = $this->Session->read('User.id');
 		$this->data = $this->MerchantCoupon->Merchant->findByUserId($user_id);
 		if(empty($this->data)){
-			//$this->Session->setFlash('请先申请成立会员消费单位！');
-			$msg = '请先申请成立会员消费单位！';
-			$this->redirect('/merchants/profile?msg='.urlencode($msg));	
+			$this->Session->setFlash('请先申请成立会员消费单位！');
+			$this->redirect('/merchants/profile');
 		}
 		$this->MerchantCoupon->recursive = 0;
 		
