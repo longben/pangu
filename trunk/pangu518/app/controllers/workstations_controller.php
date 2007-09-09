@@ -96,6 +96,11 @@ class WorkstationsController extends AppController {
 				$this->Session->setFlash('无效的工作站编号！');
 				$this->redirect('/workstations/sell');	
 			}
+			$this->Workstation->unbindModel(array('hasMany' => array('WorkstationCoupon')));
+			$this->Workstation->unbindModel(array('hasMany' => array('MerchantCoupon')));
+			$this->Workstation->unbindModel(array('hasMany' => array('WorkstationAttornLog')));
+			$this->Workstation->unbindModel(array('hasMany' => array('MerchantCouponList')));
+						
 			$this->data = $this->Workstation->read(null, $id);
 			$this->set('regions', $this->Workstation->Region->generateList(
 			  $conditions = "id like '__0000'",
@@ -106,7 +111,6 @@ class WorkstationsController extends AppController {
 			);
 		} else {
 			$this->cleanUpFields();
-			//if($this->Workstation->auditing($this->data['Workstation']['id'],2,$this->data['Workstation']['money'])){
 			if($this->Workstation->buy($this->data['Workstation']['id'],2,$this->data['Workstation']['money'],$this->data['Workstation']['coupon_start'],$this->data['Workstation']['coupon_end'],$this->data['Workstation']['coupon_group'])){
 				$this->Session->setFlash('分红凭证转入成功！');
 				$this->redirect('/workstations/sell');	
