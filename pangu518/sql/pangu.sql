@@ -226,6 +226,21 @@ create table merchant_coupons(
 ) engine=MyISAM default charset=utf8 comment='会员消费单位代金券';
 
 
+/* 会员消费单位分红凭证券 */
+create table merchant_vouchers(
+  id               int(11)       not null auto_increment comment '主键',
+  merchant_id      int(11)       not null                comment '会员消费单位',
+  coupon_id        int(11)       not null                comment '代金券',
+  workstation_id   int(11)       not null                comment '销售代金券给消费单位的工作站',
+  created          timestamp                             comment '获得代金券时间',
+  modified         timestamp                             comment '会员消费时间',
+  untread_date     timestamp                             comment '代金券退还公司时间',
+  status           int(3)        not null default 1      comment '状态',
+  primary key (id),
+  key coupon_id (coupon_id)
+) engine=MyISAM default charset=utf8 comment='会员消费单位分红凭证券';
+
+
 /* 会员消费单位代金券列表 */
 create table merchant_coupon_lists(
   id               int(11)       not null auto_increment comment '主键',
