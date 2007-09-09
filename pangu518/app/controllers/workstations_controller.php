@@ -28,20 +28,44 @@ class WorkstationsController extends AppController {
 	
 	function sell() {
 		$this->Workstation->recursive = 0;
+
+		$criteria = "Workstation.status = 1";
+		if($keyword == null){
+			$keyword = $this->data['Workstation']['keyword'];
+		}		
+		if($keyword != null){
+			$criteria = "Workstation.status = 1 and Workstation.ws_name like '%$keyword%'";
+		}
+
+		list($order,$limit,$page) = $this->Pagination->init($criteria,null,array('url'=> 'sell/'.$keyword));
 		$this->Workstation->unbindModel(array('hasMany' => array('WorkstationCoupon')));
 		$this->Workstation->unbindModel(array('hasMany' => array('MerchantCoupon')));
 		$this->Workstation->unbindModel(array('hasMany' => array('WorkstationAttornLog')));
 		$this->Workstation->unbindModel(array('hasMany' => array('MerchantCouponList')));		
-		$this->set('workstations', $this->Workstation->findAll('status = 1'));
+		$data = $this->Workstation->findAll($criteria, NULL, NULL, $limit, $page); 	
+		
+		$this->set('workstations', $data);	
 	}	
 	
 	function audit() {
 		$this->Workstation->recursive = 0;
+
+		$criteria = "Workstation.status = 9";
+		if($keyword == null){
+			$keyword = $this->data['Workstation']['keyword'];
+		}		
+		if($keyword != null){
+			$criteria = "Workstation.status = 9 and Workstation.ws_name like '%$keyword%'";
+		}
+
+		list($order,$limit,$page) = $this->Pagination->init($criteria,null,array('url'=> 'audit/'.$keyword));
 		$this->Workstation->unbindModel(array('hasMany' => array('WorkstationCoupon')));
 		$this->Workstation->unbindModel(array('hasMany' => array('MerchantCoupon')));
 		$this->Workstation->unbindModel(array('hasMany' => array('WorkstationAttornLog')));
 		$this->Workstation->unbindModel(array('hasMany' => array('MerchantCouponList')));		
-		$this->set('workstations', $this->Workstation->findAll('status = 9'));
+		$data = $this->Workstation->findAll($criteria, NULL, NULL, $limit, $page); 	
+		
+		$this->set('workstations', $data);		
 	}
 	
    function trade($merchant_id=null,$merchant_name=null,$user_name=null,$owner=null,$telephone=null) {

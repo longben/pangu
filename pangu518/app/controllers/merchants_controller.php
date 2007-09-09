@@ -30,7 +30,19 @@ class MerchantsController extends AppController {
 	
    function audit() {
 		$this->Merchant->recursive = 0;
-		$this->set('merchants', $this->Merchant->findAllByStatus('9'));   	
+		$criteria = "Merchant.status = 9";
+		if($keyword == null){
+			$keyword = $this->data['Merchant']['keyword'];
+		}		
+		if($keyword != null){
+			$criteria = "Merchant.status = 9 and Merchant.merchant_name like '%$keyword%'";
+		}
+
+		list($order,$limit,$page) = $this->Pagination->init($criteria,null,array('ajaxDivUpdate'=>'cs','url'=> 'audit/'.$keyword));
+		
+		$data = $this->Merchant->findAll($criteria, NULL, NULL, $limit, $page); 			
+		
+		$this->set('merchants', $data); 	
    }	
 	
 	function trade() {
