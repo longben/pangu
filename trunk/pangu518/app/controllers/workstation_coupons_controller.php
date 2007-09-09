@@ -2,7 +2,8 @@
 class WorkstationCouponsController extends AppController {
 
 	var $name = 'WorkstationCoupons';
-	var $helpers = array('Html', 'Form' );
+	var $helpers = array('Html', 'Form', 'Pagination');
+	var $components = array('Pagination');
 	
 	function index() {
 		$user_id = $this->Session->read('User.id');
@@ -35,7 +36,10 @@ class WorkstationCouponsController extends AppController {
 		$this->WorkstationCoupon->unbindModel(array('belongsTo' => array('Coupon')));
 		$this->WorkstationCoupon->unbindModel(array('belongsTo' => array('Workstation')));
 		$coupons = $this->WorkstationCoupon->findAll("status = 131 group by coupon_group  order by coupon_no");
-		$this->set('coupons', $coupons);	
+		$this->set('coupons', $coupons);
+		
+		$merchantcouponlists = $this->WorkstationCoupon->Workstation->MerchantCouponList->findAllByWorkstationId($this->data['Workstation']['id']);
+		$this->set('merchantcouponlists', $merchantcouponlists);
 	}
 	
 	function add(){

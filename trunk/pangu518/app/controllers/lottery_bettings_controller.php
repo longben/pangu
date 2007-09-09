@@ -96,7 +96,6 @@ class LotteryBettingsController extends AppController {
 				$this->data['LotteryBetting']['user_id'] = $user_id;
 				if($this->LotteryBetting->save($this->data)){
 					$this->Session->setFlash('会员参与分红成功！');
-					//$this->redirect('/lottery_bettings/user_histroy');
 					$this->redirect('/user_coupons/input');
 				}
 			} else {
@@ -143,7 +142,6 @@ class LotteryBettingsController extends AppController {
 				$this->data['LotteryBetting']['merchant_id'] = $merchant_id;
 				if($this->LotteryBetting->save($this->data)){
 					$this->Session->setFlash('会员消费单位参与分红成功！');
-					//$this->redirect('/lottery_bettings/merchant_histroy');
 					$this->redirect('/merchant_coupons');
 				}
 			} else {

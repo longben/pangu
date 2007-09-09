@@ -247,7 +247,7 @@ class WorkstationsController extends AppController {
 		}
 	}
 	
-	function min($status = null, $limit = null, $group = null){
+	function min($status = null, $limit = null, $r = null, $group = null){
 		$this->layout = 'ajax';
 		$this->cacheAction = true;
 		$user_id = $this->Session->read('User.id');

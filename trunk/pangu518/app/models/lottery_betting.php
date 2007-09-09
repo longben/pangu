@@ -3,7 +3,6 @@ class LotteryBetting extends AppModel {
 
 	var $name = 'LotteryBetting';
 
-	//The Associations below have been created with all possible keys, those that are not needed can be removed
 	var $belongsTo = array(
 			'Lottery' =>
 				array('className' => 'Lottery',
@@ -100,10 +99,10 @@ class LotteryBetting extends AppModel {
 		$status = 4*100 + 1*10 + 2; //应该定义成全局变量    	
     	
     	$limit = $betting_time * 25; //会员消费单位每25张代金券一次分红资格
-    	$sql = 'select MerchantCoupon.coupon_id from merchant_coupons as MerchantCoupon ';
-    	$sql .= ' where MerchantCoupon.merchant_id = ' . $merchant_id;
-    	$sql .= ' and MerchantCoupon.status = 341';
-    	$sql .= ' order by MerchantCoupon.coupon_id';
+    	$sql = 'select MerchantVoucher.coupon_id from merchant_vouchers as MerchantVoucher ';
+    	$sql .= ' where MerchantVoucher.merchant_id = ' . $merchant_id;
+    	$sql .= ' and MerchantVoucher.status = 341';
+    	$sql .= ' order by MerchantVoucher.coupon_id';
     	$sql .= ' limit '.$limit;
         $coupons = $this->query($sql);
         $rs = $this->query($sql);
@@ -111,19 +110,20 @@ class LotteryBetting extends AppModel {
         if(sizeof($rs)>=$limit){
 			for($i=0;$i<sizeof($rs);$i++){
 				if($i==0){
-					$coupon_id = $rs[$i]['MerchantCoupon']['coupon_id'];
+					$coupon_id = $rs[$i]['MerchantVoucher']['coupon_id'];
 				}else{
-					$coupon_id .= ','.$rs[$i]['MerchantCoupon']['coupon_id'];
+					$coupon_id .= ','.$rs[$i]['MerchantVoucher']['coupon_id'];
 				}
 			} 
 			
-			//更新会员代金券状态
-			$sql = 'update merchant_coupons set status = '.$status.' where coupon_id in('. $coupon_id .')';
+			//更新会员消费单位代金券分红凭证状态
+			//$sql = 'update merchant_coupons set status = '.$status.' where coupon_id in('. $coupon_id .')';
+			$sql = 'update merchant_vouchers set status = '.$status.' where coupon_id in('. $coupon_id .')';
 			$this->execute($sql); 
 			
 			//更新代金券状态
-			$sql = 'update coupons set status = '.$status.' where id in('. $coupon_id .')';
-			$this->execute($sql); 
+			//$sql = 'update coupons set status = '.$status.' where id in('. $coupon_id .')';
+			//$this->execute($sql); 
         }else{
         	return false;
         }

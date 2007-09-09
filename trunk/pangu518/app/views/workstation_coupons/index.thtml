@@ -1,12 +1,12 @@
 <fieldset align=center>
 <legend>可用财富积点及分红凭证管理</legend> 
 <ul class="actions">
-    <li>可用分红凭证总数：<?php echo $total?>份，共计<?php echo $total*2?>元。</li>
-    <li>已转出的分红凭证总数：<?php echo $total_sale?>份，共计<?php echo $total_sale*2?>元。</li> 
-    <hr/>
-    <li><?php echo $html->link('转入分红凭证给会员消费单位','/merchants/trade')?></li>
+    <li style="font-size:14px"><?php echo $html->link('转入分红凭证给会员消费单位','/merchants/trade')?></li>
 </ul>
 <table cellpadding="0" cellspacing="0" width="100%">
+<tr>
+  <th colspan="3" align="left">可用分红凭证总数：<?php echo $total?>份，共计<?php echo $total*2?>元。</th>
+</tr>
 <tr>
 	<th>组团号</th>
 	<th>分红凭证可用号码段</th>
@@ -20,4 +20,27 @@
 </tr>
 <?php endforeach; ?>
 </table>
+<br/>
+<table cellpadding="0" cellspacing="0" width="100%">
+<tr>
+  <th colspan="4" align="left">已转出的分红凭证总数：<?php echo $total_sale?>份，共计<?php echo $total_sale*2?>元。</th>
+</tr>
+<tr>
+	<th>组团号</th>
+	<th>分红凭证可用号码段</th>
+	<th>转入会员消费单位</th>
+	<th>转入日期</th>
+</tr>
+<?php foreach ($merchantcouponlists as $merchantcouponlist): ?>
+<tr>
+  <td><?php echo $merchantcouponlist['MerchantCouponList']['coupon_group']?></td>
+  <td><?php echo $merchantcouponlist['MerchantCouponList']['coupon_start']?> -- <?php echo $merchantcouponlist['MerchantCouponList']['coupon_end']?></td>
+  <td><?php echo $merchantcouponlist['Merchant']['merchant_name']?></td>
+  <td><?php echo $merchantcouponlist['MerchantCouponList']['created']?></td>
+</tr>
+<?php endforeach; ?>
+</table>
+<ul class="actions">
+    <li style="font-size:14px"><?php echo $html->link('转入分红凭证给会员消费单位','/merchants/trade')?></li>
+</ul>
 </fieldset>

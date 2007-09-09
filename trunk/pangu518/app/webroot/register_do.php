@@ -2,6 +2,7 @@
 	require_once("db-settings.php");
 
 	echo "<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />";
+	echo "<script type='text/javascript' src='/js/prototype.js'></script>";
 
 	$login_name = trim($_POST["login_name"]);
 	$password = md5($_POST["password"]);
@@ -59,5 +60,10 @@
 	$sql = "insert into users(id,login_name,password,user_name,sex,member_no,cert_number,referees,region_id,office_phone,home_phone,mobile,bank_accounts,accounts) values(".$id.",'".$login_name."','".$password."','".$user_name."',".$_POST["sex"].",'".$member_no."','".$cert_number."','".$refer_id."','".$region_id."','".$office_phone."','".$home_phone."','".$mobile."','邮政储蓄','".$accounts."')";
 	mysql_query($sql);
 
-	echo("<script language='JavaScript'>alert('恭喜您，注册成功，您可以登录进入盘古运营系统！');location.replace('main.php');</script>");
+	echo("<script language='JavaScript'>");
+	echo("var url = '/users/upgrade/$refer_id';");
+	echo("var myAjax = new Ajax.Request(url,{method: 'get',onComplete: null,asynchronous:false});");
+	echo("alert('恭喜您，注册成功，您可以登录进入盘古运营系统！');");
+	echo("location.replace('main.php');");
+	echo("</script>");
 ?>
