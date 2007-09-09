@@ -14,12 +14,12 @@
 </div>    
 <div class="optional"> 
 	<?php echo $form->labelTag('Merchant/merchant_name', '会员消费单位名称：');?>
- 	<?php echo $html->input('Merchant/merchant_name', array('size' => '60','maxlength' => '50'));?>
+ 	<?php echo $html->input('Merchant/merchant_name', array('size' => '60','maxlength' => '50','readOnly' => 'true'));?>
 	<?php echo $html->tagErrorMsg('Merchant/merchant_name', 'Please enter the Merchant Name.');?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Merchant/owner', '拥有人：');?>
- 	<?php echo $html->input('Merchant/owner', array('size' => '60','maxlength' => '20'));?>
+ 	<?php echo $html->input('Merchant/owner', array('size' => '60','maxlength' => '20','readOnly' => 'true'));?>
 	<?php echo $html->tagErrorMsg('Merchant/owner', 'Please enter the Owner.');?>
 </div>
 <div class="optional"> 
@@ -44,7 +44,7 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Merchant/accounts', '银行帐号：');?>
- 	<?php echo $html->input('Merchant/accounts', array('size' => '60','maxlength' => '19'));?>
+ 	<?php echo $html->input('Merchant/accounts', array('size' => '60','maxlength' => '19','readOnly' => 'true'));?>
 	<?php echo $html->tagErrorMsg('Merchant/accounts', 'Please enter the Accounts.');?>
 </div>
 <div class="optional"> 

@@ -13,12 +13,12 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('User/user_name', '真实姓名：');?>
- 	<?php echo $html->input('User/user_name', array('size' => '60','maxlength' => '20'));?>
+ 	<?php echo $html->input('User/user_name', array('size' => '60','maxlength' => '20','readOnly' => 'true'));?>
 	<?php echo $html->tagErrorMsg('Member/password', 'Please enter the Password.');?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('User/cert_number', '身份证号码：');?>
- 	<?php echo $html->input('User/cert_number', array('size' => '60','maxlength' => '18'));?>
+ 	<?php echo $html->input('User/cert_number', array('size' => '60','maxlength' => '18','readOnly' => 'true'));?>
 	<?php echo $html->tagErrorMsg('User/cert_number', 'Please enter the Cert Number.');?>
 </div>
 <div class="optional"> 
@@ -26,16 +26,11 @@
  	<?php echo $html->dateTimeOptionTag('Member/bday', 'YMD' , 'NONE', $html->tagValue('Member/bday'), array());?>
 	<?php echo $html->tagErrorMsg('Member/bday', 'Please select the Bday.');?>
 </div>
+<!--
 <div class="optional"> 
 	<?php echo $form->labelTag('Member/email', '电子邮箱：');?>
  	<?php echo $html->input('Member/email', array('size' => '60','maxlength' => '40'));?>
 	<?php echo $html->tagErrorMsg('Member/email', 'Please enter the Email.');?>
-</div>
-<!--
-<div class="optional"> 
-	<?php echo $form->labelTag('User/telephone', '常用电话：');?>
- 	<?php echo $html->input('User/telephone', array('size' => '60','maxlength' => '30'));?>
-	<?php echo $html->tagErrorMsg('User/telephone', 'Please enter the Telephone.');?>
 </div>
 -->
 <div class="optional"> 
@@ -60,7 +55,7 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('User/accounts', '银行帐号：');?>
- 	<?php echo $html->input('User/accounts', array('size' => '60','maxlength' => '19'));?>
+ 	<?php echo $html->input('User/accounts', array('size' => '60','maxlength' => '19','readOnly' => 'true'));?>
 	<?php echo $html->tagErrorMsg('User/accounts', 'Please enter the Accounts.');?>
 </div>
 <?php echo $html->hidden('Member/uid')?>
@@ -105,11 +100,13 @@ function check(){
 		}
 	}
 	
+	/*
 	if($F('MemberEmail')==''){
 		alert('电子邮箱不能为空！');
 		$('MemberEmail').focus();
 		return false;
 	}
+	*/
 
 	if($F('UserMobile')==''){
 		alert('手机号码不能为空！');

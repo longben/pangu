@@ -13,7 +13,6 @@ class MerchantCouponsController extends AppController {
 		}
 		$this->MerchantCoupon->recursive = 0;
 		
-		//统计查询条件
 		//可用代金券
 		$criteria = array(
 		  'Merchant.user_id' => $this->Session->read('User.id'),
@@ -36,6 +35,12 @@ class MerchantCouponsController extends AppController {
 		);
 		$this->set('total_melon_cutting', $this->MerchantCoupon->findCount($criteria));	
 		*/
+
+		//可用财富积点总数
+		$sql = "select count(*) from merchant_vouchers where status = 341 and merchant_id = " . $this->data['Merchant']['id'];
+		$v = $this->MerchantCoupon->findBySql($sql); 
+		$this->set('total_usable', $v[0][0]['count(*)']);	
+
 		
 		//参与分红
 		$sql = "select count(*) from merchant_vouchers where status = 412 and merchant_id = " . $this->data['Merchant']['id'];
