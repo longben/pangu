@@ -28,12 +28,19 @@ class MerchantCouponsController extends AppController {
 		);
 		$this->set('total_sale', $this->MerchantCoupon->findCount($criteria));
 				
+		/**
 		//参与分红抽奖
 		$criteria = array(
 		  'Merchant.user_id' => $this->Session->read('User.id'),
 		  'MerchantCoupon.status' => 412
 		);
-		$this->set('total_melon_cutting', $this->MerchantCoupon->findCount($criteria));		
+		$this->set('total_melon_cutting', $this->MerchantCoupon->findCount($criteria));	
+		*/
+		
+		//参与分红
+		$sql = "select count(*) from merchant_vouchers where status = 412 and merchant_id = " . $this->data['Merchant']['id'];
+		$v = $this->MerchantCoupon->findBySql($sql); 
+		$this->set('total_melon_cutting', $v[0][0]['count(*)']);	
 	}
 
 	function view($id = null) {

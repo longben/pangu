@@ -1,5 +1,12 @@
 <fieldset align=center>
 <legend>我推荐的会员</legend> 
+<div align="center">
+	<form action="<?php echo $html->url("/users/network/$user_id/"); ?>" method="post">
+	  输入姓名或者登录名：
+	  <?php echo $html->input('User/keyword', array('size' => '60'));?>
+	  <?php echo $html->submit('查询');?>
+	</form> 
+</div>
 <table cellpadding="0" cellspacing="0" width="98%">
 <tr>
 	<th>登录名</th>
@@ -41,6 +48,7 @@
 </tr>
 <?php endforeach; ?>
 </table>
+<p><div align="center"><?php echo $this->renderElement('pagination'); // 分页导航页 ?></div></p>
  <hr/>
 <?php if(empty($_GET['u'])){ ?>
  <li><?php echo $html->link('返回用户列表', '/members/index') ?> </li>

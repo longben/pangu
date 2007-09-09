@@ -106,45 +106,48 @@ class User extends AppModel {
 			switch ($grade){
 				case 1: //个人会员
 				    $user_count = $this->findCount(array('referees' => $user_id));
-				    if($user_count >= 3){ //发展个人会员100名以上
+				    if($user_count >= 1){ //发展个人会员100名以上
 				    	$sql = 'select id from merchants where status = 1 and referees = '.$user_id;
 				    	$rs = $this->findBySql($sql);
 				    	if($rs != null){
 				    		$merchant_count = sizeof($rs);
-				    		if($merchant_count >= 3){ //发展会员签约单位10家以上
+				    		if($merchant_count >= 0){ //发展会员签约单位10家以上
 				    			$sql = "update users set member_grades_id = 2 where id = " . $user_id;
 				    			$this->execute($sql); 
 				    		}
 				    	}
 				    }
 					$this->updateGrade($this->data['User']['referees']);
+					
 					break;
 				case 2: //签约会员
-				    $user_count = $this->findCount(array('referees' => $user_id,'member_grades_id' => ' >= 2'));
-				    if($user_count >= 3){ //30
+				    $user_count = $this->findCount("User.referees = $user_id and User.member_grades_id >= 2");
+				    echo $user_count;
+				    if($user_count >= 1){ //30
 				    	$sql = "update users set member_grades_id = 3 where id = " . $user_id;
 				    	$this->execute($sql);
 				    }
 					$this->updateGrade($this->data['User']['referees']);
-					//echo $this->data['User']['referees'];
+					
 					break;
 				case 3: //蓝领会员
-				    $user_count = $this->findCount(array('referees' => $user_id,'member_grades_id' => ' >= 3'));
-				    if($user_count >= 3){ //30
+				    $user_count = $this->findCount("User.referees = $user_id and User.member_grades_id >= 3");
+				    if($user_count >= 1){ //30
 				    	$sql = "update users set member_grades_id = 4 where id = " . $user_id;
 				    	$this->execute($sql);
 				    }
 					$this->updateGrade($this->data['User']['referees']);
 					break;
 				case 4: //白领会员
-				    $user_count = $this->findCount(array('referees' => $user_id,'member_grades_id' => ' >= 4'));
-				    if($user_count >= 3){ //30
+				    $user_count = $this->findCount("User.referees = $user_id and User.member_grades_id >= 4");
+				    if($user_count >= 1){ //30
 				    	$sql = "update users set member_grades_id = 5 where id = " . $user_id;
 				    	$this->execute($sql);
 				    }
 					$this->updateGrade($this->data['User']['referees']);
 					break;
 			}
+			$this->create(); //再循环
 		}
 	}	
 

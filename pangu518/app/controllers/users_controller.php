@@ -2,7 +2,8 @@
 class UsersController extends AppController {
 
 	var $name = 'Users';
-	var $helpers = array('Html', 'Form','Javascript' );
+	var $helpers = array('Html', 'Form','Javascript', 'Pagination' );
+	var $components = array('Pagination');
 
 	function index() {
 		$this->User->recursive = 0;
@@ -130,21 +131,52 @@ class UsersController extends AppController {
 	 *
 	 * @param unknown_type $user_id
 	 */
-	function network($user_id = null) {
+	function network($user_id = null,$keyword = null) {
 		$this->User->recursive = 0;
-		$this->set('users', $this->User->findAllByReferees($user_id));		
+		$criteria = "User.referees = $user_id";
+		if($keyword == null){
+			$keyword = $this->data['User']['keyword'];
+		}		
+		if($keyword != null){
+			$criteria = "User.referees = $user_id and (User.login_name like '%$keyword%' or User.user_name like '%$keyword%')";
+		}
+
+		list($order,$limit,$page) = $this->Pagination->init($criteria,null,array('ajaxDivUpdate'=>'cs','url'=> 'index/'. $user_id . '/' .$keyword));
+		
+		$data = $this->User->findAll($criteria, NULL, null, $limit, $page); 			
+		$this->set('users',$data);
+		$this->set('user_id',$user_id);
 	}
 	
 	function check($login_name = null){
 		$this->layout = 'ajax';
 		$this->set('isExistUser',$this->User->findCount(array('login_name' => $login_name)));
-		//$this->set('isExistUser',$this->User->updateGrade($login_name));
 	}
+	
+	function check_referees($login_name = null,$referees = null){
+		$this->layout = 'ajax';
+		$count = $this->User->findCount(array('login_name' => $referees));
+		if($count == 0){
+			$this->set('isExistUser',0);
+		}else{
+			$user = $this->User->findByLoginName($login_name);
+			$user2 = $this->User->findByLoginName($referees); //推荐人
+			if($user['User']['id'] == $user2['User']['referees']){
+				$this->set('isExistUser',0);
+			}else{
+				$this->set('isExistUser',1);
+			}
+		}
+	}	
 	
 	function getUserName($id = null){
 		$this->data = $this->User->read(null, $id);
 		return $this->data['User']['user_name'];
 	}
 	
+	function upgrade($id = null){
+		$this->layout = 'ajax';
+		$this->User->updateGrade($id);
+	}
 }
 ?>

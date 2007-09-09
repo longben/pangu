@@ -96,7 +96,7 @@
 			$('WorkstationMoney').focus();
 			return false;
 		}else{
-			var url = '/workstations/min/131/' + $F('WorkstationMoney')/2;
+			var url = '/workstations/min/131/' + $F('WorkstationMoney')/2 + '/' + <?=rand()?>;
 			if($F('WorkstationCouponGroup')!=''){
 				url = url + '/' + $F('WorkstationCouponGroup');
 			}
@@ -108,7 +108,7 @@
 			});
 			
 			if($F('WorkstationCouponStart')!=''){
-				var url = '/workstations/max/131/' + $F('WorkstationMoney')/2 + '/' + $F('WorkstationCouponStart') + '/' + <?=rand()?> + '/' +  $F('WorkstationCouponGroup');
+				var url = '/workstations/max/131/' + ($F('WorkstationMoney')/2-1) + '/' + $F('WorkstationCouponStart') + '/' + <?=rand()?> + '/' +  $F('WorkstationCouponGroup');
 				var myAjax = new Ajax.Request(url,{
 					method: 'get',
 					onComplete: setMaxValue,
@@ -123,7 +123,7 @@
    	    if($F('WorkstationCouponStart')==''){
    	    	$('WorkstationCouponEnd').value = '';
    	    }else{
-			var url = '/workstations/max/131/' + $F('WorkstationMoney')/2 + '/' + $F('WorkstationCouponStart');
+			var url = '/workstations/max/131/' + ($F('WorkstationMoney')/2-1) + '/' + $F('WorkstationCouponStart') + '/' + <?=rand()?> + '/' +  $F('WorkstationCouponGroup');
 			var myAjax = new Ajax.Request(url,{
 				method: 'get',
 				onComplete: setMaxValue,
@@ -158,9 +158,3 @@
    }
 //-->
 </script>
-
-<?php
-	if($_GET["msg"]){
-		echo "<script language='javascript'>alert('".urldecode($_GET["msg"])."');</script>";
-	}
-?>

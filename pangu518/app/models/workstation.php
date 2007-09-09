@@ -76,6 +76,20 @@ class Workstation extends AppModel {
 						'counterQuery' => ''
 				),
 
+			'MerchantCouponList' =>
+				array('className' => 'MerchantCouponList',
+						'foreignKey' => 'workstation_id',
+						'conditions' => '',
+						'fields' => '',
+						'order' => '',
+						'limit' => '',
+						'offset' => '',
+						'dependent' => '',
+						'exclusive' => '',
+						'finderQuery' => '',
+						'counterQuery' => ''
+				),
+
 	);
 	
 	function buy($id = null, $sum = null, $money = null, $coupon_start = null , $coupon_end = null, $coupon_group = null){

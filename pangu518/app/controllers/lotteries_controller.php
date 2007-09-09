@@ -2,11 +2,18 @@
 class LotteriesController extends AppController {
 
 	var $name = 'Lotteries';
-	var $helpers = array('Html', 'Form' , 'Time', 'Javascript');
+	var $helpers = array('Html', 'Form' , 'Time', 'Javascript', 'Pagination');
+	var $components = array('Pagination');
 
 	function index() {
 		$this->Lottery->recursive = 0;
-		$this->set('lotteries', $this->Lottery->findAll('order by Lottery.lottery_times desc'));
+		$criteria = null;
+		
+		//$this->Pagination->style = "ajax";
+		list($order,$limit,$page) = $this->Pagination->init($criteria,null,array('ajaxDivUpdate'=>'cs','url'=> 'index/'.$keyword));
+		
+		$data = $this->Lottery->findAll($criteria, NULL, 'order by Lottery.lottery_times desc', $limit, $page); 			
+		$this->set('lotteries',$data);
 	}
 
 	function view($id = null) {

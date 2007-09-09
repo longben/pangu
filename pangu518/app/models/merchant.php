@@ -79,9 +79,14 @@ class Merchant extends AppModel {
 				if($i==0){
 					$merchant_sql = 'insert into merchant_coupons(merchant_id,coupon_id,workstation_id,status)
 				      values('.$merchant_id.','.$rs[$i]['WorkstationCoupon']['coupon_id'].','.$workstation_id.','.$status.')';
+
+					$merchant_voucher_sql = 'insert into merchant_vouchers(merchant_id,coupon_id,workstation_id,status)
+				      values('.$merchant_id.','.$rs[$i]['WorkstationCoupon']['coupon_id'].','.$workstation_id.','.$status.')';
+					
 					$coupon_id = $rs[$i]['WorkstationCoupon']['coupon_id'];
 				}else{
 					$merchant_sql .= ',('.$merchant_id.','.$rs[$i]['WorkstationCoupon']['coupon_id'].','.$workstation_id.','.$status.')';
+					$merchant_voucher_sql .= ',('.$merchant_id.','.$rs[$i]['WorkstationCoupon']['coupon_id'].','.$workstation_id.','.$status.')';
 					$coupon_id .= ','.$rs[$i]['WorkstationCoupon']['coupon_id'];
 				}
 			}
@@ -90,6 +95,7 @@ class Merchant extends AppModel {
 			$merchant_coupon_list_sql = "insert into merchant_coupon_lists(merchant_id,workstation_id,coupon_start,coupon_end,coupon_group)
 			  values($merchant_id,$workstation_id,'$coupon_start','$coupon_end','$coupon_group')";
 			$this->execute($merchant_sql); //插入会员消费单位代金券
+			$this->execute($merchant_voucher_sql); //插入会员消费单位代金券分红凭证
 			$this->execute($coupon_sql); //更新代金券状态
 			$this->execute($merchant_coupon_list_sql); //插入会员消费单位代金券列表
 			$this->execute($updateWorkstationCoupon); //更新工作站代金券状态
