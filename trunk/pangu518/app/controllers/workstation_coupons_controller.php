@@ -6,13 +6,22 @@ class WorkstationCouponsController extends AppController {
 	var $components = array('Pagination');
 	
 	function index() {
+		$this->WorkstationCoupon->recursive = 0;
+
 		$user_id = $this->Session->read('User.id');
 		$criteria = array(
 		  'Workstation.user_id' => $user_id
 		);
 
+		$this->WorkstationCoupon->Workstation->unbindModel(array('belongsTo' => array('User')));
+		$this->WorkstationCoupon->Workstation->unbindModel(array('belongsTo' => array('Referee')));
+		$this->WorkstationCoupon->Workstation->unbindModel(array('belongsTo' => array('Region')));
+		$this->WorkstationCoupon->Workstation->unbindModel(array('hasMany' => array('WorkstationCoupon')));
+		$this->WorkstationCoupon->Workstation->unbindModel(array('hasMany' => array('MerchantCoupon')));
+		$this->WorkstationCoupon->Workstation->unbindModel(array('hasMany' => array('WorkstationAttornLog')));
 		
 		$this->data = $this->WorkstationCoupon->Workstation->find($criteria,null,'Workstation.id',null);
+
 		if(empty($this->data)){
 			$this->Session->setFlash('请先申请成立会员消费单位！');
 			$this->redirect('/workstations/profile');
@@ -20,7 +29,7 @@ class WorkstationCouponsController extends AppController {
 		    //设置工作站ID
 			$this->Session->write('ws_id',$this->data['Workstation']['id']);
 		}
-		$this->WorkstationCoupon->recursive = 0;
+		
 		
 		//统计查询条件
 		$criteria = array(
@@ -28,6 +37,8 @@ class WorkstationCouponsController extends AppController {
 		  'WorkstationCoupon.status' => 131
 		);
 		$this->WorkstationCoupon->unbindModel(array('belongsTo' => array('Coupon')));
+		$this->WorkstationCoupon->Workstation->unbindModel(array('hasMany' => array('MerchantCoupon')));
+		$this->WorkstationCoupon->Workstation->unbindModel(array('hasMany' => array('WorkstationAttornLog')));
 		$this->set('total', $this->WorkstationCoupon->findCount($criteria));
 		
 		$criteria = array(
