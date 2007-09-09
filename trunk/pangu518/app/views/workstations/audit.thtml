@@ -1,5 +1,12 @@
 <fieldset>
-<legend>工作站审核</legend> 
+<legend>工作站审核</legend>
+<div align="left">
+	<form action="<?php echo $html->url('/workstations/audit/'); ?>" method="post">
+	  输入工作站名称：
+	  <?php echo $html->input('Workstation/keyword', array('size' => '60'));?>
+	  <?php echo $html->submit('查询');?>
+	</form> 
+</div>
 <table cellpadding="0" cellspacing="0">
 <tr>
 	<th>编号</th>
@@ -28,6 +35,7 @@
 </tr>
 <?php endforeach; ?>
 </table>
+<p><div align="center"><?php echo $this->renderElement('pagination'); // 分页导航页 ?></div></p>
 
 <ul class="actions">
 	<li><?php echo $html->link('新增工作站', '/workstations/add'); ?></li>
