@@ -220,6 +220,13 @@ class WorkstationsController extends AppController {
 				$this->Session->setFlash('无效的工作站！');
 				$this->redirect('/admin');
 			}
+			$this->Workstation->unbindModel(array('hasMany' => array('WorkstationCoupon')));
+			$this->Workstation->unbindModel(array('hasMany' => array('MerchantCoupon')));
+			$this->Workstation->unbindModel(array('hasMany' => array('WorkstationAttornLog')));
+			$this->Workstation->unbindModel(array('hasMany' => array('MerchantCouponList')));
+
+			
+
 			$this->data = $this->Workstation->findByUserId($user_id);
 			$this->set('regions', $this->Workstation->Region->generateList(
 				$conditions = "id like '__0000'",
