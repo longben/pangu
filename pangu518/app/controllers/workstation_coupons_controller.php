@@ -42,6 +42,10 @@ class WorkstationCouponsController extends AppController {
 		$coupons = $this->WorkstationCoupon->findAll("status = 131 group by coupon_group  order by coupon_no");
 		$this->set('coupons', $coupons);
 		
+		$this->WorkstationCoupon->unbindModel(array('belongsTo' => array('Coupon')));
+		$this->WorkstationCoupon->unbindModel(array('belongsTo' => array('Workstation')));
+		$this->WorkstationCoupon->Workstation->unbindModel(array('hasMany' => array('WorkstationCoupon')));
+		$this->WorkstationCoupon->Workstation->unbindModel(array('hasMany' => array('WorkstationAttornLog')));
 		$merchantcouponlists = $this->WorkstationCoupon->Workstation->MerchantCouponList->findAllByWorkstationId($this->data['Workstation']['id']);
 		$this->set('merchantcouponlists', $merchantcouponlists);
 	}
