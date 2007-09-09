@@ -163,7 +163,7 @@
 		}
 
 		if($F('MerchantLoginName')!=''){
-			var url = '/users/check/' + $F('MerchantLoginName');
+			var url = '/users/check/' + $F('MerchantLoginName') + '/' + <?=rand()?>;
 			var myAjax = new Ajax.Request(url,{
 				method: 'get',
 				onComplete: showResponse,
@@ -181,7 +181,7 @@
 		}
 		
 		if($F('MerchantBargainNo')!=''){
-			var url = '/merchants/check_bargain/' + $F('MerchantBargainNo');
+			var url = '/merchants/check_bargain/' + $F('MerchantBargainNo') + '/' + <?=rand()?>;
 			var myAjax = new Ajax.Request(url,{
 				method: 'get',
 				onComplete: checkBargain,
@@ -215,6 +215,8 @@
       	alert('会员消费单位合同编号已经存在，请检查重新录入。');
       	$('MerchantBargainNo').focus();
         checkMoney = false;
-      }
+      }else{
+		checkMoney = true;
+	  }
    }   
 </script>

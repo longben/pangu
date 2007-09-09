@@ -17,7 +17,10 @@ class WorkstationsController extends AppController {
 		}
 
 		list($order,$limit,$page) = $this->Pagination->init($criteria,null,array('url'=> 'index/'.$keyword));
-		
+		$this->Workstation->unbindModel(array('hasMany' => array('WorkstationCoupon')));
+		$this->Workstation->unbindModel(array('hasMany' => array('MerchantCoupon')));
+		$this->Workstation->unbindModel(array('hasMany' => array('WorkstationAttornLog')));
+		$this->Workstation->unbindModel(array('hasMany' => array('MerchantCouponList')));		
 		$data = $this->Workstation->findAll($criteria, NULL, NULL, $limit, $page); 	
 		
 		$this->set('workstations', $data);
@@ -25,11 +28,19 @@ class WorkstationsController extends AppController {
 	
 	function sell() {
 		$this->Workstation->recursive = 0;
+		$this->Workstation->unbindModel(array('hasMany' => array('WorkstationCoupon')));
+		$this->Workstation->unbindModel(array('hasMany' => array('MerchantCoupon')));
+		$this->Workstation->unbindModel(array('hasMany' => array('WorkstationAttornLog')));
+		$this->Workstation->unbindModel(array('hasMany' => array('MerchantCouponList')));		
 		$this->set('workstations', $this->Workstation->findAll('status = 1'));
 	}	
 	
 	function audit() {
 		$this->Workstation->recursive = 0;
+		$this->Workstation->unbindModel(array('hasMany' => array('WorkstationCoupon')));
+		$this->Workstation->unbindModel(array('hasMany' => array('MerchantCoupon')));
+		$this->Workstation->unbindModel(array('hasMany' => array('WorkstationAttornLog')));
+		$this->Workstation->unbindModel(array('hasMany' => array('MerchantCouponList')));		
 		$this->set('workstations', $this->Workstation->findAll('status = 9'));
 	}
 	
@@ -48,6 +59,10 @@ class WorkstationsController extends AppController {
 				$this->Session->setFlash('Invalid id for Workstation');
 				$this->redirect('/workstations/index');
 			}
+			$this->Workstation->unbindModel(array('hasMany' => array('WorkstationCoupon')));
+			$this->Workstation->unbindModel(array('hasMany' => array('MerchantCoupon')));
+			$this->Workstation->unbindModel(array('hasMany' => array('WorkstationAttornLog')));
+			$this->Workstation->unbindModel(array('hasMany' => array('MerchantCouponList')));			
 			$this->data = $this->Workstation->read(null, $id);
 			$this->set('users', $this->Workstation->User->generateList());
 			$this->set('regions', $this->Workstation->Region->generateList(
@@ -134,6 +149,10 @@ class WorkstationsController extends AppController {
 			$this->Session->setFlash('Invalid id for Workstation.');
 			$this->redirect('/workstations/index');
 		}
+		$this->Workstation->unbindModel(array('hasMany' => array('WorkstationCoupon')));
+		$this->Workstation->unbindModel(array('hasMany' => array('MerchantCoupon')));
+		$this->Workstation->unbindModel(array('hasMany' => array('WorkstationAttornLog')));
+		$this->Workstation->unbindModel(array('hasMany' => array('MerchantCouponList')));		
 		$this->set('workstation', $this->Workstation->read(null, $id));
 	}
 
@@ -179,6 +198,10 @@ class WorkstationsController extends AppController {
 				$this->Session->setFlash('Invalid id for Workstation');
 				$this->redirect('/workstations/index');
 			}
+			$this->Workstation->unbindModel(array('hasMany' => array('WorkstationCoupon')));
+			$this->Workstation->unbindModel(array('hasMany' => array('MerchantCoupon')));
+			$this->Workstation->unbindModel(array('hasMany' => array('WorkstationAttornLog')));
+			$this->Workstation->unbindModel(array('hasMany' => array('MerchantCouponList')));			
 			$this->data = $this->Workstation->read(null, $id);
 			$this->set('regions', $this->Workstation->Region->generateList(
 			             $conditions = "id like '__0000'",
@@ -310,6 +333,10 @@ class WorkstationsController extends AppController {
 	
 	function check_bargain($bargain_no = null){
 		$this->layout = 'ajax';
+		$this->Workstation->unbindModel(array('hasMany' => array('WorkstationCoupon')));
+		$this->Workstation->unbindModel(array('hasMany' => array('MerchantCoupon')));
+		$this->Workstation->unbindModel(array('hasMany' => array('WorkstationAttornLog')));
+		$this->Workstation->unbindModel(array('hasMany' => array('MerchantCouponList')));		
 		$count = $this->Workstation->findCount("bargain_no = '$bargain_no'");
 		$this->set('count',$count);
 	}

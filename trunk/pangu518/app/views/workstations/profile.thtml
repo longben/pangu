@@ -13,7 +13,7 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Workstation/ws_name', '工作站名称：');?>
- 	<?php echo $html->input('Workstation/ws_name', array('size' => '60','maxlength' => '40'));?>
+ 	<?php echo $html->input('Workstation/ws_name', array('size' => '60','maxlength' => '40','readOnly' => 'true'));?>
 	<?php echo $html->tagErrorMsg('Workstation/ws_name', 'Please enter the Ws Name.');?>
 </div>
 <div class="optional"> 
@@ -28,7 +28,7 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Workstation/principal', '工作站负责人：');?>
- 	<?php echo $html->input('Workstation/principal', array('size' => '60','maxlength' => '20'));?>
+ 	<?php echo $html->input('Workstation/principal', array('size' => '60','maxlength' => '20','readOnly' => 'true'));?>
 	<?php echo $html->tagErrorMsg('Workstation/principal', 'Please enter the Principal.');?>
 </div>
 <div class="optional"> 
