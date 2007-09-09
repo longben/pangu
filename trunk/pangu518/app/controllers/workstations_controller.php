@@ -261,6 +261,11 @@ class WorkstationsController extends AppController {
 		$this->layout = 'ajax';
 		$this->cacheAction = true;
 		$user_id = $this->Session->read('User.id');
+
+		$this->Workstation->unbindModel(array('hasMany' => array('WorkstationCoupon')));
+		$this->Workstation->unbindModel(array('hasMany' => array('MerchantCoupon')));
+		$this->Workstation->unbindModel(array('hasMany' => array('WorkstationAttornLog')));
+		$this->Workstation->unbindModel(array('hasMany' => array('MerchantCouponList')));		
 		$this->data = $this->Workstation->findByUserId($user_id);
 		$id = $this->data['Workstation']['id'];
 		if($group == null){
@@ -283,6 +288,10 @@ class WorkstationsController extends AppController {
 		$this->layout = 'ajax';
 		$this->cacheAction = true;
 		$user_id = $this->Session->read('User.id');
+		$this->Workstation->unbindModel(array('hasMany' => array('WorkstationCoupon')));
+		$this->Workstation->unbindModel(array('hasMany' => array('MerchantCoupon')));
+		$this->Workstation->unbindModel(array('hasMany' => array('WorkstationAttornLog')));
+		$this->Workstation->unbindModel(array('hasMany' => array('MerchantCouponList')));		
 		$this->data = $this->Workstation->findByUserId($user_id);
 		$id = $this->data['Workstation']['id'];
 		if($start == null){
