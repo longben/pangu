@@ -58,8 +58,4 @@
 </tr>
 <?php endforeach; ?>
 </table>
-
-<ul class="actions">
-	<li><?php echo $html->link('批量生成分红凭证', '/coupons/add'); ?></li>
-</ul>
 </fieldset>
