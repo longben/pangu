@@ -77,7 +77,8 @@ class User extends AppModel {
 		//$income_tax = (($user_workstation_pay + $user_referees_coupon + $user_merchant_coupon) - 1500) * 0.3;
 		
 		$_total = $user_workstation_pay + $user_referees_coupon + $user_merchant_coupon; //毛收入
-		$income_tax = $_total * 0.2 ; //所得税
+
+		$income_tax = $this->getIncomeTax($_total); //所得税
 		
 		$overhead_expenses = $_total * 0.05;
 		
