@@ -5,13 +5,13 @@ class WorkstationCouponsController extends AppController {
 	var $helpers = array('Html', 'Form', 'Pagination');
 	var $components = array('Pagination');
 	
-	function index() {
+	function index($keyword = null, $page=1) {
 		$this->WorkstationCoupon->recursive = 0;
 
 		$user_id = $this->Session->read('User.id');
 		$criteria = array(
 		  'Workstation.user_id' => $user_id
-		);
+		);	
 
 		$this->WorkstationCoupon->Workstation->unbindModel(array('belongsTo' => array('User')));
 		$this->WorkstationCoupon->Workstation->unbindModel(array('belongsTo' => array('Referee')));
@@ -20,14 +20,14 @@ class WorkstationCouponsController extends AppController {
 		$this->WorkstationCoupon->Workstation->unbindModel(array('hasMany' => array('MerchantCoupon')));
 		$this->WorkstationCoupon->Workstation->unbindModel(array('hasMany' => array('WorkstationAttornLog')));
 		
-		$this->data = $this->WorkstationCoupon->Workstation->find($criteria,null,'Workstation.id',null);
+		$this->data2 = $this->WorkstationCoupon->Workstation->find($criteria,null,'Workstation.id',null);
 
-		if(empty($this->data)){
+		if(empty($this->data2)){
 			$this->Session->setFlash('请先申请成立会员消费单位！');
 			$this->redirect('/workstations/profile');
 		}else{
 		    //设置工作站ID
-			$this->Session->write('ws_id',$this->data['Workstation']['id']);
+			$this->Session->write('ws_id',$this->data2['Workstation']['id']);
 		}
 		
 		
@@ -57,7 +57,16 @@ class WorkstationCouponsController extends AppController {
 		$this->WorkstationCoupon->unbindModel(array('belongsTo' => array('Workstation')));
 		$this->WorkstationCoupon->Workstation->unbindModel(array('hasMany' => array('WorkstationCoupon')));
 		$this->WorkstationCoupon->Workstation->unbindModel(array('hasMany' => array('WorkstationAttornLog')));
-		$merchantcouponlists = $this->WorkstationCoupon->Workstation->MerchantCouponList->findAllByWorkstationId($this->data['Workstation']['id']);
+
+		$criteria = "MerchantCouponList.workstation_id = " . $this->data2['Workstation']['id'];
+		if($keyword == null){
+			$keyword = $this->data['Workstation']['keyword'];
+		}		
+		if($keyword != null){
+			$criteria = "MerchantCouponList.workstation_id = " . $this->data2['Workstation']['id'] . " and Merchant.merchant_name like '%$keyword%'";
+		}
+		//$merchantcouponlists = $this->WorkstationCoupon->Workstation->MerchantCouponList->findAllByWorkstationId($this->data2['Workstation']['id']);
+		$merchantcouponlists = $this->WorkstationCoupon->Workstation->MerchantCouponList->findAll($criteria);
 		$this->set('merchantcouponlists', $merchantcouponlists);
 	}
 	
