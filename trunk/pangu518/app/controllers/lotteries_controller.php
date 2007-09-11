@@ -5,7 +5,7 @@ class LotteriesController extends AppController {
 	var $helpers = array('Html', 'Form' , 'Time', 'Javascript', 'Pagination');
 	var $components = array('Pagination');
 
-	function index() {
+	function index($keyword = null) {
 		$this->Lottery->recursive = 0;
 		$criteria = null;
 		
@@ -64,9 +64,7 @@ class LotteriesController extends AppController {
 			$this->cleanUpFields();
 
 			//判断是否存在还未开奖的以前的期数，若有则不允许，需要顺序开奖
-			$rsList = $this->Lottery->findBySql("select count(*) from lotteries
-			   where id <  $id 
-				and flag = 1");
+			$rsList = $this->Lottery->findBySql("select count(*) from lotteries where id < $id and flag = 1");
 			$_list = $rsList[0][0]['count(*)']; 
 			$this->data['Lottery']['list'] = $_list;
 			if($_list > 0){
@@ -108,6 +106,11 @@ class LotteriesController extends AppController {
 			}else{
 				$_balance = 0; //本期余额
 			}
+
+			if($_win_count==0){ //本期无中奖人员
+			   $_balance = $_total2; //本期余额
+			}
+
 			
 			$this->data['Lottery']['total'] = $_total;
 			$this->data['Lottery']['dividend'] = $_dividend;
