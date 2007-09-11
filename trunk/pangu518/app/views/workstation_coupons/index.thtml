@@ -21,6 +21,14 @@
 <?php endforeach; ?>
 </table>
 <br/>
+<hr/>
+<div align="left">
+	<form action="<?php echo $html->url('/workstation_coupons/index/'); ?>" method="post">
+	  输入会员消费单位名称：
+	  <?php echo $html->input('Workstation/keyword', array('size' => '60'));?>
+	  <?php echo $html->submit('查询');?>
+	</form> 
+</div>
 <table cellpadding="0" cellspacing="0" width="100%">
 <tr>
   <th colspan="4" align="left">已转出的分红凭证总数：<?php echo $total_sale?>份，共计<?php echo $total_sale*2?>元。</th>
