@@ -8,7 +8,9 @@
  <li>推荐会员数目：<?=$performance['user_referees']?>个</li>
  <li>推荐会员所得分红凭证数目所得佣金(含税)：<?=$performance['user_referees_coupon']?>元</li>
  <li>佣金累计数目代扣所得税：<?=$performance['income_tax']?>元</li>
+ <!--
  <li>管理费：<?=$performance['overhead_expenses']?>元</li>
+ -->
  <hr/> 
  <li>累积所得：<?=$performance['total']?>元</li>
  <hr/>
