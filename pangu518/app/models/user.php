@@ -74,13 +74,12 @@ class User extends AppModel {
 		$user_referees_coupon = $user_referees_coupon * 2 * $u_per;
 		$user_merchant_coupon = $user_merchant_coupon * 2 * $m_per;
 		
-		//$income_tax = (($user_workstation_pay + $user_referees_coupon + $user_merchant_coupon) - 1500) * 0.3;
-		
+	
 		$_total = $user_workstation_pay + $user_referees_coupon + $user_merchant_coupon; //毛收入
 
 		$income_tax = $this->getIncomeTax($_total); //所得税
 		
-		$overhead_expenses = $_total * 0.05;
+		//$overhead_expenses = $_total * 0.05; //管理费用
 		
 		$total =  $_total - $income_tax - $overhead_expenses;
 		
@@ -112,7 +111,7 @@ class User extends AppModel {
 				    	$rs = $this->findBySql($sql);
 				    	if($rs != null){
 				    		$merchant_count = sizeof($rs);
-				    		if($merchant_count >= 0){ //发展会员签约单位10家以上
+				    		if($merchant_count >= 1){ //发展会员签约单位10家以上
 				    			$sql = "update users set member_grades_id = 2 where id = " . $user_id;
 				    			$this->execute($sql); 
 				    		}
