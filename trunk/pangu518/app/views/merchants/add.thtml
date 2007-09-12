@@ -198,6 +198,18 @@
       	$('MerchantLoginName').focus();
         checkMoney = false;
       }
+
+      if(count == 87){
+      	alert('该会员帐号已经是工作站，不能在申请成为会员消费单位。');
+      	$('MerchantLoginName').focus();
+        checkMoney = false;
+      }
+
+      if(count == 77){
+      	alert('该会员帐号已经是会员消费单位，不能重复申请成为会员消费单位。');
+      	$('MerchantLoginName').focus();
+        checkMoney = false;
+      }
    }
    
    function showResponse2(originalRequest){
