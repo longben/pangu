@@ -236,6 +236,24 @@ class WorkstationsController extends AppController {
 			);
 		} else {
 			$this->cleanUpFields();
+
+
+
+			$user = $this->Workstation->User->findByLoginName($this->data['User']['login_name']);
+			$user_id = $user['User']['id'];
+
+
+			$referes_no =  $this->data['Referee']['login_name'];					
+			$referees = $this->Workstation->getReferees($referes_no);
+
+			//$referes_no =  $this->Workstation->User->findByLoginName($this->data['Referee']['login_name']);			
+			//$referees = $referes_no['Referee']['referees'];		
+			
+			$this->data['Workstation']['user_id'] = $user_id;
+			$this->data['Workstation']['referees'] = $referees;
+
+
+
 			if($this->Workstation->save($this->data)) {
 				$this->Session->setFlash('工作站资料修改成功！');
 				$this->redirect('/workstations');	

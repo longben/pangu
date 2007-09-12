@@ -17,19 +17,14 @@
 	<?php echo $html->tagErrorMsg('Workstation/ws_name', 'Please enter the Ws Name.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Workstation/user_id', '工作站所有人：');?>
- 	<?php echo $html->input('User/user_name', array('size' => '60','maxlength' => '30'));?>
-	<?php echo $html->tagErrorMsg('Workstation/user_id', 'Please select the Member.') ?>
+	<?php echo $form->labelTag('Workstation/login_name', '工作站所有人：');?>
+ 	<?php echo $html->input('User/login_name', array('size' => '50','maxlength' => '30'));?><span style='color:red'>会员登录名</span>
+	<?php echo $html->tagErrorMsg('Workstation/login_name', 'Please select the Member.') ?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Workstation/principal', '工作站负责人：');?>
- 	<?php echo $html->input('Workstation/principal', array('size' => '60','maxlength' => '20'));?>
-	<?php echo $html->tagErrorMsg('Workstation/principal', 'Please enter the Principal.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Workstation/referees', '推荐人：');?>
- 	<?php echo $html->input('Referee/user_name', array('size' => '60','maxlength' => '30'));?>
-	<?php echo $html->tagErrorMsg('Workstation/referees', 'Please enter the Referees.');?>
+	<?php echo $form->labelTag('Workstation/referees_no', '推荐人：');?>
+ 	<?php echo $html->input('Referee/login_name', array('size' => '50','maxlength' => '30'));?><span style='color:red'>会员登录名</span>
+	<?php echo $html->tagErrorMsg('Workstation/referees_no', 'Please enter the Referees.');?>
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Workstation/bargain_no', '合同编号：');?>

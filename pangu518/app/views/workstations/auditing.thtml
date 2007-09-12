@@ -34,7 +34,7 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Workstation/mobile', '移动电话：');?>
- 	<?php echo $html->input('Workstation/mobile', array('size' => '60','maxlength' => '11'));?>
+ 	<?php echo $html->input('Workstation/mobile', array('size' => '60','maxlength' => '11','readOnly' => 'true'));?>
 	<?php echo $html->tagErrorMsg('Workstation/mobile', 'Please enter the mobile.');?>
 </div>
 <div class="optional"> 
@@ -49,7 +49,7 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Workstation/introduction', '工作站简介：');?>
- 	<?php echo $html->textarea('Workstation/introduction', array('cols' => '60', 'rows' => '5'));?>
+ 	<?php echo $html->textarea('Workstation/introduction', array('cols' => '60', 'rows' => '5','readOnly' => 'true'));?>
 	<?php echo $html->tagErrorMsg('Workstation/introduction', 'Please enter the Introduction.');?>
 </div>
 <?php echo $html->hidden('Workstation/id')?>
