@@ -154,6 +154,7 @@ class UsersController extends AppController {
 		$count = 0;
 		$this->data = $this->User->findByLoginName($login_name);
 		if($this->data != null){
+			$count = 1;
 			if($this->User->Workstaion->findCount(array('user_id' => $this->data['User']['id']) > 0){
 				$count = 87;
 			}
