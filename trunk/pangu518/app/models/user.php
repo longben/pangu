@@ -106,6 +106,9 @@ class User extends AppModel {
 			switch ($grade){
 				case 1: //个人会员
 				    $user_count = $this->findCount(array('referees' => $user_id));
+					$sql = "select count(*) from users a,users b where a.id = b.referees and a.referees = $user_id";
+					$rs = $this->findBySql($sql);
+					$user_count += $rs[0][0]['count(*)'];
 				    if($user_count >= 1){ //发展个人会员100名以上
 				    	$sql = 'select id from merchants where status = 1 and referees = '.$user_id;
 				    	$rs = $this->findBySql($sql);
