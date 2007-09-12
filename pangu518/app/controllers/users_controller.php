@@ -151,7 +151,20 @@ class UsersController extends AppController {
 	
 	function check($login_name = null){
 		$this->layout = 'ajax';
-		$this->set('isExistUser',$this->User->findCount(array('login_name' => $login_name)));
+		$count = 0;
+		$this->data = $this->User->findByLoginName($login_name);
+		if($this->data != null){
+			if($this->User->Workstaion->findCount(array('user_id' => $this->data['User']['id']) > 0){
+				$count = 87;
+			}
+
+			if($this->User->Merchant->findCount(array('user_id' => $this->data['User']['id']) > 0){
+				$count = 77;
+			}
+		}
+
+		//$this->set('isExistUser',$this->User->findCount(array('login_name' => $login_name)));
+		$this->set('isExistUser',$count);
 	}
 	
 	function check_referees($login_name = null,$referees = null){

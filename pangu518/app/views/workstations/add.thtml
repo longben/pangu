@@ -160,6 +160,19 @@
       	$('WorkstationLoginName').focus();
         checkMoney = false;
       }
+
+      if(count == 87){
+      	alert('该会员帐号已经是工作站，不能重复申请成为工作站。');
+      	$('WorkstationLoginName').focus();
+        checkMoney = false;
+      }
+
+      if(count == 77){
+      	alert('该会员帐号已经是会员消费单位，不能申请成立工作站。');
+      	$('WorkstationLoginName').focus();
+        checkMoney = false;
+      }
+
    }
 
    function checkBargain(originalRequest){
