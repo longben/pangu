@@ -21,7 +21,7 @@
 </tr>
 <?php foreach ($lotteryBettings as $lotteryBetting): ?>
 <tr>
-    <td><?php echo $html->link($lotteryBetting['User']['user_name'],'/users/view/' . $lotteryBetting['User']['id'])?></td>
+    <td><?php echo $html->link($lotteryBetting['User']['user_name'],'/users/view/' . $lotteryBetting['User']['id'] . '?cw=pg')?></td>
     <td><?php echo $lotteryBetting['LotteryBetting']['betting_time'] * $lottery['Lottery']['dividend'];?></td>
     <td><?php echo $lotteryBetting['LotteryBetting']['betting_time'] * $lottery['Lottery']['dividend'] * 0.2;?></td>
     <td><?php echo $lotteryBetting['User']['telephone'];?></td>
