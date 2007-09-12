@@ -32,6 +32,26 @@ class User extends AppModel {
 				),
 
 	);
+
+	var $hasMany = array(
+			'Workstation' =>
+				array('className' => 'Workstation',
+						'foreignKey' => 'user_id',
+						'conditions' => '',
+						'fields' => '',
+						'order' => '',
+						'dependent' => ''
+				),
+
+			'Merchant' =>
+				array('className' => 'Merchant',
+						'foreignKey' => 'user_id',
+						'conditions' => '',
+						'fields' => '',
+						'order' => '',
+						'dependent' => ''
+				),			
+	);
 	
 	function getPerformance($user_id = null, $start_date = null, $end_date = null){
 		$user_workstation = 0; //推荐工作站数目
