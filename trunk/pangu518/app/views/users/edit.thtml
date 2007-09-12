@@ -6,7 +6,7 @@
  	<?php echo $html->selectTag('User/region_id', $regions, $html->tagValue('User/region_id'), array('style' => 'width:150px'), array(), false);?>
 	<?php echo $html->tagErrorMsg('User/region_id', 'Please select the Region.') ?>
 </div>
-<?php if($user['User']['role_id']!=2 || $user['User']['role_id']!=3){?>
+<?php if($user['User']['role_id'] != 2 && $user['User']['role_id'] != 3){?>
 <div class="optional"> 
 	<?php echo $form->labelTag('User/role_id', '所属角色：');?>
  	<?php echo $html->selectTag('User/role_id', $roles, $html->tagValue('User/role_id'), array('style' => 'width:150px'), array(), false);?><span style='color:red'>注意：请仔细确认该用户角色</span>
