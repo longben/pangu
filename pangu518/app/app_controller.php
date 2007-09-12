@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set("Asia/Chongqing");  //需要用到日期，强制设置时区
 class AppController extends Controller {
 	
 	/*  主体：0:无效 1:公司 2:会员 3:工作站 4:会员消费单位*/
@@ -6,7 +7,6 @@ class AppController extends Controller {
 	var $_user = 2;
 	var $_workstation = 3;
 	var $_merchant = 4;
-
 
 	function bzip2($in, $out){
 	   if (!file_exists ($in) || !is_readable ($in))
