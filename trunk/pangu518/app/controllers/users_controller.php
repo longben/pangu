@@ -47,6 +47,7 @@ class UsersController extends AppController {
 				$this->redirect('/members/index');
 			}
 			$this->data = $this->User->read(null, $id);
+			$this->set('user', $this->data);
 			$this->set('memberGrades', $this->User->MemberGrade->generateList(
 			  $conditions = null,
 			  $order = null,
