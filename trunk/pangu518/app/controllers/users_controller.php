@@ -113,16 +113,26 @@ class UsersController extends AppController {
 	/**
 	 * 会员业绩
 	 *
-	 * @param unknown_type $user_id
 	 */
-	function performance($user_id = null, $start_date = null, $end_date = null) {
+	function performance($user_id = null) {
+		$this->User->recursive = 0;
+		$this->cleanUpFields();
+
+		if (empty($this->data)) {
+			$start_date = date("Y").'-'.date("m").'-1';
+			$end_date = date("Y").'-'.date("m").'-'.date("d")+1;
+		}else{
+			$start_date = $this->data['User']['start_time_year'].'-'.$this->data['User']['start_time_month'].'-'.$this->data['User']['start_time_day'];
+			$end_date = $this->data['User']['end_time_year'].'-'.$this->data['User']['end_time_month'].'-'.$this->data['User']['end_time_day'];
+		}
+
 		$this->set('performance', $this->User->getPerformance($user_id, $start_date, $end_date));
+		$this->set('user_id',$user_id);
 	}
 
 	/**
 	 * 历史分红
 	 *
-	 * @param unknown_type $user_id
 	 */
 	function bonus($user_id = null) {
 	}
