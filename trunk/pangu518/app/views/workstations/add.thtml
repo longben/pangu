@@ -113,7 +113,6 @@
 			return false;
 		}
 
-
 		if($F('WorkstationTelphone')==''){
 			alert('常用电话不能为空！');
 			$('WorkstationTelphone').focus();
@@ -139,7 +138,10 @@
 				method: 'get',
 				onComplete: showResponse,
 				asynchronous:false
-			});	
+			});
+			if(checkMoney == false){
+				return false;
+			}
 		}
 		
 		if($F('WorkstationBargainNo')!=''){
@@ -156,23 +158,20 @@
    function showResponse(originalRequest){
    	  var count = parseInt(originalRequest.responseText);
       if(count == 0){
-      	alert('工作站所有人帐号录入不正确，请检查重新录入。');
-      	$('WorkstationLoginName').focus();
-        checkMoney = false;
-      }
-
-      if(count == 87){
-      	alert('该会员帐号已经是工作站，不能重复申请成为工作站。');
-      	$('WorkstationLoginName').focus();
-        checkMoney = false;
-      }
-
-      if(count == 77){
-      	alert('该会员帐号已经是会员消费单位，不能申请成立工作站。');
-      	$('WorkstationLoginName').focus();
-        checkMoney = false;
-      }
-
+		  alert('工作站所有人帐号录入不正确，请检查重新录入。');
+		  $('WorkstationLoginName').focus();
+		  checkMoney = false;
+      }else if(count == 87){
+		  alert('该会员帐号已经是工作站，不能重复申请成为工作站。');
+		  $('WorkstationLoginName').focus();
+		  checkMoney = false;
+      }else if(count == 77){
+		  alert('该会员帐号已经是会员消费单位，不能申请成立工作站。');
+		  $('WorkstationLoginName').focus();
+		  checkMoney = false;
+      }else{
+		  checkMoney = true;
+	  }
    }
 
    function checkBargain(originalRequest){
