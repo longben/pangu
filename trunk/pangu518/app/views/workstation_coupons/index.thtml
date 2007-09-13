@@ -14,9 +14,9 @@
 </tr>
 <?php foreach ($coupons as $coupon): ?>
 <tr>
-	<td><?php echo $coupon['WorkstationCoupon']['coupon_group']?></td>
-	<td><?php echo $coupon['WorkstationCoupon']['coupon_no'] . ' -- '. $this->controller->getMax(131,$coupon['WorkstationCoupon']['coupon_no'],$coupon['WorkstationCoupon']['coupon_group'])?></td>
-	<td><?php echo $coupon['WorkstationCoupon']['created']; ?></td>
+	<td><?php echo $coupon['a']['coupon_group']?></td>
+	<td><?php echo $coupon['a']['min(a.coupon_no)'] . ' -- ' . $coupon['a']['max(a.coupon_no)']?></td>
+	<td><?php echo $coupon['a']['created']; ?></td>
 </tr>
 <?php endforeach; ?>
 </table>
