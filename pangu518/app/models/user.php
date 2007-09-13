@@ -91,7 +91,7 @@ class User extends AppModel {
 		  where u.referees = $user_id and uc.user_id = u.id");
 		$user_referees_coupon = $uc[0][0]['count(*)'];
 		*/
-		$uc = $this->findBySql("select count(*) from user_coupons uc uc.user_id in(" . $arr['count'] . "0)");
+		$uc = $this->findBySql("select count(*) from user_coupons uc uc.user_id in(" . $arr['out'] . "0)");
 		$user_referees_coupon = $uc[0][0]['count(*)'];
 		
 		//提成比率
