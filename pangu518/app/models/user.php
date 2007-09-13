@@ -75,12 +75,20 @@ class User extends AppModel {
 		$m = $this->findBySql("select count(*) from merchant_coupons mc , merchants m 
 		  where m.referees = $user_id and mc.merchant_id = m.id");
 		$user_merchant_coupon = $m[0][0]['count(*)'];
+
+		$arr = $this->getUserTree($user_id,null,0); //递归查询
 				
 		//推荐会员数目
-		$user_referees = $this->findCount("referees = $user_id");
+		//$user_referees = $this->findCount("referees = $user_id");
+		$user_referees = $arr['count'];
+
 		//推荐会员所得代金券数目
+		/*
 		$uc = $this->findBySql("select count(*) from user_coupons uc , users u
 		  where u.referees = $user_id and uc.user_id = u.id");
+		$user_referees_coupon = $uc[0][0]['count(*)'];
+		*/
+		$uc = $this->findBySql("select count(*) from user_coupons uc uc.user_id in(" . $arr['count'] . "0)");
 		$user_referees_coupon = $uc[0][0]['count(*)'];
 		
 		//提成比率
