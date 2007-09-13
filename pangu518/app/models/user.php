@@ -174,13 +174,15 @@ class User extends AppModel {
 		}
 	}
 
-	function getUserTree($user_id = null, $out = null){
+	function getUserTree($user_id = null, $out = null ,$count = 0){
 		$users = $this->findAllByReferees($user_id);
 		foreach($users as $user){
 			$out .= $user['User']['id'] . ',';
-			$this->getUserTree($user['User']['id'],$out);
+			$count++;
+			$this->getUserTree($user['User']['id'],$out, $count);
 		}
-		return $out;
+		$arr = array('count' => $count, 'out' => $out);
+		return $arr;
 	}
 
 }
