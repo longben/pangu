@@ -52,9 +52,9 @@
 </tr>
 <?php foreach ($coupons as $coupon): ?>
 <tr>
-	<td><?php echo $coupon['Coupon']['coupon_group']?></td>
-	<td><?php echo $coupon['Coupon']['coupon_no'] . ' -- ' . $this->controller->getMaxNo(113,$coupon['Coupon']['coupon_no'],$coupon['Coupon']['coupon_group'])?></td>
-	<td><?php echo $coupon['Coupon']['created']?></td>
+	<td><?php echo $coupon['a']['coupon_group']?></td>
+	<td><?php echo $coupon['a']['min(a.coupon_no)'] . ' -- ' . $coupon['a']['max(a.coupon_no)']?></td>
+	<td><?php echo $coupon['a']['created']?></td>
 </tr>
 <?php endforeach; ?>
 </table>

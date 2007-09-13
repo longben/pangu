@@ -214,9 +214,16 @@ class CouponsController extends AppController {
 		    where WorkstationCouponList.workstation_id = Workstation.id");
 		$this->set('wcls',$ws);
 
+		/* 查询公司代金券余额
 		$this->Coupon->unbindModel(array('hasMany' => array('UserCoupon')));
 		$this->Coupon->unbindModel(array('hasMany' => array('MerchantCoupon')));		
 		$coupons = $this->Coupon->findAll("status = 113 group by coupon_group  order by coupon_no");
+		*/
+		$coupons = $this->Coupon->query("
+			select a.coupon_group,min(a.coupon_no),max(a.coupon_no),a.created
+				from coupons a,coupon_lists b 
+					where a.status=113 
+						and a.coupon_group = b.coupon_group group by a.coupon_group");
 		$this->set('coupons', $coupons);
 	}
 	
