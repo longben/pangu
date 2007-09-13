@@ -193,5 +193,11 @@ class UsersController extends AppController {
 		$this->layout = 'ajax';
 		$this->User->updateGrade($id);
 	}
+
+	function user_tree($user_id = null, $out = null){
+		$this->layout = 'ajax';
+		$out = $this->User->getUserTree($user_id,$out);
+		$this->set('out',$out);
+	}
 }
 ?>

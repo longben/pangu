@@ -172,7 +172,16 @@ class User extends AppModel {
 			}
 			$this->create(); //再循环
 		}
-	}	
+	}
+
+	function getUserTree($user_id = null, $out = null){
+		$users = $this->findAllByReferees($user_id);
+		foreach($users as $user){
+			$out .= $user['User']['id'] . ',';
+			$this->getUserTree($user['User']['id'],$out);
+		}
+		return $out;
+	}
 
 }
 ?>
