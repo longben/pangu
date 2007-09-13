@@ -54,11 +54,12 @@ class WorkstationCouponsController extends AppController {
 		$coupons = $this->WorkstationCoupon->findAll("status = 131 group by coupon_group  order by coupon_no");
 		*/
 		$coupons = $this->WorkstationCoupon->findBySql("
-			select a.coupon_group,min(a.coupon_no) as amin,max(a.coupon_no) as amax,a.created
+			select a.coupon_group,min(a.coupon_no),max(a.coupon_no),a.created
 				from workstation_coupons a,workstation_coupon_lists b 
-					where (a.coupon_no in (b.coupon_start,b.coupon_end))
+					where (a.coupon_no in (b.coupon_start,b.coupon_end)) 
 					  and a.status=131 and a.workstation_id = " . $this->data2['Workstation']['id'] .
-						   " and a.coupon_group = b.coupon_group group by a.coupon_group");
+						" and a.coupon_group = b.coupon_group group by a.coupon_group");
+
 		$this->set('coupons', $coupons);
 		
 		$this->WorkstationCoupon->unbindModel(array('belongsTo' => array('Coupon')));
