@@ -2,6 +2,9 @@
 class User extends AppModel {
 
 	var $name = 'User';
+
+	var $u = '';
+	var $c = 0;
 	
 	var $belongsTo = array(
 			'MemberGrade' =>
@@ -182,14 +185,16 @@ class User extends AppModel {
 		}
 	}
 
-	function getUserTree($user_id = null, $out = null ,$count = 0){
+	function getUserTree($user_id = null){
+
 		$users = $this->findAllByReferees($user_id);
-		foreach($users as $user){
-			$out .= $user['User']['id'] . ',';
-			$count++;
-			$this->getUserTree($user['User']['id'],$out, $count);
-		}
 		$arr = array('count' => $count, 'out' => $out);
+		foreach($users as $user){
+			$this->u .= $user['User']['id'] . ',';
+			$this->c++;
+			$this->getUserTree($user['User']['id']);
+			$arr = array('count' => $this->c, 'out' => $this->u);	
+		}
 		return $arr;
 	}
 
