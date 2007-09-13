@@ -1,5 +1,14 @@
 <fieldset align=center>
 <legend>会员个人业绩</legend> 
+<form action="<?php echo $html->url("/users/performance/$user_id"); ?>" method="post">
+<div>
+    查询日期起止：
+ 	从<?php echo $html->dateTimeOptionTag('User/start_time', 'YMD' ,'NONE', mktime(date("G")+1, 0, 0, date("m"), 1, date("Y")), array());?> 到 
+ 	<?php echo $html->dateTimeOptionTag('User/end_time', 'YMD' ,'NONE', mktime(date("G")+1, 0, 0, date("m"), date("d")+1, date("Y")), array());?>
+	<?php echo $html->hiddenTag('User/id',$user_id);?>
+	<?php echo $html->submit('查询');?>
+</div>
+</form>
 <ul class="actions">
  <li>推荐工作站数目：<?=$performance['user_workstation']?>个</li> 
  <li>推荐工作站所得佣金(含税)：<?=$performance['user_workstation_pay']?>元</li> 

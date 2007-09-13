@@ -57,6 +57,7 @@ class User extends AppModel {
 	);
 	
 	function getPerformance($user_id = null, $start_date = null, $end_date = null){
+
 		$user_workstation = 0; //推荐工作站数目
 		$user_workstation_pay = 0 ; //推荐工作站所得报酬
 		$user_merchant = 0; //签定会员消费单位数目
@@ -68,15 +69,21 @@ class User extends AppModel {
 		$total = 0 ; //累积所得
 		
 		//推荐工作站数目
-		$w = $this->findBySql("select count(*) from workstations where referees = $user_id");
+		$w = $this->findBySql("select count(*) from workstations 
+		  where referees = $user_id
+		    and created >= '$start_date' and created <= '$end_date'");
 		$user_workstation = $w[0][0]['count(*)'];
 		
 		//指定时间范围内签订会员消费单位数目
-		$m = $this->findBySql("select count(*) from merchants where referees = $user_id");
+		$m = $this->findBySql("select count(*) from merchants 
+		  where referees = $user_id
+		    and created >= '$start_date' and created <= '$end_date'");
 		$user_merchant = $m[0][0]['count(*)'];
+
 		//签定会员消费单位所购代金券
 		$m = $this->findBySql("select count(*) from merchant_coupons mc , merchants m 
-		  where m.referees = $user_id and mc.merchant_id = m.id");
+		  where m.referees = $user_id and mc.merchant_id = m.id
+		    and mc.created >= '$start_date' and mc.created <= '$end_date'");
 		$user_merchant_coupon = $m[0][0]['count(*)'];
 
 		$arr = $this->getUserTree($user_id,null,0); //递归查询
@@ -91,7 +98,10 @@ class User extends AppModel {
 		  where u.referees = $user_id and uc.user_id = u.id");
 		$user_referees_coupon = $uc[0][0]['count(*)'];
 		*/
-		$uc = $this->findBySql("select count(*) from user_coupons uc where uc.user_id in(" . $arr['out'] . "0)");
+
+		$uc = $this->findBySql("select count(*) from user_coupons uc 
+		  where uc.user_id in(" . $arr['out'] . "0)
+		    and uc.created >= '$start_date' and uc.created <= '$end_date'");
 		$user_referees_coupon = $uc[0][0]['count(*)'];
 		
 		//提成比率
@@ -140,7 +150,7 @@ class User extends AppModel {
 					$sql = "select count(*) from users a,users b where a.id = b.referees and a.referees = $user_id";
 					$rs = $this->findBySql($sql);
 					$user_count += $rs[0][0]['count(*)'];
-				    if($user_count >= 1){ //发展个人会员100名以上
+				    if($user_count >= 5){ //发展个人会员100名以上
 				    	$sql = 'select id from merchants where status = 1 and referees = '.$user_id;
 				    	$rs = $this->findBySql($sql);
 				    	if($rs != null){
@@ -188,7 +198,7 @@ class User extends AppModel {
 	function getUserTree($user_id = null){
 
 		$users = $this->findAllByReferees($user_id);
-		$arr = array('count' => $count, 'out' => $out);
+		$arr = array('count' => $this->c, 'out' => $this->u);
 		foreach($users as $user){
 			$this->u .= $user['User']['id'] . ',';
 			$this->c++;
