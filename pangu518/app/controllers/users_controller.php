@@ -155,11 +155,11 @@ class UsersController extends AppController {
 		$this->data = $this->User->findByLoginName($login_name);
 		if($this->data != null){
 			$count = 1;
-			if($this->User->Workstation->findCount(array('user_id' => $this->data['User']['id']) > 0)){
+			if($this->User->Workstation->findCount(array('user_id' => $this->data['User']['id'])) > 0){
 				$count = 87;
 			}
 
-			if($this->User->Merchant->findCount(array('user_id' => $this->data['User']['id']) > 0)){
+			if($this->User->Merchant->findCount(array('user_id' => $this->data['User']['id'])) > 0){
 				$count = 77;
 			}
 		}
