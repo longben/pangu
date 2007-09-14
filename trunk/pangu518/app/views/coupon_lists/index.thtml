@@ -46,8 +46,4 @@
 </tr>
 <?php endforeach; ?>
 </table>
-
-<ul class="actions">
-<li><?php echo $html->link('分红凭证生成', '/coupons/add')?></li>
-</ul>
 </fieldset>
