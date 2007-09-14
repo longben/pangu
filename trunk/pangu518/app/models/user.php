@@ -86,7 +86,7 @@ class User extends AppModel {
 		    and mc.created >= '$start_date' and mc.created <= '$end_date'");
 		$user_merchant_coupon = $m[0][0]['count(*)'];
 
-		$arr = $this->getUserTree($user_id,null,0); //递归查询
+		$arr = $this->getUserTree($user_id,$start_date,$end_date); //递归查询
 				
 		//推荐会员数目
 		//$user_referees = $this->findCount("referees = $user_id");
@@ -146,7 +146,7 @@ class User extends AppModel {
 			$grade = $this->data['User']['member_grades_id'];
 			switch ($grade){
 				case 1: //个人会员
-				    $arr = $this->getUserTree($user_id);
+				    $arr = $this->getUserTree($user_id,null,null);
 					$user_count = $arr['count'];
 				    
 					/*
@@ -201,14 +201,19 @@ class User extends AppModel {
 		}
 	}
 
-	function getUserTree($user_id = null){
+	function getUserTree($user_id = null, $start_date = null, $end_date = null){
+		
+		if($start_date == null){
+		  $users = $this->findAllByReferees($user_id);
+		}else{
+		  $users = $this->findAll("referees = $user_id and created >= '$start_date' and created <= '$end_date'");
+		}
 
-		$users = $this->findAllByReferees($user_id);
 		$arr = array('count' => $this->c, 'out' => $this->u);
 		foreach($users as $user){
 			$this->u .= $user['User']['id'] . ',';
 			$this->c++;
-			$this->getUserTree($user['User']['id']);
+			$this->getUserTree($user['User']['id'],$start_date,$end_date);
 			$arr = array('count' => $this->c, 'out' => $this->u);	
 		}
 		return $arr;

@@ -206,7 +206,7 @@ class UsersController extends AppController {
 
 	function user_tree($user_id = null, $out = null){
 		$this->layout = 'ajax';
-		$arr = $this->User->getUserTree($user_id);
+		$arr = $this->User->getUserTree($user_id,null,null);
 		$this->set('out',$arr['out']);
 	}
 }
