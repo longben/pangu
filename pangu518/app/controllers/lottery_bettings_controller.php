@@ -2,7 +2,8 @@
 class LotteryBettingsController extends AppController {
 
 	var $name = 'LotteryBettings';
-	var $helpers = array('Html', 'Form', 'Javascript');
+	var $helpers = array('Html', 'Form', 'Javascript', 'Pagination');
+	var $components = array('Pagination');
 
 	function index() {
 		$this->LotteryBetting->recursive = 0;
@@ -72,8 +73,8 @@ class LotteryBettingsController extends AppController {
 		}
 	}
 
-   function user() {
-		if (empty($this->data)) {
+   function user($no = null, $number = null, $page = 1) {
+		if (empty($this->data) || empty($this->data['LotteryBetting']['lottery_id'])) {
 			$this->set('lotteries', $this->LotteryBetting->Lottery->generateList(
 			  $conditions = array(
 			    'start_time' => '<=' .date("Y-m-d H:i:s"),
@@ -84,7 +85,31 @@ class LotteryBettingsController extends AppController {
 			  $keyPath = '{n}.Lottery.id',
 			  $valuePath = '{n}.Lottery.lottery_times')			
 			);
-			$this->set('ulbs',$this->LotteryBetting->findAll("LotteryBetting.user_id = " . $this->Session->read('User.id') ." and LotteryBetting.betting_type = 1"));
+
+			$_user = $this->Session->read('User.id');
+
+			//投注、中奖情况
+			$criteria = "LotteryBetting.user_id = $_user and LotteryBetting.betting_type = 1";
+			if($no == null){
+				$no = $this->data['LotteryBetting']['no'];
+				$number = $this->data['LotteryBetting']['number'];
+			}
+
+			if($no != null){
+				$criteria .= " and concat(Lottery.lottery_year,lpad(Lottery.lottery_times,3,'0')) = '$no'";
+			}
+
+			if($number != null){
+				$criteria .= " and LotteryBetting.betting_number = $number";
+			}
+
+			list($order,$limit,$page) = $this->Pagination->init($criteria,null,array('ajaxDivUpdate'=>'cs','url'=> 'user/'.$no.'/'.$number));
+			
+			$data = $this->LotteryBetting->findAll($criteria, null, 'Lottery.lottery_times desc', $limit, $page); 			
+			$this->set('ulbs',$data);
+
+			//$this->set('ulbs',$this->LotteryBetting->findAll($criteria));
+
 			$this->render();
 		} else {
 			$this->cleanUpFields();
