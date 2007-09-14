@@ -7,12 +7,18 @@ class LotteriesController extends AppController {
 
 	function index($keyword = null) {
 		$this->Lottery->recursive = 0;
+
 		$criteria = null;
-		
-		//$this->Pagination->style = "ajax";
+		if($keyword == null){
+			$keyword = $this->data['Lottery']['keyword'];
+		}		
+		if($keyword != null){
+			$criteria = "concat(Lottery.lottery_year,lpad(Lottery.lottery_times,3,'0')) = '$keyword'";
+		}
+
 		list($order,$limit,$page) = $this->Pagination->init($criteria,null,array('ajaxDivUpdate'=>'cs','url'=> 'index/'.$keyword));
 		
-		$data = $this->Lottery->findAll($criteria, NULL, 'order by Lottery.lottery_times desc', $limit, $page); 			
+		$data = $this->Lottery->findAll($criteria, null, 'Lottery.lottery_times desc', $limit, $page); 			
 		$this->set('lotteries',$data);
 	}
 
