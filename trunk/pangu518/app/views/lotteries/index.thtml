@@ -11,6 +11,7 @@
 <tr>
 	<th>分红期数</th>
 	<th>分红起止日期</th>
+	<th>投注总金额</th>
 	<th>中奖号码</th>
 	<th>开奖时间</th>	
 	<th>中奖总数</th>
@@ -20,6 +21,7 @@
 <tr>
 	<td><?php echo $lottery['Lottery']['lottery_year'] . sprintf('%03s', $lottery['Lottery']['lottery_times']);?></td>
 	<td><?php echo $lottery['Lottery']['start_time'] . ' 至 ' . $lottery['Lottery']['finish_time']; ?></td>
+	<td><?php echo $this->controller->getBettingTime($lottery['Lottery']['id'])*2;?></td>
 	<td><?php echo $lottery['Lottery']['win_number'];?></td>
 	<td><?php echo $lottery['Lottery']['open_time'];?></td>	
 	<td><?php echo $lottery['Lottery']['win_count'];?></td>	
