@@ -178,7 +178,12 @@ class LotteriesController extends AppController {
     *
     */
    function query() {
-   }   
+   }
+
+   function getBettingTime($id = null){
+	   $rs = $this->Lottery->findBySql("select sum(betting_time) from lottery_bettings where lottery_id = $id");
+	   return $rs[0][0]['sum(betting_time)'];
+   }
 
 }
 ?>
