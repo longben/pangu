@@ -44,7 +44,7 @@
 	  <?php echo $html->submit('查询');?>
 	</form> 
 </div>
-<table cellpadding="0" cellspacing="0" width="80%">
+<table cellpadding="0" cellspacing="0" width="100%">
 <tr>
 	<th>分红期数</th>
 	<th>投注号码</th>
@@ -56,7 +56,7 @@
 </tr>
 <?php foreach ($ulbs as $ulb): ?>
 <tr>
-	<td><?php echo $ulb['Lottery']['lottery_year'] . sprintf('%03s',$ulb['LotteryBetting']['lottery_id'])?></td>
+	<td><?php echo $ulb['Lottery']['lottery_year'] . sprintf('%03s',$ulb['Lottery']['lottery_times'])?></td>
 	<td><?php echo $ulb['LotteryBetting']['betting_number']?></td>
 	<td><?php echo $ulb['LotteryBetting']['betting_time']?></td>
 	<td><?php echo $ulb['Lottery']['win_number']?></td>
