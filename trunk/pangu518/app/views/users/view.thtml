@@ -40,10 +40,8 @@
 </dl>
 <?php	if(empty($_GET['cw'])){?>
 <ul class="actions">
-	<li><?php echo $html->link('编辑', '/users/edit/' . $user['User']['id']) ?> </li>
 	<li><?php echo $html->link('个人业绩','/users/performance/' . $user['User']['id'])?></li>
 	<li><?php echo $html->link('会员网络','/users/network/' . $user['User']['id'])?></li>
-	<li><?php echo $html->link('用户列表', '/members/index') ?> </li>
 </ul>
 <?php	}else{?>
 <ul class="actions">
