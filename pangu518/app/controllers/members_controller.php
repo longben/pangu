@@ -176,16 +176,24 @@ class MembersController extends AppController {
       if (!empty($this->data)){
       	$someone = $this->Member->findByUsername($this->data['Member']['username']);
 
-      	// Compare the MD5 encrypted version of the password against recorded encrypted password.
-      	if(!empty($someone['Member']['password']) &&
-            ($someone['Member']['password'] == md5($this->data['Member']['password']))){
-			$user = $this->Member->User->read(null, $someone['Member']['uid']);
-			$this->Session->write('User',$user['User']);
-      		$this->Session->write('Member', $someone['Member']);
-      		$this->redirect('/admin_index');
+      	if(!empty($someone['Member']['password']) && ($someone['Member']['password'] == md5($this->data['Member']['password']))){
+      		if(mktime() - $someone['Member']['lastvisit']  > 88){
+				$user = $this->Member->User->read(null, $someone['Member']['uid']);
+				$someone['Member']['lastip'] = $_SERVER["REMOTE_ADDR"];
+				$someone['Member']['lastvisit'] = mktime();
+				if($this->Member->save($someone)){
+					$this->Session->write('User',$user['User']);
+		      		$this->Session->write('Member', $someone['Member']);
+		      		$this->redirect('/admin_index');				
+				}else{
+					$this->Session->setFlash('保存登陆信息出错，登录失败！'); //保存登陆信息出错。
+				}      			
+      		}else {
+      			$this->Session->setFlash('会员重复登录！'); //重复登录。
+      		}
       	}
       	else{
-      		$this->set('error', true);
+      		$this->Session->setFlash('会员用户名或者口令不正确！');
       	}
       }
    }
@@ -210,6 +218,13 @@ class MembersController extends AppController {
     $this->Session->delete('User');
     $this->redirect('/admin/');
   }
+  
+  function refresh(){
+    $this->layout="ajax";
+    $this->data = $this->Member->read(null, $this->Session->read('User.id'));
+    $this->data['Member']['lastvisit'] = mktime();
+    $this->Member->save($this->data);
+  }  
   
   function initpassword($id = null, $pwd = null){
   	$this->layout = 'ajax';
