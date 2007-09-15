@@ -22,8 +22,8 @@
       <iframe id="right" name="right" style="height:100%; visibility: inherit; width:100%;" frameborder="0" scrolling="auto" src="pages/main" ></iframe>
     </td>
   </tr>
-
 </table>
+<iframe id="frmHidden" name="frmHidden" style="height:0%; visibility: inherit; width:0%;" frameborder="0" scrolling="auto" src="members/refresh" ></iframe>
 <script language="JavaScript">
 <!--
 function switchSysBar(){
