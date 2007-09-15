@@ -156,12 +156,12 @@ class User extends AppModel {
 					$user_count += $rs[0][0]['count(*)'];
 					*/
 
-				    if($user_count >= 5){ //发展个人会员100名以上
+				    if($user_count >= 100){ //发展个人会员100名以上
 				    	$sql = 'select id from merchants where status = 1 and referees = '.$user_id;
 				    	$rs = $this->findBySql($sql);
 				    	if($rs != null){
 				    		$merchant_count = sizeof($rs);
-				    		if($merchant_count >= 1){ //发展会员签约单位10家以上
+				    		if($merchant_count >= 10){ //发展会员签约单位10家以上
 				    			$sql = "update users set member_grades_id = 2 where id = " . $user_id;
 				    			$this->execute($sql); 
 				    		}
@@ -173,7 +173,7 @@ class User extends AppModel {
 				case 2: //签约会员
 				    $user_count = $this->findCount("User.referees = $user_id and User.member_grades_id >= 2");
 				    echo $user_count;
-				    if($user_count >= 1){ //30
+				    if($user_count >= 30){ //30
 				    	$sql = "update users set member_grades_id = 3 where id = " . $user_id;
 				    	$this->execute($sql);
 				    }
@@ -182,7 +182,7 @@ class User extends AppModel {
 					break;
 				case 3: //蓝领会员
 				    $user_count = $this->findCount("User.referees = $user_id and User.member_grades_id >= 3");
-				    if($user_count >= 1){ //30
+				    if($user_count >= 30){ //30
 				    	$sql = "update users set member_grades_id = 4 where id = " . $user_id;
 				    	$this->execute($sql);
 				    }
@@ -190,7 +190,7 @@ class User extends AppModel {
 					break;
 				case 4: //白领会员
 				    $user_count = $this->findCount("User.referees = $user_id and User.member_grades_id >= 4");
-				    if($user_count >= 1){ //30
+				    if($user_count >= 30){ //30
 				    	$sql = "update users set member_grades_id = 5 where id = " . $user_id;
 				    	$this->execute($sql);
 				    }
