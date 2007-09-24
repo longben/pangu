@@ -169,6 +169,9 @@
 				onComplete: showResponse,
 				asynchronous:false
 			});
+			if(checkMoney == false){
+				return false;
+			}
 		}
 
 		if($F('MerchantRefereesNo')!=''){
@@ -178,6 +181,9 @@
 				onComplete: showResponse2,
 				asynchronous:false
 			});
+			if(checkMoney == false){
+				return false;
+			}
 		}
 		
 		if($F('MerchantBargainNo')!=''){
@@ -197,7 +203,17 @@
       	alert('消费单位拥有人帐号录入不正确，请检查重新录入。');
       	$('MerchantLoginName').focus();
         checkMoney = false;
-      }
+      }else if(count == 87){
+      	alert('该会员帐号已经是工作站，不能在申请成为会员消费单位。');
+      	$('MerchantLoginName').focus();
+        checkMoney = false;
+	  }else if(count == 77){
+      	alert('该会员帐号已经是会员消费单位，不能重复申请成为会员消费单位。');
+      	$('MerchantLoginName').focus();
+        checkMoney = false;
+	  }else{
+		checkMoney = true;
+	  }
    }
    
    function showResponse2(originalRequest){
@@ -206,8 +222,10 @@
       	alert('消费单位推荐人帐号录入不正确，请检查重新录入。');
       	$('MerchantRefereesNo').focus();
         checkMoney = false;
-      }
-   }   
+      }else{
+		checkMoney = true;
+	  }
+   }  
    
    function checkBargain(originalRequest){
    	  var count = parseInt(originalRequest.responseText);
@@ -216,7 +234,7 @@
       	$('MerchantBargainNo').focus();
         checkMoney = false;
       }else{
-      	checkMoney = true;
-      }
+		checkMoney = true;
+	  }
    }   
 </script>
