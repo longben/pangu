@@ -44,26 +44,45 @@
 	}
 
 
-	$sql = "INSERT INTO members(username,password) VALUES ('".$login_name."', '".$password."')";
-	mysql_query($sql);
+	//总数
+	$sql_ck = "select count(*) from users where cert_number = '".$cert_number."'";
+	$stmt_ck = mysql_query($sql_ck);
+	while($arr_ck = mysql_fetch_array($stmt_ck)){
+		$user_count = $arr_ck[0];
+	}
 
-	$sql = "select uid from members where username='".$login_name."'";
-	$stmt = mysql_query($sql);
-	$arr = mysql_fetch_array($stmt);
-	$id = $arr[0];
+	//单个
+	$sql_su = "select count(*) from users where cert_number = '".$cert_number."' and role_id = 1";
+	$stmt_su = mysql_query($sql_su);
+	while($arr_su = mysql_fetch_array($stmt_su)){
+		$single_user_count = $arr_su[0];
+	}
 
-	$sql_re = "select uid from members where username='".$referees."'";
-	$stmt_re = mysql_query($sql_re);
-	$arr_re = mysql_fetch_array($stmt_re);
-	$refer_id = $arr_re[0];
+	if( ($user_count > 2) || ($single_user_count>0) ){
+			echo("<script language='JavaScript'>alert('抱歉，该身份证已被限制注册，请用其他身份证进行注册！');history.go(-1);</script>");
+	}else{
 
-	$sql = "insert into users(id,login_name,password,user_name,sex,member_no,cert_number,referees,region_id,office_phone,home_phone,mobile,bank_accounts,accounts) values(".$id.",'".$login_name."','".$password."','".$user_name."',".$_POST["sex"].",'".$member_no."','".$cert_number."','".$refer_id."','".$region_id."','".$office_phone."','".$home_phone."','".$mobile."','邮政储蓄','".$accounts."')";
-	mysql_query($sql);
+		$sql = "INSERT INTO members(username,password) VALUES ('".$login_name."', '".$password."')";
+		mysql_query($sql);
 
-	echo("<script language='JavaScript'>");
-	echo("var url = '/users/upgrade/$refer_id';");
-	echo("var myAjax = new Ajax.Request(url,{method: 'get',onComplete: null,asynchronous:false});");
-	echo("alert('恭喜您，注册成功，您可以登录进入盘古运营系统！');");
-	echo("location.replace('main.php');");
-	echo("</script>");
+		$sql = "select uid from members where username='".$login_name."'";
+		$stmt = mysql_query($sql);
+		$arr = mysql_fetch_array($stmt);
+		$id = $arr[0];
+
+		$sql_re = "select uid from members where username='".$referees."'";
+		$stmt_re = mysql_query($sql_re);
+		$arr_re = mysql_fetch_array($stmt_re);
+		$refer_id = $arr_re[0];
+
+		$sql = "insert into users(id,login_name,password,user_name,sex,member_no,cert_number,referees,region_id,office_phone,home_phone,mobile,bank_accounts,accounts) values(".$id.",'".$login_name."','".$password."','".$user_name."',".$_POST["sex"].",'".$member_no."','".$cert_number."','".$refer_id."','".$region_id."','".$office_phone."','".$home_phone."','".$mobile."','邮政储蓄','".$accounts."')";
+		mysql_query($sql);
+
+		echo("<script language='JavaScript'>");
+		echo("var url = '/users/upgrade/$refer_id';");
+		echo("var myAjax = new Ajax.Request(url,{method: 'get',onComplete: null,asynchronous:false});");
+		echo("alert('恭喜您，注册成功，您可以登录进入盘古运营系统！');");
+		echo("location.replace('main.php');");
+		echo("</script>");
+	}
 ?>
