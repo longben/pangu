@@ -47,9 +47,6 @@
 	  <div>
 	    <?php echo $html->submit('登录'); ?>
 	  </div>
-   <?php if ($error) { ?>
-     <p><div class="error">用户名或者口令错误！</div></p>
-   <?php } ?>	
 	</center>
 	</form>
 </div>

@@ -172,22 +172,24 @@ class MembersController extends AppController {
 	}
 	
    function login() {
-      $this->set('error', false);
-      if (!empty($this->data)){
-      	$someone = $this->Member->findByUsername($this->data['Member']['username']);
+      
+	  $this->layout="admin";
 
-      	if(!empty($someone['Member']['password']) && ($someone['Member']['password'] == md5($this->data['Member']['password']))){
-      		if(mktime() - $someone['Member']['lastvisit']  > 88){
-				$user = $this->Member->User->read(null, $someone['Member']['uid']);
-				$someone['Member']['lastip'] = $_SERVER["REMOTE_ADDR"];
-				$someone['Member']['lastvisit'] = mktime();
-				if($this->Member->save($someone)){
-					$this->Session->write('User',$user['User']);
-		      		$this->Session->write('Member', $someone['Member']);
-		      		$this->redirect('/admin_index');				
-				}else{
-					$this->Session->setFlash('保存登陆信息出错，登录失败！'); //保存登陆信息出错。
-				}      			
+      if (!empty($this->data)){
+		$this->cleanUpFields();
+      	$this->someone = $this->Member->findByUsername($this->data['Member']['username']);
+      	if(!empty($this->someone['Member']['password']) && ($this->someone['Member']['password'] == md5($this->data['Member']['password']))){
+      		if(mktime() - $this->someone['Member']['lastvisit']  > 88){
+				$user = $this->Member->User->read(null, $this->someone['Member']['uid']);
+				$this->someone['Member']['lastip'] = $_SERVER["REMOTE_ADDR"];
+				$this->someone['Member']['lastvisit'] = mktime();
+				$sql = "update members set lastip = '" . $_SERVER["REMOTE_ADDR"] . "',";
+				$sql .= " lastvisit = " . mktime();
+				$sql .= " where uid = " . $this->someone['Member']['uid'];
+				$this->Member->execute($sql);
+				$this->Session->write('User',$user['User']);
+		      	$this->Session->write('Member', $this->someone['Member']);
+		      	$this->redirect('/admin_index');				
       		}else {
       			$this->Session->setFlash('会员重复登录！'); //重复登录。
       		}
@@ -221,9 +223,8 @@ class MembersController extends AppController {
   
   function refresh(){
     $this->layout="ajax";
-    $this->data = $this->Member->read(null, $this->Session->read('User.id'));
-    $this->data['Member']['lastvisit'] = mktime();
-    $this->Member->save($this->data);
+  	$sql = "update members set lastvisit = " . mktime() ." where uid = ". $this->Session->read('User.id');
+  	$this->Member->execute($sql);
   }  
   
   function initpassword($id = null, $pwd = null){
