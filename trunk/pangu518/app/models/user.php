@@ -68,17 +68,27 @@ class User extends AppModel {
 		$overhead_expenses = 0; //管理费用
 		$total = 0 ; //累积所得
 		
-		//推荐工作站数目
+		//指定时间范围内推荐工作站数目
 		$w = $this->findBySql("select count(*) from workstations 
 		  where referees = $user_id
 		    and created >= '$start_date' and created <= '$end_date'");
 		$user_workstation = $w[0][0]['count(*)'];
+		
+
+		//推荐工作站总数
+		//$w2 = $this->findBySql("select count(*) from workstations where referees = $user_id");
+		//$user_workstation2 = $w2[0][0]['count(*)'];
+
 		
 		//指定时间范围内签订会员消费单位数目
 		$m = $this->findBySql("select count(*) from merchants 
 		  where referees = $user_id
 		    and created >= '$start_date' and created <= '$end_date'");
 		$user_merchant = $m[0][0]['count(*)'];
+
+		//签订会员消费单位总数
+		$m2 = $this->findBySql("select count(*) from merchants where referees = $user_id ");
+		$user_merchant2 = $m2[0][0]['count(*)'];
 
 		//签定会员消费单位所购代金券
 		$m = $this->findBySql("select count(*) from merchant_coupons mc , merchants m 
@@ -87,10 +97,13 @@ class User extends AppModel {
 		$user_merchant_coupon = $m[0][0]['count(*)'];
 
 		$arr = $this->getUserTree($user_id,$start_date,$end_date); //递归查询
+
+		$arr2 = $this->getUserTree($user_id,null,null); //递归查询
 				
 		//推荐会员数目
 		//$user_referees = $this->findCount("referees = $user_id");
 		$user_referees = $arr['count'];
+		$user_referees2 = $arr2['count'];
 
 		//推荐会员所得代金券数目
 		/*
@@ -128,9 +141,9 @@ class User extends AppModel {
 		$performance = array(
 		  'user_workstation' => $user_workstation,
 		  'user_workstation_pay' => $user_workstation_pay,
-		  'user_merchant' => $user_merchant,
+		  'user_merchant' => $user_merchant2,
 		  'user_merchant_coupon' => $user_merchant_coupon,
-		  'user_referees' => $user_referees,
+		  'user_referees' => $user_referees2,
 		  'user_referees_coupon' => $user_referees_coupon,
 		  'income_tax' => $income_tax,
 		  'overhead_expenses' => $overhead_expenses,
