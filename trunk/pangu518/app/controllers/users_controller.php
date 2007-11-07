@@ -144,6 +144,7 @@ class UsersController extends AppController {
 	 */
 	function network($user_id = null,$keyword = null) {
 		$this->User->recursive = 0;
+
 		$criteria = "User.referees = $user_id";
 		if($keyword == null){
 			$keyword = $this->data['User']['keyword'];
@@ -152,7 +153,7 @@ class UsersController extends AppController {
 			$criteria = "User.referees = $user_id and (User.login_name like '%$keyword%' or User.user_name like '%$keyword%')";
 		}
 
-		list($order,$limit,$page) = $this->Pagination->init($criteria,null,array('ajaxDivUpdate'=>'cs','url'=> 'index/'. $user_id . '/' .$keyword));
+		list($order,$limit,$page) = $this->Pagination->init($criteria,null,array('ajaxDivUpdate'=>'cs','url'=> 'network/'. $user_id . '/' .$keyword));
 		
 		$data = $this->User->findAll($criteria, NULL, null, $limit, $page); 			
 		$this->set('users',$data);
