@@ -57,9 +57,9 @@ class DATABASE_CONFIG
 {
 	var $default = array('driver' => 'mysql',
 								'connect' => 'mysql_connect',
-								'host' => 'localhost',
+								'host' => '222.215.230.44',
 								'login' => 'root',
-								'password' => 'www.pangu518.com',
+								'password' => 'bitbee5617pangu518',
 								'database' => 'pangu518',
 								'prefix' => '',
 								'encoding' => 'utf8');
