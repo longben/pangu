@@ -65,6 +65,7 @@ class LotteriesController extends AppController {
 			if (!$id) {
 				$this->Session->setFlash('非法数据请求！');
 			}
+			$this->Lottery->unbindModel(array('hasMany' => array('LotteryBetting')));
 			$this->data = $this->Lottery->read(null, $id);
 		} else {
 			$this->cleanUpFields();
