@@ -37,18 +37,8 @@ class WorkstationCouponsController extends AppController {
 		  'WorkstationCoupon.status' => 131
 		);
 		$this->WorkstationCoupon->unbindModel(array('belongsTo' => array('Coupon')));
-
-		/*
 		$this->WorkstationCoupon->Workstation->unbindModel(array('hasMany' => array('MerchantCoupon')));
 		$this->WorkstationCoupon->Workstation->unbindModel(array('hasMany' => array('WorkstationAttornLog')));
-		*/
-		$this->WorkstationCoupon->Workstation->unbindModel(array('belongsTo' => array('User')));
-		$this->WorkstationCoupon->Workstation->unbindModel(array('belongsTo' => array('Referee')));
-		$this->WorkstationCoupon->Workstation->unbindModel(array('belongsTo' => array('Region')));
-		$this->WorkstationCoupon->Workstation->unbindModel(array('hasMany' => array('WorkstationCoupon')));
-		$this->WorkstationCoupon->Workstation->unbindModel(array('hasMany' => array('MerchantCoupon')));
-		$this->WorkstationCoupon->Workstation->unbindModel(array('hasMany' => array('WorkstationAttornLog')));
-
 		$this->set('total', $this->WorkstationCoupon->findCount($criteria));
 		
 		$criteria = array(
@@ -73,16 +63,7 @@ class WorkstationCouponsController extends AppController {
 		
 		$this->WorkstationCoupon->unbindModel(array('belongsTo' => array('Coupon')));
 		$this->WorkstationCoupon->unbindModel(array('belongsTo' => array('Workstation')));
-
-		/*
 		$this->WorkstationCoupon->Workstation->unbindModel(array('hasMany' => array('WorkstationCoupon')));
-		$this->WorkstationCoupon->Workstation->unbindModel(array('hasMany' => array('WorkstationAttornLog')));
-		*/
-		$this->WorkstationCoupon->Workstation->unbindModel(array('belongsTo' => array('User')));
-		$this->WorkstationCoupon->Workstation->unbindModel(array('belongsTo' => array('Referee')));
-		$this->WorkstationCoupon->Workstation->unbindModel(array('belongsTo' => array('Region')));
-		$this->WorkstationCoupon->Workstation->unbindModel(array('hasMany' => array('WorkstationCoupon')));
-		$this->WorkstationCoupon->Workstation->unbindModel(array('hasMany' => array('MerchantCoupon')));
 		$this->WorkstationCoupon->Workstation->unbindModel(array('hasMany' => array('WorkstationAttornLog')));
 
 		$criteria = "MerchantCouponList.workstation_id = " . $this->data2['Workstation']['id'];
@@ -92,7 +73,8 @@ class WorkstationCouponsController extends AppController {
 		if($keyword != null){
 			$criteria = "MerchantCouponList.workstation_id = " . $this->data2['Workstation']['id'] . " and Merchant.merchant_name like '%$keyword%'";
 		}
-		//$merchantcouponlists = $this->WorkstationCoupon->Workstation->MerchantCouponList->findAllByWorkstationId($this->data2['Workstation']['id']);
+
+		$this->WorkstationCoupon->Workstation->MerchantCouponList->unbindModel(array('belongsTo' => array('Workstation')));
 		$merchantcouponlists = $this->WorkstationCoupon->Workstation->MerchantCouponList->findAll($criteria);
 		$this->set('merchantcouponlists', $merchantcouponlists);
 	}
