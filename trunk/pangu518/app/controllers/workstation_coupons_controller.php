@@ -37,8 +37,6 @@ class WorkstationCouponsController extends AppController {
 		  'WorkstationCoupon.status' => 131
 		);
 		$this->WorkstationCoupon->unbindModel(array('belongsTo' => array('Coupon')));
-		$this->WorkstationCoupon->Workstation->unbindModel(array('hasMany' => array('MerchantCoupon')));
-		$this->WorkstationCoupon->Workstation->unbindModel(array('hasMany' => array('WorkstationAttornLog')));
 		$this->set('total', $this->WorkstationCoupon->findCount($criteria));
 		
 		$criteria = array(
