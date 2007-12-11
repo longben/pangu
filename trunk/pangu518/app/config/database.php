@@ -57,7 +57,7 @@ class DATABASE_CONFIG
 {
 	var $default = array('driver' => 'mysql',
 								'connect' => 'mysql_connect',
-								'host' => '222.215.230.44',
+								'host' => 'localhost',
 								'login' => 'root',
 								'password' => 'bitbee5617pangu518',
 								'database' => 'pangu518',
