@@ -1,4 +1,4 @@
-<fieldset align=center>
+﻿<fieldset align=center>
 <legend>会员参与分红</legend>
 <?php
   if($lotteries != null){
@@ -33,7 +33,8 @@
   }
 ?>
 <ul>
-  <li><?php echo $html->link('分红凭证录入', '/user_coupons/input'); ?></li>
+   <li><?php echo $html->link('组号批量投注', '../addusermorelistbeting.php'); ?></li>
+   <li><?php echo $html->link('分红凭证录入', '/user_coupons/input'); ?></li>
 </ul>
 <div align="left">
 	<form action="<?php echo $html->url('/lottery_bettings/user/'); ?>" method="post">
