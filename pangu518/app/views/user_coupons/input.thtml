@@ -1,4 +1,4 @@
-<fieldset align=center>
+﻿<fieldset align=center>
 <legend>分红凭证录入</legend> 
 <form action="<?php echo $html->url('/user_coupons/input'); ?>" method="post" onsubmit="return check()">
    <?php echo $html->hiddenTag('UserCoupon/user_id',$this->controller->Session->read('User.uid'));?>
@@ -20,6 +20,10 @@
  <li>可用分红凭证总数：<?=$available_capital?>张</li>
  <li>已消费分红凭证总数：<?=$expenditure?>张</li>
  <li><?php echo $html->link('参与分红', '/lottery_bettings/user'); ?></li>
+ <li><?php echo $html->link('转让', '/moveusercoupons.php'); ?></li>
+ <li><?php echo $html->link('提现金申请', '/test.php'); ?></li>
+ <li><?php echo $html->link('查询申请提现', '/findmoney.php'); ?></li>
+ <li><?php echo $html->link('查询拥有点数', '/findmoney2.php'); ?></li>
 </ul>
 </fieldset>
 <SCRIPT LANGUAGE="JavaScript">
