@@ -13,19 +13,20 @@
  * @package			pangu
  * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
  */
-
 ?>
+<center>
 <div id="adminhead">
-<h1>四川盘古消费资本有限责任公司</h1>
+<h1><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;四川盘古经济咨询有限责任公司</b></h1>
 </div>
-
-<div class="wrap">
-
+<br>
+<br>
+<br>
+<br>
+	</center>
+	<div class="wrap">
 	<form action="<?php echo $html->url('/members/login'); ?>" method="post">
-	
 	<center>
-	
-	<h3>欢迎使用盘古消费运营软件 version 1.0</h3>
+	<br><br>
 	<table border=0>
 	<tr>
 	  <td>
@@ -34,7 +35,6 @@
 	    <?php echo $html->input('Member/username', array('size' => 20));?>
 	  </td>
 	</tr>
-	
 	<tr>
 	  <td>
 	    <label for="password">密  码：</label>
@@ -42,11 +42,13 @@
 	    <?php echo $html->password('Member/password', array('size' =>20)); ?>
 	  </td>
 	</tr>
-	</table>
-	
+	</table>	
 	  <div>
-	    <?php echo $html->submit('登录'); ?>
+	<?php echo $html->submit('登录'); ?> 
 	  </div>
 	</center>
 	</form>
+	<br><br>
+	<center><?php echo $html->link('欢迎您进入中国消费财富网运营系统', 'http://www.pangu518.com')?>
+	&nbsp;&nbsp;<?php echo $html->link('注册会员', '/register.php')?></center>
 </div>
