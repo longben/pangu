@@ -1,7 +1,7 @@
 <?php
 	require_once('db-settings.php');
 	require_once('function.php');
-
+    
 	if($_POST["year"]){
 		$reportYear = $_POST["year"];
 		$reportMonth = $_POST["month"];	
@@ -12,16 +12,37 @@
 		$reportDays	= date("t");
 	}
 
-
 ?>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>报表查询</title>
 <link href="css/style.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+.STYLE1 {color: #0000FF}
+-->
+</style>
 </head>
 
 <body>
+<table align="center">
+  <tr>
+  <td width="350" height="30" align="center" valign="middle" class="title_small_new"><img src="imgs/book.gif" width="18" height="18" alt="会员·消费单位·工作站数据统计报表"><a href="report.php">会员·消费单位·工作站数据统计报表</a></td>
+  </tr>
+  <tr>
+   <td width="350" height="29" align="center" valign="middle" class="title_small_new"><img src="imgs/book.gif" width="18" height="18" alt="会员·每月排名数据统计报表"><a href="report1.php">会员·每月排名数据统计报表</a></td>
+  </tr>
+  <tr>
+   <td width="350" height="29" align="center" valign="middle" class="title_small_new"><img src="imgs/book.gif" width="18" height="18" alt="会员·每月排名数据统计报表"><a href="addcoupons.php">批量录入会员分红凭证</a></td>
+  </tr>
+  <tr>
+   <td width="350" height="29" align="center" valign="middle" class="title_small_new"><img src="imgs/book.gif" width="18" height="18" alt="会员·每月排名数据统计报表"><a href="delbetting.php">批量删除会员参与分红记录</a></td>
+  </tr>
+  <tr>
+   <td width="350" height="29" align="center" valign="middle" class="title_small_new"><img src="imgs/book.gif" width="18" height="18" alt="会员·每月排名数据统计报表"><a href="testmoney.php">提款处理</a></td>
+  </tr>
+</table><br><br>
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
 	  <form name="form1" method="post" action="report.php">	
@@ -246,5 +267,6 @@
 ?>
 
 </table>
+<br>
 </body>
 </html>
