@@ -5,7 +5,10 @@
     <li>已反馈给会员的分红凭证总数：<?php echo $total_sale?>份，共计<?php echo $total_sale*2?>元。</li> 
     <li>已参与分红的分红凭证总数：<?php echo $total_melon_cutting?>份，共计<?php echo $total_melon_cutting*2?>元。</li> 
     <hr/>
-	<li>可用财富积点总数：<?php echo $total_usable?>份</li>
-	<li><?php echo $html->link('参与分红', '/lottery_bettings/merchant'); ?></li>
+	
+<ul>
+	<!--<li>可用财富积点总数：<?php echo $total_usable?>份</li>-->
+	<li><?php echo $html->link('批量注入', '/merchatsaddcoupons.php'); ?></li>
+	<!--<li><?php echo $html->link('参与分红', '/lottery_bettings/merchant'); ?></li>-->
 </ul>
 </fieldset>
