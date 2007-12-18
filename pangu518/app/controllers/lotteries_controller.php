@@ -95,6 +95,7 @@ class LotteriesController extends AppController {
 			$this->data['Lottery']['win_count'] = $_win_count;
 			
 			//计算上期分红余额
+			$this->Lottery->unbindModel(array('belongsTo' => array('User','Merchant')));
 			$rsBalance = $this->Lottery->find('flag = 9','balance','lottery_year,lottery_times desc');
 			$_last_time_balance = $rsBalance['Lottery']['balance']; //上期分红余额
 			
