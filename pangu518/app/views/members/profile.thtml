@@ -18,7 +18,7 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('User/cert_number', '身份证号码：');?>
- 	<?php echo $html->input('User/cert_number', array('size' => '60','maxlength' => '18','readOnly' => 'true'));?>
+ 	<?php echo $html->input('User/cert_number', array('size' => '60','maxlength' => '18'));?>
 	<?php echo $html->tagErrorMsg('User/cert_number', 'Please enter the Cert Number.');?>
 </div>
 <div class="optional"> 
@@ -55,7 +55,7 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('User/accounts', '银行帐号：');?>
- 	<?php echo $html->input('User/accounts', array('size' => '60','maxlength' => '19','readOnly' => 'true'));?>
+ 	<?php echo $html->input('User/accounts', array('size' => '60','maxlength' => '19'));?>
 	<?php echo $html->tagErrorMsg('User/accounts', 'Please enter the Accounts.');?>
 </div>
 <?php echo $html->hidden('Member/uid')?>
