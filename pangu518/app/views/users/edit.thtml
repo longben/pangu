@@ -48,7 +48,7 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('User/bank_accounts', '开户银行：');?>
- 	<?php echo $html->input('User/bank_accounts', array('size' => '60','maxlength' => '20','readOnly' => 'true'));?>
+ 	<?php echo $html->input('User/bank_accounts', array('size' => '60','maxlength' => '20'));?>
 	<?php echo $html->tagErrorMsg('User/bank_accounts', 'Please enter the Bank Accounts.');?>
 </div>
 <div class="optional"> 
