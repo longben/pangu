@@ -139,6 +139,73 @@ class LotteryBettingsController extends AppController {
 		}
    }
    
+   function batch($no = null, $number = null, $page = 1) {
+		if (empty($this->data) || empty($this->data['LotteryBetting']['lottery_id'])) {
+			$this->set('lotteries', $this->LotteryBetting->Lottery->generateList(
+			  $conditions = array(
+			    'start_time' => '<=' .date("Y-m-d H:i:s"),
+			    'finish_time' => '>='. date("Y-m-d H:i:s"),
+			    'flag' => '1'),
+			  $order = null,
+			  $limit = null,
+			  $keyPath = '{n}.Lottery.id',
+			  $valuePath = '{n}.Lottery.lottery_times')			
+			);
+
+			$_user = $this->Session->read('User.id');
+
+			//投注、中奖情况
+			$criteria = "LotteryBetting.user_id = $_user and LotteryBetting.betting_type = 1";
+			if($no == null){
+				$no = $this->data['LotteryBetting']['no'];
+				$number = $this->data['LotteryBetting']['number'];
+			}
+
+			if($no != null){
+				$criteria .= " and concat(Lottery.lottery_year,lpad(Lottery.lottery_times,3,'0')) = '$no'";
+			}
+
+			if($number != null){
+				$criteria .= " and LotteryBetting.betting_number = $number";
+			}
+
+			list($order,$limit,$page) = $this->Pagination->init($criteria,null,array('ajaxDivUpdate'=>'cs','url'=> 'user/'.$no.'/'.$number));
+			
+			$data = $this->LotteryBetting->findAll($criteria, null, 'Lottery.lottery_times desc', $limit, $page); 			
+			$this->set('ulbs',$data);
+
+			//$this->set('ulbs',$this->LotteryBetting->findAll($criteria));
+
+			$this->render();
+		} else {
+			$this->cleanUpFields();
+			$user_id = $this->Session->read('User.id');
+			$lottery_id = $this->data['LotteryBetting']['lottery_id'];
+			$betting_number_start = $this->data['LotteryBetting']['betting_number_start'];
+			$betting_number_end = $this->data['LotteryBetting']['betting_number_end'];
+			$betting_time = $this->data['LotteryBetting']['betting_time'];
+
+			//计算投注总数
+			$betting_total = ((int)$betting_number_end - (int)$betting_number_start + 1) * $betting_time; //投注总数
+		
+			//首先检查拥有代金券数量
+			$user_total = $this->LotteryBetting->findCountUserCoupon($user_id,421); //用户拥有代金券总数
+
+			if($betting_total > $user_total){
+				$this->Session->setFlash('你拥有的分红凭证数量不足！');
+				$this->redirect('/lottery_bettings/batch');
+			}else{
+				if($this->LotteryBetting->saveUserBettingBatch($user_id, $lottery_id, $betting_number_start, $betting_number_end, $betting_time)){
+				  $this->Session->setFlash('会员参与分红成功！');
+				  $this->redirect('/lottery_bettings/batch');
+				}else{
+				  $this->Session->setFlash('你拥有的分红凭证数量不足！');
+				  $this->redirect('/lottery_bettings/batch');
+				}
+			}
+		}
+   }
+   
    function merchant() {
 		if (empty($this->data)) {
 			$this->set('lotteries', $this->LotteryBetting->Lottery->generateList(
