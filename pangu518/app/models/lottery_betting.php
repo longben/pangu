@@ -34,6 +34,22 @@ class LotteryBetting extends AppModel {
 	);
 	
 	/**
+	 * 检查用户拥有代金券总数
+	 *
+	 * @param int $user_id
+	 * @param int $betting_time
+	 * @return boolean
+	 */
+	function findCountUserCoupon($user_id = null, $status = null){
+    	$sql = 'select count(*) from user_coupons as UserCoupon ';
+    	$sql .= ' where UserCoupon.user_id = ' . $user_id;
+    	$sql .= ' and UserCoupon.status = ' . $status;
+        $coupons = $this->query($sql);
+        $rs = $this->query($sql);
+		return $rs[0][0]['count(*)'];
+	}
+	
+	/**
 	 * 会员抽奖
 	 *
 	 * @param int $user_id
@@ -117,13 +133,9 @@ class LotteryBetting extends AppModel {
 			} 
 			
 			//更新会员消费单位代金券分红凭证状态
-			//$sql = 'update merchant_coupons set status = '.$status.' where coupon_id in('. $coupon_id .')';
 			$sql = 'update merchant_vouchers set status = '.$status.' where coupon_id in('. $coupon_id .')';
-			$this->execute($sql); 
-			
-			//更新代金券状态
-			//$sql = 'update coupons set status = '.$status.' where id in('. $coupon_id .')';
-			//$this->execute($sql); 
+			$this->execute($sql);			
+
         }else{
         	return false;
         }
