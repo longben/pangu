@@ -1,18 +1,27 @@
 <fieldset align=center>
-<legend>会员参与分红</legend>
+<legend>组号批量投注</legend>
+<p style="color:red">注意：参与分红前请仔细检查你的分红凭证张数是否足够！</p>
+<p style="color:red">提示：此功能是通过开始号码和结束号码之间的组合成投注号，例如000-999,投注张数为1的话，则为1千注！</p>
 <?php
   if($lotteries != null){
 ?>
-<form action="<?php echo $html->url('/lottery_bettings/user'); ?>" method="post" onsubmit="return check()">
+<form action="<?php echo $html->url('/lottery_bettings/batch'); ?>" method="post" onsubmit="return check()">
 <div class="optional"> 
 	<?php echo $form->labelTag('LotteryBetting/lottery_id', '分红期数：');?>
  	<?php echo date('Y').'年第'.$html->selectTag('LotteryBetting/lottery_id', $lotteries, $html->tagValue('LotteryBetting/lottery_id'), array(), array(), false).'期';?>
 	<?php echo $html->tagErrorMsg('LotteryBetting/lottery_id', 'Please select the Lottery.') ?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('LotteryBetting/betting_number', '投注号码：');?>
- 	<?php echo $html->input('LotteryBetting/betting_number', array('size' => '30','maxlength' => '3'));?>
-	<?php echo $html->tagErrorMsg('LotteryBetting/betting_number', 'Please enter the Betting Number.');?>
+	<?php echo $form->labelTag('LotteryBetting/betting_number_start', '投注起始号码：');?>
+ 	<?php echo $html->input('LotteryBetting/betting_number_start', array('size' => '30','maxlength' => '3'));?>
+	<?php echo $html->tagErrorMsg('LotteryBetting/betting_number_start', 'Please enter the Betting Number.');?>
+	请输入3位数的开始号码，例：000
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('LotteryBetting/betting_number_end', '投注结束号码：');?>
+ 	<?php echo $html->input('LotteryBetting/betting_number_end', array('size' => '30','maxlength' => '3'));?>
+	<?php echo $html->tagErrorMsg('LotteryBetting/betting_number_end', 'Please enter the Betting Number.');?>
+	请输入3位数的结束号码，例：999
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('LotteryBetting/betting_time', '投注份数：');?>
@@ -33,11 +42,10 @@
   }
 ?>
 <ul>
-   <li><?php echo $html->link('组号批量投注', '/lottery_bettings/batch'); ?></li>
    <li><?php echo $html->link('分红凭证录入', '/user_coupons/input'); ?></li>
 </ul>
 <div align="left">
-	<form action="<?php echo $html->url('/lottery_bettings/user/'); ?>" method="post">
+	<form action="<?php echo $html->url('/lottery_bettings/batch/'); ?>" method="post">
 	  分红期数：
 	  <?php echo $html->input('LotteryBetting/no', array('size' => '10','maxlength' => 7));?>
 	  投注号码：
@@ -88,18 +96,38 @@
 <SCRIPT LANGUAGE="JavaScript">
 <!--
   function check(){
-  	if($F('LotteryBettingBettingNumber')==''){
-  		alert('投注号码不能为空！');
-  		$('LotteryBettingBettingNumber').focus();
+  	if($F('LotteryBettingBettingNumberStart')==''){
+  		alert('投注起始号码不能为空！');
+  		$('LotteryBettingBettingNumberStart').focus();
   		return false;
   	}else{
   		var patrn=/^(\d){3}$/;
-  		if(!patrn.test($F('LotteryBettingBettingNumber'))){
-  			alert('投注号码只能为三位数字！');
-  			$('LotteryBettingBettingNumber').focus();
+  		if(!patrn.test($F('LotteryBettingBettingNumberStart'))){
+  			alert('投注起始号码只能为三位数字！');
+  			$('LotteryBettingBettingNumberStart').focus();
   			return false;
   		}
   	}
+
+  	if($F('LotteryBettingBettingNumberEnd')==''){
+  		alert('投注结束号码不能为空！');
+  		$('LotteryBettingBettingNumberEnd').focus();
+  		return false;
+  	}else{
+  		var patrn=/^(\d){3}$/;
+  		if(!patrn.test($F('LotteryBettingBettingNumberEnd'))){
+  			alert('投注结束号码只能为三位数字！');
+  			$('LotteryBettingBettingNumberEnd').focus();
+  			return false;
+  		}
+  	}
+
+
+	if(parseInt($F('LotteryBettingBettingNumberStart'))>=parseInt($F('LotteryBettingBettingNumberEnd'))){
+		alert('投注起始号码不能小于或者等于投注结束号码！');
+  		$('LotteryBettingBettingNumberStart').focus();
+  		return false;
+	}
   	
   	if($F('LotteryBettingBettingTime')=='' || $F('LotteryBettingBettingTime')<=0){
   		alert('投注份数不能为空！');
@@ -108,11 +136,12 @@
   	}else{
   		var patrn=/^(\d){1,8}$/;
   		if(!patrn.test($F('LotteryBettingBettingTime'))){
-  			alert('你太有财了！');
+  			alert('投注份数只能为数字！');
   			$('LotteryBettingBettingTime').focus();
   			return false;
   		}  		
   	}
+
   }
 //-->
 </SCRIPT>
