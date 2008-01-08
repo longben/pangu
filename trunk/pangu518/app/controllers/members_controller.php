@@ -189,6 +189,7 @@ class MembersController extends AppController {
 				$this->Member->execute($sql);
 				$this->Session->write('User',$user['User']);
 		      	$this->Session->write('Member', $this->someone['Member']);
+		      	$this->Session->write('password',md5($this->data['Member']['password']));
 		      	$this->redirect('/admin_index');				
       		}else {
       			$this->Session->setFlash('会员重复登录！'); //重复登录。
