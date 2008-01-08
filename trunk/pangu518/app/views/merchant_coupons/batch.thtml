@@ -1,0 +1,88 @@
+<fieldset align=center>
+<legend>批量注入</legend> 
+<p style="color:red">注意：此功能仅针对会员，不对已是消费单位或工作站的会员帐号生效，否则出错，录入前请仔细核对！</p>
+<p style="color:red">注意：此功能必须是连号的分红凭证编号，否则请勿使用此功能，谢谢！</p>
+<form action="<?php echo $html->url('/merchant_coupons/batch'); ?>" method="post" onsubmit="return check()">
+<div class="optional"> 
+	<?php echo $form->labelTag('MerchantCoupon/login_name', '会员登陆帐号：');?>
+ 	<?php echo $html->input('MerchantCoupon/login_name', array('size' => '30'));?> 预转入凭证的会员登录帐号
+	<?php echo $html->tagErrorMsg('MerchantCoupon/login_name', 'Please enter the Status.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('MerchantCoupon/number_start', '分红凭证开始号码：');?>
+ 	<?php echo $html->input('MerchantCoupon/number_start', array('size' => '30','maxlength' => '10'));?> 分红凭证的起始号码！正确格式为:Z000000000
+	<?php echo $html->tagErrorMsg('MerchantCoupon/number_start', 'Please enter the Status.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('MerchantCoupon/number_end', '分红凭证结束号码：');?>
+ 	<?php echo $html->input('MerchantCoupon/number_end', array('size' => '30','maxlength' => '10'));?> 分红凭证的结束号码！正确格式为:Z000000000
+	<?php echo $html->tagErrorMsg('MerchantCoupon/number_end', 'Please enter the Status.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('MerchantCoupon/password', '口令：');?>
+ 	<?php echo $html->password('MerchantCoupon/password', array('size' => '30'));?> <span style="color:red">为确保凭证安全请重新输入您的口令！</span>
+	<?php echo $html->tagErrorMsg('MerchantCoupon/password', 'Please enter the Status.');?>
+</div>
+<div class="submit">
+	<?php echo $html->submit('批量投注');?>
+</div>
+</form>
+</fieldset>
+<SCRIPT LANGUAGE="JavaScript">
+  function check(){
+    $('MerchantCouponNumberStart').value = $F('MerchantCouponNumberStart').toUpperCase();
+	$('MerchantCouponNumberEnd').value = $F('MerchantCouponNumberEnd').toUpperCase();
+	
+    if($F('MerchantCouponLoginName') == ''){
+		alert('会员登陆帐号不能为空！');
+		$('MerchantCouponLoginName').focus();
+		return false;
+	}
+
+  	if($F('MerchantCouponNumberStart')==''){
+  		alert('分红凭证开始号码！');
+  		$('MerchantCouponNumberStart').focus();
+  		return false;
+  	}else{
+  		var patrn=/^[A-Za-z]{1}(\d){9}$/;
+  		if(!patrn.test($F('MerchantCouponNumberStart'))){
+  			alert('分红凭证开始号码格式不正确！\n\n请录入完整分红凭证号码！');
+  			$('MerchantCouponNumberStart').focus();
+  			return false;
+  		}
+  	}
+
+  	if($F('MerchantCouponNumberEnd')==''){
+  		alert('分红凭证结束号码！');
+  		$('MerchantCouponNumberEnd').focus();
+  		return false;
+  	}else{
+  		var patrn=/^[A-Za-z]{1}(\d){9}$/;
+  		if(!patrn.test($F('MerchantCouponNumberEnd'))){
+  			alert('分红凭证结束号码格式不正确！\n\n请录入完整分红凭证号码！');
+  			$('MerchantCouponNumberEnd').focus();
+  			return false;
+  		}
+  	}
+
+	if($F('MerchantCouponNumberStart').toUpperCase().substring(0,1) != $F('MerchantCouponNumberEnd').toUpperCase().substring(0,1)){
+		alert('分红凭证起止号码必须是同一批次!');
+  		$('MerchantCouponNumberStart').focus();
+  		return false;
+	}
+
+	if($F('MerchantCouponNumberStart').substring(1,10) > $F('MerchantCouponNumberEnd').substring(1,10)){
+		alert('分红凭证开始号码必须是小于结束号码!');
+  		$('MerchantCouponNumberStart').focus();
+  		return false;
+	}
+
+
+    if($F('MerchantCouponPassword') == ''){
+		alert('为确保资金安全请重新输入您的口令！');
+		$('MerchantCouponPassword').focus();
+		return false;
+	}
+
+  }
+</SCRIPT>
