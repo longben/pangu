@@ -195,7 +195,7 @@ class LotteryBettingsController extends AppController {
 				$this->Session->setFlash('你拥有的分红凭证数量不足！');
 				$this->redirect('/lottery_bettings/batch');
 			}else{
-				if($this->LotteryBetting->saveUserBettingBatch($user_id, $lottery_id, $betting_number_start, $betting_number_end, $betting_time)){
+				if($this->LotteryBetting->saveUserBettingBatch($user_id, $lottery_id, (int)$betting_number_start, (int)$betting_number_end, $betting_time, $betting_total)){
 				  $this->Session->setFlash('会员参与分红成功！');
 				  $this->redirect('/lottery_bettings/batch');
 				}else{
