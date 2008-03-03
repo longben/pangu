@@ -11,7 +11,7 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('LotteryBetting/betting_number', '投注号码：');?>
- 	<?php echo $html->input('LotteryBetting/betting_number', array('size' => '30','maxlength' => '2'));?>
+ 	<?php echo $html->input('LotteryBetting/betting_number', array('size' => '30','maxlength' => '3'));?>
 	<?php echo $html->tagErrorMsg('LotteryBetting/betting_number', 'Please enter the Betting Number.');?>
 </div>
 <div class="optional"> 
@@ -93,9 +93,9 @@
   		$('LotteryBettingBettingNumber').focus();
   		return false;
   	}else{
-  		var patrn=/^(\d){2}$/;
+  		var patrn=/^(\d){3}$/;
   		if(!patrn.test($F('LotteryBettingBettingNumber'))){
-  			alert('投注号码只能为二位数字！');
+  			alert('投注号码只能为三位数字！');
   			$('LotteryBettingBettingNumber').focus();
   			return false;
   		}
