@@ -13,15 +13,15 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('LotteryBetting/betting_number_start', '投注起始号码：');?>
- 	<?php echo $html->input('LotteryBetting/betting_number_start', array('size' => '30','maxlength' => '3'));?>
+ 	<?php echo $html->input('LotteryBetting/betting_number_start', array('size' => '30','maxlength' => '2'));?>
 	<?php echo $html->tagErrorMsg('LotteryBetting/betting_number_start', 'Please enter the Betting Number.');?>
-	请输入3位数的开始号码，例：000
+	请输入2位数的开始号码，例：00
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('LotteryBetting/betting_number_end', '投注结束号码：');?>
- 	<?php echo $html->input('LotteryBetting/betting_number_end', array('size' => '30','maxlength' => '3'));?>
+ 	<?php echo $html->input('LotteryBetting/betting_number_end', array('size' => '30','maxlength' => '2'));?>
 	<?php echo $html->tagErrorMsg('LotteryBetting/betting_number_end', 'Please enter the Betting Number.');?>
-	请输入3位数的结束号码，例：999
+	请输入2位数的结束号码，例：99
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('LotteryBetting/betting_time', '投注份数：');?>
