@@ -8,7 +8,7 @@
 </div>
 <div class="optional"> 
 	<?php echo $form->labelTag('Lottery/win_number', '开奖号码：');?>
- 	<?php echo $html->input('Lottery/win_number', array('size' => '30','maxlength' => '2'));?>
+ 	<?php echo $html->input('Lottery/win_number', array('size' => '30','maxlength' => '3'));?>
 	<?php echo $html->tagErrorMsg('Lottery/win_number', 'Please enter the Lottery Times.');?>
 </div>
 <?php echo $html->hidden('Lottery/id')?>
@@ -27,9 +27,9 @@
   		$('LotteryWinNumber').focus();
   		return false;
   	}else{
-  		var patrn=/^(\d){2}$/;
+  		var patrn=/^(\d){3}$/;
   		if(!patrn.test($F('LotteryWinNumber'))){
-  			alert('开奖号码只能为二位数字！');
+  			alert('开奖号码只能为三位数字！');
   			$('LotteryWinNumber').focus();
   			return false;
   		}
