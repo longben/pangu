@@ -1,7 +1,7 @@
 <fieldset align=center>
 <legend>组号批量投注</legend>
 <div style="color:red">注意：参与分红前请仔细检查你的分红凭证张数是否足够！</div>
-<div style="color:red">提示：此功能是通过开始号码和结束号码之间的组合成投注号，例如000-999,投注张数为1的话，则为1千注！</div>
+<div style="color:red">提示：此功能是通过开始号码和结束号码之间的组合成投注号，例如00-99,投注张数为1的话，则为100注！</div>
 <?php
   if($lotteries != null){
 ?>
