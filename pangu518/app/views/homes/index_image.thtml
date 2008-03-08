@@ -1,0 +1,8 @@
+<?php echo "<?xml version='1.0' encoding='utf-8'?>\n"; ?>
+<bcaster>
+    <?php
+	  foreach($images as $new){
+		  echo "<item item_url='/img/".$new['Article']['default_pic_url']."' link='".$html->url('/atricles/show/'.$new['Article']['id'])."' itemtitle='".$new['Article']['title']."'/>\n";
+	  }
+	?>
+</bcaster>
