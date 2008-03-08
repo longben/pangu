@@ -1,5 +1,5 @@
 <?php
-/* SVN FILE: $Id: model_php5.php 5612 2007-08-30 01:49:55Z phpnut $ */
+/* SVN FILE: $Id: model_php5.php 5421 2007-07-09 04:58:57Z phpnut $ */
 /**
  * Object-relational mapper.
  *
@@ -21,9 +21,9 @@
  * @package			cake
  * @subpackage		cake.cake.libs.model
  * @since			CakePHP(tm) v 0.10.0.0
- * @version			$Revision: 5612 $
+ * @version			$Revision: 5421 $
  * @modifiedby		$LastChangedBy: phpnut $
- * @lastmodified	$Date: 2007-08-29 20:49:55 -0500 (Wed, 29 Aug 2007) $
+ * @lastmodified	$Date: 2007-07-08 23:58:57 -0500 (Sun, 08 Jul 2007) $
  * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 /**
@@ -220,12 +220,6 @@ class Model extends Object{
  * @access public
  */
 	var $recursive = 1;
-/**
- * Enter description here...
- *
- * @var boolean
- */
-	var $cacheSources = true;
 /**
  * Default association keys
  *
@@ -515,23 +509,31 @@ class Model extends Object{
  * @access public
  */
 	function setSource($tableName) {
-		$this->setDataSource($this->useDbConfig);
 		$db =& ConnectionManager::getDataSource($this->useDbConfig);
-		$db->cacheSources = $this->cacheSources;
 
 		if ($db->isInterfaceSupported('listSources')) {
+			$prefix = '';
+
+			if ($this->tablePrefix) {
+				$prefix = $this->tablePrefix;
+			}
+
 			$sources = $db->listSources();
-			if (is_array($sources) && !in_array(low($this->tablePrefix . $tableName), array_map('low', $sources))) {
+			if (is_array($sources) && !in_array(low($prefix . $tableName), array_map('low', $sources))) {
 				return $this->cakeError('missingTable', array(array(
 												'className' => $this->name,
-												'table' => $this->tablePrefix . $tableName)));
-
+												'table' => $prefix . $tableName)));
+			} else {
+				$this->table = $tableName;
+				$this->tableToModel[$this->table] = $this->name;
+				$this->loadInfo();
 			}
-			$this->_tableInfo = null;
+
+		} else {
+			$this->table = $tableName;
+			$this->tableToModel[$this->table] = $this->name;
+			$this->loadInfo();
 		}
-		$this->table = $this->useTable = $tableName;
-		$this->tableToModel[$this->table] = $this->name;
-		$this->loadInfo();
 	}
 /**
  * This function does two things: 1) it scans the array $one for the primary key,
@@ -585,18 +587,11 @@ class Model extends Object{
  */
 	function loadInfo() {
 		$db =& ConnectionManager::getDataSource($this->useDbConfig);
-		$db->cacheSources = $this->cacheSources;
 
 		if (!is_object($this->_tableInfo) && $db->isInterfaceSupported('describe') && $this->useTable !== false) {
-			$info = new Set($db->describe($this));
-
-			foreach($info->value as $field => $value) {
-				$fields[] = am(array('name'=> $field), $value);
-			}
-			unset($info);
-			$this->_tableInfo = new Set($fields);
+			$this->_tableInfo = new Set($db->describe($this));
 		} elseif ($this->useTable === false) {
-			$this->_tableInfo = new Set();
+			return new Set();
 		}
 		return $this->_tableInfo;
 	}
@@ -1540,12 +1535,13 @@ class Model extends Object{
  * @access public
  */
 	function setDataSource($dataSource = null) {
-		if ($dataSource != null) {
-			$this->useDbConfig = $dataSource;
+		if ($dataSource == null) {
+			$dataSource = $this->useDbConfig;
 		}
-		$db =& ConnectionManager::getDataSource($this->useDbConfig);
 
-		if (!empty($db->config['prefix']) && $this->tablePrefix === null) {
+		$db =& ConnectionManager::getDataSource($dataSource);
+
+		if (!empty($db->config['prefix']) && $this->tablePrefix == null) {
 			$this->tablePrefix = $db->config['prefix'];
 		}
 

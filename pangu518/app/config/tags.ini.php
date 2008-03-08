@@ -1,4 +1,4 @@
-﻿; Tag template for an input type='hidden' tag.
+; Tag template for an input type='hidden' tag.
 hiddenmultiple = "<input type="hidden" name="data[%s][%s][]" %s/>"
 
 ; Tag template for a input type='checkbox ' tag.

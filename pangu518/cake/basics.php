@@ -1,5 +1,5 @@
 <?php
-/* SVN FILE: $Id: basics.php 5612 2007-08-30 01:49:55Z phpnut $ */
+/* SVN FILE: $Id: basics.php 5421 2007-07-09 04:58:57Z phpnut $ */
 /**
  * Basic Cake functionality.
  *
@@ -21,9 +21,9 @@
  * @package			cake
  * @subpackage		cake.cake
  * @since			CakePHP(tm) v 0.2.9
- * @version			$Revision: 5612 $
+ * @version			$Revision: 5421 $
  * @modifiedby		$LastChangedBy: phpnut $
- * @lastmodified	$Date: 2007-08-29 20:49:55 -0500 (Wed, 29 Aug 2007) $
+ * @lastmodified	$Date: 2007-07-08 23:58:57 -0500 (Sun, 08 Jul 2007) $
  * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 /**
@@ -822,7 +822,7 @@
 			return getenv($key);
 		}
 
-		if ($key == 'SCRIPT_FILENAME' && defined('SERVER_IIS') && SERVER_IIS === true) {
+		if ($key == 'SCRIPT_FILENAME' && defined('SERVER_IIS') && SERVER_IIS === true){
 			return str_replace('\\\\', '\\', env('PATH_TRANSLATED') );
 		}
 

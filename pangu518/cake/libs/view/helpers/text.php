@@ -1,5 +1,5 @@
 <?php
-/* SVN FILE: $Id: text.php 5612 2007-08-30 01:49:55Z phpnut $ */
+/* SVN FILE: $Id: text.php 5317 2007-06-20 08:28:35Z phpnut $ */
 /**
  * Text Helper
  *
@@ -21,9 +21,9 @@
  * @package			cake
  * @subpackage		cake.cake.libs.view.helpers
  * @since			CakePHP(tm) v 0.10.0.1076
- * @version			$Revision: 5612 $
+ * @version			$Revision: 5317 $
  * @modifiedby		$LastChangedBy: phpnut $
- * @lastmodified	$Date: 2007-08-29 20:49:55 -0500 (Wed, 29 Aug 2007) $
+ * @lastmodified	$Date: 2007-06-20 03:28:35 -0500 (Wed, 20 Jun 2007) $
  * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 /**
@@ -68,7 +68,7 @@ class TextHelper extends Helper{
 						  $value=$highlighter;
 					 }
 
-					 $replace[]='|(' . $key . ')|i';
+					 $replace[]='|(' . $key . ')|';
 					 $with[]=empty($value) ? $highlighter : $value;
 				}
 

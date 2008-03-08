@@ -34,7 +34,7 @@
  * to use (in this case, /app/views/pages/home.thtml)...
  */
     $Route->connect('/admin', array('controller' => 'members', 'action' => 'login'));
-	$Route->connect('/', array('controller' => 'pages', 'action' => 'display', 'home'));
+	$Route->connect('/', array('controller' => 'homes', 'action' => 'index', 'home'));
 	$Route->connect('/admin_index', array('controller' => 'pages', 'action' => 'admin_index', 'admin_index'));
 /**
  * ...and connect the rest of 'Pages' controller's urls.

@@ -1,5 +1,5 @@
 <?php
-/* SVN FILE: $Id: dbo_mssql.php 5612 2007-08-30 01:49:55Z phpnut $ */
+/* SVN FILE: $Id: dbo_mssql.php 5317 2007-06-20 08:28:35Z phpnut $ */
 
 /**
  * MS SQL layer for DBO
@@ -22,9 +22,9 @@
  * @package			cake
  * @subpackage		cake.cake.libs.model.dbo
  * @since			CakePHP(tm) v 0.10.5.1790
- * @version			$Revision: 5612 $
+ * @version			$Revision: 5317 $
  * @modifiedby		$LastChangedBy: phpnut $
- * @lastmodified	$Date: 2007-08-29 20:49:55 -0500 (Wed, 29 Aug 2007) $
+ * @lastmodified	$Date: 2007-06-20 03:28:35 -0500 (Wed, 20 Jun 2007) $
  * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 
@@ -354,7 +354,7 @@ class DboMssql extends DboSource {
 		$error = mssql_get_last_message($this->connection);
 
 		if ($error) {
-			if (strpos(low($error), 'changed database') === false) {
+			if (strpos('changed database', low($error)) !== false) {
 				return $error;
 			}
 		}
@@ -575,19 +575,16 @@ class DboMssql extends DboSource {
 			return false;
 		}
 	}
-/**
- * Inserts multiple values into a join table
- *
- * @param string $table
- * @param string $fields
- * @param array $values
- */
-	function insertMulti($table, $fields, $values) {
-		$count = count($values);
-		for ($x = 0; $x < $count; $x++) {
-			$this->query("INSERT INTO {$table} ({$fields}) VALUES {$values[$x]}");
-		}
-	}
 
+	function buildSchemaQuery($schema) {
+		$search = array('{AUTOINCREMENT}', '{PRIMARY}', '{UNSIGNED}', '{FULLTEXT}', '{BOOLEAN}', '{UTF_8}');
+
+		$replace = array('int(11) not null auto_increment', 'primary key', 'unsigned', 'FULLTEXT',
+		'enum (\'true\', \'false\') NOT NULL default \'true\'', '/*!40100 CHARACTER SET utf8 COLLATE utf8_unicode_ci */');
+
+		$query = trim(r($search, $replace, $schema));
+		return $query;
+	}
 }
+
 ?>
