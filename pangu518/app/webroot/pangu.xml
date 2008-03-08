@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>	
+<bcaster>	
+	<item item_url='img/pic/pic0.jpg'  link='http://www.google.com' itemtitle='测试一' />	
+	<item item_url='img/pic/pic1.jpg'  link='#' itemtitle='测试二' />	
+	<item item_url='img/pic/pic2.jpg'  link='#' itemtitle='测试三' />
+	<item item_url='img/pic/pic2.jpg'  link='#' itemtitle='测试三' />
+	<item item_url='img/pic/pic2.jpg'  link='#' itemtitle='测试三' />
+</bcaster>

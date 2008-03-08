@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 require_once('db-settings.php');
 $mobile=trim($_POST["mobile"]);
 $member_no = $_POST["coupon"].$cert_number;

@@ -44,7 +44,7 @@
 	</tr>
 	</table>	
 	  <div>
-	<?php echo $html->submit('登录'); ?> 
+	  <?php echo $html->submit('登录'); ?> 
 	  </div>
 	</center>
 	</form>

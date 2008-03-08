@@ -1,5 +1,535 @@
-  <SCRIPT LANGUAGE="JavaScript">
-  <!--
-	location.replace("/admin");
-  //-->
-  </SCRIPT>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>中国消费财富网</title>
+<link href="css/style.css" type="text/css" rel="stylesheet">
+</head>
+
+<body>
+<table border=0 cellpadding=0 cellspacing=0 width=100%>
+<tr>
+  <td height=4 bgcolor="#31659C"></td>
+</tr>
+<tr>
+  <td height=1 bgcolor="#ffffff"></td>
+</tr>
+</table>
+<table border=0 cellpadding=0 cellspacing="0" width=100% height="25" style="background:#EBEBEB;border-bottom:1px solid #cccccc">
+<tr>
+  <td style="padding-left:20px;" width=26 align="left"><img src="images/top_smllogo1.gif"></td>
+  <td align=left style="padding-top:5px"><a href="" class="blacklink">整站演示</a></td>
+  <td align="right" style="padding-right:20px;color:#990000">今天是 2008年1月19日 星期六</td>
+</tr>
+</table>
+<table border=0 cellpadding=0 cellspacing=0 width=976 align=center height=108>
+<tr>
+  <td align=left width=144><img src="images/top_logo.jpg"></td>
+  <td align=center><object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="722" height="80">
+    <param name="movie" value="ad/1.swf">
+    <param name="quality" value="high">
+    <embed src="ad/1.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="722" height="80"></embed>
+  </object></td>
+</tr>
+</table>
+<table border=0 cellpadding=0 cellspacing=0 width=976 align=center height=32 background="images/menu_bg.jpg" style="margin-bottom:4px">
+<tr>
+  <td width=3><img src="images/menu_left.jpg"></td>
+  <td style="font-size:14px;font-weight:bold;color:#ffffff">
+  <table border=0 cellpadding=0 cellspacing=0 width=100% height=32>
+  <tr>
+    <td>&nbsp;</td>
+	<td width=78 align=center onmouseover="this.style.background='url(images/menu_over_bg.jpg)'" onmouseout="this.style.background='url()'" style="font-size:14px;font-weight:bold;color:#ffffff"><a href="index.html" class="whitelink">首页</a></td>
+	<td>&nbsp;</td>
+	<td width=78 align=center onmouseover="this.style.background='url(images/menu_over_bg.jpg)'" onmouseout="this.style.background='url()'" style="font-size:14px;font-weight:bold;color:#ffffff"><a href="shanjilist.html" class="whitelink">网站新闻</A></td>
+	<td>&nbsp;</td>
+	<td width=78 align=center onmouseover="this.style.background='url(images/menu_over_bg.jpg)'" onmouseout="this.style.background='url()'" style="font-size:14px;font-weight:bold;color:#ffffff"><a href="shanjilist.html" class="whitelink">消费市场</a></td>
+	<td>&nbsp;</td>
+	<td width=78 align=center onmouseover="this.style.background='url(images/menu_over_bg.jpg)'" onmouseout="this.style.background='url()'" style="font-size:14px;font-weight:bold;color:#ffffff"><a href="shanjilist.html" class="whitelink">财富资讯</a></td>
+	<td>&nbsp;</td>
+	<td width=78 align=center onmouseover="this.style.background='url(images/menu_over_bg.jpg)'" onmouseout="this.style.background='url()'" style="font-size:14px;font-weight:bold;color:#ffffff"><a href="shanjilist.html" class="whitelink">客服中心</a></td>
+	<td>&nbsp;</td>
+	<td width=78 align=center onmouseover="this.style.background='url(images/menu_over_bg.jpg)'" onmouseout="this.style.background='url()'" style="font-size:14px;font-weight:bold;color:#ffffff"><a href="shanjilist.html" class="whitelink">政策法规</a></td>
+	<td></td>
+	<td width=78 align=center onmouseover="this.style.background='url(images/menu_over_bg.jpg)'" onmouseout="this.style.background='url()'" style="font-size:14px;font-weight:bold;color:#ffffff"><a href="shangjiaindex.html" class="whitelink">合作商家</a></td>
+	<td>&nbsp;</td>
+	<td width=78 align=center onmouseover="this.style.background='url(images/menu_over_bg.jpg)'" onmouseout="this.style.background='url()'" style="font-size:14px;font-weight:bold;color:#ffffff"><a href="shanjilist.html" class="whitelink">服务机构</a></td>
+	<td>&nbsp;</td>
+	<td width=78 align=center onmouseover="this.style.background='url(images/menu_over_bg.jpg)'" onmouseout="this.style.background='url()'" style="font-size:14px;font-weight:bold;color:#ffffff"><a href="erjiindex.html" class="whitelink">合作机会</a></td>
+	<td>&nbsp;</td>
+	<td width=78 align=center onmouseover="this.style.background='url(images/menu_over_bg.jpg)'" onmouseout="this.style.background='url()'" style="font-size:14px;font-weight:bold;color:#ffffff"><a href="contents.html" class="whitelink">联系我们</a></td>
+	<td>&nbsp;</td>
+  </tr>
+  </table>
+  </td>
+  <td width=3><img src="images/menu_right.jpg"></td>
+</tr>
+</table>
+<table border=0 cellpadding=0 cellspacing=0 width=976 align=center>
+<tr>
+  <td width=205 style="border:1px solid #cccccc;padding:1px" valign=top>
+  <table border=0 cellpadding=0 cellspacing=0 width=100%>
+  <tr>
+    <td height=29 style="background:#CFDEEB;color:#31659C;font-weight:bold;padding-left:10px" align=left>会员登录</td>
+  </tr>
+  </table>
+  <table border=0 cellpadding=0 cellspacing=0 width=100% height=156>
+  <tr>
+    <td style="padding:10px">
+	<table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<tr>
+	  <td width=50 align=right height=30>用户名：</td>
+	  <td><input type="text" style="border:1px solid #31659C;height:22px;width:118px"></td>
+	</tr>
+	<tr>
+	  <td width=50 align=right height=30>密码：</td>
+	  <td><input type="password" style="border:1px solid #31659C;height:22px;width:118px"></td>
+	</tr>
+	<tr>
+	  <td width=50 align=right height=30>验证码：</td>
+	  <td><input type="text" style="border:1px solid #31659C;height:22px;width:50px"></td>
+	</tr>
+	<tr>
+	  <td colspan=2 align=center height=30><input name="" type="radio" value=""> 会员 <input name="" type="radio" value=""> 商家 <input name="" type="radio" value=""> 工作站</td>
+	</tr>
+	<tr>
+	  <td colspan=2 align=center height=30><input name="" type="button" value="登录" style="width:57px;height:23px;border:0px;background:url(images/button_bg.gif);color:#ffffff;font-size:12px;text-align:center">&nbsp;&nbsp;<input name="" type="button" value="注册" style="width:57px;height:23px;border:0px;background:url(images/button_bg.gif);color:#ffffff;font-size:12px;text-align:center"></td>
+	</tr>
+	</table>
+	</td>
+  </tr>
+  </table>
+ <table border=0 cellpadding=0 cellspacing=0 width=100% style="border-top:1px solid #cccccc">
+  <tr>
+    <td height=29 style="background:#CFDEEB;color:#31659C;font-weight:bold;padding-left:10px" align=left>在线客服</td>
+  </tr>
+  </table>
+  <table border=0 cellpadding=0 cellspacing=0 width=100% height=61>
+  <tr>
+    <td style="padding:5px" align=center>
+	<table border=0 cellpadding=0 cellspacing=0>
+	<tr>
+	  <td style="padding-right:4px" height=25><img src="temp/2.gif"></td>
+	  <td style="Padding-left:4px"><img src="temp/3.gif"></td>
+	</tr>
+	<tr>
+	  <td style="padding-right:4px" height=25><img src="temp/4.gif"></td>
+	  <td style="Padding-left:4px"><img src="temp/5.gif"></td>
+	</tr>
+	</table>
+	</td>
+  </tr>
+  </table>
+  <table border=0 cellpadding=0 cellspacing=0 width=100% style="border-top:1px solid #cccccc">
+  <tr>
+    <td height=29 style="background:#CFDEEB;color:#31659C;font-weight:bold;padding-left:10px" align=left>中奖公告</td>
+  </tr>
+  </table>
+  <table border=0 cellpadding=0 cellspacing=0 width=100% height=102>
+  <tr>
+    <td style="padding:5px">
+	<table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<tr>
+	  <td height=22 align=center style="color:#000000;font-weight:bold">期数</td>
+	  <td height=22 align=center style="color:#000000;font-weight:bold">中奖人数</td>
+	</tr>
+	<tr>
+	  <td height=22 align=center>200712期</td>
+	  <td height=22 align=center style="color:#ff0000"	>89</td>
+	</tr>
+	<tr>
+	  <td height=22 align=center>200712期</td>
+	  <td height=22 align=center style="color:#ff0000"	>89</td>
+	</tr>
+	<tr>
+	  <td height=22 align=center>200712期</td>
+	  <td height=22 align=center style="color:#ff0000"	>89</td>
+	</tr>
+	</table>
+	</td>
+  </tr>
+  </table>
+  </td>
+  <td style="padding-left:12px;" valign=top>
+  <table border=0 cellpadding=0 cellspacing=0 width=100% height=25 bgcolor="#EBEBEB" style="border:1px solid #cccccc;margin-bottom:5px">
+  <tr>
+    <td width=80 align=center style="color:#990000">最新公告</td>
+	<td style="color:#000000" width=670><marquee direction="left" onmouseover="this.stop();" onmouseout="this.start();"><a href="" class="blacklink">中国消费财富网2008015期分红公布(01-08，7)</a></marquee></td>
+  </tr>
+  </table>
+  <table border=0 cellpadding=0 cellspacing=0 width=100% height=396 style="border:1px solid #cccccc">
+  <tr>
+    <td valign=top>
+	<table border=0 cellpadding=0 cellspacing=0 width=100% >
+	<tr>
+	  <td width=366 valign="top">
+	  
+		<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" id="scriptmain" name="scriptmain" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" height="249" width="366">
+		 <param name="movie" value="pangu.swf?bcastr_xml_url=pangu.xml&bcastr_config=0x5e6673|1|0xffffff|70|0xffffff|0x86BD01|0x000033|4|3|1|_blank">
+		 <param name="quality" value="high">
+		 <param name="scale" value="noscale">
+		 <param name="LOOP" value="false">
+		 <param name="menu" value="false">
+		 <param name="wmode" value="transparent">
+		 <embed src="pangu.swf?bcastr_xml_url=pangu.xml&bcastr_config=0x5e6673|1|0xffffff|70|0xffffff|0x86BD01|0x000033|4|3|1|_blank" loop="false" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" salign="T" name="scriptmain" menu="false" wmode="transparent" height="249" width="355">
+		</object>	  
+		</td>
+	  <td valign=top style="border-bottom:1px solid #cccccc;padding:1px">
+	  <table border=0 cellpadding=0 cellspacing=0 width=100% style="background:#CFDEEB;">
+  <tr>
+    <td height=29 style="color:#31659C;font-weight:bold;padding-left:10px" align=left>最新消息</td>
+	<td style="padding-right:7px" align=right><img src="images/more_logo.gif"></td>
+  </tr>
+  </table>  
+  <table border=0 cellpadding=0 cellspacing=0 width=100%>
+  <tr>
+    <td style="padding:5px;padding-bottom:0px">
+	<table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<tr>
+	  <td height=24><a href="">中国消费财富网2008014期分红公布</a> <img src="images/new.gif"></td>
+	  <td style="color:#666666;" width=60 align=right>(01-04，10)</td>
+	</tr>
+	<tr>
+	  <td height=24><a href="">中国消费财富网2008014期分红公布</a></td>
+	  <td style="color:#666666;" width=60 align=right>(01-04，10)</td>
+	</tr>
+	<tr>
+	  <td height=24><a href="">中国消费财富网2008014期分红公布</a> <img src="images/new.gif"></td>
+	  <td style="color:#666666;" width=60 align=right>(01-04，10)</td>
+	</tr>
+	<tr>
+	  <td height=24><a href="">中国消费财富网2008014期分红公布</a></td>
+	  <td style="color:#666666;" width=60 align=right>(01-04，10)</td>
+	</tr>
+	<tr>
+	  <td height=24><a href="">中国消费财富网2008014期分红公布</a> <img src="images/new.gif"></td>
+	  <td style="color:#666666;" width=60 align=right>(01-04，10)</td>
+	</tr>
+	<tr>
+	  <td height=24><a href="">中国消费财富网2008014期分红公布</a></td>
+	  <td style="color:#666666;" width=60 align=right>(01-04，10)</td>
+	</tr>
+	<tr>
+	  <td height=24><a href="">中国消费财富网2008014期分红公布</a> <img src="images/new.gif"></td>
+	  <td style="color:#666666;" width=60 align=right>(01-04，10)</td>
+	</tr>
+	<tr>
+	  <td height=24><a href="">中国消费财富网2008014期分红公布</a></td>
+	  <td style="color:#666666;" width=60 align=right>(01-04，10)</td>
+	</tr>
+	<tr>
+	  <td height=24><a href="">中国消费财富网2008014期分红公布</a> <img src="images/new.gif"></td>
+	  <td style="color:#666666;" width=60 align=right>(01-04，10)</td>
+	</tr>
+	</table>	</td>
+  </tr>
+  </table>	  </td>
+	</tr>
+	
+	<tr>
+	  <td height=141 style="border-right:1px solid #cccccc;padding:1px;" valign=top>
+	  <table border=0 cellpadding=0 cellspacing=0 width=100% style="background:#CFDEEB;">
+  <tr>
+    <td height=29 style="color:#31659C;font-weight:bold;padding-left:10px" align=left>财富资讯</td>
+	<td style="padding-right:7px" align=right><img src="images/more_logo.gif"></td>
+  </tr>
+  </table>
+  <table border=0 cellpadding=0 cellspacing=0 width=100%>
+  <tr>
+    <td style="padding:5px;padding-bottom:0px">
+	<table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<tr>
+	  <td height=24><a href="">中国消费财富网2008014期分红公布</a> <img src="images/new.gif"></td>
+	  <td style="color:#666666;" width=60 align=right>(01-04，10)</td>
+	</tr>
+	<tr>
+	  <td height=24><a href="">中国消费财富网2008014期分红公布</a></td>
+	  <td style="color:#666666;" width=60 align=right>(01-04，10)</td>
+	</tr>
+	<tr>
+	  <td height=24><a href="">中国消费财富网2008014期分红公布</a> <img src="images/new.gif"></td>
+	  <td style="color:#666666;" width=60 align=right>(01-04，10)</td>
+	</tr>
+	<tr>
+	  <td height=24><a href="">中国消费财富网2008014期分红公布</a></td>
+	  <td style="color:#666666;" width=60 align=right>(01-04，10)</td>
+	</tr>
+	</table>	</td>
+  </tr>
+  </table>	  </td>
+	  <td valign=top style="padding:1px">
+	  <table border=0 cellpadding=0 cellspacing=0 width=100% style="background:#CFDEEB;">
+  <tr>
+    <td height=29 style="color:#31659C;font-weight:bold;padding-left:10px" align=left>消费市场</td>
+	<td style="padding-right:7px" align=right><img src="images/more_logo.gif"></td>
+  </tr>
+  </table>
+  <table border=0 cellpadding=0 cellspacing=0 width=100%>
+  <tr>
+    <td style="padding:5px;padding-bottom:0px">
+	<table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<tr>
+	  <td height=24><a href="">中国消费财富网2008014期分红公布</a> <img src="images/new.gif"></td>
+	  <td style="color:#666666;" width=60 align=right>(01-04，10)</td>
+	</tr>
+	<tr>
+	  <td height=24><a href="">中国消费财富网2008014期分红公布</a></td>
+	  <td style="color:#666666;" width=60 align=right>(01-04，10)</td>
+	</tr>
+	<tr>
+	  <td height=24><a href="">中国消费财富网2008014期分红公布</a> <img src="images/new.gif"></td>
+	  <td style="color:#666666;" width=60 align=right>(01-04，10)</td>
+	</tr>
+	<tr>
+	  <td height=24><a href="">中国消费财富网2008014期分红公布</a></td>
+	  <td style="color:#666666;" width=60 align=right>(01-04，10)</td>
+	</tr>
+	</table>	</td>
+  </tr>
+  </table>	  </td>
+	</tr>
+	</table>
+	</td>
+  </tr>
+  </table>
+  </td>
+</tr>
+</table>
+
+<table border="0" cellpadding="0" cellspacing="0" width=976 height=143 style="border:1px solid #cccccc;margin-top:5px;margin-bottom:5px" align="center">
+<tr>
+  <td style="padding:4px">
+  <table border=0 cellpadding=0 cellspacing=0 width=100%>
+  <tr>
+    <td width=10 align=left><img src="images/pic_left_button.gif" id="upbutton"></td>
+	<td><Div id="demo" style="width:950px;overflow:hidden"><table border=0 celllpadding=0 cellspacing="0">
+	<tr>
+	  <td id="demo1" valign=top><table border=0 cellpadding=0 cellspacing=0>
+	  <tr>
+	    <td align=center style="color:#666666"><img src="temp/6.gif" width=160 height=101 style="padding:1px;border:1px solid #000000"><br>四川蜀源装饰工程</td>
+		<td width=10>&nbsp;</td>
+		 <td align=center style="color:#666666"><img src="temp/6.gif" width=160 height=101 style="padding:1px;border:1px solid #000000"><br>四川蜀源装饰工程</td>
+		<td width=10>&nbsp;</td>
+		 <td align=center style="color:#666666"><img src="temp/6.gif" width=160 height=101 style="padding:1px;border:1px solid #000000"><br>四川蜀源装饰工程</td>
+		<td width=10>&nbsp;</td>
+		<td align=center style="color:#666666"><img src="temp/6.gif" width=160 height=101 style="padding:1px;border:1px solid #000000"><br>四川蜀源装饰工程</td>
+		<td width=10>&nbsp;</td>
+		<td align=center style="color:#666666"><img src="temp/6.gif" width=160 height=101 style="padding:1px;border:1px solid #000000"><br>四川蜀源装饰工程</td>
+		<td width=10>&nbsp;</td>
+	  </tr>
+	  </table>
+	  </td>
+	  <td id="demo2" valign="top"></td>
+	</tr>
+	</table></Div></td>
+	<td width=10 align=right><img src="images/pic_right_button.gif" id="downbutton"></td>
+  </tr>
+  </table>
+  </td>
+</tr>
+</table>
+
+<table border=0 cellpadding="0" cellspacing="0" width=976 align="center">
+<tr>
+  <td width=205 height=209 style="border:1px solid #cccccc;padding:1px;" valign="top">
+  <table border=0 cellpadding=0 cellspacing=0 width=100%>
+  <tr>
+    <td height=29 style="background:#CFDEEB;color:#31659C;font-weight:bold;padding-left:10px" align=left>视频在线播放</td>
+  </tr>
+  </table>
+  <table border=0 cellpadding="0" cellspacing="0" width=100%>
+  <tr>
+    <td style="padding:5px" align="center">视频位置</td>
+  </tr>
+  </table>
+  </td>
+  <td width=12></td>
+  <td style="border:1px solid #cccccc;padding:1px;" width=370 valign=top>
+  <table border=0 cellpadding=0 cellspacing=0 width=100% style="background:#CFDEEB;">
+  <tr>
+    <td height=29 style="color:#31659C;font-weight:bold;padding-left:10px" align=left>我与消费财富网</td>
+	<td style="padding-right:7px" align=right><img src="images/more_logo.gif"></td>
+  </tr>
+  </table>
+  <table border=0 cellpadding=0 cellspacing=0 width=100%>
+  <tr>
+    <td style="padding:5px;padding-bottom:0px">
+	<table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<tr>
+	  <td height=24><a href="">中国消费财富网2008014期分红公布</a> <img src="images/new.gif"></td>
+	  <td style="color:#666666;" width=60 align=right>(01-04，10)</td>
+	</tr>
+	<tr>
+	  <td height=24><a href="">中国消费财富网2008014期分红公布</a></td>
+	  <td style="color:#666666;" width=60 align=right>(01-04，10)</td>
+	</tr>
+	<tr>
+	  <td height=24><a href="">中国消费财富网2008014期分红公布</a> <img src="images/new.gif"></td>
+	  <td style="color:#666666;" width=60 align=right>(01-04，10)</td>
+	</tr>
+	<tr>
+	  <td height=24><a href="">中国消费财富网2008014期分红公布</a></td>
+	  <td style="color:#666666;" width=60 align=right>(01-04，10)</td>
+	</tr>
+	<tr>
+	  <td height=24><a href="">中国消费财富网2008014期分红公布</a></td>
+	  <td style="color:#666666;" width=60 align=right>(01-04，10)</td>
+	</tr>
+	<tr>
+	  <td height=24><a href="">中国消费财富网2008014期分红公布</a></td>
+	  <td style="color:#666666;" width=60 align=right>(01-04，10)</td>
+	</tr>
+	<tr>
+	  <td height=24><a href="">中国消费财富网2008014期分红公布</a></td>
+	  <td style="color:#666666;" width=60 align=right>(01-04，10)</td>
+	</tr>
+	</table>
+	</td>
+  </tr>
+  </table>
+  </td>
+  <td style="border:1px solid #cccccc;border-left:0px;padding:1px;" valign="top">
+  <table border=0 cellpadding=0 cellspacing=0 width=100% style="background:#CFDEEB;">
+  <tr>
+    <td height=29 style="color:#31659C;font-weight:bold;padding-left:10px" align=left>商家信息</td>
+	<td style="padding-right:7px" align=right><img src="images/more_logo.gif"></td>
+  </tr>
+  </table>
+  <table border=0 cellpadding=0 cellspacing=0 width=100%>
+  <tr>
+    <td style="padding:5px;padding-bottom:0px">
+	<table border=0 cellpadding=0 cellspacing=0 width=100%>
+	<tr>
+	  <td height=24><a href="">中国消费财富网2008014期分红公布</a> <img src="images/new.gif"></td>
+	  <td style="color:#666666;" width=60 align=right>(01-04，10)</td>
+	</tr>
+	<tr>
+	  <td height=24><a href="">中国消费财富网2008014期分红公布</a></td>
+	  <td style="color:#666666;" width=60 align=right>(01-04，10)</td>
+	</tr>
+	<tr>
+	  <td height=24><a href="">中国消费财富网2008014期分红公布</a> <img src="images/new.gif"></td>
+	  <td style="color:#666666;" width=60 align=right>(01-04，10)</td>
+	</tr>
+	<tr>
+	  <td height=24><a href="">中国消费财富网2008014期分红公布</a></td>
+	  <td style="color:#666666;" width=60 align=right>(01-04，10)</td>
+	</tr>
+	<tr>
+	  <td height=24><a href="">中国消费财富网2008014期分红公布</a></td>
+	  <td style="color:#666666;" width=60 align=right>(01-04，10)</td>
+	</tr>
+	<tr>
+	  <td height=24><a href="">中国消费财富网2008014期分红公布</a></td>
+	  <td style="color:#666666;" width=60 align=right>(01-04，10)</td>
+	</tr>
+	<tr>
+	  <td height=24><a href="">中国消费财富网2008014期分红公布</a></td>
+	  <td style="color:#666666;" width=60 align=right>(01-04，10)</td>
+	</tr>
+	</table>
+	</td>
+  </tr>
+  </table>
+  </td>
+</tr>
+</table>
+<table border=0 cellpadding=0 cellspacing="0" width=976 align="center" style="border:1px solid #cccccc;margin-top:5px;margin-bottom:5px">
+<tr>
+  <td style="padding:1px">
+  <table border=0 cellpadding=0 cellspacing=0 width=100%>
+  <tr>
+    <td height=29 style="background:#CFDEEB;color:#31659C;font-weight:bold;padding-left:10px" align=left>合作单位</td>
+  </tr>
+  </table>
+  <table border=0 cellpadding=0 cellspacing=0 width=100%>
+  <tr>
+    <td style="padding:5px">
+	<table border="0" cellpadding="0" cellspacing="0" width=100%>
+	<tr>
+	  <td align=center height=60><img src="temp/7.gif"></td>
+	  <td align=center height=60><img src="temp/7.gif"></td>
+	  <td align=center height=60><img src="temp/7.gif"></td>
+	  <td align=center height=60><img src="temp/7.gif"></td>
+	  <td align=center height=60><img src="temp/7.gif"></td>
+	  <td align=center height=60><img src="temp/7.gif"></td>
+	  <td align=center height=60><img src="temp/7.gif"></td>
+	  <td align=center height=60><img src="temp/7.gif"></td>
+	</tr>
+	<tr>
+	  <td align=center height=60><img src="temp/7.gif"></td>
+	  <td align=center height=60><img src="temp/7.gif"></td>
+	  <td align=center height=60><img src="temp/7.gif"></td>
+	  <td align=center height=60><img src="temp/7.gif"></td>
+	  <td align=center height=60><img src="temp/7.gif"></td>
+	  <td align=center height=60><img src="temp/7.gif"></td>
+	  <td align=center height=60><img src="temp/7.gif"></td>
+	  <td align=center height=60><img src="temp/7.gif"></td>
+	</tr>
+	</table>
+	</td>
+  </tr>
+  </table>
+  </td>
+</tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width=976 align=center>
+<tr>
+  <td align=center style="color:#666666;padding:5px">
+  | 关于公司 | 设为首页 | 加入收藏 | 公司邮箱 | 友情链接 | 网站公告 | 管理登录 | <br>  
+蜀ICP备 川B2-20070164号  国际域名：www.pangu518.com <br>
+ 工商经营许可证5101002016468号     邮箱：chinaxfcfw@163.com  <br>
+ 
+
+  </td>
+</tr>
+</table>
+</body>
+</html>
+<script> 
+  var speed=2//速度数值越大速度越慢 
+  demo2.innerHTML=demo1.innerHTML 
+  function Marquee(){ 
+  a=1
+  if(demo2.offsetWidth-demo.scrollLeft<=0) {
+  demo.scrollLeft-=demo1.offsetWidth
+  }else{ 
+  demo.scrollLeft++ 
+  } 
+  } 
+  function Marquee1(){ 
+  a=2
+  if(demo.scrollLeft<=0) {
+  demo.scrollLeft+=demo1.offsetWidth
+  }else{ 
+  demo.scrollLeft-- 
+  } 
+  } 
+  var MyMar=setInterval(Marquee,speed) 
+  demo.onmouseover=function() {clearInterval(MyMar)} 
+  demo.onmouseout=function() {
+  if(a==1){
+  MyMar=setInterval(Marquee,speed)
+  }else{
+  MyMar=setInterval(Marquee1,speed)
+  }
+  }
+  upbutton.onmouseover=function(){
+     clearInterval(MyMar)
+     MyMar=setInterval(Marquee,speed)
+	 this.src="images/pic_left_buttonover.gif"
+  }
+   upbutton.onmouseout=function(){
+	 this.src="images/pic_left_button.gif"
+  }
+  downbutton.onmouseover=function(){
+     clearInterval(MyMar)
+     MyMar=setInterval(Marquee1,speed)
+	 this.src="images/pic_right_buttonover.gif"
+  }
+  downbutton.onmouseout=function(){
+     clearInterval(MyMar)
+     MyMar=setInterval(Marquee1,speed)
+	 this.src="images/pic_right_button.gif"
+  }
+</script>

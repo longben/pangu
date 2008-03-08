@@ -1,4 +1,4 @@
-﻿<fieldset align=center>
+<fieldset align=center>
 <legend>分红凭证录入</legend> 
 <form action="<?php echo $html->url('/user_coupons/input'); ?>" method="post" onsubmit="return check()">
    <?php echo $html->hiddenTag('UserCoupon/user_id',$this->controller->Session->read('User.uid'));?>

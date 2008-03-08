@@ -13,6 +13,10 @@ class Lottery extends AppModel {
 						'dependent' => ''
 				),
 	);
-
+	
+	function findBulletin($limit = null){
+		$this->recursive = 0;
+		return $this->findAll("flag = 9 order by open_time desc limit $limit");
+	}
 }
 ?>
