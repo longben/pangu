@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 	require_once('db-settings.php');
 	$mobile = trim($_POST["mobile"]);
 	$strart_coupon = trim($_POST["office_phone"]);

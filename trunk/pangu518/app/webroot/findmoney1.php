@@ -1,4 +1,4 @@
-﻿<?php
+<?php
  require_once('db-settings.php');
  $username=trim($_POST["username"]);
  $password1=trim($_POST["password1"]);
