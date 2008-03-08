@@ -1,0 +1,210 @@
+<table border=0 cellpadding=0 cellspacing=0 width=976 align=center>
+<tr>
+  <td width=205 style="border:1px solid #cccccc;padding:1px" valign=top>
+  <table border=0 cellpadding=0 cellspacing=0 width=100%>
+  <tr>
+    <td height=29 style="background:#CFDEEB;color:#31659C;font-weight:bold;padding-left:10px" align=left>会员登录</td>
+  </tr>
+  </table>
+  <table border=0 cellpadding=0 cellspacing=0 width=100% height=156>
+  <tr>
+    <td style="padding:10px">
+		    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+			  <form action="<?php echo $html->url('/members/login'); ?>" method="post">
+              <tr>
+                <td width=50 align=right height=30>用户名：</td>
+                <td>
+				<?php echo $html->input('Member/username', array('size' => 20, 'style' => 'border:1px solid #31659C;height:22px;width:118px'));?>
+				</td>
+              </tr>
+              <tr>
+                <td width=50 align=right height=30>密码：</td>
+                <td>
+				<?php echo $html->password('Member/password', array('size' =>20, 'style' => 'border:1px solid #31659C;height:22px;width:118px')); ?>
+				</td>
+              </tr>
+              <tr>
+                <td width=50 align=right height=30>验证码：</td>
+                <td><input type="text" style="border:1px solid #31659C;height:22px;width:50px"></td>
+              </tr>
+              <tr>
+                <td colspan=2 align=center height=30><input name="mType" type="radio" value="1">
+                  会员
+                  <input name="mType" type="radio" value="2">
+                  商家
+                  <input name="mType" type="radio" value="3">
+                  工作站</td>
+              </tr>
+              <tr>
+                <td colspan=2 align=center height=30>
+				  <input name="" type="submit" value="登录" style="width:57px;height:23px;border:0px;background:url(/img/website/button_bg.gif);color:#ffffff;font-size:12px;text-align:center">
+                  &nbsp;&nbsp;
+                  <input name="" type="button" value="注册" style="width:57px;height:23px;border:0px;background:url(/img/website/button_bg.gif);color:#ffffff;font-size:12px;text-align:center">
+				</td>
+              </tr>
+			  </form>
+              </table>
+	</td>
+  </tr>
+  </table>
+ <table border=0 cellpadding=0 cellspacing=0 width=100% style="border-top:1px solid #cccccc">
+  <tr>
+    <td height=29 style="background:#CFDEEB;color:#31659C;font-weight:bold;padding-left:10px" align=left>在线客服</td>
+  </tr>
+  </table>
+  <table border=0 cellpadding=0 cellspacing=0 width=100% height=61>
+  <tr>
+    <td style="padding:5px" align=center>
+	<table border=0 cellpadding=0 cellspacing=0>
+	  <tr>
+		<td style="padding-right:4px" height=25>
+		<?=$html->link($html->image("http://wpa.qq.com/pa?p=1:591291905:4",array('border' => '0')).'客服中心①',
+		   'http://wpa.qq.com/msgrd?V=1&amp;Uin=591291905&amp;Site=盘古财富网;Menu=yes',
+		   array('title' => '客服中心①','target' => '_blank'),
+		   null,
+		   false)
+		?>
+		</td>
+		<td style="Padding-left:4px">
+		<?=$html->link($html->image("http://wpa.qq.com/pa?p=1:245090231:4",array('border' => '0')).'客服中心②',
+		   'http://wpa.qq.com/msgrd?V=1&amp;Uin=245090231&amp;Site=盘古财富网;Menu=yes',
+		   array('title' => '客服中心②','target' => '_blank'),
+		   null,
+		   false)
+		?>
+		</td>
+	  </tr>
+	  <tr>
+		<td style="padding-right:4px" height=25>
+		<?=$html->link($html->image("http://wpa.qq.com/pa?p=1:873598738:4",array('border' => '0')).'客服中心③',
+		   'http://wpa.qq.com/msgrd?V=1&amp;Uin=873598738&amp;Site=盘古财富网;Menu=yes',
+		   array('title' => '客服中心③','target' => '_blank'),
+		   null,
+		   false)
+		?>
+		</td>
+		<td style="Padding-left:4px">
+		<?=$html->link($html->image("http://wpa.qq.com/pa?p=1:873599471:4",array('border' => '0')).'客服中心④',
+		   'http://wpa.qq.com/msgrd?V=1&amp;Uin=873599471&amp;Site=盘古财富网;Menu=yes',
+		   array('title' => '客服中心④','target' => '_blank'),
+		   null,
+		   false)
+		?>
+		</td>
+	  </tr>
+	  <tr>
+		<td style="padding-right:4px" height=25>
+		<?=$html->link($html->image("http://wpa.qq.com/pa?p=1:843429658:4",array('border' => '0')).'客服中心⑤',
+		   'http://wpa.qq.com/msgrd?V=1&amp;Uin=843429658&amp;Site=盘古财富网;Menu=yes',
+		   array('title' => '客服中心⑤','target' => '_blank'),
+		   null,
+		   false)
+		?>
+		</td>
+		<td style="Padding-left:4px"></td>
+	  </tr>
+	</table>
+	<table border="0" cellpadding="0" cellspacing="0" width=100%>
+	<tr>
+	  <td align="center" style="padding-top:5px;padding-bottom:5px;"><img src="/img/ad/1.gif" style="border:1px solid #999999"></td>
+	</tr>
+	<tr>
+	  <td align="center" style="padding-top:5px;padding-bottom:5px;"><img src="/img/ad/1.gif" style="border:1px solid #999999"></td>
+	</tr>
+	</table>
+	</td>
+  </tr>
+  </table>
+  <table border=0 cellpadding=0 cellspacing=0 width=100% style="border-top:1px solid #cccccc">
+  <tr>
+    <td height=29 style="background:#CFDEEB;color:#31659C;font-weight:bold;padding-left:10px" align=left>专题列表</td>
+  </tr>
+  </table>
+  <table border=0 cellpadding=0 cellspacing=0 width=100%>
+  <tr>
+    <td style="padding:5px" valign="top">
+	<br/>
+	<br/>
+	</td>
+  </tr>
+  </table>
+  <table border=0 cellpadding=0 cellspacing=0 width=100% style="border-top:1px solid #cccccc">
+  <tr>
+    <td height=29 style="background:#CFDEEB;color:#31659C;font-weight:bold;padding-left:10px" align=left>最新推荐</td>
+  </tr>
+  </table>
+  <table border=0 cellpadding=0 cellspacing=0 width=100%>
+  <tr>
+    <td style="padding:5px" valign="top">
+	<br/>
+	<br/>
+	</td>
+  </tr>
+  </table>
+  </td>
+  <td style="padding-left:12px;" valign=top><table border="0" cellpadding="0" cellspacing="0" width=100%>
+  <tr>
+    <td style="border:1px solid #cccccc;padding:1px"valign="top" height=800>
+	<table border=0 cellpadding="0" cellspacing="0" width=100%>
+	<tr>
+	  <td height=29 bgcolor="#CFDEEB" style="padding-left:10px;padding-right:10px;font-weight:bold">
+	  <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	  <tr>
+	    <td align=left style=";font-weight:bold">首页 &gt;&gt; 二级栏目 &gt;&gt; <?=$article['Article']['title']?></td>
+		<td align=right><font color=green>荐</font>&nbsp;&nbsp;<font color='#009999'>★★★</font></td>
+	  </tr>
+	  </table>
+	  </td>
+	</tr>
+	<tr>
+	  <td style="padding:10px;border-bottom:1px solid #cccccc">
+	  <table border=0 cellpadding=0 cellspacing=0 width=100%>
+	  <tr>
+	    <td align=center style="font-size:16px;font-weight:bold;padding:10px;border-bottom:1px solid #cccccc"><?php echo $article['Article']['title']?></td>
+	  </tr>
+	  <tr>
+	    <td style="border-bottom:1px solid #cccccc;padding:5px;background:#eeeeee">作者：<?php echo $article['Article']['author']?>  文章来源：<?php echo $article['Article']['copy_from']?>  点击数：<?php echo $article['Article']['hits']?>  更新时间：<?php echo $article['Article']['created']?>  <a href="">收藏此页</a></td>
+	  </tr>
+	  <tr>
+	    <td height='10'></td>
+	  </tr>
+	  <tr>
+	    <td style="color:#666666" align=left><?php echo $article['Article']['content']?></td>
+	  </tr>
+	  </table>
+	  </td>
+	</tr>
+	</table>
+	<table border=0 cellpadding=0 cellspacing=0 width=100% style="margin-top:1px" bgcolor="#EEEEEE">
+	  <tr><td>&nbsp;</td></tr>
+	<!--
+	<tr>
+	  <td height=28 style="padding-right:10px" align=right>【字体：<A class=top_UserLogin href="javascript:fontZoomA();">小</A> <A class=top_UserLogin href="javascript:fontZoomB();">大</A>】【<a href="/shopwall/Comment.asp?ArticleID=178" target="_blank">发表评论</a>】【<a href="/User/User_Favorite.asp?Action=Add&ChannelID=1004&InfoID=178" target="_blank">加入收藏</a>】【<a href="/shopwall/SendMail.asp?ArticleID=178" target="_blank">告诉好友</a>】【<a href="/shopwall/Print.asp?ArticleID=178" target="_blank">打印此文</a>】【<a href="javascript:window.close();">关闭窗口</a>】</td>
+	</tr>
+	-->
+	</table>
+	
+	<table border=0 cellspacing="0" cellpadding="0" width=100% >
+  <tr>
+    <td style="padding:4px;border-bottom:1px solid #cccccc">
+	  <li>上一篇： </li><br/><li>下一篇：</li>
+	</td>
+  </tr>
+  </table>
+  <table border=0 cellpadding=0 cellspacing=0 width=100% style="margin-top:1px" bgcolor="#EEEEEE">
+	<tr>
+	  <td height=28 style="padding-left:10px;font-weight:bold" align=left><B>网友评论：</B>（只显示最新10条。评论内容只代表网友观点，与本站立场无关！）</td>
+	</tr>
+  </table>
+  <table border=0 cellpadding=0 cellspacing=0 width=100%>
+  <tr>
+    <td style="padding:5px">没有任何评论</td>
+  </tr>
+  </table>
+	</td>
+	</tr>
+  </table>
+  
+  </td>
+</tr>
+</table>
