@@ -2,7 +2,7 @@
 <bcaster>
     <?php
 	  foreach($images as $new){
-		  echo "<item item_url='/img/".$new['Article']['default_pic_url']."' link='".$html->url('/atricles/show/'.$new['Article']['id'])."' itemtitle='".$new['Article']['title']."'/>\n";
+		  echo "<item item_url='/img/".$new['Article']['default_pic_url']."' link='".$html->url('/articles/show/'.$new['Article']['id'])."' itemtitle='".$new['Article']['title']."'/>\n";
 	  }
 	?>
 </bcaster>
