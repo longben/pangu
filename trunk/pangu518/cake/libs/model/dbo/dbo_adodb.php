@@ -1,5 +1,5 @@
 <?php
-/* SVN FILE: $Id: dbo_adodb.php 5612 2007-08-30 01:49:55Z phpnut $ */
+/* SVN FILE: $Id: dbo_adodb.php 5317 2007-06-20 08:28:35Z phpnut $ */
 
 /**
  * AdoDB layer for DBO.
@@ -22,9 +22,9 @@
  * @package			cake
  * @subpackage		cake.cake.libs.model.dbo
  * @since			CakePHP(tm) v 0.2.9
- * @version			$Revision: 5612 $
+ * @version			$Revision: 5317 $
  * @modifiedby		$LastChangedBy: phpnut $
- * @lastmodified	$Date: 2007-08-29 20:49:55 -0500 (Wed, 29 Aug 2007) $
+ * @lastmodified	$Date: 2007-06-20 03:28:35 -0500 (Wed, 20 Jun 2007) $
  * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 
@@ -221,9 +221,8 @@ class DboAdodb extends DboSource {
 		$cols = $this->_adodb->MetaColumns($this->fullTableName($model, false));
 
 		foreach ($cols as $column) {
-			$fields[$column->name] = array(
-										'type' => $this->column($column->type)
-									);
+			$fields[] = array('name' => $column->name,
+									'type' => $this->column($column->type));
 		}
 
 		$this->__cacheDescription($this->fullTableName($model, false), $fields);
@@ -332,7 +331,7 @@ class DboAdodb extends DboSource {
  * @param mixed $fields
  * @return array
  */
-	function fields(&$model, $alias = null, $fields = array(), $quote = true) {
+	function fields(&$model, $alias, $fields) {
 		if (empty($alias)) {
 			$alias = $model->name;
 		}
@@ -422,18 +421,6 @@ class DboAdodb extends DboSource {
 			return false;
 		}
 	}
-/**
- * Inserts multiple values into a join table
- *
- * @param string $table
- * @param string $fields
- * @param array $values
- */
-	function insertMulti($table, $fields, $values) {
-		$count = count($values);
-		for ($x = 0; $x < $count; $x++) {
-			$this->query("INSERT INTO {$table} ({$fields}) VALUES {$values[$x]}");
-		}
-	}
 }
+
 ?>
