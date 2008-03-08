@@ -215,6 +215,7 @@ create table merchants(
 create table merchant_coupons(
   id               int(11)       not null auto_increment comment '主键',
   merchant_id      int(11)       not null                comment '会员消费单位',
+  user_id          int(8)        not null                comment '会员消费单位所有人',
   coupon_id        int(11)       not null                comment '代金券',
   workstation_id   int(11)       not null                comment '销售代金券给消费单位的工作站',
   created          timestamp                             comment '获得代金券时间',
