@@ -72,7 +72,7 @@ create table channels(
 -- ----------------------------
 -- 栏目表
 -- ----------------------------
-create table pages (
+create table webpages (
   id                     int(10)       not null auto_increment comment '栏目编号',
   channel_id             int(10)       not null                comment '频道',
   page_name              varchar(50)   not null                comment '栏目名称',
@@ -108,7 +108,7 @@ create table pages (
   item_list_order_type   int(10)                 default null  comment '',
   item_open_type         int(10)                 default null  comment '',
   item_count             int(10)                 default null  comment '',
-  page_purview           tinyint(3)     unsigned default '0'   comment '',
+  page_purview           tinyint(1)     unsigned default '0'   comment '',
   enable_comment         tinyint(1)              default '0'   comment '',
   check_comment          tinyint(1)              default '0'   comment '',
   present_exp            double                  default '0'   comment '',
@@ -130,7 +130,7 @@ create table pages (
 create table articles(
   id                    int(10)       not null auto_increment comment '文章编号',
   channel_id            int(10)       not null                comment '频道',
-  page_id               int(10)       not null                comment '类别',
+  webpage_id            int(10)       not null                comment '类别',
   title                 varchar(255)  not null                comment '标题',
   title_intact          varchar(255)                          comment '完整标题',
   subheading            varchar(255)                          comment '副标题',
