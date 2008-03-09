@@ -169,7 +169,13 @@
 	    <td height='10'></td>
 	  </tr>
 	  <tr>
-	    <td style="color:#666666" align=left><?php echo $article['Article']['content']?></td>
+	    <td style="color:#666666" align=left>
+		<?php 
+		  $content = str_replace("[InstallDir_ChannelDir]","/img",$article['Article']['content']);
+		  $content = str_replace("{\$UploadDir}","",$content);
+		  echo $content;
+		?>
+		</td>
 	  </tr>
 	  </table>
 	  </td>
