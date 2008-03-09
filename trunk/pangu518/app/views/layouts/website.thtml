@@ -71,9 +71,11 @@
 	 <?=$html->link('服务机构','/homes/workstations_index',array('class' => 'whitelink'))?>	
 	</td>
 	<td>&nbsp;</td>
-	<td width=78 align=center style="font-size:14px;font-weight:bold;color:#ffffff" onMouseOver="this.style.background='url(/img/website/menu_over_bg.jpg)'" onMouseOut="this.style.background='url()'"><a href="erjiindex.html" class="whitelink">合作机会</a></td>
+	<td width=78 align=center style="font-size:14px;font-weight:bold;color:#ffffff" onMouseOver="this.style.background='url(/img/website/menu_over_bg.jpg)'" onMouseOut="this.style.background='url()'">
+	<?=$html->link('合作机会','/homes/cooperation_index',array('class' => 'whitelink'))?>	
+	</td>
 	<td>&nbsp;</td>
-	<td width=78 align=center style="font-size:14px;font-weight:bold;color:#ffffff" onMouseOver="this.style.background='url(/img/website/menu_over_bg.jpg)'" onMouseOut="this.style.background='url()'"><a href="contents.html" class="whitelink">联系我们</a></td>
+	<td width=78 align=center style="font-size:14px;font-weight:bold;color:#ffffff" onMouseOver="this.style.background='url(/img/website/menu_over_bg.jpg)'" onMouseOut="this.style.background='url()'"><a href="#" class="whitelink">联系我们</a></td>
 	<td>&nbsp;</td>
   </tr>
   </table>
