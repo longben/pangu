@@ -146,13 +146,13 @@
           <td valign=top><table border=0 cellpadding=0 cellspacing=0 width=100% >
               <tr>
                 <td width=366 valign="top"><object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" id="scriptmain" name="scriptmain" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" height="249" width="366">
-                    <param name="movie" value="pangu.swf?bcastr_xml_url=<?=$html->url('/pangu.xml')?>&bcastr_config=0x5e6673|1|0xffffff|70|0xffffff|0x86BD01|0x000033|4|3|1|_blank">
+                    <param name="movie" value="pangu.swf?bcastr_xml_url=<?=$html->url('/homes/index_image')?>&bcastr_config=0x5e6673|1|0xffffff|70|0xffffff|0x86BD01|0x000033|4|3|1|_blank">
                     <param name="quality" value="high">
                     <param name="scale" value="noscale">
                     <param name="LOOP" value="false">
                     <param name="menu" value="false">
                     <param name="wmode" value="transparent">
-                    <embed src="pangu.swf?bcastr_xml_url=<?=$html->url('/pangu.xml')?>&bcastr_config=0x5e6673|1|0xffffff|70|0xffffff|0x86BD01|0x000033|4|3|1|_blank" loop="false" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" salign="T" name="scriptmain" menu="false" wmode="transparent" height="249" width="355">
+                    <embed src="pangu.swf?bcastr_xml_url=<?=$html->url('/homes/index_image')?>&bcastr_config=0x5e6673|1|0xffffff|70|0xffffff|0x86BD01|0x000033|4|3|1|_blank" loop="false" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" salign="T" name="scriptmain" menu="false" wmode="transparent" height="249" width="355">
                   </object>
                 </td>
                 <td valign=top style="border-bottom:1px solid #cccccc;padding:1px">
