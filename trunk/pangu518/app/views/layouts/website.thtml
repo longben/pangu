@@ -44,21 +44,32 @@
 	</td>
 	<td>&nbsp;</td>
 	<td width=78 align=center style="font-size:14px;font-weight:bold;color:#ffffff" onMouseOver="this.style.background='url(/img/website/menu_over_bg.jpg)'" onMouseOut="this.style.background='url()'">
-	<?=$html->link('网站新闻','/homes/news_index',array('class' => 'whitelink'))?>	</td>
+	<?=$html->link('网站新闻','/homes/news_index',array('class' => 'whitelink'))?>	
+	</td>
 	<td>&nbsp;</td>
-	<td width=78 align=center style="font-size:14px;font-weight:bold;color:#ffffff" onMouseOver="this.style.background='url(/img/website/menu_over_bg.jpg)'" onMouseOut="this.style.background='url()'"><a href="shanjilist.html" class="whitelink">消费市场</a></td>
+	<td width=78 align=center style="font-size:14px;font-weight:bold;color:#ffffff" onMouseOver="this.style.background='url(/img/website/menu_over_bg.jpg)'" onMouseOut="this.style.background='url()'">
+	<?=$html->link('消费市场','/homes/consumer_market_index',array('class' => 'whitelink'))?>	
+	</td>
 	<td>&nbsp;</td>
-	<td width=78 align=center style="font-size:14px;font-weight:bold;color:#ffffff" onMouseOver="this.style.background='url(/img/website/menu_over_bg.jpg)'" onMouseOut="this.style.background='url()'"><a href="shanjilist.html" class="whitelink">财富资讯</a></td>
+	<td width=78 align=center style="font-size:14px;font-weight:bold;color:#ffffff" onMouseOver="this.style.background='url(/img/website/menu_over_bg.jpg)'" onMouseOut="this.style.background='url()'">
+	<?=$html->link('财富资讯','/homes/fortune_index',array('class' => 'whitelink'))?>	
+	</td>
 	<td>&nbsp;</td>
-	<td width=78 align=center style="font-size:14px;font-weight:bold;color:#ffffff" onMouseOver="this.style.background='url(/img/website/menu_over_bg.jpg)'" onMouseOut="this.style.background='url()'"><a href="shanjilist.html" class="whitelink">客服中心</a></td>
+	<td width=78 align=center style="font-size:14px;font-weight:bold;color:#ffffff" onMouseOver="this.style.background='url(/img/website/menu_over_bg.jpg)'" onMouseOut="this.style.background='url()'">
+	 <?=$html->link('客服中心','/homes/cs_center_index',array('class' => 'whitelink'))?>		
+	</td>
 	<td>&nbsp;</td>
-	<td width=78 align=center style="font-size:14px;font-weight:bold;color:#ffffff" onMouseOver="this.style.background='url(/img/website/menu_over_bg.jpg)'" onMouseOut="this.style.background='url()'"><a href="shanjilist.html" class="whitelink">政策法规</a></td>
+	<td width=78 align=center style="font-size:14px;font-weight:bold;color:#ffffff" onMouseOver="this.style.background='url(/img/website/menu_over_bg.jpg)'" onMouseOut="this.style.background='url()'">
+	 <?=$html->link('政策法规','/homes/legal_index',array('class' => 'whitelink'))?>		
+	</td>
 	<td>&nbsp;</td>
 	<td width=78 align=center style="font-size:14px;font-weight:bold;color:#ffffff" onMouseOver="this.style.background='url(/img/website/menu_over_bg.jpg)'" onMouseOut="this.style.background='url()'">
 	 <?=$html->link('合作商家','/homes/merchants_index',array('class' => 'whitelink'))?>
 	</td>
 	<td>&nbsp;</td>
-	<td width=78 align=center style="font-size:14px;font-weight:bold;color:#ffffff" onMouseOver="this.style.background='url(/img/website/menu_over_bg.jpg)'" onMouseOut="this.style.background='url()'"><a href="shanjilist.html" class="whitelink">服务机构</a></td>
+	<td width=78 align=center style="font-size:14px;font-weight:bold;color:#ffffff" onMouseOver="this.style.background='url(/img/website/menu_over_bg.jpg)'" onMouseOut="this.style.background='url()'">
+	 <?=$html->link('服务机构','/homes/workstations_index',array('class' => 'whitelink'))?>	
+	</td>
 	<td>&nbsp;</td>
 	<td width=78 align=center style="font-size:14px;font-weight:bold;color:#ffffff" onMouseOver="this.style.background='url(/img/website/menu_over_bg.jpg)'" onMouseOut="this.style.background='url()'"><a href="erjiindex.html" class="whitelink">合作机会</a></td>
 	<td>&nbsp;</td>
