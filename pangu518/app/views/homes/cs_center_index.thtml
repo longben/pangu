@@ -1,0 +1,343 @@
+<table border=0 cellpadding=0 cellspacing=0 width=976 align=center>
+  <tr>
+    <td width=205 style="border:1px solid #cccccc;padding:1px" valign=top><table border=0 cellpadding=0 cellspacing=0 width=100%>
+        <tr>
+          <td height=29 style="background:#CFDEEB;color:#31659C;font-weight:bold;padding-left:10px" align=left>会员登录</td>
+        </tr>
+      </table>
+      <table border=0 cellpadding=0 cellspacing=0 width=100% height=156>
+        <tr>
+          <td style="padding:10px">
+		    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+			  <form action="<?php echo $html->url('/members/login'); ?>" method="post">
+              <tr>
+                <td width=50 align=right height=30>用户名：</td>
+                <td>
+				<?php echo $html->input('Member/username', array('size' => 20, 'style' => 'border:1px solid #31659C;height:22px;width:118px'));?>				</td>
+              </tr>
+              <tr>
+                <td width=50 align=right height=30>密码：</td>
+                <td>
+				<?php echo $html->password('Member/password', array('size' =>20, 'style' => 'border:1px solid #31659C;height:22px;width:118px')); ?>				</td>
+              </tr>
+              <tr>
+                <td width=50 align=right height=30>验证码：</td>
+                <td><input type="text" style="border:1px solid #31659C;height:22px;width:50px"></td>
+              </tr>
+              <tr>
+                <td colspan=2 align=center height=30><input name="mType" type="radio" value="1">
+                  会员
+                  <input name="mType" type="radio" value="2">
+                  商家
+                  <input name="mType" type="radio" value="3">
+                  工作站</td>
+              </tr>
+              <tr>
+                <td colspan=2 align=center height=30>
+				  <input name="" type="submit" value="登录" style="width:57px;height:23px;border:0px;background:url(/img/website/button_bg.gif);color:#ffffff;font-size:12px;text-align:center">
+                  &nbsp;&nbsp;
+                  <input name="" type="button" value="注册" style="width:57px;height:23px;border:0px;background:url(/img/website/button_bg.gif);color:#ffffff;font-size:12px;text-align:center">				</td>
+              </tr>
+			  </form>
+            </table>		  </td>
+        </tr>
+      </table>
+      <table border=0 cellpadding=0 cellspacing=0 width=100% style="border-top:1px solid #cccccc">
+        <tr>
+          <td height=29 style="background:#CFDEEB;color:#31659C;font-weight:bold;padding-left:10px" align=left>在线客服</td>
+        </tr>
+      </table>
+      <table border=0 cellpadding=0 cellspacing=0 width=100% height=61>
+        <tr>
+          <td style="padding:5px" align=center>
+		    <table border=0 cellpadding=0 cellspacing=0>
+              <tr>
+                <td style="padding-right:4px" height=25>
+				<?=$html->link($html->image("http://wpa.qq.com/pa?p=1:591291905:4",array('border' => '0')).'客服中心①',
+				   'http://wpa.qq.com/msgrd?V=1&amp;Uin=591291905&amp;Site=盘古财富网;Menu=yes',
+				   array('title' => '客服中心①','target' => '_blank'),
+				   null,
+				   false)
+				?>				</td>
+                <td style="Padding-left:4px">
+				<?=$html->link($html->image("http://wpa.qq.com/pa?p=1:245090231:4",array('border' => '0')).'客服中心②',
+				   'http://wpa.qq.com/msgrd?V=1&amp;Uin=245090231&amp;Site=盘古财富网;Menu=yes',
+				   array('title' => '客服中心②','target' => '_blank'),
+				   null,
+				   false)
+				?>				</td>
+              </tr>
+              <tr>
+                <td style="padding-right:4px" height=25>
+				<?=$html->link($html->image("http://wpa.qq.com/pa?p=1:873598738:4",array('border' => '0')).'客服中心③',
+				   'http://wpa.qq.com/msgrd?V=1&amp;Uin=873598738&amp;Site=盘古财富网;Menu=yes',
+				   array('title' => '客服中心③','target' => '_blank'),
+				   null,
+				   false)
+				?>				</td>
+                <td style="Padding-left:4px">
+				<?=$html->link($html->image("http://wpa.qq.com/pa?p=1:873599471:4",array('border' => '0')).'客服中心④',
+				   'http://wpa.qq.com/msgrd?V=1&amp;Uin=873599471&amp;Site=盘古财富网;Menu=yes',
+				   array('title' => '客服中心④','target' => '_blank'),
+				   null,
+				   false)
+				?>				</td>
+              </tr>
+              <tr>
+                <td style="padding-right:4px" height=25>
+				<?=$html->link($html->image("http://wpa.qq.com/pa?p=1:843429658:4",array('border' => '0')).'客服中心⑤',
+				   'http://wpa.qq.com/msgrd?V=1&amp;Uin=843429658&amp;Site=盘古财富网;Menu=yes',
+				   array('title' => '客服中心⑤','target' => '_blank'),
+				   null,
+				   false)
+				?>				</td>
+                <td style="Padding-left:4px"></td>
+              </tr>
+            </table>		  </td>
+        </tr>
+      </table>
+      <table border=0 cellpadding=0 cellspacing=0 width=100% style="border-top:1px solid #cccccc">
+        <tr>
+          <td height=29 style="background:#CFDEEB;color:#31659C;font-weight:bold;padding-left:10px" align=left>中奖公告</td>
+        </tr>
+      </table>
+      <table border=0 cellpadding=0 cellspacing=0 width=100% height=102>
+        <tr>
+          <td style="padding:5px">
+		    <table border=0 cellpadding=0 cellspacing=0 width=100%>
+              <tr>
+                <td height=22 align=center style="color:#000000;font-weight:bold">期数</td>
+                <td height=22 align=center style="color:#000000;font-weight:bold">中奖人数</td>
+              </tr>
+			  <?php foreach($lotterites as $lottery):?>
+              <tr>
+                <td height=22 align=center>
+				<?=$lottery['Lottery']['lottery_year'] . sprintf('%03s', $lottery['Lottery']['lottery_times'])?>期				</td>
+                <td height=22 align=center style="color:#ff0000">
+				<?=intval($lottery['Lottery']['win_count']);?>				</td>
+              </tr>
+			  <?php endforeach;?>
+            </table>		  </td>
+        </tr>
+    </table></td>
+    <td valign="top" style="padding-left:12px;"><table border="0" cellpadding="0" cellspacing="0" width="100%" height="25" bgcolor="#EBEBEB" style="border:1px solid #cccccc;margin-bottom:5px">
+        <tr>
+          <td align="left" style="color:#990000;padding-left:10px" ><a href="" class="redlink">首页</a> &gt;&gt; 客服中心</td>
+        </tr>
+      </table>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-bottom:5px">
+          <tr>
+            <td style="border:1px solid #cccccc;padding:1px" width="375" valign="top"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                  <td height="29" bgcolor="#CFDEEB" style="padding-left:10px;padding-right:10px"><table border="0" cellspacing="0" width="100%" cellpadding="0">
+                      <tr>
+                        <td align="left" style="font-weight:bold">个人会员好处</td>
+                        <td align="right"><img src="/img/website/more_logo.gif" /></td>
+                      </tr>
+                  </table></td>
+                </tr>
+                <tr>
+                  <td style="padding:5px" valign="top"><table border="0" cellspacing="0" cellpadding="0" width="100%">
+                      <tr>
+                        <td>工作站大类下面子类列表 01-15 </td>
+                        <td width="100" align="right">01-15</td>
+                      </tr>
+                      <tr>
+                        <td>中国消费财富网2008017期分红公布</td>
+                        <td width="100" align="right">01-15</td>
+                      </tr>
+                      <tr>
+                        <td>中国消费财富网2008017期分红公布</td>
+                        <td width="100" align="right">01-15</td>
+                      </tr>
+                      <tr>
+                        <td>中国消费财富网2008017期分红公布</td>
+                        <td width="100" align="right">01-15</td>
+                      </tr>
+                      <tr>
+                        <td>中国消费财富网2008017期分红公布</td>
+                        <td width="100" align="right">01-15</td>
+                      </tr>
+                      <tr>
+                        <td>中国消费财富网2008017期分红公布</td>
+                        <td width="100" align="right">01-15</td>
+                      </tr>
+                      <tr>
+                        <td>中国消费财富网2008017期分红公布</td>
+                        <td width="100" align="right">01-15</td>
+                      </tr>
+                      <tr>
+                        <td>中国消费财富网2008017期分红公布</td>
+                        <td width="100" align="right">01-15</td>
+                      </tr>
+                  </table></td>
+                </tr>
+            </table></td>
+            <td width="10"></td>
+            <td style="border:1px solid #cccccc;padding:1px" valign="top"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                  <td height="29" bgcolor="#CFDEEB" style="padding-left:10px;padding-right:10px"><table border="0" cellspacing="0" width="100%" cellpadding="0">
+                      <tr>
+                        <td align="left" style="font-weight:bold">消费单位优势</td>
+                        <td align="right"><img src="/img/website/more_logo.gif" /></td>
+                      </tr>
+                  </table></td>
+                </tr>
+                <tr>
+                  <td style="padding:5px"><table border="0" cellspacing="0" cellpadding="0" width="100%">
+                      <tr>
+                        <td>工作站大类下面子类列表 01-15 </td>
+                        <td width="100" align="right">01-15</td>
+                      </tr>
+                      <tr>
+                        <td>中国消费财富网2008017期分红公布</td>
+                        <td width="100" align="right">01-15</td>
+                      </tr>
+                      <tr>
+                        <td>中国消费财富网2008017期分红公布</td>
+                        <td width="100" align="right">01-15</td>
+                      </tr>
+                      <tr>
+                        <td>中国消费财富网2008017期分红公布</td>
+                        <td width="100" align="right">01-15</td>
+                      </tr>
+                      <tr>
+                        <td>中国消费财富网2008017期分红公布</td>
+                        <td width="100" align="right">01-15</td>
+                      </tr>
+                      <tr>
+                        <td>中国消费财富网2008017期分红公布</td>
+                        <td width="100" align="right">01-15</td>
+                      </tr>
+                      <tr>
+                        <td>中国消费财富网2008017期分红公布</td>
+                        <td width="100" align="right">01-15</td>
+                      </tr>
+                      <tr>
+                        <td>中国消费财富网2008017期分红公布</td>
+                        <td width="100" align="right">01-15</td>
+                      </tr>
+                  </table></td>
+                </tr>
+            </table></td>
+          </tr>
+        </table>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-bottom:5px">
+          <tr>
+            <td style="border:1px solid #cccccc;padding:1px" width="375" valign="top"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                  <td height="29" bgcolor="#CFDEEB" style="padding-left:10px;padding-right:10px"><table border="0" cellspacing="0" width="100%" cellpadding="0">
+                      <tr>
+                        <td align="left" style="font-weight:bold">会员问题解答</td>
+                        <td align="right"><img src="/img/website/more_logo.gif" /></td>
+                      </tr>
+                  </table></td>
+                </tr>
+                <tr>
+                  <td style="padding:5px" valign="top"><table border="0" cellspacing="0" cellpadding="0" width="100%">
+                      <tr>
+                        <td>将不同大地区的工作站用文章形式描述</td>
+                        <td width="100" align="right">01-15</td>
+                      </tr>
+                      <tr>
+                        <td>中国消费财富网2008017期分红公布</td>
+                        <td width="100" align="right">01-15</td>
+                      </tr>
+                      <tr>
+                        <td>中国消费财富网2008017期分红公布</td>
+                        <td width="100" align="right">01-15</td>
+                      </tr>
+                      <tr>
+                        <td>中国消费财富网2008017期分红公布</td>
+                        <td width="100" align="right">01-15</td>
+                      </tr>
+                      <tr>
+                        <td>中国消费财富网2008017期分红公布</td>
+                        <td width="100" align="right">01-15</td>
+                      </tr>
+                      <tr>
+                        <td>中国消费财富网2008017期分红公布</td>
+                        <td width="100" align="right">01-15</td>
+                      </tr>
+                      <tr>
+                        <td>中国消费财富网2008017期分红公布</td>
+                        <td width="100" align="right">01-15</td>
+                      </tr>
+                      <tr>
+                        <td>中国消费财富网2008017期分红公布</td>
+                        <td width="100" align="right">01-15</td>
+                      </tr>
+                  </table></td>
+                </tr>
+            </table></td>
+            <td width="10"></td>
+            <td style="border:1px solid #cccccc;padding:1px" valign="top"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                  <td height="29" bgcolor="#CFDEEB" style="padding-left:10px;padding-right:10px"><table border="0" cellspacing="0" width="100%" cellpadding="0">
+                      <tr>
+                        <td align="left" style="font-weight:bold">商家问题解答</td>
+                        <td align="right"><img src="/img/website/more_logo.gif" /></td>
+                      </tr>
+                  </table></td>
+                </tr>
+                <tr>
+                  <td style="padding:5px"><table border="0" cellspacing="0" cellpadding="0" width="100%">
+                      <tr>
+                        <td>也是一个下面的子类新闻发布</td>
+                        <td width="100" align="right">01-15</td>
+                      </tr>
+                      <tr>
+                        <td>中国消费财富网2008017期分红公布</td>
+                        <td width="100" align="right">01-15</td>
+                      </tr>
+                      <tr>
+                        <td>中国消费财富网2008017期分红公布</td>
+                        <td width="100" align="right">01-15</td>
+                      </tr>
+                      <tr>
+                        <td>中国消费财富网2008017期分红公布</td>
+                        <td width="100" align="right">01-15</td>
+                      </tr>
+                      <tr>
+                        <td>中国消费财富网2008017期分红公布</td>
+                        <td width="100" align="right">01-15</td>
+                      </tr>
+                      <tr>
+                        <td>中国消费财富网2008017期分红公布</td>
+                        <td width="100" align="right">01-15</td>
+                      </tr>
+                      <tr>
+                        <td>中国消费财富网2008017期分红公布</td>
+                        <td width="100" align="right">01-15</td>
+                      </tr>
+                      <tr>
+                        <td>中国消费财富网2008017期分红公布</td>
+                        <td width="100" align="right">01-15</td>
+                      </tr>
+                  </table></td>
+                </tr>
+            </table></td>
+          </tr>
+        </table>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border:1px solid #cccccc">
+          <tr>
+            <td style="padding:5px"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                  <td align="center" style="color:#666666"><img src="/img/website/6.gif" width="160" height="101" style="padding:1px;border:1px solid #000000" /><br />
+                    放客服部门照片</td>
+                  <td width="10">&nbsp;</td>
+                  <td align="center" style="color:#666666"><img src="/img/website/6.gif" width="160" height="101" style="padding:1px;border:1px solid #000000" /><br />
+                    或公司的办公照片等</td>
+                  <td width="10">&nbsp;</td>
+                  <td align="center" style="color:#666666"><img src="/img/website/6.gif" width="160" height="101" style="padding:1px;border:1px solid #000000" /><br />
+                    四川蜀源装饰工程</td>
+                  <td width="10">&nbsp;</td>
+                  <td align="center" style="color:#666666"><img src="/img/website/6.gif" width="160" height="101" style="padding:1px;border:1px solid #000000" /><br />
+                    四川蜀源装饰工程</td>
+                  <td width="10">&nbsp;</td>
+                </tr>
+            </table></td>
+          </tr>
+      </table></td>
+  </tr>
+</table>
