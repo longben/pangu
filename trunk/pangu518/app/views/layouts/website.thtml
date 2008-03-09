@@ -17,14 +17,14 @@
 </table>
 <table border=0 cellpadding=0 cellspacing="0" width=100% height="25" style="background:#EBEBEB;border-bottom:1px solid #cccccc">
 <tr>
-  <td style="padding-left:20px;" width=26 align="left"><img src="/img/website//top_smllogo1.gif"></td>
+  <td style="padding-left:20px;" width=26 align="left"><img src="/img/website/top_smllogo1.gif"></td>
   <td align=left style="padding-top:5px">中国消费财富网</td>
   <td align="right" style="padding-right:20px;color:#990000">今天是 2008年1月19日 星期六</td>
 </tr>
 </table>
 <table border=0 cellpadding=0 cellspacing=0 width=976 align=center height=108>
 <tr>
-  <td align=left width=144><img src="/img/website//top_logo.jpg"></td>
+  <td align=left width=144><img src="/img/website/top_logo.jpg"></td>
   <td align=center><object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="722" height="80">
     <param name="movie" value="/img/ad/1.swf">
     <param name="quality" value="high">
@@ -32,40 +32,42 @@
   </object></td>
 </tr>
 </table>
-<table border=0 cellpadding=0 cellspacing=0 width=976 align=center height=32 background="/img/website//menu_bg.jpg" style="margin-bottom:4px">
+<table border=0 cellpadding=0 cellspacing=0 width=976 align=center height=32 background="/img/website/menu_bg.jpg" style="margin-bottom:4px">
 <tr>
-  <td width=3><img src="/img/website//menu_left.jpg"></td>
+  <td width=3><img src="/img/website/menu_left.jpg"></td>
   <td style="font-size:14px;font-weight:bold;color:#ffffff">
   <table width=100% height=32 border=0 cellpadding=0 cellspacing=0>
   <tr>
     <td>&nbsp;</td>
-	<td width=78 align=center style="font-size:14px;font-weight:bold;color:#ffffff" onMouseOver="this.style.background='url(/img/website//menu_over_bg.jpg)'" onMouseOut="this.style.background='url()'">
-	  <?=$html->link('首页','/',array('class' => 'whitelink'))?>
+	<td width=78 align=center style="font-size:14px;font-weight:bold;color:#ffffff" onMouseOver="this.style.background='url(/img/website/menu_over_bg.jpg)'" onMouseOut="this.style.background='url()'">
+	<?=$html->link('首页','/',array('class' => 'whitelink'))?>
 	</td>
 	<td>&nbsp;</td>
-	<td width=78 align=center style="font-size:14px;font-weight:bold;color:#ffffff" onMouseOver="this.style.background='url(/img/website//menu_over_bg.jpg)'" onMouseOut="this.style.background='url()'">
-	  <?=$html->link('网站新闻','/shanjilist.html',array('class' => 'whitelink'))?>	</td>
+	<td width=78 align=center style="font-size:14px;font-weight:bold;color:#ffffff" onMouseOver="this.style.background='url(/img/website/menu_over_bg.jpg)'" onMouseOut="this.style.background='url()'">
+	<?=$html->link('网站新闻','/homes/news_index',array('class' => 'whitelink'))?>	</td>
 	<td>&nbsp;</td>
-	<td width=78 align=center style="font-size:14px;font-weight:bold;color:#ffffff" onMouseOver="this.style.background='url(/img/website//menu_over_bg.jpg)'" onMouseOut="this.style.background='url()'"><a href="shanjilist.html" class="whitelink">消费市场</a></td>
+	<td width=78 align=center style="font-size:14px;font-weight:bold;color:#ffffff" onMouseOver="this.style.background='url(/img/website/menu_over_bg.jpg)'" onMouseOut="this.style.background='url()'"><a href="shanjilist.html" class="whitelink">消费市场</a></td>
 	<td>&nbsp;</td>
-	<td width=78 align=center style="font-size:14px;font-weight:bold;color:#ffffff" onMouseOver="this.style.background='url(/img/website//menu_over_bg.jpg)'" onMouseOut="this.style.background='url()'"><a href="shanjilist.html" class="whitelink">财富资讯</a></td>
+	<td width=78 align=center style="font-size:14px;font-weight:bold;color:#ffffff" onMouseOver="this.style.background='url(/img/website/menu_over_bg.jpg)'" onMouseOut="this.style.background='url()'"><a href="shanjilist.html" class="whitelink">财富资讯</a></td>
 	<td>&nbsp;</td>
-	<td width=78 align=center style="font-size:14px;font-weight:bold;color:#ffffff" onMouseOver="this.style.background='url(/img/website//menu_over_bg.jpg)'" onMouseOut="this.style.background='url()'"><a href="shanjilist.html" class="whitelink">客服中心</a></td>
+	<td width=78 align=center style="font-size:14px;font-weight:bold;color:#ffffff" onMouseOver="this.style.background='url(/img/website/menu_over_bg.jpg)'" onMouseOut="this.style.background='url()'"><a href="shanjilist.html" class="whitelink">客服中心</a></td>
 	<td>&nbsp;</td>
-	<td width=78 align=center style="font-size:14px;font-weight:bold;color:#ffffff" onMouseOver="this.style.background='url(/img/website//menu_over_bg.jpg)'" onMouseOut="this.style.background='url()'"><a href="shanjilist.html" class="whitelink">政策法规</a></td>
+	<td width=78 align=center style="font-size:14px;font-weight:bold;color:#ffffff" onMouseOver="this.style.background='url(/img/website/menu_over_bg.jpg)'" onMouseOut="this.style.background='url()'"><a href="shanjilist.html" class="whitelink">政策法规</a></td>
 	<td>&nbsp;</td>
-	<td width=78 align=center style="font-size:14px;font-weight:bold;color:#ffffff" onMouseOver="this.style.background='url(/img/website//menu_over_bg.jpg)'" onMouseOut="this.style.background='url()'"><a href="shangjiaindex.html" class="whitelink">合作商家</a></td>
+	<td width=78 align=center style="font-size:14px;font-weight:bold;color:#ffffff" onMouseOver="this.style.background='url(/img/website/menu_over_bg.jpg)'" onMouseOut="this.style.background='url()'">
+	 <?=$html->link('合作商家','/homes/merchants_index',array('class' => 'whitelink'))?>
+	</td>
 	<td>&nbsp;</td>
-	<td width=78 align=center style="font-size:14px;font-weight:bold;color:#ffffff" onMouseOver="this.style.background='url(/img/website//menu_over_bg.jpg)'" onMouseOut="this.style.background='url()'"><a href="shanjilist.html" class="whitelink">服务机构</a></td>
+	<td width=78 align=center style="font-size:14px;font-weight:bold;color:#ffffff" onMouseOver="this.style.background='url(/img/website/menu_over_bg.jpg)'" onMouseOut="this.style.background='url()'"><a href="shanjilist.html" class="whitelink">服务机构</a></td>
 	<td>&nbsp;</td>
-	<td width=78 align=center style="font-size:14px;font-weight:bold;color:#ffffff" onMouseOver="this.style.background='url(/img/website//menu_over_bg.jpg)'" onMouseOut="this.style.background='url()'"><a href="erjiindex.html" class="whitelink">合作机会</a></td>
+	<td width=78 align=center style="font-size:14px;font-weight:bold;color:#ffffff" onMouseOver="this.style.background='url(/img/website/menu_over_bg.jpg)'" onMouseOut="this.style.background='url()'"><a href="erjiindex.html" class="whitelink">合作机会</a></td>
 	<td>&nbsp;</td>
-	<td width=78 align=center style="font-size:14px;font-weight:bold;color:#ffffff" onMouseOver="this.style.background='url(/img/website//menu_over_bg.jpg)'" onMouseOut="this.style.background='url()'"><a href="contents.html" class="whitelink">联系我们</a></td>
+	<td width=78 align=center style="font-size:14px;font-weight:bold;color:#ffffff" onMouseOver="this.style.background='url(/img/website/menu_over_bg.jpg)'" onMouseOut="this.style.background='url()'"><a href="contents.html" class="whitelink">联系我们</a></td>
 	<td>&nbsp;</td>
   </tr>
   </table>
   </td>
-  <td width=3><img src="/img/website//menu_right.jpg"></td>
+  <td width=3><img src="/img/website/menu_right.jpg"></td>
 </tr>
 </table>
 
