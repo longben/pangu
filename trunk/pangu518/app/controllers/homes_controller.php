@@ -57,7 +57,7 @@ class HomesController extends AppController {
 	function consumer_market_index() {
 		$this->layout = 'website';
 		$this->set('zxxxs', $this->Article->findArticleByChannel($this->CM_ZXXX,5)); //最新消息
-		$this->set('rmtjs', $this->Article->findArticleByWebpageClick($this->CM_RMTJ,5)); //热门推荐;
+		$this->set('rmtjs', $this->Article->findArticleByChannelClick($this->CM_RMTJ,5)); //热门推荐;
 		$this->set('scyys', $this->Article->findArticleByWebpage($this->CM_SCYY,5)); //市场运营;
 		$this->set('yyxzs', $this->Article->findArticleByWebpage($this->CM_YYXZ,5)); //运营细则;
 
@@ -65,6 +65,24 @@ class HomesController extends AppController {
 
 		$this->set('lotterites', $this->Lottery->findBulletin(4)); //开奖公告
 	}
+
+	var $F_GSXX = 6; //公司信息
+	var $F_SCXX = 7; //市场信息
+	var $F_JJKX = 8; //经济快讯
+	var $F_FHXX = 9; //分红信息
+
+	function fortune_index() {
+		$this->layout = 'website';
+		$this->set('gsxxs', $this->Article->findArticleByWebpage($this->F_GSXX,5)); //公司信息;
+		$this->set('scxxs', $this->Article->findArticleByWebpage($this->F_SCXX,5)); //市场信息;
+		$this->set('jjkxs', $this->Article->findArticleByWebpage($this->F_JJKX,5)); //公司信息;
+		$this->set('fhxxs', $this->Article->findArticleByWebpage($this->F_FHXX,5)); //分红信息;
+
+		$this->set('merchants', $this->Article->findMerchant($this->SJXX,4)); //商家滚动图片
+
+		$this->set('lotterites', $this->Lottery->findBulletin(4)); //开奖公告
+	}
+
 
 	function merchants_index() {
 		$this->layout = 'website';
@@ -120,18 +138,7 @@ class HomesController extends AppController {
 
 
 
-	function fortune_index() {
-		$this->layout = 'website';
-		$this->set('zxxxs', $this->Article->findArticleByChannel($this->ZXXX,9)); //最新消息
-		$this->set('cfzxs', $this->Article->findArticleByWebpage($this->CFZX,6)); //财富资讯;
-		$this->set('xfscs', $this->Article->findArticleByWebpage($this->XFSC,6)); //消费市场;
-		$this->set('mypgs', $this->Article->findArticleByWebpage($this->MYPG,7)); //我与消费财富网;
-		$this->set('sjxxs', $this->Article->findArticleByChannel($this->SJXX,7)); //商家信息;
 
-		$this->set('merchants', $this->Article->findMerchant($this->SJXX,7)); //首页商家滚动图片
-
-		$this->set('lotterites', $this->Lottery->findBulletin(4)); //开奖公告
-	}
 
 	function cooperation_index() {
 		$this->layout = 'website';
