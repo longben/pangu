@@ -61,6 +61,12 @@ class Article extends AppModel {
 		return $this->findAll("Article.webpage_id = $webpage_id order by Article.created desc limit $limit");
 	}
 
+	//通过栏目查询最大·热门N条数据
+	function findArticleByWebpageClick($webpage_id = null,$limit = null){
+		$this->recursive = 0;
+		return $this->findAll("Article.webpage_id = $webpage_id order by Article.hits desc limit $limit");
+	}
+
 	//取出图片
 	function findMerchant($channel_id = null,$limit = null){
 		$this->recursive = 0;

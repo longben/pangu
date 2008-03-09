@@ -131,45 +131,26 @@
                 <tr>
                   <td height="29" bgcolor="#CFDEEB" style="padding-left:10px;padding-right:10px"><table border="0" cellspacing="0" width="100%" cellpadding="0">
                       <tr>
-                        <td align="left" style="font-weight:bold">最新动态</td>
+                        <td align="left" style="font-weight:bold">最新消息</td>
                         <td align="right"><img src="/img/website/more_logo.gif" /></td>
                       </tr>
                   </table></td>
                 </tr>
                 <tr>
                   <td style="padding:5px" valign="top"><table border="0" cellspacing="0" cellpadding="0" width="100%">
-                      <tr>
-                        <td>大类下面子类列表 01-15 </td>
-                        <td width="100" align="right">01-15</td>
-                      </tr>
-                      <tr>
-                        <td>中国消费财富网2008017期分红公布</td>
-                        <td width="100" align="right">01-15</td>
-                      </tr>
-                      <tr>
-                        <td>中国消费财富网2008017期分红公布</td>
-                        <td width="100" align="right">01-15</td>
-                      </tr>
-                      <tr>
-                        <td>中国消费财富网2008017期分红公布</td>
-                        <td width="100" align="right">01-15</td>
-                      </tr>
-                      <tr>
-                        <td>中国消费财富网2008017期分红公布</td>
-                        <td width="100" align="right">01-15</td>
-                      </tr>
-                      <tr>
-                        <td>中国消费财富网2008017期分红公布</td>
-                        <td width="100" align="right">01-15</td>
-                      </tr>
-                      <tr>
-                        <td>中国消费财富网2008017期分红公布</td>
-                        <td width="100" align="right">01-15</td>
-                      </tr>
-                      <tr>
-                        <td>中国消费财富网2008017期分红公布</td>
-                        <td width="100" align="right">01-15</td>
-                      </tr>
+					  <?php foreach($zxxxs as $zxxx):?>
+					  <tr>
+						<td height=24>
+						  <?=$html->link($zxxx['Article']['title'],'/articles/show/'.$zxxx['Article']['id'])?>
+						  <?php if(time() - strtotime($zxxx['Article']['created']) <= 518400):?>
+						  <img src="img/website/new.gif">
+						  <?php endif;?>
+						</td>
+						<td style="color:#666666;" width=60 align=right>
+						  (<?=date('m-d',strtotime($zxxx['Article']['created'])).','.$zxxx['Article']['hits']?>)
+						</td>
+					  </tr>
+					  <?php endforeach;?>
                   </table></td>
                 </tr>
             </table></td>
@@ -185,38 +166,19 @@
                 </tr>
                 <tr>
                   <td style="padding:5px"><table border="0" cellspacing="0" cellpadding="0" width="100%">
-                      <tr>
-                        <td>大类下面子类列表 01-15 </td>
-                        <td width="100" align="right">01-15</td>
-                      </tr>
-                      <tr>
-                        <td>中国消费财富网2008017期分红公布</td>
-                        <td width="100" align="right">01-15</td>
-                      </tr>
-                      <tr>
-                        <td>中国消费财富网2008017期分红公布</td>
-                        <td width="100" align="right">01-15</td>
-                      </tr>
-                      <tr>
-                        <td>中国消费财富网2008017期分红公布</td>
-                        <td width="100" align="right">01-15</td>
-                      </tr>
-                      <tr>
-                        <td>中国消费财富网2008017期分红公布</td>
-                        <td width="100" align="right">01-15</td>
-                      </tr>
-                      <tr>
-                        <td>中国消费财富网2008017期分红公布</td>
-                        <td width="100" align="right">01-15</td>
-                      </tr>
-                      <tr>
-                        <td>中国消费财富网2008017期分红公布</td>
-                        <td width="100" align="right">01-15</td>
-                      </tr>
-                      <tr>
-                        <td>中国消费财富网2008017期分红公布</td>
-                        <td width="100" align="right">01-15</td>
-                      </tr>
+					  <?php foreach($rmtjs as $rmtj):?>
+					  <tr>
+						<td height=24>
+						  <?=$html->link($rmtj['Article']['title'],'/articles/show/'.$rmtj['Article']['id'])?>
+						  <?php if(time() - strtotime($rmtj['Article']['created']) <= 518400):?>
+						  <img src="img/website/new.gif">
+						  <?php endif;?>
+						</td>
+						<td style="color:#666666;" width=60 align=right>
+						  (<?=date('m-d',strtotime($rmtj['Article']['created'])).','.$rmtj['Article']['hits']?>)
+						</td>
+					  </tr>
+					  <?php endforeach;?>
                   </table></td>
                 </tr>
             </table></td>
@@ -235,38 +197,19 @@
                 </tr>
                 <tr>
                   <td style="padding:5px" valign="top"><table border="0" cellspacing="0" cellpadding="0" width="100%">
-                      <tr>
-                        <td>将不同大地区的用文章形式描述</td>
-                        <td width="100" align="right">01-15</td>
-                      </tr>
-                      <tr>
-                        <td>中国消费财富网2008017期分红公布</td>
-                        <td width="100" align="right">01-15</td>
-                      </tr>
-                      <tr>
-                        <td>中国消费财富网2008017期分红公布</td>
-                        <td width="100" align="right">01-15</td>
-                      </tr>
-                      <tr>
-                        <td>中国消费财富网2008017期分红公布</td>
-                        <td width="100" align="right">01-15</td>
-                      </tr>
-                      <tr>
-                        <td>中国消费财富网2008017期分红公布</td>
-                        <td width="100" align="right">01-15</td>
-                      </tr>
-                      <tr>
-                        <td>中国消费财富网2008017期分红公布</td>
-                        <td width="100" align="right">01-15</td>
-                      </tr>
-                      <tr>
-                        <td>中国消费财富网2008017期分红公布</td>
-                        <td width="100" align="right">01-15</td>
-                      </tr>
-                      <tr>
-                        <td>中国消费财富网2008017期分红公布</td>
-                        <td width="100" align="right">01-15</td>
-                      </tr>
+					  <?php foreach($scyys as $scyy):?>
+					  <tr>
+						<td height=24>
+						  <?=$html->link($scyy['Article']['title'],'/articles/show/'.$scyy['Article']['id'])?>
+						  <?php if(time() - strtotime($scyy['Article']['created']) <= 518400):?>
+						  <img src="img/website/new.gif">
+						  <?php endif;?>
+						</td>
+						<td style="color:#666666;" width=60 align=right>
+						  (<?=date('m-d',strtotime($scyy['Article']['created'])).','.$scyy['Article']['hits']?>)
+						</td>
+					  </tr>
+					  <?php endforeach;?>
                   </table></td>
                 </tr>
             </table></td>
@@ -282,38 +225,19 @@
                 </tr>
                 <tr>
                   <td style="padding:5px"><table border="0" cellspacing="0" cellpadding="0" width="100%">
-                      <tr>
-                        <td>也是一个下面的子类新闻发布</td>
-                        <td width="100" align="right">01-15</td>
-                      </tr>
-                      <tr>
-                        <td>中国消费财富网2008017期分红公布</td>
-                        <td width="100" align="right">01-15</td>
-                      </tr>
-                      <tr>
-                        <td>中国消费财富网2008017期分红公布</td>
-                        <td width="100" align="right">01-15</td>
-                      </tr>
-                      <tr>
-                        <td>中国消费财富网2008017期分红公布</td>
-                        <td width="100" align="right">01-15</td>
-                      </tr>
-                      <tr>
-                        <td>中国消费财富网2008017期分红公布</td>
-                        <td width="100" align="right">01-15</td>
-                      </tr>
-                      <tr>
-                        <td>中国消费财富网2008017期分红公布</td>
-                        <td width="100" align="right">01-15</td>
-                      </tr>
-                      <tr>
-                        <td>中国消费财富网2008017期分红公布</td>
-                        <td width="100" align="right">01-15</td>
-                      </tr>
-                      <tr>
-                        <td>中国消费财富网2008017期分红公布</td>
-                        <td width="100" align="right">01-15</td>
-                      </tr>
+					  <?php foreach($yyxzs as $yyxz):?>
+					  <tr>
+						<td height=24>
+						  <?=$html->link($yyxz['Article']['title'],'/articles/show/'.$yyxz['Article']['id'])?>
+						  <?php if(time() - strtotime($yyxz['Article']['created']) <= 518400):?>
+						  <img src="img/website/new.gif">
+						  <?php endif;?>
+						</td>
+						<td style="color:#666666;" width=60 align=right>
+						  (<?=date('m-d',strtotime($yyxz['Article']['created'])).','.$yyxz['Article']['hits']?>)
+						</td>
+					  </tr>
+					  <?php endforeach;?>
                   </table></td>
                 </tr>
             </table></td>
@@ -323,18 +247,23 @@
           <tr>
             <td style="padding:5px"><table border="0" cellpadding="0" cellspacing="0" width="100%">
                 <tr>
-                  <td align="center" style="color:#666666"><img src="/img/website/6.gif" width="160" height="101" style="padding:1px;border:1px solid #000000" /><br />
-                    放客服部门照片</td>
-                  <td width="10">&nbsp;</td>
-                  <td align="center" style="color:#666666"><img src="/img/website/6.gif" width="160" height="101" style="padding:1px;border:1px solid #000000" /><br />
-                    或公司的办公照片等</td>
-                  <td width="10">&nbsp;</td>
-                  <td align="center" style="color:#666666"><img src="/img/website/6.gif" width="160" height="101" style="padding:1px;border:1px solid #000000" /><br />
-                    四川蜀源装饰工程</td>
-                  <td width="10">&nbsp;</td>
-                  <td align="center" style="color:#666666"><img src="/img/website/6.gif" width="160" height="101" style="padding:1px;border:1px solid #000000" /><br />
-                    四川蜀源装饰工程</td>
-                  <td width="10">&nbsp;</td>
+					<?php foreach($merchants as $m):?>
+					<td align=center style="color:#666666">
+					  <?php
+						echo $html->image($m['Article']['default_pic_url'],
+							  array(
+								'width' => '160',
+								'height' => '101',
+								'style' => 'padding:1px;border:1px solid #000000'
+							  ));
+						echo "<br/>";
+						echo "<div style='width:150px;overflow: hidden; word-break:keep-all;white-space:nowrap;'>";
+						echo $html->link($m['Article']['title'],'/articles/show/'.$m['Article']['id'],array('title' => $m['Article']['title']));
+						echo "</div>";
+					  ?>
+					</td>
+					<td width=10>&nbsp;</td>
+					<?php endforeach;?>
                 </tr>
             </table></td>
           </tr>

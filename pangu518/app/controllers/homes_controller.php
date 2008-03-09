@@ -43,7 +43,7 @@ class HomesController extends AppController {
 		$this->set('jjkxs', $this->Article->findArticleByWebpage($this->N_JJKX,5)); //公司信息;
 		$this->set('fhxxs', $this->Article->findArticleByWebpage($this->N_FHXX,5)); //分红信息;
 
-		$this->set('merchants', $this->Article->findMerchant($this->SJXX,4)); //首页商家滚动图片
+		$this->set('merchants', $this->Article->findMerchant($this->SJXX,4)); //商家滚动图片
 
 		$this->set('lotterites', $this->Lottery->findBulletin(4)); //开奖公告
 	}
@@ -56,12 +56,12 @@ class HomesController extends AppController {
 
 	function consumer_market_index() {
 		$this->layout = 'website';
-		$this->set('zxxxs', $this->Article->findArticleByChannel($this->CM_ZXXX,9)); //最新消息
-		$this->set('rmtjs', $this->Article->findArticleByWebpage($this->CM_RMTJ,6)); //热门推荐;
-		$this->set('scyys', $this->Article->findArticleByWebpage($this->CM_SCYY,6)); //市场运营;
-		$this->set('yyxzs', $this->Article->findArticleByWebpage($this->CM_YYXZ,7)); //运营细则;
+		$this->set('zxxxs', $this->Article->findArticleByChannel($this->CM_ZXXX,5)); //最新消息
+		$this->set('rmtjs', $this->Article->findArticleByWebpageClick($this->CM_RMTJ,5)); //热门推荐;
+		$this->set('scyys', $this->Article->findArticleByWebpage($this->CM_SCYY,5)); //市场运营;
+		$this->set('yyxzs', $this->Article->findArticleByWebpage($this->CM_YYXZ,5)); //运营细则;
 
-		$this->set('merchants', $this->Article->findMerchant($this->SJXX,7)); //首页商家滚动图片
+		$this->set('merchants', $this->Article->findMerchant($this->SJXX,4)); //商家滚动图片
 
 		$this->set('lotterites', $this->Lottery->findBulletin(4)); //开奖公告
 	}
