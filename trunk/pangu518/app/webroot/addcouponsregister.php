@@ -8,67 +8,67 @@
 	$password =  trim($_POST["password"]);
 	$password1= md5($password);
 	if(!empty($mobile) and !empty($strart_coupon) and !empty($end_coupon) and !empty($loginname) and !empty($password)) {
-	//å–å¾—ä¼šå‘˜IDå·
+	//È¡µÃ»áÔ±IDºÅ
 		$sql = "select id from users where login_name ='".$mobile."'";
 		$stmt = mysql_query($sql);
 		$arr = mysql_fetch_array($stmt);
 		$idcode = $arr[0];
-	//å–å¾—å•ä½IDå·	
+	//È¡µÃµ¥Î»IDºÅ	
 		$sql1 = "select id from merchants where user_id='".$idcode."'";
 		$stmt1 = mysql_query($sql1);
 		$arr1 = mysql_fetch_array($stmt1);
-	//å–å¾—å·¥ä½œç«™IDå·	
+	//È¡µÃ¹¤×÷Õ¾IDºÅ	
 		$sql2 = "select id from workstations where user_id='".$idcode."'";
 		$stmt2 = mysql_query($sql2);
 		$arr2 = mysql_fetch_array($stmt2);
-	//å–å¾—åˆ†çº¢å‡­è¯å¼€å§‹å·æ®µå·ç 	
+	//È¡µÃ·ÖºìÆ¾Ö¤¿ªÊ¼ºÅ¶ÎºÅÂë	
 		$sql3 = "select id from coupons where coupon_no='".$strart_coupon."' and status='341'";
 		$stmt3 = mysql_query($sql3);
 		$arr3 = mysql_fetch_array($stmt3);
 	
-	//å–å¾—åˆ†çº¢å‡­è¯ç»“æŸå·æ®µå·ç 
+	//È¡µÃ·ÖºìÆ¾Ö¤½áÊøºÅ¶ÎºÅÂë
 	    $sql4 = "select id from coupons where coupon_no='".$end_coupon."' and status='341'";
 		$stmt4 = mysql_query($sql4);
 		$arr4 = mysql_fetch_array($stmt4);
 	
-	//åˆ¤æ–­ç”¨æˆ·åå¯†ç 
+	//ÅĞ¶ÏÓÃ»§ÃûÃÜÂë
 	    $sql7 = "select uid from members where username='".$loginname1."' and password='".$password1."'";
 		$stmt7 = mysql_query($sql7);
 		$arr7 = mysql_fetch_array($stmt7);
 	
 	    
 	
-	//åˆ¤æ–­ä¼šå‘˜æ˜¯å¦åœ¨ç”¨æˆ·è¡¨ï¼Œä¼šå‘˜æ˜¯å¦æ˜¯æ¶ˆè´¹å•ä½æˆ–å·¥ä½œç«™
+	//ÅĞ¶Ï»áÔ±ÊÇ·ñÔÚÓÃ»§±í£¬»áÔ±ÊÇ·ñÊÇÏû·Ñµ¥Î»»ò¹¤×÷Õ¾
 		if(empty($idcode) or !empty($arr1[0]) or !empty($arr2[0])){
-			echo("<script language='JavaScript'>alert('æŠ±æ­‰ï¼Œæ‚¨è¾“å…¥çš„ä¼šå‘˜ç™»å½•åä¸å­˜åœ¨æˆ–è€…å·²ç»æ˜¯æ¶ˆè´¹å•ä½æˆ–å¼å·¥ä½œç«™ï¼Œè¯·é‡æ–°è¾“å…¥ï¼');location.replace('../addcoupons.php');</script>");
+			echo("<script language='JavaScript'>alert('±§Ç¸£¬ÄúÊäÈëµÄ»áÔ±µÇÂ¼Ãû²»´æÔÚ»òÕßÒÑ¾­ÊÇÏû·Ñµ¥Î»»òÊ½¹¤×÷Õ¾£¬ÇëÖØĞÂÊäÈë£¡');location.replace('../addcoupons.php');</script>");
 			exit();
 		}elseif(empty($arr3[0]) or empty($arr4[0])){
-		     echo("<script language='JavaScript'>alert('æŠ±æ­‰ï¼Œæ‚¨è¾“å…¥çš„åˆ†çº¢å‡­è¯èµ·å§‹å·ç æˆ–è€…ç»“æŸå·ç å·²ç»å¤±æ•ˆï¼Œä¸æ˜¯æœ‰æ•ˆå‡­è¯ï¼Œè¯·ä»”ç»†æ£€æŸ¥ï¼');location.replace('../addcoupons.php');</script>");
+		     echo("<script language='JavaScript'>alert('±§Ç¸£¬ÄúÊäÈëµÄ·ÖºìÆ¾Ö¤ÆğÊ¼ºÅÂë»òÕß½áÊøºÅÂëÒÑ¾­Ê§Ğ§£¬²»ÊÇÓĞĞ§Æ¾Ö¤£¬Çë×ĞÏ¸¼ì²é£¡');location.replace('../addcoupons.php');</script>");
 			exit();
 		}elseif($arr4[0]<=$arr3[0]){
-		echo("<script language='JavaScript'>alert('æŠ±æ­‰ï¼Œæ‚¨è¾“å…¥çš„åˆ†çº¢å‡­è¯èµ·å§‹å·ç å¤§äºç»“æŸå·ç ï¼Œæ ¼å¼é”™è¯¯ï¼Œè¯·ä»”ç»†æ£€æŸ¥ï¼');location.replace('../addcoupons.php');</script>");
+		echo("<script language='JavaScript'>alert('±§Ç¸£¬ÄúÊäÈëµÄ·ÖºìÆ¾Ö¤ÆğÊ¼ºÅÂë´óÓÚ½áÊøºÅÂë£¬¸ñÊ½´íÎó£¬Çë×ĞÏ¸¼ì²é£¡');location.replace('../addcoupons.php');</script>");
 			exit();
 		}elseif($loginname != $loginname1){
-		echo("<script language='JavaScript'>alert('æŠ±æ­‰ï¼Œç®¡ç†å‘˜ç¼–å·ä¸æ­£ç¡®ï¼');location.replace('../addcoupons.php');</script>");
+		echo("<script language='JavaScript'>alert('±§Ç¸£¬¹ÜÀíÔ±±àºÅ²»ÕıÈ·£¡');location.replace('../addcoupons.php');</script>");
 		exit();
 		}elseif(empty($arr7[0])){
-		echo("<script language='JavaScript'>alert('æŠ±æ­‰ï¼Œç®¡ç†å‘˜ç¼–å·å£ä»¤ä¸æ­£ç¡®ï¼');location.replace('../addcoupons.php');</script>");
+		echo("<script language='JavaScript'>alert('±§Ç¸£¬¹ÜÀíÔ±±àºÅ¿ÚÁî²»ÕıÈ·£¡');location.replace('../addcoupons.php');</script>");
 		exit();
 		}else{
-	//æ‰¹é‡æ’å…¥
+	//ÅúÁ¿²åÈë
 	    for($i=$arr3[0];$i<=$arr4[0];$i++){
 $sql5="insert into user_coupons(user_id,coupon_id,merchant_id,status) values('$idcode','$i','2','421')";
 	mysql_query($sql5);
 	      }
-	//æ‰¹é‡æ›´æ–°
+	//ÅúÁ¿¸üĞÂ
 	  $sql6="update coupons set status='421' where id>='$arr3[0]' and id<='$arr4[0]'";  
       mysql_query($sql6);
-	//æ‰¹é‡æ›´æ–°
+	//ÅúÁ¿¸üĞÂ
 	  $sql7 ="update merchant_coupons set status='421' where coupon_id >='$arr3[0]' and coupon_id <='$arr4[0]'";
 	  mysql_query($sql7);
-	  echo("<script language='JavaScript'>alert('æ­å–œä½ ï¼Œå·²æˆåŠŸæ‰¹é‡å½•å…¥ï¼Œå¹¶ä¸”æ­¤å·æ®µåˆ†çº¢å‡­è¯å·²ä½œåºŸï¼Œè¯·å¦¥å–„ä¿ç®¡ï¼');location.replace('../addcoupons.php');</script>");
+	  echo("<script language='JavaScript'>alert('¹§Ï²Äã£¬ÒÑ³É¹¦ÅúÁ¿Â¼Èë£¬²¢ÇÒ´ËºÅ¶Î·ÖºìÆ¾Ö¤ÒÑ×÷·Ï£¬ÇëÍ×ÉÆ±£¹Ü£¡');location.replace('../addcoupons.php');</script>");
 	}
 	}else{
-		 echo("<script language='JavaScript'>alert('ä¿¡æ¯ä¸å®Œæ•´ï¼');location.replace('../addcoupons.php');</script>");
+		 echo("<script language='JavaScript'>alert('ĞÅÏ¢²»ÍêÕû£¡');location.replace('../addcoupons.php');</script>");
 	}
 ?>
