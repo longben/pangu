@@ -2,44 +2,61 @@
   <tr>
     <td width=205 style="border:1px solid #cccccc;padding:1px" valign=top><table border=0 cellpadding=0 cellspacing=0 width=100%>
         <tr>
-          <td height=29 style="background:#CFDEEB;color:#31659C;font-weight:bold;padding-left:10px" align=left>会员登录</td>
+          <td height=29 style="background:#CFDEEB;color:#31659C;font-weight:bold;padding-left:10px" align=left>视频播放</td>
         </tr>
       </table>
       <table border=0 cellpadding=0 cellspacing=0 width=100% height=156>
         <tr>
-          <td style="padding:10px">
-		    <table border=0 cellpadding=0 cellspacing=0 width=100%>
-			  <form action="<?php echo $html->url('/members/login'); ?>" method="post">
-              <tr>
-                <td width=50 align=right height=30>用户名：</td>
-                <td>
-				<?php echo $html->input('Member/username', array('size' => 20, 'style' => 'border:1px solid #31659C;height:22px;width:118px'));?>				</td>
-              </tr>
-              <tr>
-                <td width=50 align=right height=30>密码：</td>
-                <td>
-				<?php echo $html->password('Member/password', array('size' =>20, 'style' => 'border:1px solid #31659C;height:22px;width:118px')); ?>				</td>
-              </tr>
-              <tr>
-                <td width=50 align=right height=30>验证码：</td>
-                <td><input type="text" style="border:1px solid #31659C;height:22px;width:50px"></td>
-              </tr>
-              <tr>
-                <td colspan=2 align=center height=30><input name="mType" type="radio" value="1">
-                  会员
-                  <input name="mType" type="radio" value="2">
-                  商家
-                  <input name="mType" type="radio" value="3">
-                  工作站</td>
-              </tr>
-              <tr>
-                <td colspan=2 align=center height=30>
-				  <input name="" type="submit" value="登录" style="width:57px;height:23px;border:0px;background:url(/img/website/button_bg.gif);color:#ffffff;font-size:12px;text-align:center">
-                  &nbsp;&nbsp;
-                  <input name="" type="button" value="注册" style="width:57px;height:23px;border:0px;background:url(/img/website/button_bg.gif);color:#ffffff;font-size:12px;text-align:center">				</td>
-              </tr>
-			  </form>
-            </table>		  </td>
+          <td align="center">
+
+			<object id="player" height="185" width="200" classid="CLSID:6BF52A52-394A-11d3-B153-00C04F79FAA6"> 
+			<param NAME="AutoStart" VALUE="0"> 
+			<!--是否自动播放--> 
+			<param NAME="Balance" VALUE="-1"> 
+			<!--调整左右声道平衡,同上面旧播放器代码--> 
+			<param name="enabled" value="-1"> 
+			<!--播放器是否可人为控制--> 
+			<param NAME="EnableContextMenu" VALUE="1"> 
+			<!--是否启用上下文菜单--> 
+			<param NAME="url" value="http://duan44.wuhan.net.cn/mp3/0011.wma"> 
+			<!--播放的文件地址--> 
+			<param NAME="PlayCount" VALUE="1"> 
+			<!--播放次数控制,为整数--> 
+			<param name="rate" value="1"> 
+			<!--播放速率控制,1为正常,允许小数,1.0-2.0--> 
+			<param name="currentPosition" value="0"> 
+			<!--控件设置:当前位置--> 
+			<param name="currentMarker" value="0"> 
+			<!--控件设置:当前标记--> 
+			<param name="defaultFrame" value=""> 
+			<!--显示默认框架--> 
+			<param name="invokeURLs" value="0"> 
+			<!--脚本命令设置:是否调用URL--> 
+			<param name="baseURL" value=""> 
+			<!--脚本命令设置:被调用的URL--> 
+			<param name="stretchToFit" value="0"> 
+			<!--是否按比例伸展--> 
+			<param name="volume" value="5"> 
+			<!--默认声音大小0%-100%,50则为50%--> 
+			<param name="mute" value="0"> 
+			<!--是否静音--> 
+			<param name="uiMode" value="mini"> 
+			<!--播放器显示模式:Full显示全部;mini最简化;None不显示播放控制,只显示视频窗口;invisible全部不显示--> 
+			<param name="windowlessVideo" value="0"> 
+			<!--如果是0可以允许全屏,否则只能在窗口中查看--> 
+			<param name="fullScreen" value="0"> 
+			<!--开始播放是否自动全屏--> 
+			<param name="enableErrorDialogs" value="-1"> 
+			<!--是否启用错误提示报告--> 
+			<param name="SAMIStyle" value> 
+			<!--SAMI样式--> 
+			<param name="SAMILang" value> 
+			<!--SAMI语言--> 
+			<param name="SAMIFilename" value> 
+			<!--字幕ID--> 
+			</object><br>如不能正常播放，请下载media player 
+
+		  </td>
         </tr>
       </table>
       <table border=0 cellpadding=0 cellspacing=0 width=100% style="border-top:1px solid #cccccc">
