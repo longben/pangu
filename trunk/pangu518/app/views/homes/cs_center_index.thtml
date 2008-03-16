@@ -262,7 +262,8 @@
         </table>
       <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border:1px solid #cccccc">
           <tr>
-            <td style="padding:5px"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <td style="padding:5px">
+			  <table border="0" cellpadding="0" cellspacing="0" width="100%">
                 <tr>
 					<?php foreach($merchants as $m):?>
 					<td align=center style="color:#666666">
@@ -282,7 +283,8 @@
 					<td width=10>&nbsp;</td>
 					<?php endforeach;?>
                 </tr>
-            </table></td>
+            </table>
+			</td>
           </tr>
       </table></td>
   </tr>

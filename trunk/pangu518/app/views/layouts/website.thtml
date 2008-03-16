@@ -37,7 +37,7 @@
 				"星期五",
 				"星期六");
 				document.write(
-				"<font color=#990000 style='font-size:9pt;font-family: 幼圆'> ",
+				"<font color=#990000 style='font-size:9pt;'> ",
 				today.getYear(),"年",
 				today.getMonth()+1,"月",
 				today.getDate(),"日   ",
