@@ -8,6 +8,10 @@ class HomesController extends AppController {
 	var $XFSC = 10; //消费市场
 	var $MYPG = 999; //我与消费财富网
 	var $SJXX = 1004; //商家信息
+	var $QGGZZ = 37; //全国工作站
+	var $SCYY = 10; //市场运营(工作站动态)
+	var $YYXZ = 29; //运营细则
+	var $GZZFB = 37; //工作站分别
 
 	function index() {	//首页
 		$this->layout = 'website';
@@ -134,15 +138,22 @@ class HomesController extends AppController {
 
 	function workstations_index() {
 		$this->layout = 'website';
-		$this->set('zxxxs', $this->Article->findArticleByChannel($this->ZXXX,9)); //最新消息
-		$this->set('cfzxs', $this->Article->findArticleByWebpage($this->CFZX,6)); //财富资讯;
-		$this->set('xfscs', $this->Article->findArticleByWebpage($this->XFSC,6)); //消费市场;
-		$this->set('mypgs', $this->Article->findArticleByWebpage($this->MYPG,7)); //我与消费财富网;
-		$this->set('sjxxs', $this->Article->findArticleByChannel($this->SJXX,7)); //商家信息;
 
-		$this->set('merchants', $this->Webpage->findWebpageByChannel($this->SJXX,7)); //首页商家滚动图片
+		$this->set('merchants', $this->Article->findMerchant($this->SJXX,4)); //商家滚动图片
 
 		$this->set('lotterites', $this->Lottery->findBulletin(4)); //开奖公告
+
+		$this->set('yxgzz', $this->Article->findImageByWebpageAndElite($this->QGGZZ)); //优秀工作站图片
+		$this->set('yxgzzs', $this->Article->findByWebpageAndElite($this->QGGZZ,6)); //优秀工作站列表
+
+		$this->set('zxjr', $this->Article->findImageByWebpageOrderByCreated($this->QGGZZ)); //最新工作站图片
+		$this->set('zxjrs', $this->Article->findArticleByWebpage($this->QGGZZ,6)); //最新加入工作站列表
+
+		$this->set('gzzdts', $this->Article->findArticleByWebpage($this->SCYY, 6)); //工作站动态
+		$this->set('yyxzs', $this->Article->findArticleByWebpage($this->YYXZ, 6)); //运营细则
+		$this->set('gzzfbs', $this->Article->findArticleByWebpage($this->GZZFB, 8)); //工作站分别
+		
+		
 	}
 
 	function cooperation_index() {

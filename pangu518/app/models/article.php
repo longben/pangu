@@ -91,5 +91,31 @@ class Article extends AppModel {
 				  and Article.default_pic_url is not null
 				  order by Article.created desc limit $limit");
 	}
+
+    //根据栏目随机取一条推荐文章
+	function findImageByWebpageAndElite($webpage_id = null){
+		$this->recursive = 0;
+		return $this->find("Article.webpage_id = $webpage_id 
+		          and Article.elite = 1 
+				  and Article.default_pic_url is not null
+				  order by rand()");
+	}
+
+    //根据栏目取一条最新文章
+	function findImageByWebpageOrderByCreated($webpage_id = null){
+		$this->recursive = 0;
+		return $this->find("Article.webpage_id = $webpage_id 
+				  and Article.default_pic_url is not null
+				  order by Article.created desc");
+	}
+
+	function findByWebpageAndElite($webpage_id = null,$limit = null){
+		$this->recursive = 0;
+		return $this->findAll("Article.webpage_id = $webpage_id 
+		          and Article.elite = 1 
+				  order by rand() limit $limit");
+	}
+
+
 }
 ?>
