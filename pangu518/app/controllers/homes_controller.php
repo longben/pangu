@@ -176,5 +176,10 @@ class HomesController extends AppController {
 	function findArticleByWebpage($webpage_id = null,$limit = null){
 		return $this->Article->findArticleByWebpage($webpage_id,$limit);
 	}
+
+	function second_list($id = null) {	//二级列表
+		$this->layout = 'website';
+		$this->set('ejlbs', $this->Article->findArticleByWebpage($id,30)); //二级栏目信息;
+	}
 }
 ?>
