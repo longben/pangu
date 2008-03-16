@@ -1,0 +1,27 @@
+<fieldset>
+<legend>网站频道管理</legend>
+<br/>
+<form action="<?php echo $html->url('/channels/add'); ?>" method="post">
+<div class="optional"> 
+	<?php echo $form->labelTag('Channel/channel_name', '频道名称:');?>
+ 	<?php echo $html->input('Channel/channel_name', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Channel/channel_name', 'Please enter the Channel Name.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Channel/channel_short_name', '项目名称:');?>
+ 	<?php echo $html->input('Channel/channel_short_name', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Channel/channel_short_name', 'Please enter the Channel Short Name.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Channel/channel_item_unit', '项目单位:');?>
+ 	<?php echo $html->input('Channel/channel_item_unit', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Channel/channel_item_unit', 'Please enter the Channel Item Unit.');?>
+</div>
+<div class="submit">
+	<?php echo $html->submit('保存');?>
+</div>
+</form>
+<ul class="actions">
+<li><?php echo $html->link('网站频道管理', '/channels/index')?></li>
+</ul>
+</fieldset>
