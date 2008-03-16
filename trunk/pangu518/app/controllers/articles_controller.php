@@ -2,7 +2,7 @@
 class ArticlesController extends AppController {
 
 	var $name = 'Articles';
-	var $helpers = array('Html', 'Form' );
+	var $helpers = array('Html', 'Form', 'Javascript' );
 
 	function index() {
 		$this->Article->recursive = 0;
@@ -27,11 +27,10 @@ class ArticlesController extends AppController {
 	}
 
 	function add() {
+		$this->layout = 'jquery';
 		if (empty($this->data)) {
-			$this->set('tags', $this->Article->Tag->generateList());
-			$this->set('selectedTags', null);
-			$this->set('channels', $this->Article->Channel->generateList());
-			$this->set('webpages', $this->Article->Webpage->generateList());
+			$this->set('channels', $this->Article->Channel->listMe());
+			$this->set('webpages', $this->Article->Webpage->listMe());
 			$this->render();
 		} else {
 			$this->cleanUpFields();
@@ -40,9 +39,6 @@ class ArticlesController extends AppController {
 				$this->redirect('/articles/index');
 			} else {
 				$this->Session->setFlash('Please correct errors below.');
-				$this->set('tags', $this->Article->Tag->generateList());
-				if (empty($this->data['Tag']['Tag'])) { $this->data['Tag']['Tag'] = null; }
-				$this->set('selectedTags', $this->data['Tag']['Tag']);
 				$this->set('channels', $this->Article->Channel->generateList());
 				$this->set('webpages', $this->Article->Webpage->generateList());
 			}

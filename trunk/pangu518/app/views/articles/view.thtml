@@ -1,0 +1,150 @@
+<div class="article">
+<h2>View Article</h2>
+
+<dl>
+	<dt>Id</dt>
+	<dd>&nbsp;<?php echo $article['Article']['id']?></dd>
+	<dt>Channel</dt>
+	<dd>&nbsp;<?php echo $html->link($article['Channel']['id'], '/channels/view/' .$article['Channel']['id'])?></dd>
+	<dt>Webpage</dt>
+	<dd>&nbsp;<?php echo $html->link($article['Webpage']['id'], '/webpages/view/' .$article['Webpage']['id'])?></dd>
+	<dt>Title</dt>
+	<dd>&nbsp;<?php echo $article['Article']['title']?></dd>
+	<dt>Title Intact</dt>
+	<dd>&nbsp;<?php echo $article['Article']['title_intact']?></dd>
+	<dt>Subheading</dt>
+	<dd>&nbsp;<?php echo $article['Article']['subheading']?></dd>
+	<dt>Author</dt>
+	<dd>&nbsp;<?php echo $article['Article']['author']?></dd>
+	<dt>Copy From</dt>
+	<dd>&nbsp;<?php echo $article['Article']['copy_from']?></dd>
+	<dt>Inputer</dt>
+	<dd>&nbsp;<?php echo $article['Article']['inputer']?></dd>
+	<dt>Link Url</dt>
+	<dd>&nbsp;<?php echo $article['Article']['link_url']?></dd>
+	<dt>Editor</dt>
+	<dd>&nbsp;<?php echo $article['Article']['editor']?></dd>
+	<dt>Keyword</dt>
+	<dd>&nbsp;<?php echo $article['Article']['keyword']?></dd>
+	<dt>Hits</dt>
+	<dd>&nbsp;<?php echo $article['Article']['hits']?></dd>
+	<dt>Comment Count</dt>
+	<dd>&nbsp;<?php echo $article['Article']['comment_count']?></dd>
+	<dt>Modified</dt>
+	<dd>&nbsp;<?php echo $article['Article']['modified']?></dd>
+	<dt>Created</dt>
+	<dd>&nbsp;<?php echo $article['Article']['created']?></dd>
+	<dt>On Top</dt>
+	<dd>&nbsp;<?php echo $article['Article']['on_top']?></dd>
+	<dt>Elite</dt>
+	<dd>&nbsp;<?php echo $article['Article']['elite']?></dd>
+	<dt>Status</dt>
+	<dd>&nbsp;<?php echo $article['Article']['status']?></dd>
+	<dt>Content</dt>
+	<dd>&nbsp;<?php echo $article['Article']['content']?></dd>
+	<dt>Include Pic</dt>
+	<dd>&nbsp;<?php echo $article['Article']['include_pic']?></dd>
+	<dt>Default Pic Url</dt>
+	<dd>&nbsp;<?php echo $article['Article']['default_pic_url']?></dd>
+	<dt>Upload Files</dt>
+	<dd>&nbsp;<?php echo $article['Article']['upload_files']?></dd>
+	<dt>Info Point</dt>
+	<dd>&nbsp;<?php echo $article['Article']['info_point']?></dd>
+	<dt>Pagination Type</dt>
+	<dd>&nbsp;<?php echo $article['Article']['pagination_type']?></dd>
+	<dt>Deleted</dt>
+	<dd>&nbsp;<?php echo $article['Article']['deleted']?></dd>
+	<dt>Skin Id</dt>
+	<dd>&nbsp;<?php echo $article['Article']['skin_id']?></dd>
+	<dt>Template Id</dt>
+	<dd>&nbsp;<?php echo $article['Article']['template_id']?></dd>
+	<dt>Stars</dt>
+	<dd>&nbsp;<?php echo $article['Article']['stars']?></dd>
+	<dt>Title Font Color</dt>
+	<dd>&nbsp;<?php echo $article['Article']['title_font_color']?></dd>
+	<dt>Title Font Type</dt>
+	<dd>&nbsp;<?php echo $article['Article']['title_font_type']?></dd>
+	<dt>Max Char Per Page</dt>
+	<dd>&nbsp;<?php echo $article['Article']['max_char_per_page']?></dd>
+	<dt>Show Comment Link</dt>
+	<dd>&nbsp;<?php echo $article['Article']['show_comment_link']?></dd>
+	<dt>Receive</dt>
+	<dd>&nbsp;<?php echo $article['Article']['receive']?></dd>
+	<dt>Receive User</dt>
+	<dd>&nbsp;<?php echo $article['Article']['receive_user']?></dd>
+	<dt>Received</dt>
+	<dd>&nbsp;<?php echo $article['Article']['received']?></dd>
+	<dt>Auto Receive Time</dt>
+	<dd>&nbsp;<?php echo $article['Article']['auto_receive_time']?></dd>
+	<dt>Receive Type</dt>
+	<dd>&nbsp;<?php echo $article['Article']['receive_type']?></dd>
+	<dt>Introduction</dt>
+	<dd>&nbsp;<?php echo $article['Article']['introduction']?></dd>
+	<dt>Present Exp</dt>
+	<dd>&nbsp;<?php echo $article['Article']['present_exp']?></dd>
+	<dt>Copy Money</dt>
+	<dd>&nbsp;<?php echo $article['Article']['copy_money']?></dd>
+	<dt>Is Payed</dt>
+	<dd>&nbsp;<?php echo $article['Article']['is_payed']?></dd>
+	<dt>Beneficiary</dt>
+	<dd>&nbsp;<?php echo $article['Article']['beneficiary']?></dd>
+	<dt>Pay Date</dt>
+	<dd>&nbsp;<?php echo $article['Article']['pay_date']?></dd>
+	<dt>Vote Id</dt>
+	<dd>&nbsp;<?php echo $article['Article']['vote_id']?></dd>
+	<dt>Info Purview</dt>
+	<dd>&nbsp;<?php echo $article['Article']['info_purview']?></dd>
+	<dt>Arr Group Id</dt>
+	<dd>&nbsp;<?php echo $article['Article']['arr_group_id']?></dd>
+	<dt>Charge Type</dt>
+	<dd>&nbsp;<?php echo $article['Article']['charge_type']?></dd>
+	<dt>Pitch Time</dt>
+	<dd>&nbsp;<?php echo $article['Article']['pitch_time']?></dd>
+	<dt>Read Times</dt>
+	<dd>&nbsp;<?php echo $article['Article']['read_times']?></dd>
+	<dt>Divide Percent</dt>
+	<dd>&nbsp;<?php echo $article['Article']['divide_percent']?></dd>
+	<dt>Blog Id</dt>
+	<dd>&nbsp;<?php echo $article['Article']['blog_id']?></dd>
+</dl>
+<ul class="actions">
+	<li><?php echo $html->link('Edit Article',   '/articles/edit/' . $article['Article']['id']) ?> </li>
+	<li><?php echo $html->link('Delete Article', '/articles/delete/' . $article['Article']['id'], null, 'Are you sure you want to delete: id ' . $article['Article']['id'] . '?') ?> </li>
+	<li><?php echo $html->link('List Articles',   '/articles/index') ?> </li>
+	<li><?php echo $html->link('New Article',	'/articles/add') ?> </li>
+	<li><?php echo $html->link('List Channel', '/channels/index/')?> </li>
+	<li><?php echo $html->link('New Channels', '/channels/add/')?> </li>
+	<li><?php echo $html->link('List Webpage', '/webpages/index/')?> </li>
+	<li><?php echo $html->link('New Webpages', '/webpages/add/')?> </li>
+</ul>
+
+</div>
+<div class="related">
+<h3>Related Tags</h3>
+<?php if (!empty($article['Tag'])):?>
+<table cellpadding="0" cellspacing="0">
+<tr>
+<?php foreach ($article['Tag']['0'] as $column => $value): ?>
+<th><?php echo $column?></th>
+<?php endforeach; ?>
+<th>Actions</th>
+</tr>
+<?php foreach ($article['Tag'] as $tag):?>
+<tr>
+	<?php foreach ($tag as $column => $value):?>
+		<td><?php echo $value;?></td>
+	<?php endforeach;?>
+	<td class="actions">
+		<?php echo $html->link('View', '/tags/view/' . $tag['id']);?>
+		<?php echo $html->link('Edit', '/tags/edit/' . $tag['id']);?>
+		<?php echo $html->link('Delete', '/tags/delete/' . $tag['id'], null, 'Are you sure you want to delete: id ' . $tag['id'] . '?');?>
+	</td>
+</tr>
+<?php endforeach; ?>
+</table>
+<?php endif; ?>
+
+<ul class="actions">
+	<li><?php echo $html->link('New Tag', '/tags/add/');?> </li>
+</ul>
+</div>

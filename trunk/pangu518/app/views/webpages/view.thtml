@@ -1,0 +1,109 @@
+<div class="webpage">
+<h2>View Webpage</h2>
+
+<dl>
+	<dt>Id</dt>
+	<dd>&nbsp;<?php echo $webpage['Webpage']['id']?></dd>
+	<dt>Channel</dt>
+	<dd>&nbsp;<?php echo $html->link($webpage['Channel']['id'], '/channels/view/' .$webpage['Channel']['id'])?></dd>
+	<dt>Page Name</dt>
+	<dd>&nbsp;<?php echo $webpage['Webpage']['page_name']?></dd>
+	<dt>Page Type</dt>
+	<dd>&nbsp;<?php echo $webpage['Webpage']['page_type']?></dd>
+	<dt>Open Type</dt>
+	<dd>&nbsp;<?php echo $webpage['Webpage']['open_type']?></dd>
+	<dt>Parent Id</dt>
+	<dd>&nbsp;<?php echo $webpage['Webpage']['parent_id']?></dd>
+	<dt>Parent Path</dt>
+	<dd>&nbsp;<?php echo $webpage['Webpage']['parent_path']?></dd>
+	<dt>Depth</dt>
+	<dd>&nbsp;<?php echo $webpage['Webpage']['depth']?></dd>
+	<dt>Root Id</dt>
+	<dd>&nbsp;<?php echo $webpage['Webpage']['root_id']?></dd>
+	<dt>Child</dt>
+	<dd>&nbsp;<?php echo $webpage['Webpage']['child']?></dd>
+	<dt>Arrchildid</dt>
+	<dd>&nbsp;<?php echo $webpage['Webpage']['arrchildid']?></dd>
+	<dt>Prev Id</dt>
+	<dd>&nbsp;<?php echo $webpage['Webpage']['prev_id']?></dd>
+	<dt>Next Id</dt>
+	<dd>&nbsp;<?php echo $webpage['Webpage']['next_id']?></dd>
+	<dt>Order Id</dt>
+	<dd>&nbsp;<?php echo $webpage['Webpage']['order_id']?></dd>
+	<dt>Tips</dt>
+	<dd>&nbsp;<?php echo $webpage['Webpage']['tips']?></dd>
+	<dt>Read Me</dt>
+	<dd>&nbsp;<?php echo $webpage['Webpage']['read_me']?></dd>
+	<dt>Meta Keywords</dt>
+	<dd>&nbsp;<?php echo $webpage['Webpage']['meta_keywords']?></dd>
+	<dt>Meta Description</dt>
+	<dd>&nbsp;<?php echo $webpage['Webpage']['meta_description']?></dd>
+	<dt>Link Url</dt>
+	<dd>&nbsp;<?php echo $webpage['Webpage']['link_url']?></dd>
+	<dt>Page Pic Url</dt>
+	<dd>&nbsp;<?php echo $webpage['Webpage']['page_pic_url']?></dd>
+	<dt>Page Dir</dt>
+	<dd>&nbsp;<?php echo $webpage['Webpage']['page_dir']?></dd>
+	<dt>Parent Dir</dt>
+	<dd>&nbsp;<?php echo $webpage['Webpage']['parent_dir']?></dd>
+	<dt>Skin Id</dt>
+	<dd>&nbsp;<?php echo $webpage['Webpage']['skin_id']?></dd>
+	<dt>Template Id</dt>
+	<dd>&nbsp;<?php echo $webpage['Webpage']['template_id']?></dd>
+	<dt>Show On Top</dt>
+	<dd>&nbsp;<?php echo $webpage['Webpage']['show_on_top']?></dd>
+	<dt>Show On Index</dt>
+	<dd>&nbsp;<?php echo $webpage['Webpage']['show_on_index']?></dd>
+	<dt>Is Elite</dt>
+	<dd>&nbsp;<?php echo $webpage['Webpage']['is_elite']?></dd>
+	<dt>Enable Add</dt>
+	<dd>&nbsp;<?php echo $webpage['Webpage']['enable_add']?></dd>
+	<dt>Enable Protect</dt>
+	<dd>&nbsp;<?php echo $webpage['Webpage']['enable_protect']?></dd>
+	<dt>Max Per Page</dt>
+	<dd>&nbsp;<?php echo $webpage['Webpage']['max_per_page']?></dd>
+	<dt>Default Item Template</dt>
+	<dd>&nbsp;<?php echo $webpage['Webpage']['default_item_template']?></dd>
+	<dt>Default Item Skin</dt>
+	<dd>&nbsp;<?php echo $webpage['Webpage']['default_item_skin']?></dd>
+	<dt>Item List Order Type</dt>
+	<dd>&nbsp;<?php echo $webpage['Webpage']['item_list_order_type']?></dd>
+	<dt>Item Open Type</dt>
+	<dd>&nbsp;<?php echo $webpage['Webpage']['item_open_type']?></dd>
+	<dt>Item Count</dt>
+	<dd>&nbsp;<?php echo $webpage['Webpage']['item_count']?></dd>
+	<dt>Page Purview</dt>
+	<dd>&nbsp;<?php echo $webpage['Webpage']['page_purview']?></dd>
+	<dt>Enable Comment</dt>
+	<dd>&nbsp;<?php echo $webpage['Webpage']['enable_comment']?></dd>
+	<dt>Check Comment</dt>
+	<dd>&nbsp;<?php echo $webpage['Webpage']['check_comment']?></dd>
+	<dt>Present Exp</dt>
+	<dd>&nbsp;<?php echo $webpage['Webpage']['present_exp']?></dd>
+	<dt>Default Item Point</dt>
+	<dd>&nbsp;<?php echo $webpage['Webpage']['default_item_point']?></dd>
+	<dt>Default Item Charge Type</dt>
+	<dd>&nbsp;<?php echo $webpage['Webpage']['default_item_charge_type']?></dd>
+	<dt>Default Item Pitch Time</dt>
+	<dd>&nbsp;<?php echo $webpage['Webpage']['default_item_pitch_time']?></dd>
+	<dt>Default Item Read Times</dt>
+	<dd>&nbsp;<?php echo $webpage['Webpage']['default_item_read_times']?></dd>
+	<dt>Default Item Divide Percent</dt>
+	<dd>&nbsp;<?php echo $webpage['Webpage']['default_item_divide_percent']?></dd>
+	<dt>Custom Content</dt>
+	<dd>&nbsp;<?php echo $webpage['Webpage']['custom_content']?></dd>
+	<dt>Command Page Point</dt>
+	<dd>&nbsp;<?php echo $webpage['Webpage']['command_page_point']?></dd>
+	<dt>Release Page Point</dt>
+	<dd>&nbsp;<?php echo $webpage['Webpage']['release_page_point']?></dd>
+</dl>
+<ul class="actions">
+	<li><?php echo $html->link('Edit Webpage',   '/webpages/edit/' . $webpage['Webpage']['id']) ?> </li>
+	<li><?php echo $html->link('Delete Webpage', '/webpages/delete/' . $webpage['Webpage']['id'], null, 'Are you sure you want to delete: id ' . $webpage['Webpage']['id'] . '?') ?> </li>
+	<li><?php echo $html->link('List Webpages',   '/webpages/index') ?> </li>
+	<li><?php echo $html->link('New Webpage',	'/webpages/add') ?> </li>
+	<li><?php echo $html->link('List Channel', '/channels/index/')?> </li>
+	<li><?php echo $html->link('New Channels', '/channels/add/')?> </li>
+</ul>
+
+</div>

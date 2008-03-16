@@ -1,0 +1,53 @@
+<?php
+  if(!$this->controller->Session->check('User')){
+	  die();
+  }
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>盘古消费运营软件</title>
+<?php echo $html->charset('UTF-8');?>
+<?php header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");?>
+<meta http-equiv="pragma" content="no-cache"/>
+<meta http-equiv="cache-control" content="no-cache"/>
+<meta http-equiv="expires" content="0"/>
+<link rel="icon" href="<?php echo $this->webroot . 'favicon.ico';?>" type="image/x-icon" />
+<link rel="shortcut icon" href="<?php echo $this->webroot . 'favicon.ico';?>" type="image/x-icon" />
+<?php 
+if(isset($javascript)):
+    echo $javascript->link('jquery-1.2.3.min.js');
+	echo $javascript->link('tiny_mce/tiny_mce.js');
+endif;          
+?> 
+<?php echo $html->css('pangu.generic');?>
+</head>
+<body>
+	<div id="container">
+	   <?php
+	   if ($session->check('Message.flash')){
+	   	  $session->flash();
+	   ?>
+	      <SCRIPT LANGUAGE="JavaScript">
+	      <!--
+			element = document.getElementById("flashMessage");
+			element.style.display = "none";
+			alert(element.innerHTML);
+	      //-->
+	      </SCRIPT>
+	   <?php
+	   }
+	   echo $content_for_layout;
+	   ?>
+	</div>
+<?php echo $cakeDebug?>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-636211-3";
+urchinTracker();
+
+window.onload=function(){window.history.forward(1);}
+</script>
+</body>
+</html>

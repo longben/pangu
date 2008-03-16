@@ -1,0 +1,66 @@
+<?=$javascript->link('jquery-plugin/select-chain.js');?>
+<fieldset>
+<legend>添加网站新闻</legend> 
+
+<form action="<?php echo $html->url('/articles/add'); ?>" method="post">
+<div class="optional"> 
+	<?php echo $form->labelTag('Article/channel_id', '网站频道:');?>
+ 	<?php echo $html->selectTag('Article/channel_id', $channels, $html->tagValue('Article/channel_id'), array('style'=>'width: 438px'), array(), false);?>
+	<?php echo $html->tagErrorMsg('Article/channel_id', 'Please select the Channel.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Article/webpage_id', '所属栏目:');?>
+ 	<?php echo $html->selectTag('Article/webpage_id', $webpages, $html->tagValue('Article/webpage_id'), array('style'=>'width: 438px'), array(), true);?>
+	<?php echo $html->tagErrorMsg('Article/webpage_id', 'Please select the Webpage.') ?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Article/title', '简短标题:');?>
+ 	<?php echo $html->input('Article/title', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Article/title', 'Please enter the Title.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Article/title_intact', '完整标题:');?>
+ 	<?php echo $html->input('Article/title_intact', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Article/title_intact', 'Please enter the Title Intact.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Article/subheading', '副标题:');?>
+ 	<?php echo $html->input('Article/subheading', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Article/subheading', 'Please enter the Subheading.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Article/author', '作者:');?>
+ 	<?php echo $html->input('Article/author', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Article/author', 'Please enter the Author.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag('Article/copy_from', '来源:');?>
+ 	<?php echo $html->input('Article/copy_from', array('size' => '60'));?>
+	<?php echo $html->tagErrorMsg('Article/copy_from', 'Please enter the Copy From.');?>
+</div>
+<div class="optional"> 
+	<?php echo $form->labelTag( 'Article/content', '内容:' );?>
+ 	<?php echo $html->textarea('Article/content', array('cols' => '60', 'rows' => '10'));?>
+	<?php echo $html->tagErrorMsg('Article/content', 'Please enter the Content.');?>
+</div>
+<div class="submit">
+	<?php echo $html->submit('添加');?>
+</div>
+</form>
+</fieldset>
+<script type="text/javascript">
+<!--
+$(function () {
+	var channel = $('#ArticleChannelId');
+	var webpage = $('#ArticleWebpageId');
+	
+	channel.selectChain({
+		target: webpage,
+		url: '<?=$html->url("/webpages/select")?>',
+	    type: 'post',
+		data: { ajax: true, anotherval: "anotherAction" }            
+	}); 
+
+});
+//-->
+</script>

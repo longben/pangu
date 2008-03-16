@@ -1,0 +1,8 @@
+<?php 
+  $json = array();
+  foreach ($webpages as $webpage){
+	  $json[] = '{"id" : "' . $webpage['Webpage']['id'] . '", "label" : "' . $webpage['Webpage']['page_name'] . '"}';
+  }
+  echo '[' . implode(',', $json) . ']';
+  die();
+?>
