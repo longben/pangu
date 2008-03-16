@@ -259,15 +259,19 @@
 					    <?php foreach($merchants as $m):?>
                         <td align=center style="color:#666666">
 						  <?php
-						    echo $html->image($m['Article']['default_pic_url'],
-						          array(
-								    'width' => '160',
+							echo $html->link($html->image($m['Article']['default_pic_url'],
+							  array('border' => '0',
+							        'width' => '160',
 									'height' => '101',
-									'style' => 'padding:1px;border:1px solid #000000'
-								  ));
+									'style' => 'padding:1px;border:1px solid #000000',
+									'title' => $m['Article']['title'])),
+									   '/articles/show/'.$m['Article']['id'],
+									   array('title' => $m['Article']['title']),
+									   null,
+									   false);
 						    echo "<br/>";
 							echo "<div style='width:150px;overflow: hidden; word-break:keep-all;white-space:nowrap;'>";
-							echo $html->link($m['Article']['title'],'/index',array('title' => $m['Article']['title']));
+							echo $html->link($m['Article']['title'],'/articles/show/'.$m['Article']['id'],array('title' => $m['Article']['title']));
 							echo "</div>";
 						  ?>
 						</td>
