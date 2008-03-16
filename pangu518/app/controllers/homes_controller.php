@@ -1,7 +1,7 @@
 <?php 
 class HomesController extends AppController {
 	var $helpers = array('Html');
-    var $uses = array('Article','Lottery');
+    var $uses = array('Article','Lottery','Webpage');
 
 	var $ZXXX = 1001; //最新消息
 	var $CFZX = 8; //财富资讯
@@ -120,15 +120,16 @@ class HomesController extends AppController {
 
 	function merchants_index() {
 		$this->layout = 'website';
-		$this->set('zxxxs', $this->Article->findArticleByChannel($this->ZXXX,5)); //最新消息
-		$this->set('cfzxs', $this->Article->findArticleByWebpage($this->CFZX,6)); //财富资讯;
-		$this->set('xfscs', $this->Article->findArticleByWebpage($this->XFSC,6)); //消费市场;
-		$this->set('mypgs', $this->Article->findArticleByWebpage($this->MYPG,7)); //我与消费财富网;
-		$this->set('sjxxs', $this->Article->findArticleByChannel($this->SJXX,7)); //商家信息;
+		
+		$this->set('zxgx_imgs', $this->Article->findNewMerchant($this->SJXX,2)); //最新更新图片
+		$this->set('zxgxs', $this->Article->findArticleByChannel($this->SJXX,10));//最新更新
+		$this->set('tjsjs', $this->Article->findMerchant($this->SJXX,2)); //最新更新图片
 
-		$this->set('merchants', $this->Article->findMerchant($this->SJXX,7)); //首页商家滚动图片
+		$this->set('merchants', $this->Webpage->findWebpageByChannel($this->SJXX,99)); //商家分类列表
 
-		$this->set('lotterites', $this->Lottery->findBulletin(4)); //开奖公告
+		$this->set('ms', $this->Webpage->findWebpageByChannel4Rand($this->SJXX,10)); //商家分类列表
+
+		$this->set('lotterites', $this->Lottery->findBulletin(7)); //开奖公告
 	}
 
 	function workstations_index() {
@@ -139,16 +140,10 @@ class HomesController extends AppController {
 		$this->set('mypgs', $this->Article->findArticleByWebpage($this->MYPG,7)); //我与消费财富网;
 		$this->set('sjxxs', $this->Article->findArticleByChannel($this->SJXX,7)); //商家信息;
 
-		$this->set('merchants', $this->Article->findMerchant($this->SJXX,7)); //首页商家滚动图片
+		$this->set('merchants', $this->Webpage->findWebpageByChannel($this->SJXX,7)); //首页商家滚动图片
 
 		$this->set('lotterites', $this->Lottery->findBulletin(4)); //开奖公告
 	}
-
-
-
-
-
-
 
 	function cooperation_index() {
 		$this->layout = 'website';
@@ -161,6 +156,14 @@ class HomesController extends AppController {
 		$this->set('merchants', $this->Article->findMerchant($this->SJXX,7)); //首页商家滚动图片
 
 		$this->set('lotterites', $this->Lottery->findBulletin(4)); //开奖公告
+	}
+
+	function findMerchantImgByWebpage($webpage_id = null,$limit = null){
+		return $this->Article->findMerchantImgByWebpage($webpage_id, $limit);
+	}
+
+	function findArticleByWebpage($webpage_id = null,$limit = null){
+		return $this->Article->findArticleByWebpage($webpage_id,$limit);
 	}
 }
 ?>

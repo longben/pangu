@@ -49,47 +49,19 @@
       </table>
       <table border="0" cellpadding="0" cellspacing="0" width="100%">
         <tr>
-          <td style="padding:5px" valign="top"><table border="0" cellpadding="0" cellspacing="0" width="100%">
-              <tr>
-                <td align="center" height="25">餐厅火锅</td>
-                <td align="center">中餐小吃</td>
-              </tr>
-              <tr>
-                <td align="center" height="25">美容美发</td>
-                <td align="center">百货副食</td>
-              </tr>
-              <tr>
-                <td align="center" height="25">信息咨询</td>
-                <td align="center">影院影城</td>
-              </tr>
-              <tr>
-                <td align="center" height="25">装饰装潢</td>
-                <td align="center">酒店宾馆</td>
-              </tr>
-              <tr>
-                <td align="center" height="25">旅游观光</td>
-                <td align="center">农副牧业</td>
-              </tr>
-              <tr>
-                <td align="center" height="25">房产建筑</td>
-                <td align="center">文化娱乐</td>
-              </tr>
-              <tr>
-                <td align="center" height="25">汽车家电</td>
-                <td align="center">医疗保健</td>
-              </tr>
-              <tr>
-                <td align="center" height="25">歌城酒廊</td>
-                <td align="center">培训机构</td>
-              </tr>
-              <tr>
-                <td align="center" height="25">珠宝首饰</td>
-                <td align="center">运输行业</td>
-              </tr>
-              <tr>
-                <td align="center" height="25">服饰饰品</td>
-                <td align="center">水电行业</td>
-              </tr>
+          <td style="padding:5px" valign="top">
+		    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+			  <?php
+			    $i = 1;
+			    foreach($merchants as $m){
+					if($i%2!=0)echo('<tr>');
+					echo('<td align="center" height="25">');
+					echo($m['Webpage']['page_name']);
+					echo('</td>');
+					if($i%2==0)echo('</tr>');
+					$i++;
+				}
+			  ?>
           </table></td>
         </tr>
       </table>
@@ -163,22 +135,17 @@
 			  <?php foreach($lotterites as $lottery):?>
               <tr>
                 <td height=22 align=center>
-				<?=$lottery['Lottery']['lottery_year'] . sprintf('%03s', $lottery['Lottery']['lottery_times'])?>期				</td>
+				<?=$lottery['Lottery']['lottery_year'] . sprintf('%03s', $lottery['Lottery']['lottery_times'])?>期	</td>
                 <td height=22 align=center style="color:#ff0000">
-				<?=intval($lottery['Lottery']['win_count']);?>				</td>
+				<?=intval($lottery['Lottery']['win_count']);?>
+				</td>
               </tr>
 			  <?php endforeach;?>
-            </table>		  </td>
+            </table>
+		  </td>
         </tr>
     </table>
-      <table width="100%" border="0" cellspacing="0" cellpadding="0">
-        <tr>
-          <td align="center" height="90"><span style="padding-top:5px;padding-bottom:5px;"><img src="/img/website/1.gif" alt=" " style="border:1px solid #999999" /></span></td>
-        </tr>
-        <tr>
-          <td align="center" height="90"><span style="padding-top:5px;padding-bottom:5px;"><img src="/img/website/1.gif" alt=" " style="border:1px solid #999999" /></span></td>
-        </tr>
-      </table></td>
+    </td>
     <td style="padding-left:12px;" valign="top"><table border="0" cellpadding="0" cellspacing="0" width="100%" height="25" bgcolor="#EBEBEB" style="border:1px solid #cccccc;margin-bottom:5px">
         <tr>
           <td align="left" style="color:#990000;padding-left:10px" ><a href="" class="redlink">首页</a> &gt;&gt; 合作商家 </td>
@@ -186,88 +153,50 @@
       </table>
         <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-bottom:5px">
           <tr>
-            <td style="border:1px solid #cccccc;padding:1px" width="575" valign="top"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <td style="border:1px solid #cccccc;padding:1px" width="575" valign="top">
+			  <table border="0" cellpadding="0" cellspacing="0" width="100%">
                 <tr>
                   <td height="29" bgcolor="#CFDEEB" style="padding-left:10px;font-weight:bold">最新更新</td>
                 </tr>
                 <tr>
-                  <td style="padding:5px"><table border="0" cellspacing="0" cellpadding="0" width="100%">
+                  <td style="padding:5px">
+				    <table border="0" cellspacing="0" cellpadding="0" width="100%">
                       <tr>
-                        <td width="134" align="center"><table border="0" cellspacing="0" cellpadding="0">
+                        <td width="134" align="center">
+						  <?php foreach($zxgx_imgs as $img):?>
+						  <table border="0" cellspacing="0" cellpadding="0" style="table-layout:fixed;">
                             <tr>
-                              <td style="border:1px solid #999999"><img src="/img/website/8.gif" /></td>
+                              <td style="border:1px solid #999999">
+							  <?=$html->link($html->image($img['Article']['default_pic_url'],array('border' => '0','width' =>'134','height' => '92', 'title' => $img['Article']['title'])),'/articles/show/'.$img['Article']['id'],array(),null,false)?>
+							  </td>
                             </tr>
                             <tr>
-                              <td height="1"></td>
+                              <td height="25" bgcolor="#CFDEEB" align="center" class='fileTitle'>
+							    <?=$html->link($img['Article']['title'],'/articles/show/'.$img['Article']['id'],array('title' => $img['Article']['title']))?>
+							  </td>
                             </tr>
                             <tr>
-                              <td height="25" bgcolor="#CFDEEB" align="center"> 盘古会员注册及操作</td>
+                              <td height="10" align="center"></td>
                             </tr>
                           </table>
-                            <br />
-                            <table border="0" cellspacing="0" cellpadding="0">
-                              <tr>
-                                <td style="border:1px solid #999999"><img src="/img/website/8.gif" /></td>
-                              </tr>
-                              <tr>
-                                <td height="1"></td>
-                              </tr>
-                              <tr>
-                                <td height="25" bgcolor="#CFDEEB" align="center"> 盘古会员注册及操作</td>
-                              </tr>
-                          </table></td>
-                        <td valign="top"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+						  <?php endforeach;?>
+						</td>
+                        <td valign="top">
+						  <table border="0" cellpadding="5" cellspacing="0" width="100%">
+						    <?php foreach($zxgxs as $zxgx):?>
                             <tr>
-                              <td height="25">中国消费财富网2008014期分红公布</td>
-                              <td align="center" widdth="150">信息管理</td>
-                              <td width="130" align="right">01-11</td>
+                              <td height="25">
+							    <li>
+							    <?=$html->link($zxgx['Article']['title'],'/articles/show/'.$zxgx['Article']['id'])?>
+								</li>
+							  </td>
+                              <td width="130" align="right">
+							    <?=date('Y-m-d',strtotime($zxgx['Article']['created']))?>
+							  </td>
                             </tr>
-                            <tr>
-                              <td height="25">中国消费财富网2008014期分红公布</td>
-                              <td align="center" widdth="150">信息管理</td>
-                              <td width="130" align="right">01-11</td>
-                            </tr>
-                            <tr>
-                              <td height="25">中国消费财富网2008014期分红公布</td>
-                              <td align="center" widdth="150">信息管理</td>
-                              <td width="130" align="right">01-11</td>
-                            </tr>
-                            <tr>
-                              <td height="25">中国消费财富网2008014期分红公布</td>
-                              <td align="center" widdth="150">信息管理</td>
-                              <td width="130" align="right">01-11</td>
-                            </tr>
-                            <tr>
-                              <td height="25">中国消费财富网2008014期分红公布</td>
-                              <td align="center" widdth="150">信息管理</td>
-                              <td width="130" align="right">01-11</td>
-                            </tr>
-                            <tr>
-                              <td height="25">中国消费财富网2008014期分红公布</td>
-                              <td align="center" widdth="150">信息管理</td>
-                              <td width="130" align="right">01-11</td>
-                            </tr>
-                            <tr>
-                              <td height="25">中国消费财富网2008014期分红公布</td>
-                              <td align="center" widdth="150">信息管理</td>
-                              <td width="130" align="right">01-11</td>
-                            </tr>
-                            <tr>
-                              <td height="25">中国消费财富网2008014期分红公布</td>
-                              <td align="center" widdth="150">信息管理</td>
-                              <td width="130" align="right">01-11</td>
-                            </tr>
-                            <tr>
-                              <td height="25">中国消费财富网2008014期分红公布</td>
-                              <td align="center" widdth="150">信息管理</td>
-                              <td width="130" align="right">01-11</td>
-                            </tr>
-                            <tr>
-                              <td height="25">中国消费财富网2008014期分红公布</td>
-                              <td align="center" widdth="150">信息管理</td>
-                              <td width="130" align="right">01-11</td>
-                            </tr>
-                        </table></td>
+							<?php endforeach;?>
+                          </table>
+						</td>
                       </tr>
                   </table></td>
                 </tr>
@@ -278,31 +207,28 @@
                   <td height="29" bgcolor="#CFDEEB" style="padding-left:10px;font-weight:bold">推荐商家</td>
                 </tr>
                 <tr>
-                  <td style="padding:5px"><table border="0" cellspacing="0" cellpadding="0" width="100%">
+                  <td style="padding:5px">
+				    <table border="0" cellspacing="0" cellpadding="0" width="100%">
                       <tr>
-                        <td width="134" align="center"><table border="0" cellspacing="0" cellpadding="0">
+                        <td width="134" align="center">
+						  <?php foreach($tjsjs as $img):?>
+						  <table border="0" cellspacing="0" cellpadding="0" style="table-layout:fixed;">
                             <tr>
-                              <td style="border:1px solid #999999"><img src="/img/website/8.gif" /></td>
+                              <td style="border:1px solid #999999">
+							  <?=$html->link($html->image($img['Article']['default_pic_url'],array('border' => '0','width' =>'134','height' => '92', 'title' => $img['Article']['title'])),'/articles/show/'.$img['Article']['id'],array(),null,false)?>
+							  </td>
                             </tr>
                             <tr>
-                              <td height="1"></td>
+                              <td height="25" bgcolor="#CFDEEB" align="center" class='fileTitle'>
+							    <?=$html->link($img['Article']['title'],'/articles/show/'.$img['Article']['id'],array('title' => $img['Article']['title']))?>
+							  </td>
                             </tr>
                             <tr>
-                              <td height="25" bgcolor="#CFDEEB" align="center"> 盘古会员注册及操作</td>
+                              <td height="10" align="center"></td>
                             </tr>
                           </table>
-                            <br />
-                            <table border="0" cellspacing="0" cellpadding="0">
-                              <tr>
-                                <td style="border:1px solid #999999"><img src="/img/website/8.gif" /></td>
-                              </tr>
-                              <tr>
-                                <td height="1"></td>
-                              </tr>
-                              <tr>
-                                <td height="25" bgcolor="#CFDEEB" align="center"> 盘古会员注册及操作</td>
-                              </tr>
-                          </table></td>
+						  <?php endforeach;?>
+						  </td>
                       </tr>
                   </table></td>
                 </tr>
@@ -311,7 +237,8 @@
         </table>
       <table border="0" cellspacing="0" cellpadding="0" width="100%" style="margin-bottom:5px;border:1px solid #cccccc" bgcolor="#eeeeee">
           <tr>
-            <td style="padding:4px"><table border="0" cellspacing="0" cellpadding="0" width="100%">
+            <td style="padding:4px">
+			  <table border="0" cellspacing="0" cellpadding="0" width="100%">
                 <tr>
                   <td width="30" align="left"><img src="/img/website/logo_search.gif" /></td>
                   <td align="left"><b style="color:#000000">资讯搜索</b></td>
@@ -326,345 +253,126 @@
                         <td style="padding-right:10px"><input type="text" style="border:1px solid #cccccc;width:150px;height:18px" value="关键字" /></td>
                         <td><img src="/img/website/button_search.gif" /></td>
                       </tr>
-                  </table></td>
+                  </table>
+			  </td>
                 </tr>
-            </table></td>
+            </table>
+		   </td>
           </tr>
         </table>
+      <!--Table Strat-->
+	  <?php
+	    $size = sizeof($ms);
+	    for($i=0;$i<$size;$i=$i+2):
+	  ?>
       <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-bottom:5px">
           <tr>
-            <td style="border:1px solid #cccccc;padding:1px" width="375" valign="top"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <td style="border:1px solid #cccccc;padding:1px" width="375" valign="top">
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
                 <tr>
-                  <td height="29" bgcolor="#CFDEEB" style="padding-left:10px;font-weight:bold">餐厅火锅 </td>
+                  <td height="29" bgcolor="#CFDEEB" style="padding-left:10px;font-weight:bold"><?=$ms[$i]['Webpage']['page_name']?></td>
                 </tr>
                 <tr>
-                  <td style="padding:5px"><table border="0" cellspacing="0" cellpadding="0" width="100%">
-                      <tr>
-                        <td width="134" align="center"><table border="0" cellspacing="0" cellpadding="0">
-                            <tr>
-                              <td style="border:1px solid #999999"><img src="/img/website/8.gif" /></td>
-                            </tr>
-                            <tr>
-                              <td height="1"></td>
-                            </tr>
-                            <tr>
-                              <td height="25" bgcolor="#CFDEEB" align="center"> 盘古会员注册及操作</td>
-                            </tr>
-                        </table></td>
-                        <td valign="top">中国消费财富网2008017期分红公布 01-15 <br />
-                          中国消费财富网2008017期分红公布 01-15 <br />
-                          中国消费财富网2008017期分红公布 01-15 <br />
-                          中国消费财富网2008017期分红公布 01-15 <br />
-                          中国消费财富网2008017期分红公布 01-15 <br />
-                          中国消费财富网2008017期分红公布 01-15 <br />
-                        </td>
-                      </tr>
-                  </table></td>
-                </tr>
-            </table></td>
+                  <td style="padding:5px">
+                  <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                    <tr>
+                      <td width="134" align="center">
+					    <table border="0" cellspacing="0" cellpadding="0" style="table-layout:fixed;">
+                          <tr>
+                            <td style="border:1px solid #999999">
+							<?php
+							  $imgs = $this->controller->findMerchantImgByWebpage($ms[$i]['Webpage']['id'],1);
+							  if(!empty($imgs)){
+								  $img = $imgs[0];
+								  echo $html->link($html->image($img['Article']['default_pic_url'],array('border' => '0','width' =>'134','height' => '92', 'title' => $img['Article']['title'])),'/articles/show/'.$img['Article']['id'],array(),null,false);
+							  }else{
+								  echo('<img src="/img/website/8.gif" />');
+							  }
+							?>
+							</td>
+                          </tr>
+                          <tr>
+                            <td height="1"></td>
+                          </tr>
+                          <tr>
+                            <td height="25" bgcolor="#CFDEEB" align="center" class='fileTitle'>
+							<?php
+							if(!empty($imgs)){
+								echo $html->link($img['Article']['title'],'/articles/show/'.$img['Article']['id']);
+							}else{
+							}
+							?>
+							</td>
+                          </tr>
+                        </table>
+                      </td>
+                      <td valign="top">
+					    <?php $news = $this->controller->findArticleByWebpage($ms[$i]['Webpage']['id'],6);?>
+					    <table width="100%" cellpadding='2' style="table-layout:fixed;">
+						<?php foreach($news as $new):?>
+					    <tr>
+							<td class='fileTitle'>
+							<?=$html->link($new['Article']['title'],'/articles/show/'.$new['Article']['id'],array('title' => $new['Article']['title']))?>		</td>
+					    </tr>
+						<?php endforeach;?>
+					    </table>
+                     </td>
+                    </tr>
+                  </table>
+                 </td>
+              </tr>
+              </table>
+              </td>
             <td width="10"></td>
             <td style="border:1px solid #cccccc;padding:1px" valign="top"><table border="0" cellpadding="0" cellspacing="0" width="100%">
-                <tr>
-                  <td height="29" bgcolor="#CFDEEB" style="padding-left:10px;font-weight:bold">中餐小吃 </td>
-                </tr>
-                <tr>
-                  <td style="padding:5px"><table border="0" cellspacing="0" cellpadding="0" width="100%">
-                      <tr>
-                        <td width="134" align="center"><table border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td height="29" bgcolor="#CFDEEB" style="padding-left:10px;font-weight:bold"><?=$ms[$i+1]['Webpage']['page_name']?></td>
+              </tr>
+              <tr>
+                <td style="padding:5px"><table border="0" cellspacing="0" cellpadding="0" width="100%">
+                    <tr>
+                      <td width="134" align="center"><table border="0" cellspacing="0" cellpadding="0" style="table-layout:fixed;">
+                          <tr>
+                            <td style="border:1px solid #999999"><?php
+							  $imgs = $this->controller->findMerchantImgByWebpage($ms[$i+1]['Webpage']['id'],1);
+							  if(!empty($imgs)){
+								  $img = $imgs[0];
+								  echo $html->link($html->image($img['Article']['default_pic_url'],array('border' => '0','width' =>'134','height' => '92', 'title' => $img['Article']['title'])),'/articles/show/'.$img['Article']['id'],array(),null,false);
+							  }else{
+								  echo('<img src="/img/website/8.gif" />');
+							  }
+							?>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td height="1"></td>
+                          </tr>
+                          <tr>
+                            <td height="25" bgcolor="#CFDEEB" align="center" class='fileTitle'><?php
+							if(!empty($imgs)){
+								echo $html->link($img['Article']['title'],'/articles/show/'.$img['Article']['id']);
+							}else{
+							}
+							?>
+                            </td>
+                          </tr>
+                      </table></td>
+                      <td valign="top"><?php $news = $this->controller->findArticleByWebpage($ms[$i]['Webpage']['id'],6);?>
+                          <table width="100%" cellpadding='2' style="table-layout:fixed;">
+                            <?php foreach($news as $new):?>
                             <tr>
-                              <td style="border:1px solid #999999"><img src="/img/website/8.gif" /></td>
+                              <td class='fileTitle'><?=$html->link($new['Article']['title'],'/articles/show/'.$new['Article']['id'],array('title' => $new['Article']['title']))?>
+                              </td>
                             </tr>
-                            <tr>
-                              <td height="1"></td>
-                            </tr>
-                            <tr>
-                              <td height="25" bgcolor="#CFDEEB" align="center"> 盘古会员注册及操作</td>
-                            </tr>
+                            <?php endforeach;?>
                         </table></td>
-                        <td valign="top">中国消费财富网2008017期分红公 01-15 <br />
-                          中国消费财富网2008017期分红公 01-15 <br />
-                          中国消费财富网2008017期分红公 01-15 <br />
-                          中国消费财富网2008017期分红公 01-15 <br />
-                          中国消费财富网2008017期分红公 01-15 <br />
-                          中国消费财富网2008017期分红公 01-15 <br />
-                        </td>
-                      </tr>
-                  </table></td>
-                </tr>
+                    </tr>
+                </table></td>
+              </tr>
             </table></td>
-          </tr>
+        </tr>
         </table>
-      <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-bottom:5px">
-          <tr>
-            <td style="border:1px solid #cccccc;padding:1px" width="375" valign="top"><table border="0" cellpadding="0" cellspacing="0" width="100%">
-                <tr>
-                  <td height="29" bgcolor="#CFDEEB" style="padding-left:10px;font-weight:bold">美容美发 </td>
-                </tr>
-                <tr>
-                  <td style="padding:5px"><table border="0" cellspacing="0" cellpadding="0" width="100%">
-                      <tr>
-                        <td width="134" align="center"><table border="0" cellspacing="0" cellpadding="0">
-                            <tr>
-                              <td style="border:1px solid #999999"><img src="/img/website/8.gif" /></td>
-                            </tr>
-                            <tr>
-                              <td height="1"></td>
-                            </tr>
-                            <tr>
-                              <td height="25" bgcolor="#CFDEEB" align="center"> 盘古会员注册及操作</td>
-                            </tr>
-                        </table></td>
-                        <td valign="top">中国消费财富网2008017期分红公布 01-15 <br />
-                          中国消费财富网2008017期分红公布 01-15 <br />
-                          中国消费财富网2008017期分红公布 01-15 <br />
-                          中国消费财富网2008017期分红公布 01-15 <br />
-                          中国消费财富网2008017期分红公布 01-15 <br />
-                          中国消费财富网2008017期分红公布 01-15 <br />
-                        </td>
-                      </tr>
-                  </table></td>
-                </tr>
-            </table></td>
-            <td width="10"></td>
-            <td style="border:1px solid #cccccc;padding:1px" valign="top"><table border="0" cellpadding="0" cellspacing="0" width="100%">
-                <tr>
-                  <td height="29" bgcolor="#CFDEEB" style="padding-left:10px;font-weight:bold">百货副食 </td>
-                </tr>
-                <tr>
-                  <td style="padding:5px"><table border="0" cellspacing="0" cellpadding="0" width="100%">
-                      <tr>
-                        <td width="134" align="center"><table border="0" cellspacing="0" cellpadding="0">
-                            <tr>
-                              <td style="border:1px solid #999999"><img src="/img/website/8.gif" /></td>
-                            </tr>
-                            <tr>
-                              <td height="1"></td>
-                            </tr>
-                            <tr>
-                              <td height="25" bgcolor="#CFDEEB" align="center"> 盘古会员注册及操作</td>
-                            </tr>
-                        </table></td>
-                        <td valign="top">中国消费财富网2008017期分红公 01-15 <br />
-                          中国消费财富网2008017期分红公 01-15 <br />
-                          中国消费财富网2008017期分红公 01-15 <br />
-                          中国消费财富网2008017期分红公 01-15 <br />
-                          中国消费财富网2008017期分红公 01-15 <br />
-                          中国消费财富网2008017期分红公 01-15 <br />
-                        </td>
-                      </tr>
-                  </table></td>
-                </tr>
-            </table></td>
-          </tr>
-        </table>
-      <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-bottom:5px">
-          <tr>
-            <td style="border:1px solid #cccccc;padding:1px" width="375" valign="top"><table border="0" cellpadding="0" cellspacing="0" width="100%">
-                <tr>
-                  <td height="29" bgcolor="#CFDEEB" style="padding-left:10px;font-weight:bold">信息咨询 </td>
-                </tr>
-                <tr>
-                  <td style="padding:5px"><table border="0" cellspacing="0" cellpadding="0" width="100%">
-                      <tr>
-                        <td width="134" align="center"><table border="0" cellspacing="0" cellpadding="0">
-                            <tr>
-                              <td style="border:1px solid #999999"><img src="/img/website/8.gif" /></td>
-                            </tr>
-                            <tr>
-                              <td height="1"></td>
-                            </tr>
-                            <tr>
-                              <td height="25" bgcolor="#CFDEEB" align="center"> 盘古会员注册及操作</td>
-                            </tr>
-                        </table></td>
-                        <td valign="top">中国消费财富网2008017期分红公布 01-15 <br />
-                          中国消费财富网2008017期分红公布 01-15 <br />
-                          中国消费财富网2008017期分红公布 01-15 <br />
-                          中国消费财富网2008017期分红公布 01-15 <br />
-                          中国消费财富网2008017期分红公布 01-15 <br />
-                          中国消费财富网2008017期分红公布 01-15 <br />
-                        </td>
-                      </tr>
-                  </table></td>
-                </tr>
-            </table></td>
-            <td width="10"></td>
-            <td style="border:1px solid #cccccc;padding:1px" valign="top"><table border="0" cellpadding="0" cellspacing="0" width="100%">
-                <tr>
-                  <td height="29" bgcolor="#CFDEEB" style="padding-left:10px;font-weight:bold">影院影城 </td>
-                </tr>
-                <tr>
-                  <td style="padding:5px"><table border="0" cellspacing="0" cellpadding="0" width="100%">
-                      <tr>
-                        <td width="134" align="center"><table border="0" cellspacing="0" cellpadding="0">
-                            <tr>
-                              <td style="border:1px solid #999999"><img src="/img/website/8.gif" /></td>
-                            </tr>
-                            <tr>
-                              <td height="1"></td>
-                            </tr>
-                            <tr>
-                              <td height="25" bgcolor="#CFDEEB" align="center"> 盘古会员注册及操作</td>
-                            </tr>
-                        </table></td>
-                        <td valign="top">中国消费财富网2008017期分红公 01-15 <br />
-                          中国消费财富网2008017期分红公 01-15 <br />
-                          中国消费财富网2008017期分红公 01-15 <br />
-                          中国消费财富网2008017期分红公 01-15 <br />
-                          中国消费财富网2008017期分红公 01-15 <br />
-                          中国消费财富网2008017期分红公 01-15 <br />
-                        </td>
-                      </tr>
-                  </table></td>
-                </tr>
-            </table></td>
-          </tr>
-        </table>
-      <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-bottom:5px">
-          <tr>
-            <td style="border:1px solid #cccccc;padding:1px" width="375" valign="top"><table border="0" cellpadding="0" cellspacing="0" width="100%">
-                <tr>
-                  <td height="29" bgcolor="#CFDEEB" style="padding-left:10px;font-weight:bold">装饰装潢 </td>
-                </tr>
-                <tr>
-                  <td style="padding:5px"><table border="0" cellspacing="0" cellpadding="0" width="100%">
-                      <tr>
-                        <td width="134" align="center"><table border="0" cellspacing="0" cellpadding="0">
-                            <tr>
-                              <td style="border:1px solid #999999"><img src="/img/website/8.gif" /></td>
-                            </tr>
-                            <tr>
-                              <td height="1"></td>
-                            </tr>
-                            <tr>
-                              <td height="25" bgcolor="#CFDEEB" align="center"> 盘古会员注册及操作</td>
-                            </tr>
-                        </table></td>
-                        <td valign="top">中国消费财富网2008017期分红公布 01-15 <br />
-                          中国消费财富网2008017期分红公布 01-15 <br />
-                          中国消费财富网2008017期分红公布 01-15 <br />
-                          中国消费财富网2008017期分红公布 01-15 <br />
-                          中国消费财富网2008017期分红公布 01-15 <br />
-                          中国消费财富网2008017期分红公布 01-15 <br />
-                        </td>
-                      </tr>
-                  </table></td>
-                </tr>
-            </table></td>
-            <td width="10"></td>
-            <td style="border:1px solid #cccccc;padding:1px" valign="top"><table border="0" cellpadding="0" cellspacing="0" width="100%">
-                <tr>
-                  <td height="29" bgcolor="#CFDEEB" style="padding-left:10px;font-weight:bold">酒店宾馆 </td>
-                </tr>
-                <tr>
-                  <td style="padding:5px"><table border="0" cellspacing="0" cellpadding="0" width="100%">
-                      <tr>
-                        <td width="134" align="center"><table border="0" cellspacing="0" cellpadding="0">
-                            <tr>
-                              <td style="border:1px solid #999999"><img src="/img/website/8.gif" /></td>
-                            </tr>
-                            <tr>
-                              <td height="1"></td>
-                            </tr>
-                            <tr>
-                              <td height="25" bgcolor="#CFDEEB" align="center"> 盘古会员注册及操作</td>
-                            </tr>
-                        </table></td>
-                        <td valign="top">中国消费财富网2008017期分红公 01-15 <br />
-                          中国消费财富网2008017期分红公 01-15 <br />
-                          中国消费财富网2008017期分红公 01-15 <br />
-                          中国消费财富网2008017期分红公 01-15 <br />
-                          中国消费财富网2008017期分红公 01-15 <br />
-                          中国消费财富网2008017期分红公 01-15 <br />
-                        </td>
-                      </tr>
-                  </table></td>
-                </tr>
-            </table></td>
-          </tr>
-        </table>
-      <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-bottom:5px">
-          <tr>
-            <td style="border:1px solid #cccccc;padding:1px" width="375" valign="top"><table border="0" cellpadding="0" cellspacing="0" width="100%">
-                <tr>
-                  <td height="29" bgcolor="#CFDEEB" style="padding-left:10px;font-weight:bold">旅游观光 </td>
-                </tr>
-                <tr>
-                  <td style="padding:5px"><table border="0" cellspacing="0" cellpadding="0" width="100%">
-                      <tr>
-                        <td width="134" align="center"><table border="0" cellspacing="0" cellpadding="0">
-                            <tr>
-                              <td style="border:1px solid #999999"><img src="/img/website/8.gif" /></td>
-                            </tr>
-                            <tr>
-                              <td height="1"></td>
-                            </tr>
-                            <tr>
-                              <td height="25" bgcolor="#CFDEEB" align="center"> 盘古会员注册及操作</td>
-                            </tr>
-                        </table></td>
-                        <td valign="top">中国消费财富网2008017期分红公布 01-15 <br />
-                          中国消费财富网2008017期分红公布 01-15 <br />
-                          中国消费财富网2008017期分红公布 01-15 <br />
-                          中国消费财富网2008017期分红公布 01-15 <br />
-                          中国消费财富网2008017期分红公布 01-15 <br />
-                          中国消费财富网2008017期分红公布 01-15 <br />
-                        </td>
-                      </tr>
-                  </table></td>
-                </tr>
-            </table></td>
-            <td width="10"></td>
-            <td style="border:1px solid #cccccc;padding:1px" valign="top"><table border="0" cellpadding="0" cellspacing="0" width="100%">
-                <tr>
-                  <td height="29" bgcolor="#CFDEEB" style="padding-left:10px;font-weight:bold">农副牧业 </td>
-                </tr>
-                <tr>
-                  <td style="padding:5px"><table border="0" cellspacing="0" cellpadding="0" width="100%">
-                      <tr>
-                        <td width="134" align="center"><table border="0" cellspacing="0" cellpadding="0">
-                            <tr>
-                              <td style="border:1px solid #999999"><img src="/img/website/8.gif" /></td>
-                            </tr>
-                            <tr>
-                              <td height="1"></td>
-                            </tr>
-                            <tr>
-                              <td height="25" bgcolor="#CFDEEB" align="center"> 盘古会员注册及操作</td>
-                            </tr>
-                        </table></td>
-                        <td valign="top">中国消费财富网2008017期分红公 01-15 <br />
-                          中国消费财富网2008017期分红公 01-15 <br />
-                          中国消费财富网2008017期分红公 01-15 <br />
-                          中国消费财富网2008017期分红公 01-15 <br />
-                          中国消费财富网2008017期分红公 01-15 <br />
-                          中国消费财富网2008017期分红公 01-15 <br />
-                        </td>
-                      </tr>
-                  </table></td>
-                </tr>
-            </table></td>
-          </tr>
-        </table>
-      <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border:1px solid #cccccc">
-          <tr>
-            <td style="padding:5px"><table border="0" cellpadding="0" cellspacing="0" width="100%">
-                <tr>
-                  <td align="center" style="color:#666666"><img src="/img/website/6.gif" width="160" height="101" style="padding:1px;border:1px solid #000000" /><br />
-                    四川蜀源装饰工程</td>
-                  <td width="10">&nbsp;</td>
-                  <td align="center" style="color:#666666"><img src="/img/website/6.gif" width="160" height="101" style="padding:1px;border:1px solid #000000" /><br />
-                    四川蜀源装饰工程</td>
-                  <td width="10">&nbsp;</td>
-                  <td align="center" style="color:#666666"><img src="/img/website/6.gif" width="160" height="101" style="padding:1px;border:1px solid #000000" /><br />
-                    四川蜀源装饰工程</td>
-                  <td width="10">&nbsp;</td>
-                  <td align="center" style="color:#666666"><img src="/img/website/6.gif" width="160" height="101" style="padding:1px;border:1px solid #000000" /><br />
-                    四川蜀源装饰工程</td>
-                  <td width="10">&nbsp;</td>
-                </tr>
-            </table></td>
-          </tr>
-      </table></td>
+		<?php endfor;?>
+    <!--Table End--></td>
   </tr>
 </table>

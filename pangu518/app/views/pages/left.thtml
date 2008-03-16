@@ -89,7 +89,7 @@
 		d.add(9003,9,'行业维护','/industries');
 
 		d.add(1101,11,'消息分类管理','/categories');
-		d.add(1102,11,'消息发布','/posts/add');
+		d.add(1102,11,'消息发布','/articles/add');
 		d.add(1103,11,'消息内容管理','/posts');
 
 		document.write(d);

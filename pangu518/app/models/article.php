@@ -73,6 +73,22 @@ class Article extends AppModel {
 		return $this->findAll("Article.channel_id = $channel_id 
 		          and Article.elite = 1 
 				  and Article.default_pic_url is not null
+				  order by rand() limit $limit");
+	}
+
+	function findNewMerchant($channel_id = null,$limit = null){
+		$this->recursive = 0;
+		return $this->findAll("Article.channel_id = $channel_id
+				  and Article.default_pic_url is not null
+				  order by Article.created desc limit $limit");
+	}
+
+	//取出图片通过Webpage
+	function findMerchantImgByWebpage($webpage_id = null,$limit = null){
+		$this->recursive = 0;
+		return $this->findAll("Article.webpage_id = $webpage_id 
+		          and Article.elite = 1 
+				  and Article.default_pic_url is not null
 				  order by Article.created desc limit $limit");
 	}
 }
