@@ -10,7 +10,7 @@
           <td align="center">
 
 			<object id="player" height="185" width="200" classid="CLSID:6BF52A52-394A-11d3-B153-00C04F79FAA6"> 
-			<param NAME="AutoStart" VALUE="0"> 
+			<param NAME="AutoStart" VALUE="1"> 
 			<!--是否自动播放--> 
 			<param NAME="Balance" VALUE="-1"> 
 			<!--调整左右声道平衡,同上面旧播放器代码--> 
@@ -36,7 +36,7 @@
 			<!--脚本命令设置:被调用的URL--> 
 			<param name="stretchToFit" value="0"> 
 			<!--是否按比例伸展--> 
-			<param name="volume" value="5"> 
+			<param name="volume" value="30"> 
 			<!--默认声音大小0%-100%,50则为50%--> 
 			<param name="mute" value="0"> 
 			<!--是否静音--> 
