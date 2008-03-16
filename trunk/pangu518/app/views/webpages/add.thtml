@@ -1,241 +1,25 @@
-<h2>New Webpage</h2>
+<fieldset>
+<legend>网站栏目管理</legend>
+<br/>
+
 <form action="<?php echo $html->url('/webpages/add'); ?>" method="post">
 <div class="optional"> 
-	<?php echo $form->labelTag('Webpage/channel_id', 'Channel');?>
- 	<?php echo $html->selectTag('Webpage/channel_id', $channels, $html->tagValue('Webpage/channel_id'), array(), array(), true);?>
+	<?php echo $form->labelTag('Webpage/channel_id', '所属频道:');?>
+ 	<?php echo $html->selectTag('Webpage/channel_id', $channels, $html->tagValue('Webpage/channel_id'), array(), array(), false);?>
 	<?php echo $html->tagErrorMsg('Webpage/channel_id', 'Please select the Channel.') ?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Webpage/page_name', 'Page Name');?>
+	<?php echo $form->labelTag('Webpage/page_name', '栏目名称:');?>
  	<?php echo $html->input('Webpage/page_name', array('size' => '60'));?>
 	<?php echo $html->tagErrorMsg('Webpage/page_name', 'Please enter the Page Name.');?>
 </div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Webpage/page_type', 'Page Type');?>
- 	<?php echo $html->input('Webpage/page_type', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Webpage/page_type', 'Please enter the Page Type.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Webpage/open_type', 'Open Type');?>
- 	<?php echo $html->input('Webpage/open_type', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Webpage/open_type', 'Please enter the Open Type.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Webpage/parent_id', 'Parent Id');?>
- 	<?php echo $html->input('Webpage/parent_id', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Webpage/parent_id', 'Please enter the Parent Id.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Webpage/parent_path', 'Parent Path');?>
- 	<?php echo $html->input('Webpage/parent_path', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Webpage/parent_path', 'Please enter the Parent Path.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Webpage/depth', 'Depth');?>
- 	<?php echo $html->input('Webpage/depth', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Webpage/depth', 'Please enter the Depth.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Webpage/root_id', 'Root Id');?>
- 	<?php echo $html->input('Webpage/root_id', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Webpage/root_id', 'Please enter the Root Id.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Webpage/child', 'Child');?>
- 	<?php echo $html->input('Webpage/child', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Webpage/child', 'Please enter the Child.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag( 'Webpage/arrchildid', 'Arrchildid' );?>
- 	<?php echo $html->textarea('Webpage/arrchildid', array('cols' => '60', 'rows' => '10'));?>
-	<?php echo $html->tagErrorMsg('Webpage/arrchildid', 'Please enter the Arrchildid.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Webpage/prev_id', 'Prev Id');?>
- 	<?php echo $html->input('Webpage/prev_id', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Webpage/prev_id', 'Please enter the Prev Id.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Webpage/next_id', 'Next Id');?>
- 	<?php echo $html->input('Webpage/next_id', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Webpage/next_id', 'Please enter the Next Id.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Webpage/order_id', 'Order Id');?>
- 	<?php echo $html->input('Webpage/order_id', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Webpage/order_id', 'Please enter the Order Id.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Webpage/tips', 'Tips');?>
- 	<?php echo $html->input('Webpage/tips', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Webpage/tips', 'Please enter the Tips.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag( 'Webpage/read_me', 'Read Me' );?>
- 	<?php echo $html->textarea('Webpage/read_me', array('cols' => '60', 'rows' => '10'));?>
-	<?php echo $html->tagErrorMsg('Webpage/read_me', 'Please enter the Read Me.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Webpage/meta_keywords', 'Meta Keywords');?>
- 	<?php echo $html->input('Webpage/meta_keywords', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Webpage/meta_keywords', 'Please enter the Meta Keywords.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Webpage/meta_description', 'Meta Description');?>
- 	<?php echo $html->input('Webpage/meta_description', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Webpage/meta_description', 'Please enter the Meta Description.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Webpage/link_url', 'Link Url');?>
- 	<?php echo $html->input('Webpage/link_url', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Webpage/link_url', 'Please enter the Link Url.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Webpage/page_pic_url', 'Page Pic Url');?>
- 	<?php echo $html->input('Webpage/page_pic_url', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Webpage/page_pic_url', 'Please enter the Page Pic Url.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Webpage/page_dir', 'Page Dir');?>
- 	<?php echo $html->input('Webpage/page_dir', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Webpage/page_dir', 'Please enter the Page Dir.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag( 'Webpage/parent_dir', 'Parent Dir' );?>
- 	<?php echo $html->textarea('Webpage/parent_dir', array('cols' => '60', 'rows' => '10'));?>
-	<?php echo $html->tagErrorMsg('Webpage/parent_dir', 'Please enter the Parent Dir.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Webpage/skin_id', 'Skin Id');?>
- 	<?php echo $html->input('Webpage/skin_id', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Webpage/skin_id', 'Please enter the Skin Id.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Webpage/template_id', 'Template Id');?>
- 	<?php echo $html->input('Webpage/template_id', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Webpage/template_id', 'Please enter the Template Id.');?>
-</div>
-<div class="optional"> 
-	<?php echo $html->checkbox('Webpage/show_on_top', null, array());?>
-	<?php echo $form->labelTag('Webpage/show_on_top', 'Show On Top');?>
- 	<?php echo $html->tagErrorMsg('Webpage/show_on_top', 'Please check the Show On Top.');?>
-</div>
-<div class="optional"> 
-	<?php echo $html->checkbox('Webpage/show_on_index', null, array());?>
-	<?php echo $form->labelTag('Webpage/show_on_index', 'Show On Index');?>
- 	<?php echo $html->tagErrorMsg('Webpage/show_on_index', 'Please check the Show On Index.');?>
-</div>
-<div class="optional"> 
-	<?php echo $html->checkbox('Webpage/is_elite', null, array());?>
-	<?php echo $form->labelTag('Webpage/is_elite', 'Is Elite');?>
- 	<?php echo $html->tagErrorMsg('Webpage/is_elite', 'Please check the Is Elite.');?>
-</div>
-<div class="optional"> 
-	<?php echo $html->checkbox('Webpage/enable_add', null, array());?>
-	<?php echo $form->labelTag('Webpage/enable_add', 'Enable Add');?>
- 	<?php echo $html->tagErrorMsg('Webpage/enable_add', 'Please check the Enable Add.');?>
-</div>
-<div class="optional"> 
-	<?php echo $html->checkbox('Webpage/enable_protect', null, array());?>
-	<?php echo $form->labelTag('Webpage/enable_protect', 'Enable Protect');?>
- 	<?php echo $html->tagErrorMsg('Webpage/enable_protect', 'Please check the Enable Protect.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Webpage/max_per_page', 'Max Per Page');?>
- 	<?php echo $html->input('Webpage/max_per_page', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Webpage/max_per_page', 'Please enter the Max Per Page.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Webpage/default_item_template', 'Default Item Template');?>
- 	<?php echo $html->input('Webpage/default_item_template', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Webpage/default_item_template', 'Please enter the Default Item Template.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Webpage/default_item_skin', 'Default Item Skin');?>
- 	<?php echo $html->input('Webpage/default_item_skin', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Webpage/default_item_skin', 'Please enter the Default Item Skin.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Webpage/item_list_order_type', 'Item List Order Type');?>
- 	<?php echo $html->input('Webpage/item_list_order_type', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Webpage/item_list_order_type', 'Please enter the Item List Order Type.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Webpage/item_open_type', 'Item Open Type');?>
- 	<?php echo $html->input('Webpage/item_open_type', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Webpage/item_open_type', 'Please enter the Item Open Type.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Webpage/item_count', 'Item Count');?>
- 	<?php echo $html->input('Webpage/item_count', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Webpage/item_count', 'Please enter the Item Count.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Webpage/page_purview', 'Page Purview');?>
- 	<?php echo $html->input('Webpage/page_purview', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Webpage/page_purview', 'Please enter the Page Purview.');?>
-</div>
-<div class="optional"> 
-	<?php echo $html->checkbox('Webpage/enable_comment', null, array());?>
-	<?php echo $form->labelTag('Webpage/enable_comment', 'Enable Comment');?>
- 	<?php echo $html->tagErrorMsg('Webpage/enable_comment', 'Please check the Enable Comment.');?>
-</div>
-<div class="optional"> 
-	<?php echo $html->checkbox('Webpage/check_comment', null, array());?>
-	<?php echo $form->labelTag('Webpage/check_comment', 'Check Comment');?>
- 	<?php echo $html->tagErrorMsg('Webpage/check_comment', 'Please check the Check Comment.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Webpage/present_exp', 'Present Exp');?>
- 	<?php echo $html->input('Webpage/present_exp', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Webpage/present_exp', 'Please enter the Present Exp.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Webpage/default_item_point', 'Default Item Point');?>
- 	<?php echo $html->input('Webpage/default_item_point', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Webpage/default_item_point', 'Please enter the Default Item Point.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Webpage/default_item_charge_type', 'Default Item Charge Type');?>
- 	<?php echo $html->input('Webpage/default_item_charge_type', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Webpage/default_item_charge_type', 'Please enter the Default Item Charge Type.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Webpage/default_item_pitch_time', 'Default Item Pitch Time');?>
- 	<?php echo $html->input('Webpage/default_item_pitch_time', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Webpage/default_item_pitch_time', 'Please enter the Default Item Pitch Time.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Webpage/default_item_read_times', 'Default Item Read Times');?>
- 	<?php echo $html->input('Webpage/default_item_read_times', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Webpage/default_item_read_times', 'Please enter the Default Item Read Times.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Webpage/default_item_divide_percent', 'Default Item Divide Percent');?>
- 	<?php echo $html->input('Webpage/default_item_divide_percent', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Webpage/default_item_divide_percent', 'Please enter the Default Item Divide Percent.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag( 'Webpage/custom_content', 'Custom Content' );?>
- 	<?php echo $html->textarea('Webpage/custom_content', array('cols' => '60', 'rows' => '10'));?>
-	<?php echo $html->tagErrorMsg('Webpage/custom_content', 'Please enter the Custom Content.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Webpage/command_page_point', 'Command Page Point');?>
- 	<?php echo $html->input('Webpage/command_page_point', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Webpage/command_page_point', 'Please enter the Command Page Point.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Webpage/release_page_point', 'Release Page Point');?>
- 	<?php echo $html->input('Webpage/release_page_point', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Webpage/release_page_point', 'Please enter the Release Page Point.');?>
-</div>
 <div class="submit">
-	<?php echo $html->submit('Add');?>
+	<?php echo $html->submit('保存');?>
 </div>
 </form>
 <ul class="actions">
-<li><?php echo $html->link('List Webpages', '/webpages/index')?></li>
-<li><?php echo $html->link('View Channels', '/channels/index/');?></li>
-<li><?php echo $html->link('Add Channels', '/channels/add/');?></li>
+<li><?php echo $html->link('网站栏目管理', '/webpages/index')?></li>
+<li><?php echo $html->link('网站频道管理', '/channels/index/');?></li>
 </ul>
+
+</fieldset>

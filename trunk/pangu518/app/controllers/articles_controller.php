@@ -6,7 +6,7 @@ class ArticlesController extends AppController {
 
 	function index() {
 		$this->Article->recursive = 0;
-		$this->set('articles', $this->Article->findAll());
+		$this->set('articles', $this->Article->findAll("order by created desc"));
 	}
 
 	function show($id = null) {
@@ -29,38 +29,36 @@ class ArticlesController extends AppController {
 	function add() {
 		$this->layout = 'jquery';
 		if (empty($this->data)) {
-			$this->set('channels', $this->Article->Channel->listMe());
+			$this->set('channels', $this->Article->Channel->listMe("disabled = 0", "order_id"));
 			$this->set('webpages', $this->Article->Webpage->listMe());
 			$this->render();
 		} else {
 			$this->cleanUpFields();
 			if ($this->Article->save($this->data)) {
-				$this->Session->setFlash('The Article has been saved');
-				$this->redirect('/articles/index');
+				$this->Session->setFlash('网站文章发布成功！');
+				$this->redirect('/articles/add');
 			} else {
 				$this->Session->setFlash('Please correct errors below.');
-				$this->set('channels', $this->Article->Channel->generateList());
-				$this->set('webpages', $this->Article->Webpage->generateList());
+				$this->set('channels', $this->Article->Channel->listMe());
+				$this->set('webpages', $this->Article->Webpage->listMe());
 			}
 		}
 	}
 
 	function edit($id = null) {
+		$this->layout = 'jquery';
 		if (empty($this->data)) {
 			if (!$id) {
 				$this->Session->setFlash('Invalid id for Article');
 				$this->redirect('/articles/index');
 			}
 			$this->data = $this->Article->read(null, $id);
-			$this->set('tags', $this->Article->Tag->generateList());
-			if (empty($this->data['Tag'])) { $this->data['Tag'] = null; }
-			$this->set('selectedTags', $this->_selectedArray($this->data['Tag']));
-			$this->set('channels', $this->Article->Channel->generateList());
-			$this->set('webpages', $this->Article->Webpage->generateList());
+			$this->set('channels', $this->Article->Channel->listMe());
+			$this->set('webpages', $this->Article->Webpage->listMe());
 		} else {
 			$this->cleanUpFields();
 			if ($this->Article->save($this->data)) {
-				$this->Session->setFlash('The Article has been saved');
+				$this->Session->setFlash('网站文章修改成功！');
 				$this->redirect('/articles/index');
 			} else {
 				$this->Session->setFlash('Please correct errors below.');
@@ -83,6 +81,10 @@ class ArticlesController extends AppController {
 			$this->redirect('/articles/index');
 		}
 	}
+
+   function image() {
+	   $this->layout = 'ajax';
+   }
 
 }
 ?>

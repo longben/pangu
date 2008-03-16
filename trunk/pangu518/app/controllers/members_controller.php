@@ -179,7 +179,7 @@ class MembersController extends AppController {
 		$this->cleanUpFields();
       	$this->someone = $this->Member->findByUsername($this->data['Member']['username']);
       	if(!empty($this->someone['Member']['password']) && ($this->someone['Member']['password'] == md5($this->data['Member']['password']))){
-      		if(mktime() - $this->someone['Member']['lastvisit']  > 88){
+      		if(mktime() - $this->someone['Member']['lastvisit']  > 0){
 				$user = $this->Member->User->read(null, $this->someone['Member']['uid']);
 				$this->someone['Member']['lastip'] = $_SERVER["REMOTE_ADDR"];
 				$this->someone['Member']['lastvisit'] = mktime();

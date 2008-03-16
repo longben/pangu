@@ -1,260 +1,131 @@
-<h2>Edit Article</h2>
+<?php
+  echo $javascript->link('jquery-plugin/select-chain.js');
+?>
+<script type="text/javascript">
+	tinyMCE.init({
+		// General options
+		mode : "textareas",
+		theme : "advanced",
+		language : "zh",
+		file_browser_callback : "fileBrowserCallBack",
+		plugins : "safari,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+
+		// Theme options
+		theme_advanced_buttons1 : "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,fontselect,fontsizeselect,|,image,|,fullscreen",
+		theme_advanced_buttons2 : "",
+		//theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview,|,forecolor,backcolor",
+		theme_advanced_buttons3 : "",
+		//theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,|,cite,abbr,acronym,del,ins,attribs,|,visualchars,nonbreaking,template,pagebreak",
+		theme_advanced_toolbar_location : "top",
+		theme_advanced_toolbar_align : "left",
+		theme_advanced_statusbar_location : "bottom",
+		theme_advanced_resizing : true,
+
+		// Example content CSS (should be your site CSS)
+		content_css : "css/content.css",
+
+		// Drop lists for link/image/media/template dialogs
+		template_external_list_url : "lists/template_list.js",
+		external_link_list_url : "lists/link_list.js",
+		external_image_list_url : "lists/image_list.js",
+		media_external_list_url : "lists/media_list.js",
+
+		// Replace values for the template plugin
+		template_replace_values : {
+			username : "Some User",
+			staffid : "991234"
+		}
+	});
+
+function fileBrowserCallBack(field_name, url, type, win) {
+  //var connector = "../../filemanager/browser.html?Connector=connectors/php/connector.php";
+  var connector = "/articles/image";
+  var enableAutoTypeSelection = true;
+  var cType;
+  tinyfck_field = field_name;
+  tinyfck = win;
+  switch (type) {
+    case "image":
+      cType = "Image";
+      break;
+    case "flash":
+      cType = "Flash";
+      break;
+    case "file":
+      cType = "File";
+      break;
+  }
+  if (enableAutoTypeSelection && cType) {
+	  connector += "?Type=" + cType;
+  }
+  window.open(connector, "tinyfck", "modal,width=600,height=400");
+  }
+
+</script>
+<!-- /TinyMCE -->
+<fieldset>
+<legend>添加网站新闻</legend> 
+
 <form action="<?php echo $html->url('/articles/edit/'.$html->tagValue('Article/id')); ?>" method="post">
 <div class="optional"> 
-	<?php echo $form->labelTag('Article/channel_id', 'Channel');?>
- 	<?php echo $html->selectTag('Article/channel_id', $channels, $html->tagValue('Article/channel_id'), array(), array(), true);?>
+	<?php echo $form->labelTag('Article/channel_id', '网站频道:');?>
+ 	<?php echo $html->selectTag('Article/channel_id', $channels, $html->tagValue('Article/channel_id'), array('style'=>'width: 488px'), array(), false);?>
 	<?php echo $html->tagErrorMsg('Article/channel_id', 'Please select the Channel.') ?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Article/webpage_id', 'Webpage');?>
- 	<?php echo $html->selectTag('Article/webpage_id', $webpages, $html->tagValue('Article/webpage_id'), array(), array(), true);?>
+	<?php echo $form->labelTag('Article/webpage_id', '所属栏目:');?>
+ 	<?php echo $html->selectTag('Article/webpage_id', $webpages, $html->tagValue('Article/webpage_id'), array('style'=>'width: 488px'), array(), true);?>
 	<?php echo $html->tagErrorMsg('Article/webpage_id', 'Please select the Webpage.') ?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Article/title', 'Title');?>
- 	<?php echo $html->input('Article/title', array('size' => '60'));?>
+	<?php echo $form->labelTag('Article/title', '简短标题:');?>
+ 	<?php echo $html->input('Article/title', array('size' => '67'));?>
 	<?php echo $html->tagErrorMsg('Article/title', 'Please enter the Title.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Article/title_intact', 'Title Intact');?>
- 	<?php echo $html->input('Article/title_intact', array('size' => '60'));?>
+	<?php echo $form->labelTag('Article/title_intact', '完整标题:');?>
+ 	<?php echo $html->input('Article/title_intact', array('size' => '67'));?>
 	<?php echo $html->tagErrorMsg('Article/title_intact', 'Please enter the Title Intact.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Article/subheading', 'Subheading');?>
- 	<?php echo $html->input('Article/subheading', array('size' => '60'));?>
+	<?php echo $form->labelTag('Article/subheading', '副标题:');?>
+ 	<?php echo $html->input('Article/subheading', array('size' => '67'));?>
 	<?php echo $html->tagErrorMsg('Article/subheading', 'Please enter the Subheading.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Article/author', 'Author');?>
- 	<?php echo $html->input('Article/author', array('size' => '60'));?>
+	<?php echo $form->labelTag('Article/author', '作者:');?>
+ 	<?php echo $html->input('Article/author', array('size' => '67'));?>
 	<?php echo $html->tagErrorMsg('Article/author', 'Please enter the Author.');?>
 </div>
 <div class="optional"> 
-	<?php echo $form->labelTag('Article/copy_from', 'Copy From');?>
- 	<?php echo $html->input('Article/copy_from', array('size' => '60'));?>
+	<?php echo $form->labelTag('Article/copy_from', '来源:');?>
+ 	<?php echo $html->input('Article/copy_from', array('size' => '67'));?>
 	<?php echo $html->tagErrorMsg('Article/copy_from', 'Please enter the Copy From.');?>
 </div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Article/inputer', 'Inputer');?>
- 	<?php echo $html->input('Article/inputer', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Article/inputer', 'Please enter the Inputer.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Article/link_url', 'Link Url');?>
- 	<?php echo $html->input('Article/link_url', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Article/link_url', 'Please enter the Link Url.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Article/editor', 'Editor');?>
- 	<?php echo $html->input('Article/editor', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Article/editor', 'Please enter the Editor.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Article/keyword', 'Keyword');?>
- 	<?php echo $html->input('Article/keyword', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Article/keyword', 'Please enter the Keyword.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Article/hits', 'Hits');?>
- 	<?php echo $html->input('Article/hits', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Article/hits', 'Please enter the Hits.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Article/comment_count', 'Comment Count');?>
- 	<?php echo $html->input('Article/comment_count', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Article/comment_count', 'Please enter the Comment Count.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Article/on_top', 'On Top');?>
- 	<?php echo $html->input('Article/on_top', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Article/on_top', 'Please enter the On Top.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Article/elite', 'Elite');?>
- 	<?php echo $html->input('Article/elite', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Article/elite', 'Please enter the Elite.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Article/status', 'Status');?>
- 	<?php echo $html->input('Article/status', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Article/status', 'Please enter the Status.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag( 'Article/content', 'Content' );?>
- 	<?php echo $html->textarea('Article/content', array('cols' => '60', 'rows' => '10'));?>
+<div> 
+	<?php echo $form->labelTag( 'Article/content', '内容:' );?>
+ 	<?php echo $html->textarea('Article/content', array('cols' => '70', 'rows' => '10'));?>
 	<?php echo $html->tagErrorMsg('Article/content', 'Please enter the Content.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Article/include_pic', 'Include Pic');?>
- 	<?php echo $html->input('Article/include_pic', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Article/include_pic', 'Please enter the Include Pic.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Article/default_pic_url', 'Default Pic Url');?>
- 	<?php echo $html->input('Article/default_pic_url', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Article/default_pic_url', 'Please enter the Default Pic Url.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Article/upload_files', 'Upload Files');?>
- 	<?php echo $html->input('Article/upload_files', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Article/upload_files', 'Please enter the Upload Files.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Article/info_point', 'Info Point');?>
- 	<?php echo $html->input('Article/info_point', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Article/info_point', 'Please enter the Info Point.');?>
-</div>
-<div class="optional"> 
-	<?php echo $html->checkbox('Article/pagination_type', null, array());?>
-	<?php echo $form->labelTag('Article/pagination_type', 'Pagination Type');?>
- 	<?php echo $html->tagErrorMsg('Article/pagination_type', 'Please check the Pagination Type.');?>
-</div>
-<div class="optional"> 
-	<?php echo $html->checkbox('Article/deleted', null, array());?>
-	<?php echo $form->labelTag('Article/deleted', 'Deleted');?>
- 	<?php echo $html->tagErrorMsg('Article/deleted', 'Please check the Deleted.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Article/skin_id', 'Skin Id');?>
- 	<?php echo $html->input('Article/skin_id', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Article/skin_id', 'Please enter the Skin Id.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Article/template_id', 'Template Id');?>
- 	<?php echo $html->input('Article/template_id', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Article/template_id', 'Please enter the Template Id.');?>
-</div>
-<div class="optional"> 
-	<?php echo $html->checkbox('Article/stars', null, array());?>
-	<?php echo $form->labelTag('Article/stars', 'Stars');?>
- 	<?php echo $html->tagErrorMsg('Article/stars', 'Please check the Stars.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Article/title_font_color', 'Title Font Color');?>
- 	<?php echo $html->input('Article/title_font_color', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Article/title_font_color', 'Please enter the Title Font Color.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Article/title_font_type', 'Title Font Type');?>
- 	<?php echo $html->input('Article/title_font_type', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Article/title_font_type', 'Please enter the Title Font Type.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Article/max_char_per_page', 'Max Char Per Page');?>
- 	<?php echo $html->input('Article/max_char_per_page', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Article/max_char_per_page', 'Please enter the Max Char Per Page.');?>
-</div>
-<div class="optional"> 
-	<?php echo $html->checkbox('Article/show_comment_link', null, array());?>
-	<?php echo $form->labelTag('Article/show_comment_link', 'Show Comment Link');?>
- 	<?php echo $html->tagErrorMsg('Article/show_comment_link', 'Please check the Show Comment Link.');?>
-</div>
-<div class="optional"> 
-	<?php echo $html->checkbox('Article/receive', null, array());?>
-	<?php echo $form->labelTag('Article/receive', 'Receive');?>
- 	<?php echo $html->tagErrorMsg('Article/receive', 'Please check the Receive.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Article/receive_user', 'Receive User');?>
- 	<?php echo $html->input('Article/receive_user', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Article/receive_user', 'Please enter the Receive User.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Article/received', 'Received');?>
- 	<?php echo $html->input('Article/received', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Article/received', 'Please enter the Received.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Article/auto_receive_time', 'Auto Receive Time');?>
- 	<?php echo $html->input('Article/auto_receive_time', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Article/auto_receive_time', 'Please enter the Auto Receive Time.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Article/receive_type', 'Receive Type');?>
- 	<?php echo $html->input('Article/receive_type', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Article/receive_type', 'Please enter the Receive Type.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag( 'Article/introduction', 'Introduction' );?>
- 	<?php echo $html->textarea('Article/introduction', array('cols' => '60', 'rows' => '10'));?>
-	<?php echo $html->tagErrorMsg('Article/introduction', 'Please enter the Introduction.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Article/present_exp', 'Present Exp');?>
- 	<?php echo $html->input('Article/present_exp', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Article/present_exp', 'Please enter the Present Exp.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Article/copy_money', 'Copy Money');?>
- 	<?php echo $html->input('Article/copy_money', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Article/copy_money', 'Please enter the Copy Money.');?>
-</div>
-<div class="optional"> 
-	<?php echo $html->checkbox('Article/is_payed', null, array());?>
-	<?php echo $form->labelTag('Article/is_payed', 'Is Payed');?>
- 	<?php echo $html->tagErrorMsg('Article/is_payed', 'Please check the Is Payed.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Article/beneficiary', 'Beneficiary');?>
- 	<?php echo $html->input('Article/beneficiary', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Article/beneficiary', 'Please enter the Beneficiary.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Article/vote_id', 'Vote Id');?>
- 	<?php echo $html->input('Article/vote_id', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Article/vote_id', 'Please enter the Vote Id.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Article/info_purview', 'Info Purview');?>
- 	<?php echo $html->input('Article/info_purview', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Article/info_purview', 'Please enter the Info Purview.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Article/arr_group_id', 'Arr Group Id');?>
- 	<?php echo $html->input('Article/arr_group_id', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Article/arr_group_id', 'Please enter the Arr Group Id.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Article/charge_type', 'Charge Type');?>
- 	<?php echo $html->input('Article/charge_type', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Article/charge_type', 'Please enter the Charge Type.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Article/pitch_time', 'Pitch Time');?>
- 	<?php echo $html->input('Article/pitch_time', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Article/pitch_time', 'Please enter the Pitch Time.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Article/read_times', 'Read Times');?>
- 	<?php echo $html->input('Article/read_times', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Article/read_times', 'Please enter the Read Times.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Article/divide_percent', 'Divide Percent');?>
- 	<?php echo $html->input('Article/divide_percent', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Article/divide_percent', 'Please enter the Divide Percent.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Article/blog_id', 'Blog Id');?>
- 	<?php echo $html->input('Article/blog_id', array('size' => '60'));?>
-	<?php echo $html->tagErrorMsg('Article/blog_id', 'Please enter the Blog Id.');?>
-</div>
-<div class="optional"> 
-	<?php echo $form->labelTag('Tag/Tag', 'Related Tags');?>
- 	<?php echo $html->selectTag('Tag/Tag', $tags, $selectedTags, array('multiple' => 'multiple', 'class' => 'selectMultiple'), array(), true);?>
-	<?php echo $html->tagErrorMsg('Tag/Tag', 'Please select the Related Tags.');?>
 </div>
 <?php echo $html->hidden('Article/id')?>
 <div class="submit">
-	<?php echo $html->submit('Save');?>
+	<?php echo $html->submit('保存');?>
 </div>
 </form>
-<ul class="actions">
-<li><?php echo $html->link('Delete','/articles/delete/' . $html->tagValue('Article/id'), null, 'Are you sure you want to delete: id ' . $html->tagValue('Article/id'));?>
-<li><?php echo $html->link('List Articles', '/articles/index')?></li>
-<li><?php echo $html->link('View Channels', '/channels/index/');?></li>
-<li><?php echo $html->link('Add Channels', '/channels/add/');?></li>
-<li><?php echo $html->link('View Webpages', '/webpages/index/');?></li>
-<li><?php echo $html->link('Add Webpages', '/webpages/add/');?></li>
-</ul>
+</fieldset>
+<script type="text/javascript">
+<!--
+$(function () {
+	var channel = $('#ArticleChannelId');
+	var webpage = $('#ArticleWebpageId');
+	
+	channel.selectChain({
+		target: webpage,
+		url: '<?=$html->url("/webpages/select")?>',
+	    type: 'post',
+		data: { ajax: true, anotherval: "anotherAction" }            
+	}); 
+
+});
+//-->
+</script>

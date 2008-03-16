@@ -1,0 +1,108 @@
+<?php
+  echo $javascript->link('tiny_mce/tiny_mce_popup.js');
+  echo $javascript->link('tiny_mce/plugins/advimage/jscripts/functions.js');
+?>
+
+<script language="javascript">
+	function insertImage(src) {
+		if (window.opener) {
+			tinyMCE.insertImage(src, "");
+			top.close();
+		}
+	}
+
+	function init() {
+		var formObj = document.forms[0];
+		var imgPath = formObj.imgPath.value;
+		
+		//如果图片上传成功返回有地址时，将地址返回到编辑框
+		if(imgPath.length > 5){
+			var s = imgPath.split("||"); // 第一个是附件的ID，第二个是附件的链接地址
+			insertAction(s[1],s[0]);
+		}
+
+		formObj.src.value = tinyMCE.getWindowArg('src');
+		alert(formObj.src.value);
+		formObj.insert.value =" 确  定 "// tinyMCE.getLang('lang_' + tinyMCE.getWindowArg('action')); 
+
+		window.focus();
+	}
+
+	function cancelAction() {
+		top.close();
+	}
+	
+	// 当点击确定的时候
+	function uploadImage(){
+		var form=document.forms[0];
+		var url=form.src.value;	// 得到上传组件的值
+		if(url.match(/\s*http:\/\/.*/))
+		{
+			//直接插入
+			insertAction(url);
+			return;
+		}
+		if(form.src.value=="")
+		{
+			alert("请选选择要插入的图片");
+			return;
+		}
+		var filetype=form.src.value.replace(/.*\./g,"").toLowerCase();
+
+		switch(filetype)
+		{
+			case "gif":
+			case "jpeg":
+			case "jpg":
+			case "png":
+				//支持的格式
+				break;
+			default:
+				alert("不支持的文件类型");
+				return;
+		}
+
+		document.forms[0].submit();
+	}
+	
+	// 选择一副图片之后，就把这副图片显示出来 
+	function setImg(o){
+		var prevImg = document.getElementById("prevImg");
+		if(o.value != ""){		
+			prevImg.src=o.value;
+			prevImg.width="400";
+			prevImg.onclick = function(){
+				var win = window.open("about:blank");
+				win.document.write("<img src='"+ o.value +"'/>")
+			}
+		}
+	}
+</script>
+</head>
+<body  onLoad="window.focus();init();">
+<form method="post" name="form_main" enctype="multipart/form-data" jwcid="form_main@Form" listener="listener:wyswygSubmit" >
+  <input jwcid="imgPath@Any" value="ognl:imgPath" type="hidden" name="imgPath" id="imgPath" />  
+  <table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td height="70" align="center" valign="top">
+        <table border="0" align="center" cellpadding="4" cellspacing="0">
+          <tr>
+            <td align="center" class="title">{$lang_insert_image_src}:</td>
+            <td>
+			<input name="src" type="file" id="src" jwcid="src@Upload" file="ognl:someFiles" style="width: 300px" onpropertychange="setImg(this)"/>
+          </tr>
+          <tr>
+            <td align="right">
+              <input type="button" id="insert" name="insert"  class="title" value="{$lang_insert}" onClick="uploadImage();">
+            </td>
+            <td align="left">
+              <input type="button" id="cancel" name="cancel" class="title" value="{$lang_cancel}" onClick="cancelAction();"></td>
+          </tr>
+      </table></td>
+    </tr>
+    <tr>
+      <td align="center" valign="top"><img name="prevImg" id="prevImg"/>
+</td>
+    </tr>
+  </table>
+</form>

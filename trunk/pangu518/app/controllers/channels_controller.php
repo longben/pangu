@@ -6,7 +6,7 @@ class ChannelsController extends AppController {
 
 	function index() {
 		$this->Channel->recursive = 0;
-		$this->set('channels', $this->Channel->findAll());
+		$this->set('channels', $this->Channel->findAll("order by disabled,order_id"));
 	}
 
 	function view($id = null) {
@@ -23,7 +23,7 @@ class ChannelsController extends AppController {
 		} else {
 			$this->cleanUpFields();
 			if ($this->Channel->save($this->data)) {
-				$this->Session->setFlash('The Channel has been saved');
+				$this->Session->setFlash('网站频道保存成功！');
 				$this->redirect('/channels/index');
 			} else {
 				$this->Session->setFlash('Please correct errors below.');
@@ -41,7 +41,7 @@ class ChannelsController extends AppController {
 		} else {
 			$this->cleanUpFields();
 			if ($this->Channel->save($this->data)) {
-				$this->Session->setFlash('The Channel has been saved');
+				$this->Session->setFlash('网站频道保存成功！');
 				$this->redirect('/channels/index');
 			} else {
 				$this->Session->setFlash('Please correct errors below.');

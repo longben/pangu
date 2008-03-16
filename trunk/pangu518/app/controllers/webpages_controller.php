@@ -4,9 +4,10 @@ class WebpagesController extends AppController {
 	var $name = 'Webpages';
 	var $helpers = array('Html', 'Form' );
 
-	function index() {
+	function index($channel_id = null) {
 		$this->Webpage->recursive = 0;
-		$this->set('webpages', $this->Webpage->findAll());
+		$this->set('webpages', $this->Webpage->findAllByChannelId($channel_id));
+		$this->set('channel_id', $channel_id);
 	}
 
 	function view($id = null) {
@@ -17,9 +18,9 @@ class WebpagesController extends AppController {
 		$this->set('webpage', $this->Webpage->read(null, $id));
 	}
 
-	function add() {
+	function add($channel_id = null) {
 		if (empty($this->data)) {
-			$this->set('channels', $this->Webpage->Channel->generateList());
+			$this->set('channels', $this->Webpage->Channel->listMe("Channel.id = $channel_id"));
 			$this->render();
 		} else {
 			$this->cleanUpFields();

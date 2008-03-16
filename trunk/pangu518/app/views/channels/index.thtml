@@ -1,0 +1,34 @@
+<fieldset>
+<legend>网站频道管理</legend>
+<br/>
+<table cellpadding="0" cellspacing="0" width="100%">
+<tr>
+	<th>频道名称</th>
+	<th>项目名称</th>
+	<th>功能模块</th>
+	<th>频道状态</th>
+	<th>操作</th>
+</tr>
+<?php foreach ($channels as $channel): ?>
+<tr>
+	<td><?php echo $channel['Channel']['channel_name']; ?></td>
+	<td><?php echo $channel['Channel']['channel_short_name']; ?></td>
+	<td><?php echo $channel['Channel']['channel_item_unit']; ?></td>
+	<td><?php echo $channel['Channel']['disabled']==1?'已禁用':'正常'; ?></td>
+	<td class="actions">
+		<?php 
+		  if($channel['Channel']['disabled']!=1){
+			  echo $html->link('栏目管理','/webpages/index/' . $channel['Channel']['id']);
+		  }
+		?>
+		<?php echo $html->link('修改','/channels/edit/' . $channel['Channel']['id'])?>
+	</td>
+</tr>
+<?php endforeach; ?>
+</table>
+
+<ul class="actions">
+	<li><?php echo $html->link('添加新频道', '/channels/add'); ?></li>
+</ul>
+
+</fieldset>

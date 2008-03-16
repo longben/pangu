@@ -143,7 +143,7 @@
 						<td height=24>
 						  <?=$html->link($rmhy['Article']['title'],'/articles/show/'.$rmhy['Article']['id'])?>
 						  <?php if(time() - strtotime($rmhy['Article']['created']) <= 518400):?>
-						  <img src="img/website/new.gif">
+						  <?=$html->image('website/new.gif')?>
 						  <?php endif;?>
 						</td>
 						<td style="color:#666666;" width=60 align=right>
@@ -171,7 +171,7 @@
 						<td height=24>
 						  <?=$html->link($rmdw['Article']['title'],'/articles/show/'.$rmdw['Article']['id'])?>
 						  <?php if(time() - strtotime($rmdw['Article']['created']) <= 518400):?>
-						  <img src="img/website/new.gif">
+						  <?=$html->image('website/new.gif')?>
 						  <?php endif;?>
 						</td>
 						<td style="color:#666666;" width=60 align=right>
@@ -202,7 +202,7 @@
 						<td height=24>
 						  <?=$html->link($hywt['Article']['title'],'/articles/show/'.$hywt['Article']['id'])?>
 						  <?php if(time() - strtotime($hywt['Article']['created']) <= 518400):?>
-						  <img src="img/website/new.gif">
+						  <?=$html->image('website/new.gif')?>
 						  <?php endif;?>
 						</td>
 						<td style="color:#666666;" width=60 align=right>
@@ -230,7 +230,7 @@
 						<td height=24>
 						  <?=$html->link($dwwt['Article']['title'],'/articles/show/'.$dwwt['Article']['id'])?>
 						  <?php if(time() - strtotime($dwwt['Article']['created']) <= 518400):?>
-						  <img src="img/website/new.gif">
+						  <?=$html->image('website/new.gif')?>
 						  <?php endif;?>
 						</td>
 						<td style="color:#666666;" width=60 align=right>

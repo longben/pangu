@@ -17,7 +17,7 @@
 <?php 
 if(isset($javascript)):
     echo $javascript->link('jquery-1.2.3.min.js');
-	echo $javascript->link('tiny_mce/tiny_mce.js');
+	echo $javascript->link('tiny_mce3.0.5/tiny_mce.js');
 endif;          
 ?> 
 <?php echo $html->css('pangu.generic');?>

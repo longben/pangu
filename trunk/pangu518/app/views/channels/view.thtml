@@ -1,0 +1,139 @@
+<div class="channel">
+<h2>View Channel</h2>
+
+<dl>
+	<dt>Id</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['id']?></dd>
+	<dt>Channel Name</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['channel_name']?></dd>
+	<dt>Channel Short Name</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['channel_short_name']?></dd>
+	<dt>Channel Item Unit</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['channel_item_unit']?></dd>
+	<dt>Read Me</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['read_me']?></dd>
+	<dt>Meta Keywords</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['meta_keywords']?></dd>
+	<dt>Meta Description</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['meta_description']?></dd>
+	<dt>Channel Pic Url</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['channel_pic_url']?></dd>
+	<dt>Order Id</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['order_id']?></dd>
+	<dt>Open Type</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['open_type']?></dd>
+	<dt>Channel Type</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['channel_type']?></dd>
+	<dt>Link Url</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['link_url']?></dd>
+	<dt>Channel Dir</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['channel_dir']?></dd>
+	<dt>Module Type</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['module_type']?></dd>
+	<dt>Disabled</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['disabled']?></dd>
+	<dt>Show Name</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['show_name']?></dd>
+	<dt>Show Name On Path</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['show_name_on_path']?></dd>
+	<dt>Show Class Tree Guide</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['show_class_tree_guide']?></dd>
+	<dt>Show Suspension Points</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['show_suspension_points']?></dd>
+	<dt>Check Level</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['check_level']?></dd>
+	<dt>Enable Upload File</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['enable_upload_file']?></dd>
+	<dt>Upload Dir</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['upload_dir']?></dd>
+	<dt>Max File Size</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['max_file_size']?></dd>
+	<dt>Hits Of Hot</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['hits_of_hot']?></dd>
+	<dt>Days Of New</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['days_of_new']?></dd>
+	<dt>Max Per Line</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['max_per_line']?></dd>
+	<dt>Up File Type</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['up_file_type']?></dd>
+	<dt>Default Skin Id</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['default_skin_id']?></dd>
+	<dt>Template Index</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['template_index']?></dd>
+	<dt>Top Menu Type</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['top_menu_type']?></dd>
+	<dt>Class Guide Type</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['class_guide_type']?></dd>
+	<dt>Use Create Html</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['use_create_html']?></dd>
+	<dt>Item Count</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['item_count']?></dd>
+	<dt>Item Checked</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['item_checked']?></dd>
+	<dt>Comment Count</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['comment_count']?></dd>
+	<dt>Special Count</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['special_count']?></dd>
+	<dt>Hits Count</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['hits_count']?></dd>
+	<dt>Structure Type</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['structure_type']?></dd>
+	<dt>List File Type</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['list_file_type']?></dd>
+	<dt>File Name Type</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['file_name_type']?></dd>
+	<dt>Auto Create Type</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['auto_create_type']?></dd>
+	<dt>File Ext Index</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['file_ext_index']?></dd>
+	<dt>File Ext List</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['file_ext_list']?></dd>
+	<dt>File Ext Item</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['file_ext_item']?></dd>
+	<dt>Update Pages</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['update_pages']?></dd>
+	<dt>Channel Purview</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['channel_purview']?></dd>
+	<dt>Arrgroupid</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['arrgroupid']?></dd>
+	<dt>Js Special Num</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['js_special_num']?></dd>
+	<dt>Author Info Len</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['author_info_len']?></dd>
+	<dt>Max Per Page Index</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['max_per_page_index']?></dd>
+	<dt>Max Per Page Search Result</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['max_per_page_search_result']?></dd>
+	<dt>Max Per Page New</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['max_per_page_new']?></dd>
+	<dt>Max Per Page Hot</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['max_per_page_hot']?></dd>
+	<dt>Max Per Page Elite</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['max_per_page_elite']?></dd>
+	<dt>Max Per Page Special List</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['max_per_page_special_list']?></dd>
+	<dt>Money Per Kw</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['money_per_kw']?></dd>
+	<dt>Timing Create Setting</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['timing_create_setting']?></dd>
+	<dt>Email Of Reject</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['email_of_reject']?></dd>
+	<dt>Email Of Passed</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['email_of_passed']?></dd>
+	<dt>Custom Content</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['custom_content']?></dd>
+	<dt>Arrenabledtabs</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['arrenabledtabs']?></dd>
+	<dt>Command Channel Point</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['command_channel_point']?></dd>
+	<dt>Fields Options</dt>
+	<dd>&nbsp;<?php echo $channel['Channel']['fields_options']?></dd>
+</dl>
+<ul class="actions">
+	<li><?php echo $html->link('Edit Channel',   '/channels/edit/' . $channel['Channel']['id']) ?> </li>
+	<li><?php echo $html->link('Delete Channel', '/channels/delete/' . $channel['Channel']['id'], null, 'Are you sure you want to delete: id ' . $channel['Channel']['id'] . '?') ?> </li>
+	<li><?php echo $html->link('List Channels',   '/channels/index') ?> </li>
+	<li><?php echo $html->link('New Channel',	'/channels/add') ?> </li>
+</ul>
+
+</div>
