@@ -1,0 +1,126 @@
+<div class="articles">
+<h2>List Articles</h2>
+
+<table cellpadding="0" cellspacing="0">
+<tr>
+	<th>Id</th>
+	<th>Channel</th>
+	<th>Webpage</th>
+	<th>Title</th>
+	<th>Title Intact</th>
+	<th>Subheading</th>
+	<th>Author</th>
+	<th>Copy From</th>
+	<th>Inputer</th>
+	<th>Link Url</th>
+	<th>Editor</th>
+	<th>Keyword</th>
+	<th>Hits</th>
+	<th>Comment Count</th>
+	<th>Modified</th>
+	<th>Created</th>
+	<th>On Top</th>
+	<th>Elite</th>
+	<th>Status</th>
+	<th>Content</th>
+	<th>Include Pic</th>
+	<th>Default Pic Url</th>
+	<th>Upload Files</th>
+	<th>Info Point</th>
+	<th>Pagination Type</th>
+	<th>Deleted</th>
+	<th>Skin Id</th>
+	<th>Template Id</th>
+	<th>Stars</th>
+	<th>Title Font Color</th>
+	<th>Title Font Type</th>
+	<th>Max Char Per Page</th>
+	<th>Show Comment Link</th>
+	<th>Receive</th>
+	<th>Receive User</th>
+	<th>Received</th>
+	<th>Auto Receive Time</th>
+	<th>Receive Type</th>
+	<th>Introduction</th>
+	<th>Present Exp</th>
+	<th>Copy Money</th>
+	<th>Is Payed</th>
+	<th>Beneficiary</th>
+	<th>Pay Date</th>
+	<th>Vote Id</th>
+	<th>Info Purview</th>
+	<th>Arr Group Id</th>
+	<th>Charge Type</th>
+	<th>Pitch Time</th>
+	<th>Read Times</th>
+	<th>Divide Percent</th>
+	<th>Blog Id</th>
+	<th>Actions</th>
+</tr>
+<?php foreach ($articles as $article): ?>
+<tr>
+	<td><?php echo $article['Article']['id']; ?></td>
+	<td>&nbsp;<?php echo $html->link($article['Channel']['id'], '/channels/view/' .$article['Channel']['id'])?></td>
+	<td>&nbsp;<?php echo $html->link($article['Webpage']['id'], '/webpages/view/' .$article['Webpage']['id'])?></td>
+	<td><?php echo $article['Article']['title']; ?></td>
+	<td><?php echo $article['Article']['title_intact']; ?></td>
+	<td><?php echo $article['Article']['subheading']; ?></td>
+	<td><?php echo $article['Article']['author']; ?></td>
+	<td><?php echo $article['Article']['copy_from']; ?></td>
+	<td><?php echo $article['Article']['inputer']; ?></td>
+	<td><?php echo $article['Article']['link_url']; ?></td>
+	<td><?php echo $article['Article']['editor']; ?></td>
+	<td><?php echo $article['Article']['keyword']; ?></td>
+	<td><?php echo $article['Article']['hits']; ?></td>
+	<td><?php echo $article['Article']['comment_count']; ?></td>
+	<td><?php echo $article['Article']['modified']; ?></td>
+	<td><?php echo $article['Article']['created']; ?></td>
+	<td><?php echo $article['Article']['on_top']; ?></td>
+	<td><?php echo $article['Article']['elite']; ?></td>
+	<td><?php echo $article['Article']['status']; ?></td>
+	<td><?php echo $article['Article']['content']; ?></td>
+	<td><?php echo $article['Article']['include_pic']; ?></td>
+	<td><?php echo $article['Article']['default_pic_url']; ?></td>
+	<td><?php echo $article['Article']['upload_files']; ?></td>
+	<td><?php echo $article['Article']['info_point']; ?></td>
+	<td><?php echo $article['Article']['pagination_type']; ?></td>
+	<td><?php echo $article['Article']['deleted']; ?></td>
+	<td><?php echo $article['Article']['skin_id']; ?></td>
+	<td><?php echo $article['Article']['template_id']; ?></td>
+	<td><?php echo $article['Article']['stars']; ?></td>
+	<td><?php echo $article['Article']['title_font_color']; ?></td>
+	<td><?php echo $article['Article']['title_font_type']; ?></td>
+	<td><?php echo $article['Article']['max_char_per_page']; ?></td>
+	<td><?php echo $article['Article']['show_comment_link']; ?></td>
+	<td><?php echo $article['Article']['receive']; ?></td>
+	<td><?php echo $article['Article']['receive_user']; ?></td>
+	<td><?php echo $article['Article']['received']; ?></td>
+	<td><?php echo $article['Article']['auto_receive_time']; ?></td>
+	<td><?php echo $article['Article']['receive_type']; ?></td>
+	<td><?php echo $article['Article']['introduction']; ?></td>
+	<td><?php echo $article['Article']['present_exp']; ?></td>
+	<td><?php echo $article['Article']['copy_money']; ?></td>
+	<td><?php echo $article['Article']['is_payed']; ?></td>
+	<td><?php echo $article['Article']['beneficiary']; ?></td>
+	<td><?php echo $article['Article']['pay_date']; ?></td>
+	<td><?php echo $article['Article']['vote_id']; ?></td>
+	<td><?php echo $article['Article']['info_purview']; ?></td>
+	<td><?php echo $article['Article']['arr_group_id']; ?></td>
+	<td><?php echo $article['Article']['charge_type']; ?></td>
+	<td><?php echo $article['Article']['pitch_time']; ?></td>
+	<td><?php echo $article['Article']['read_times']; ?></td>
+	<td><?php echo $article['Article']['divide_percent']; ?></td>
+	<td><?php echo $article['Article']['blog_id']; ?></td>
+	<td class="actions">
+		<?php echo $html->link('View','/articles/view/' . $article['Article']['id'])?>
+		<?php echo $html->link('Edit','/articles/edit/' . $article['Article']['id'])?>
+		<?php echo $html->link('Delete','/articles/delete/' . $article['Article']['id'], null, 'Are you sure you want to delete id ' . $article['Article']['id'])?>
+	</td>
+</tr>
+<?php endforeach; ?>
+</table>
+
+<ul class="actions">
+	<li><?php echo $html->link('New Article', '/articles/add'); ?></li>
+</ul>
+</div>

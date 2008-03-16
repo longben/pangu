@@ -1,0 +1,116 @@
+<div class="webpages">
+<h2>List Webpages</h2>
+
+<table cellpadding="0" cellspacing="0">
+<tr>
+	<th>Id</th>
+	<th>Channel</th>
+	<th>Page Name</th>
+	<th>Page Type</th>
+	<th>Open Type</th>
+	<th>Parent Id</th>
+	<th>Parent Path</th>
+	<th>Depth</th>
+	<th>Root Id</th>
+	<th>Child</th>
+	<th>Arrchildid</th>
+	<th>Prev Id</th>
+	<th>Next Id</th>
+	<th>Order Id</th>
+	<th>Tips</th>
+	<th>Read Me</th>
+	<th>Meta Keywords</th>
+	<th>Meta Description</th>
+	<th>Link Url</th>
+	<th>Page Pic Url</th>
+	<th>Page Dir</th>
+	<th>Parent Dir</th>
+	<th>Skin Id</th>
+	<th>Template Id</th>
+	<th>Show On Top</th>
+	<th>Show On Index</th>
+	<th>Is Elite</th>
+	<th>Enable Add</th>
+	<th>Enable Protect</th>
+	<th>Max Per Page</th>
+	<th>Default Item Template</th>
+	<th>Default Item Skin</th>
+	<th>Item List Order Type</th>
+	<th>Item Open Type</th>
+	<th>Item Count</th>
+	<th>Page Purview</th>
+	<th>Enable Comment</th>
+	<th>Check Comment</th>
+	<th>Present Exp</th>
+	<th>Default Item Point</th>
+	<th>Default Item Charge Type</th>
+	<th>Default Item Pitch Time</th>
+	<th>Default Item Read Times</th>
+	<th>Default Item Divide Percent</th>
+	<th>Custom Content</th>
+	<th>Command Page Point</th>
+	<th>Release Page Point</th>
+	<th>Actions</th>
+</tr>
+<?php foreach ($webpages as $webpage): ?>
+<tr>
+	<td><?php echo $webpage['Webpage']['id']; ?></td>
+	<td>&nbsp;<?php echo $html->link($webpage['Channel']['id'], '/channels/view/' .$webpage['Channel']['id'])?></td>
+	<td><?php echo $webpage['Webpage']['page_name']; ?></td>
+	<td><?php echo $webpage['Webpage']['page_type']; ?></td>
+	<td><?php echo $webpage['Webpage']['open_type']; ?></td>
+	<td><?php echo $webpage['Webpage']['parent_id']; ?></td>
+	<td><?php echo $webpage['Webpage']['parent_path']; ?></td>
+	<td><?php echo $webpage['Webpage']['depth']; ?></td>
+	<td><?php echo $webpage['Webpage']['root_id']; ?></td>
+	<td><?php echo $webpage['Webpage']['child']; ?></td>
+	<td><?php echo $webpage['Webpage']['arrchildid']; ?></td>
+	<td><?php echo $webpage['Webpage']['prev_id']; ?></td>
+	<td><?php echo $webpage['Webpage']['next_id']; ?></td>
+	<td><?php echo $webpage['Webpage']['order_id']; ?></td>
+	<td><?php echo $webpage['Webpage']['tips']; ?></td>
+	<td><?php echo $webpage['Webpage']['read_me']; ?></td>
+	<td><?php echo $webpage['Webpage']['meta_keywords']; ?></td>
+	<td><?php echo $webpage['Webpage']['meta_description']; ?></td>
+	<td><?php echo $webpage['Webpage']['link_url']; ?></td>
+	<td><?php echo $webpage['Webpage']['page_pic_url']; ?></td>
+	<td><?php echo $webpage['Webpage']['page_dir']; ?></td>
+	<td><?php echo $webpage['Webpage']['parent_dir']; ?></td>
+	<td><?php echo $webpage['Webpage']['skin_id']; ?></td>
+	<td><?php echo $webpage['Webpage']['template_id']; ?></td>
+	<td><?php echo $webpage['Webpage']['show_on_top']; ?></td>
+	<td><?php echo $webpage['Webpage']['show_on_index']; ?></td>
+	<td><?php echo $webpage['Webpage']['is_elite']; ?></td>
+	<td><?php echo $webpage['Webpage']['enable_add']; ?></td>
+	<td><?php echo $webpage['Webpage']['enable_protect']; ?></td>
+	<td><?php echo $webpage['Webpage']['max_per_page']; ?></td>
+	<td><?php echo $webpage['Webpage']['default_item_template']; ?></td>
+	<td><?php echo $webpage['Webpage']['default_item_skin']; ?></td>
+	<td><?php echo $webpage['Webpage']['item_list_order_type']; ?></td>
+	<td><?php echo $webpage['Webpage']['item_open_type']; ?></td>
+	<td><?php echo $webpage['Webpage']['item_count']; ?></td>
+	<td><?php echo $webpage['Webpage']['page_purview']; ?></td>
+	<td><?php echo $webpage['Webpage']['enable_comment']; ?></td>
+	<td><?php echo $webpage['Webpage']['check_comment']; ?></td>
+	<td><?php echo $webpage['Webpage']['present_exp']; ?></td>
+	<td><?php echo $webpage['Webpage']['default_item_point']; ?></td>
+	<td><?php echo $webpage['Webpage']['default_item_charge_type']; ?></td>
+	<td><?php echo $webpage['Webpage']['default_item_pitch_time']; ?></td>
+	<td><?php echo $webpage['Webpage']['default_item_read_times']; ?></td>
+	<td><?php echo $webpage['Webpage']['default_item_divide_percent']; ?></td>
+	<td><?php echo $webpage['Webpage']['custom_content']; ?></td>
+	<td><?php echo $webpage['Webpage']['command_page_point']; ?></td>
+	<td><?php echo $webpage['Webpage']['release_page_point']; ?></td>
+	<td class="actions">
+		<?php echo $html->link('View','/webpages/view/' . $webpage['Webpage']['id'])?>
+		<?php echo $html->link('Edit','/webpages/edit/' . $webpage['Webpage']['id'])?>
+		<?php echo $html->link('Delete','/webpages/delete/' . $webpage['Webpage']['id'], null, 'Are you sure you want to delete id ' . $webpage['Webpage']['id'])?>
+	</td>
+</tr>
+<?php endforeach; ?>
+</table>
+
+<ul class="actions">
+	<li><?php echo $html->link('New Webpage', '/webpages/add'); ?></li>
+</ul>
+</div>
