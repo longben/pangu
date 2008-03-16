@@ -19,7 +19,32 @@
 <tr>
   <td style="padding-left:20px;" width=26 align="left"><img src="/img/website/top_smllogo1.gif"></td>
   <td align=left style="padding-top:5px">中国消费财富网</td>
-  <td align="right" style="padding-right:20px;color:#990000">今天是 2008年1月19日 星期六</td>
+  <td align="right" style="padding-right:20px;color:#990000">
+		今天是 
+			<script language=JavaScript>        
+				today=new Date();
+				function initArray(){
+					this.length=initArray.arguments.length;
+					for(var i=0;i<this.length;i++)
+					this[i+1]=initArray.arguments[i];
+				}
+				var d=new initArray(
+				"星期日",
+				"星期一",
+				"星期二",
+				"星期三",
+				"星期四",
+				"星期五",
+				"星期六");
+				document.write(
+				"<font color=#990000 style='font-size:9pt;font-family: 幼圆'> ",
+				today.getYear(),"年",
+				today.getMonth()+1,"月",
+				today.getDate(),"日   ",
+				d[today.getDay()+1],
+				"</font>" );
+			</script>
+  </td>
 </tr>
 </table>
 <table border=0 cellpadding=0 cellspacing=0 width=976 align=center height=108>
@@ -75,7 +100,7 @@
 	<?=$html->link('合作机会','/homes/cooperation_index',array('class' => 'whitelink'))?>	
 	</td>
 	<td>&nbsp;</td>
-	<td width=78 align=center style="font-size:14px;font-weight:bold;color:#ffffff" onMouseOver="this.style.background='url(/img/website/menu_over_bg.jpg)'" onMouseOut="this.style.background='url()'"><a href="#" class="whitelink">联系我们</a></td>
+	<td width=78 align=center style="font-size:14px;font-weight:bold;color:#ffffff" onMouseOver="this.style.background='url(/img/website/menu_over_bg.jpg)'" onMouseOut="this.style.background='url()'"><a href="mailto:sichuanpangu@126.com" class="whitelink">联系我们</a></td>
 	<td>&nbsp;</td>
   </tr>
   </table>
