@@ -42,7 +42,7 @@
 				</td>
               </tr>
 			  </form>
-              </table>
+            </table>
 		  </td>
         </tr>
       </table>
@@ -293,13 +293,19 @@
   <tr>
     <td width=205 height=209 style="border:1px solid #cccccc;padding:1px;" valign="top"><table border=0 cellpadding=0 cellspacing=0 width=100%>
         <tr>
-          <td height=29 style="background:#CFDEEB;color:#31659C;font-weight:bold;padding-left:10px" align=left>视频在线播放</td>
+          <td height=29 style="background:#CFDEEB;color:#31659C;font-weight:bold;padding-left:10px" align=left>友情链接</td>
         </tr>
       </table>
       <table border=0 cellpadding="0" cellspacing="0" width=100%>
         <tr>
-          <td style="padding:5px" align="center">视频位置</td>
+          <td style="padding:5px" align="center"><a href="http://www.21cnf.com" target="_blank">财富网</a></td>
         </tr>
+        <tr>
+          <td style="padding:5px" align="center"><a href="www.fec.cn" target="_blank">中国财经网</a></td>
+        </tr>
+        <tr>
+          <td style="padding:5px" align="center"><a href="http://www.ccn.com.cn">中国消费网</a></td>
+        </tr>			
       </table></td>
     <td width=12></td>
     <td style="border:1px solid #cccccc;padding:1px;" width=370 valign=top><table border=0 cellpadding=0 cellspacing=0 width=100% style="background:#CFDEEB;">
