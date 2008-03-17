@@ -1,7 +1,7 @@
 <html>
 <head>
-<title>中国消费财富网</title>
 <?php echo $html->charset('UTF-8');?>
+<title>中国消费财富网</title>
 <?php echo $html->css('pg');?>
 <link rel="icon" href="<?php echo $this->webroot . 'favicon.ico';?>" type="image/x-icon" />
 <link rel="shortcut icon" href="<?php echo $this->webroot . 'favicon.ico';?>" type="image/x-icon" />
