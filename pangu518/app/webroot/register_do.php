@@ -82,7 +82,7 @@
 		echo("var url = '/users/upgrade/$refer_id';");
 		echo("var myAjax = new Ajax.Request(url,{method: 'get',onComplete: null,asynchronous:false});");
 		echo("alert('恭喜您，注册成功，您可以登录进入盘古运营系统！');");
-		echo("location.replace('main.php');");
+		echo("location.replace('/');");
 		echo("</script>");
 	}
 ?>
