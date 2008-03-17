@@ -49,7 +49,7 @@
                 <td colspan=2 align=center height=30>
 				  <input name="" type="submit" value="登录" style="width:57px;height:23px;border:0px;background:url(/img/website/button_bg.gif);color:#ffffff;font-size:12px;text-align:center">
                   &nbsp;&nbsp;
-                  <input name="" type="button" value="注册" style="width:57px;height:23px;border:0px;background:url(/img/website/button_bg.gif);color:#ffffff;font-size:12px;text-align:center">				</td>
+                  <input name="" type="button" value="注册" style="width:57px;height:23px;border:0px;background:url(/img/website/button_bg.gif);color:#ffffff;font-size:12px;text-align:center" onClick="javascript:location.replace('/register.php')">				</td>
               </tr>
 			  </form>
             </table>		  </td>
