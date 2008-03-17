@@ -3,8 +3,8 @@
 ?>
 <html>
 <head>
-<title>中国消费财富网</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>中国消费财富网</title>
 <link href="css/pg.css" rel="stylesheet" type="text/css">
 </head>
 <body topmargin="0" leftmargin="0">
