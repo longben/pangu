@@ -36,7 +36,7 @@
 			<!--脚本命令设置:被调用的URL--> 
 			<param name="stretchToFit" value="0"> 
 			<!--是否按比例伸展--> 
-			<param name="volume" value="30"> 
+			<param name="volume" value="80"> 
 			<!--默认声音大小0%-100%,50则为50%--> 
 			<param name="mute" value="0"> 
 			<!--是否静音--> 
