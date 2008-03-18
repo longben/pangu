@@ -27,7 +27,7 @@ class HomesController extends AppController {
 
 		$this->set('lotterites', $this->Lottery->findBulletin(4)); //开奖公告
 
-		$this->set('fhxx', $this->Article->find("Article.webpage_id = $this->FHXX order by Article.created desc"));
+		$this->set('fhxx', $this->Article->find("Article.webpage_id = $this->FHXX order by Article.id desc"));
 	}
 
 	function index_image() {
