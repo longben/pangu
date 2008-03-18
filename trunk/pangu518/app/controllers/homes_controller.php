@@ -13,6 +13,8 @@ class HomesController extends AppController {
 	var $YYXZ = 29; //运营细则
 	var $GZZFB = 37; //工作站分别
 
+	var $FHXX = 6; //分红信息
+
 	function index() {	//首页
 		$this->layout = 'website';
 		$this->set('zxxxs', $this->Article->findArticleByChannel($this->ZXXX,9)); //最新消息
@@ -24,6 +26,8 @@ class HomesController extends AppController {
 		$this->set('merchants', $this->Article->findMerchant($this->SJXX,7)); //首页商家滚动图片
 
 		$this->set('lotterites', $this->Lottery->findBulletin(4)); //开奖公告
+
+		$this->set('fhxx', $this->Article->find("Article.webpage_id = $this->FHXX order by Article.created desc"));
 	}
 
 	function index_image() {
