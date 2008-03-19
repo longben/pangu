@@ -15,7 +15,10 @@ class ArticlesController extends AppController {
 			$this->Session->setFlash('非法请求！');
 			$this->redirect('/');
 		}
-		$this->set('article', $this->Article->read(null, $id));
+		$this->data = $this->Article->read(null, $id);
+		$this->data['Article']['hits'] = $this->data['Article']['hits'] + 1;
+		$this->Article->save($this->data);
+		$this->set('article', $this->data);
 	}
 
 	function view($id = null) {
