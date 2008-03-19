@@ -9,52 +9,23 @@
         <tr>
           <td align="center">
 
-			<object id="player" height="185" width="200" classid="CLSID:6BF52A52-394A-11d3-B153-00C04F79FAA6"> 
-			<param NAME="AutoStart" VALUE="1"> 
-			<!--是否自动播放--> 
-			<param NAME="Balance" VALUE="-1"> 
-			<!--调整左右声道平衡,同上面旧播放器代码--> 
-			<param name="enabled" value="-1"> 
-			<!--播放器是否可人为控制--> 
-			<param NAME="EnableContextMenu" VALUE="1"> 
-			<!--是否启用上下文菜单--> 
-			<param NAME="url" value="http://duan44.wuhan.net.cn/mp3/0011.wma"> 
-			<!--播放的文件地址--> 
-			<param NAME="PlayCount" VALUE="1"> 
-			<!--播放次数控制,为整数--> 
-			<param name="rate" value="1"> 
-			<!--播放速率控制,1为正常,允许小数,1.0-2.0--> 
-			<param name="currentPosition" value="0"> 
-			<!--控件设置:当前位置--> 
-			<param name="currentMarker" value="0"> 
-			<!--控件设置:当前标记--> 
-			<param name="defaultFrame" value=""> 
-			<!--显示默认框架--> 
-			<param name="invokeURLs" value="0"> 
-			<!--脚本命令设置:是否调用URL--> 
-			<param name="baseURL" value=""> 
-			<!--脚本命令设置:被调用的URL--> 
-			<param name="stretchToFit" value="0"> 
-			<!--是否按比例伸展--> 
-			<param name="volume" value="80"> 
-			<!--默认声音大小0%-100%,50则为50%--> 
-			<param name="mute" value="0"> 
-			<!--是否静音--> 
-			<param name="uiMode" value="mini"> 
-			<!--播放器显示模式:Full显示全部;mini最简化;None不显示播放控制,只显示视频窗口;invisible全部不显示--> 
-			<param name="windowlessVideo" value="0"> 
-			<!--如果是0可以允许全屏,否则只能在窗口中查看--> 
-			<param name="fullScreen" value="0"> 
-			<!--开始播放是否自动全屏--> 
-			<param name="enableErrorDialogs" value="-1"> 
-			<!--是否启用错误提示报告--> 
-			<param name="SAMIStyle" value> 
-			<!--SAMI样式--> 
-			<param name="SAMILang" value> 
-			<!--SAMI语言--> 
-			<param name="SAMIFilename" value> 
-			<!--字幕ID--> 
-			</object><br>如不能正常播放，请下载media player 
+		  <OBJECT id=player classid=clsid:CFCDAA03-8BE4-11cf-B84B-0020AFBBCCFA width=180 height=150 VIEWASTEXT>
+			 <PARAM NAME="_ExtentX" VALUE="9525">
+			 <PARAM NAME="_ExtentY" VALUE="8731">
+			 <PARAM NAME="AUTOSTART" VALUE="0">
+			 <PARAM NAME="SHUFFLE" VALUE="0">
+			 <PARAM NAME="PREFETCH" VALUE="0">
+			 <PARAM NAME="NOLABELS" VALUE="0">
+			 <PARAM NAME="SRC" VALUE="http://www.pangu518.com/videos/2008028.rm">
+			 <PARAM NAME="CONTROLS" VALUE="Imagewindow,StatusBar,ControlPanel">
+			 <PARAM NAME="CONSOLE" VALUE="RAPLAYER">
+			 <PARAM NAME="LOOP" VALUE="0">
+			 <PARAM NAME="NUMLOOP" VALUE="0">
+			 <PARAM NAME="CENTER" VALUE="0">
+			 <PARAM NAME="MAINTAINASPECT" VALUE="0">
+			 <PARAM NAME="BACKGROUNDCOLOR" VALUE="#000000">
+		  </OBJECT>
+		  <br/><a href="http://www.pangu518.com/downloads/realplayer10-5gold.exe">如不能正常播放请下载realplayer</a>
 
 		  </td>
         </tr>
