@@ -158,7 +158,7 @@
 					  <?php foreach($zxxxs as $zxxx):?>
 						  <?=$html->link($zxxx['Article']['title'],'/articles/show/'.$zxxx['Article']['id'])?>
 						  <?php if(time() - strtotime($zxxx['Article']['created']) <= 518400):?>
-						  <img src="img/website/new.gif">
+						  <img src="/img/website/new.gif">
 						  <?php endif;?>
 						  (<?=date('m-d',strtotime($zxxx['Article']['created'])).','.$zxxx['Article']['hits']?>)<br />
 					  <?php endforeach;?>
@@ -191,7 +191,7 @@
 					  <?php foreach($zxrms as $zxrm):?>
 						  <?=$html->link($zxrm['Article']['title'],'/articles/show/'.$zxrm['Article']['id'])?>
 						  <?php if(time() - strtotime($zxrm['Article']['created']) <= 518400):?>
-						  <img src="img/website/new.gif">
+						  <img src="/img/website/new.gif">
 						  <?php endif;?>
 						  (<?=date('m-d',strtotime($zxrm['Article']['created'])).','.$zxrm['Article']['hits']?>)<br />
 					  <?php endforeach;?>
@@ -242,7 +242,7 @@
 						<td height=24>
 						  <?=$html->link($gsxx['Article']['title'],'/articles/show/'.$gsxx['Article']['id'])?>
 						  <?php if(time() - strtotime($gsxx['Article']['created']) <= 518400):?>
-						  <img src="img/website/new.gif">
+						  <img src="/img/website/new.gif">
 						  <?php endif;?>
 						</td>
 						<td style="color:#666666;" width=60 align=right>
@@ -270,7 +270,7 @@
 						<td height=24>
 						  <?=$html->link($scxx['Article']['title'],'/articles/show/'.$scxx['Article']['id'])?>
 						  <?php if(time() - strtotime($scxx['Article']['created']) <= 518400):?>
-						  <img src="img/website/new.gif">
+						  <img src="/img/website/new.gif">
 						  <?php endif;?>
 						</td>
 						<td style="color:#666666;" width=60 align=right>
@@ -301,7 +301,7 @@
 						<td height=24>
 						  <?=$html->link($jjkx['Article']['title'],'/articles/show/'.$jjkx['Article']['id'])?>
 						  <?php if(time() - strtotime($jjkx['Article']['created']) <= 518400):?>
-						  <img src="img/website/new.gif">
+						  <img src="/img/website/new.gif">
 						  <?php endif;?>
 						</td>
 						<td style="color:#666666;" width=60 align=right>
@@ -329,7 +329,7 @@
 						<td height=24>
 						  <?=$html->link($fhxx['Article']['title'],'/articles/show/'.$fhxx['Article']['id'])?>
 						  <?php if(time() - strtotime($fhxx['Article']['created']) <= 518400):?>
-						  <img src="img/website/new.gif">
+						  <img src="/img/website/new.gif">
 						  <?php endif;?>
 						</td>
 						<td style="color:#666666;" width=60 align=right>
