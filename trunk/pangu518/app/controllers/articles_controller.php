@@ -80,7 +80,7 @@ class ArticlesController extends AppController {
 			$this->redirect('/articles/index');
 		}
 		if ($this->Article->del($id)) {
-			$this->Session->setFlash('The Article deleted: id '.$id.'');
+			$this->Session->setFlash('删除成功');
 			$this->redirect('/articles/index');
 		}
 	}
