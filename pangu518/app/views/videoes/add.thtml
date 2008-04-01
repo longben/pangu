@@ -1,0 +1,18 @@
+<fieldset align=center>
+<legend>新增视频文件名</legend> 
+
+<form action="<?php echo $html->url('/videoes/add'); ?>" method="post">
+<div class="required"> 
+	<?php echo $form->labelTag('Video/name', '视频文件名：');?>
+ 	<?php echo $html->input('Video/name', array('size' => '30','maxlength' => '10'));?>
+	<?php echo $html->tagErrorMsg('Video/name', '视频文件名不能为空.');?>
+</div>
+<div class="submit">
+	<?php echo $html->submit('保存');?>
+</div>
+<pre><?php //print_r($modules); ?></pre> 
+</form>
+<ul class="actions">
+<li><?php echo $html->link('返回视频内容列表', '/videoes/index')?></li>
+</ul>
+</fieldset>
