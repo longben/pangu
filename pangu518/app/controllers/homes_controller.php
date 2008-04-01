@@ -1,7 +1,7 @@
 <?php 
 class HomesController extends AppController {
 	var $helpers = array('Html');
-    var $uses = array('Article','Lottery','Webpage');
+    var $uses = array('Article','Lottery','Webpage','Video');
 
 	var $ZXXX = 1001; //最新消息
 	var $CFZX = 8; //财富资讯
@@ -108,6 +108,8 @@ class HomesController extends AppController {
 		$this->set('merchants', $this->Article->findMerchant($this->SJXX,4)); //商家滚动图片
 
 		$this->set('lotterites', $this->Lottery->findBulletin(4)); //开奖公告
+
+		$this->set('videoes', $this->Video->findAll('order by name desc limit 1'));		//最新视频文件
 	}
 
 
@@ -186,5 +188,6 @@ class HomesController extends AppController {
 		$this->layout = 'website';
 		$this->set('ejlbs', $this->Article->findArticleByWebpage($id,30)); //二级栏目信息;
 	}
+
 }
 ?>
