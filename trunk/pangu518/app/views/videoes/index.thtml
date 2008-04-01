@@ -1,0 +1,29 @@
+<fieldset align=center>
+<legend>视频内容管理</legend> 
+
+<table cellpadding="0" cellspacing="0" width="96%">
+<tr>
+	<td colspan="3"><font color='red'>说明：必须是先通过FTP上传文件后，再进行新增操作，网站将自动调取最新视频播放。</font></td>
+</tr>
+<tr>
+	<th>视频文件名</th>
+	<th>上传日期</th>
+	<th>操作</th>
+</tr>
+
+<?php foreach ($videoes as $video): ?>
+<tr>
+	<td><?php echo $video['Video']['name']; ?></td>
+	<td><?php echo $video['Video']['upload_date']; ?></td>
+	<td class="actions">
+		<?php echo $html->link('编辑','/videoes/edit/' . $video['Video']['id'])?>
+		<?php echo $html->link('删除','/videoes/delete/' . $video['Video']['id'], null, '确认是否删除视频文件名记录:' . $video['Video']['name'])?>
+	</td>
+</tr>
+<?php endforeach; ?>
+</table>
+
+<ul class="actions">
+	<li><?php echo $html->link('新增视频文件名记录', '/videoes/add'); ?></li>
+</ul>
+</fieldset>

@@ -91,6 +91,7 @@
 		d.add(1101,11,'网站频道管理','/channels');
 		d.add(1102,11,'网站内容发布','/articles/add');
 		d.add(1103,11,'网站内容管理','/articles/index');
+		d.add(1104,11,'视频内容管理','/videoes');
 
 		document.write(d);
 
