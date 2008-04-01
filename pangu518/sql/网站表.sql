@@ -202,3 +202,14 @@ create table articles_tags (
   tag_id                  int(10)       not null default '0',
   primary key  (article_id,tag_id)
 ) engine=myisam default charset=utf8;
+
+
+-- ----------------------------
+-- 存放视频文件名称表
+-- ----------------------------
+create table videos (
+  `id`                    int(10)       not null auto_increment comment '编号',
+  `name`                  varchar(100)           default null   comment '文件名称',
+  upload_date              timestamp                             comment '上传日期',
+  primary key  (`id`)
+) engine=MyISAM default charset=utf8 comment='视频文件名称表';
