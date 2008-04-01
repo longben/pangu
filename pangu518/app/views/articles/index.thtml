@@ -20,7 +20,7 @@
 	<td class="actions">
 		<?php echo $html->link('查看','/articles/show/' . $article['Article']['id'],array('target' => '_blank'))?>
 		<?php echo $html->link('编辑','/articles/edit/' . $article['Article']['id'])?>
-		<?php //echo $html->link('Delete','/articles/delete/' . $article['Article']['id'], null, 'Are you sure you want to delete id ' . $article['Article']['id'])?>
+		<?php echo $html->link('删除','/articles/delete/' . $article['Article']['id'], null, '确认是否删除记录:' . $article['Article']['title'])?>
 	</td>
 </tr>
 <?php endforeach; ?>
