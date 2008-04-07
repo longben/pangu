@@ -97,7 +97,7 @@ class LotteryBetting extends AppModel {
 			//插入投注数据
 			for ($i = $betting_number_start;$i<=$betting_number_end;$i++){
 				$sql = "insert into lottery_bettings(lottery_id,betting_number,betting_time,betting_type,user_id,flag)";
-				$sql .= " values($lottery_id,'". sprintf('%03s',$i) ."',$betting_time,'1',$user_id,'1')";
+				$sql .= " values($lottery_id,'". sprintf('%02s',$i) ."',$betting_time,'1',$user_id,'1')";
 				$this->execute($sql);
 			}
 
