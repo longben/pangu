@@ -115,22 +115,12 @@
 	</td>
   </tr>
   </table>
-  <table border=0 cellpadding=0 cellspacing=0 width=100% style="border-top:1px solid #cccccc">
-  <tr>
-    <td height=29 style="background:#CFDEEB;color:#31659C;font-weight:bold;padding-left:10px" align=left>专题列表</td>
-  </tr>
-  </table>
   <table border=0 cellpadding=0 cellspacing=0 width=100%>
   <tr>
     <td style="padding:5px" valign="top">
 	<br/>
 	<br/>
 	</td>
-  </tr>
-  </table>
-  <table border=0 cellpadding=0 cellspacing=0 width=100% style="border-top:1px solid #cccccc">
-  <tr>
-    <td height=29 style="background:#CFDEEB;color:#31659C;font-weight:bold;padding-left:10px" align=left>最新推荐</td>
   </tr>
   </table>
   <table border=0 cellpadding=0 cellspacing=0 width=100%>
@@ -183,28 +173,14 @@
 	</table>
 	<table border=0 cellpadding=0 cellspacing=0 width=100% style="margin-top:1px" bgcolor="#EEEEEE">
 	  <tr><td>&nbsp;</td></tr>
-	<!--
-	<tr>
-	  <td height=28 style="padding-right:10px" align=right>【字体：<A class=top_UserLogin href="javascript:fontZoomA();">小</A> <A class=top_UserLogin href="javascript:fontZoomB();">大</A>】【<a href="/shopwall/Comment.asp?ArticleID=178" target="_blank">发表评论</a>】【<a href="/User/User_Favorite.asp?Action=Add&ChannelID=1004&InfoID=178" target="_blank">加入收藏</a>】【<a href="/shopwall/SendMail.asp?ArticleID=178" target="_blank">告诉好友</a>】【<a href="/shopwall/Print.asp?ArticleID=178" target="_blank">打印此文</a>】【<a href="javascript:window.close();">关闭窗口</a>】</td>
-	</tr>
-	-->
 	</table>
 	
 	<table border=0 cellspacing="0" cellpadding="0" width=100% >
   <tr>
     <td style="padding:4px;border-bottom:1px solid #cccccc">
-	  <li>上一篇： </li><br/><li>下一篇：</li>
+	  <li>上一篇：<?=$html->link($prev['Article']['title'],'/articles/show/'.$prev['Article']['id'])?> </li>
+	  <br/><li>下一篇：<?=$html->link($next['Article']['title'],'/articles/show/'.$next['Article']['id'])?></li>
 	</td>
-  </tr>
-  </table>
-  <table border=0 cellpadding=0 cellspacing=0 width=100% style="margin-top:1px" bgcolor="#EEEEEE">
-	<tr>
-	  <td height=28 style="padding-left:10px;font-weight:bold" align=left><B>网友评论：</B>（只显示最新10条。评论内容只代表网友观点，与本站立场无关！）</td>
-	</tr>
-  </table>
-  <table border=0 cellpadding=0 cellspacing=0 width=100%>
-  <tr>
-    <td style="padding:5px">没有任何评论</td>
   </tr>
   </table>
 	</td>
