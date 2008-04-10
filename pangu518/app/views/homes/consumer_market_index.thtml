@@ -120,153 +120,78 @@
             </table>		  </td>
         </tr>
     </table></td>
-    <td valign="top" style="padding-left:12px;"><table border="0" cellpadding="0" cellspacing="0" width="100%" height="25" bgcolor="#EBEBEB" style="border:1px solid #cccccc;margin-bottom:5px">
+
+    <td valign="top" style="padding-left:12px;">
+	  <table border="0" cellpadding="0" cellspacing="0" width="100%" height="25" bgcolor="#EBEBEB" style="border:1px solid #cccccc;margin-bottom:5px">
         <tr>
-          <td align="left" style="color:#990000;padding-left:10px" ><a href="" class="redlink">首页</a> &gt;&gt; 消费市场</td>
+          <td align="left" style="color:#990000;padding-left:10px" ><a href="/" class="redlink">首页</a> &gt;&gt; 在线视频</td>
         </tr>
       </table>
-      <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-bottom:5px">
-          <tr>
-            <td style="border:1px solid #cccccc;padding:1px" width="375" valign="top"><table border="0" cellpadding="0" cellspacing="0" width="100%">
-                <tr>
-                  <td height="29" bgcolor="#CFDEEB" style="padding-left:10px;padding-right:10px"><table border="0" cellspacing="0" width="100%" cellpadding="0">
-                      <tr>
-                        <td align="left" style="font-weight:bold">最新消息</td>
-                        <td align="right"><img src="/img/website/more_logo.gif" /></td>
-                      </tr>
-                  </table></td>
-                </tr>
-                <tr>
-                  <td style="padding:5px" valign="top"><table border="0" cellspacing="0" cellpadding="0" width="100%">
-					  <?php foreach($zxxxs as $zxxx):?>
-					  <tr>
-						<td height=24>
-						  <?=$html->link($zxxx['Article']['title'],'/articles/show/'.$zxxx['Article']['id'])?>
-						  <?php if(time() - strtotime($zxxx['Article']['created']) <= 518400):?>
-						  <img src="img/website/new.gif">
-						  <?php endif;?>
-						</td>
-						<td style="color:#666666;" width=60 align=right>
-						  (<?=date('m-d',strtotime($zxxx['Article']['created'])).','.$zxxx['Article']['hits']?>)
-						</td>
-					  </tr>
-					  <?php endforeach;?>
-                  </table></td>
-                </tr>
-            </table></td>
-            <td width="10"></td>
-            <td style="border:1px solid #cccccc;padding:1px" valign="top"><table border="0" cellpadding="0" cellspacing="0" width="100%">
-                <tr>
-                  <td height="29" bgcolor="#CFDEEB" style="padding-left:10px;padding-right:10px"><table border="0" cellspacing="0" width="100%" cellpadding="0">
-                      <tr>
-                        <td align="left" style="font-weight:bold">热门推荐</td>
-                        <td align="right"><img src="/img/website/more_logo.gif" /></td>
-                      </tr>
-                  </table></td>
-                </tr>
-                <tr>
-                  <td style="padding:5px"><table border="0" cellspacing="0" cellpadding="0" width="100%">
-					  <?php foreach($rmtjs as $rmtj):?>
-					  <tr>
-						<td height=24>
-						  <?=$html->link($rmtj['Article']['title'],'/articles/show/'.$rmtj['Article']['id'])?>
-						  <?php if(time() - strtotime($rmtj['Article']['created']) <= 518400):?>
-						  <img src="img/website/new.gif">
-						  <?php endif;?>
-						</td>
-						<td style="color:#666666;" width=60 align=right>
-						  (<?=date('m-d',strtotime($rmtj['Article']['created'])).','.$rmtj['Article']['hits']?>)
-						</td>
-					  </tr>
-					  <?php endforeach;?>
-                  </table></td>
-                </tr>
-            </table></td>
-          </tr>
-        </table>
-      <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-bottom:5px">
-          <tr>
-            <td style="border:1px solid #cccccc;padding:1px" width="375" valign="top"><table border="0" cellpadding="0" cellspacing="0" width="100%">
-                <tr>
-                  <td height="29" bgcolor="#CFDEEB" style="padding-left:10px;padding-right:10px"><table border="0" cellspacing="0" width="100%" cellpadding="0">
-                      <tr>
-                        <td align="left" style="font-weight:bold">市场运营</td>
-                        <td align="right"><img src="/img/website/more_logo.gif" /></td>
-                      </tr>
-                  </table></td>
-                </tr>
-                <tr>
-                  <td style="padding:5px" valign="top"><table border="0" cellspacing="0" cellpadding="0" width="100%">
-					  <?php foreach($scyys as $scyy):?>
-					  <tr>
-						<td height=24>
-						  <?=$html->link($scyy['Article']['title'],'/articles/show/'.$scyy['Article']['id'])?>
-						  <?php if(time() - strtotime($scyy['Article']['created']) <= 518400):?>
-						  <img src="img/website/new.gif">
-						  <?php endif;?>
-						</td>
-						<td style="color:#666666;" width=60 align=right>
-						  (<?=date('m-d',strtotime($scyy['Article']['created'])).','.$scyy['Article']['hits']?>)
-						</td>
-					  </tr>
-					  <?php endforeach;?>
-                  </table></td>
-                </tr>
-            </table></td>
-            <td width="10"></td>
-            <td style="border:1px solid #cccccc;padding:1px" valign="top"><table border="0" cellpadding="0" cellspacing="0" width="100%">
-                <tr>
-                  <td height="29" bgcolor="#CFDEEB" style="padding-left:10px;padding-right:10px"><table border="0" cellspacing="0" width="100%" cellpadding="0">
-                      <tr>
-                        <td align="left" style="font-weight:bold">运营细则</td>
-                        <td align="right"><img src="/img/website/more_logo.gif" /></td>
-                      </tr>
-                  </table></td>
-                </tr>
-                <tr>
-                  <td style="padding:5px"><table border="0" cellspacing="0" cellpadding="0" width="100%">
-					  <?php foreach($yyxzs as $yyxz):?>
-					  <tr>
-						<td height=24>
-						  <?=$html->link($yyxz['Article']['title'],'/articles/show/'.$yyxz['Article']['id'])?>
-						  <?php if(time() - strtotime($yyxz['Article']['created']) <= 518400):?>
-						  <img src="img/website/new.gif">
-						  <?php endif;?>
-						</td>
-						<td style="color:#666666;" width=60 align=right>
-						  (<?=date('m-d',strtotime($yyxz['Article']['created'])).','.$yyxz['Article']['hits']?>)
-						</td>
-					  </tr>
-					  <?php endforeach;?>
-                  </table></td>
-                </tr>
-            </table></td>
-          </tr>
-        </table>
+
+	<?php 
+		$i = 1;
+		foreach ($videoes as $video):
+			if($i == 1) {
+				$rm_file = $video['Video']['name'] ;
+			}			
+			$i++;
+		endforeach; 
+
+		if(!empty($this->params['url']['vdid'])) {
+			$rm_file = $this->params['url']['vdid'].".rm";
+		}
+	?>	  
+
+      <table border=0 cellpadding=0 cellspacing=0 width=100% height=350>
+        <tr>
+          <td align="center" height="35" valign="middle"  style="font-weight:bold">第<?=substr($rm_file,0,7)?>期开奖视频</td>
+        </tr>
+        <tr>
+          <td align="center">
+
+		  <OBJECT id=player classid=clsid:CFCDAA03-8BE4-11cf-B84B-0020AFBBCCFA width=360 height=300 VIEWASTEXT>
+			 <PARAM NAME="_ExtentX" VALUE="9525">
+			 <PARAM NAME="_ExtentY" VALUE="8731">
+			 <PARAM NAME="AUTOSTART" VALUE="0">
+			 <PARAM NAME="SHUFFLE" VALUE="0">
+			 <PARAM NAME="PREFETCH" VALUE="0">
+			 <PARAM NAME="NOLABELS" VALUE="0">
+			 <PARAM NAME="SRC" VALUE="http://www.pangu518.com/videos/<?=$rm_file?>">
+			 <PARAM NAME="CONTROLS" VALUE="Imagewindow,StatusBar,ControlPanel">
+			 <PARAM NAME="CONSOLE" VALUE="RAPLAYER">
+			 <PARAM NAME="LOOP" VALUE="0">
+			 <PARAM NAME="NUMLOOP" VALUE="0">
+			 <PARAM NAME="CENTER" VALUE="0">
+			 <PARAM NAME="MAINTAINASPECT" VALUE="0">
+			 <PARAM NAME="BACKGROUNDCOLOR" VALUE="#000000">
+		  </OBJECT>
+		  <br/><a href="http://www.pangu518.com/downloads/realplayer10-5gold.exe">如不能正常播放请下载realplayer</a>
+
+		  </td>
+        </tr>
+      </table>
+		<br/>
       <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border:1px solid #cccccc">
           <tr>
-            <td style="padding:5px"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <td style="padding:5px">
+			<div align="center">最近四期开奖视频回顾</div>
+		    <table border="0" cellpadding="0" cellspacing="0" width="100%">
                 <tr>
-					<?php foreach($merchants as $m):?>
+					<?php foreach($videoes as $video):?>
 					<td align=center style="color:#666666">
 					  <?php
-						echo $html->image($m['Article']['default_pic_url'],
-							  array(
-								'width' => '160',
-								'height' => '101',
-								'style' => 'padding:1px;border:1px solid #000000'
-							  ));
-						echo "<br/>";
 						echo "<div style='width:150px;overflow: hidden; word-break:keep-all;white-space:nowrap;'>";
-						echo $html->link($m['Article']['title'],'/articles/show/'.$m['Article']['id'],array('title' => $m['Article']['title']));
+						echo $html->link('第'.substr($video['Video']['name'],0,7).'期','/homes/consumer_market_index/?vdid='.substr($video['Video']['name'],0,7),array('title' => '点击查看开奖视频播放'));
 						echo "</div>";
 					  ?>
 					</td>
 					<td width=10>&nbsp;</td>
 					<?php endforeach;?>
                 </tr>
-            </table></td>
+            </table>
+			</td>
           </tr>
-      </table></td>
+      </table>
+    </td>
   </tr>
 </table>
