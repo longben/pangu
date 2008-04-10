@@ -26,11 +26,13 @@ if(isNaN(doc.timoney.value)){
 			doc.timoney.focus();
 			return false;
 }
-if(doc.timoney.value<50){
-	alert("提款张数不能小于50！");
+
+if(doc.timoney.value<=0){
+	alert("提款张数不能小于0！");
 			doc.timoney.focus();
 			return false;
 }
+
 }
 </script>
 <style type="text/css">
