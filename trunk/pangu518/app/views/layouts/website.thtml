@@ -73,7 +73,7 @@
 	</td>
 	<td>&nbsp;</td>
 	<td width=78 align=center style="font-size:14px;font-weight:bold;color:#ffffff" onMouseOver="this.style.background='url(/img/website/menu_over_bg.jpg)'" onMouseOut="this.style.background='url()'">
-	<?=$html->link('消费市场','/homes/consumer_market_index',array('class' => 'whitelink'))?>	
+	<?=$html->link('在线视频','/homes/consumer_market_index',array('class' => 'whitelink'))?>	
 	</td>
 	<td>&nbsp;</td>
 	<td width=78 align=center style="font-size:14px;font-weight:bold;color:#ffffff" onMouseOver="this.style.background='url(/img/website/menu_over_bg.jpg)'" onMouseOut="this.style.background='url()'">
