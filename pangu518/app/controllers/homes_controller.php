@@ -1,7 +1,7 @@
 <?php 
 class HomesController extends AppController {
 	var $helpers = array('Html');
-    var $uses = array('Article','Lottery','Webpage','Video');
+    var $uses = array('Article','Lottery','Webpage','Video','Channel');
 
 	var $ZXXX = 1001; //最新消息
 	var $CFZX = 8; //财富资讯
@@ -193,6 +193,20 @@ class HomesController extends AppController {
 	function second_list($id = null) {	//二级列表
 		$this->layout = 'website';
 		$this->set('ejlbs', $this->Article->findArticleByWebpage($id,30)); //二级栏目信息;
+	}
+
+	function more($id = null,$type = null) {	//二级列表
+		$this->layout = 'website';
+		if($type == null){
+			$this->set('articles', $this->Article->findArticleByChannel($this->N_ZXXX,25)); 
+			$this->set('webpage_name', '最新消息');
+		}elseif($type == 2){
+			$this->set('articles', $this->Article->findArticleByChannel($id,25)); 
+			$this->set('webpage_name', $this->Channel->field('channel_name', "Channel.id = $id"));
+		}else{
+			$this->set('articles', $this->Article->findArticleByWebpage($id,25)); 
+			$this->set('webpage_name', $this->Webpage->field('page_name', "Webpage.id = $id"));
+		}
 	}
 
 }

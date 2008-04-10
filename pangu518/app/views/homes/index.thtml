@@ -161,7 +161,7 @@
 				  <table border=0 cellpadding=0 cellspacing=0 width=100% style="background:#CFDEEB;">
                     <tr>
                       <td height=29 style="color:#31659C;font-weight:bold;padding-left:10px" align=left>最新消息</td>
-                      <td style="padding-right:7px" align=right><a href="/homes/second_list/6?type=1"><img src="img/website/more_logo.gif" border="0"></a></td>
+                      <td style="padding-right:7px" align=right><a href="/homes/more/6"><img src="img/website/more_logo.gif" border="0"></a></td>
                     </tr>
                   </table>
                   <table border=0 cellpadding=0 cellspacing=0 width=100%>
@@ -190,7 +190,7 @@
                 <td height=141 style="border-right:1px solid #cccccc;padding:1px;" valign=top><table border=0 cellpadding=0 cellspacing=0 width=100% style="background:#CFDEEB;">
                     <tr>
                       <td height=29 style="color:#31659C;font-weight:bold;padding-left:10px" align=left>财富资讯</td>
-                      <td style="padding-right:7px" align=right><a href="/homes/second_list/8?type=2"><img src="img/website/more_logo.gif" border="0"></a></td>
+                      <td style="padding-right:7px" align=right><a href="/homes/more/8"><img src="img/website/more_logo.gif" border="0"></a></td>
                     </tr>
                   </table>
                   <table border=0 cellpadding=0 cellspacing=0 width=100%>
@@ -217,7 +217,7 @@
                 <td valign=top style="padding:1px"><table border=0 cellpadding=0 cellspacing=0 width=100% style="background:#CFDEEB;">
                     <tr>
                       <td height=29 style="color:#31659C;font-weight:bold;padding-left:10px" align=left>消费市场</td>
-                      <td style="padding-right:7px" align=right><a href="/homes/second_list/10?type=3"><img src="img/website/more_logo.gif" border="0"></a></td>
+                      <td style="padding-right:7px" align=right><a href="/homes/more/10"><img src="img/website/more_logo.gif" border="0"></a></td>
                     </tr>
                   </table>
                   <table border=0 cellpadding=0 cellspacing=0 width=100%>
@@ -336,7 +336,7 @@
     <td style="border:1px solid #cccccc;border-left:0px;padding:1px;" valign="top"><table border=0 cellpadding=0 cellspacing=0 width=100% style="background:#CFDEEB;">
         <tr>
           <td height=29 style="color:#31659C;font-weight:bold;padding-left:10px" align=left>商家信息</td>
-          <td style="padding-right:7px" align=right><img src="img/website/more_logo.gif"></td>
+          <td style="padding-right:7px" align=right><a href="/homes/more/10"><img src="img/website/more_logo.gif" border="0"></a></td>
         </tr>
       </table>
       <table border=0 cellpadding=0 cellspacing=0 width=100%>
