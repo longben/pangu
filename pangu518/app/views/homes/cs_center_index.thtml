@@ -7,32 +7,36 @@
       </table>
       <table border=0 cellpadding=0 cellspacing=0 width=100% height=156>
         <tr>
-          <td align="center">
-
-<?php foreach ($videoes as $video): ?>
-<?php $rm_file = $video['Video']['name'] ;?>
-<?php endforeach; ?>
-
-
-		  <OBJECT id=player classid=clsid:CFCDAA03-8BE4-11cf-B84B-0020AFBBCCFA width=180 height=150 VIEWASTEXT>
-			 <PARAM NAME="_ExtentX" VALUE="9525">
-			 <PARAM NAME="_ExtentY" VALUE="8731">
-			 <PARAM NAME="AUTOSTART" VALUE="0">
-			 <PARAM NAME="SHUFFLE" VALUE="0">
-			 <PARAM NAME="PREFETCH" VALUE="0">
-			 <PARAM NAME="NOLABELS" VALUE="0">
-			 <PARAM NAME="SRC" VALUE="http://www.pangu518.com/videos/<?=$rm_file?>">
-			 <PARAM NAME="CONTROLS" VALUE="Imagewindow,StatusBar,ControlPanel">
-			 <PARAM NAME="CONSOLE" VALUE="RAPLAYER">
-			 <PARAM NAME="LOOP" VALUE="0">
-			 <PARAM NAME="NUMLOOP" VALUE="0">
-			 <PARAM NAME="CENTER" VALUE="0">
-			 <PARAM NAME="MAINTAINASPECT" VALUE="0">
-			 <PARAM NAME="BACKGROUNDCOLOR" VALUE="#000000">
-		  </OBJECT>
-		  <br/><a href="http://www.pangu518.com/downloads/realplayer10-5gold.exe">如不能正常播放请下载realplayer</a>
-
-		  </td>
+          <td align="center"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <form action="<?php echo $html->url('/members/login'); ?>" method="post">
+              <tr>
+                <td width="50" align="right" height="30">用户名：</td>
+                <td><?php echo $html->input('Member/username', array('size' => 20, 'style' => 'border:1px solid #31659C;height:22px;width:118px'));?> </td>
+              </tr>
+              <tr>
+                <td width="50" align="right" height="30">密码：</td>
+                <td><?php echo $html->password('Member/password', array('size' =>20, 'style' => 'border:1px solid #31659C;height:22px;width:118px')); ?> </td>
+              </tr>
+              <tr>
+                <td width="50" align="right" height="30">验证码：</td>
+                <td><input name="text" type="text" style="border:1px solid #31659C;height:22px;width:50px" /></td>
+              </tr>
+              <tr>
+                <td colspan="2" align="center" height="30"><input name="mType" type="radio" value="1" />
+                  会员
+                  <input name="mType" type="radio" value="2" />
+                  商家
+                  <input name="mType" type="radio" value="3" />
+                  工作站</td>
+              </tr>
+              <tr>
+                <td colspan="2" align="center" height="30"><input name="Input" type="submit" value="登录" style="width:57px;height:23px;border:0px;background:url(/img/website/button_bg.gif);color:#ffffff;font-size:12px;text-align:center" />
+                  &nbsp;&nbsp;
+                  <input name="Input" type="button" value="注册"  style="width:57px;height:23px;border:0px;background:url(/img/website/button_bg.gif);color:#ffffff;font-size:12px;text-align:center" onclick="javascript:location.replace('/register.php')" />
+                </td>
+              </tr>
+            </form>
+          </table></td>
         </tr>
       </table>
       <table border=0 cellpadding=0 cellspacing=0 width=100% style="border-top:1px solid #cccccc">
