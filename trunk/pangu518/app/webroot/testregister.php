@@ -1,3 +1,4 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <?php
  require_once('db-settings.php');
  $username=trim($_POST["username"]);
