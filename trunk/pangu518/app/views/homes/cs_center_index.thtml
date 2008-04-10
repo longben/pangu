@@ -129,8 +129,8 @@
                   <td height="29" bgcolor="#CFDEEB" style="padding-left:10px;padding-right:10px"><table border="0" cellspacing="0" width="100%" cellpadding="0">
                       <tr>
                         <td align="left" style="font-weight:bold">热门会员问题</td>
-                        <td align="right"><img src="/img/website/more_logo.gif" /></td>
-                      </tr>
+                        <td align="right">&nbsp;</td>
+                    </tr>
                   </table></td>
                 </tr>
                 <tr>
@@ -157,8 +157,8 @@
                   <td height="29" bgcolor="#CFDEEB" style="padding-left:10px;padding-right:10px"><table border="0" cellspacing="0" width="100%" cellpadding="0">
                       <tr>
                         <td align="left" style="font-weight:bold">热门单位信息</td>
-                        <td align="right"><img src="/img/website/more_logo.gif" /></td>
-                      </tr>
+                        <td align="right">&nbsp;</td>
+                    </tr>
                   </table></td>
                 </tr>
                 <tr>
@@ -187,9 +187,9 @@
                 <tr>
                   <td height="29" bgcolor="#CFDEEB" style="padding-left:10px;padding-right:10px"><table border="0" cellspacing="0" width="100%" cellpadding="0">
                       <tr>
-                        <td align="left" style="font-weight:bold">会员信息</td>
-                        <td align="right"><img src="/img/website/more_logo.gif" /></td>
-                      </tr>
+                        <td align="left" style="font-weight:bold">会员问题</td>
+                        <td align="right"><a href="/homes/more/15/1"><img src="/img/website/more_logo.gif" border="0" /></a></td>
+                    </tr>
                   </table></td>
                 </tr>
                 <tr>
@@ -216,8 +216,8 @@
                   <td height="29" bgcolor="#CFDEEB" style="padding-left:10px;padding-right:10px"><table border="0" cellspacing="0" width="100%" cellpadding="0">
                       <tr>
                         <td align="left" style="font-weight:bold">单位问题</td>
-                        <td align="right"><img src="/img/website/more_logo.gif" /></td>
-                      </tr>
+                        <td align="right"><a href="/homes/more/27/1"><img src="/img/website/more_logo.gif" border="0" /></a></td>
+                    </tr>
                   </table></td>
                 </tr>
                 <tr>

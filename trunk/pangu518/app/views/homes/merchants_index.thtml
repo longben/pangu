@@ -56,7 +56,7 @@
 			    foreach($merchants as $m){
 					if($i%2!=0)echo('<tr>');
 					echo('<td align="center" height="25">');
-					echo($m['Webpage']['page_name']);
+					echo($html->link($m['Webpage']['page_name'],'/homes/more/'.$m['Webpage']['id'].'/1'));
 					echo('</td>');
 					if($i%2==0)echo('</tr>');
 					$i++;
@@ -270,7 +270,9 @@
             <td style="border:1px solid #cccccc;padding:1px" width="375" valign="top">
               <table border="0" cellpadding="0" cellspacing="0" width="100%">
                 <tr>
-                  <td height="29" bgcolor="#CFDEEB" style="padding-left:10px;font-weight:bold"><?=$ms[$i]['Webpage']['page_name']?></td>
+                  <td height="29" bgcolor="#CFDEEB" style="padding-left:10px;font-weight:bold">
+				    <?=$html->link($ms[$i]['Webpage']['page_name'],'/homes/more/'.$ms[$i]['Webpage']['id'].'/1')?>
+                  </td>
                 </tr>
                 <tr>
                   <td style="padding:5px">
@@ -326,7 +328,9 @@
             <td width="10"></td>
             <td style="border:1px solid #cccccc;padding:1px" valign="top"><table border="0" cellpadding="0" cellspacing="0" width="100%">
               <tr>
-                <td height="29" bgcolor="#CFDEEB" style="padding-left:10px;font-weight:bold"><?=$ms[$i+1]['Webpage']['page_name']?></td>
+                <td height="29" bgcolor="#CFDEEB" style="padding-left:10px;font-weight:bold">
+                  <?=$html->link($ms[$i+1]['Webpage']['page_name'],'/homes/more/'.$ms[$i+1]['Webpage']['id'].'/1')?>
+                </td>
               </tr>
               <tr>
                 <td style="padding:5px"><table border="0" cellspacing="0" cellpadding="0" width="100%">

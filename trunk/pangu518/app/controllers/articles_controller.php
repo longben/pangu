@@ -19,6 +19,11 @@ class ArticlesController extends AppController {
 		$this->data['Article']['hits'] = $this->data['Article']['hits'] + 1;
 		$this->Article->save($this->data);
 		$this->set('article', $this->data);
+
+		$this->Article->unbindModel(array('belongsTo' => array('Channel', 'Webpage')));
+		$neighbours = $this->Article->findNeighbours(null, 'Article.id', $id);
+		$this->set('prev', $this->Article->read(null,$neighbours['prev']['Article']['id']));
+		$this->set('next', $this->Article->read(null,$neighbours['next']['Article']['id']));
 	}
 
 	function view($id = null) {
