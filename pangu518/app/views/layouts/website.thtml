@@ -2,6 +2,10 @@
 <head>
 <?php echo $html->charset('UTF-8');?>
 <title>中国消费财富网</title>
+<meta  name=keywords content="财富网, 消费财富网, 证券, 金融, 中国财富网, 中国消费财富网, 基金, 债券, 期货, 外汇, 保险, 银行, 博客, 股吧, 论坛, stock, quote, news, fund, bank, blog, bbs" />
+<meta  name=description content="消费致富不是梦，加入盘古财富网，实现您心中梦想" />
+<meta name="GOOGLEBOT" content="index,follow">
+<meta name="ROBOTS" content="index,follow">
 <?php echo $html->css('pg');?>
 <link rel="icon" href="<?php echo $this->webroot . 'favicon.ico';?>" type="image/x-icon" />
 <link rel="shortcut icon" href="<?php echo $this->webroot . 'favicon.ico';?>" type="image/x-icon" />
