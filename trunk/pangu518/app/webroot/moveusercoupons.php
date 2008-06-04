@@ -193,7 +193,11 @@
                                 <tr>
                                   <td height="35" colspan="2" align="center" valign="middle" bgcolor="#FFFFFF"><span class="style7 STYLE2"><strong><span class="STYLE2 style7">转  让</span></strong></span><br>
                                       <span class="STYLE3"><span class="style6"><span class="style3">注意：请注意仔细核对你要转让的对方会员让号，一但已经确定转入，本公司不对其负任何责任</span></span></span><span class="style3">*</span><br>
-                                    <span class="STYLE3"><span class="style6"><span class="style3">注意：由于此功能针对所有会员开放，在转让前请输入要转让的会员登陆帐号和密码</span></span></span><span class="style3">*</span><br> <span class="STYLE3"><span class="style6"><span class="style3">注意：转让成功后，将扣除百分之八的手续费，最小转让张数108张！</span></span></span><span class="style3">*</span><br></td>
+                                    <span class="STYLE3"><span class="style6"><span class="style3">注意：由于此功能针对所有会员开放，在转让前请输入要转让的会员登陆帐号和密码</span></span></span><span class="style3">*</span><br> <span class="STYLE3">
+									<!--
+									<span class="style6"><span class="style3">注意：转让成功后，将扣除百分之八的手续费，最小转让张数108张！</span></span></span><span class="style3">*</span><br>
+									-->
+									</td>
                                 </tr>
                                 <tr>
                                   <td width="146" height="23" align="left" valign="middle" bgcolor="#FFFFFF"><span style="font-size: 9.0pt; font-family: 宋体">会员登陆帐号：</span></td>
