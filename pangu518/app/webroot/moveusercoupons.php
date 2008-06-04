@@ -68,8 +68,10 @@
 		             $arr8[$j]=$arr7[coupon_id];
 					 $j++;
 		};
-		$toal=($mobile/108)*8;
-		$toal1=$mobile-$toal;
+		//8%先屏蔽，也就是不扣
+		//$toal=($mobile/108)*8;
+		$toal= 0;
+		$toal1=$mobile-$toal;		
 		for($i=0;$i<$mobile;$i++){
 		    $sql8="update user_coupons set user_id='".$arr1[0]."' where coupon_id='".$arr8[$i]."' and status='421'";
 			mysql_query($sql8);
@@ -139,6 +141,7 @@
 			doc.mobile.focus();
 			return false;
 		}  
+		/*
 		if(doc.mobile.value<108){
 			alert("转让张数请勿小于108，请重新录入");
 			doc.mobile.focus();
@@ -149,6 +152,7 @@
 			doc.mobile.focus();
 			return false;
 		}
+		*/
      }
 //-->
 </script>
