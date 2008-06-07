@@ -77,7 +77,7 @@ if(doc.timoney.value<=0){
 									<!-- MSTableType="layout" -->
 									<tr>
 									  <td height="35" colspan="2" align="center" valign="middle" bgcolor="#FFFFFF"><span class="STYLE10">提 款 申 请</span><br>
-									    <span class="style3">*注意：提现申请后，公司会给你做相应的处理，处理时间一般会在一周之内，我们会在一周之内给你回复</span></td>
+									    <span class="style3">*注意：提现申请后，公司会给你做相应的处理，处理时间一般会在一周之内，我们会在一周之内给你回复！<br>每笔成功提现后，公司扣除20%个人所得税费用。</span></td>
 								    </tr>
 						
 			
