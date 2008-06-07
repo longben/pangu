@@ -6,6 +6,10 @@
  $password1=md5($password1);
  $timoney=trim($_POST["timoney"]);
  $timoney=(int)$timoney;
+
+	//公司收取20%提现手续费
+	$person_timoney = (int)($timoney*0.8);
+
  if(!empty($username) || !empty($password1) || !empty($timoney)){
    $sql = "select id from users where login_name ='".$username."'";
    $stmt = mysql_query($sql);
@@ -39,11 +43,11 @@
    echo("<script language='JavaScript'>alert('抱歉，您的库存不足！');location.replace('../test.php');</script>");
 	exit();
    }else{
-   $sql5="insert into cotmoney(ctname,ctnid,count1,timo) values('".$username."','".$idcode."','".$arr3[0]."','".$timoney."')";
-   mysql_query($sql5);
-   $sql6="update user_coupons set status='212' where user_id='".$idcode."' and status='421' limit $timoney";
-   mysql_query($sql6);
-     echo("<script language='JavaScript'>alert('恭喜你，已成功提交！');location.replace('../test.php');</script>");
+	   $sql5="insert into cotmoney(ctname,ctnid,count1,timo) values('".$username."','".$idcode."','".$arr3[0]."','".$person_timoney."')";
+	   mysql_query($sql5);
+	   $sql6="update user_coupons set status='212' where user_id='".$idcode."' and status='421' limit $timoney";
+	   mysql_query($sql6);
+	   echo("<script language='JavaScript'>alert('恭喜你，已成功提交！');location.replace('../test.php');</script>");
    }		
 
    
