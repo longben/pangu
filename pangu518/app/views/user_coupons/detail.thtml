@@ -1,0 +1,50 @@
+<?php
+  $user_id = $this->controller->Session->read('User.id');
+?>
+<fieldset align=center>
+<legend>
+会员财富积点明细表
+</legend>
+<div align="left">
+	<form action="<?php echo $html->url('/user_coupons/detail'); ?>" method="post">
+	  输入会员财富积点明细表日期：
+	  <?php echo $html->dateTimeOptionTag('UserCoupon/day', 'YMD' , 'NONE', '2008-06-01', array());?>
+	  <?php echo $html->submit('查询');?>
+	</form> 
+</div>
+<table width="100%" border="0" cellpadding="0" cellspacing="2">
+  <tr> 
+    <th>日期</th>
+    <th>分红期数</th>
+    <th>每期分红积点</th>
+    <th>提现积点</th>
+	<!--
+    <th>转入积点</th>
+    <th>转出积点</th>
+	-->
+    <th>投注积点</th>
+	<!--
+    <th>当前财富积点</th>
+	-->
+  </tr>
+  <?php for($day = 1; $day<=$days; $day++):?>
+  <tr>
+    <?
+	  $current_day = gmdate('Y-m-d',mktime(0,0,0,$month,$day+1,$year));
+	?>
+    <td><?=$current_day?></td>
+    <td><?=$this->controller->Lottery->findTimesByDate($current_day)?></td>
+    <td><?=$this->controller->Lottery->findLotteryBettingByUserAndTimes($user_id,$current_day)?></td>
+    <td><?=$this->controller->UserCoupon->findCashIn($user_id,$current_day)?></td>
+	<!--
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+	-->
+    <td><?=$this->controller->Lottery->findBetByUserAndTimes($user_id,$current_day)?></td>
+	<!--
+    <td>&nbsp;</td>
+	-->
+  </tr>
+  <?php endfor?>
+</table>
+</fieldset>
