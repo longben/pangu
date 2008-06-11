@@ -59,7 +59,7 @@ class DATABASE_CONFIG
 								'connect' => 'mysql_connect',
 								'host' => 'localhost',
 								'login' => 'root',
-								'password' => '',
+								'password' => 'bitbee5617pangu518',
 								'database' => 'pangu518',
 								'prefix' => '',
 								'encoding' => 'utf8');
