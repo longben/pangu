@@ -63,6 +63,7 @@
 		//d.add(1003,1,'邀请加入盘古','/users/invite');		//直接在注册的时候填写推荐人帐号
 		d.add(1004,1,'分红凭证录入','/user_coupons/input');
 		d.add(1005,1,'会员参与分红','/lottery_bettings/user');
+		d.add(1006,1,'会员财富积点明细表','/user_coupons/detail');
 		
 		d.add(2001,2,'消费单位资料维护','/merchants/profile');
 		d.add(2002,2,'可用财富积点及分红凭证管理','/merchant_coupons');

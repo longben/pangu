@@ -11,14 +11,14 @@ class LotteriesController extends AppController {
 		$criteria = null;
 		if($keyword == null){
 			$keyword = $this->data['Lottery']['keyword'];
-		}		
+		}
 		if($keyword != null){
 			$criteria = "concat(Lottery.lottery_year,lpad(Lottery.lottery_times,3,'0')) = '$keyword'";
 		}
 
 		list($order,$limit,$page) = $this->Pagination->init($criteria,null,array('ajaxDivUpdate'=>'cs','url'=> 'index/'.$keyword));
-		
-		$data = $this->Lottery->findAll($criteria, null, 'Lottery.lottery_times desc', $limit, $page); 			
+
+		$data = $this->Lottery->findAll($criteria, null, 'Lottery.lottery_times desc', $limit, $page);
 		$this->set('lotteries',$data);
 	}
 
@@ -43,7 +43,7 @@ class LotteriesController extends AppController {
 				//判断是否重复开奖号码，以及不允许编号回走
 				$rsCode = $this->Lottery->findBySql("select count(*) from lotteries
 				   where lottery_year = ".$this->data['Lottery']['lottery_year']." and lottery_times >=".$this->data['Lottery']['lottery_times']);
-				$_code = $rsCode[0][0]['count(*)']; 
+				$_code = $rsCode[0][0]['count(*)'];
 				$this->data['Lottery']['code'] = $_code;
 				if($_code > 0){
 					$this->Session->setFlash('存在相同或更大的期数，请录入大于已有的期数！');
@@ -54,12 +54,12 @@ class LotteriesController extends AppController {
 						$this->redirect('/lotteries/index');
 					} else {
 						$this->Session->setFlash('Please correct errors below.');
-					}						
-				}			
+					}
+				}
 			}
 		}
 	}
-	
+
 	function open($id = null) {
 		if (empty($this->data)) {
 			if (!$id) {
@@ -72,7 +72,7 @@ class LotteriesController extends AppController {
 
 			//判断是否存在还未开奖的以前的期数，若有则不允许，需要顺序开奖
 			$rsList = $this->Lottery->findBySql("select count(*) from lotteries where id < $id and flag = 1");
-			$_list = $rsList[0][0]['count(*)']; 
+			$_list = $rsList[0][0]['count(*)'];
 			$this->data['Lottery']['list'] = $_list;
 			if($_list > 0){
 				$this->Session->setFlash('存在前期尚未开奖数据，请先开出前期结果！');
@@ -86,28 +86,28 @@ class LotteriesController extends AppController {
 			   and betting_type = 1");
 			$_total = $rsUser[0][0]['sum(betting_time)*2']; //本期总额
 			$this->data['Lottery']['total'] = $_total;
-			
+
 			//计算中奖总数
-			$rs = $this->Lottery->LotteryBetting->findBySql("select sum(betting_time) from lottery_bettings 
-			   where lottery_id =  $id 
+			$rs = $this->Lottery->LotteryBetting->findBySql("select sum(betting_time) from lottery_bettings
+			   where lottery_id =  $id
 			   and betting_number = '" .$this->data['Lottery']['win_number'] ."'");
 			$_win_count =   $rs[0][0]['sum(betting_time)']; //中奖总数
 			$this->data['Lottery']['win_count'] = $_win_count;
-			
+
 			//计算上期分红余额
 			$this->Lottery->unbindModel(array('belongsTo' => array('User','Merchant')));
 			$rsBalance = $this->Lottery->find('flag = 9','balance','lottery_year,lottery_times desc');
 			$_last_time_balance = $rsBalance['Lottery']['balance']; //上期分红余额
-			
+
 			//本期分红总金额
-			$_total2 = $_total * 0.5 + $_last_time_balance; 
-			
+			$_total2 = $_total * 0.5 + $_last_time_balance;
+
 			//每份金额
 			if ($_win_count == 0) {
 				$_dividend = 0;
 			}else {
-				$_dividend = $_total2 / $_win_count;				
-			}			
+				$_dividend = $_total2 / $_win_count;
+			}
 			if($_dividend > 4999){ //分红金额最多只能为4999元（含税）
 				$_dividend = 4999;
 				$_balance = $_total2 - 4999 * $_win_count; //本期余额
@@ -119,14 +119,14 @@ class LotteriesController extends AppController {
 			   $_balance = $_total2; //本期余额
 			}
 
-			
+
 			$this->data['Lottery']['total'] = $_total;
 			$this->data['Lottery']['dividend'] = $_dividend;
 			$this->data['Lottery']['balance'] = $_balance;
 			$this->data['Lottery']['open_time'] = date("Y-m-d H:i:s");
 			$this->data['Lottery']['flag'] = 9;
-			
-			
+
+
 			if ($this->Lottery->save($this->data)) {
 				$this->Session->setFlash('分红开奖资料保存成功！');
 				$this->redirect('/lotteries');
@@ -134,7 +134,7 @@ class LotteriesController extends AppController {
 				$this->Session->setFlash('Please correct errors below.');
 			}
 		}
-	}	
+	}
 
 	function edit($id = null) {
 		if (empty($this->data)) {
@@ -164,7 +164,7 @@ class LotteriesController extends AppController {
 			$this->redirect('/lotteries/index');
 		}
 	}
-	
+
    function dividend($id = null, $num = null) {
 		if (!$id) {
 			$this->Session->setFlash('非法数据请求.');
@@ -172,9 +172,9 @@ class LotteriesController extends AppController {
 		}
 		$this->set('lottery', $this->Lottery->read(null, $id));
 		$this->set('lotteryBettings', $this->Lottery->LotteryBetting->findAll("lottery_id = $id and betting_number = '$num'"));
-		
+
    }
-   
+
    /**
     * 当期分红相关数据
     *

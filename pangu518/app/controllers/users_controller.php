@@ -9,10 +9,10 @@ class UsersController extends AppController {
 		$this->User->recursive = 0;
 		$this->set('users', $this->User->findAll('User.id <> 1'));
 	}
-	
+
    function invite() {
    	  $this->layout='jiwai';
-   }	
+   }
 
 	function view($id = null) {
 		if(!$id) {
@@ -97,13 +97,13 @@ class UsersController extends AppController {
 			$this->redirect('/users/index');
 		}
 	}
-	
+
 	function init($id = null) {
 		if(!$id) {
 			$this->Session->setFlash('Invalid id for User');
 			$this->redirect('/members/index');
 		}
-		
+
 		if($this->User->del($id)) {
 			$this->Session->setFlash('The User deleted: id '.$id.'');
 			$this->redirect('/users/index');
@@ -148,18 +148,18 @@ class UsersController extends AppController {
 		$criteria = "User.referees = $user_id";
 		if($keyword == null){
 			$keyword = $this->data['User']['keyword'];
-		}		
+		}
 		if($keyword != null){
 			$criteria = "User.referees = $user_id and (User.login_name like '%$keyword%' or User.user_name like '%$keyword%')";
 		}
 
 		list($order,$limit,$page) = $this->Pagination->init($criteria,null,array('ajaxDivUpdate'=>'cs','url'=> 'network/'. $user_id . '/' .$keyword));
-		
-		$data = $this->User->findAll($criteria, NULL, null, $limit, $page); 			
+
+		$data = $this->User->findAll($criteria, NULL, null, $limit, $page);
 		$this->set('users',$data);
 		$this->set('user_id',$user_id);
 	}
-	
+
 	function check($login_name = null){
 		$this->layout = 'ajax';
 		$count = 0;
@@ -178,7 +178,7 @@ class UsersController extends AppController {
 		//$this->set('isExistUser',$this->User->findCount(array('login_name' => $login_name)));
 		$this->set('isExistUser',$count);
 	}
-	
+
 	function check_referees($login_name = null,$referees = null){
 		$this->layout = 'ajax';
 		$count = $this->User->findCount(array('login_name' => $referees));
@@ -193,13 +193,13 @@ class UsersController extends AppController {
 				$this->set('isExistUser',1);
 			}
 		}
-	}	
-	
+	}
+
 	function getUserName($id = null){
 		$this->data = $this->User->read(null, $id);
 		return $this->data['User']['user_name'];
 	}
-	
+
 	function upgrade($id = null){
 		$this->layout = 'ajax';
 		$this->User->updateGrade($id);
