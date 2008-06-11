@@ -3,6 +3,7 @@ class UserCouponsController extends AppController {
 
 	var $name = 'UserCoupons';
 	var $helpers = array('Html', 'Form','Javascript','Ajax' );
+	var $uses = array('UserCoupon', 'Lottery', 'LotteryBetting');
 
 	function index() {
 		$this->UserCoupon->recursive = 0;
@@ -23,13 +24,13 @@ class UserCouponsController extends AppController {
 		  'UserCoupon.status' => 421
 		);
 		$available_capital = $this->UserCoupon->findCount($criteria);
-		
+
 		$criteria = array(
 		  'UserCoupon.user_id' => $this->Session->read('User.id'),
 		  'UserCoupon.status' => 212
-		);		
+		);
 		$expenditure = $this->UserCoupon->findCount($criteria);
-				
+
 		$this->set('available_capital', $available_capital);
 		$this->set('expenditure', $expenditure);
 
@@ -45,8 +46,8 @@ class UserCouponsController extends AppController {
 				$this->data['UserCoupon']['status'] = 421;
 				$this->data['UserCoupon']['user_id'] = $this->Session->read('User.id');
 				$this->data['UserCoupon']['merchant_id'] = 1;
-				
-				
+
+
 				if($this->UserCoupon->save($this->data)) {
 					$this->UserCoupon->updateMerchantCouponStatus($this->Session->read('User.id'),$coupon_id);
 					$this->Session->setFlash('代金券录入成功！');
@@ -80,6 +81,24 @@ class UserCouponsController extends AppController {
 				$this->set('coupons', $this->UserCoupon->Coupon->generateList());
 			}
 		}
+	}
+
+	function detail($user_id = null, $year = null , $month = null){
+		$this->cleanUpFields();
+		if($this->data == null){
+			  $t=getdate();
+			  $year = $t['year'];
+			  $month = $t['mon'];
+			  $day = 1;
+		}else{
+			$year = $this->data['UserCoupon']['day_year'];
+			$month = $this->data['UserCoupon']['day_month'];
+			$day = $this->data['UserCoupon']['day_day'];
+		}
+		$t=mktime(0,0,0,$month,$day,$year);
+		$this->set('year',$year);
+		$this->set('month',$month);
+		$this->set('days',date('t',$t));
 	}
 
 }

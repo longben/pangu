@@ -32,7 +32,7 @@ class LotteryBetting extends AppModel {
 				),
 
 	);
-	
+
 	/**
 	 * 检查用户拥有代金券总数
 	 *
@@ -65,8 +65,8 @@ class LotteryBetting extends AppModel {
 		/*  计算方法：转出方主体×100 + 接收方主体×10 + 动作
 		    主体：0:无效 1:公司 2:会员 3:工作站 4:会员消费单位
 		    动作：0:无效 1:销售 2:参与抽奖 3:财务审核 4:其它 */
-		$status = 2*100 + 1*10 + 2; //应该定义成全局变量    	
-    	
+		$status = 2*100 + 1*10 + 2; //应该定义成全局变量
+
     	$limit = $betting_total * 1; //会员消费单位每1张代金券一次分红资格
 
     	$sql = 'select UserCoupon.coupon_id from user_coupons as UserCoupon ';
@@ -76,7 +76,7 @@ class LotteryBetting extends AppModel {
     	$sql .= ' limit '.$limit;
         $coupons = $this->query($sql);
         $rs = $this->query($sql);
-        
+
         if(sizeof($rs)>=$limit){
 			for($i=0;$i<sizeof($rs);$i++){
 				if($i==0){
@@ -84,15 +84,15 @@ class LotteryBetting extends AppModel {
 				}else{
 					$coupon_id .= ','.$rs[$i]['UserCoupon']['coupon_id'];
 				}
-			} 
-			
+			}
+
 			//更新会员代金券状态
 			$sql = 'update user_coupons set status = '.$status.' where coupon_id in('. $coupon_id .')';
-			$this->execute($sql); 
-			
+			$this->execute($sql);
+
 			//更新代金券状态
 			$sql = 'update coupons set status = '.$status.' where id in('. $coupon_id .')';
-			$this->execute($sql); 
+			$this->execute($sql);
 
 			//插入投注数据
 			for ($i = $betting_number_start;$i<=$betting_number_end;$i++){
@@ -118,12 +118,12 @@ class LotteryBetting extends AppModel {
 	 */
     function saveUserBetting($user_id = null, $lottery_id = null, $betting_number = null, $betting_time = null){
     	//判断用户代金券数是否够抽奖数
-    	
+
 		/*  计算方法：转出方主体×100 + 接收方主体×10 + 动作
 		    主体：0:无效 1:公司 2:会员 3:工作站 4:会员消费单位
 		    动作：0:无效 1:销售 2:参与抽奖 3:财务审核 4:其它 */
-		$status = 2*100 + 1*10 + 2; //应该定义成全局变量    	
-    	
+		$status = 2*100 + 1*10 + 2; //应该定义成全局变量
+
     	$limit = $betting_time * 1; //会员消费单位每1张代金券一次分红资格
     	$sql = 'select UserCoupon.coupon_id from user_coupons as UserCoupon ';
     	$sql .= ' where UserCoupon.user_id = ' . $user_id;
@@ -132,7 +132,7 @@ class LotteryBetting extends AppModel {
     	$sql .= ' limit '.$limit;
         $coupons = $this->query($sql);
         $rs = $this->query($sql);
-        
+
         if(sizeof($rs)>=$limit){
 			for($i=0;$i<sizeof($rs);$i++){
 				if($i==0){
@@ -140,21 +140,21 @@ class LotteryBetting extends AppModel {
 				}else{
 					$coupon_id .= ','.$rs[$i]['UserCoupon']['coupon_id'];
 				}
-			} 
-			
+			}
+
 			//更新会员代金券状态
 			$sql = 'update user_coupons set status = '.$status.' where coupon_id in('. $coupon_id .')';
-			$this->execute($sql); 
-			
+			$this->execute($sql);
+
 			//更新代金券状态
 			$sql = 'update coupons set status = '.$status.' where id in('. $coupon_id .')';
-			$this->execute($sql); 
+			$this->execute($sql);
         }else{
         	return false;
         }
 		return true;
 	}
-	
+
 	/**
 	 * 会员消费单位抽奖
 	 *
@@ -166,12 +166,12 @@ class LotteryBetting extends AppModel {
 	 */
     function saveMerchantBetting($merchant_id = null, $lottery_id = null, $betting_number = null, $betting_time = null){
     	//判断用户代金券数是否够抽奖数
-    	
+
 		/*  计算方法：转出方主体×100 + 接收方主体×10 + 动作
 		    主体：0:无效 1:公司 2:会员 3:工作站 4:会员消费单位
 		    动作：0:无效 1:销售 2:参与抽奖 3:财务审核 4:其它 */
-		$status = 4*100 + 1*10 + 2; //应该定义成全局变量    	
-    	
+		$status = 4*100 + 1*10 + 2; //应该定义成全局变量
+
     	$limit = $betting_time * 25; //会员消费单位每25张代金券一次分红资格
     	$sql = 'select MerchantVoucher.coupon_id from merchant_vouchers as MerchantVoucher ';
     	$sql .= ' where MerchantVoucher.merchant_id = ' . $merchant_id;
@@ -180,7 +180,7 @@ class LotteryBetting extends AppModel {
     	$sql .= ' limit '.$limit;
         $coupons = $this->query($sql);
         $rs = $this->query($sql);
-        
+
         if(sizeof($rs)>=$limit){
 			for($i=0;$i<sizeof($rs);$i++){
 				if($i==0){
@@ -188,17 +188,17 @@ class LotteryBetting extends AppModel {
 				}else{
 					$coupon_id .= ','.$rs[$i]['MerchantVoucher']['coupon_id'];
 				}
-			} 
-			
+			}
+
 			//更新会员消费单位代金券分红凭证状态
 			$sql = 'update merchant_vouchers set status = '.$status.' where coupon_id in('. $coupon_id .')';
-			$this->execute($sql);			
+			$this->execute($sql);
 
         }else{
         	return false;
         }
 		return true;
-	}	
+	}
 
 }
 ?>
