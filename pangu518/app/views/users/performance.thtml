@@ -22,9 +22,11 @@
  -->
  <hr/> 
  <li>累积所得：<?=$performance['total']?>元</li>
+ <!--  屏蔽2008-07-04
  <hr/>
  <?php if(empty($_GET['u'])){ ?>
  <li><?php echo $html->link('返回用户列表', '/members/index') ?> </li>
  <?php	}?>
+ -->
 </ul>
 </fieldset>
