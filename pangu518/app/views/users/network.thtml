@@ -49,9 +49,11 @@
 <?php endforeach; ?>
 </table>
 <p><div align="center"><?php echo $this->renderElement('pagination'); // 分页导航页 ?></div></p>
+<!--屏蔽2008-07-04
  <hr/>
 <?php if(empty($_GET['u'])){ ?>
  <li><?php echo $html->link('返回用户列表', '/members/index') ?> </li>
 <?php	}?>
+-->
 </ul>
 </fieldset>
